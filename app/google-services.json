@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "285061187013",
+    "firebase_url": "https://tamm-a5f43.firebaseio.com",
+    "project_id": "tamm-a5f43",
+    "storage_bucket": "tamm-a5f43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:285061187013:android:08750eb11e32b618",
+        "android_client_info": {
+          "package_name": "net.middledleeast.tamm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "285061187013-nq1j60j3rasa5l89itp7kvlg9uo0pdqt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.middledleeast.tamm",
+            "certificate_hash": "070bc521122f30e261deeb55c8b0ab349796034e"
+          }
+        },
+        {
+          "client_id": "285061187013-dej7giqehuvc1sqth8d7rs67m3ptl78d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWTM2J35PebYTm50ve2dY270zw3uXaROA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "285061187013-dej7giqehuvc1sqth8d7rs67m3ptl78d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

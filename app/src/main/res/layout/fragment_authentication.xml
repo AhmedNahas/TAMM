@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    tools:context=".fragments.AuthenticationFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_quotation_mark"/>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/authintication_text"
+            android:textColor="#FFF"
+            android:textSize="20sp"
+            android:gravity="end"
+            android:layout_marginLeft="16dp"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/authintication_image"
+            android:layout_marginTop="105dp"/>
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btn_signin"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="sign in"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/full_border"
+        android:textColor="#FFF"/>
+
+    <Button
+        android:id="@+id/btn_signup"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/full_border"
+        android:textColor="#FFF"/>
+
+        <Button
+            android:id="@+id/btn_signin_as_aguest"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/full_border"
+            android:text="sign in as a guest"
+            android:textColor="#FFF" />
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>
