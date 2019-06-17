@@ -1,10 +1,8 @@
 package net.middledleeast.tamm;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,7 +25,7 @@ import java.util.HashMap;
 
 public class RegisterationActivity extends Fragment {
         private ImageView imageView;
-        private TextView textView;
+        private Button sign_in_button;
         private EditText email,password,confpassword,name,phone;
         private Button button;
         private FirebaseAuth auth;
@@ -41,7 +38,7 @@ public class RegisterationActivity extends Fragment {
         View view = inflater.inflate(R.layout.fragment_registeration, container, false);
 
         imageView = view.findViewById(R.id.img_view);
-        textView = view.findViewById(R.id.register_txt_view);
+        sign_in_button = view.findViewById(R.id.sign_in_if_not_register);
         email = view.findViewById(R.id.tv_register_email);
         password = view.findViewById(R.id.tv_register_password);
         confpassword = view.findViewById(R.id.tv_register_confpassword);
@@ -51,6 +48,15 @@ public class RegisterationActivity extends Fragment {
 
         auth = FirebaseAuth.getInstance();
         reference = FirebaseDatabase.getInstance().getReference();
+
+        sign_in_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.welcome_container, new SignInFragment())
+                        .commit();
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,11 +127,11 @@ public class RegisterationActivity extends Fragment {
 
     }
 
-    public void sign_in_text(View view) {
-
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.welcome_container, new SignInFragment())
-                .commit();
-
-    }
+//    public void sign_in_text(View view) {
+//
+//        getActivity().getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.welcome_container, new SignInFragment())
+//                .commit();
+//
+//    }
 }

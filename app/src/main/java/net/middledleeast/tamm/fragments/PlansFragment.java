@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.RegisterationActivity;
 import net.middledleeast.tamm.adapters.PlansAdapter;
 import net.middledleeast.tamm.model.PlanModel;
 

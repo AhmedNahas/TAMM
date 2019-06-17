@@ -14,7 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.RegisterationActivity;
+import net.middledleeast.tamm.activities.FreeAccount;
+import net.middledleeast.tamm.activities.MemberShip;
 import net.middledleeast.tamm.model.PlanModel;
 
 import java.util.List;
@@ -45,9 +46,17 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHol
         plansViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, RegisterationActivity.class);
-                context.startActivity(intent);
 
+if(i==0)
+{
+    Intent intent = new Intent(context, MemberShip.class);
+    context.startActivity(intent);
+}
+else
+{
+    Intent intent = new Intent(context, FreeAccount.class);
+    context.startActivity(intent);
+}
                 //todo check
 //                row_index = i;
 //                notifyDataSetChanged();
