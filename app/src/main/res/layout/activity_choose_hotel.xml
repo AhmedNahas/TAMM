@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/main"
+    tools:context=".activities.ChooseHotelActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_back_arrow"
+            android:backgroundTint="#FFEB3B"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BACK"
+            android:textColor="#ffff"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100dp"
+            android:background="@drawable/logo"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:background="@drawable/ic_button"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:src="@drawable/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:hint="Write Hotel Name"
+            android:textColorHint="#ffff"
+            android:textSize="12sp"
+            android:textStyle="italic" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_search_black_24dp"
+            android:backgroundTint="#FFEB3B"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fullstar" />
+
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fullstar" />
+
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/emptystar" />
+
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/emptystar" />
+
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/emptystar" />
+
+    </LinearLayout>
+
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/hotels_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+    </android.support.v7.widget.RecyclerView>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/manhelp"
+        android:baselineAlignBottom="true"/>
+
+</LinearLayout>
