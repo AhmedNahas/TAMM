@@ -62,7 +62,7 @@
 
         <LinearLayout
             android:layout_width="81dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:orientation="vertical">
 
@@ -73,15 +73,18 @@
                 android:textColor="@color/app_color"
                 android:gravity="center"/>
 
-            <TextView android:layout_height="wrap_content"
+            <TextView
+                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:id="@+id/startDate"
                 android:textSize="15sp"
                 android:hint="22  July  Friday"
                 android:textColorHint="#fff"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#fff"/>
         </LinearLayout>
         <TextView
+            android:id="@+id/nights"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2 Nights"
@@ -108,7 +111,8 @@
                 android:textSize="15sp"
                 android:hint="22  July  Friday"
                 android:textColorHint="#fff"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#fff"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
