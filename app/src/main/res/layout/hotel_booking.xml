@@ -53,8 +53,87 @@
         android:layout_height="wrap_content"
         android:text="THANK YOU FOR USING"
         android:textColor="#fff"
-        android:textSize=""
+        android:textSize="25dp"
+        android:gravity="center"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TAMM APP"
+        android:textStyle="bold"
+        android:textColor="@color/app_color"
+        android:textSize="25dp"
+        android:gravity="center"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hotel Booking"
+        android:textStyle="bold"
+        android:textColor="@color/app_color"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dear Mr.Fadi ,"
+        android:textColor="#fff"
+        android:textSize="13dp"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="your Hotel code is"
+        android:textSize="13dp"
+        android:textColor="#fff"
+        android:gravity="center"
+
+        />
+    <TextView
+        android:layout_width="170dp"
+        android:layout_height="35dp"
+        android:text="CODE"
+        android:textColor="@color/app_color"
+        android:background="@drawable/shape2"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="For further information"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        
         />
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please check you E-mail."
+        android:textColor="#fff"
+        android:gravity="center"
+
+
+        />
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="BACK TO HOME PAGE"
+        android:background="@drawable/shape"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+
+
+        />
 
 </LinearLayout>
