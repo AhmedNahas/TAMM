@@ -5,57 +5,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReserveRoom"
+    tools:context=".model.ReserveRoom"
     android:orientation="vertical"
     android:background="@drawable/plans_background"
 
     >
 
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
 
+        >
+        <Button
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/ic_back_arrow"
+            android:layout_marginTop="15dp"
+            />
+        <ImageView
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tool_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/app_color1"
-            >
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/logo"
+            android:layout_marginLeft="145dp"
 
-            <Button
-                android:id="@+id/arrow_btn"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@drawable/ic_arrow_back"
+            />
+        <ImageView
 
-
-
-
-                />
-            <ImageView
-                android:id="@+id/img_logo"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/logo"
-                android:layout_marginLeft="145dp"
-
-                />
-
-
-            <ImageView
-                android:id="@+id/img_btn"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/ic_button"
-                android:layout_marginLeft="120dp"
-                />
-
-
-        </androidx.appcompat.widget.Toolbar>
-
-
-    </com.google.android.material.appbar.AppBarLayout>
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:background="@drawable/ic_button"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="15dp"
+            />
+    </LinearLayout>
 
     <ImageView
 
@@ -73,7 +57,7 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
-        android:src="@drawable/hotel"
+        android:src="@drawable/hotel1"
         android:background="@color/app_color1"
 
         />
@@ -126,59 +110,59 @@
 
         />
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_gravity="center"
-    >
-    <TextView
-        android:id="@+id/txt_anywhere"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="anywhere"
-        android:textSize="20dp"
-        android:textColor="#fff"
-        />
-    <TextView
-        android:id="@+id/txt_anytime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=", anytime"
-        android:textSize="20dp"
-        android:textColor="#fff"
-        />
-
-
-
-
-
-
-</LinearLayout>
-
-
-
-
-        <Button
-            android:id="@+id/btn_reserve_user"
-            android:layout_width="180dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        >
+        <TextView
+            android:id="@+id/txt_anywhere"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RESERVE ROOM"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="5dp"
-            android:textColor="#FFF"
-            android:background="@drawable/border"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:onClick="reverse_room"
-
+            android:text="anywhere"
+            android:textSize="20dp"
+            android:textColor="#fff"
             />
+        <TextView
+            android:id="@+id/txt_anytime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=", anytime"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            />
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+    <Button
+        android:id="@+id/btn_reserve_user"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="RESERVE ROOM"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:textColor="#FFF"
+        android:background="@drawable/border"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:onClick="reverse_room"
+
+        />
     <ImageView
         android:id="@+id/img_man"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/man"
+        android:src="@drawable/man1"
 
 
         />
