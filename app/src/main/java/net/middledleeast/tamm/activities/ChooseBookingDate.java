@@ -56,6 +56,7 @@ public class ChooseBookingDate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Calendar cal = Calendar.getInstance();
+
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
@@ -94,6 +95,8 @@ public class ChooseBookingDate extends AppCompatActivity {
                 endDate.setText(endDateR);
             }
         };
+
+
 
     }
 }
