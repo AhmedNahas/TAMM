@@ -21,7 +21,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.fragments.ForgotPasswordFragment;
 import net.middledleeast.tamm.fragments.PlansFragment;
 
@@ -44,13 +43,7 @@ public class SignInFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_sign_in, container, false);
-        txtForgotPassword = view.findViewById(R.id.goto_forgot_pass);
-        btnSignIn = view.findViewById(R.id.btn_sign_in_user);
-        userName = view.findViewById(R.id.tv_signin_username);
-        pass = view.findViewById(R.id.tv_signin_password);
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        auth = FirebaseAuth.getInstance();
+        View view = getView(inflater, container);
 
         if (user != null) {
 
@@ -109,6 +102,17 @@ public class SignInFragment extends Fragment {
 
         });
 
+        return view;
+    }
+
+    private View getView(LayoutInflater inflater, ViewGroup container) {
+        View view = inflater.inflate(R.layout.fragment_sign_in, container, false);
+        txtForgotPassword = view.findViewById(R.id.goto_forgot_pass);
+        btnSignIn = view.findViewById(R.id.btn_sign_in_user);
+        userName = view.findViewById(R.id.tv_signin_username);
+        pass = view.findViewById(R.id.tv_signin_password);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        auth = FirebaseAuth.getInstance();
         return view;
     }
 

@@ -8,18 +8,19 @@ import android.widget.Button;
 
 import net.middledleeast.tamm.R;
 
-public class FreeAccount extends AppCompatActivity {
-    Button accept;
+public  class FreeAccountPlan extends AppCompatActivity {
+    private Button accept;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.freeaccount);
+    setContentView(R.layout.free_account_plan);
+
         accept = (Button) findViewById(R.id.btn_register_signup);
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FreeAccount.this, FreeAccountPlan.class);
+                Intent intent = new Intent(FreeAccountPlan.this, FREEcONGRATS.class);
                 startActivity(intent);
 
             }
