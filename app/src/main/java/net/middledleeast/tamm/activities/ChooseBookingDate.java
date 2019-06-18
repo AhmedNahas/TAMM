@@ -16,12 +16,16 @@ import java.util.Calendar;
 
 public class ChooseBookingDate extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+
 
     private TextView startDate , endDate , nights;
     private DatePickerDialog.OnDateSetListener startDateAdapter;
     private DatePickerDialog.OnDateSetListener endDateAdapter;
-    int date , endDateR;
+    private String date;
+    private String endDateR;
+    Calendar cal = Calendar.getInstance();
+    Calendar cal2 = Calendar.getInstance();
+    long diff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,7 @@ public class ChooseBookingDate extends AppCompatActivity {
         startDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
+
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
@@ -50,16 +54,18 @@ public class ChooseBookingDate extends AppCompatActivity {
                         year,month,day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
+
+
             }
         });
         endDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
 
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                int year = cal2.get(Calendar.YEAR);
+                int month = cal2.get(Calendar.MONTH);
+                int day = cal2.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
                         ChooseBookingDate.this,
@@ -71,15 +77,20 @@ public class ChooseBookingDate extends AppCompatActivity {
             }
         });
 
+
+
+
         startDateAdapter = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
-                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+
 
                 date = month + "/" + day + "/" + year;
 
                 startDate.setText(date);
+
+
 
             }
         };
@@ -87,16 +98,18 @@ public class ChooseBookingDate extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
-                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+               
 
 
                 endDateR = month + "/" + day + "/" + year;
 
                 endDate.setText(endDateR);
+                nights.setText("" + diff);
             }
         };
 
-
+         diff =  (( cal2.getTimeInMillis() - cal.getTimeInMillis()) / (1000*60*60*24));
+        Log.e("hello", "diffrence : " + diff );
 
     }
 }
