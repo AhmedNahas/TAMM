@@ -18,6 +18,7 @@ public class FlightsOrHotels extends AppCompatActivity {
         setContentView(R.layout.flightsorhotels);
 
         img2 = findViewById(R.id.imageView10);
+        img1 = findViewById(R.id.imageView9);
 
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,6 +26,12 @@ public class FlightsOrHotels extends AppCompatActivity {
 
                 Intent intent = new Intent(FlightsOrHotels.this, ReserveRoom.class);
                 startActivity(intent);
+            }
+        });
+        img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FlightsOrHotels.this,FlightTamm.class));
             }
         });
     }
