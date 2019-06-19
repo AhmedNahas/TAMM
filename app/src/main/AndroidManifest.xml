@@ -11,6 +11,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activities.Proceedbeybey"></activity>
+        <activity android:name=".activities.FlightTamm" />
         <activity android:name=".activities.PAYMENT">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,14 +23,12 @@
         <activity android:name=".activities.HotelBooking" />
         <activity android:name=".activities.RoomBooked" />
         <activity android:name=".activities.checkroom" />
-        <activity android:name=".activities.ChooseBookingDate"></activity>
+        <activity android:name=".activities.ChooseBookingDate" />
         <activity android:name=".activities.HotelDetails" />
-        <activity android:name=".activities.ChooseHotelActivity"></activity>
+        <activity android:name=".activities.ChooseHotelActivity" />
         <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".LanguageActivity" />
-        <activity android:name=".activities.SplashActivity">
-
-        </activity>
+        <activity android:name=".activities.SplashActivity" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.FreeAccount" />
         <activity android:name=".activities.MemberShip" />
@@ -39,7 +39,7 @@
         <activity android:name=".activities.FREEcONGRATS" />
         <activity android:name=".activities.FlightsOrHotels" />
         <activity android:name=".model.ReserveRoom" />
-        <activity android:name=".model.FindHotels"></activity>
+        <activity android:name=".model.FindHotels" />
     </application>
 
 </manifest>
