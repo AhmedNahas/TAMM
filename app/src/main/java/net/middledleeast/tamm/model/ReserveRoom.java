@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.ChooseHotelActivity;
 
 import static net.middledleeast.tamm.R.layout.reserve_room;
 
@@ -23,13 +22,10 @@ public class ReserveRoom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(reserve_room);
-        toolbar =findViewById(R.id.tool_bar);
 
-        btnarrow =findViewById(R.id.arrow_btn);
         reservebtn =findViewById(R.id.btn_reserve_user);
 
-        logo =findViewById(R.id.img_logo);
-        imgbutton=findViewById(R.id.img_btn);
+
         bigline=findViewById(R.id.img_bigline);
         smallline=findViewById(R.id.img_smallline);
         imghotel=findViewById(R.id.img_hotel);
@@ -46,7 +42,7 @@ public class ReserveRoom extends AppCompatActivity {
     }
 
     public void reverse_room(View view) {
-        startActivity(new Intent(ReserveRoom.this, ChooseHotelActivity.class));
+        startActivity(new Intent(ReserveRoom.this, FindHotels.class));
 
     }
 }
