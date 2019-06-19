@@ -10,7 +10,16 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.WelcomeActivity"></activity>
+        <activity android:name=".activities.HotelBooking"></activity>
+        <activity android:name=".activities.RoomBooked" />
+        <activity android:name=".activities.checkroom" />
+        <activity android:name=".activities.WelcomeActivity" />
+        <activity android:name=".activities.ChooseBookingDate"></activity>
+        <activity android:name=".activities.HotelDetails" />
+        <activity android:name=".activities.ChooseHotelActivity">
+
+        </activity>
+        <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".LanguageActivity" />
         <activity android:name=".activities.SplashActivity">
             <intent-filter>
@@ -28,8 +37,7 @@
         <activity android:name=".activities.MemberCongrats" />
         <activity android:name=".activities.FREEcONGRATS" />
         <activity android:name=".activities.FlightsOrHotels" />
-
-
+        <activity android:name=".model.ReserveRoom" />
     </application>
 
 </manifest>

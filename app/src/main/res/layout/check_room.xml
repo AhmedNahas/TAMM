@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.checkroom"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    >
+
+    <ImageView
+        android:layout_width="370dp"
+        android:layout_height="200dp"
+        android:background="@drawable/check_out"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="22dp"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Deluxe Room 1 King Red"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="431 sq feet (40 sq meters)"
+        android:textColor="#fff"
+        android:textSize="15dp"
+
+        />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        
+    
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sleeps 3 People"
+            android:textColor="#fff"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="(including up to 1 child)"
+            android:textColor="#fff"
+            android:textSize="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bed choices:"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:textSize="15dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:text=". 1 King Bed"
+            android:textColor="#fff"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Extra beds avilable :"
+            android:textColor="#fff"
+            android:layout_marginTop="15dp"
+            android:textStyle="bold"
+
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=". crib"
+                android:layout_marginLeft="35dp"
+                android:textColor="#fff"
+
+                />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=". Rollaway bed"
+            android:layout_marginLeft="35dp"
+            android:textColor="#fff"
+
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Free Cancellation"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="35dp"
+            android:textColor="#fff"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Until 11/01/2018"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/app_color"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_wifi"
+            android:layout_marginLeft="20dp"
+            android:text="  Free WiFi"
+            android:textColor="#fff"
+            android:layout_marginTop="15dp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_breakfast"
+            android:layout_marginLeft="20dp"
+            android:text="  Breakfast included"
+            android:textColor="#fff"
+            />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ROOM DEATILS"
+                android:textColor="@color/app_color"
+                android:layout_marginTop="20dp"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Air conditioning"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Bathrobes"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Bathtup or shower"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Cable TV service"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Coffee/Tea maker"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Daily housekeeping"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Desk"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- DVD player"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Free bottled water"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Free cribs/infant beds"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Free newspaper"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Free toiletries"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Free WiFi"
+                android:textColor="#fff"
+
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Hair dryer"
+                android:layout_marginTop="40dp"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- In-room safe"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- ipod doching station"
+                android:textColor="#fff"
+
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Hair dryer"
+
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Iron"
+
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- LCD TV"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Minibar"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- pay movies"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Private bathroom"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Room service"
+                android:textColor="#fff"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Slippers"
+                android:textColor="#fff"
+
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:text="TOTAl AMOUNT :                            KD 105.00"
+        android:paddingTop="7dp"
+        android:background="@drawable/full_border"
+        android:textColor="#FFF"
+        android:layout_gravity="center_horizontal"
+
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:background="@drawable/shape"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="15dp"
+
+
+            />
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="CHECKOUT"
+            android:background="@drawable/shape"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="15dp"
+
+
+            />
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
