@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="activities.MemberCongrats"
+    tools:context=".activities.MemberCongrats"
     android:background="@drawable/plans_background"
     android:orientation="vertical"
     >
@@ -79,7 +79,6 @@
 
     </LinearLayout>
     <Button
-        android:id="@+id/continueTo"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
