@@ -22,6 +22,7 @@
         <activity android:name=".LanguageActivity" />
         <activity android:name=".activities.SplashActivity">
 
+
         </activity>
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.FreeAccount" />
@@ -34,11 +35,12 @@
         <activity android:name=".activities.FlightsOrHotels" />
         <activity android:name=".model.ReserveRoom" />
         <activity android:name=".model.FindHotels" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
     </activity>
     </application>
 
