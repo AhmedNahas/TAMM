@@ -10,20 +10,20 @@
     tools:context=".fragments.PlansFragment">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
 
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
         android:foregroundGravity="center"
-        android:src="@drawable/logo_colored" />
+        android:src="@drawable/logogrey"
+        android:layout_marginTop="60dp"
+        />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
+
         android:text="MEMBERSHIP ACCOUNT PLAN"
         android:textColor="@color/app_color"
         android:textSize="25dp"
@@ -31,52 +31,26 @@
 
     <ImageView
         android:layout_width="300dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-
-        android:layout_weight="1"
         android:src="@drawable/line" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:text="By choosing this plan ,"
-
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="By choosing this plan,\n You will have free account for tamm \n from you account"
         android:textColor="@color/app_color"
-        android:textSize="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:text=" You will have free account for tamm"
+        android:textSize="15dp" />
 
 
-        android:textColor="@color/app_color"
-        android:textSize="20dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:text=" from your account"
-
-
-        android:textColor="@color/app_color"
-        android:textSize="20dp" />
 
     <Button
         android:id="@+id/btn_register_signup"
         android:layout_width="150dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="20dp"
-        android:layout_weight="1"
         android:background="@drawable/border"
         android:text="GET THIS PLAN"
         android:textColor="#FFF" />
