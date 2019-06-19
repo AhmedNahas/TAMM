@@ -21,7 +21,7 @@ public class MemberShipPlan extends AppCompatActivity {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MemberShipPlan.this, MemberCongrats.class);
+                Intent intent = new Intent(MemberShipPlan.this, ProceedCheckout.class);
                 startActivity(intent);
             }
         });
