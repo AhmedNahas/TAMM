@@ -8,7 +8,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.RegisterationActivity;
 import net.middledleeast.tamm.adapters.AreaAdapter;
 import net.middledleeast.tamm.adapters.RegionAdapter;
 
@@ -16,8 +15,8 @@ import java.util.ArrayList;
 
 public class FindHotels extends AppCompatActivity {
 
-    private ArrayList<RegionItem> regionList1 = new ArrayList<>();
-    private ArrayList<AreaItem> areaList1 = new ArrayList<>();
+    private ArrayList<RegionItem> regionList = new ArrayList<>();
+    private ArrayList<AreaItem> areaList= new ArrayList<>();
     private RegionAdapter regionAdapter;
     private AreaAdapter areaAdapter;
 
@@ -26,11 +25,13 @@ public class FindHotels extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_hotels);
 
-        Spinner areas = findViewById(R.id.area_spinner);
+
 
         regionList();
         areaList();
-        areaAdapter = new AreaAdapter(this,areaList1);
+
+        Spinner areas = findViewById(R.id.area_spinner);
+        areaAdapter = new AreaAdapter(this,areaList);
         areas.setAdapter(areaAdapter);
         areas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -47,7 +48,7 @@ public class FindHotels extends AppCompatActivity {
         });
 
         Spinner regions = findViewById(R.id.region_spinner);
-        regionAdapter = new RegionAdapter(this,regionList1);
+        regionAdapter = new RegionAdapter(this,regionList);
         regions.setAdapter(regionAdapter);
         regions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -63,21 +64,28 @@ public class FindHotels extends AppCompatActivity {
             }
         });
 
-        private void regionList() {
-
-            regionList = new ArrayList<>();
-            regionList.add(new RegionItem("Cairo",1,1));
-            regionList.add(new RegionItem("Giza",2,1));
-            regionList.add(new RegionItem("6 October",3,1));
-
-        }
-        private void areaList(){
-            areaList = new ArrayList<>();
-            areaList.add(new AreaItem("Nasr City",1,1));
-            areaList.add(new AreaItem("Dokki",2,2));
-            areaList.add(new AreaItem("Zayed",3,3));
-        }
-
 
     }
+
+
+
+    private void regionList() {
+
+        regionList = new ArrayList<>();
+        regionList.add(new RegionItem("Cairo",1,1));
+        regionList.add(new RegionItem("Giza",2,1));
+        regionList.add(new RegionItem("6 October",3,1));
+
+    }
+    private void areaList(){
+        areaList = new ArrayList<>();
+        areaList.add(new AreaItem("Nasr City",1,1));
+        areaList.add(new AreaItem("Dokki",2,2));
+        areaList.add(new AreaItem("Zayed",3,3));
+    }
+
+
+
+
+
 }

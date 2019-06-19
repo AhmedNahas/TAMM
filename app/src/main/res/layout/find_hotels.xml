@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".model.FindHotels"
     android:orientation="vertical"
-    android:background="@drawable/plans_background"
+
     >
 
     <LinearLayout
@@ -52,17 +52,31 @@
         android:orientation="horizontal"
         android:gravity="center">
 
-        <Spinner
-            android:id="@+id/region_spinner"
-            android:layout_width="100dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="20dp"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""/>
+            <Spinner
+                android:id="@+id/region_spinner"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp" />
+
+        </LinearLayout>
+
+
         <Spinner
             android:id="@+id/area_spinner"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:layout_margin="20dp"/>
         
     </LinearLayout>

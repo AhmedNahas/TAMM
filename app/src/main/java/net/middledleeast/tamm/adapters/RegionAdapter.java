@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.shipping.Model.RegionItem;
-import com.example.shipping.R;
+import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.model.RegionItem;
 
 import java.util.ArrayList;
 

@@ -14,11 +14,7 @@
         <activity android:name=".activities.RoomBooked" />
         <activity android:name=".activities.checkroom" />
         <activity android:name=".activities.ChooseBookingDate">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name=".activities.HotelDetails" />
@@ -42,6 +38,12 @@
         <activity android:name=".activities.FlightsOrHotels" />
         <activity android:name=".model.ReserveRoom" />
         <activity android:name=".model.FindHotels" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
 
     </activity>
