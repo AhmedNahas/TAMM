@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.RoomBooked"
     android:orientation="vertical"
-    android:background="@drawable/plans_background"
+    android:background="@drawable/success"
     >
     <LinearLayout
         android:layout_width="match_parent"
