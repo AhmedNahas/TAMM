@@ -23,13 +23,10 @@ public class ReserveRoom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(reserve_room);
-        toolbar =findViewById(R.id.tool_bar);
 
-        btnarrow =findViewById(R.id.arrow_btn);
         reservebtn =findViewById(R.id.btn_reserve_user);
 
-        logo =findViewById(R.id.img_logo);
-        imgbutton=findViewById(R.id.img_btn);
+
         bigline=findViewById(R.id.img_bigline);
         smallline=findViewById(R.id.img_smallline);
         imghotel=findViewById(R.id.img_hotel);

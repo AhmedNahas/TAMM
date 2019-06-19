@@ -16,7 +16,7 @@ public class FREEcONGRATS extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     setContentView(R.layout.free_congrats);
 
-    button = findViewById(R.id.continueNext);
+    button = findViewById(R.id.continueTo);
 
     button.setOnClickListener(new View.OnClickListener() {
         @Override
