@@ -60,7 +60,7 @@
 
                 android:layout_width="367dp"
                 android:layout_height="185dp"
-                android:src="@drawable/theMan2" />
+                android:src="@drawable/theman2" />
 
         </LinearLayout>
 
