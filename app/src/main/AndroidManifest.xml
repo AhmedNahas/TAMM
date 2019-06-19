@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.middledleeast.tamm">
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,9 +14,14 @@
         <activity android:name=".activities.HotelBooking" />
         <activity android:name=".activities.RoomBooked" />
         <activity android:name=".activities.checkroom" />
-        <activity android:name=".activities.ChooseBookingDate"></activity>
+        <activity android:name=".activities.ChooseBookingDate">
+
+
+        </activity>
         <activity android:name=".activities.HotelDetails" />
-        <activity android:name=".activities.ChooseHotelActivity"></activity>
+        <activity android:name=".activities.ChooseHotelActivity">
+
+        </activity>
         <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".LanguageActivity" />
         <activity android:name=".activities.SplashActivity">
@@ -37,7 +41,12 @@
         <activity android:name=".activities.FREEcONGRATS" />
         <activity android:name=".activities.FlightsOrHotels" />
         <activity android:name=".model.ReserveRoom" />
-        <activity android:name=".model.FindHotels"></activity>
+        <activity android:name=".model.FindHotels" >
+
+
+
+
+    </activity>
     </application>
 
 </manifest>

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main">
+    android:background="@drawable/flight">
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="395dp"
-        android:layout_height="wrap_content"
+        android:layout_width="409dp"
+        android:layout_height="57dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:background="#000000"
+
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -24,8 +24,9 @@
             android:id="@+id/imageView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:layout_weight="1"
-            android:background="#F9F9F9"
+            android:background="#F"
             app:srcCompat="@drawable/ic_menu24dp" />
 
         <ImageView
@@ -34,14 +35,18 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:srcCompat="@drawable/logo_colored"
-            tools:layout_editor_absoluteX="88dp" />
+            tools:layout_editor_absoluteX="88dp"
+            android:layout_marginLeft="15dp"
+            />
 
         <ImageView
             android:id="@+id/imageView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="12dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/ic_quotation_mark"
+            app:srcCompat="@drawable/ic_button"
             tools:layout_editor_absoluteX="307dp" />
 
     </LinearLayout>
@@ -64,23 +69,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="BEST FLIGHTS"
+            android:background="@drawable/shape"
+            android:layout_margin="5dp"
+            />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button"
-            tools:layout_editor_absoluteX="132dp" />
+            android:layout_weight="2"
+            android:text="BEST HOTELS"
+            tools:layout_editor_absoluteX="132dp"
+            android:background="@drawable/shape"
+            android:layout_margin="5dp"
+            />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button"
-            tools:layout_editor_absoluteX="264dp" />
+            android:text="BEST DEALS"
+            android:background="@drawable/shape"
+            tools:layout_editor_absoluteX="264dp"
+            android:layout_margin="5dp"/>
     </LinearLayout>
 
     <android.support.constraint.ConstraintLayout
@@ -102,7 +115,7 @@
             android:layout_height="51dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/ic_back_arrow"
+            android:background="@drawable/ic_arrow_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton"
             app:layout_constraintHorizontal_bias="0.5"
@@ -128,7 +141,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/ic_arrow_forward_black_24dp"
-            android:backgroundTint="#F9F9F9"
+
             android:gravity="center_vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

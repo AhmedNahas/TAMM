@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".model.FindHotels"
     android:orientation="vertical"
-    android:background="@drawable/main"
+    android:background="@drawable/plane"
     >
 
     <LinearLayout
