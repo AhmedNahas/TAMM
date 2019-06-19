@@ -1,13 +1,15 @@
 package net.middledleeast.tamm.model;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.activities.ChooseHotelActivity;
 import net.middledleeast.tamm.adapters.AreaAdapter;
 import net.middledleeast.tamm.adapters.RegionAdapter;
 
@@ -19,11 +21,20 @@ public class FindHotels extends AppCompatActivity {
     private ArrayList<AreaItem> areaList= new ArrayList<>();
     private RegionAdapter regionAdapter;
     private AreaAdapter areaAdapter;
+    private Button findHotel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_hotels);
+        findHotel= findViewById(R.id.findHotels);
+
+        findHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FindHotels.this, ChooseHotelActivity.class));
+            }
+        });
 
 
 
@@ -38,7 +49,7 @@ public class FindHotels extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 AreaItem clickedItem = (AreaItem) parent.getItemAtPosition(position);
                 String selectedArea = clickedItem.getAreaName();
-                Toast.makeText(FindHotels.this, "Selected : " + selectedArea, Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -55,7 +66,7 @@ public class FindHotels extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 RegionItem clickedItem = (RegionItem) parent.getItemAtPosition(position);
                 String selectedRegion = clickedItem.getName();
-                Toast.makeText(FindHotels.this, selectedRegion + " Selected", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override

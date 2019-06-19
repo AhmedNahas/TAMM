@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.ChooseHotelActivity;
 
 import static net.middledleeast.tamm.R.layout.reserve_room;
 
@@ -43,7 +42,7 @@ public class ReserveRoom extends AppCompatActivity {
     }
 
     public void reverse_room(View view) {
-        startActivity(new Intent(ReserveRoom.this, ChooseHotelActivity.class));
+        startActivity(new Intent(ReserveRoom.this, FindHotels.class));
 
     }
 }
