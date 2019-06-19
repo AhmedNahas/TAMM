@@ -1,12 +1,14 @@
 package net.middledleeast.tamm.activities;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
@@ -25,6 +27,7 @@ public class ChooseBookingDate extends AppCompatActivity {
     private String endDateR;
     Calendar cal = Calendar.getInstance();
     Calendar cal2 = Calendar.getInstance();
+    private Button b1 , b2 ;
     long diff;
 
     @Override
@@ -35,6 +38,15 @@ public class ChooseBookingDate extends AppCompatActivity {
         startDate = findViewById(R.id.startDate);
         endDate = findViewById(R.id.endDate);
         nights = findViewById(R.id.nights);
+        b1=findViewById(R.id.book1);
+        b2=findViewById(R.id.book2);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ChooseBookingDate.this,checkroom.class));
+            }
+        });
 
 
 

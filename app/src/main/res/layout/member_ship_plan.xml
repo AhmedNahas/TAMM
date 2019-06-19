@@ -7,7 +7,7 @@
     android:layout_gravity="center_horizontal"
     android:background="@drawable/plans_background"
     android:orientation="vertical"
-    tools:context=".fragments.PlansFragment">
+    tools:context=".activities.MemberShipPlan">
 
     <ImageView
 
