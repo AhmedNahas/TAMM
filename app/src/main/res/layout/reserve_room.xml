@@ -5,18 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReserveRoom"
+    tools:context="model.ReserveRoom"
     android:orientation="vertical"
     android:background="@drawable/plans_background"
 
     >
 
-    <com.google.android.material.appbar.AppBarLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
 
-        <androidx.appcompat.widget.Toolbar
+        <Toolbar
             android:id="@+id/tool_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,10 +52,10 @@
                 />
 
 
-        </androidx.appcompat.widget.Toolbar>
+        </Toolbar>
 
 
-    </com.google.android.material.appbar.AppBarLayout>
+    </android.support.design.widget.AppBarLayout>
 
     <ImageView
 

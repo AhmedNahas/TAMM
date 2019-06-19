@@ -1,5 +1,6 @@
 package net.middledleeast.tamm.model;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.activities.ChooseHotelActivity;
+
+import static net.middledleeast.tamm.R.layout.reserve_room;
 
 public class ReserveRoom extends AppCompatActivity {
     private Toolbar toolbar;
@@ -18,7 +22,7 @@ public class ReserveRoom extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.reserve_room);
+        setContentView(reserve_room);
         toolbar =findViewById(R.id.tool_bar);
 
         btnarrow =findViewById(R.id.arrow_btn);
@@ -42,6 +46,7 @@ public class ReserveRoom extends AppCompatActivity {
     }
 
     public void reverse_room(View view) {
+        startActivity(new Intent(ReserveRoom.this, ChooseHotelActivity.class));
 
     }
 }
