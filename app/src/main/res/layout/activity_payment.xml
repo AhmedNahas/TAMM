@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.PAYMENT"
+    tools:context=".activities.PaymentActivity"
     android:orientation="vertical"
     android:background="@drawable/main"
     >
@@ -125,7 +125,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="40dp"
                 android:hint="MASTERCARD"
-                android:drawableRight="@drawable/masterCard"
+                android:drawableRight="@drawable/mastercard"
                 android:textColorHint="#fff"
 
 

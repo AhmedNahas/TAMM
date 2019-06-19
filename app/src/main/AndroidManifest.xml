@@ -11,8 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.ConfirmBookingRoom"></activity>
-        <activity android:name=".activities.HotelBooking" />
-        <activity android:name=".activities.RoomBooked" />
+        <activity android:name=".activities.HotelBooking" >
+
+
+        </activity>
+        <activity android:name=".activities.RoomBooked" >
+
+        </activity>
         <activity android:name=".activities.checkroom" />
         <activity android:name=".activities.ChooseBookingDate">
 
@@ -30,6 +35,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.FreeAccount" />
@@ -41,12 +47,8 @@
         <activity android:name=".activities.FREEcONGRATS" />
         <activity android:name=".activities.FlightsOrHotels" />
         <activity android:name=".model.ReserveRoom" />
-        <activity android:name=".model.FindHotels" >
-
-
-
-
-    </activity>
+        <activity android:name=".model.FindHotels" />
+        <activity android:name=".activities.PaymentActivity" />
     </application>
 
 </manifest>

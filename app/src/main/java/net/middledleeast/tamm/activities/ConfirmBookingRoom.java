@@ -1,8 +1,11 @@
 package net.middledleeast.tamm.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import net.middledleeast.tamm.R;
@@ -11,14 +14,28 @@ import java.util.ArrayList;
 
 public class ConfirmBookingRoom extends AppCompatActivity {
 
+    private Button confirmRoom;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_confirm_booking_room);
+
+        confirmRoom = findViewById(R.id.confirm_room_booking);
+
+        confirmRoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ConfirmBookingRoom.this, PaymentActivity.class ));
+            }
+        });
+
+
 
         Spinner s1 , s2 , s3;
         ArrayAdapter mrOrMissAdapter;
         ArrayList<String> mrOrMissArray;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm_booking_room);
+
 
         mrOrMissArray = new ArrayList<>();
         mrOrMissArray.add("Mr.");
