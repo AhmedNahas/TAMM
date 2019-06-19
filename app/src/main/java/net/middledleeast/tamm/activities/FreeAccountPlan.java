@@ -20,7 +20,7 @@ public  class FreeAccountPlan extends AppCompatActivity {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FreeAccountPlan.this, FREEcONGRATS.class);
+                Intent intent = new Intent(FreeAccountPlan.this, ProceedCheckout.class);
                 startActivity(intent);
 
             }

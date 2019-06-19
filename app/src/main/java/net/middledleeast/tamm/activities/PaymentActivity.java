@@ -8,20 +8,20 @@ import android.widget.Button;
 
 import net.middledleeast.tamm.R;
 
-public class RoomBooked extends AppCompatActivity {
+public class PaymentActivity extends AppCompatActivity {
 
     private Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.room_booked);
+        setContentView(R.layout.activity_payment);
 
-        button=findViewById(R.id.get_code);
+        button=findViewById(R.id.proceed_check_out);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(RoomBooked.this,HotelBooking.class));
+                startActivity(new Intent(PaymentActivity.this,RoomBooked.class));
             }
         });
     }

@@ -1,19 +1,21 @@
 package net.middledleeast.tamm.activities;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import net.middledleeast.tamm.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ProceedCheckout extends AppCompatActivity {

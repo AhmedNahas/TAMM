@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/plans_background"
+    android:orientation="vertical"
+    tools:context=".activities.ConfirmBookingRoom">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_back_arrow"
+            android:backgroundTint="#FFEB3B"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BACK"
+            android:textColor="#ffff"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100dp"
+            android:background="@drawable/logo"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:background="@drawable/ic_button"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+    <ImageView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guest (s) information"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_person_black_24dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="Adult"
+            android:textColor="#ffff"
+            android:layout_marginLeft="10dp"/>
+
+
+    </LinearLayout>
+    <ImageView
+
+        android:id="@+id/img_bigline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="3dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <Spinner
+                android:id="@+id/mromiss1"
+                android:layout_width="72dp"
+                android:layout_height="match_parent"
+                android:background="@color/common_google_signin_btn_text_light_pressed"
+                android:orientation="vertical" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="FIRST NAME"
+                    android:textColorHint="@color/app_color"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="2dp"
+
+                    />
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="LAST NAME"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="2dp"
+                    android:textColorHint="@color/app_color"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Spinner
+            android:id="@+id/mromiss2"
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_light_pressed"
+            android:orientation="vertical" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="FIRST NAME"
+                android:textColorHint="@color/app_color"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="2dp"
+
+                />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="LAST NAME"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="2dp"
+                android:textColorHint="@color/app_color"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <Spinner
+            android:id="@+id/mromiss3"
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_google_signin_btn_text_light_pressed"
+            android:orientation="vertical" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="FIRST NAME"
+                android:textColorHint="@color/app_color"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="2dp"
+
+                />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="LAST NAME"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="2dp"
+                android:textColorHint="@color/app_color"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Request : "
+        android:textColor="@color/app_color"
+        android:textSize="20sp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:hint="Write your room specification"
+        android:textColorHint="#fff"
+        android:textSize="15sp"
+        android:gravity="start"/>
+    <Button
+        android:id="@+id/confirm_room_booking"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/app_color"
+        android:layout_gravity="center"
+        android:text="CONFIRM"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/manhelp"/>
+
+
+
+</LinearLayout>
