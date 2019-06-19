@@ -318,30 +318,35 @@
 
         </LinearLayout>
 
-    </LinearLayout>
 
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="186dp"
+            android:layout_height="135dp"
+            android:src="@drawable/fourseasons"
+            app:srcCompat="@drawable/fourseasonshotel" />
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
                 android:text="DELUXE ROOM 1 KINGBED"
                 android:textColor="#ffff" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
                 android:text="KD 105.00 For 1 NIGHT"
                 android:textColor="#ffff" />
@@ -351,19 +356,15 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
                 android:background="@color/app_color"
                 android:text="BOOK" />
 
         </LinearLayout>
 
+
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="367dp"
-        android:layout_height="80dp"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="32dp"
-        android:src="@drawable/fourseasonshotel" />
 
 
 </LinearLayout>
