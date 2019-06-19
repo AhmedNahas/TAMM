@@ -374,6 +374,7 @@
 
             />
         <Button
+            android:id="@+id/checkOutRoom"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:text="CHECKOUT"

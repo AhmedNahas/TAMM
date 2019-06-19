@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.middledleeast.tamm">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -10,17 +11,13 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.HotelBooking"></activity>
+        <activity android:name=".activities.ConfirmBookingRoom"></activity>
+        <activity android:name=".activities.HotelBooking" />
         <activity android:name=".activities.RoomBooked" />
         <activity android:name=".activities.checkroom" />
-        <activity android:name=".activities.ChooseBookingDate">
-
-
-        </activity>
+        <activity android:name=".activities.ChooseBookingDate"></activity>
         <activity android:name=".activities.HotelDetails" />
-        <activity android:name=".activities.ChooseHotelActivity">
-
-        </activity>
+        <activity android:name=".activities.ChooseHotelActivity"></activity>
         <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".LanguageActivity" />
         <activity android:name=".activities.SplashActivity">
@@ -29,8 +26,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.FreeAccount" />
@@ -42,12 +37,7 @@
         <activity android:name=".activities.FREEcONGRATS" />
         <activity android:name=".activities.FlightsOrHotels" />
         <activity android:name=".model.ReserveRoom" />
-        <activity android:name=".model.FindHotels" >
-
-
-
-
-    </activity>
+        <activity android:name=".model.FindHotels"></activity>
     </application>
 
 </manifest>
