@@ -29,15 +29,15 @@
         <ImageView
 
             android:id="@+id/centerpic"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="73dp"
+            android:layout_height="76dp"
             android:layout_alignParentStart="true"
 
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
             android:layout_marginStart="159dp"
             android:layout_marginLeft="145dp"
-            android:layout_marginEnd="192dp"
+            android:layout_marginEnd="179dp"
             android:src="@drawable/logo" />
 
         <ImageView
