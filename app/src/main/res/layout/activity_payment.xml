@@ -37,11 +37,13 @@
             android:text="PLEASE SET YOUR PAYMENT"
             android:textColor="@color/app_color"
             android:textSize="20sp"
+            android:layout_marginLeft="20dp"
             />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="KD 105.00"
+            android:layout_marginLeft="20dp"
             android:textColor="#fff"
             android:textSize="35sp"
             android:textStyle="bold"
