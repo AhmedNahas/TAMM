@@ -11,15 +11,26 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.Proceedbeybey"></activity>
-        <activity android:name=".activities.FlightTamm" />
-        <activity android:name=".activities.PAYMENT">
+        <activity android:name=".activities.FlightDetails">
+
+        </activity>
+        <activity android:name=".activities.PassengerInformation" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+
+        <activity android:name=".activities.FlightsSummary">
+
+        </activity>
+        <activity android:name=".activities.PaymentFlights" />
+        <activity android:name=".activities.Proceedbeybey" />
+        <activity android:name=".activities.FlightTamm" />
+        <activity android:name=".activities.PaymentActivity" />
         <activity android:name=".activities.HotelBooking" />
         <activity android:name=".activities.RoomBooked" />
         <activity android:name=".activities.checkroom" />

@@ -35,6 +35,7 @@ public class ProceedCheckout extends AppCompatActivity {
         mrOrMissArray = new ArrayList<>();
         mrOrMissArray.add("Mr.");
         mrOrMissArray.add("Mrs.");
+
         mDisplayDate = (TextView) findViewById(R.id.tvDate);
         proceedCheckOut=findViewById(R.id.proceed_check_out);
 
