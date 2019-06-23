@@ -52,7 +52,10 @@ public class ProceedCheckout extends AppCompatActivity {
         mrormissSpinner = findViewById(R.id.mromiss);
         mrormissSpinner.setSelection(1);
         mrormissSpinner.setAdapter(mrOrMissAdapter);
+
+
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 Calendar cal = Calendar.getInstance();
@@ -70,7 +73,7 @@ public class ProceedCheckout extends AppCompatActivity {
             }
         });
 
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
