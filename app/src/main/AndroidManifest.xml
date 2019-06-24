@@ -11,30 +11,21 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.Passenger_inform">
-
-
-        </activity>
-        <activity android:name=".activities.FlightDetails">
-
-        </activity>
-        <activity android:name=".activities.PassengerInformation">
-
-
-        </activity>
-        <activity android:name=".activities.FlightsSummary">
-
-        </activity>
-        <activity android:name=".activities.PaymentFlights" >
-
-        </activity>
-        <activity android:name=".activities.Proceedbeybey" />
-        <activity android:name=".activities.FlightTamm" >
+        <activity android:name=".activities.PassengerDeparture">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".activities.Passenger_inform"></activity>
+        <activity android:name=".activities.FlightDetails"></activity>
+        <activity android:name=".activities.PassengerInformation"></activity>
+        <activity android:name=".activities.FlightsSummary"></activity>
+        <activity android:name=".activities.PaymentFlights"></activity>
+        <activity android:name=".activities.Proceedbeybey" />
+        <activity android:name=".activities.FlightTamm">
+
         </activity>
         <activity android:name=".activities.PaymentActivity" />
         <activity android:name=".activities.HotelBooking" />
@@ -51,9 +42,7 @@
         <activity android:name=".activities.MemberShip" />
         <activity android:name=".activities.MemberShipPlan" />
         <activity android:name=".activities.FreeAccountPlan" />
-        <activity android:name=".activities.ProceedCheckout" >
-
-        </activity>
+        <activity android:name=".activities.ProceedCheckout"></activity>
         <activity android:name=".activities.MemberCongrats" />
         <activity android:name=".activities.FREEcONGRATS" />
         <activity android:name=".activities.FlightsOrHotels" />
