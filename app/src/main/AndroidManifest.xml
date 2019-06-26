@@ -11,7 +11,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.UsersFree">
+        <activity android:name=".activities.TestHotelApi">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,6 +52,7 @@
         <activity android:name=".activities.FREEcONGRATS" />
         <activity android:name=".model.ReserveRoom" />
         <activity android:name=".model.FindHotels" />
+        <activity android:name=".activities.UsersFree" />
     </application>
 
 </manifest>
