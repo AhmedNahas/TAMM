@@ -21,7 +21,7 @@ public class FREEcONGRATS extends AppCompatActivity {
     button.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            startActivity(new Intent(FREEcONGRATS.this , FlightsOrHotels.class));
+            startActivity(new Intent(FREEcONGRATS.this , RenewAccount.class));
 
 
         }
