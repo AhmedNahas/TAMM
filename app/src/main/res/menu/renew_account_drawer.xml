@@ -15,7 +15,7 @@
 
         <item
             android:id="@+id/nav_favorites"
-            android:icon="@drawable/star"
+            android:icon="@drawable/offer"
             android:title="Favorites"
 
             />

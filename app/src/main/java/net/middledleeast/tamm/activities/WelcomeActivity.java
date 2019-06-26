@@ -1,9 +1,8 @@
 package net.middledleeast.tamm.activities;
 
-import android.graphics.PorterDuff;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.fragments.LanguangeFragment;
