@@ -3,7 +3,7 @@ package net.middledleeast.tamm.model;
 public class Users {
     String name;
     String phone;
-    int image;
+    String image;
 
     public String getName() {
         return name;
@@ -21,15 +21,15 @@ public class Users {
         this.phone = phone;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public Users(String name, String phone, int image) {
+    public Users(String name, String phone, String image) {
         this.name = name;
         this.phone = phone;
         this.image = image;

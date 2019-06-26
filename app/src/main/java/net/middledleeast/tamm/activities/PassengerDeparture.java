@@ -1,10 +1,12 @@
 package net.middledleeast.tamm.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
 

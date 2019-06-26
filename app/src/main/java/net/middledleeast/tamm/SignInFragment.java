@@ -1,10 +1,9 @@
 package net.middledleeast.tamm;
 
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -14,6 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,6 +41,7 @@ public class SignInFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -92,8 +95,8 @@ public class SignInFragment extends Fragment {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     txtForgotPassword.setTextColor(Color.parseColor("#BE973B"));
                     getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.welcome_container, new ForgotPasswordFragment())
-                            .commit();
+                            .replace(R.id.welcome_container, new ForgotPasswordFragment()).commit();
+
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     txtForgotPassword.setBackground(getActivity().getDrawable(R.drawable.border));
                 }

@@ -1,7 +1,8 @@
 package net.middledleeast.tamm.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import net.middledleeast.tamm.R;

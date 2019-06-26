@@ -29,18 +29,26 @@ public class FreeAdapter extends RecyclerView.Adapter<FreeAdapter.Freeviewholder
 
     @NonNull
     @Override
-    public Freeviewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public Freeviewholder onCreateViewHolder( ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_card,viewGroup,false);
         return new Freeviewholder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Freeviewholder freeviewholder, int i) {
+    public void onBindViewHolder( Freeviewholder freeviewholder, int i) {
         final Users users = this.users.get(i);
-        final int image = users.getImage();
+        final String image = users.getImage();
         freeviewholder.name.setText(this.users.get(i).getName());
         freeviewholder.phone.setText(this.users.get(i).getPhone());
-        Glide.with(context).load(image).into(freeviewholder.imageView);
+
+
+        if (image.matches("")){
+            freeviewholder.imageView.setImageResource(R.drawable.logo);
+        }else {
+            Glide.with(context).load(image).into(freeviewholder.imageView);
+        }
+
+
 
     }
 
@@ -52,12 +60,17 @@ public class FreeAdapter extends RecyclerView.Adapter<FreeAdapter.Freeviewholder
     public class Freeviewholder extends RecyclerView.ViewHolder{
         TextView name,phone;
         ImageView imageView;
+
         public Freeviewholder(@NonNull View itemView) {
 
             super(itemView);
             name=itemView.findViewById(R.id.plan_name);
             phone=itemView.findViewById(R.id.plan_phone);
             imageView=itemView.findViewById(R.id.user_img);
+
+
+
+
         }
     }
 }
