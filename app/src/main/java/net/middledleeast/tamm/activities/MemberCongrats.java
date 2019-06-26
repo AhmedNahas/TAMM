@@ -2,12 +2,14 @@ package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
 
-public class MemberCongrats extends AppCompatActivity{
+public class MemberCongrats extends AppCompatActivity {
 
     Button button;
 

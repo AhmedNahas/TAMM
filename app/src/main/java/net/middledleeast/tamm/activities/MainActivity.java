@@ -1,7 +1,9 @@
 package net.middledleeast.tamm.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
 
