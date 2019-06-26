@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="net.middledleeast.tamm">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,30 +11,27 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".activities.SplashActivity"
-            android:label="@string/title_activity_renew_account"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".activities.UsersFree">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
-
+        </activity>
+        <activity
+            android:name=".activities.RenewAccount"
+            android:label="@string/title_activity_renew_account"
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-        <activity android:name=".activities.PassengerDeparture">
-
-        </activity>
+        <activity android:name=".activities.PassengerDeparture"></activity>
         <activity android:name=".activities.Passenger_inform" />
         <activity android:name=".activities.FlightDetails" />
         <activity android:name=".activities.PassengerInformation" />
         <activity android:name=".activities.FlightsSummary" />
         <activity android:name=".activities.PaymentFlights" />
         <activity android:name=".activities.Proceedbeybey" />
-        <activity android:name=".activities.FlightTamm"></activity>
+        <activity android:name=".activities.FlightTamm" />
         <activity android:name=".activities.PaymentActivity" />
         <activity android:name=".activities.HotelBooking" />
         <activity android:name=".activities.RoomBooked" />
@@ -45,7 +41,7 @@
         <activity android:name=".activities.ChooseHotelActivity" />
         <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".LanguageActivity" />
-        <activity android:name=".activities.RenewAccount" />
+        <activity android:name=".activities.SplashActivity" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.FreeAccount" />
         <activity android:name=".activities.MemberShip" />

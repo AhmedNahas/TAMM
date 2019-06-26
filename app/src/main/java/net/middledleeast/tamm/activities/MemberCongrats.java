@@ -18,7 +18,7 @@ public class MemberCongrats extends AppCompatActivity{
     button=findViewById(R.id.continueTo);
 
 
-   startActivity(new Intent(MemberCongrats.this , FlightsOrHotels.class));
+   startActivity(new Intent(MemberCongrats.this , RenewAccount.class));
 
 
     }
