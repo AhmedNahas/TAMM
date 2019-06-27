@@ -37,6 +37,7 @@ public class ChooseBookingDate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_booking_date);
 
+
         startDate = findViewById(R.id.startDate);
         endDate = findViewById(R.id.endDate);
         nights = findViewById(R.id.nights);

@@ -49,8 +49,8 @@
             <Spinner
                 android:id="@+id/mromiss"
                 android:layout_width="72dp"
-                android:layout_height="match_parent"
-                android:background="@color/common_google_signin_btn_text_light_pressed"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical" />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:hint="FIRST NAME"
                 android:textColorHint="@color/app_color"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="2dp"
 
                 />
@@ -71,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="LAST NAME"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="2dp"
                     android:textColorHint="@color/app_color"
                     />
@@ -103,7 +103,7 @@
             android:id="@+id/tvDate"
             android:textSize="25sp"
             android:textColorHint="@color/app_color"
-            android:layout_marginLeft="150dp"
+            android:layout_marginLeft="130dp"
             android:layout_marginTop="2dp"
             />
     </LinearLayout>
@@ -146,7 +146,7 @@
             android:hint="CITY/PROVINCE"
             android:textColorHint="#fff"
             android:layout_marginLeft="120dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
 
             />
 
@@ -157,15 +157,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         >
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:textColorHint="#fff"
             android:hint="E-MAIL"
-            android:layout_marginLeft="25dp"
+            android:layout_marginLeft="15dp"
 
             />
         <EditText
@@ -173,7 +173,7 @@
             android:layout_height="wrap_content"
             android:hint="+965"
             android:textColorHint="#fff"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="5dp"
             />
         <EditText
             android:layout_width="wrap_content"
@@ -181,7 +181,7 @@
             android:hint="PHONE NUMBER"
             android:textColorHint="#fff"
             android:textSize="15sp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="20dp"
             />
 
 
@@ -192,7 +192,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         >
         <LinearLayout
             android:layout_width="wrap_content"
@@ -207,13 +207,13 @@
                 android:layout_marginLeft="20dp"
 
                 />
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Engineer"
                 android:textColor="#fff"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="15dp"
+
 
                 />
         </LinearLayout>
@@ -242,7 +242,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="5dp">
 
         <EditText
             android:layout_width="wrap_content"
@@ -268,7 +268,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         >
         <TextView
             android:layout_width="wrap_content"
@@ -301,7 +301,7 @@
             android:checked="true"
             android:buttonTint="@color/app_color"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             />
 
     </RadioGroup>

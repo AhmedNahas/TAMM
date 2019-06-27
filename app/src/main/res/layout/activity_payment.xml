@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         >
         <TextView
             android:layout_width="match_parent"
@@ -57,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="40dp"
+
 
         >
         <LinearLayout
@@ -113,7 +113,7 @@
             <EditText
                 android:layout_width="353dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="40dp"
+
                 android:hint="VISA"
                 android:drawableRight="@drawable/visa"
                 android:textColorHint="#fff"
@@ -123,7 +123,7 @@
             <EditText
                 android:layout_width="353dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="40dp"
+
                 android:hint="MASTERCARD"
                 android:drawableRight="@drawable/mastercard"
                 android:textColorHint="#fff"
@@ -133,7 +133,7 @@
             <EditText
                 android:layout_width="353dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="40dp"
+
                 android:hint="KNET"
                 android:drawableRight="@drawable/knet"
                 android:textColorHint="#fff"
