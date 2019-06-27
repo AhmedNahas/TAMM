@@ -16,6 +16,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE.md'
+    }
+
 }
 
 dependencies {
@@ -35,8 +48,14 @@ dependencies {
     implementation 'com.dyhdyh.support:glide:1.0.0'
     implementation 'javax.xml.bind:jaxb-api:2.3.1'
     implementation 'javax.jws:javax.jws-api:1.1'
-    implementation 'javax.xml.ws:jaxws-api:2.3.1'
-    implementation files('saaj-impl-1.5.1.jar')
-    implementation files('xercesImpl-2.11.0.jar')
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+    implementation group: 'javax.jws', name: 'javax.jws-api', version: '1.1'
+    implementation group: 'javax.xml.ws', name: 'jaxws-api', version: '2.3.1'
+//    implementation files('saaj-impl-1.5.1.jar')
+//    implementation files('xercesImpl-2.11.0.jar')
+//    implementation files('xml-apis-2.0.2.jar')
+//    implementation files('rt-2.3.2.jar')
+//    implementation files('jaxws-rt-2.3.2.jar')
+//    implementation files('jaxws-api-2.3.0.jar')
 }
 apply plugin: 'com.google.gms.google-services'
