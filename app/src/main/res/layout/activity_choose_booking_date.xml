@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_margin="10dp"
         android:orientation="horizontal">
 
@@ -126,7 +126,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -179,13 +179,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="25dp"
             android:text="Children 1 Age :  "
             android:textColor="#fff" />
 
@@ -198,7 +198,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="25dp"
             android:text="Children 2 Age :  "
             android:textColor="#fff" />
 
@@ -220,7 +220,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="25dp"
             android:text="Children 3 Age :  "
             android:textColor="#fff" />
 
@@ -234,22 +234,22 @@
 
     <Button
         android:layout_width="140dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+
         android:background="@color/app_color"
         android:text="VIEW RESULTS" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:src="@drawable/line" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="33dp"
-        android:layout_marginTop="20dp"
+
         android:orientation="horizontal">
 
         <TextView
@@ -263,8 +263,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:background="@color/app_color"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/shape"
+
             android:text="CHANGE SEARCH" />
 
     </LinearLayout>
@@ -278,7 +279,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:orientation="horizontal">
 
         <ImageView
