@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import net.middledleeast.tamm.hotellibs.org.tempuri.HotelService;
 import net.middledleeast.tamm.hotellibs.tektravel.hotelbookingapi.AmendmentRequest;
 import net.middledleeast.tamm.hotellibs.tektravel.hotelbookingapi.AmendmentResponse;
 import net.middledleeast.tamm.hotellibs.tektravel.hotelbookingapi.AuthenticationData;
@@ -244,9 +245,9 @@ public class TestHotelApi extends AppCompatActivity implements IHotelService {
         } catch (DatatypeConfigurationException e) {
             e.printStackTrace();
         }
-        HotelSearchResponse hotelSearchResponse = objectFactory.createHotelSearchResponse();
-
+        HotelSearchResponse hotelSearchResponse = hotelSearch(hotelSearchRequest);
         Hotels hotels = objectFactory.createHotels();
+        HotelService hotelService = new HotelService();
 //       String test = String.valueOf(2);
 //        HotelService hotelService = new HotelService();
         System.out.println("Heio: " + hotelSearchResponse.getStatus());
@@ -254,7 +255,6 @@ public class TestHotelApi extends AppCompatActivity implements IHotelService {
 
     @Override
     public HotelSearchResponse hotelSearch(HotelSearchRequest parameters) {
-
 
         return new HotelSearchResponse();
     }
