@@ -2,6 +2,7 @@ package net.middledleeast.tamm;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -25,6 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import net.middledleeast.tamm.fragments.ForgotPasswordFragment;
 import net.middledleeast.tamm.fragments.PlansFragment;
+import net.middledleeast.tamm.fragments.UsersFreeFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +38,9 @@ public class SignInFragment extends Fragment {
     private EditText userName, pass;
     private FirebaseUser user;
     private FirebaseAuth auth;
+    private String mUser_name = "Tamm@123";
+    private String mPassword = "123456";
+
 
     public SignInFragment() {
         // Required empty public constructor
@@ -77,6 +82,14 @@ public class SignInFragment extends Fragment {
 
                 String user_Name = userName.getText().toString();
                 String password = pass.getText().toString();
+              if (user_Name.equals(mUser_name)&& password.equals(mPassword)){
+                  getActivity().getSupportFragmentManager().beginTransaction()
+                          .replace(R.id.welcome_container, new UsersFreeFragment())
+                          .commit();
+
+
+
+              }
                 if (TextUtils.isEmpty(user_Name)) {
                     userName.setError("Name Is Required");
 
