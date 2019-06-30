@@ -68,7 +68,8 @@ dependencies {
     implementation files('jaxws-api-2.3.0.jar')
     implementation group: 'com.sun.org.apache.xml.internal', name: 'resolver', version: '20050927'
     implementation group: 'com.sun.xml.ws', name: 'policy', version: '2.7.6'
-    implementation 'com.sun.activation:javax.activation:1.2.0'
+
+
 
 
 
