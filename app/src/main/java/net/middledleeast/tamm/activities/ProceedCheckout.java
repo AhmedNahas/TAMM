@@ -1,17 +1,19 @@
 package net.middledleeast.tamm.activities;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
 
@@ -28,7 +30,7 @@ public class ProceedCheckout extends AppCompatActivity {
     private Button proceedCheckOut;
     @Override
 
-
+    @SuppressLint("unchecked")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.proceed_check_out);
@@ -36,7 +38,7 @@ public class ProceedCheckout extends AppCompatActivity {
         mrOrMissArray.add("Mr.");
         mrOrMissArray.add("Mrs.");
 
-        mDisplayDate = (TextView) findViewById(R.id.tvDate);
+        mDisplayDate = findViewById(R.id.tvDate);
         proceedCheckOut=findViewById(R.id.proceed_check_out);
 
         proceedCheckOut.setOnClickListener(new View.OnClickListener() {
