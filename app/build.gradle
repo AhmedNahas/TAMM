@@ -55,20 +55,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:18.0.0'
     implementation 'com.google.firebase:firebase-core:17.0.0'
     implementation 'com.dyhdyh.support:glide:1.0.0'
-    implementation 'javax.xml.bind:jaxb-api:2.3.1'
-    implementation 'javax.jws:javax.jws-api:1.1'
-    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
-    implementation group: 'javax.jws', name: 'javax.jws-api', version: '1.1'
-    implementation group: 'javax.xml.ws', name: 'jaxws-api', version: '2.3.1'
-    implementation files('saaj-impl-1.5.1.jar')
-    implementation files('xercesImpl-2.11.0.jar')
-    implementation files('xml-apis-2.0.2.jar')
-    implementation files('rt-2.3.2.jar')
-    implementation files('jaxws-rt-2.3.2.jar')
-    implementation files('jaxws-api-2.3.0.jar')
-    implementation group: 'com.sun.org.apache.xml.internal', name: 'resolver', version: '20050927'
-    implementation group: 'com.sun.xml.ws', name: 'policy', version: '2.7.6'
-
 
 
 

@@ -26,8 +26,8 @@ public class TestHotelApi extends AppCompatActivity {
 
         com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1 service = new com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1();
         AuthenticationData authenticationData = new AuthenticationData();
-        authenticationData.setUserName("Tammtest");
-        authenticationData.setPassword("Tam@18418756");
+        authenticationData.UserName = ("Tammtest");
+        authenticationData.Password = ("Tam@18418756");
         try {
             Calendar cal1 = Calendar.getInstance();
             cal1.set(Calendar.DAY_OF_MONTH, 28);
