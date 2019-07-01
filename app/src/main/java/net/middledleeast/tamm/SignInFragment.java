@@ -56,30 +56,29 @@ public class SignInFragment extends Fragment {
 
         }
 
-//        btnSignIn.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//
-//                if (userName.getText().toString().equals("tamm@gmail.com") && pass.getText().toString().equals("0123456")){
-//                    getActivity().getSupportFragmentManager().beginTransaction()
-//                            .replace(R.id.welcome_container, new UsersFreeFragment())
-//                            .commit();
-//                }
-//
-//                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//                    btnSignIn.setTextColor(Color.parseColor("#BE973B"));
-//                    getActivity().getSupportFragmentManager().beginTransaction()
-//                            .replace(R.id.welcome_container, new PlansFragment())
-//                            .commit();
-//                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-//                    btnSignIn.setBackground(getActivity().getDrawable(R.drawable.border));
-//                }
-//                return false;
-//
-//
-//
-//            }
-//        });
+        btnSignIn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if (userName.getText().toString().equals("tamm@gmail.com") && pass.getText().toString().equals("0123456")) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.welcome_container, new UsersFreeFragment())
+                            .commit();
+                }
+
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    btnSignIn.setTextColor(Color.parseColor("#BE973B"));
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.welcome_container, new PlansFragment())
+                            .commit();
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    btnSignIn.setBackground(getActivity().getDrawable(R.drawable.border));
+                }
+                return false;
+
+
+            }
+        });
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
