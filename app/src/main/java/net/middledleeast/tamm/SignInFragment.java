@@ -2,7 +2,6 @@ package net.middledleeast.tamm;
 
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -26,11 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import net.middledleeast.tamm.fragments.ForgotPasswordFragment;
 import net.middledleeast.tamm.fragments.PlansFragment;
-import net.middledleeast.tamm.fragments.UsersFreeFragment;
-import net.middledleeast.tamm.model.Users;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,7 +60,7 @@ public class SignInFragment extends Fragment {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                if (userName.getText().toString().equals("tamm@gmail.com") && pass.getText().toString().equals("0123456")){
+                if (userName.getText().toString().equals("tamm@gmail.com") && pass.getText().toString().equals("0123456")) {
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.welcome_container, new UsersFreeFragment())
                             .commit();
@@ -80,7 +75,6 @@ public class SignInFragment extends Fragment {
                     btnSignIn.setBackground(getActivity().getDrawable(R.drawable.border));
                 }
                 return false;
-
 
 
             }

@@ -55,17 +55,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:18.0.0'
     implementation 'com.google.firebase:firebase-core:17.0.0'
     implementation 'com.dyhdyh.support:glide:1.0.0'
-    implementation 'javax.xml.bind:jaxb-api:2.3.1'
-
-
-
-
-
 
 
 
 
 
 }
-
 apply plugin: 'com.google.gms.google-services'
