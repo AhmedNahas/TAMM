@@ -48,38 +48,24 @@ public class Helper {
         return null;
     }
 
-    public static java.lang.String getId(java.lang.String text) {
-        if (text.substring(0, 3).equalsIgnoreCase("cid")) {
-            //started by cid:
-            return text.substring(4);
-        }
-        //started by #
-        return text.substring(1);
-    }
-
-    public static com.easywsdl.exksoap2.mtom.BinaryObject getBinary(java.lang.Object obj, boolean isSwaRef) {
+    public static byte[] getBinary(java.lang.Object obj, boolean isSwaRef) {
         if (obj != null && obj.getClass().equals(SoapPrimitive.class)) {
             SoapPrimitive j = (SoapPrimitive) obj;
             if (j.toString() != null) {
-                return new com.easywsdl.exksoap2.mtom.BinaryObject(org.kobjects.base64.Base64.decode(j.toString()));
+                return org.kobjects.base64.Base64.decode(j.toString());
             }
         } else if (obj != null && obj.getClass().equals(String.class)) {
             java.lang.String j = (java.lang.String) obj;
             if (j != null) {
-                return new com.easywsdl.exksoap2.mtom.BinaryObject(org.kobjects.base64.Base64.decode(j));
+                return org.kobjects.base64.Base64.decode(j);
             }
         } else if (obj != null && obj instanceof byte[]) {
-            return new com.easywsdl.exksoap2.mtom.BinaryObject((byte[]) obj);
+            return (byte[]) obj;
         } else if (obj != null && obj.getClass().equals(SoapObject.class)) {
             SoapObject j = (SoapObject) obj;
             if (j.getPropertyCount() > 0) {
                 return getBinary(j.getProperty(0), isSwaRef);
             }
-        } else if (obj instanceof com.easywsdl.exksoap2.mtom.SoapAttachment) {
-            com.easywsdl.exksoap2.mtom.SoapAttachment attachment = (com.easywsdl.exksoap2.mtom.SoapAttachment) obj;
-            com.easywsdl.exksoap2.mtom.BinaryObject binaryObj = new com.easywsdl.exksoap2.mtom.BinaryObject(attachment);
-            binaryObj.contentType = attachment.mimeType;
-            return binaryObj;
         }
         return null;
     }

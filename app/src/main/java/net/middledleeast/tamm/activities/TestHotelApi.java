@@ -40,7 +40,6 @@ public class TestHotelApi extends AppCompatActivity {
 
             service.enableLogging = true;
 
-            service.enableMTOM = true;
             service.DestinationCityList("IN", null, authenticationData);
 
 //            HotelSearchResponse hotelSearchResponse = service.HotelSearch(date1,date2, null, null, null, null, null, null, null, null, null

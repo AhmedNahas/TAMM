@@ -31,7 +31,6 @@ public class BasicHttpBinding_IHotelService {
     public BasicHttpBinding_IHotelService() {
     }
     public boolean enableLogging;
-    public boolean enableMTOM;
     public boolean createClassesForAny = false;
 
     IServiceEvents callback;
@@ -68,7 +67,6 @@ public class BasicHttpBinding_IHotelService {
 
     protected ExtendedSoapSerializationEnvelope createEnvelope() {
         ExtendedSoapSerializationEnvelope envelope = new ExtendedSoapSerializationEnvelope(ExtendedSoapSerializationEnvelope.VER11);
-        envelope.mtomMode = enableMTOM ? ExtendedSoapSerializationEnvelope.MTOM_Automatic : ExtendedSoapSerializationEnvelope.MTOM_None;
         envelope.createClassesForAny = createClassesForAny;
         return envelope;
     }

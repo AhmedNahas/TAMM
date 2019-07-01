@@ -164,7 +164,6 @@ public class ExtendedSoapSerializationEnvelope extends com.easywsdl.exksoap2.ser
         super(soapVersion);
         implicitTypes = true;
         setAddAdornments(false);
-        mtomMode = MTOM_Automatic;
         new MarshalGuid().register(this);
         new MarshalFloat().register(this);
     }
@@ -217,7 +216,7 @@ public class ExtendedSoapSerializationEnvelope extends com.easywsdl.exksoap2.ser
             return;
         }
         java.lang.Object[] qName = getInfo(null, obj);
-        if (!type.multiRef && qName[2] == null && !(obj instanceof com.easywsdl.exksoap2.mtom.BinaryObject)) {
+        if (!type.multiRef && qName[2] == null) {
 
             if (!implicitTypes || (obj.getClass() != type.type && !(obj instanceof Vector) && type.type != java.lang.String.class)) {
                 java.lang.String xmlName = Helper.getKeyByValue(classNames, obj.getClass());

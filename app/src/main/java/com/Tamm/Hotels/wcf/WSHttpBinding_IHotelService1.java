@@ -31,7 +31,6 @@ public class WSHttpBinding_IHotelService1 {
     public WSHttpBinding_IHotelService1() {
     }
     public boolean enableLogging;
-    public boolean enableMTOM;
     public boolean createClassesForAny = false;
 
     IServiceEvents callback;
@@ -68,7 +67,6 @@ public class WSHttpBinding_IHotelService1 {
 
     protected ExtendedSoapSerializationEnvelope createEnvelope() {
         ExtendedSoapSerializationEnvelope envelope = new ExtendedSoapSerializationEnvelope(ExtendedSoapSerializationEnvelope.VER12);
-        envelope.mtomMode = enableMTOM ? ExtendedSoapSerializationEnvelope.MTOM_Automatic : ExtendedSoapSerializationEnvelope.MTOM_None;
         envelope.createClassesForAny = createClassesForAny;
         return envelope;
     }
