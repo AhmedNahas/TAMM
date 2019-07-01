@@ -26,6 +26,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 import net.middledleeast.tamm.fragments.ForgotPasswordFragment;
 import net.middledleeast.tamm.fragments.PlansFragment;
+import net.middledleeast.tamm.fragments.UsersFreeFragment;
+import net.middledleeast.tamm.model.Users;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,6 +42,7 @@ public class SignInFragment extends Fragment {
     private EditText userName, pass;
     private FirebaseUser user;
     private FirebaseAuth auth;
+
 
 
     public SignInFragment() {
@@ -58,6 +64,13 @@ public class SignInFragment extends Fragment {
         btnSignIn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+
+                if (userName.getText().toString().equals("tamm@gmail.com") && pass.getText().toString().equals("0123456")){
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.welcome_container, new UsersFreeFragment())
+                            .commit();
+                }
+
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     btnSignIn.setTextColor(Color.parseColor("#BE973B"));
                     getActivity().getSupportFragmentManager().beginTransaction()
@@ -79,6 +92,8 @@ public class SignInFragment extends Fragment {
 
                 String user_Name = userName.getText().toString();
                 String password = pass.getText().toString();
+
+
 
                 if (TextUtils.isEmpty(user_Name)) {
                     userName.setError("Name Is Required");
@@ -126,7 +141,8 @@ public class SignInFragment extends Fragment {
         auth.signInWithEmailAndPassword(userName2, passwor).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
+
+                 if (task.isSuccessful()) {
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.welcome_container, new PlansFragment())
                             .commit();

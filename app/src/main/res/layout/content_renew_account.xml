@@ -26,34 +26,37 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="BEST FLIGHTS"
             android:background="@drawable/shape"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
+
             />
 
         <Button
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:text="BEST HOTELS"
             tools:layout_editor_absoluteX="132dp"
             android:background="@drawable/shape"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
+
             />
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="wrap_content"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="BEST DEALS"
             android:background="@drawable/shape"
             tools:layout_editor_absoluteX="264dp"
-            android:layout_margin="5dp"/>
+            android:layout_margin="10dp"
+            />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

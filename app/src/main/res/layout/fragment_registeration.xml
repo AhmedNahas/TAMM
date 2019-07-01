@@ -97,7 +97,7 @@
         <Button
             android:id="@+id/btn_register_signup"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_margin="20dp"
@@ -118,7 +118,7 @@
 
             android:id="@+id/sign_in_if_not_register"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="Already Have An Account ?  Sign in"
             android:textSize="18dp"
             android:textColor="#fff"
@@ -126,7 +126,7 @@
             android:textStyle="bold"
             android:gravity="center"
             android:padding="10dp"
-            android:layout_margin="10dp"/>
+            />
 
     </LinearLayout>
 
