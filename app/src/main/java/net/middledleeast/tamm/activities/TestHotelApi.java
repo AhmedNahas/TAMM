@@ -6,7 +6,10 @@ import android.os.StrictMode;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
+import com.Tamm.Hotels.wcf.HotelSearchResponse;
+import com.Tamm.Hotels.wcf.RoomGuest;
 
 import org.joda.time.DateTime;
 
@@ -35,17 +38,21 @@ public class TestHotelApi extends AppCompatActivity {
             cal2.set(Calendar.DAY_OF_MONTH, 30);
             DateTime date1 = DateTime.now();
             DateTime date2 = DateTime.now();
-            date2.plusDays(3);
+            date1 = date1.plusDays(3);
+            date2 = date2.plusDays(7);
 
 
             service.enableLogging = true;
 
-            service.DestinationCityList("IN", null, authenticationData);
-
-//            HotelSearchResponse hotelSearchResponse = service.HotelSearch(date1,date2, null, null, null, null, null, null, null, null, null
-//                    , null, null, null, null, authenticationData);
-//            String test = hotelSearchResponse.Status.Description;
-//            System.out.println("Hello: " + test);
+//            service.DestinationCityList("IN", null, authenticationData);
+            RoomGuest roomGuest = new RoomGuest();
+            roomGuest.AdultCount = 1;
+            roomGuest.ChildCount = 0;
+            ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
+            roomguests.add(roomGuest);
+            HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), 144154, 1, roomguests, "EG", authenticationData);
+            String test = hotelSearchResponse.Status.Description;
+            System.out.println("Hello: " + test);
         } catch (Exception e) {
             e.printStackTrace();
         }

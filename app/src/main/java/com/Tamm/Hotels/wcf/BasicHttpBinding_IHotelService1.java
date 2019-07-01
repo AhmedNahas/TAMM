@@ -228,6 +228,75 @@ public class BasicHttpBinding_IHotelService1 {
         }, "http://TekTravel/HotelBookingApi/HotelSearch", __profile);
     }
 
+    public HotelSearchResponse HotelSearch1(final org.joda.time.DateTime CheckInDate, final org.joda.time.DateTime CheckOutDate, final Integer CityId, final Integer NoOfRooms, final ArrayOfRoomGuest RoomGuests, final String GuestNationality, final AuthenticationData Credentials) throws java.lang.Exception {
+        com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile __profile = new com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile();
+        return (HotelSearchResponse) execute(new IWcfMethod() {
+            @Override
+            public ExtendedSoapSerializationEnvelope CreateSoapEnvelope() {
+                ExtendedSoapSerializationEnvelope __envelope = createEnvelope();
+                ArrayList<org.kxml2.kdom.Element> __headers = null;
+                if (__envelope.headerOut == null) {
+                    __headers = new ArrayList<org.kxml2.kdom.Element>();
+                } else {
+                    __headers = new ArrayList<org.kxml2.kdom.Element>(Arrays.asList(__envelope.headerOut));
+                }
+                __headers.add(Helper.convertToHeader(Credentials != null ? Credentials : SoapPrimitive.NullNilElement, "http://TekTravel/HotelBookingApi", "Credentials"));
+                __envelope.headerOut = __headers.toArray(new Element[__headers.size()]);
+                __envelope.addMapping("http://TekTravel/HotelBookingApi", "RoomGuests", new ArrayOfRoomGuest().getClass());
+                __envelope.addMapping("http://TekTravel/HotelBookingApi", "Filters", new Filters().getClass());
+                __envelope.addMapping("http://TekTravel/HotelBookingApi", "GeoCodes", new GeoCodes().getClass());
+                SoapObject __soapReq = new SoapObject("http://TekTravel/HotelBookingApi", "HotelSearchRequest");
+                __envelope.setOutputSoapObject(__soapReq);
+
+                PropertyInfo __info = null;
+                __info = new PropertyInfo();
+                __info.namespace = "http://TekTravel/HotelBookingApi";
+                __info.name = "CheckInDate";
+                __info.type = PropertyInfo.STRING_CLASS;
+                __info.setValue(CheckInDate != null ? CheckInDate.toString() : SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace = "http://TekTravel/HotelBookingApi";
+                __info.name = "CheckOutDate";
+                __info.type = PropertyInfo.STRING_CLASS;
+                __info.setValue(CheckOutDate != null ? CheckOutDate.toString() : SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace = "http://TekTravel/HotelBookingApi";
+                __info.name = "GuestNationality";
+                __info.type = PropertyInfo.STRING_CLASS;
+                __info.setValue(GuestNationality != null ? GuestNationality : SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace = "http://TekTravel/HotelBookingApi";
+                __info.name = "CityId";
+                __info.type = PropertyInfo.INTEGER_CLASS;
+                __info.setValue(CityId);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace = "http://TekTravel/HotelBookingApi";
+                __info.name = "NoOfRooms";
+                __info.type = PropertyInfo.INTEGER_CLASS;
+                __info.setValue(NoOfRooms);
+                __soapReq.addProperty(__info);
+                __info = new PropertyInfo();
+                __info.namespace = "http://TekTravel/HotelBookingApi";
+                __info.name = "RoomGuests";
+                __info.type = PropertyInfo.VECTOR_CLASS;
+                __info.setValue(RoomGuests != null ? RoomGuests : SoapPrimitive.NullSkip);
+                __soapReq.addProperty(__info);
+
+                return __envelope;
+            }
+
+            @Override
+            public java.lang.Object ProcessResult(ExtendedSoapSerializationEnvelope __envelope, java.lang.Object __result) throws java.lang.Exception {
+                return getResult(HotelSearchResponse.class, __result, "HotelSearchResponse", __envelope);
+            }
+        }, "http://TekTravel/HotelBookingApi/HotelSearch", __profile);
+    }
+
+
     public android.os.AsyncTask<Void, Void, OperationResult<HotelSearchResponse>> HotelSearchAsync(final org.joda.time.DateTime CheckInDate, final org.joda.time.DateTime CheckOutDate, final String CountryName, final String CityName, final Integer CityId, final Boolean IsNearBySearchAllowed, final Integer NoOfRooms, final String GuestNationality, final ArrayOfRoomGuest RoomGuests, final String PreferredCurrencyCode, final Integer ResultCount, final Filters Filters, final String IsRoomInfoRequired, final GeoCodes GeoCodes, final Integer ResponseTime, final AuthenticationData Credentials) {
         return executeAsync(new Functions.IFunc<HotelSearchResponse>() {
             public HotelSearchResponse Func() throws java.lang.Exception {
