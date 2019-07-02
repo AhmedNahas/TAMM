@@ -2,16 +2,15 @@ package net.middledleeast.tamm.model;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
-import net.middledleeast.tamm.R;
+import androidx.appcompat.app.AppCompatActivity;
 
-import static net.middledleeast.tamm.R.layout.reserve_room;
+import net.middledleeast.tamm.R;
 
 public class ReserveRoom extends AppCompatActivity {
     private Toolbar toolbar;
@@ -21,7 +20,7 @@ public class ReserveRoom extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(reserve_room);
+        setContentView(R.layout.reserve_room);
 
         reservebtn =findViewById(R.id.btn_reserve_user);
 

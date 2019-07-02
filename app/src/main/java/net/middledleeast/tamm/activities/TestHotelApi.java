@@ -6,9 +6,11 @@ import android.os.StrictMode;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.Tamm.Hotels.wcf.ArrayOfHotel_Result;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
+import com.Tamm.Hotels.wcf.Hotel_Result;
 import com.Tamm.Hotels.wcf.RoomGuest;
 
 import org.joda.time.DateTime;
@@ -50,9 +52,14 @@ public class TestHotelApi extends AppCompatActivity {
             roomGuest.ChildCount = 0;
             ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
             roomguests.add(roomGuest);
-            HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), 144154, 1, roomguests, "EG", authenticationData);
-            String test = hotelSearchResponse.Status.Description;
-            System.out.println("Hello: " + test);
+            HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), 25921, 1, roomguests, "EG", authenticationData);
+            ArrayOfHotel_Result arrayOfHotelResult = hotelSearchResponse.HotelResultList;
+            for (Hotel_Result hotel : arrayOfHotelResult) {
+                String test = String.valueOf(hotel.HotelInfo.HotelPicture);
+                System.out.println("Hello: " + test);
+            }
+//            String test = String.valueOf(hotelSearchResponse.HotelResultList.getProperty(0).toString());
+//            System.out.println("Hello: " + test);
         } catch (Exception e) {
             e.printStackTrace();
         }
