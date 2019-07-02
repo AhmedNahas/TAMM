@@ -52,7 +52,7 @@ public class TestHotelApi extends AppCompatActivity {
             roomGuest.ChildCount = 0;
             ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
             roomguests.add(roomGuest);
-            HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), 25921, 1, roomguests, "EG", authenticationData);
+            HotelSearchResponse hotelSearchResponse = service.hotelSearchTest(date1.toDateTimeISO(), date2.toDateTimeISO(), 25921, 1, roomguests, "EG", authenticationData);
             ArrayOfHotel_Result arrayOfHotelResult = hotelSearchResponse.HotelResultList;
             for (Hotel_Result hotel : arrayOfHotelResult) {
                 String test = String.valueOf(hotel.HotelInfo.HotelPicture);

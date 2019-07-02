@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".model.FindHotels"
     android:orientation="vertical"
-    android:background="@drawable/plane"
-    >
+    android:background="@drawable/plane">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,47 +50,50 @@
         android:gravity="center">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.5"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Country"
-                android:textColor="@color/app_color"
                 android:gravity="center"
-                />
+                android:text="Country"
+                android:textColor="@color/app_color" />
+
             <Spinner
-                android:id="@+id/region_spinner"
-                android:layout_width="100dp"
+                android:id="@+id/country_spinner"
+                android:layout_width="184dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
-                android:gravity="center"/>
+                android:gravity="center" />
 
         </LinearLayout>
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.5"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="City"
-                android:textColor="@color/app_color"
+                android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:layout_marginLeft="20dp"/>
+                android:text="City"
+                android:textColor="@color/app_color" />
 
             <Spinner
-                android:id="@+id/area_spinner"
-                android:layout_width="100dp"
+                android:id="@+id/city_spinner"
+                android:layout_width="184dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center_horizontal"
                 android:layout_margin="20dp"
-                android:gravity="center"/>
+                android:gravity="center" />
 
         </LinearLayout>
 
