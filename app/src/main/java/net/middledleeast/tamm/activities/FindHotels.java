@@ -167,28 +167,9 @@ public class FindHotels extends AppCompatActivity {
                    idCountry = listID.get(position);
 
 
+                    Toast.makeText(FindHotels.this, "country id "+idCountry, Toast.LENGTH_SHORT).show();
 
 
-                    try {
-                        DestinationCityListResponse cities = service.DestinationCityList(idCountry, "true", authenticationData);
-                        for (int j = 0; j < cities.CityList.size(); j++) {
-
-
-                       ctyId = cities.CityList.get(j).CityCode;
-                       cityName = cities.CityList.get(j).CityName;
-
-                            nameCity.add(cities.CityList.get(j).CityName);
-                            ArrayAdapter adapterCity = new ArrayAdapter(FindHotels.this, android.R.layout.simple_spinner_item, nameCity);
-                            adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                            areas.setAdapter(adapterCity);
-
-                        }
-
-                        Toast.makeText(FindHotels.this, ""+ctyId, Toast.LENGTH_LONG).show();
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
 
 
                 }
@@ -202,6 +183,39 @@ public class FindHotels extends AppCompatActivity {
 
 
 
+
+            try {
+                DestinationCityListResponse cities = service.DestinationCityList(idCountry, "true", authenticationData);
+
+                for (int j = 0; j < cities.CityList.size(); j++) {
+
+                    cityName = cities.CityList.get(j).CityName;
+
+                    nameCity.add(cityName);
+                    ArrayAdapter adapterCity = new ArrayAdapter(FindHotels.this, android.R.layout.simple_spinner_item, nameCity);
+                    adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    areas.setAdapter(adapterCity);
+                    areas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            ctyId = cities.CityList.get(i).CityCode;
+                            Toast.makeText(FindHotels.this, "city id "+ctyId, Toast.LENGTH_SHORT).show();
+
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
+
+                }
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
 //            String test = hotelSearchResponse.Status.Description;
 //            System.out.println("Hello: " + test);
         } catch (Exception e) {
@@ -210,6 +224,8 @@ public class FindHotels extends AppCompatActivity {
     }
 
     private void gethotelsInfo(String ctyId) {
+
+
 
 
         auth();
@@ -236,8 +252,9 @@ public class FindHotels extends AppCompatActivity {
 
 
         try {
-            HotelSearchResponse hotelSearchResponse = service.HotelSearchWithRooms(date1.toDateTimeISO(), date2.toDateTimeISO(),countryName,cityName,Integer.parseInt(ctyId),
-                    false,1,"EG",roomguests,"EG",20 ,null, authenticationData);
+            HotelSearchResponse hotelSearchResponse = service.HotelSearch(date1.toDateTimeISO(), date2.toDateTimeISO(),countryName,cityName,Integer.parseInt(ctyId),
+                    true,1,"EG",roomguests,null,20 ,null,null,null,
+                    null, authenticationData);
 
 
 

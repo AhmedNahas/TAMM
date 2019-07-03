@@ -36,11 +36,7 @@
         </activity>
         <activity android:name=".LanguageActivity" />
         <activity android:name=".activities.FlightSearch">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activities.PaymentActivity" />
         <activity android:name=".activities.MainActivity" />
@@ -55,7 +51,13 @@
         <activity android:name=".activities.ConfirmBookingRoom" />
         <activity android:name=".activities.TestHotelApi" />
         <activity android:name=".activities.SplashActivity" />
+        <activity android:name=".activities.FindHotels" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
     </application>
 
 </manifest>
