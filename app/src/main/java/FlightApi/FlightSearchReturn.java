@@ -43,11 +43,12 @@ public class FlightSearchReturn implements Serializable {
     @SerializedName("PreferredCarrier")
     @Expose
     private Object preferredCarrier;
-
+    FlightSearchReturnResponse flightSearchReturnResponse;
     /**
      * No args constructor for use in serialization
      */
     public FlightSearchReturn() {
+        flightSearchReturnResponse = new FlightSearchReturnResponse();
     }
 
     /**

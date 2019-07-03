@@ -48,10 +48,10 @@
         <activity android:name=".activities.MemberCongrats" />
         <activity android:name=".activities.FREEcONGRATS" />
         <activity android:name=".model.ReserveRoom" />
-        <activity android:name=".activities.ConfirmBookingRoom" />
+        <activity android:name=".activities.FindHotels" />
         <activity android:name=".activities.TestHotelApi" />
         <activity android:name=".activities.SplashActivity" />
-        <activity android:name=".activities.FindHotels" >
+        <activity android:name=".activities.ConfirmBookingRoom">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 

@@ -34,11 +34,12 @@ public class SearchFlights implements Serializable {
     @SerializedName("Segment")
     @Expose
     private List<Segment> segment = new ArrayList<Segment>();
-
+    SearchFlightsResponse searchFlightsResponse;
     /**
      * No args constructor for use in serialization
      */
     public SearchFlights() {
+        searchFlightsResponse = new SearchFlightsResponse();
     }
 
     /**
