@@ -1,16 +1,16 @@
 package net.middledleeast.tamm.activities;
 
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import net.middledleeast.tamm.R;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-import java.nio.charset.StandardCharsets;
+import net.middledleeast.tamm.R;
 
 import FlightApi.FlightApiService;
 import FlightApi.FlightAuthentication;
@@ -24,7 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FlightSearch extends AppCompatActivity {
 
 
-    public static final String BASE_URL = "http://xmloutapi.tboair.com";
+    public static final String BASE_URL = "https://xmloutapi.tboair.com/api/v1/";
     private static final String TAG = MainActivity.class.getSimpleName();
     private static Retrofit retrofit = null;
     String password;
@@ -34,19 +34,26 @@ public class FlightSearch extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flight_search);
-        password = "App" + getString(R.string.at) + "02072019";
-        connectAndGetApiData();
+        password = "App02072019";
+
+        Gson gson = new GsonBuilder()
+                .create();
+        connectAndGetApiData(gson);
         FlightApiService flightApiService = retrofit.create(FlightApiService.class);
 //
 //
-        Call<FlightAuthentication> call = flightApiService.getAuthentication(FlightConstants.API_USER_NAME, password, "API", "192.169.10.22");
-//
+
+        Call<FlightAuthentication> call = flightApiService.getAuthentication("application/json", FlightConstants.API_USER_NAME, password, "API", "192.169.10.22");
+
+
         call.enqueue(new Callback<FlightAuthentication>() {
             @Override
             public void onResponse(Call<FlightAuthentication> call, Response<FlightAuthentication> response) {
-//
+
 
                 System.out.println("Helper: " + response.raw());
+
+
 
             }
 
@@ -57,28 +64,16 @@ public class FlightSearch extends AppCompatActivity {
         });
     }
 
-    public Retrofit connectAndGetApiData() {
+    public Retrofit connectAndGetApiData(Gson gson) {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();
         }
         return retrofit;
     }
 
-    public String getAuthToken() {
-        byte[] data = new byte[0];
-        data = (FlightConstants.API_USER_NAME + ":" + password).getBytes(StandardCharsets.UTF_8);
-        return "Basic " + Base64.encodeToString(data, Base64.NO_WRAP);
-    }
 
-//    public static void getHomePage(Context mContext, Callback<> callback) {
-//        Call<HomepageData> call = retrofit.create(FlightApiService.class).getHomePageData(
-//                getAuthToken()
-//                , AppSharedPref.getCustomerId(mContext)
-//        );
-//        call.enqueue(callback);
-//    }
 
 }
