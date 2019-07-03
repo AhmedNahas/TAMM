@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".model.FindHotels"
+    tools:context=".activities.FindHotels"
     android:orientation="vertical"
-    android:background="@drawable/plane">
+    android:background="@drawable/plane"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +45,7 @@
             android:background="@drawable/ic_button"
             android:layout_gravity="center"/>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,55 +53,69 @@
         android:gravity="center">
 
         <LinearLayout
-            android:layout_width="0dp"
+
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
             android:orientation="vertical">
+
 
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:text="Country"
-                android:textColor="@color/app_color" />
+                android:textColor="@color/app_color"
+                android:gravity="center"
+                />
 
-            <Spinner
-                android:id="@+id/country_spinner"
-                android:layout_width="184dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="20dp"
-                android:gravity="center" />
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:id="@+id/region_spinner"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
-
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_margin="4dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center"
                 android:text="City"
-                android:textColor="@color/app_color" />
+                android:textColor="@color/app_color"
+                android:gravity="center"
+                android:layout_marginLeft="20dp"/>
 
-            <Spinner
-                android:id="@+id/city_spinner"
-                android:layout_width="184dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="20dp"
-                android:gravity="center" />
+
+
+            <LinearLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:id="@+id/area_spinner"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+            </LinearLayout>
 
         </LinearLayout>
 
 
-        
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -164,6 +181,7 @@
         </LinearLayout>
 
 
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -173,13 +191,15 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:background="@color/white"
             android:layout_width="81dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:orientation="vertical">
 
 
-            <TextView
+            <Spinner
+                android:id="@+id/roomsSelected"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -294,7 +314,10 @@
 
 
 
-    </LinearLayout>
+
+
+
+</LinearLayout>
 
 
 
