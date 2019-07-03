@@ -36,7 +36,7 @@
 
         </activity>
         <activity android:name=".LanguageActivity" />
-        <activity android:name=".activities.SplashActivity">
+        <activity android:name=".activities.FlightSearch">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,7 +55,7 @@
         <activity android:name=".model.ReserveRoom" />
         <activity android:name=".activities.ConfirmBookingRoom" />
         <activity android:name=".activities.TestHotelApi" />
-        <activity android:name=".activities.FlightSearch" />
+        <activity android:name=".activities.SplashActivity" />
 
     </application>
 

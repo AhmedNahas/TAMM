@@ -2,7 +2,7 @@ package FlightApi;
 
 import com.google.gson.annotations.SerializedName;
 
-public class flightAuthentication {
+public class FlightAuthentication {
 
 
     private final static long serialVersionUID = 8182398129840084807L;
@@ -22,7 +22,7 @@ public class flightAuthentication {
     /**
      * No args constructor for use in serialization
      */
-    public flightAuthentication() {
+    public FlightAuthentication() {
     }
 
     /**
@@ -31,7 +31,7 @@ public class flightAuthentication {
      * @param iPAddress
      * @param password
      */
-    public flightAuthentication(String userName, String password, String bookingMode, String iPAddress) {
+    public FlightAuthentication(String userName, String password, String bookingMode, String iPAddress) {
         super();
         this.userName = userName;
         this.password = password;
@@ -47,7 +47,7 @@ public class flightAuthentication {
         this.userName = userName;
     }
 
-    public flightAuthentication withUserName(String userName) {
+    public FlightAuthentication withUserName(String userName) {
         this.userName = userName;
         return this;
     }
@@ -60,7 +60,7 @@ public class flightAuthentication {
         this.password = password;
     }
 
-    public flightAuthentication withPassword(String password) {
+    public FlightAuthentication withPassword(String password) {
         this.password = password;
         return this;
     }
@@ -73,7 +73,7 @@ public class flightAuthentication {
         this.bookingMode = bookingMode;
     }
 
-    public flightAuthentication withBookingMode(String bookingMode) {
+    public FlightAuthentication withBookingMode(String bookingMode) {
         this.bookingMode = bookingMode;
         return this;
     }
@@ -86,7 +86,7 @@ public class flightAuthentication {
         this.iPAddress = iPAddress;
     }
 
-    public flightAuthentication withIPAddress(String iPAddress) {
+    public FlightAuthentication withIPAddress(String iPAddress) {
         this.iPAddress = iPAddress;
         return this;
     }
