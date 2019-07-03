@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.activities.FindHotels;
 
 import static net.middledleeast.tamm.R.layout.reserve_room;
 
