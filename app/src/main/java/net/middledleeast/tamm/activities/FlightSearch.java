@@ -40,8 +40,12 @@ public class FlightSearch extends AppCompatActivity {
                 .create();
         connectAndGetApiData(gson);
         FlightApiService flightApiService = retrofit.create(FlightApiService.class);
-//
-//
+
+        FlightAuthentication flightAuthentication = new FlightAuthentication();
+        flightAuthentication.setUserName(FlightConstants.API_USER_NAME);
+        flightAuthentication.setPassword(password);
+        flightAuthentication.setBookingMode("API");
+        flightAuthentication.setIPAddress("192.169.10.22");
 
         Call<FlightAuthentication> call = flightApiService.getAuthentication("application/json", FlightConstants.API_USER_NAME, password, "API", "192.169.10.22");
 
