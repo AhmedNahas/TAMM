@@ -24,7 +24,6 @@
         <activity android:name=".activities.PaymentFlights" />
         <activity android:name=".activities.Proceedbeybey" />
         <activity android:name=".activities.FlightTamm" />
-        <activity android:name=".model.FindHotels" />
         <activity android:name=".activities.HotelBooking" />
         <activity android:name=".activities.RoomBooked" />
         <activity android:name=".activities.checkroom" />
