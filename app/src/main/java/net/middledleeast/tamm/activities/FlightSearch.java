@@ -15,6 +15,8 @@ import net.middledleeast.tamm.R;
 import FlightApi.FlightApiService;
 import FlightApi.FlightAuthentication;
 import FlightApi.FlightConstants;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,7 +41,12 @@ public class FlightSearch extends AppCompatActivity {
         Gson gson = new GsonBuilder()
                 .create();
 
-        connectAndGetApiData(gson);
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).build();
+
+        connectAndGetApiData(gson, client);
         FlightApiService flightApiService = retrofit.create(FlightApiService.class);
 
         FlightAuthentication flightAuthentication = new FlightAuthentication();
@@ -48,23 +55,15 @@ public class FlightSearch extends AppCompatActivity {
         flightAuthentication.setBookingMode("API");
         flightAuthentication.setIPAddress("192.169.10.22");
 
-        Call<FlightAuthentication> call = flightApiService.getAuthentication("application/json", gson.toJson("{\n" +
-                "\"UserName\": \"Apptamm\",\n" +
-                "\"Password\":\"App02072019\",\n" +
-                "\"BookingMode\":\"API\",\n" +
-                "\"IPAddress\":\"192.169.10.22\"\n" +
-                "}"));
-
+        Call<FlightAuthentication> call = flightApiService.getAuthentication("application/json", flightAuthentication);
 
         call.enqueue(new Callback<FlightAuthentication>() {
             @Override
             public void onResponse(Call<FlightAuthentication> call, Response<FlightAuthentication> response) {
+                FlightAuthentication flightAuthentication = response.body();
 
 
-                System.out.println("Helper: " + response.raw());
-
-
-
+                System.out.println("Helper: " + flightAuthentication.getTokenId());
             }
 
             @Override
@@ -74,10 +73,11 @@ public class FlightSearch extends AppCompatActivity {
         });
     }
 
-    public Retrofit connectAndGetApiData(Gson gson) {
+    public Retrofit connectAndGetApiData(Gson gson, OkHttpClient client) {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
+                    .client(client)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();
         }
