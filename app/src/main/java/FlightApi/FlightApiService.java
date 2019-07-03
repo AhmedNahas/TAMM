@@ -12,7 +12,7 @@ public interface FlightApiService {
     @Headers("Content-Type: application/json")
     @POST("Authenticate/ValidateAgency")
     Call<FlightAuthentication> getAuthentication(@Header("Content-Type") String content_type,
-                                                 @Body String body);
+                                                 @Body FlightAuthentication body);
 
 
 }
