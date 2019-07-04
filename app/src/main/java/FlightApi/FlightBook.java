@@ -38,7 +38,7 @@ public class FlightBook implements Serializable {
     @SerializedName("Itinerary")
     @Expose
     private Itinerary itinerary;
-    BookResponse bookResponse;
+    public BookResponse bookResponse;
     /**
      * No args constructor for use in serialization
      */

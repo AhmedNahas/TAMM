@@ -29,7 +29,7 @@ public class FareRule implements Serializable {
     @SerializedName("IPAddress")
     @Expose
     private String iPAddress;
-    FareRuleResponse fareRuleResponse;
+    public FareRuleResponse fareRuleResponse;
     /**
      * No args constructor for use in serialization
      */

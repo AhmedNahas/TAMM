@@ -14,7 +14,7 @@ public class FlightGetBooking implements Serializable {
     @SerializedName("PNR")
     @Expose
     private String pNR;
-    GetBookingResponse getBookingResponse;
+    public GetBookingResponse getBookingResponse;
 
     /**
      * No args constructor for use in serialization

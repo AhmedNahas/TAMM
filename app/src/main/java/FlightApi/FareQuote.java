@@ -29,7 +29,7 @@ public class FareQuote implements Serializable {
     @SerializedName("TrackingId")
     @Expose
     private String trackingId;
-    FareQuoteRespone fareQuoteRespone;
+    public FareQuoteRespone fareQuoteRespone;
     /**
      * No args constructor for use in serialization
      */

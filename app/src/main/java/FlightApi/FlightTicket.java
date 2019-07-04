@@ -44,7 +44,7 @@ public class FlightTicket implements Serializable {
     @SerializedName("ConfirmPriceChangeTicket")
     @Expose
     private boolean confirmPriceChangeTicket;
-    TicketResponse ticketResponse;
+    public TicketResponse ticketResponse;
     /**
      * No args constructor for use in serialization
      */
