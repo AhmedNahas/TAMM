@@ -1,4 +1,3 @@
-
 package FlightApi;
 
 import com.google.gson.annotations.Expose;
@@ -8,140 +7,138 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlightTicket implements Serializable {
 
-    private final static long serialVersionUID = -5073776168394207338L;
-    @SerializedName("ResultId")
+public class GetBookingResponse implements Serializable {
+
+    private final static long serialVersionUID = -5066246334461332700L;
+    @SerializedName("Itinerary")
     @Expose
-    private String resultId;
-    @SerializedName("EndUserBrowserAgent")
+    private Itinerary itinerary;
+    @SerializedName("Status")
     @Expose
-    private String endUserBrowserAgent;
-    @SerializedName("PointOfSale")
+    private long status;
+    @SerializedName("ShowFailedReason")
     @Expose
-    private String pointOfSale;
-    @SerializedName("RequestOrigin")
+    private boolean showFailedReason;
+    @SerializedName("IsSuccess")
     @Expose
-    private String requestOrigin;
-    @SerializedName("UserData")
+    private boolean isSuccess;
+    @SerializedName("Errors")
     @Expose
-    private String userData;
+    private List<Object> errors = new ArrayList<Object>();
+    @SerializedName("Alerts")
+    @Expose
+    private List<Object> alerts = new ArrayList<Object>();
     @SerializedName("TokenId")
     @Expose
     private String tokenId;
     @SerializedName("TrackingId")
     @Expose
     private String trackingId;
-    @SerializedName("IPAddress")
-    @Expose
-    private String iPAddress;
-    @SerializedName("Itinerary")
-    @Expose
-    private Itinerary itinerary;
-    @SerializedName("PNR")
-    @Expose
-    private String pNR;
-    @SerializedName("ConfirmPriceChangeTicket")
-    @Expose
-    private boolean confirmPriceChangeTicket;
-    TicketResponse ticketResponse;
+
     /**
      * No args constructor for use in serialization
      */
-    public FlightTicket() {
-        ticketResponse = new TicketResponse();
+    public GetBookingResponse() {
     }
 
     /**
-     * @param pNR
-     * @param endUserBrowserAgent
      * @param tokenId
+     * @param errors
+     * @param status
+     * @param alerts
      * @param trackingId
-     * @param pointOfSale
-     * @param requestOrigin
-     * @param confirmPriceChangeTicket
      * @param itinerary
-     * @param iPAddress
-     * @param userData
-     * @param resultId
+     * @param isSuccess
+     * @param showFailedReason
      */
-    public FlightTicket(String resultId, String endUserBrowserAgent, String pointOfSale, String requestOrigin, String userData, String tokenId, String trackingId, String iPAddress, Itinerary itinerary, String pNR, boolean confirmPriceChangeTicket) {
+    public GetBookingResponse(Itinerary itinerary, long status, boolean showFailedReason, boolean isSuccess, List<Object> errors, List<Object> alerts, String tokenId, String trackingId) {
         super();
-        this.resultId = resultId;
-        this.endUserBrowserAgent = endUserBrowserAgent;
-        this.pointOfSale = pointOfSale;
-        this.requestOrigin = requestOrigin;
-        this.userData = userData;
+        this.itinerary = itinerary;
+        this.status = status;
+        this.showFailedReason = showFailedReason;
+        this.isSuccess = isSuccess;
+        this.errors = errors;
+        this.alerts = alerts;
         this.tokenId = tokenId;
         this.trackingId = trackingId;
-        this.iPAddress = iPAddress;
+    }
+
+    public Itinerary getItinerary() {
+        return itinerary;
+    }
+
+    public void setItinerary(Itinerary itinerary) {
         this.itinerary = itinerary;
-        this.pNR = pNR;
-        this.confirmPriceChangeTicket = confirmPriceChangeTicket;
     }
 
-    public String getResultId() {
-        return resultId;
-    }
-
-    public void setResultId(String resultId) {
-        this.resultId = resultId;
-    }
-
-    public FlightTicket withResultId(String resultId) {
-        this.resultId = resultId;
+    public GetBookingResponse withItinerary(Itinerary itinerary) {
+        this.itinerary = itinerary;
         return this;
     }
 
-    public String getEndUserBrowserAgent() {
-        return endUserBrowserAgent;
+    public long getStatus() {
+        return status;
     }
 
-    public void setEndUserBrowserAgent(String endUserBrowserAgent) {
-        this.endUserBrowserAgent = endUserBrowserAgent;
+    public void setStatus(long status) {
+        this.status = status;
     }
 
-    public FlightTicket withEndUserBrowserAgent(String endUserBrowserAgent) {
-        this.endUserBrowserAgent = endUserBrowserAgent;
+    public GetBookingResponse withStatus(long status) {
+        this.status = status;
         return this;
     }
 
-    public String getPointOfSale() {
-        return pointOfSale;
+    public boolean isShowFailedReason() {
+        return showFailedReason;
     }
 
-    public void setPointOfSale(String pointOfSale) {
-        this.pointOfSale = pointOfSale;
+    public void setShowFailedReason(boolean showFailedReason) {
+        this.showFailedReason = showFailedReason;
     }
 
-    public FlightTicket withPointOfSale(String pointOfSale) {
-        this.pointOfSale = pointOfSale;
+    public GetBookingResponse withShowFailedReason(boolean showFailedReason) {
+        this.showFailedReason = showFailedReason;
         return this;
     }
 
-    public String getRequestOrigin() {
-        return requestOrigin;
+    public boolean isIsSuccess() {
+        return isSuccess;
     }
 
-    public void setRequestOrigin(String requestOrigin) {
-        this.requestOrigin = requestOrigin;
+    public void setIsSuccess(boolean isSuccess) {
+        this.isSuccess = isSuccess;
     }
 
-    public FlightTicket withRequestOrigin(String requestOrigin) {
-        this.requestOrigin = requestOrigin;
+    public GetBookingResponse withIsSuccess(boolean isSuccess) {
+        this.isSuccess = isSuccess;
         return this;
     }
 
-    public String getUserData() {
-        return userData;
+    public List<Object> getErrors() {
+        return errors;
     }
 
-    public void setUserData(String userData) {
-        this.userData = userData;
+    public void setErrors(List<Object> errors) {
+        this.errors = errors;
     }
 
-    public FlightTicket withUserData(String userData) {
-        this.userData = userData;
+    public GetBookingResponse withErrors(List<Object> errors) {
+        this.errors = errors;
+        return this;
+    }
+
+    public List<Object> getAlerts() {
+        return alerts;
+    }
+
+    public void setAlerts(List<Object> alerts) {
+        this.alerts = alerts;
+    }
+
+    public GetBookingResponse withAlerts(List<Object> alerts) {
+        this.alerts = alerts;
         return this;
     }
 
@@ -153,7 +150,7 @@ public class FlightTicket implements Serializable {
         this.tokenId = tokenId;
     }
 
-    public FlightTicket withTokenId(String tokenId) {
+    public GetBookingResponse withTokenId(String tokenId) {
         this.tokenId = tokenId;
         return this;
     }
@@ -166,60 +163,8 @@ public class FlightTicket implements Serializable {
         this.trackingId = trackingId;
     }
 
-    public FlightTicket withTrackingId(String trackingId) {
+    public GetBookingResponse withTrackingId(String trackingId) {
         this.trackingId = trackingId;
-        return this;
-    }
-
-    public String getIPAddress() {
-        return iPAddress;
-    }
-
-    public void setIPAddress(String iPAddress) {
-        this.iPAddress = iPAddress;
-    }
-
-    public FlightTicket withIPAddress(String iPAddress) {
-        this.iPAddress = iPAddress;
-        return this;
-    }
-
-    public Itinerary getItinerary() {
-        return itinerary;
-    }
-
-    public void setItinerary(Itinerary itinerary) {
-        this.itinerary = itinerary;
-    }
-
-    public FlightTicket withItinerary(Itinerary itinerary) {
-        this.itinerary = itinerary;
-        return this;
-    }
-
-    public String getPNR() {
-        return pNR;
-    }
-
-    public void setPNR(String pNR) {
-        this.pNR = pNR;
-    }
-
-    public FlightTicket withPNR(String pNR) {
-        this.pNR = pNR;
-        return this;
-    }
-
-    public boolean isConfirmPriceChangeTicket() {
-        return confirmPriceChangeTicket;
-    }
-
-    public void setConfirmPriceChangeTicket(boolean confirmPriceChangeTicket) {
-        this.confirmPriceChangeTicket = confirmPriceChangeTicket;
-    }
-
-    public FlightTicket withConfirmPriceChangeTicket(boolean confirmPriceChangeTicket) {
-        this.confirmPriceChangeTicket = confirmPriceChangeTicket;
         return this;
     }
 
@@ -608,7 +553,7 @@ public class FlightTicket implements Serializable {
 
     public class Fare implements Serializable {
 
-        private final static long serialVersionUID = -8458622024020546233L;
+        private final static long serialVersionUID = -1298349241197725262L;
         @SerializedName("TotalFare")
         @Expose
         private double totalFare;
@@ -620,13 +565,16 @@ public class FlightTicket implements Serializable {
         private long agentMarkup;
         @SerializedName("OtherCharges")
         @Expose
-        private long otherCharges;
+        private double otherCharges;
         @SerializedName("AgentPreferredCurrency")
         @Expose
         private String agentPreferredCurrency;
         @SerializedName("ServiceFee")
         @Expose
         private long serviceFee;
+        @SerializedName("Vat")
+        @Expose
+        private long vat;
         @SerializedName("BaseFare")
         @Expose
         private double baseFare;
@@ -648,9 +596,10 @@ public class FlightTicket implements Serializable {
          * @param agentMarkup
          * @param agentPreferredCurrency
          * @param otherCharges
+         * @param vat
          * @param fareType
          */
-        public Fare(double totalFare, String fareType, long agentMarkup, long otherCharges, String agentPreferredCurrency, long serviceFee, double baseFare, double tax) {
+        public Fare(double totalFare, String fareType, long agentMarkup, double otherCharges, String agentPreferredCurrency, long serviceFee, long vat, double baseFare, double tax) {
             super();
             this.totalFare = totalFare;
             this.fareType = fareType;
@@ -658,6 +607,7 @@ public class FlightTicket implements Serializable {
             this.otherCharges = otherCharges;
             this.agentPreferredCurrency = agentPreferredCurrency;
             this.serviceFee = serviceFee;
+            this.vat = vat;
             this.baseFare = baseFare;
             this.tax = tax;
         }
@@ -701,15 +651,15 @@ public class FlightTicket implements Serializable {
             return this;
         }
 
-        public long getOtherCharges() {
+        public double getOtherCharges() {
             return otherCharges;
         }
 
-        public void setOtherCharges(long otherCharges) {
+        public void setOtherCharges(double otherCharges) {
             this.otherCharges = otherCharges;
         }
 
-        public Fare withOtherCharges(long otherCharges) {
+        public Fare withOtherCharges(double otherCharges) {
             this.otherCharges = otherCharges;
             return this;
         }
@@ -737,6 +687,19 @@ public class FlightTicket implements Serializable {
 
         public Fare withServiceFee(long serviceFee) {
             this.serviceFee = serviceFee;
+            return this;
+        }
+
+        public long getVat() {
+            return vat;
+        }
+
+        public void setVat(long vat) {
+            this.vat = vat;
+        }
+
+        public Fare withVat(long vat) {
+            this.vat = vat;
             return this;
         }
 
@@ -771,7 +734,7 @@ public class FlightTicket implements Serializable {
 
     public class FareRule implements Serializable {
 
-        private final static long serialVersionUID = 4055350676589616235L;
+        private final static long serialVersionUID = 3056386508569497860L;
         @SerializedName("Origin")
         @Expose
         private String origin;
@@ -783,13 +746,13 @@ public class FlightTicket implements Serializable {
         private String airline;
         @SerializedName("FareRestriction")
         @Expose
-        private String fareRestriction;
+        private Object fareRestriction;
         @SerializedName("FareBasisCode")
         @Expose
         private String fareBasisCode;
         @SerializedName("FareRuleDetail")
         @Expose
-        private String fareRuleDetail;
+        private Object fareRuleDetail;
         @SerializedName("DepartureDate")
         @Expose
         private String departureDate;
@@ -813,7 +776,7 @@ public class FlightTicket implements Serializable {
          * @param airline
          * @param destination
          */
-        public FareRule(String origin, String destination, String airline, String fareRestriction, String fareBasisCode, String fareRuleDetail, String departureDate, Object flightNumber) {
+        public FareRule(String origin, String destination, String airline, Object fareRestriction, String fareBasisCode, Object fareRuleDetail, String departureDate, Object flightNumber) {
             super();
             this.origin = origin;
             this.destination = destination;
@@ -864,15 +827,15 @@ public class FlightTicket implements Serializable {
             return this;
         }
 
-        public String getFareRestriction() {
+        public Object getFareRestriction() {
             return fareRestriction;
         }
 
-        public void setFareRestriction(String fareRestriction) {
+        public void setFareRestriction(Object fareRestriction) {
             this.fareRestriction = fareRestriction;
         }
 
-        public FareRule withFareRestriction(String fareRestriction) {
+        public FareRule withFareRestriction(Object fareRestriction) {
             this.fareRestriction = fareRestriction;
             return this;
         }
@@ -890,15 +853,15 @@ public class FlightTicket implements Serializable {
             return this;
         }
 
-        public String getFareRuleDetail() {
+        public Object getFareRuleDetail() {
             return fareRuleDetail;
         }
 
-        public void setFareRuleDetail(String fareRuleDetail) {
+        public void setFareRuleDetail(Object fareRuleDetail) {
             this.fareRuleDetail = fareRuleDetail;
         }
 
-        public FareRule withFareRuleDetail(String fareRuleDetail) {
+        public FareRule withFareRuleDetail(Object fareRuleDetail) {
             this.fareRuleDetail = fareRuleDetail;
             return this;
         }
@@ -934,7 +897,7 @@ public class FlightTicket implements Serializable {
 
     public class Itinerary implements Serializable {
 
-        private final static long serialVersionUID = 3007632048052564113L;
+        private final static long serialVersionUID = 4713545162284606969L;
         @SerializedName("Segments")
         @Expose
         private List<Segment> segments = new ArrayList<Segment>();
@@ -947,15 +910,9 @@ public class FlightTicket implements Serializable {
         @SerializedName("PNR")
         @Expose
         private String pNR;
-        @SerializedName("InactivePNR")
-        @Expose
-        private Object inactivePNR;
         @SerializedName("Destination")
         @Expose
         private String destination;
-        @SerializedName("FareType")
-        @Expose
-        private String fareType;
         @SerializedName("LastTicketDate")
         @Expose
         private String lastTicketDate;
@@ -974,9 +931,6 @@ public class FlightTicket implements Serializable {
         @SerializedName("AirlineCode")
         @Expose
         private Object airlineCode;
-        @SerializedName("TravelDate")
-        @Expose
-        private String travelDate;
         @SerializedName("NonRefundable")
         @Expose
         private boolean nonRefundable;
@@ -985,16 +939,7 @@ public class FlightTicket implements Serializable {
         private boolean isLcc;
         @SerializedName("AirlineRemark")
         @Expose
-        private String airlineRemark;
-        @SerializedName("SearchType")
-        @Expose
-        private long searchType;
-        @SerializedName("TrackingId")
-        @Expose
-        private String trackingId;
-        @SerializedName("StaffRemarks")
-        @Expose
-        private Object staffRemarks;
+        private Object airlineRemark;
 
         /**
          * No args constructor for use in serialization
@@ -1003,49 +948,37 @@ public class FlightTicket implements Serializable {
         }
 
         /**
-         * @param segments
-         * @param inactivePNR
+         * @param nonRefundable
+         * @param createdOn
+         * @param pNR
+         * @param passenger
+         * @param airlineCode
          * @param isDomestic
-         * @param staffRemarks
-         * @param trackingId
+         * @param segments
+         * @param validatingAirlineCode
          * @param isLcc
          * @param origin
-         * @param searchType
-         * @param travelDate
-         * @param destination
-         * @param nonRefundable
-         * @param passenger
-         * @param pNR
-         * @param createdOn
-         * @param airlineCode
-         * @param validatingAirlineCode
-         * @param fareType
          * @param lastTicketDate
          * @param airlineRemark
          * @param fareRules
+         * @param destination
          */
-        public Itinerary(List<Segment> segments, List<Passenger> passenger, List<FareRule> fareRules, String pNR, Object inactivePNR, String destination, String fareType, String lastTicketDate, String origin, String createdOn, String validatingAirlineCode, boolean isDomestic, Object airlineCode, String travelDate, boolean nonRefundable, boolean isLcc, String airlineRemark, long searchType, String trackingId, Object staffRemarks) {
+        public Itinerary(List<Segment> segments, List<Passenger> passenger, List<FareRule> fareRules, String pNR, String destination, String lastTicketDate, String origin, String createdOn, String validatingAirlineCode, boolean isDomestic, Object airlineCode, boolean nonRefundable, boolean isLcc, Object airlineRemark) {
             super();
             this.segments = segments;
             this.passenger = passenger;
             this.fareRules = fareRules;
             this.pNR = pNR;
-            this.inactivePNR = inactivePNR;
             this.destination = destination;
-            this.fareType = fareType;
             this.lastTicketDate = lastTicketDate;
             this.origin = origin;
             this.createdOn = createdOn;
             this.validatingAirlineCode = validatingAirlineCode;
             this.isDomestic = isDomestic;
             this.airlineCode = airlineCode;
-            this.travelDate = travelDate;
             this.nonRefundable = nonRefundable;
             this.isLcc = isLcc;
             this.airlineRemark = airlineRemark;
-            this.searchType = searchType;
-            this.trackingId = trackingId;
-            this.staffRemarks = staffRemarks;
         }
 
         public List<Segment> getSegments() {
@@ -1100,19 +1033,6 @@ public class FlightTicket implements Serializable {
             return this;
         }
 
-        public Object getInactivePNR() {
-            return inactivePNR;
-        }
-
-        public void setInactivePNR(Object inactivePNR) {
-            this.inactivePNR = inactivePNR;
-        }
-
-        public Itinerary withInactivePNR(Object inactivePNR) {
-            this.inactivePNR = inactivePNR;
-            return this;
-        }
-
         public String getDestination() {
             return destination;
         }
@@ -1123,19 +1043,6 @@ public class FlightTicket implements Serializable {
 
         public Itinerary withDestination(String destination) {
             this.destination = destination;
-            return this;
-        }
-
-        public String getFareType() {
-            return fareType;
-        }
-
-        public void setFareType(String fareType) {
-            this.fareType = fareType;
-        }
-
-        public Itinerary withFareType(String fareType) {
-            this.fareType = fareType;
             return this;
         }
 
@@ -1217,19 +1124,6 @@ public class FlightTicket implements Serializable {
             return this;
         }
 
-        public String getTravelDate() {
-            return travelDate;
-        }
-
-        public void setTravelDate(String travelDate) {
-            this.travelDate = travelDate;
-        }
-
-        public Itinerary withTravelDate(String travelDate) {
-            this.travelDate = travelDate;
-            return this;
-        }
-
         public boolean isNonRefundable() {
             return nonRefundable;
         }
@@ -1256,55 +1150,16 @@ public class FlightTicket implements Serializable {
             return this;
         }
 
-        public String getAirlineRemark() {
+        public Object getAirlineRemark() {
             return airlineRemark;
         }
 
-        public void setAirlineRemark(String airlineRemark) {
+        public void setAirlineRemark(Object airlineRemark) {
             this.airlineRemark = airlineRemark;
         }
 
-        public Itinerary withAirlineRemark(String airlineRemark) {
+        public Itinerary withAirlineRemark(Object airlineRemark) {
             this.airlineRemark = airlineRemark;
-            return this;
-        }
-
-        public long getSearchType() {
-            return searchType;
-        }
-
-        public void setSearchType(long searchType) {
-            this.searchType = searchType;
-        }
-
-        public Itinerary withSearchType(long searchType) {
-            this.searchType = searchType;
-            return this;
-        }
-
-        public String getTrackingId() {
-            return trackingId;
-        }
-
-        public void setTrackingId(String trackingId) {
-            this.trackingId = trackingId;
-        }
-
-        public Itinerary withTrackingId(String trackingId) {
-            this.trackingId = trackingId;
-            return this;
-        }
-
-        public Object getStaffRemarks() {
-            return staffRemarks;
-        }
-
-        public void setStaffRemarks(Object staffRemarks) {
-            this.staffRemarks = staffRemarks;
-        }
-
-        public Itinerary withStaffRemarks(Object staffRemarks) {
-            this.staffRemarks = staffRemarks;
             return this;
         }
 
@@ -1568,13 +1423,13 @@ public class FlightTicket implements Serializable {
 
     public class Passenger implements Serializable {
 
-        private final static long serialVersionUID = 3136811916229752215L;
+        private final static long serialVersionUID = -6009464303146934179L;
         @SerializedName("PassportIssueCountryCode")
         @Expose
         private Object passportIssueCountryCode;
         @SerializedName("PassportIssueDate")
         @Expose
-        private String passportIssueDate;
+        private Object passportIssueDate;
         @SerializedName("Title")
         @Expose
         private String title;
@@ -1643,10 +1498,10 @@ public class FlightTicket implements Serializable {
         private String passportExpiry;
         @SerializedName("PaxBaggage")
         @Expose
-        private List<Object> paxBaggage = new ArrayList<Object>();
+        private List<PaxBaggage> paxBaggage = new ArrayList<PaxBaggage>();
         @SerializedName("PaxMeal")
         @Expose
-        private List<Object> paxMeal = new ArrayList<Object>();
+        private List<PaxMeal> paxMeal = new ArrayList<PaxMeal>();
         @SerializedName("IDCardNo")
         @Expose
         private Object iDCardNo;
@@ -1698,7 +1553,7 @@ public class FlightTicket implements Serializable {
          * @param passportIssueCountryCode
          * @param mobile1
          */
-        public Passenger(Object passportIssueCountryCode, String passportIssueDate, String title, String firstName, String lastName, String mobile1, String mobile1CountryCode, boolean isLeadPax, String dateOfBirth, long type, String passportNo, Nationality nationality, Country country, City city, String addressLine1, Object addressLine2, long gender, String email, Meal meal, Seat seat, Fare fare, Object fFAirline, Object fFNumber, String passportExpiry, List<Object> paxBaggage, List<Object> paxMeal, Object iDCardNo, Object zipCode, Object paxSeat, Ticket ticket) {
+        public Passenger(Object passportIssueCountryCode, Object passportIssueDate, String title, String firstName, String lastName, String mobile1, String mobile1CountryCode, boolean isLeadPax, String dateOfBirth, long type, String passportNo, Nationality nationality, Country country, City city, String addressLine1, Object addressLine2, long gender, String email, Meal meal, Seat seat, Fare fare, Object fFAirline, Object fFNumber, String passportExpiry, List<PaxBaggage> paxBaggage, List<PaxMeal> paxMeal, Object iDCardNo, Object zipCode, Object paxSeat, Ticket ticket) {
             super();
             this.passportIssueCountryCode = passportIssueCountryCode;
             this.passportIssueDate = passportIssueDate;
@@ -1745,15 +1600,15 @@ public class FlightTicket implements Serializable {
             return this;
         }
 
-        public String getPassportIssueDate() {
+        public Object getPassportIssueDate() {
             return passportIssueDate;
         }
 
-        public void setPassportIssueDate(String passportIssueDate) {
+        public void setPassportIssueDate(Object passportIssueDate) {
             this.passportIssueDate = passportIssueDate;
         }
 
-        public Passenger withPassportIssueDate(String passportIssueDate) {
+        public Passenger withPassportIssueDate(Object passportIssueDate) {
             this.passportIssueDate = passportIssueDate;
             return this;
         }
@@ -2044,28 +1899,28 @@ public class FlightTicket implements Serializable {
             return this;
         }
 
-        public List<Object> getPaxBaggage() {
+        public List<PaxBaggage> getPaxBaggage() {
             return paxBaggage;
         }
 
-        public void setPaxBaggage(List<Object> paxBaggage) {
+        public void setPaxBaggage(List<PaxBaggage> paxBaggage) {
             this.paxBaggage = paxBaggage;
         }
 
-        public Passenger withPaxBaggage(List<Object> paxBaggage) {
+        public Passenger withPaxBaggage(List<PaxBaggage> paxBaggage) {
             this.paxBaggage = paxBaggage;
             return this;
         }
 
-        public List<Object> getPaxMeal() {
+        public List<PaxMeal> getPaxMeal() {
             return paxMeal;
         }
 
-        public void setPaxMeal(List<Object> paxMeal) {
+        public void setPaxMeal(List<PaxMeal> paxMeal) {
             this.paxMeal = paxMeal;
         }
 
-        public Passenger withPaxMeal(List<Object> paxMeal) {
+        public Passenger withPaxMeal(List<PaxMeal> paxMeal) {
             this.paxMeal = paxMeal;
             return this;
         }
@@ -2125,6 +1980,457 @@ public class FlightTicket implements Serializable {
     }
 
 
+    public class PaxBaggage implements Serializable {
+
+        private final static long serialVersionUID = 8145305319668435015L;
+        @SerializedName("Code")
+        @Expose
+        private Object code;
+        @SerializedName("Description")
+        @Expose
+        private long description;
+        @SerializedName("Price")
+        @Expose
+        private long price;
+        @SerializedName("Weight")
+        @Expose
+        private long weight;
+        @SerializedName("Text")
+        @Expose
+        private String text;
+        @SerializedName("WayTypeField")
+        @Expose
+        private long wayTypeField;
+        @SerializedName("Origin")
+        @Expose
+        private String origin;
+        @SerializedName("Destination")
+        @Expose
+        private String destination;
+        @SerializedName("Currency")
+        @Expose
+        private Object currency;
+        @SerializedName("FlightNumber")
+        @Expose
+        private Object flightNumber;
+        @SerializedName("DepartureTime")
+        @Expose
+        private String departureTime;
+
+        /**
+         * No args constructor for use in serialization
+         */
+        public PaxBaggage() {
+        }
+
+        /**
+         * @param text
+         * @param wayTypeField
+         * @param weight
+         * @param price
+         * @param description
+         * @param departureTime
+         * @param origin
+         * @param flightNumber
+         * @param code
+         * @param currency
+         * @param destination
+         */
+        public PaxBaggage(Object code, long description, long price, long weight, String text, long wayTypeField, String origin, String destination, Object currency, Object flightNumber, String departureTime) {
+            super();
+            this.code = code;
+            this.description = description;
+            this.price = price;
+            this.weight = weight;
+            this.text = text;
+            this.wayTypeField = wayTypeField;
+            this.origin = origin;
+            this.destination = destination;
+            this.currency = currency;
+            this.flightNumber = flightNumber;
+            this.departureTime = departureTime;
+        }
+
+        public Object getCode() {
+            return code;
+        }
+
+        public void setCode(Object code) {
+            this.code = code;
+        }
+
+        public PaxBaggage withCode(Object code) {
+            this.code = code;
+            return this;
+        }
+
+        public long getDescription() {
+            return description;
+        }
+
+        public void setDescription(long description) {
+            this.description = description;
+        }
+
+        public PaxBaggage withDescription(long description) {
+            this.description = description;
+            return this;
+        }
+
+        public long getPrice() {
+            return price;
+        }
+
+        public void setPrice(long price) {
+            this.price = price;
+        }
+
+        public PaxBaggage withPrice(long price) {
+            this.price = price;
+            return this;
+        }
+
+        public long getWeight() {
+            return weight;
+        }
+
+        public void setWeight(long weight) {
+            this.weight = weight;
+        }
+
+        public PaxBaggage withWeight(long weight) {
+            this.weight = weight;
+            return this;
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
+        }
+
+        public PaxBaggage withText(String text) {
+            this.text = text;
+            return this;
+        }
+
+        public long getWayTypeField() {
+            return wayTypeField;
+        }
+
+        public void setWayTypeField(long wayTypeField) {
+            this.wayTypeField = wayTypeField;
+        }
+
+        public PaxBaggage withWayTypeField(long wayTypeField) {
+            this.wayTypeField = wayTypeField;
+            return this;
+        }
+
+        public String getOrigin() {
+            return origin;
+        }
+
+        public void setOrigin(String origin) {
+            this.origin = origin;
+        }
+
+        public PaxBaggage withOrigin(String origin) {
+            this.origin = origin;
+            return this;
+        }
+
+        public String getDestination() {
+            return destination;
+        }
+
+        public void setDestination(String destination) {
+            this.destination = destination;
+        }
+
+        public PaxBaggage withDestination(String destination) {
+            this.destination = destination;
+            return this;
+        }
+
+        public Object getCurrency() {
+            return currency;
+        }
+
+        public void setCurrency(Object currency) {
+            this.currency = currency;
+        }
+
+        public PaxBaggage withCurrency(Object currency) {
+            this.currency = currency;
+            return this;
+        }
+
+        public Object getFlightNumber() {
+            return flightNumber;
+        }
+
+        public void setFlightNumber(Object flightNumber) {
+            this.flightNumber = flightNumber;
+        }
+
+        public PaxBaggage withFlightNumber(Object flightNumber) {
+            this.flightNumber = flightNumber;
+            return this;
+        }
+
+        public String getDepartureTime() {
+            return departureTime;
+        }
+
+        public void setDepartureTime(String departureTime) {
+            this.departureTime = departureTime;
+        }
+
+        public PaxBaggage withDepartureTime(String departureTime) {
+            this.departureTime = departureTime;
+            return this;
+        }
+
+    }
+
+
+    public class PaxMeal implements Serializable {
+
+        private final static long serialVersionUID = 1634261206778393707L;
+        @SerializedName("Code")
+        @Expose
+        private Object code;
+        @SerializedName("Description")
+        @Expose
+        private long description;
+        @SerializedName("AirlineDescription")
+        @Expose
+        private Object airlineDescription;
+        @SerializedName("Price")
+        @Expose
+        private long price;
+        @SerializedName("Quantity")
+        @Expose
+        private long quantity;
+        @SerializedName("Text")
+        @Expose
+        private String text;
+        @SerializedName("Destination")
+        @Expose
+        private String destination;
+        @SerializedName("Origin")
+        @Expose
+        private String origin;
+        @SerializedName("WayTypeField")
+        @Expose
+        private long wayTypeField;
+        @SerializedName("Currency")
+        @Expose
+        private Object currency;
+        @SerializedName("FlightNumber")
+        @Expose
+        private Object flightNumber;
+        @SerializedName("DepartureTime")
+        @Expose
+        private String departureTime;
+
+        /**
+         * No args constructor for use in serialization
+         */
+        public PaxMeal() {
+        }
+
+        /**
+         * @param text
+         * @param wayTypeField
+         * @param price
+         * @param airlineDescription
+         * @param description
+         * @param departureTime
+         * @param origin
+         * @param quantity
+         * @param flightNumber
+         * @param code
+         * @param currency
+         * @param destination
+         */
+        public PaxMeal(Object code, long description, Object airlineDescription, long price, long quantity, String text, String destination, String origin, long wayTypeField, Object currency, Object flightNumber, String departureTime) {
+            super();
+            this.code = code;
+            this.description = description;
+            this.airlineDescription = airlineDescription;
+            this.price = price;
+            this.quantity = quantity;
+            this.text = text;
+            this.destination = destination;
+            this.origin = origin;
+            this.wayTypeField = wayTypeField;
+            this.currency = currency;
+            this.flightNumber = flightNumber;
+            this.departureTime = departureTime;
+        }
+
+        public Object getCode() {
+            return code;
+        }
+
+        public void setCode(Object code) {
+            this.code = code;
+        }
+
+        public PaxMeal withCode(Object code) {
+            this.code = code;
+            return this;
+        }
+
+        public long getDescription() {
+            return description;
+        }
+
+        public void setDescription(long description) {
+            this.description = description;
+        }
+
+        public PaxMeal withDescription(long description) {
+            this.description = description;
+            return this;
+        }
+
+        public Object getAirlineDescription() {
+            return airlineDescription;
+        }
+
+        public void setAirlineDescription(Object airlineDescription) {
+            this.airlineDescription = airlineDescription;
+        }
+
+        public PaxMeal withAirlineDescription(Object airlineDescription) {
+            this.airlineDescription = airlineDescription;
+            return this;
+        }
+
+        public long getPrice() {
+            return price;
+        }
+
+        public void setPrice(long price) {
+            this.price = price;
+        }
+
+        public PaxMeal withPrice(long price) {
+            this.price = price;
+            return this;
+        }
+
+        public long getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(long quantity) {
+            this.quantity = quantity;
+        }
+
+        public PaxMeal withQuantity(long quantity) {
+            this.quantity = quantity;
+            return this;
+        }
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
+        }
+
+        public PaxMeal withText(String text) {
+            this.text = text;
+            return this;
+        }
+
+        public String getDestination() {
+            return destination;
+        }
+
+        public void setDestination(String destination) {
+            this.destination = destination;
+        }
+
+        public PaxMeal withDestination(String destination) {
+            this.destination = destination;
+            return this;
+        }
+
+        public String getOrigin() {
+            return origin;
+        }
+
+        public void setOrigin(String origin) {
+            this.origin = origin;
+        }
+
+        public PaxMeal withOrigin(String origin) {
+            this.origin = origin;
+            return this;
+        }
+
+        public long getWayTypeField() {
+            return wayTypeField;
+        }
+
+        public void setWayTypeField(long wayTypeField) {
+            this.wayTypeField = wayTypeField;
+        }
+
+        public PaxMeal withWayTypeField(long wayTypeField) {
+            this.wayTypeField = wayTypeField;
+            return this;
+        }
+
+        public Object getCurrency() {
+            return currency;
+        }
+
+        public void setCurrency(Object currency) {
+            this.currency = currency;
+        }
+
+        public PaxMeal withCurrency(Object currency) {
+            this.currency = currency;
+            return this;
+        }
+
+        public Object getFlightNumber() {
+            return flightNumber;
+        }
+
+        public void setFlightNumber(Object flightNumber) {
+            this.flightNumber = flightNumber;
+        }
+
+        public PaxMeal withFlightNumber(Object flightNumber) {
+            this.flightNumber = flightNumber;
+            return this;
+        }
+
+        public String getDepartureTime() {
+            return departureTime;
+        }
+
+        public void setDepartureTime(String departureTime) {
+            this.departureTime = departureTime;
+        }
+
+        public PaxMeal withDepartureTime(String departureTime) {
+            this.departureTime = departureTime;
+            return this;
+        }
+
+    }
+
     public class Seat implements Serializable {
 
         private final static long serialVersionUID = -5307939921559549726L;
@@ -2182,7 +2488,7 @@ public class FlightTicket implements Serializable {
 
     public class Segment implements Serializable {
 
-        private final static long serialVersionUID = 6548340149855033594L;
+        private final static long serialVersionUID = -6985134973764778175L;
         @SerializedName("NoOfSeatAvailable")
         @Expose
         private long noOfSeatAvailable;
@@ -2251,13 +2557,13 @@ public class FlightTicket implements Serializable {
         private String stopPointDepartureTime;
         @SerializedName("IncludedBaggage")
         @Expose
-        private Object includedBaggage;
+        private String includedBaggage;
         @SerializedName("CabinBaggage")
         @Expose
-        private Object cabinBaggage;
+        private String cabinBaggage;
         @SerializedName("AdditionalBaggage")
         @Expose
-        private Object additionalBaggage;
+        private String additionalBaggage;
         @SerializedName("AirlineDetails")
         @Expose
         private AirlineDetails airlineDetails;
@@ -2300,7 +2606,7 @@ public class FlightTicket implements Serializable {
          * @param duration
          * @param arrivalTime
          */
-        public Segment(long noOfSeatAvailable, String operatingCarrier, long segmentIndicator, String airline, Origin origin, Destination destination, String flightNumber, String departureTime, String arrivalTime, String bookingClass, Object mealType, boolean eTicketEligible, String craft, boolean stopOver, long stops, long mile, String duration, String groundTime, String accumulatedDuration, Object stopPoint, String stopPointArrivalTime, String stopPointDepartureTime, Object includedBaggage, Object cabinBaggage, Object additionalBaggage, AirlineDetails airlineDetails, String airlineName) {
+        public Segment(long noOfSeatAvailable, String operatingCarrier, long segmentIndicator, String airline, Origin origin, Destination destination, String flightNumber, String departureTime, String arrivalTime, String bookingClass, Object mealType, boolean eTicketEligible, String craft, boolean stopOver, long stops, long mile, String duration, String groundTime, String accumulatedDuration, Object stopPoint, String stopPointArrivalTime, String stopPointDepartureTime, String includedBaggage, String cabinBaggage, String additionalBaggage, AirlineDetails airlineDetails, String airlineName) {
             super();
             this.noOfSeatAvailable = noOfSeatAvailable;
             this.operatingCarrier = operatingCarrier;
@@ -2617,41 +2923,41 @@ public class FlightTicket implements Serializable {
             return this;
         }
 
-        public Object getIncludedBaggage() {
+        public String getIncludedBaggage() {
             return includedBaggage;
         }
 
-        public void setIncludedBaggage(Object includedBaggage) {
+        public void setIncludedBaggage(String includedBaggage) {
             this.includedBaggage = includedBaggage;
         }
 
-        public Segment withIncludedBaggage(Object includedBaggage) {
+        public Segment withIncludedBaggage(String includedBaggage) {
             this.includedBaggage = includedBaggage;
             return this;
         }
 
-        public Object getCabinBaggage() {
+        public String getCabinBaggage() {
             return cabinBaggage;
         }
 
-        public void setCabinBaggage(Object cabinBaggage) {
+        public void setCabinBaggage(String cabinBaggage) {
             this.cabinBaggage = cabinBaggage;
         }
 
-        public Segment withCabinBaggage(Object cabinBaggage) {
+        public Segment withCabinBaggage(String cabinBaggage) {
             this.cabinBaggage = cabinBaggage;
             return this;
         }
 
-        public Object getAdditionalBaggage() {
+        public String getAdditionalBaggage() {
             return additionalBaggage;
         }
 
-        public void setAdditionalBaggage(Object additionalBaggage) {
+        public void setAdditionalBaggage(String additionalBaggage) {
             this.additionalBaggage = additionalBaggage;
         }
 
-        public Segment withAdditionalBaggage(Object additionalBaggage) {
+        public Segment withAdditionalBaggage(String additionalBaggage) {
             this.additionalBaggage = additionalBaggage;
             return this;
         }
@@ -2687,25 +2993,25 @@ public class FlightTicket implements Serializable {
 
     public class Ticket implements Serializable {
 
-        private final static long serialVersionUID = -7151215472821579740L;
+        private final static long serialVersionUID = 9212607893327248880L;
         @SerializedName("TicketId")
         @Expose
         private long ticketId;
         @SerializedName("TicketNumber")
         @Expose
-        private Object ticketNumber;
+        private String ticketNumber;
         @SerializedName("Remarks")
         @Expose
-        private Object remarks;
+        private String remarks;
         @SerializedName("ValidatingAriline")
         @Expose
-        private Object validatingAriline;
+        private String validatingAriline;
         @SerializedName("IssueDate")
         @Expose
         private String issueDate;
         @SerializedName("Status")
         @Expose
-        private Object status;
+        private String status;
         @SerializedName("PtcDetail")
         @Expose
         private Object ptcDetail;
@@ -2725,7 +3031,7 @@ public class FlightTicket implements Serializable {
          * @param remarks
          * @param ticketNumber
          */
-        public Ticket(long ticketId, Object ticketNumber, Object remarks, Object validatingAriline, String issueDate, Object status, Object ptcDetail) {
+        public Ticket(long ticketId, String ticketNumber, String remarks, String validatingAriline, String issueDate, String status, Object ptcDetail) {
             super();
             this.ticketId = ticketId;
             this.ticketNumber = ticketNumber;
@@ -2749,41 +3055,41 @@ public class FlightTicket implements Serializable {
             return this;
         }
 
-        public Object getTicketNumber() {
+        public String getTicketNumber() {
             return ticketNumber;
         }
 
-        public void setTicketNumber(Object ticketNumber) {
+        public void setTicketNumber(String ticketNumber) {
             this.ticketNumber = ticketNumber;
         }
 
-        public Ticket withTicketNumber(Object ticketNumber) {
+        public Ticket withTicketNumber(String ticketNumber) {
             this.ticketNumber = ticketNumber;
             return this;
         }
 
-        public Object getRemarks() {
+        public String getRemarks() {
             return remarks;
         }
 
-        public void setRemarks(Object remarks) {
+        public void setRemarks(String remarks) {
             this.remarks = remarks;
         }
 
-        public Ticket withRemarks(Object remarks) {
+        public Ticket withRemarks(String remarks) {
             this.remarks = remarks;
             return this;
         }
 
-        public Object getValidatingAriline() {
+        public String getValidatingAriline() {
             return validatingAriline;
         }
 
-        public void setValidatingAriline(Object validatingAriline) {
+        public void setValidatingAriline(String validatingAriline) {
             this.validatingAriline = validatingAriline;
         }
 
-        public Ticket withValidatingAriline(Object validatingAriline) {
+        public Ticket withValidatingAriline(String validatingAriline) {
             this.validatingAriline = validatingAriline;
             return this;
         }
@@ -2801,15 +3107,15 @@ public class FlightTicket implements Serializable {
             return this;
         }
 
-        public Object getStatus() {
+        public String getStatus() {
             return status;
         }
 
-        public void setStatus(Object status) {
+        public void setStatus(String status) {
             this.status = status;
         }
 
-        public Ticket withStatus(Object status) {
+        public Ticket withStatus(String status) {
             this.status = status;
             return this;
         }
@@ -2828,6 +3134,4 @@ public class FlightTicket implements Serializable {
         }
 
     }
-
-
 }

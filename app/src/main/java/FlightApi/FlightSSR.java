@@ -26,11 +26,12 @@ public class FlightSSR implements Serializable {
     @SerializedName("TrackingId")
     @Expose
     private String trackingId;
-
+    FlightSSRRespone flightSSRRespone;
     /**
      * No args constructor for use in serialization
      */
     public FlightSSR() {
+        flightSSRRespone = new FlightSSRRespone();
     }
 
     /**

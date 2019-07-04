@@ -23,11 +23,13 @@ public class FlightRelease implements Serializable {
     @SerializedName("IPAddress")
     @Expose
     private String iPAddress;
+    ReleaseResponse releaseResponse;
 
     /**
      * No args constructor for use in serialization
      */
     public FlightRelease() {
+        releaseResponse = new ReleaseResponse();
     }
 
     /**

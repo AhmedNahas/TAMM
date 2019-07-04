@@ -14,11 +14,13 @@ public class FlightGetBooking implements Serializable {
     @SerializedName("PNR")
     @Expose
     private String pNR;
+    GetBookingResponse getBookingResponse;
 
     /**
      * No args constructor for use in serialization
      */
     public FlightGetBooking() {
+        getBookingResponse = new GetBookingResponse();
     }
 
     /**
