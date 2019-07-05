@@ -9,10 +9,16 @@ import java.util.List;
 
 public class SearchFlights implements Serializable {
 
-    private final static long serialVersionUID = -607291032323431408L;
     @SerializedName("IPAddress")
     @Expose
     private String iPAddress;
+    private final static long serialVersionUID = 5713774592038917269L;
+    @SerializedName("EndUserBrowserAgent")
+    @Expose
+    private String endUserBrowserAgent;
+    @SerializedName("PointOfSale")
+    @Expose
+    private String pointOfSale;
     @SerializedName("TokenId")
     @Expose
     private String tokenId;
@@ -34,27 +40,35 @@ public class SearchFlights implements Serializable {
     @SerializedName("Segment")
     @Expose
     private List<Segment> segment = new ArrayList<Segment>();
+    @SerializedName("RequestOrigin")
+    @Expose
+    private String requestOrigin;
     public SearchFlightsResponse searchFlightsResponse;
     /**
      * No args constructor for use in serialization
      */
     public SearchFlights() {
-        searchFlightsResponse = new SearchFlightsResponse();
     }
 
     /**
+     * @param endUserBrowserAgent
      * @param tokenId
      * @param childCount
      * @param segment
      * @param adultCount
+     * @param pointOfSale
+     * @param requestOrigin
      * @param infantCount
      * @param iPAddress
      * @param flightCabinClass
      * @param journeyType
      */
-    public SearchFlights(String iPAddress, String tokenId, long journeyType, long adultCount, long childCount, long infantCount, long flightCabinClass, List<Segment> segment) {
+    public SearchFlights(String iPAddress, String endUserBrowserAgent, String pointOfSale, String requestOrigin, String tokenId, long journeyType, long adultCount, long childCount, long infantCount, long flightCabinClass, List<Segment> segment) {
         super();
         this.iPAddress = iPAddress;
+        this.endUserBrowserAgent = endUserBrowserAgent;
+        this.pointOfSale = pointOfSale;
+        this.requestOrigin = requestOrigin;
         this.tokenId = tokenId;
         this.journeyType = journeyType;
         this.adultCount = adultCount;
@@ -62,6 +76,7 @@ public class SearchFlights implements Serializable {
         this.infantCount = infantCount;
         this.flightCabinClass = flightCabinClass;
         this.segment = segment;
+        searchFlightsResponse = new SearchFlightsResponse();
     }
 
     public String getIPAddress() {
@@ -74,6 +89,45 @@ public class SearchFlights implements Serializable {
 
     public SearchFlights withIPAddress(String iPAddress) {
         this.iPAddress = iPAddress;
+        return this;
+    }
+
+    public String getEndUserBrowserAgent() {
+        return endUserBrowserAgent;
+    }
+
+    public void setEndUserBrowserAgent(String endUserBrowserAgent) {
+        this.endUserBrowserAgent = endUserBrowserAgent;
+    }
+
+    public SearchFlights withEndUserBrowserAgent(String endUserBrowserAgent) {
+        this.endUserBrowserAgent = endUserBrowserAgent;
+        return this;
+    }
+
+    public String getPointOfSale() {
+        return pointOfSale;
+    }
+
+    public void setPointOfSale(String pointOfSale) {
+        this.pointOfSale = pointOfSale;
+    }
+
+    public SearchFlights withPointOfSale(String pointOfSale) {
+        this.pointOfSale = pointOfSale;
+        return this;
+    }
+
+    public String getRequestOrigin() {
+        return requestOrigin;
+    }
+
+    public void setRequestOrigin(String requestOrigin) {
+        this.requestOrigin = requestOrigin;
+    }
+
+    public SearchFlights withRequestOrigin(String requestOrigin) {
+        this.requestOrigin = requestOrigin;
         return this;
     }
 
@@ -169,9 +223,8 @@ public class SearchFlights implements Serializable {
     }
 
 
-    public class Segment implements Serializable {
+    public static class Segment implements Serializable {
 
-        private final static long serialVersionUID = 7158243469548762065L;
         @SerializedName("Origin")
         @Expose
         private String origin;
@@ -184,6 +237,10 @@ public class SearchFlights implements Serializable {
         @SerializedName("PreferredArrivalTime")
         @Expose
         private String preferredArrivalTime;
+        private final static long serialVersionUID = 8745145667817667883L;
+        @SerializedName("PreferredAirlines")
+        @Expose
+        private List<String> preferredAirlines = new ArrayList<String>();
 
         /**
          * No args constructor for use in serialization
@@ -192,17 +249,19 @@ public class SearchFlights implements Serializable {
         }
 
         /**
+         * @param preferredAirlines
          * @param preferredDepartureTime
          * @param origin
          * @param preferredArrivalTime
          * @param destination
          */
-        public Segment(String origin, String destination, String preferredDepartureTime, String preferredArrivalTime) {
+        public Segment(String origin, String destination, String preferredDepartureTime, String preferredArrivalTime, List<String> preferredAirlines) {
             super();
             this.origin = origin;
             this.destination = destination;
             this.preferredDepartureTime = preferredDepartureTime;
             this.preferredArrivalTime = preferredArrivalTime;
+            this.preferredAirlines = preferredAirlines;
         }
 
         public String getOrigin() {
@@ -256,5 +315,19 @@ public class SearchFlights implements Serializable {
             this.preferredArrivalTime = preferredArrivalTime;
             return this;
         }
+
+        public List<String> getPreferredAirlines() {
+            return preferredAirlines;
+        }
+
+        public void setPreferredAirlines(List<String> preferredAirlines) {
+            this.preferredAirlines = preferredAirlines;
+        }
+
+        public Segment withPreferredAirlines(List<String> preferredAirlines) {
+            this.preferredAirlines = preferredAirlines;
+            return this;
+        }
+
     }
 }

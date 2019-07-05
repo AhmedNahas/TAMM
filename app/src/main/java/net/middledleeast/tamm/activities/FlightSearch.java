@@ -12,9 +12,13 @@ import com.google.gson.GsonBuilder;
 
 import net.middledleeast.tamm.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import FlightApi.FlightApiService;
 import FlightApi.FlightAuthentication;
 import FlightApi.FlightConstants;
+import FlightApi.SearchFlights;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -31,6 +35,9 @@ public class FlightSearch extends AppCompatActivity {
     private static Retrofit retrofit = null;
     String password;
     private RecyclerView recyclerView = null;
+    public FlightAuthentication flightAuthentication;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,21 +56,20 @@ public class FlightSearch extends AppCompatActivity {
         connectAndGetApiData(gson, client);
         FlightApiService flightApiService = retrofit.create(FlightApiService.class);
 
-        FlightAuthentication flightAuthentication = new FlightAuthentication();
-        flightAuthentication.setUserName(FlightConstants.API_USER_NAME);
-        flightAuthentication.setPassword(password);
-        flightAuthentication.setBookingMode("API");
-        flightAuthentication.setIPAddress("192.169.10.22");
+        final FlightAuthentication[] flightAuthentication = {new FlightAuthentication()};
+        flightAuthentication[0].setUserName(FlightConstants.API_USER_NAME);
+        flightAuthentication[0].setPassword(password);
+        flightAuthentication[0].setBookingMode("API");
+        flightAuthentication[0].setIPAddress("192.169.10.22");
 
-        Call<FlightAuthentication> call = flightApiService.getAuthentication("application/json", flightAuthentication);
+        Call<FlightAuthentication> call = flightApiService.getAuthentication("application/json", flightAuthentication[0]);
 
         call.enqueue(new Callback<FlightAuthentication>() {
             @Override
             public void onResponse(Call<FlightAuthentication> call, Response<FlightAuthentication> response) {
-                FlightAuthentication flightAuthentication = response.body();
+                flightAuthentication[0] = response.body();
 
-
-                System.out.println("Helper: " + flightAuthentication.getTokenId());
+                System.out.println("Helper: " + flightAuthentication[0].getTokenId());
             }
 
             @Override
@@ -71,6 +77,41 @@ public class FlightSearch extends AppCompatActivity {
                 Log.e(TAG, throwable.toString());
             }
         });
+        if (flightAuthentication[0] != null) {
+            SearchFlights searchFlights = new SearchFlights();
+            searchFlights.setTokenId(flightAuthentication[0].getTokenId());
+            searchFlights.setAdultCount(1);
+            searchFlights.setChildCount(1);
+            searchFlights.setFlightCabinClass(1);
+            searchFlights.setInfantCount(1);
+            searchFlights.setJourneyType(1);
+            searchFlights.setIPAddress("192.168.4.238");
+            List<SearchFlights.Segment> segments = new ArrayList<>();
+            SearchFlights.Segment segment = new SearchFlights.Segment();
+            segment.setDestination("DEL");
+            segment.setOrigin("DXB");
+            segment.setPreferredArrivalTime("2018-12-29T00:00:00");
+            segment.setPreferredDepartureTime("2018-12-29T00:00:00");
+            List<String> airlines = new ArrayList<>();
+            airlines.add("EK");
+            airlines.add("AI");
+            segment.setPreferredAirlines(airlines);
+            segments.add(segment);
+            searchFlights.setSegment(segments);
+            Call<SearchFlights> searchCall = flightApiService.getFlightSearch("application/json", searchFlights);
+            searchCall.enqueue(new Callback<SearchFlights>() {
+
+                @Override
+                public void onResponse(Call<SearchFlights> call, Response<SearchFlights> response) {
+                    System.out.println("How: " + searchFlights.searchFlightsResponse.getResults());
+                }
+
+                @Override
+                public void onFailure(Call<SearchFlights> call, Throwable throwable) {
+                    Log.e(TAG, throwable.toString());
+                }
+            });
+        }
     }
 
     public Retrofit connectAndGetApiData(Gson gson, OkHttpClient client) {
