@@ -181,7 +181,6 @@
         </LinearLayout>
 
 
-
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -199,42 +198,42 @@
 
 
             <Spinner
-                android:id="@+id/roomsSelected"
-                android:layout_width="wrap_content"
+                android:id="@+id/no_of_rooms"
+                android:layout_width="102dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:hint="1 Room"
-                android:textColor="#fff"
-                android:textColorHint="#fff"
-                android:textSize="15sp" />
+                android:layout_gravity="center"
+                android:gravity="center" />
         </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="2 Adults"
-            android:textColor="#fff"
-            android:textColorHint="#fff"
-            android:textSize="15sp" />
-
-
         <LinearLayout
+            android:background="@color/white"
             android:layout_width="81dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:orientation="vertical">
 
 
-            <TextView
-                android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/adilt_count"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@color/white"
+            android:layout_width="81dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+
+            <Spinner
+                android:id="@+id/child_count"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:gravity="center"
-                android:hint="1 Child"
-                android:textColor="#fff"
-                android:textColorHint="#fff"
-                android:textSize="15sp" />
+                android:layout_gravity="center"
+                android:gravity="center" />
         </LinearLayout>
     </LinearLayout>
 
@@ -294,14 +293,7 @@
 
     </LinearLayout>
 
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Write Hotel Name"
-        android:layout_gravity="center"
-        android:background="#fff"
-        android:textStyle="italic"
-        android:layout_marginTop="20dp"/>
+
 
     <Button
         android:id="@+id/findHotels"
@@ -311,9 +303,10 @@
         android:layout_marginTop="20dp"
         android:background="@color/app_color"
         android:text="FIND HOTELS" />
-
-
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 
 
 

@@ -2,16 +2,17 @@ package net.middledleeast.tamm.model;
 
 import android.content.Intent;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.FindHotels;
+
+import static net.middledleeast.tamm.R.layout.reserve_room;
 
 public class ReserveRoom extends AppCompatActivity {
     private Toolbar toolbar;
@@ -21,7 +22,7 @@ public class ReserveRoom extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.reserve_room);
+        setContentView(reserve_room);
 
         reservebtn =findViewById(R.id.btn_reserve_user);
 

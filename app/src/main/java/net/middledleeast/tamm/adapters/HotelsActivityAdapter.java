@@ -68,9 +68,9 @@ public class HotelsActivityAdapter extends RecyclerView.Adapter<HotelsActivityAd
         LinearLayout parentLayout;
         public RecyclerViewHolder(@NonNull View itemView , onHotelListener onHotelListener) {
             super(itemView);
-            hotelImage = itemView.findViewById(R.id.hotel_image);
-            hotelName = itemView.findViewById(R.id.hotel_name);
-            hotelDesc = itemView.findViewById(R.id.hotel_description);
+            hotelImage = itemView.findViewById(R.id.hotel_image_detail);
+            hotelName = itemView.findViewById(R.id.hotel_name_detail);
+            hotelDesc = itemView.findViewById(R.id.hotel_desc_detail);
             parentLayout = itemView.findViewById(R.id.linear);
             this.onHotelListener = onHotelListener;
             itemView.setOnClickListener(this);

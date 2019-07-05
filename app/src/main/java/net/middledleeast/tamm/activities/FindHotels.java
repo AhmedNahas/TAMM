@@ -2,13 +2,11 @@ package net.middledleeast.tamm.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,36 +19,33 @@ import android.widget.Toast;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
-import com.Tamm.Hotels.wcf.CityList;
 import com.Tamm.Hotels.wcf.CountryList;
 import com.Tamm.Hotels.wcf.CountryListResponse;
 import com.Tamm.Hotels.wcf.DestinationCityListResponse;
+import com.Tamm.Hotels.wcf.GeoCodes;
 import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.RoomGuest;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.adapters.AreaAdapter;
-import net.middledleeast.tamm.adapters.CountryAdapter;
-import net.middledleeast.tamm.adapters.RegionAdapter;
-import net.middledleeast.tamm.model.AreaItem;
-import net.middledleeast.tamm.model.RegionItem;
 
 import org.joda.time.DateTime;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Queue;
+import java.util.Locale;
+import java.text.SimpleDateFormat;
+
+import static java.util.Calendar.YEAR;
 
 public class FindHotels extends AppCompatActivity {
 
 
     private Button findHotel;
-    private Spinner  regions ,areas , roomsSelected;
+    private Spinner regions, areas, roomCount, adultCount, childCount;
     private List<String> list = new ArrayList<>();
-    private  List<String> listID = new ArrayList<>();
+    private List<String> listID = new ArrayList<>();
     private List<String> nameCity = new ArrayList<>();
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
@@ -59,62 +54,116 @@ public class FindHotels extends AppCompatActivity {
     private List<String> lisNameHotels = new ArrayList<>();
     private String idCountry;
     ArrayList<String> nameHotel = new ArrayList<>();
-    ArrayList<String> descHotel = new ArrayList<>();
+    ArrayList<Integer> ratrHotel = new ArrayList<Integer>();
     ArrayList<String> photoHotel = new ArrayList<>();
+    ArrayList<String> addressHotel = new ArrayList<>();
     private String hotelAddress;
     private String hotelName;
     private String hotelPicture;
-    private TextView startD , endD;
-    private DatePickerDialog.OnDateSetListener mDateSetListener;
-    private Calendar cal;
-    private String countryName;
-    private String cityName;
+    private String nameCountry;
+    Calendar myCalendar;
+    private String name_city;
+    private TextView startDate, endDate;
+    private String mendTime;
+    private String mstartTime;
+    private List<Integer> listOfRooms = new ArrayList<>();
+    private List<Integer> listOfAdult = new ArrayList<>();
+    private List<Integer> listOfChild = new ArrayList<>();
+    private int noRomes;
+    ArrayList<String> listcodeHotel  = new ArrayList<>();
+    private String sessionId;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_hotels);
-        findHotel= findViewById(R.id.findHotels);
+        findHotel = findViewById(R.id.findHotels);
         areas = findViewById(R.id.area_spinner);
-        startD=findViewById(R.id.startDate);
-        endD=findViewById(R.id.endDate);
-        roomsSelected= findViewById(R.id.roomsSelected);
+        regions = findViewById(R.id.region_spinner);
+        roomCount = findViewById(R.id.no_of_rooms);
+        adultCount = findViewById(R.id.adilt_count);
+        childCount = findViewById(R.id.child_count);
+        startDate = findViewById(R.id.startDate);
+        endDate = findViewById(R.id.endDate);
+
+        for (int i = 1; i < 7; i++) {
+
+            listOfRooms.add(i);
+        }
 
 
+        ArrayAdapter adapterRoomCount = new ArrayAdapter(this, android.R.layout.simple_spinner_item, listOfRooms);
 
-
-        startD.setOnClickListener(new View.OnClickListener() {
+        adapterRoomCount.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        roomCount.setAdapter(adapterRoomCount);
+        roomCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                int position = listOfRooms.get(i);
 
-                DatePickerDialog dialog = new DatePickerDialog(
-                        FindHotels.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        mDateSetListener,
-                        year,month,day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
+                switch (position) {
+                    case 1:
+                        listOfChild.clear();
+                        listOfAdult.clear();
+                        list1();
+                        listOfChildCount();
+                        noRomes = 1;
+                        break;
+                    case 2:
+                        listOfAdult.clear();
+                        listOfChild.clear();
+                        noRomes = 2;
+                        list2();
+                        listOfChildCount2();
+
+
+                    default:
+
+                        return;
+                }
+
+
+                ArrayAdapter adapteradult = new ArrayAdapter(FindHotels.this, android.R.layout.simple_spinner_item, listOfAdult);
+
+                adapteradult.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                adultCount.setAdapter(adapteradult);
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+
+        ArrayAdapter adapterchild = new ArrayAdapter(FindHotels.this, android.R.layout.simple_spinner_item, listOfChild);
+
+        adapterchild.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        childCount.setAdapter(adapterchild);
+
+
+        myCalendar = Calendar.getInstance();
+        startDate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month = month + 1;
+            public void onClick(View view) {
 
-                String date = month + "/" + day + "/" + year;
-                startD.setText(date);
+                dilogstart();
+
             }
-        };
-
-        regions = findViewById(R.id.region_spinner);
+        });
 
 
+        endDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                dialogendTime();
+            }
+        });
 
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -122,11 +171,21 @@ public class FindHotels extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
 
-
         findHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gethotelsInfo(ctyId);
+
+
+                if (startDate.getText().toString().matches("")){
+                    dilogstart();
+                }else if (endDate.getText().toString().matches("")){
+
+                    dialogendTime();
+                }else {
+
+                    gethotelsInfo(ctyId);
+                }
+
 
             }
         });
@@ -138,8 +197,6 @@ public class FindHotels extends AppCompatActivity {
 //            service.DestinationCityList("IN", null, authenticationData);
 
 
-
-
             CountryListResponse countryListResponse = service.CountryList(authenticationData);
 
 
@@ -149,10 +206,10 @@ public class FindHotels extends AppCompatActivity {
                 String cod = countryList.CountryCode;
 
                 listID.add(cod);
-                countryName = countryList.CountryName;
+                String name = countryList.CountryName;
 //                countryList.CountryCode
 //                countryListResponse.Status.Category
-                list.add(countryName);
+                list.add(name);
 
                 ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -163,13 +220,13 @@ public class FindHotels extends AppCompatActivity {
             regions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                   nameCity.clear();
-                   idCountry = listID.get(position);
 
+                    nameCity.clear();
+                    idCountry = listID.get(position);
 
-                    Toast.makeText(FindHotels.this, "country id "+idCountry, Toast.LENGTH_SHORT).show();
+                    nameCountry = list.get(position);
 
-
+                    getCities(idCountry);
 
 
                 }
@@ -181,68 +238,114 @@ public class FindHotels extends AppCompatActivity {
             });
 
 
-
-
-
-            try {
-                DestinationCityListResponse cities = service.DestinationCityList(idCountry, "true", authenticationData);
-
-                for (int j = 0; j < cities.CityList.size(); j++) {
-
-                    cityName = cities.CityList.get(j).CityName;
-
-                    nameCity.add(cityName);
-                    ArrayAdapter adapterCity = new ArrayAdapter(FindHotels.this, android.R.layout.simple_spinner_item, nameCity);
-                    adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    areas.setAdapter(adapterCity);
-                    areas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            ctyId = cities.CityList.get(i).CityCode;
-                            Toast.makeText(FindHotels.this, "city id "+ctyId, Toast.LENGTH_SHORT).show();
-
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> adapterView) {
-
-                        }
-                    });
-
-                }
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-//            String test = hotelSearchResponse.Status.Description;
+            // String test = hotelSearchResponse.Status.Description;
 //            System.out.println("Hello: " + test);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    private void listOfChildCount() {
+
+        for (int i = 1; i < 5; i++) {
+            listOfChild.add(i);
+        }
+
+
+    }
+
+
+    private void listOfChildCount2() {
+
+        for (int i = 1; i < 9; i++) {
+            listOfChild.add(i);
+        }
+
+
+    }
+
+    private void list1() {
+
+        for (int i = 1; i < 7; i++) {
+
+
+            listOfAdult.add(i);
+        }
+
+
+    }
+
+    private void list2() {
+
+        for (int i = 1; i < 13; i++) {
+
+
+            listOfAdult.add(i);
+        }
+
+
+    }
+
+
+    private void getCities(String idCountry) {
+
+
+        try {
+            DestinationCityListResponse cities = service.DestinationCityList(idCountry, "True", authenticationData);
+            for (int j = 0; j < cities.CityList.size(); j++) {
+
+
+                ctyId = cities.CityList.get(j).CityCode;
+                String cityName = cities.CityList.get(j).CityName;
+                nameCity.add(cityName);
+
+
+                ArrayAdapter adapterCity = new ArrayAdapter(FindHotels.this, android.R.layout.simple_spinner_item, nameCity);
+                adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                areas.setAdapter(adapterCity);
+                areas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+//                        FindHotels.this.cityName = cities.CityList.get(position).CityName;
+//                        nameCity.add(FindHotels.this.cityName);
+
+                        name_city = nameCity.get(position);
+
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
+
+            }
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }//
+
+    }
+
     private void gethotelsInfo(String ctyId) {
-
-
 
 
         auth();
 
-        Calendar cal1 = Calendar.getInstance();
-        cal1.set(Calendar.DAY_OF_MONTH, 22);
-        Calendar cal2 = Calendar.getInstance();
-        cal2.set(Calendar.DAY_OF_MONTH, 23);
-        DateTime date1 = DateTime.now();
-        DateTime date2 = DateTime.now();
-        date1 = date1.plusDays(4);
-        date2 = date2.plusDays(7);
+//        Calendar cal1 = Calendar.getInstance();
+//        cal1.set(Calendar.DAY_OF_MONTH, 22);
+//        Calendar cal2 = Calendar.getInstance();
+//        cal2.set(Calendar.DAY_OF_MONTH, 23);
+        DateTime date1 = DateTime.parse(mstartTime);
+        DateTime date2 = DateTime.parse(mendTime);
+//        date1 = date1.plusDays(4);
+//        date2 = date2.plusDays(7);
 
 
         service.enableLogging = true;
-
-
 
         RoomGuest roomGuest = new RoomGuest();
         roomGuest.AdultCount = 1;
@@ -250,25 +353,38 @@ public class FindHotels extends AppCompatActivity {
         ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
         roomguests.add(roomGuest);
 
+        GeoCodes geoCodes = new GeoCodes();
+        String countryCode = geoCodes.CountryCode;
 
         try {
-            HotelSearchResponse hotelSearchResponse = service.HotelSearch(date1.toDateTimeISO(), date2.toDateTimeISO(),countryName,cityName,Integer.parseInt(ctyId),
-                    true,1,"EG",roomguests,null,20 ,null,null,null,
-                    null, authenticationData);
+            //HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), Integer.parseInt(ctyId), 1, roomguests, "EG", authenticationData);
 
 
+
+            HotelSearchResponse hotelSearchResponse = service.HotelSearch(date1.toDateTimeISO(), date2.toDateTimeISO(), nameCountry, name_city, Integer.parseInt(ctyId),
+                    true, noRomes, "EG", roomguests, null, 100, null, null, null,
+                    6000, authenticationData);
+            ratrHotel.clear();
+            nameHotel.clear();
+            photoHotel.clear();
+            listcodeHotel.clear();
 
             for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
 
                 HotelInfo hotelInfo = hotelSearchResponse.HotelResultList.get(i).HotelInfo;
-                 hotelAddress = hotelInfo.HotelAddress;
-                 hotelName = hotelInfo.HotelName;
-                 hotelPicture = hotelInfo.HotelPicture;
-                String hotelDescription = hotelInfo.HotelDescription;
+                sessionId = hotelSearchResponse.SessionId;
+                hotelAddress = hotelInfo.HotelAddress;
+                hotelName = hotelInfo.HotelName;
+                hotelPicture = hotelInfo.HotelPicture;
+                int code = hotelInfo.Rating.getCode();
+
+                String hotelCode = hotelInfo.HotelCode;
+                listcodeHotel.add(hotelCode);
 
                 nameHotel.add(hotelName);
-                descHotel.add(hotelDescription);
+                ratrHotel.add(code);
                 photoHotel.add(hotelPicture);
+                addressHotel.add(hotelAddress);
 
 
             }
@@ -279,16 +395,24 @@ public class FindHotels extends AppCompatActivity {
         }
 
 
+        Intent intent = new Intent(FindHotels.this, ChooseHotelActivity.class);
+        intent.putExtra("hotelName", nameHotel);
+        intent.putExtra("hotelrat", ratrHotel);
+        intent.putExtra("hotelPhoto", photoHotel);
+        intent.putExtra("hotelCode", listcodeHotel);
+        intent.putExtra("hotelAddress",addressHotel);
+        intent.putExtra("sessionId",addressHotel);
+        intent.putExtra("checkInDate",mstartTime);
+        intent.putExtra("checkOutDate",mendTime);
+        intent.putExtra("countryName",nameCountry);
+        intent.putExtra("cityName",name_city);
+        intent.putExtra("cityId",ctyId);
+        intent.putExtra("noOfRooms",noRomes);
+        //intent.putExtra("roomGuest",roomguests);
 
-
-        Intent intent = new Intent(FindHotels.this,ChooseBookingDate.class);
-                intent.putExtra("hotelName",nameHotel);
-                intent.putExtra("hotelAddress",descHotel);
-                intent.putExtra("hotelPhoto",photoHotel);
-        startActivity(intent);
+     startActivity(intent);
 
     }
-
 
     private void auth() {
 
@@ -296,6 +420,58 @@ public class FindHotels extends AppCompatActivity {
         authenticationData = new AuthenticationData();
         authenticationData.UserName = ("Tammtest");
         authenticationData.Password = ("Tam@18418756");
+
+    }
+
+
+    private void dilogstart() {
+
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                myCalendar.set(YEAR, year);
+                myCalendar.set(Calendar.MONTH, month);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                String myFormat = "yyyy-MM-dd"; //In which you need put here
+                SimpleDateFormat start = new SimpleDateFormat(myFormat, Locale.US);
+
+                mstartTime = start.format(myCalendar.getTime());
+                startDate.setText(mstartTime);
+
+
+            }
+        };
+
+
+        new DatePickerDialog(FindHotels.this, date, myCalendar.get(Calendar.YEAR),
+                myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+    }
+
+
+    private void dialogendTime() {
+
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                myCalendar.set(YEAR, year);
+                myCalendar.set(Calendar.MONTH, month);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                String myFormat = "yyyy-MM-dd"; //In which you need put here
+                SimpleDateFormat end = new SimpleDateFormat(myFormat, Locale.US);
+
+                mendTime = end.format(myCalendar.getTime());
+                endDate.setText(mendTime);
+
+
+            }
+        };
+
+
+        new DatePickerDialog(FindHotels.this, date, myCalendar.get(Calendar.YEAR),
+                myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
     }
 
