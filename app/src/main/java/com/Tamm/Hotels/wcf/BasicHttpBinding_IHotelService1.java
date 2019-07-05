@@ -107,7 +107,14 @@ public class BasicHttpBinding_IHotelService1 {
         return null;
     }
 
-    public HotelSearchResponse HotelSearch(final org.joda.time.DateTime CheckInDate, final org.joda.time.DateTime CheckOutDate, final String CountryName, final String CityName, final Integer CityId, final Boolean IsNearBySearchAllowed, final Integer NoOfRooms, final String GuestNationality, final ArrayOfRoomGuest RoomGuests, final String PreferredCurrencyCode, final Integer ResultCount, final Filters Filters, final String IsRoomInfoRequired, final GeoCodes GeoCodes, final Integer ResponseTime, final AuthenticationData Credentials) throws java.lang.Exception {
+    public HotelSearchResponse HotelSearch(final org.joda.time.DateTime CheckInDate, final org.joda.time.DateTime CheckOutDate,
+                                           final String CountryName, final String CityName, final Integer CityId,
+                                           final Boolean IsNearBySearchAllowed, final Integer NoOfRooms,
+                                           final String GuestNationality, final ArrayOfRoomGuest RoomGuests,
+                                           final String PreferredCurrencyCode, final Integer ResultCount,
+                                           final Filters Filters, final String IsRoomInfoRequired,
+                                           final GeoCodes GeoCodes, final Integer ResponseTime,
+                                           final AuthenticationData Credentials) throws java.lang.Exception {
         com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile __profile = new com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile();
         return (HotelSearchResponse) execute(new IWcfMethod() {
             @Override
@@ -228,7 +235,7 @@ public class BasicHttpBinding_IHotelService1 {
         }, "http://TekTravel/HotelBookingApi/HotelSearch", __profile);
     }
 
-    public HotelSearchResponse hotelSearchTest(final org.joda.time.DateTime CheckInDate, final org.joda.time.DateTime CheckOutDate, final Integer CityId, final Integer NoOfRooms, final ArrayOfRoomGuest RoomGuests, final String GuestNationality, final AuthenticationData Credentials) throws java.lang.Exception {
+    public HotelSearchResponse HotelSearch1(final org.joda.time.DateTime CheckInDate, final org.joda.time.DateTime CheckOutDate, final Integer CityId, final Integer NoOfRooms, final ArrayOfRoomGuest RoomGuests, final String GuestNationality, final AuthenticationData Credentials) throws java.lang.Exception {
         com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile __profile = new com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile();
         return (HotelSearchResponse) execute(new IWcfMethod() {
             @Override
@@ -1115,7 +1122,15 @@ public class BasicHttpBinding_IHotelService1 {
         }, "HotelCodeList");
     }
 
-    public HotelSearchWithRoomsResponse HotelSearchWithRooms(final org.joda.time.DateTime CheckInDate, final org.joda.time.DateTime CheckOutDate, final String CountryName, final String CityName, final Integer CityId, final Boolean IsNearBySearchAllowed, final Integer NoOfRooms, final String GuestNationality, final ArrayOfRoomGuest RoomGuests, final String PreferredCurrencyCode, final Integer ResultCount, final HotelSearchWithRoomsFilters Filters, final Integer ResponseTime, final Boolean IsCancellationPolicyRequired, final AuthenticationData Credentials) throws java.lang.Exception {
+    public HotelSearchWithRoomsResponse HotelSearchWithRooms(final org.joda.time.DateTime CheckInDate,
+                                                             final org.joda.time.DateTime CheckOutDate,
+                                                             final String CountryName, final String CityName,
+                                                             final Integer CityId, final Boolean IsNearBySearchAllowed,
+                                                             final Integer NoOfRooms, final String GuestNationality,
+                                                             final ArrayOfRoomGuest RoomGuests, final String PreferredCurrencyCode,
+                                                             final Integer ResultCount, final HotelSearchWithRoomsFilters Filters,
+                                                             final Integer ResponseTime, final Boolean IsCancellationPolicyRequired,
+                                                             final AuthenticationData Credentials) throws java.lang.Exception {
         com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile __profile = new com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile();
         return (HotelSearchWithRoomsResponse) execute(new IWcfMethod() {
             @Override

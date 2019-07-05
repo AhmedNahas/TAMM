@@ -43,10 +43,23 @@
     </LinearLayout>
 
 
-    <ImageView
-        android:id="@+id/hotel_image_detail"
+    <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
-        android:layout_height="250dp" />
+        android:id="@+id/hotel_image_detail"
+        android:layout_height="150dp"
+       />
+
+
+    <LinearLayout
+        android:id="@+id/SliderDots"
+        android:layout_below="@+id/viewPager"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/hotel_name_detail"
         android:layout_width="200dp"
