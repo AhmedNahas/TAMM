@@ -2,7 +2,6 @@ package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.Button;
 
@@ -19,7 +18,7 @@ public class MemberShipPlan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     setContentView(R.layout.member_ship_plan);
 
-        accept = (Button) findViewById(R.id.btn_register_signup);
+        accept = findViewById(R.id.btn_register_signup);
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

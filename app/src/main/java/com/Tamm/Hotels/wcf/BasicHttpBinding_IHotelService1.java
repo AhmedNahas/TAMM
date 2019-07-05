@@ -235,7 +235,7 @@ public class BasicHttpBinding_IHotelService1 {
         }, "http://TekTravel/HotelBookingApi/HotelSearch", __profile);
     }
 
-    public HotelSearchResponse HotelSearch1(final org.joda.time.DateTime CheckInDate, final org.joda.time.DateTime CheckOutDate, final Integer CityId, final Integer NoOfRooms, final ArrayOfRoomGuest RoomGuests, final String GuestNationality, final AuthenticationData Credentials) throws java.lang.Exception {
+    public HotelSearchResponse hotelSearchTest(final org.joda.time.DateTime CheckInDate, final org.joda.time.DateTime CheckOutDate, final Integer CityId, final Integer NoOfRooms, final ArrayOfRoomGuest RoomGuests, final String GuestNationality, final AuthenticationData Credentials) throws java.lang.Exception {
         com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile __profile = new com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile();
         return (HotelSearchResponse) execute(new IWcfMethod() {
             @Override

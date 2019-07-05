@@ -2,12 +2,13 @@ package net.middledleeast.tamm.model;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.FindHotels;

@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,7 +19,6 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.HotelDetails;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.SingleView>{
 
@@ -28,7 +26,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
     ArrayList<Integer> listrat;
     ArrayList<String> listPhotoHotel;
     ArrayList<String> listAddressHotel;
-    ArrayList<String> listCodeHotels ;
+    ArrayList<String> listCodeHotels;
     Context context  ;
     String sessionId;
     private String mendTime;
@@ -37,27 +35,27 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
     private String countryName;
     private String cityName;
     private String cityId;
-    private String noOfRooms;
+    private int noOfRooms;
     private ArrayList<String> roomGuests;
 
 
     public AdapterHotelInfo(ArrayList<String> listnameHotel, ArrayList<Integer> hotelrat, ArrayList<String> listPhotoHotel,
                             Context context, onHotelListener onHotelListener, ArrayList<String> listAddressHotel, ArrayList<String> hotelCode,
-                            String sessionId , String mstartTime , String mendTime , String countryName , String cityName , String cityId , String noOfRooms , ArrayList<String> roomGuests) {
+                            String sessionId, String mstartTime, String mendTime, String countryName, String cityName, String cityId, int noOfRooms, ArrayList<String> roomGuests) {
         this.listnameHotel = listnameHotel;
         this.listPhotoHotel = listPhotoHotel;
         this.listrat = hotelrat;
         this.context = context;
         this.onHotelListener = onHotelListener;
         this.listAddressHotel = listAddressHotel;
-        this.listCodeHotels = hotelCode ;
-        this.sessionId = sessionId ;
+        this.listCodeHotels = hotelCode;
+        this.sessionId = sessionId;
         this.mstartTime = mstartTime;
-        this.countryName =countryName;
-        this.cityName =cityName;
-        this.cityId =cityId;
-        this.noOfRooms =noOfRooms;
-        this.roomGuests =roomGuests;
+        this.countryName = countryName;
+        this.cityName = cityName;
+        this.cityId = cityId;
+        this.noOfRooms = noOfRooms;
+        this.roomGuests = roomGuests;
 
 
         notifyDataSetChanged();
@@ -67,8 +65,8 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
     @NonNull
     @Override
     public AdapterHotelInfo.SingleView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.hotels_row,parent,false);
-        return new AdapterHotelInfo.SingleView(view,onHotelListener);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.hotels_row, parent, false);
+        return new AdapterHotelInfo.SingleView(view, onHotelListener);
     }
 
     @SuppressLint("SetTextI18n")
@@ -80,7 +78,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         String photos = listPhotoHotel.get(position);
         int rat = listrat.get(position);
         holder.name.setText(name);
-        holder.rat.setText(rat+"  of 5 guest rating");
+        holder.rat.setText(rat + "  of 5 guest rating");
 
         Glide.with(context).load(photos).into(holder.photoHotel);
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
@@ -88,11 +86,11 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
             public void onClick(View view) {
                 Intent intent = new Intent(context, HotelDetails.class);
 //                intent.putExtra("selected_hotel_image",photos);
-                intent.putExtra("selected_hotel_name",name);
-                intent.putExtra("selected_hotel_rate",rat);
-                intent.putExtra("hotelCode",mHotelCode);
-                intent.putExtra("checkInDate",mstartTime);
-                intent.putExtra("checkOutDate",mendTime);
+                intent.putExtra("selected_hotel_name", name);
+                intent.putExtra("selected_hotel_rate", rat);
+                intent.putExtra("hotelCode", mHotelCode);
+                intent.putExtra("checkInDate", mstartTime);
+                intent.putExtra("checkOutDate", mendTime);
                 intent.putExtra("countryName", countryName);
                 intent.putExtra("cityName", cityName);
                 intent.putExtra("cityId", cityId);
@@ -102,8 +100,6 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
 
 
                 context.startActivity(intent);
-
-
 
 
             }
@@ -116,14 +112,19 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         return listnameHotel.size();
     }
 
-    public class SingleView extends RecyclerView.ViewHolder  implements View.OnClickListener{
+    public interface onHotelListener {
+        void onHotelClick(int position);
 
-        TextView name , rat ;
+    }
+
+    public class SingleView extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        TextView name, rat;
         ImageView photoHotel ;
         onHotelListener onHotelListener;
         FrameLayout parentLayout;
 
-        public SingleView(@NonNull View itemView , onHotelListener onHotelListener) {
+        public SingleView(@NonNull View itemView, onHotelListener onHotelListener) {
             super(itemView);
             name = itemView.findViewById(R.id.hotel_name);
             rat = itemView.findViewById(R.id.hotel_rat);
@@ -132,15 +133,12 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
             this.onHotelListener = onHotelListener;
             itemView.setOnClickListener(this);
         }
+
         @Override
         public void onClick(View view) {
             onHotelListener.onHotelClick(getAdapterPosition());
 
         }
     }
-    public interface onHotelListener {
-        void onHotelClick(int position);
-
-    }
-    }
+}
 

@@ -18,7 +18,6 @@ import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.HotelDetailsResponse;
 import com.Tamm.Hotels.wcf.ImageUrlDetails;
-import com.Tamm.Hotels.wcf.RoomDetails;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.adapterPhotoHotels;
@@ -29,6 +28,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 
 public class HotelDetails extends AppCompatActivity {
 
@@ -41,8 +41,8 @@ public class HotelDetails extends AppCompatActivity {
     Button btnMap;
     @BindView(R.id.btn_next)
     Button btnNext;
-    private AuthenticationData authenticationData;
     LinearLayout sliderDotspanel;
+    private AuthenticationData authenticationData;
     private int dotscount;
     private ImageView[] dots;
     private adapterPhotoHotels adapter;
@@ -61,7 +61,7 @@ public class HotelDetails extends AppCompatActivity {
     private String countryName;
     private String cityName;
     private String cityId;
-    private String noOfRooms;
+    private int noOfRooms;
     private ArrayList<String> roomGuests;
 
     @Override
@@ -72,14 +72,14 @@ public class HotelDetails extends AppCompatActivity {
 
         // imageView=findViewById(R.id.hotel_image_detail);
         ViewPager viewPager = findViewById(R.id.hotel_image_detail);
-        sliderDotspanel = (LinearLayout) findViewById(R.id.SliderDots);
+        sliderDotspanel = findViewById(R.id.SliderDots);
 
         auth();
         getdataIntent();
 
         try {
+            service.enableLogging = true;
             HotelDetailsResponse hotelDetailsResponse = service.HotelDetails(1, sessionId, mHotelCode, "EN", authenticationData);
-
 
 
             ArrayOfImageUrlDetails imageUrls = hotelDetailsResponse.HotelDetails.ImageUrls;
@@ -91,11 +91,11 @@ public class HotelDetails extends AppCompatActivity {
                 listOfPhoto.add(value);
             }
 
-          //  address = hotelDetailsResponse.HotelDetails.Address;
+            //  address = hotelDetailsResponse.HotelDetails.Address;
             hotelName = hotelDetailsResponse.HotelDetails.HotelName;
-           // code = hotelDetailsResponse.HotelDetails.HotelRating.getCode();
+            // code = hotelDetailsResponse.HotelDetails.HotelRating.getCode();
             description = hotelDetailsResponse.HotelDetails.Description;
-        //    phoneNumber = hotelDetailsResponse.HotelDetails.PhoneNumber;
+            //    phoneNumber = hotelDetailsResponse.HotelDetails.PhoneNumber;
             //map = hotelDetailsResponse.HotelDetails.Map;
 
             Toast.makeText(this, "" + description, Toast.LENGTH_LONG).show();
@@ -160,11 +160,11 @@ public class HotelDetails extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HotelDetails.this,ChooseBookingDate.class);
-                intent.putExtra("checkInDate",mstartTime);
-                intent.putExtra("checkOutDate",mendTime);
-                intent.putExtra("sessionId",sessionId);
-                intent.putExtra("hotelCode",mHotelCode);
+                Intent intent = new Intent(HotelDetails.this, ChooseBookingDate.class);
+                intent.putExtra("checkInDate", mstartTime);
+                intent.putExtra("checkOutDate", mendTime);
+                intent.putExtra("sessionId", sessionId);
+                intent.putExtra("hotelCode", mHotelCode);
                 intent.putExtra("countryName", countryName);
                 intent.putExtra("cityName", cityName);
                 intent.putExtra("cityId", cityId);
@@ -189,8 +189,8 @@ public class HotelDetails extends AppCompatActivity {
         countryName = getIntent().getStringExtra("countryName");
         cityName = getIntent().getStringExtra("cityName");
         cityId = getIntent().getStringExtra("cityId");
-        noOfRooms = getIntent().getStringExtra("noOfRooms");
-        roomGuests =getIntent().getStringArrayListExtra("roomGuest");
+        noOfRooms = getIntent().getIntExtra("noOfRooms", 1);
+        roomGuests = getIntent().getStringArrayListExtra("roomGuest");
 
     }
 

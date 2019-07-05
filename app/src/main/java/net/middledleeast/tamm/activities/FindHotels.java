@@ -3,9 +3,6 @@ package net.middledleeast.tamm.activities;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,7 +11,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
@@ -31,11 +29,11 @@ import net.middledleeast.tamm.R;
 
 import org.joda.time.DateTime;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-import java.text.SimpleDateFormat;
 
 import static java.util.Calendar.YEAR;
 
@@ -43,9 +41,9 @@ public class FindHotels extends AppCompatActivity {
 
 
     private Button findHotel;
-    private Spinner regions, areas, roomCount, adultCount, childCount;
+    ArrayList<Integer> ratrHotel = new ArrayList<Integer>();
     private List<String> list = new ArrayList<>();
-    private List<String> listID = new ArrayList<>();
+    ArrayList<String> addressHotel = new ArrayList<>();
     private List<String> nameCity = new ArrayList<>();
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
@@ -54,14 +52,15 @@ public class FindHotels extends AppCompatActivity {
     private List<String> lisNameHotels = new ArrayList<>();
     private String idCountry;
     ArrayList<String> nameHotel = new ArrayList<>();
-    ArrayList<Integer> ratrHotel = new ArrayList<Integer>();
+    Calendar myCalendar;
     ArrayList<String> photoHotel = new ArrayList<>();
-    ArrayList<String> addressHotel = new ArrayList<>();
+    ArrayList<String> listcodeHotel = new ArrayList<>();
     private String hotelAddress;
     private String hotelName;
     private String hotelPicture;
+    private Spinner regions, areas, roomCount, adultCount, childCount;
+    private List<String> listID = new ArrayList<>();
     private String nameCountry;
-    Calendar myCalendar;
     private String name_city;
     private TextView startDate, endDate;
     private String mendTime;
@@ -70,7 +69,6 @@ public class FindHotels extends AppCompatActivity {
     private List<Integer> listOfAdult = new ArrayList<>();
     private List<Integer> listOfChild = new ArrayList<>();
     private int noRomes;
-    ArrayList<String> listcodeHotel  = new ArrayList<>();
     private String sessionId;
 
 
@@ -176,12 +174,12 @@ public class FindHotels extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                if (startDate.getText().toString().matches("")){
+                if (startDate.getText().toString().matches("")) {
                     dilogstart();
-                }else if (endDate.getText().toString().matches("")){
+                } else if (endDate.getText().toString().matches("")) {
 
                     dialogendTime();
-                }else {
+                } else {
 
                     gethotelsInfo(ctyId);
                 }
@@ -291,7 +289,7 @@ public class FindHotels extends AppCompatActivity {
 
 
         try {
-            DestinationCityListResponse cities = service.DestinationCityList(idCountry, "True", authenticationData);
+            DestinationCityListResponse cities = service.DestinationCityList(idCountry, "true", authenticationData);
             for (int j = 0; j < cities.CityList.size(); j++) {
 
 
@@ -321,7 +319,6 @@ public class FindHotels extends AppCompatActivity {
                 });
 
             }
-
 
 
         } catch (Exception e) {
@@ -358,7 +355,6 @@ public class FindHotels extends AppCompatActivity {
 
         try {
             //HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), Integer.parseInt(ctyId), 1, roomguests, "EG", authenticationData);
-
 
 
             HotelSearchResponse hotelSearchResponse = service.HotelSearch(date1.toDateTimeISO(), date2.toDateTimeISO(), nameCountry, name_city, Integer.parseInt(ctyId),
@@ -400,17 +396,17 @@ public class FindHotels extends AppCompatActivity {
         intent.putExtra("hotelrat", ratrHotel);
         intent.putExtra("hotelPhoto", photoHotel);
         intent.putExtra("hotelCode", listcodeHotel);
-        intent.putExtra("hotelAddress",addressHotel);
-        intent.putExtra("sessionId",addressHotel);
-        intent.putExtra("checkInDate",mstartTime);
-        intent.putExtra("checkOutDate",mendTime);
-        intent.putExtra("countryName",nameCountry);
-        intent.putExtra("cityName",name_city);
-        intent.putExtra("cityId",ctyId);
-        intent.putExtra("noOfRooms",noRomes);
+        intent.putExtra("hotelAddress", addressHotel);
+        intent.putExtra("sessionId", sessionId);
+        intent.putExtra("checkInDate", mstartTime);
+        intent.putExtra("checkOutDate", mendTime);
+        intent.putExtra("countryName", nameCountry);
+        intent.putExtra("cityName", name_city);
+        intent.putExtra("cityId", ctyId);
+        intent.putExtra("noOfRooms", noRomes);
         //intent.putExtra("roomGuest",roomguests);
 
-     startActivity(intent);
+        startActivity(intent);
 
     }
 

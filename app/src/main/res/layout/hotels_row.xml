@@ -7,42 +7,39 @@
     android:layout_margin="10dp">
 
     <ImageView
-        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="8dp"
-        android:src="#636325"
         android:id="@+id/hotel_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:scaleType="fitXY"
+        android:src="#636325" />
     <LinearLayout
-        android:paddingStart="6dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginTop="80dp"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="6dp"
+        android:layout_width="match_parent"
+        android:paddingStart="6dp"
         android:orientation="vertical">
 
         <TextView
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="sans-serif-smallcaps"
             android:text="maring hotil"
             android:id="@+id/hotel_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
-            />
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <TextView
-            android:text="rating is 5"
-            android:layout_marginTop="6dp"
             android:id="@+id/hotel_rat"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:textColor="#FFFFFF"
-            />
+            android:layout_marginTop="6dp"
+            android:text="rating is 5"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
-
 
 
 </FrameLayout>

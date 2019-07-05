@@ -2,7 +2,6 @@ package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.Button;
 
@@ -17,7 +16,7 @@ public class FreeAccount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freeaccount);
-        accept = (Button) findViewById(R.id.btn_register_signup);
+        accept = findViewById(R.id.btn_register_signup);
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

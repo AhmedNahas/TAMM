@@ -31,7 +31,6 @@
         <activity android:name=".activities.ChooseBookingDate" />
 
 
-
         <activity android:name=".activities.HotelDetails" />
         <activity android:name=".activities.ChooseHotelActivity" />
         <activity android:name=".activities.WelcomeActivity">
@@ -59,7 +58,6 @@
         <activity android:name=".activities.MemberCongrats" />
         <activity android:name=".activities.FREEcONGRATS" />
         <activity android:name=".model.ReserveRoom" />
-        <activity android:name=".model.FindHotels" />
         <activity android:name=".activities.SplashActivity" />
 
     </application>

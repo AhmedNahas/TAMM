@@ -3,8 +3,6 @@ package net.middledleeast.tamm.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -12,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.FreeAccount;

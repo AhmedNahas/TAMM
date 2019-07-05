@@ -2,7 +2,6 @@ package net.middledleeast.tamm.activities;
 
 import android.os.Bundle;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;

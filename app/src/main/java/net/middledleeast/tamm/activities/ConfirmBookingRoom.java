@@ -2,7 +2,6 @@ package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,7 +27,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         confirmRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ConfirmBookingRoom.this, PaymentActivity.class ));
+                startActivity(new Intent(ConfirmBookingRoom.this, PaymentActivity.class));
             }
         });
 
