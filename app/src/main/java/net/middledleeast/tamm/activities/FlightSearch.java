@@ -14,6 +14,7 @@ import net.middledleeast.tamm.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import FlightApi.FlightApiService;
 import FlightApi.FlightAuthentication;
@@ -51,7 +52,8 @@ public class FlightSearch extends AppCompatActivity {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).build();
+        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).connectTimeout(100, TimeUnit.SECONDS)
+                .readTimeout(100, TimeUnit.SECONDS).build();
 
         connectAndGetApiData(gson, client);
         FlightApiService flightApiService = retrofit.create(FlightApiService.class);
@@ -69,7 +71,44 @@ public class FlightSearch extends AppCompatActivity {
             public void onResponse(Call<FlightAuthentication> call, Response<FlightAuthentication> response) {
                 flightAuthentication[0] = response.body();
 
+
                 System.out.println("Helper: " + flightAuthentication[0].getTokenId());
+                final SearchFlights[] searchFlights = {new SearchFlights()};
+                searchFlights[0].setTokenId(flightAuthentication[0].getTokenId());
+                String test = flightAuthentication[0].getTokenId();
+                searchFlights[0].setAdultCount(1);
+                searchFlights[0].setChildCount(1);
+                searchFlights[0].setFlightCabinClass(1);
+                searchFlights[0].setInfantCount(1);
+                searchFlights[0].setJourneyType(1);
+                searchFlights[0].setIPAddress("192.168.4.238");
+                List<SearchFlights.Segment> segments = new ArrayList<>();
+                SearchFlights.Segment segment = new SearchFlights.Segment();
+                segment.setDestination("DEL");
+                segment.setOrigin("DXB");
+                segment.setPreferredDepartureTime("2019-7-7T00:00:00");
+                segment.setPreferredArrivalTime("2019-7-8T00:00:00");
+                List<String> airlines = new ArrayList<>();
+                airlines.add("EK");
+                airlines.add("AI");
+                segment.setPreferredAirlines(airlines);
+                segments.add(segment);
+                searchFlights[0].setSegment(segments);
+                Call<SearchFlights> searchCall = flightApiService.getFlightSearch("application/json", searchFlights[0]);
+                searchCall.enqueue(new Callback<SearchFlights>() {
+
+                    @Override
+                    public void onResponse(Call<SearchFlights> call, Response<SearchFlights> response) {
+                        searchFlights[0] = response.body();
+                        System.out.println("How: " + searchFlights[0].searchFlightsResponse.getResults());
+                    }
+
+                    @Override
+                    public void onFailure(Call<SearchFlights> call, Throwable throwable) {
+                        Log.e(TAG, throwable.toString());
+                    }
+                });
+
             }
 
             @Override
@@ -77,15 +116,16 @@ public class FlightSearch extends AppCompatActivity {
                 Log.e(TAG, throwable.toString());
             }
         });
-        if (flightAuthentication[0] != null) {
-            SearchFlights searchFlights = new SearchFlights();
-            searchFlights.setTokenId(flightAuthentication[0].getTokenId());
-            searchFlights.setAdultCount(1);
-            searchFlights.setChildCount(1);
-            searchFlights.setFlightCabinClass(1);
-            searchFlights.setInfantCount(1);
-            searchFlights.setJourneyType(1);
-            searchFlights.setIPAddress("192.168.4.238");
+        if (flightAuthentication[0].getTokenId() != null) {
+            final SearchFlights[] searchFlights = {new SearchFlights()};
+            searchFlights[0].setTokenId(flightAuthentication[0].getTokenId());
+            String test = flightAuthentication[0].getTokenId();
+            searchFlights[0].setAdultCount(1);
+            searchFlights[0].setChildCount(1);
+            searchFlights[0].setFlightCabinClass(1);
+            searchFlights[0].setInfantCount(1);
+            searchFlights[0].setJourneyType(1);
+            searchFlights[0].setIPAddress("192.168.4.238");
             List<SearchFlights.Segment> segments = new ArrayList<>();
             SearchFlights.Segment segment = new SearchFlights.Segment();
             segment.setDestination("DEL");
@@ -97,13 +137,14 @@ public class FlightSearch extends AppCompatActivity {
             airlines.add("AI");
             segment.setPreferredAirlines(airlines);
             segments.add(segment);
-            searchFlights.setSegment(segments);
-            Call<SearchFlights> searchCall = flightApiService.getFlightSearch("application/json", searchFlights);
+            searchFlights[0].setSegment(segments);
+            Call<SearchFlights> searchCall = flightApiService.getFlightSearch("application/json", searchFlights[0]);
             searchCall.enqueue(new Callback<SearchFlights>() {
 
                 @Override
                 public void onResponse(Call<SearchFlights> call, Response<SearchFlights> response) {
-                    System.out.println("How: " + searchFlights.searchFlightsResponse.getResults());
+                    searchFlights[0] = response.body();
+                    System.out.println("How: " + searchFlights[0].searchFlightsResponse.getResults());
                 }
 
                 @Override
