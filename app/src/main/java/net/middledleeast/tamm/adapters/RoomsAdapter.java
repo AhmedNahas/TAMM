@@ -19,7 +19,9 @@ import com.bumptech.glide.Glide;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.ConfirmBookingRoom;
+import net.middledleeast.tamm.activities.checkroom;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -70,7 +72,12 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String roomType = rooms.get(position).RoomTypeName;
+        String roomInstructions = rooms.get(position).MealType;
+        String description = rooms.get(position).RoomAdditionalInfo.Description;
+//        BigDecimal price = rooms.get(position).Supplements.get(position).Price;
         holder.mName.setText(roomType);
+//        holder.roomPrice.setText((CharSequence) price);
+
 
         //image
         if (roomInformation != null) {
@@ -80,7 +87,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         holder.mName.getRootView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ConfirmBookingRoom.class);
+                Intent intent = new Intent(context, checkroom.class);
 //                intent.putExtra("arrayOfRooms", new Gson().toJson(arrayOfRooms));
 //                intent.putExtra("rooms", new Gson().toJson(rooms));
 //                intent.putExtra("hotel_room", new Gson().toJson(hotel_room));
@@ -92,6 +99,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 intent.putExtra("mHOtelCode", mHOtelCode);
 //                intent.putExtra("authenticandata", new Gson().toJson(authenticandata));
                 intent.putExtra("roomIndex", position);
+                intent.putExtra("smok",roomInstructions);
+                intent.putExtra("roomTybe",roomType);
+                intent.putExtra("description",description);
                 context.startActivity(intent);
             }
         });
@@ -107,7 +117,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView mName;
+        public TextView mName , roomPrice;
         public ImageView img_photo_hotel ;
 
 
@@ -116,6 +126,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
             this.mName = linearLayout.findViewById(R.id.nametext);
             this.img_photo_hotel = linearLayout.findViewById(R.id.img_photo_hotel);
+            this.roomPrice = linearLayout.findViewById(R.id.room_price);
 
 
         }
