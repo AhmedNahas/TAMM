@@ -49,7 +49,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         this.authenticandata = authenticationData;
         this.sessionId = sessionId;
         this.context = context;
-        roomInformation = hotel_room.RoomAdditionalInfo;
+        this.roomInformation = hotel_room.RoomAdditionalInfo;
         notifyDataSetChanged();
     }
 
@@ -70,8 +70,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         holder.mName.setText(roomType);
 
         //image
-        List<String> images = roomInformation.ImageURLs;
-
+        if (roomInformation != null) {
+            List<String> images = roomInformation.ImageURLs;
+        }
 
         holder.mName.getRootView().setOnClickListener(new View.OnClickListener() {
             @Override
