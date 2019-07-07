@@ -72,8 +72,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         holder.mName.getRootView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //todo fix please
                 Intent intent = new Intent(context, ConfirmBookingRoom.class);
-                intent.putExtra("arrayOfRooms", arrayOfRooms);
+                intent.putExtra("arrayOfRooms", new Gson().toJson(arrayOfRooms.getSourceObject()));
                 intent.putExtra("rooms", new Gson().toJson(rooms));
                 intent.putExtra("hotel_room", new Gson().toJson(hotel_room));
                 intent.putExtra("sessionId", sessionId);
