@@ -150,7 +150,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"
-            android:text="2 Nights"
+            android:text="0 Nights "
             android:textColor="@color/app_color" />
 
         <LinearLayout
