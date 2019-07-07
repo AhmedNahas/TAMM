@@ -72,14 +72,16 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         noOfRooms = intent.getIntExtra("noOfRooms", 1);
         resultIndex = intent.getIntExtra("resultIndex", 1);
         DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
-        DateTime date1 = formatter.parseDateTime(intent.getStringExtra("date1"));
-        DateTime date2 = formatter.parseDateTime(intent.getStringExtra("date2"));
+        date1 = formatter.parseDateTime(intent.getStringExtra("date1"));
+        date1.toString();
+        date2 = formatter.parseDateTime(intent.getStringExtra("date2"));
+
         roomIndex = intent.getIntExtra("roomIndex", 0);
         mHOtelCode = intent.getStringExtra("mHOtelCode");
 //        authenticandata = gson.fromJson(intent.getStringExtra("authenticandata"), AuthenticationData.class);
         arrayOfGuest = new ArrayOfGuest();
         Guest guest = new Guest();
-        guest.Title = "Dr.";
+        guest.Title = "Mr";
         guest.Age = 25;
         guest.FirstName = "Tester";
         guest.LeadGuest = true;
@@ -92,7 +94,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         paymentInfo.PaymentModeType = Enums.PaymentModeType.CreditCard;
         arrayOfRooms = ChooseBookingDate.transferClass.getArrayOfRequestedRooms();
         try {
-            HotelBookResponse hotelBookingResponse = service.HotelBook(date1, date2, null, "EG", arrayOfGuest, null, paymentInfo, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
+            HotelBookResponse hotelBookingResponse = service.HotelBook(date1, date2, "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
         } catch (Exception e) {
             e.printStackTrace();
         }
