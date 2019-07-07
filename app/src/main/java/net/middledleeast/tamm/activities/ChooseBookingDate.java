@@ -30,7 +30,7 @@ import java.util.List;
 public class ChooseBookingDate extends AppCompatActivity {
 
 
-    private TextView startDate, endDate  , nights;
+    private TextView startDate, endDate  , nights , no_room ,no_child , adult_tv;
     private String mendTime;
     private String mstartTime;
     private BasicHttpBinding_IHotelService1 service;
@@ -58,8 +58,31 @@ public class ChooseBookingDate extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         roomRecyclerView = findViewById(R.id.rv_hotel);
         nights = findViewById(R.id.nights_booking);
+        startDate= findViewById(R.id.startDate2);
+        endDate = findViewById(R.id.endDate2);
+        no_room = findViewById(R.id.no_room);
+        no_child = findViewById(R.id.no_child2);
+        adult_tv = findViewById(R.id.adult2);
+
+
+
 
         long nightsDeff = SharedPreferencesManger.LoadLongData(ChooseBookingDate.this, "nights");
+        String start_time = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "start_date");
+        String end_time = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "end_date");
+        long no_roomS = SharedPreferencesManger.LoadLongData(this, "no_room");
+        long no_adult = SharedPreferencesManger.LoadLongData(this, "no_adult");
+        int no_childS = SharedPreferencesManger.LoadIntegerData(this, "no_child");
+
+        no_child.setText(no_childS+"Children");
+
+        no_room.setText(""+no_roomS+" room");
+        adult_tv.setText(no_adult+"Adult");
+
+
+        startDate.setText(start_time);
+        endDate.setText(end_time);
+
         nights.setText(nightsDeff+" Nights");
         LinearLayoutManager manager = new LinearLayoutManager(this);
        roomRecyclerView.setLayoutManager(manager);
@@ -100,7 +123,7 @@ public class ChooseBookingDate extends AppCompatActivity {
             arrayOfRooms.add(requestedRooms);
             transferClass.setArrayOfRequestedRooms(arrayOfRooms);
 
-            roomAdapter = new RoomsAdapter(rooms, this);
+            roomAdapter = new RoomsAdapter(rooms,hotel_room,arrayOfRooms,null,null,noOfRooms,resultIndex,mHotelCode,authenticationData,sessionId,this);
 
 
             roomRecyclerView.setAdapter(roomAdapter);

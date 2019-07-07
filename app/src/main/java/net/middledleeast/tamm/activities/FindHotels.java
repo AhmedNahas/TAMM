@@ -94,6 +94,7 @@ public class FindHotels extends AppCompatActivity {
         startDate = findViewById(R.id.startDate);
         endDate = findViewById(R.id.endDate);
         nights = findViewById(R.id.nights);
+        noRomes =1 ;
         arrayOfResultIndex = new ArrayList<>();
         for (int i = 1; i < 7; i++) {
 
@@ -140,6 +141,20 @@ public class FindHotels extends AppCompatActivity {
 
                 adapteradult.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 adultCount.setAdapter(adapteradult);
+                adultCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                        int nom_adult = listOfAdult.get(i);
+                        SharedPreferencesManger.SaveData(FindHotels.this, "no_adult", nom_adult);
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
 
 
             }
@@ -155,6 +170,20 @@ public class FindHotels extends AppCompatActivity {
 
         adapterchild.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         childCount.setAdapter(adapterchild);
+        childCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                int no_child = listOfChild.get(i);
+                SharedPreferencesManger.SaveData(FindHotels.this,"no_child",no_child);
+                Toast.makeText(FindHotels.this, ""+no_child, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
         myCalendar = Calendar.getInstance();
@@ -197,6 +226,13 @@ public class FindHotels extends AppCompatActivity {
                     dialogendTime();
                 } else {
 
+
+
+
+SharedPreferencesManger.SaveData(FindHotels.this,"start_date",mstartTime);
+                    SharedPreferencesManger.SaveData(FindHotels.this,"end_date",mendTime);
+
+                    SharedPreferencesManger.SaveData(FindHotels.this,"no_room",noRomes);
 
 
 

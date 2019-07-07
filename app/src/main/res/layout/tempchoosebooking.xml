@@ -77,10 +77,9 @@
 
             <TextView
                 android:id="@+id/startDate2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:hint="22  July  Friday"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:textSize="15sp" />
@@ -105,15 +104,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="CHECK OUT "
                 android:textColor="@color/app_color" />
 
             <TextView
                 android:id="@+id/endDate2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:hint="22  July  Friday"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:textSize="15sp" />
@@ -137,16 +134,17 @@
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/no_room"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:hint="1 Room"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:textSize="15sp" />
         </LinearLayout>
 
         <TextView
+            android:id="@+id/adult2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -164,7 +162,8 @@
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/no_child2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:gravity="center"
