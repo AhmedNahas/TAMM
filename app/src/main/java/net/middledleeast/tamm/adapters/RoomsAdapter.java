@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.Hotel_Room;
+import com.Tamm.Hotels.wcf.RoomInformation;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.ConfirmBookingRoom;
@@ -33,6 +34,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     private final AuthenticationData authenticandata;
     private final String sessionId;
     private List<Hotel_Room> rooms;
+    RoomInformation roomInformation;
 
 
     public RoomsAdapter(List<Hotel_Room> rooms, Hotel_Room hotel_room, ArrayOfRequestedRooms arrayOfRooms, String date1, String date2, int noOfRooms, int resultIndex, String mHotelCode, AuthenticationData authenticationData, String sessionId, Context context) {
@@ -47,6 +49,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         this.authenticandata = authenticationData;
         this.sessionId = sessionId;
         this.context = context;
+        roomInformation = hotel_room.RoomAdditionalInfo;
         notifyDataSetChanged();
     }
 
@@ -65,6 +68,10 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String roomType = rooms.get(position).RoomTypeName;
         holder.mName.setText(roomType);
+
+        //image
+        List<String> images = roomInformation.ImageURLs;
+
 
         holder.mName.getRootView().setOnClickListener(new View.OnClickListener() {
             @Override

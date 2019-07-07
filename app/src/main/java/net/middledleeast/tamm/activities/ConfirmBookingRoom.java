@@ -18,6 +18,7 @@ import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.Guest;
 import com.Tamm.Hotels.wcf.HotelBookResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
+import com.Tamm.Hotels.wcf.PaymentInfo;
 import com.google.gson.Gson;
 import com.wirecard.ecom.Client;
 import com.wirecard.ecom.model.out.PaymentResponse;
@@ -84,11 +85,14 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         guest.LeadGuest = true;
         guest.GuestType = Enums.GuestType.Adult;
         guest.LastName = "Test";
+        guest.GuestInRoom = 1;
         arrayOfGuest.add(guest);
+        PaymentInfo paymentInfo = new PaymentInfo();
+        paymentInfo.VoucherBooking = false;
+        paymentInfo.PaymentModeType = Enums.PaymentModeType.CreditCard;
         arrayOfRooms = ChooseBookingDate.transferClass.getArrayOfRequestedRooms();
         try {
-
-            HotelBookResponse hotelBookingResponse = service.HotelBook(date1, date2, null, "EG", arrayOfGuest, null, null, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
+            HotelBookResponse hotelBookingResponse = service.HotelBook(date1, date2, null, "EG", arrayOfGuest, null, paymentInfo, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
         } catch (Exception e) {
             e.printStackTrace();
         }
