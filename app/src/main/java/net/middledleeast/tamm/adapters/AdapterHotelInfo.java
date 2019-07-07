@@ -37,11 +37,11 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
     private String cityId;
     private int noOfRooms;
     private ArrayList<String> roomGuests;
-
+    private ArrayList<Integer> resultINdex;
 
     public AdapterHotelInfo(ArrayList<String> listnameHotel, ArrayList<Integer> hotelrat, ArrayList<String> listPhotoHotel,
                             Context context, onHotelListener onHotelListener, ArrayList<String> listAddressHotel, ArrayList<String> hotelCode,
-                            String sessionId, String mstartTime, String mendTime, String countryName, String cityName, String cityId, int noOfRooms, ArrayList<String> roomGuests) {
+                            String sessionId, String mstartTime, String mendTime, String countryName, String cityName, String cityId, int noOfRooms, ArrayList<String> roomGuests, ArrayList<Integer> resultINdex) {
         this.listnameHotel = listnameHotel;
         this.listPhotoHotel = listPhotoHotel;
         this.listrat = hotelrat;
@@ -51,12 +51,13 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         this.listCodeHotels = hotelCode;
         this.sessionId = sessionId;
         this.mstartTime = mstartTime;
+        this.mendTime = mendTime;
         this.countryName = countryName;
         this.cityName = cityName;
         this.cityId = cityId;
         this.noOfRooms = noOfRooms;
         this.roomGuests = roomGuests;
-
+        this.resultINdex = resultINdex;
 
         notifyDataSetChanged();
 
@@ -97,7 +98,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
                 intent.putExtra("noOfRooms", noOfRooms);
                 intent.putExtra("roomGuest", roomGuests);
                 intent.putExtra("sessionId", sessionId);
-
+                intent.putExtra("resultIndex", resultINdex.get(position));
 
                 context.startActivity(intent);
 

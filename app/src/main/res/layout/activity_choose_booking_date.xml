@@ -276,16 +276,10 @@
         android:text="JUMEIRAH MISSILAH BEACH HOTEL - KUWAIT"
         android:textColor="#ffff" />
 
-
-
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_info_hotel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
+        android:id="@+id/rv_hotel"
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

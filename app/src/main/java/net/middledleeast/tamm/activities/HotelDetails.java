@@ -2,6 +2,7 @@ package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -63,13 +64,17 @@ public class HotelDetails extends AppCompatActivity {
     private String cityId;
     private int noOfRooms;
     private ArrayList<String> roomGuests;
+    private int resultIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel_details);
         ButterKnife.bind(this);
+        //testing
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
+        StrictMode.setThreadPolicy(policy);
         // imageView=findViewById(R.id.hotel_image_detail);
         ViewPager viewPager = findViewById(R.id.hotel_image_detail);
         sliderDotspanel = findViewById(R.id.SliderDots);
@@ -79,7 +84,7 @@ public class HotelDetails extends AppCompatActivity {
 
         try {
             service.enableLogging = true;
-            HotelDetailsResponse hotelDetailsResponse = service.HotelDetails(1, sessionId, mHotelCode, "EN", authenticationData);
+            HotelDetailsResponse hotelDetailsResponse = service.HotelDetails(resultIndex, sessionId, mHotelCode, "EN", authenticationData);
 
 
             ArrayOfImageUrlDetails imageUrls = hotelDetailsResponse.HotelDetails.ImageUrls;
@@ -95,6 +100,7 @@ public class HotelDetails extends AppCompatActivity {
             hotelName = hotelDetailsResponse.HotelDetails.HotelName;
             // code = hotelDetailsResponse.HotelDetails.HotelRating.getCode();
             description = hotelDetailsResponse.HotelDetails.Description;
+
             //    phoneNumber = hotelDetailsResponse.HotelDetails.PhoneNumber;
             //map = hotelDetailsResponse.HotelDetails.Map;
 
@@ -170,7 +176,7 @@ public class HotelDetails extends AppCompatActivity {
                 intent.putExtra("cityId", cityId);
                 intent.putExtra("noOfRooms", noOfRooms);
                 intent.putExtra("roomGuest", roomGuests);
-
+                intent.putExtra("resultIndex", resultIndex);
                 startActivity(intent);
 
 
@@ -191,7 +197,7 @@ public class HotelDetails extends AppCompatActivity {
         cityId = getIntent().getStringExtra("cityId");
         noOfRooms = getIntent().getIntExtra("noOfRooms", 1);
         roomGuests = getIntent().getStringArrayListExtra("roomGuest");
-
+        resultIndex = getIntent().getIntExtra("resultIndex", 1);
     }
 
 

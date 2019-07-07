@@ -23,6 +23,7 @@ import com.Tamm.Hotels.wcf.DestinationCityListResponse;
 import com.Tamm.Hotels.wcf.GeoCodes;
 import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
+import com.Tamm.Hotels.wcf.Hotel_Result;
 import com.Tamm.Hotels.wcf.RoomGuest;
 
 import net.middledleeast.tamm.R;
@@ -70,7 +71,8 @@ public class FindHotels extends AppCompatActivity {
     private List<Integer> listOfChild = new ArrayList<>();
     private int noRomes;
     private String sessionId;
-
+    ArrayList<Integer> arrayOfResultIndex;
+    private int resultIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +86,7 @@ public class FindHotels extends AppCompatActivity {
         childCount = findViewById(R.id.child_count);
         startDate = findViewById(R.id.startDate);
         endDate = findViewById(R.id.endDate);
-
+        arrayOfResultIndex = new ArrayList<>();
         for (int i = 1; i < 7; i++) {
 
             listOfRooms.add(i);
@@ -364,15 +366,16 @@ public class FindHotels extends AppCompatActivity {
             nameHotel.clear();
             photoHotel.clear();
             listcodeHotel.clear();
-
             for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
 
-                HotelInfo hotelInfo = hotelSearchResponse.HotelResultList.get(i).HotelInfo;
+                Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
+                HotelInfo hotelInfo = hotel_result.HotelInfo;
                 sessionId = hotelSearchResponse.SessionId;
                 hotelAddress = hotelInfo.HotelAddress;
                 hotelName = hotelInfo.HotelName;
                 hotelPicture = hotelInfo.HotelPicture;
                 int code = hotelInfo.Rating.getCode();
+                arrayOfResultIndex.add(hotel_result.ResultIndex);
 
                 String hotelCode = hotelInfo.HotelCode;
                 listcodeHotel.add(hotelCode);
@@ -381,7 +384,6 @@ public class FindHotels extends AppCompatActivity {
                 ratrHotel.add(code);
                 photoHotel.add(hotelPicture);
                 addressHotel.add(hotelAddress);
-
 
             }
 
@@ -404,6 +406,7 @@ public class FindHotels extends AppCompatActivity {
         intent.putExtra("cityName", name_city);
         intent.putExtra("cityId", ctyId);
         intent.putExtra("noOfRooms", noRomes);
+        intent.putExtra("resultIndex", arrayOfResultIndex);
         //intent.putExtra("roomGuest",roomguests);
 
         startActivity(intent);

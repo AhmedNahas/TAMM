@@ -1,19 +1,31 @@
 package net.middledleeast.tamm.activities;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.Tamm.Hotels.wcf.ArrayOfGuest;
+import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
+import com.Tamm.Hotels.wcf.ArrayOfSpecialRequest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
+import com.Tamm.Hotels.wcf.HotelBookResponse;
 import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
+import com.Tamm.Hotels.wcf.Hotel_Room;
+import com.Tamm.Hotels.wcf.Rate;
+import com.Tamm.Hotels.wcf.RequestedRooms;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.adapters.RoomsAdapter;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,13 +47,22 @@ public class ChooseBookingDate extends AppCompatActivity {
     private int noOfRooms;
     private ArrayOfRoomGuest roomGuests;
     private List<String> listOfPhoto = new ArrayList<>();
+    private int resultIndex;
+    private RecyclerView roomRecyclerView;
+    private RoomsAdapter roomAdapter;
+    private List<Hotel_Room> rooms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_booking_date);
+        setContentView(R.layout.tempchoosebooking);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
-
+        StrictMode.setThreadPolicy(policy);
+        roomRecyclerView = findViewById(R.id.rv_hotel);
+        rooms = new ArrayList<>();
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        roomRecyclerView.setLayoutManager(manager);
         auth();
         mstartTime = getIntent().getStringExtra("checkInDate");
         mendTime = getIntent().getStringExtra("checkOutDate");
@@ -52,26 +73,45 @@ public class ChooseBookingDate extends AppCompatActivity {
         cityId = getIntent().getStringExtra("cityId");
         noOfRooms = getIntent().getIntExtra("noOfRooms", 1);
         //roomGuests =getIntent().getStringArrayListExtra("roomGuest");
+        resultIndex = getIntent().getIntExtra("resultIndex", 1);
 
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 
-        DateTime date1 = DateTime.now();
-        DateTime date2 = DateTime.now();
-        date1.plusDays(10);
-        date2.plusDays(15);
+        DateTime date1 = formatter.parseDateTime(mstartTime);
+        DateTime date2 = formatter.parseDateTime(mendTime);
+
 
 
         try {
 
 
-            HotelRoomAvailabilityResponse response = service.AvailableHotelRooms(sessionId, 1, mHotelCode, 6000, true, authenticationData);
+            HotelRoomAvailabilityResponse response = service.AvailableHotelRooms(sessionId, resultIndex, mHotelCode, 6000, false, authenticationData);
 
+            rooms = response.HotelRooms;
 
+            Hotel_Room hotel_room = rooms.get(0);
+            ArrayOfRequestedRooms arrayOfRooms = new ArrayOfRequestedRooms();
+            RequestedRooms requestedRooms = new RequestedRooms();
+            requestedRooms.RatePlanCode = hotel_room.RatePlanCode;
+            requestedRooms.RoomIndex = hotel_room.RoomIndex;
+            requestedRooms.RoomRate = new Rate();
+            requestedRooms.RoomRate.RoomFare = hotel_room.RoomRate.RoomFare;
+            requestedRooms.RoomRate.RoomTax = hotel_room.RoomRate.RoomTax;
+            requestedRooms.RoomRate.TotalFare = hotel_room.RoomRate.TotalFare;
+            requestedRooms.RoomTypeCode = hotel_room.RoomTypeCode;
+            arrayOfRooms.add(requestedRooms);
+            roomAdapter = new RoomsAdapter(rooms, hotel_room, arrayOfRooms, date1, date2, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
+
+            HotelBookResponse hotelBookingResponse = service.HotelBook(date1, date2, null, "EG", new ArrayOfGuest(), null, null, sessionId, null, noOfRooms, resultIndex, mHotelCode, null, arrayOfRooms, new ArrayOfSpecialRequest(), null, false, authenticationData);
+
+            roomRecyclerView.setAdapter(roomAdapter);
+            roomAdapter.notifyDataSetChanged();
             for (int i = 0; i < response.HotelRooms.size(); i++) {
 
 
-                String description = response.HotelRooms.get(i).Inclusion;
-
-                Toast.makeText(this, "descrip" + description, Toast.LENGTH_SHORT).show();
+//                String description = String.valueOf(response.HotelRooms.get(i).CancelPolicies.DefaultPolicy);
+//
+//                Toast.makeText(this, "descrip" + description, Toast.LENGTH_SHORT).show();
 
 
             }
