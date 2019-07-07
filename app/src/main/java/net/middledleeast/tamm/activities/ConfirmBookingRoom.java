@@ -59,9 +59,12 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         Intent intent = getIntent();
         service = new BasicHttpBinding_IHotelService1();
         service.enableLogging = true;
+        authenticandata = new AuthenticationData();
+        authenticandata.UserName = ("Tammtest");
+        authenticandata.Password = ("Tam@18418756");
         arrayOfRooms = (ArrayOfRequestedRooms) intent.getSerializableExtra("arrayOfRooms");
-        rooms = (List<Hotel_Room>) gson.fromJson(intent.getStringExtra("rooms"), List.class);
-        hotel_room = gson.fromJson(intent.getStringExtra("hotel_room"), Hotel_Room.class);
+//        rooms = (List<Hotel_Room>) gson.fromJson(intent.getStringExtra("rooms"), List.class);
+//        hotel_room = gson.fromJson(intent.getStringExtra("hotel_room"), Hotel_Room.class);
         sessionId = intent.getStringExtra("sessionId");
         noOfRooms = intent.getIntExtra("noOfRooms", 1);
         resultIndex = intent.getIntExtra("resultIndex", 1);
@@ -69,7 +72,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         date2 = gson.fromJson(intent.getStringExtra("date2"), DateTime.class);
         roomIndex = intent.getIntExtra("roomIndex", 0);
         mHOtelCode = intent.getStringExtra("mHOtelCode");
-        authenticandata = gson.fromJson(intent.getStringExtra("authenticandata"), AuthenticationData.class);
+//        authenticandata = gson.fromJson(intent.getStringExtra("authenticandata"), AuthenticationData.class);
         arrayOfGuest = new ArrayOfGuest();
         Guest guest = new Guest();
         guest.Title = "Dr.";
@@ -80,6 +83,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         guest.LastName = "Test";
         arrayOfGuest.add(guest);
         try {
+
             HotelBookResponse hotelBookingResponse = service.HotelBook(date1, date2, null, "EG", arrayOfGuest, null, null, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
         } catch (Exception e) {
             e.printStackTrace();

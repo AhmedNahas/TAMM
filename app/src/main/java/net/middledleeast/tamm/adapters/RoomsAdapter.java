@@ -74,16 +74,17 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
             public void onClick(View v) {
                 //todo fix please
                 Intent intent = new Intent(context, ConfirmBookingRoom.class);
-                intent.putExtra("arrayOfRooms", new Gson().toJson(arrayOfRooms.getSourceObject()));
-                intent.putExtra("rooms", new Gson().toJson(rooms));
-                intent.putExtra("hotel_room", new Gson().toJson(hotel_room));
+                //todo tis one in partcular
+                intent.putExtra("arrayOfRooms", new Gson().toJson(arrayOfRooms));
+//                intent.putExtra("rooms", new Gson().toJson(rooms));
+//                intent.putExtra("hotel_room", new Gson().toJson(hotel_room));
                 intent.putExtra("sessionId", sessionId);
                 intent.putExtra("noOfRooms", noOfRooms);
                 intent.putExtra("resultIndex", resultIndex);
                 intent.putExtra("date1", new Gson().toJson(date1));
                 intent.putExtra("date2", new Gson().toJson(date2));
                 intent.putExtra("mHOtelCode", mHOtelCode);
-                intent.putExtra("authenticandata", new Gson().toJson(authenticandata));
+//                intent.putExtra("authenticandata", new Gson().toJson(authenticandata));
                 intent.putExtra("roomIndex", position);
                 context.startActivity(intent);
             }
