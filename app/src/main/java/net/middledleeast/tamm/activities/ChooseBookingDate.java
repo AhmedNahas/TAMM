@@ -8,13 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.Tamm.Hotels.wcf.ArrayOfGuest;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
-import com.Tamm.Hotels.wcf.ArrayOfSpecialRequest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
-import com.Tamm.Hotels.wcf.HotelBookResponse;
 import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.Rate;
@@ -102,7 +99,6 @@ public class ChooseBookingDate extends AppCompatActivity {
             arrayOfRooms.add(requestedRooms);
             roomAdapter = new RoomsAdapter(rooms, hotel_room, arrayOfRooms, date1, date2, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
 
-            HotelBookResponse hotelBookingResponse = service.HotelBook(date1, date2, null, "EG", new ArrayOfGuest(), null, null, sessionId, null, noOfRooms, resultIndex, mHotelCode, null, arrayOfRooms, new ArrayOfSpecialRequest(), null, false, authenticationData);
 
             roomRecyclerView.setAdapter(roomAdapter);
             roomAdapter.notifyDataSetChanged();

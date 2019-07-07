@@ -2,7 +2,6 @@ package net.middledleeast.tamm.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +73,6 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ConfirmBookingRoom.class);
-                Bundle extras = new Bundle();
                 intent.putExtra("arrayOfRooms", arrayOfRooms);
                 intent.putExtra("rooms", new Gson().toJson(rooms));
                 intent.putExtra("hotel_room", new Gson().toJson(hotel_room));
@@ -85,6 +83,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 intent.putExtra("date2", new Gson().toJson(date2));
                 intent.putExtra("mHOtelCode", mHOtelCode);
                 intent.putExtra("authenticandata", new Gson().toJson(authenticandata));
+                intent.putExtra("roomIndex", position);
                 context.startActivity(intent);
             }
         });

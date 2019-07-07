@@ -10,13 +10,25 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.Tamm.Hotels.wcf.ArrayOfGuest;
+import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
+import com.Tamm.Hotels.wcf.AuthenticationData;
+import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
+import com.Tamm.Hotels.wcf.Enums;
+import com.Tamm.Hotels.wcf.Guest;
+import com.Tamm.Hotels.wcf.HotelBookResponse;
+import com.Tamm.Hotels.wcf.Hotel_Room;
+import com.google.gson.Gson;
 import com.wirecard.ecom.Client;
 import com.wirecard.ecom.model.out.PaymentResponse;
 
 import net.middledleeast.tamm.R;
 
+import org.joda.time.DateTime;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import payments.PaymentObjectProvider;
 import payments.ResponseHelper;
@@ -24,11 +36,54 @@ import payments.ResponseHelper;
 public class ConfirmBookingRoom extends AppCompatActivity {
 
     private Button confirmRoom;
+    ArrayOfGuest arrayOfGuest;
+    private Hotel_Room hotel_room;
+    private ArrayOfRequestedRooms arrayOfRooms;
+    private DateTime date1;
+    private DateTime date2;
+    private int noOfRooms;
+    private int resultIndex;
+    private String mHOtelCode;
+    private AuthenticationData authenticandata;
+    private String sessionId;
+    private List<Hotel_Room> rooms;
+    private BasicHttpBinding_IHotelService1 service;
+    private int roomIndex;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_booking_room);
+        Gson gson = new Gson();
+        Intent intent = getIntent();
+        service = new BasicHttpBinding_IHotelService1();
+        service.enableLogging = true;
+        arrayOfRooms = (ArrayOfRequestedRooms) intent.getSerializableExtra("arrayOfRooms");
+        rooms = (List<Hotel_Room>) gson.fromJson(intent.getStringExtra("rooms"), List.class);
+        hotel_room = gson.fromJson(intent.getStringExtra("hotel_room"), Hotel_Room.class);
+        sessionId = intent.getStringExtra("sessionId");
+        noOfRooms = intent.getIntExtra("noOfRooms", 1);
+        resultIndex = intent.getIntExtra("resultIndex", 1);
+        date1 = gson.fromJson(intent.getStringExtra("date1"), DateTime.class);
+        date2 = gson.fromJson(intent.getStringExtra("date2"), DateTime.class);
+        roomIndex = intent.getIntExtra("roomIndex", 0);
+        mHOtelCode = intent.getStringExtra("mHOtelCode");
+        authenticandata = gson.fromJson(intent.getStringExtra("authenticandata"), AuthenticationData.class);
+        arrayOfGuest = new ArrayOfGuest();
+        Guest guest = new Guest();
+        guest.Title = "Dr.";
+        guest.Age = 25;
+        guest.FirstName = "Tester";
+        guest.LeadGuest = true;
+        guest.GuestType = Enums.GuestType.Adult;
+        guest.LastName = "Test";
+        arrayOfGuest.add(guest);
+        try {
+            HotelBookResponse hotelBookingResponse = service.HotelBook(date1, date2, null, "EG", arrayOfGuest, null, null, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         confirmRoom = findViewById(R.id.confirm_room_booking);
         PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
@@ -42,8 +97,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         });
 
 
-
-        Spinner s1 , s2 , s3;
+        Spinner s1, s2, s3;
         ArrayAdapter mrOrMissAdapter;
         ArrayList<String> mrOrMissArray;
 
