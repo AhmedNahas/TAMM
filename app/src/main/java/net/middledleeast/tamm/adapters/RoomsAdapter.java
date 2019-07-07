@@ -13,12 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.Hotel_Room;
-import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.ConfirmBookingRoom;
-
-import org.joda.time.DateTime;
 
 import java.util.List;
 
@@ -28,8 +25,8 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     private final Context context;
     private final Hotel_Room hotel_room;
     private final ArrayOfRequestedRooms arrayOfRooms;
-    private final DateTime date1;
-    private final DateTime date2;
+    private final String date1;
+    private final String date2;
     private final int noOfRooms;
     private final int resultIndex;
     private final String mHOtelCode;
@@ -38,7 +35,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     private List<Hotel_Room> rooms;
 
 
-    public RoomsAdapter(List<Hotel_Room> rooms, Hotel_Room hotel_room, ArrayOfRequestedRooms arrayOfRooms, DateTime date1, DateTime date2, int noOfRooms, int resultIndex, String mHotelCode, AuthenticationData authenticationData, String sessionId, Context context) {
+    public RoomsAdapter(List<Hotel_Room> rooms, Hotel_Room hotel_room, ArrayOfRequestedRooms arrayOfRooms, String date1, String date2, int noOfRooms, int resultIndex, String mHotelCode, AuthenticationData authenticationData, String sessionId, Context context) {
         this.rooms = rooms;
         this.hotel_room = hotel_room;
         this.arrayOfRooms = arrayOfRooms;
@@ -72,17 +69,15 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         holder.mName.getRootView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //todo fix please
                 Intent intent = new Intent(context, ConfirmBookingRoom.class);
-                //todo tis one in partcular
-                intent.putExtra("arrayOfRooms", new Gson().toJson(arrayOfRooms));
+//                intent.putExtra("arrayOfRooms", new Gson().toJson(arrayOfRooms));
 //                intent.putExtra("rooms", new Gson().toJson(rooms));
 //                intent.putExtra("hotel_room", new Gson().toJson(hotel_room));
                 intent.putExtra("sessionId", sessionId);
                 intent.putExtra("noOfRooms", noOfRooms);
                 intent.putExtra("resultIndex", resultIndex);
-                intent.putExtra("date1", new Gson().toJson(date1));
-                intent.putExtra("date2", new Gson().toJson(date2));
+                intent.putExtra("date1", date1);
+                intent.putExtra("date2", date2);
                 intent.putExtra("mHOtelCode", mHOtelCode);
 //                intent.putExtra("authenticandata", new Gson().toJson(authenticandata));
                 intent.putExtra("roomIndex", position);

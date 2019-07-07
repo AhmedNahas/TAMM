@@ -25,6 +25,8 @@ import com.wirecard.ecom.model.out.PaymentResponse;
 import net.middledleeast.tamm.R;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -62,14 +64,15 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         authenticandata = new AuthenticationData();
         authenticandata.UserName = ("Tammtest");
         authenticandata.Password = ("Tam@18418756");
-        arrayOfRooms = (ArrayOfRequestedRooms) intent.getSerializableExtra("arrayOfRooms");
+//        arrayOfRooms = (ArrayOfRequestedRooms) intent.getSerializableExtra("arrayOfRooms");
 //        rooms = (List<Hotel_Room>) gson.fromJson(intent.getStringExtra("rooms"), List.class);
 //        hotel_room = gson.fromJson(intent.getStringExtra("hotel_room"), Hotel_Room.class);
         sessionId = intent.getStringExtra("sessionId");
         noOfRooms = intent.getIntExtra("noOfRooms", 1);
         resultIndex = intent.getIntExtra("resultIndex", 1);
-        date1 = gson.fromJson(intent.getStringExtra("date1"), DateTime.class);
-        date2 = gson.fromJson(intent.getStringExtra("date2"), DateTime.class);
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
+        DateTime date1 = formatter.parseDateTime(intent.getStringExtra("date1"));
+        DateTime date2 = formatter.parseDateTime(intent.getStringExtra("date2"));
         roomIndex = intent.getIntExtra("roomIndex", 0);
         mHOtelCode = intent.getStringExtra("mHOtelCode");
 //        authenticandata = gson.fromJson(intent.getStringExtra("authenticandata"), AuthenticationData.class);
@@ -82,6 +85,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         guest.GuestType = Enums.GuestType.Adult;
         guest.LastName = "Test";
         arrayOfGuest.add(guest);
+        arrayOfRooms = ChooseBookingDate.transferClass.getArrayOfRequestedRooms();
         try {
 
             HotelBookResponse hotelBookingResponse = service.HotelBook(date1, date2, null, "EG", arrayOfGuest, null, null, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);

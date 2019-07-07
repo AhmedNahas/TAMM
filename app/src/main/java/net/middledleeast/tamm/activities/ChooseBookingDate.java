@@ -20,10 +20,6 @@ import com.Tamm.Hotels.wcf.RequestedRooms;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.RoomsAdapter;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,10 +68,8 @@ public class ChooseBookingDate extends AppCompatActivity {
         //roomGuests =getIntent().getStringArrayListExtra("roomGuest");
         resultIndex = getIntent().getIntExtra("resultIndex", 1);
 
-        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 
-        DateTime date1 = formatter.parseDateTime(mstartTime);
-        DateTime date2 = formatter.parseDateTime(mendTime);
+
 
 
 
@@ -97,7 +91,9 @@ public class ChooseBookingDate extends AppCompatActivity {
             requestedRooms.RoomRate.TotalFare = hotel_room.RoomRate.TotalFare;
             requestedRooms.RoomTypeCode = hotel_room.RoomTypeCode;
             arrayOfRooms.add(requestedRooms);
-            roomAdapter = new RoomsAdapter(rooms, hotel_room, arrayOfRooms, date1, date2, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
+            transferClass.setArrayOfRequestedRooms(arrayOfRooms);
+
+            roomAdapter = new RoomsAdapter(rooms, hotel_room, arrayOfRooms, mstartTime, mendTime, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
 
 
             roomRecyclerView.setAdapter(roomAdapter);
@@ -151,6 +147,22 @@ public class ChooseBookingDate extends AppCompatActivity {
         service.enableLogging = true;
         authenticationData.UserName = ("Tammtest");
         authenticationData.Password = ("Tam@18418756");
+
+    }
+
+    public static class transferClass {
+
+        public static ArrayOfRequestedRooms arrayOfRequestedRooms;
+
+
+        public static ArrayOfRequestedRooms getArrayOfRequestedRooms() {
+            return arrayOfRequestedRooms;
+        }
+
+        public static void setArrayOfRequestedRooms(ArrayOfRequestedRooms arrayOfRequestedRooms) {
+            transferClass.arrayOfRequestedRooms = arrayOfRequestedRooms;
+        }
+
 
     }
 }
