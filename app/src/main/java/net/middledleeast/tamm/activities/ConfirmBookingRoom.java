@@ -17,6 +17,7 @@ import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.Guest;
 import com.Tamm.Hotels.wcf.HotelBookResponse;
+import com.Tamm.Hotels.wcf.HotelBookingDetailResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.PaymentInfo;
 import com.google.gson.Gson;
@@ -30,6 +31,7 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,21 +95,29 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         paymentInfo.VoucherBooking = false;
         paymentInfo.PaymentModeType = Enums.PaymentModeType.CreditCard;
         arrayOfRooms = ChooseBookingDate.transferClass.getArrayOfRequestedRooms();
+        BigDecimal amount = BigDecimal.valueOf(0);
+
         try {
             HotelBookResponse hotelBookingResponse = service.HotelBook(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
+
+            HotelBookingDetailResponse hotelBookingDetailResponse = service.HotelBookingDetail(hotelBookingResponse.BookingId, hotelBookingResponse.ConfirmationNo, "070817125855789#kuld", authenticandata);
             String confirmationNo = hotelBookingResponse.ConfirmationNo;
+            hotel_room = ChooseBookingDate.transferClass.hotel_room;
+            amount = hotel_room.RoomRate.TotalFare;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         confirmRoom = findViewById(R.id.confirm_room_booking);
         PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
+        BigDecimal finalAmount = amount;
         confirmRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                startActivity(new Intent(ConfirmBookingRoom.this, PaymentActivity.class ));
                 Client client = new Client(ConfirmBookingRoom.this, "https://api-test.wirecard.com");
-                client.startPayment(mPaymentObjectProvider.getCardPayment(true));
+                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount));
             }
         });
 

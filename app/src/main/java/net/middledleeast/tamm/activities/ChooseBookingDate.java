@@ -111,6 +111,7 @@ public class ChooseBookingDate extends AppCompatActivity {
             rooms = response.HotelRooms;
 
             Hotel_Room hotel_room = rooms.get(0);
+            transferClass.setHotel_room(hotel_room);
             ArrayOfRequestedRooms arrayOfRooms = new ArrayOfRequestedRooms();
             RequestedRooms requestedRooms = new RequestedRooms();
             requestedRooms.RatePlanCode = hotel_room.RatePlanCode;
@@ -170,6 +171,15 @@ public class ChooseBookingDate extends AppCompatActivity {
     public static class transferClass {
 
         public static ArrayOfRequestedRooms arrayOfRequestedRooms;
+        public static Hotel_Room hotel_room;
+
+        public static Hotel_Room getHotel_room() {
+            return hotel_room;
+        }
+
+        public static void setHotel_room(Hotel_Room hotel_room) {
+            transferClass.hotel_room = hotel_room;
+        }
 
 
         public static ArrayOfRequestedRooms getArrayOfRequestedRooms() {

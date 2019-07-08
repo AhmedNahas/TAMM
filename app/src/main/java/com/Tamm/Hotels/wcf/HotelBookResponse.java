@@ -35,6 +35,7 @@ public class HotelBookResponse extends AttributeContainer implements KvmSerializ
 
     public PriceChangeStatus PriceChange;
 
+
     public String SupplierConfirmationNo;
     private transient java.lang.Object __source;
 
