@@ -23,6 +23,9 @@ public class HotelBookingDetailResponse extends AttributeContainer implements Kv
     
     public ResponseStatus Status;
 
+    public RoomRate RoomRate;
+
+
     public APIBookingDetail BookingDetail;
     private transient java.lang.Object __source;
 
@@ -58,6 +61,13 @@ public class HotelBookingDetailResponse extends AttributeContainer implements Kv
             if (obj != null) {
                 java.lang.Object j = obj;
                 this.BookingDetail = (APIBookingDetail) __envelope.get(j, APIBookingDetail.class, false);
+            }
+            return true;
+        }
+        if (info.name.equals("RoomRate")) {
+            if (obj != null) {
+                java.lang.Object j = obj;
+                this.RoomRate = (RoomRate) __envelope.get(j, RoomRate.class, false);
             }
             return true;
         }
