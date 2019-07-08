@@ -15,13 +15,10 @@ import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.RoomInformation;
-import com.bumptech.glide.Glide;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.ConfirmBookingRoom;
 import net.middledleeast.tamm.activities.checkroom;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -39,6 +36,8 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     private final String sessionId;
     private List<Hotel_Room> rooms;
     RoomInformation roomInformation;
+    private String roomInstructions;
+    private String description;
 
 
     public RoomsAdapter(List<Hotel_Room> rooms, Hotel_Room hotel_room, ArrayOfRequestedRooms arrayOfRooms,
@@ -72,8 +71,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String roomType = rooms.get(position).RoomTypeName;
-        String roomInstructions = rooms.get(position).MealType;
-        String description = rooms.get(position).RoomAdditionalInfo.Description;
+        String mealType = rooms.get(position).Amenities;
+
+
 //        BigDecimal price = rooms.get(position).Supplements.get(position).Price;
         holder.mName.setText(roomType);
 //        holder.roomPrice.setText((CharSequence) price);
@@ -82,6 +82,8 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         //image
         if (roomInformation != null) {
             List<String> images = roomInformation.ImageURLs;
+            roomInstructions = rooms.get(position).MealType;
+            description = rooms.get(position).RoomAdditionalInfo.Description;
         }
 
         holder.mName.getRootView().setOnClickListener(new View.OnClickListener() {
@@ -102,6 +104,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 intent.putExtra("smok",roomInstructions);
                 intent.putExtra("roomTybe",roomType);
                 intent.putExtra("description",description);
+                intent.putExtra("mealTybe", roomInstructions);
                 context.startActivity(intent);
             }
         });
@@ -124,7 +127,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         public ViewHolder(View linearLayout) {
             super(linearLayout);
 
-            this.mName = linearLayout.findViewById(R.id.nametext);
+            this.mName = linearLayout.findViewById(R.id.nametext_room);
             this.img_photo_hotel = linearLayout.findViewById(R.id.img_photo_hotel);
             this.roomPrice = linearLayout.findViewById(R.id.room_price);
 

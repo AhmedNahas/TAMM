@@ -3,16 +3,13 @@ package net.middledleeast.tamm.activities;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.Tamm.Hotels.wcf.ArrayOfHotel_Room;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
-import com.Tamm.Hotels.wcf.ArrayOfString;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
@@ -48,6 +45,8 @@ public class ChooseBookingDate extends AppCompatActivity {
     private RecyclerView roomRecyclerView;
     private RoomsAdapter roomAdapter;
     private List<Hotel_Room> rooms  = new ArrayList<>();
+    private String end_time;
+    private String start_time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +67,8 @@ public class ChooseBookingDate extends AppCompatActivity {
 
 
         long nightsDeff = SharedPreferencesManger.LoadLongData(ChooseBookingDate.this, "nights");
-        String start_time = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "start_date");
-        String end_time = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "end_date");
+        start_time = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "start_date");
+        end_time = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "end_date");
         long no_roomS = SharedPreferencesManger.LoadLongData(this, "no_room");
         long no_adult = SharedPreferencesManger.LoadLongData(this, "no_adult");
         int no_childS = SharedPreferencesManger.LoadIntegerData(this, "no_child");
@@ -124,7 +123,7 @@ public class ChooseBookingDate extends AppCompatActivity {
             arrayOfRooms.add(requestedRooms);
             transferClass.setArrayOfRequestedRooms(arrayOfRooms);
 
-            roomAdapter = new RoomsAdapter(rooms,hotel_room,arrayOfRooms,null,null,noOfRooms,resultIndex,mHotelCode,authenticationData,sessionId,this);
+            roomAdapter = new RoomsAdapter(rooms, hotel_room, arrayOfRooms, start_time, end_time, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
 
 
             roomRecyclerView.setAdapter(roomAdapter);

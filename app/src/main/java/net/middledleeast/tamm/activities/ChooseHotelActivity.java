@@ -56,7 +56,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
         resultIndex = (ArrayList<Integer>) getIntent().getSerializableExtra("resultIndex");
 
         reInfoHotels.setLayoutManager(new LinearLayoutManager(this));
-        adapterHotelInfo = new AdapterHotelInfo(hotelName, hotelrat, hotelphoto, this, onHotelListener, hotelAddress, hotelCode, sessionId,
+        adapterHotelInfo = new AdapterHotelInfo(ChooseHotelActivity.this, hotelName, hotelrat, hotelphoto, this, onHotelListener, hotelAddress, hotelCode, sessionId,
                 mstartTime, mendTime, countryName, cityName, cityId, noOfRooms, roomGuests, resultIndex);
         reInfoHotels.setAdapter(adapterHotelInfo);
         adapterHotelInfo.notifyDataSetChanged();

@@ -11,19 +11,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
-import com.Tamm.Hotels.wcf.ArrayOfString;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
-import com.Tamm.Hotels.wcf.HotelDetailsResponse;
-import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
-import com.Tamm.Hotels.wcf.Rate;
-import com.Tamm.Hotels.wcf.RequestedRooms;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.adapters.RoomsAdapter;
-
-import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +29,10 @@ public class checkroom extends AppCompatActivity {
     private int resultIndex;
     private List<Hotel_Room> rooms  = new ArrayList<>();
     TextView roomTyben;
+    private String intent;
+    private String roomTybe;
+    private String description;
+    private String mealTybe;
 
 
     @Override
@@ -47,10 +43,13 @@ public class checkroom extends AppCompatActivity {
 
         StrictMode.setThreadPolicy(policy);
         auth();
-        String intent = getIntent().getStringExtra("smok");
-        String roomTybe = getIntent().getStringExtra("roomTybe");
-        String description = getIntent().getStringExtra("description");
-        Toast.makeText(this, ""+description, Toast.LENGTH_SHORT).show();
+        getIntentInfo();
+
+        if (mealTybe == null) {
+            Toast.makeText(this, "" + mealTybe, Toast.LENGTH_SHORT).show();
+        }
+
+
 
         checkRoom=findViewById(R.id.checkOutRoom);
         roomTyben=findViewById(R.id.room_Tybe);
@@ -63,9 +62,7 @@ public class checkroom extends AppCompatActivity {
             }
         });
 
-        sessionId = getIntent().getStringExtra("sessionId");
-        mHotelCode = getIntent().getStringExtra("hotelCode");
-        resultIndex = getIntent().getIntExtra("resultIndex", 1);
+
         try {
 
             service.enableLogging = true;
@@ -77,6 +74,18 @@ public class checkroom extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    private void getIntentInfo() {
+        intent = getIntent().getStringExtra("smok");
+        roomTybe = getIntent().getStringExtra("roomTybe");
+        description = getIntent().getStringExtra("description");
+        sessionId = getIntent().getStringExtra("sessionId");
+        mHotelCode = getIntent().getStringExtra("hotelCode");
+        resultIndex = getIntent().getIntExtra("resultIndex", 1);
+        mealTybe = getIntent().getStringExtra("mealTybe");
+
+    }
+
     private void auth() {
 
         service = new BasicHttpBinding_IHotelService1();

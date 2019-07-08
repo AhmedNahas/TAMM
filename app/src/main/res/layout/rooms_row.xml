@@ -18,12 +18,12 @@
             android:layout_margin="8dp"/>
 
         <TextView
-            android:id="@+id/nametext"
+            android:id="@+id/nametext_room"
             android:layout_weight="1"
             android:layout_width="0dp"
+            android:textColor="@color/white"
             android:layout_margin="8dp"
             android:layout_height="wrap_content"
-            android:text="TextView"
             android:textSize="15sp"
             android:padding="5dp"/>
     </LinearLayout>

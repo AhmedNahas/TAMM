@@ -1,6 +1,7 @@
 package net.middledleeast.tamm.adapters;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import com.bumptech.glide.Glide;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.HotelDetails;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
 
@@ -38,8 +40,9 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
     private int noOfRooms;
     private ArrayList<String> roomGuests;
     private ArrayList<Integer> resultINdex;
+    Activity activity;
 
-    public AdapterHotelInfo(ArrayList<String> listnameHotel, ArrayList<Integer> hotelrat, ArrayList<String> listPhotoHotel,
+    public AdapterHotelInfo(Activity activity, ArrayList<String> listnameHotel, ArrayList<Integer> hotelrat, ArrayList<String> listPhotoHotel,
                             Context context, onHotelListener onHotelListener, ArrayList<String> listAddressHotel, ArrayList<String> hotelCode,
                             String sessionId, String mstartTime, String mendTime, String countryName, String cityName, String cityId, int noOfRooms, ArrayList<String> roomGuests, ArrayList<Integer> resultINdex) {
         this.listnameHotel = listnameHotel;
@@ -58,6 +61,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         this.noOfRooms = noOfRooms;
         this.roomGuests = roomGuests;
         this.resultINdex = resultINdex;
+        this.activity = activity;
 
         notifyDataSetChanged();
 
@@ -86,6 +90,8 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, HotelDetails.class);
+
+                SharedPreferencesManger.SaveData(activity, "hotel_name", name);
 //                intent.putExtra("selected_hotel_image",photos);
                 intent.putExtra("selected_hotel_name", name);
                 intent.putExtra("selected_hotel_rate", rat);

@@ -36,10 +36,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 
 import static java.util.Calendar.YEAR;
 
@@ -267,8 +265,8 @@ SharedPreferencesManger.SaveData(FindHotels.this,"start_date",mstartTime);
 //                countryListResponse.Status.Category
                 list.add(name);
 
-                ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, list);
+                adapter.setDropDownViewResource(R.layout.drop_dowen);
                 regions.setAdapter(adapter);
 
 
@@ -417,7 +415,7 @@ SharedPreferencesManger.SaveData(FindHotels.this,"start_date",mstartTime);
 
             HotelSearchResponse hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
                     true, noRomes, "EG", roomguests, null, 100, null, null, null,
-                    6000, authenticationData);
+                    600, authenticationData);
             ratrHotel.clear();
             nameHotel.clear();
             photoHotel.clear();
