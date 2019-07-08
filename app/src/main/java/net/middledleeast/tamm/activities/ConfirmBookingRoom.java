@@ -94,7 +94,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         paymentInfo.PaymentModeType = Enums.PaymentModeType.CreditCard;
         arrayOfRooms = ChooseBookingDate.transferClass.getArrayOfRequestedRooms();
         try {
-            HotelBookResponse hotelBookingResponse = service.HotelBook(date1, date2, "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
+            HotelBookResponse hotelBookingResponse = service.HotelBook(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
+            String confirmationNo = hotelBookingResponse.ConfirmationNo;
         } catch (Exception e) {
             e.printStackTrace();
         }
