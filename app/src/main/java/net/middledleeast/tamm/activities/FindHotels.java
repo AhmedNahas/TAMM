@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
@@ -31,6 +34,7 @@ import com.Tamm.Hotels.wcf.Hotel_Result;
 import com.Tamm.Hotels.wcf.RoomGuest;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.adapters.AdapterChildCount;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import org.joda.time.DateTime;
@@ -102,6 +106,7 @@ public class FindHotels extends AppCompatActivity {
     private Date time1;
     private Date time2;
     private RecyclerView recycl_child_spiner;
+    AdapterChildCount adapterChildCount ;
 
 
     @Override
@@ -110,7 +115,30 @@ public class FindHotels extends AppCompatActivity {
         setContentView(R.layout.find_hotels);
         ButterKnife.bind(this);
 
-        listOfChildCount();
+
+
+        areas = findViewById(R.id.area_spinner);
+        regions = findViewById(R.id.region_spinner);
+        roomCount = findViewById(R.id.no_of_rooms);
+        adultCount = findViewById(R.id.adilt_count);
+        childCount = findViewById(R.id.no_of_childs);
+        findHotel = findViewById(R.id.findHotels);
+//        startDate = findViewById(R.id.startDate);
+//        endDate = findViewById(R.id.endDate);
+        nights = findViewById(R.id.nights);
+
+        recycl_child_spiner = findViewById(R.id.rv_child);
+
+        recycl_child_spiner.setLayoutManager(new GridLayoutManager(this,2));
+
+        listOfChild.add(0);
+        adapterChildCount = new AdapterChildCount(listOfChild);
+        recycl_child_spiner.setAdapter(adapterChildCount);
+        adapterChildCount.notifyDataSetChanged();
+
+
+
+
 
 
 
@@ -130,18 +158,9 @@ public class FindHotels extends AppCompatActivity {
 
 
 
-        areas = findViewById(R.id.area_spinner);
-        regions = findViewById(R.id.region_spinner);
-        roomCount = findViewById(R.id.no_of_rooms);
-        adultCount = findViewById(R.id.adilt_count);
-        childCount = findViewById(R.id.no_of_childs);
-        findHotel = findViewById(R.id.findHotels);
-//        startDate = findViewById(R.id.startDate);
-//        endDate = findViewById(R.id.endDate);
-        nights = findViewById(R.id.nights);
-        noRomes = 1;
-        recycl_child_spiner = findViewById(R.id.rv_child);
+
         arrayOfResultIndex = new ArrayList<>();
+        noRomes = 1;
         for (int i = 1; i < 7; i++) {
 
             listOfRooms.add(i);
@@ -219,7 +238,7 @@ public class FindHotels extends AppCompatActivity {
 
                 int no_child = listOfChild.get(i);
                 SharedPreferencesManger.SaveData(FindHotels.this, "no_child", no_child);
-                Toast.makeText(FindHotels.this, "" + no_child, Toast.LENGTH_SHORT).show();
+
             }
 
             @Override

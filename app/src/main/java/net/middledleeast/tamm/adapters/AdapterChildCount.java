@@ -36,7 +36,7 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
     @Override
     public void onBindViewHolder(@NonNull SingleView holder, int position) {
 
-
+holder.child_no_tv.setText("Childern"+listCountCild.get(position)+"age");
 
 
 
