@@ -37,6 +37,10 @@ public class checkroom extends AppCompatActivity {
     private int resultIndex;
     private List<Hotel_Room> rooms  = new ArrayList<>();
     TextView roomTyben;
+    private String intent;
+    private String roomTybe;
+    private String description;
+    private String mealTybe;
 
 
     @Override
@@ -47,10 +51,13 @@ public class checkroom extends AppCompatActivity {
 
         StrictMode.setThreadPolicy(policy);
         auth();
-        String intent = getIntent().getStringExtra("smok");
-        String roomTybe = getIntent().getStringExtra("roomTybe");
-        String description = getIntent().getStringExtra("description");
-        Toast.makeText(this, ""+description, Toast.LENGTH_SHORT).show();
+        getIntentInfo();
+
+        if (mealTybe == null){
+            Toast.makeText(this, ""+mealTybe, Toast.LENGTH_SHORT).show();
+        }
+
+
 
         checkRoom=findViewById(R.id.checkOutRoom);
         roomTyben=findViewById(R.id.room_Tybe);
@@ -63,9 +70,7 @@ public class checkroom extends AppCompatActivity {
             }
         });
 
-        sessionId = getIntent().getStringExtra("sessionId");
-        mHotelCode = getIntent().getStringExtra("hotelCode");
-        resultIndex = getIntent().getIntExtra("resultIndex", 1);
+
         try {
 
             service.enableLogging = true;
@@ -77,6 +82,18 @@ public class checkroom extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    private void getIntentInfo() {
+        intent = getIntent().getStringExtra("smok");
+        roomTybe = getIntent().getStringExtra("roomTybe");
+        description = getIntent().getStringExtra("description");
+        sessionId = getIntent().getStringExtra("sessionId");
+        mHotelCode = getIntent().getStringExtra("hotelCode");
+        resultIndex = getIntent().getIntExtra("resultIndex", 1);
+        mealTybe = getIntent().getStringExtra("mealTybe");
+
+    }
+
     private void auth() {
 
         service = new BasicHttpBinding_IHotelService1();

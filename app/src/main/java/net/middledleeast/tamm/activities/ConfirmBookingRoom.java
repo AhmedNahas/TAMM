@@ -24,6 +24,7 @@ import com.wirecard.ecom.Client;
 import com.wirecard.ecom.model.out.PaymentResponse;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -52,6 +53,9 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     private List<Hotel_Room> rooms;
     private BasicHttpBinding_IHotelService1 service;
     private int roomIndex;
+    private String start_time;
+    private String end_time;
+    private String hotel_name;
 
 
     @Override
@@ -72,9 +76,18 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         noOfRooms = intent.getIntExtra("noOfRooms", 1);
         resultIndex = intent.getIntExtra("resultIndex", 1);
         DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
-        date1 = formatter.parseDateTime(intent.getStringExtra("date1"));
-        date1.toString();
-        date2 = formatter.parseDateTime(intent.getStringExtra("date2"));
+
+        start_time = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "start_date");
+        end_time = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "end_date");
+        hotel_name = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "hotel_name");
+
+
+
+
+
+//        date1 = formatter.parseDateTime(intent.getStringExtra("date1"));
+//        date1.toString();
+      //  date2 = formatter.parseDateTime(intent.getStringExtra("date2"));
 
         roomIndex = intent.getIntExtra("roomIndex", 0);
         mHOtelCode = intent.getStringExtra("mHOtelCode");
@@ -94,7 +107,15 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         paymentInfo.PaymentModeType = Enums.PaymentModeType.CreditCard;
         arrayOfRooms = ChooseBookingDate.transferClass.getArrayOfRequestedRooms();
         try {
-            HotelBookResponse hotelBookingResponse = service.HotelBook(date1, date2, "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
+            HotelBookResponse hotelBookingResponse = service.HotelBook(DateTime.parse(start_time), DateTime.parse(end_time),
+                    "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo
+                    , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
+                    null, false, authenticandata);
+
+
+
+            Toast.makeText(this, ""+hotelBookingResponse.ConfirmationNo, Toast.LENGTH_SHORT).show();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

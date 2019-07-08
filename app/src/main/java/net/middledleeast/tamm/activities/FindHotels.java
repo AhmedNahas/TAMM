@@ -417,7 +417,7 @@ SharedPreferencesManger.SaveData(FindHotels.this,"start_date",mstartTime);
 
             HotelSearchResponse hotelSearchResponse = service.HotelSearch(date1.toDateTimeISO(), date2.toDateTimeISO(), nameCountry, name_city, Integer.parseInt(ctyId),
                     true, noRomes, "EG", roomguests, null, 100, null, null, null,
-                    6000, authenticationData);
+                    600, authenticationData);
             ratrHotel.clear();
             nameHotel.clear();
             photoHotel.clear();
