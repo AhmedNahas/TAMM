@@ -45,6 +45,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Queue;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -98,7 +99,6 @@ public class FindHotels extends AppCompatActivity {
     private String mstartTime;
     private List<Integer> listOfRooms = new ArrayList<>();
     private List<Integer> listOfAdult = new ArrayList<>();
-    private List<Integer> listOfChild = new ArrayList<>();
     private int noRomes;
     private String sessionId;
     ArrayList<Integer> arrayOfResultIndex;
@@ -106,7 +106,9 @@ public class FindHotels extends AppCompatActivity {
     private Date time1;
     private Date time2;
     private RecyclerView recycl_child_spiner;
-    AdapterChildCount adapterChildCount ;
+    AdapterChildCount adapterChildCount;
+    private List<Integer> listOfChild = new ArrayList<>();
+    private List<Integer> listChildernCount = new ArrayList<>();
 
 
     @Override
@@ -114,7 +116,6 @@ public class FindHotels extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_hotels);
         ButterKnife.bind(this);
-
 
 
         areas = findViewById(R.id.area_spinner);
@@ -129,24 +130,19 @@ public class FindHotels extends AppCompatActivity {
 
         recycl_child_spiner = findViewById(R.id.rv_child);
 
-        recycl_child_spiner.setLayoutManager(new GridLayoutManager(this,2));
+        recycl_child_spiner.setLayoutManager(new GridLayoutManager(this, 2));
+
+        adapterChildCount = new AdapterChildCount(this, listChildernCount);
+
+        recycl_child_spiner.setAdapter(adapterChildCount);
+
 
         listOfChild.add(0);
-        adapterChildCount = new AdapterChildCount(listOfChild);
-        recycl_child_spiner.setAdapter(adapterChildCount);
-        adapterChildCount.notifyDataSetChanged();
-
-
-
-
-
 
 
         String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
         String date_m = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());
         String date_d = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
-
-
 
 
         endDateDay.setText(date_n);
@@ -155,8 +151,6 @@ public class FindHotels extends AppCompatActivity {
         startDateDay.setText(date_n);
         startDateMonth.setText(date_m);
         startDateYear.setText(date_d);
-
-
 
 
         arrayOfResultIndex = new ArrayList<>();
@@ -178,16 +172,16 @@ public class FindHotels extends AppCompatActivity {
 
                 switch (position) {
                     case 1:
-                        listOfChild.clear();
                         listOfAdult.clear();
+                        listOfChild.clear();
                         list1();
                         listOfChildCount();
                         noRomes = 1;
                         break;
                     case 2:
                         listOfAdult.clear();
-                        listOfChild.clear();
                         noRomes = 2;
+                        listOfChild.clear();
                         list2();
                         listOfChildCount2();
 
@@ -236,8 +230,50 @@ public class FindHotels extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                int no_child = listOfChild.get(i);
-                SharedPreferencesManger.SaveData(FindHotels.this, "no_child", no_child);
+                if (i != 0) {
+
+
+                    if (i == 1) {
+
+                        listChildernCount.clear();
+                        for (int j = 1; j <2; j++) {
+                            listChildernCount.add(j);
+                            adapterChildCount.notifyDataSetChanged();
+                        }
+                    } else if (i == 2) {
+
+                        listChildernCount.clear();
+                        for (int j = 1; j <3; j++) {
+                            listChildernCount.add(j);
+                            adapterChildCount.notifyDataSetChanged();
+                        }
+                    } else if (i == 3) {
+
+                        listChildernCount.clear();
+                        for (int j = 1; j <4; j++) {
+                            listChildernCount.add(j);
+                            adapterChildCount.notifyDataSetChanged();
+                        }
+                    }else if (i==4){
+
+
+                        listChildernCount.clear();
+                        for (int j = 1; j < 5; j++) {
+
+                            listChildernCount.add(j);
+                            adapterChildCount.notifyDataSetChanged();
+
+                        }
+                    }
+
+
+                } else {
+
+                    listChildernCount.clear();
+                    adapterChildCount.notifyDataSetChanged();
+                }
+
+                //   SharedPreferencesManger.SaveData(FindHotels.this, "no_child", no_child);
 
             }
 
@@ -359,7 +395,7 @@ public class FindHotels extends AppCompatActivity {
 
     private void listOfChildCount() {
 
-        for (int i = 1; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             listOfChild.add(i);
         }
 
@@ -369,7 +405,7 @@ public class FindHotels extends AppCompatActivity {
 
     private void listOfChildCount2() {
 
-        for (int i = 1; i < 9; i++) {
+        for (int i = 0; i < 9; i++) {
             listOfChild.add(i);
         }
 
@@ -548,7 +584,7 @@ public class FindHotels extends AppCompatActivity {
                 SimpleDateFormat start = new SimpleDateFormat(myFormat, Locale.US);
                 time1 = myCalendar.getTime();
                 mstartTime = start.format(myCalendar.getTime());
-              //  startDate.setText(mstartTime);
+                //  startDate.setText(mstartTime);
 
                 long time = time1.getTime();
 
@@ -556,10 +592,10 @@ public class FindHotels extends AppCompatActivity {
                 String day = (String) DateFormat.format("dd", time); // Thursday
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
-              startDateDay.setText(day);
-              startDateMonth.setText(monthString);
+                startDateDay.setText(day);
+                startDateMonth.setText(monthString);
 
-              startDateYear.setText(dayOfTheWeek);
+                startDateYear.setText(dayOfTheWeek);
 
             }
         };
@@ -586,7 +622,7 @@ public class FindHotels extends AppCompatActivity {
                 time2 = myCalendar.getTime();
 
                 mendTime = end.format(myCalendar.getTime());
-               // endDate.setText(mendTime);
+                // endDate.setText(mendTime);
 
                 long time = time2.getTime();
 
@@ -606,7 +642,7 @@ public class FindHotels extends AppCompatActivity {
                 long days = hours / 24;
 
 
-                nights.setText(" "+days + " " );
+                nights.setText(" " + days + " ");
                 SharedPreferencesManger.SaveData(FindHotels.this, "nights", days);
 
 

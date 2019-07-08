@@ -1,14 +1,18 @@
 package net.middledleeast.tamm.adapters;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.core.Context;
 
 import net.middledleeast.tamm.R;
 
@@ -18,10 +22,15 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
 
 
     List<Integer> listCountCild;
+    Activity activity
+            ;
 
 
-    public AdapterChildCount(List<Integer> listCountCild) {
+
+
+    public AdapterChildCount(Activity activity , List<Integer> listCountCild) {
         this.listCountCild = listCountCild;
+        this.activity = activity;
 
     }
 
@@ -36,7 +45,19 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
     @Override
     public void onBindViewHolder(@NonNull SingleView holder, int position) {
 
-holder.child_no_tv.setText("Childern"+listCountCild.get(position)+"age");
+
+        int integer = listCountCild.get(position);
+
+
+        holder.child_no_tv.setText("Childern "+integer+" age");
+
+
+
+
+
+
+//            listCountCild.remove(position);
+
 
 
 
