@@ -107,7 +107,7 @@ public class BasicHttpBinding_IHotelService1 {
         return null;
     }
 
-    public HotelSearchResponse HotelSearch(final org.joda.time.DateTime CheckInDate, final org.joda.time.DateTime CheckOutDate,
+    public HotelSearchResponse HotelSearch(final String CheckInDate, final String CheckOutDate,
                                            final String CountryName, final String CityName, final Integer CityId,
                                            final Boolean IsNearBySearchAllowed, final Integer NoOfRooms,
                                            final String GuestNationality, final ArrayOfRoomGuest RoomGuests,
@@ -139,13 +139,13 @@ public class BasicHttpBinding_IHotelService1 {
                 __info.namespace = "http://TekTravel/HotelBookingApi";
                 __info.name = "CheckInDate";
                 __info.type = PropertyInfo.STRING_CLASS;
-                __info.setValue(CheckInDate != null ? CheckInDate.toString() : SoapPrimitive.NullSkip);
+                __info.setValue(CheckInDate != null ? CheckInDate : SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
                 __info = new PropertyInfo();
                 __info.namespace = "http://TekTravel/HotelBookingApi";
                 __info.name = "CheckOutDate";
                 __info.type = PropertyInfo.STRING_CLASS;
-                __info.setValue(CheckOutDate != null ? CheckOutDate.toString() : SoapPrimitive.NullSkip);
+                __info.setValue(CheckOutDate != null ? CheckOutDate : SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
                 __info = new PropertyInfo();
                 __info.namespace = "http://TekTravel/HotelBookingApi";
@@ -304,7 +304,7 @@ public class BasicHttpBinding_IHotelService1 {
     }
 
 
-    public android.os.AsyncTask<Void, Void, OperationResult<HotelSearchResponse>> HotelSearchAsync(final org.joda.time.DateTime CheckInDate, final org.joda.time.DateTime CheckOutDate, final String CountryName, final String CityName, final Integer CityId, final Boolean IsNearBySearchAllowed, final Integer NoOfRooms, final String GuestNationality, final ArrayOfRoomGuest RoomGuests, final String PreferredCurrencyCode, final Integer ResultCount, final Filters Filters, final String IsRoomInfoRequired, final GeoCodes GeoCodes, final Integer ResponseTime, final AuthenticationData Credentials) {
+    public android.os.AsyncTask<Void, Void, OperationResult<HotelSearchResponse>> HotelSearchAsync(final String CheckInDate, final String CheckOutDate, final String CountryName, final String CityName, final Integer CityId, final Boolean IsNearBySearchAllowed, final Integer NoOfRooms, final String GuestNationality, final ArrayOfRoomGuest RoomGuests, final String PreferredCurrencyCode, final Integer ResultCount, final Filters Filters, final String IsRoomInfoRequired, final GeoCodes GeoCodes, final Integer ResponseTime, final AuthenticationData Credentials) {
         return executeAsync(new Functions.IFunc<HotelSearchResponse>() {
             public HotelSearchResponse Func() throws java.lang.Exception {
                 return HotelSearch(CheckInDate, CheckOutDate, CountryName, CityName, CityId, IsNearBySearchAllowed, NoOfRooms, GuestNationality, RoomGuests, PreferredCurrencyCode, ResultCount, Filters, IsRoomInfoRequired, GeoCodes, ResponseTime, Credentials);
@@ -488,8 +488,8 @@ public class BasicHttpBinding_IHotelService1 {
         }, "HotelCancellationPolicyForAllRooms");
     }
 
-    public HotelBookResponse HotelBook(final org.joda.time.DateTime CheckInDate,
-                                       final org.joda.time.DateTime CheckOutDate, final String ClientReferenceNumber, final String GuestNationality, final ArrayOfGuest Guests, final AddressInfo AddressInfo, final PaymentInfo PaymentInfo, final String SessionId, final FlightInfo FlightInfo, final Integer NoOfRooms, final Integer ResultIndex, final String HotelCode, final String HotelName, final ArrayOfRequestedRooms HotelRooms, final ArrayOfSpecialRequest SpecialRequests, final String AgencyReferenceNumber, final Boolean RestrictDuplicateBooking, final AuthenticationData Credentials) throws java.lang.Exception {
+    public HotelBookResponse HotelBook(final String CheckInDate,
+                                       final String CheckOutDate, final String ClientReferenceNumber, final String GuestNationality, final ArrayOfGuest Guests, final AddressInfo AddressInfo, final PaymentInfo PaymentInfo, final String SessionId, final FlightInfo FlightInfo, final Integer NoOfRooms, final Integer ResultIndex, final String HotelCode, final String HotelName, final ArrayOfRequestedRooms HotelRooms, final ArrayOfSpecialRequest SpecialRequests, final String AgencyReferenceNumber, final Boolean RestrictDuplicateBooking, final AuthenticationData Credentials) throws java.lang.Exception {
         com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile __profile = new com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile();
         return (HotelBookResponse) execute(new IWcfMethod() {
             @Override
@@ -517,13 +517,13 @@ public class BasicHttpBinding_IHotelService1 {
                 __info.namespace = "http://TekTravel/HotelBookingApi";
                 __info.name = "CheckInDate";
                 __info.type = PropertyInfo.STRING_CLASS;
-                __info.setValue(CheckInDate != null ? CheckInDate.toString() : SoapPrimitive.NullSkip);
+                __info.setValue(CheckInDate != null ? CheckInDate : SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
                 __info = new PropertyInfo();
                 __info.namespace = "http://TekTravel/HotelBookingApi";
                 __info.name = "CheckOutDate";
                 __info.type = PropertyInfo.STRING_CLASS;
-                __info.setValue(CheckOutDate != null ? CheckOutDate.toString() : SoapPrimitive.NullSkip);
+                __info.setValue(CheckOutDate != null ? CheckOutDate : SoapPrimitive.NullSkip);
                 __soapReq.addProperty(__info);
                 __info = new PropertyInfo();
                 __info.namespace = "http://TekTravel/HotelBookingApi";
@@ -625,7 +625,7 @@ public class BasicHttpBinding_IHotelService1 {
         }, "http://TekTravel/HotelBookingApi/HotelBook", __profile);
     }
 
-    public android.os.AsyncTask<Void, Void, OperationResult<HotelBookResponse>> HotelBookAsync(final org.joda.time.DateTime CheckInDate, final org.joda.time.DateTime CheckOutDate, final String ClientReferenceNumber, final String GuestNationality, final ArrayOfGuest Guests, final AddressInfo AddressInfo, final PaymentInfo PaymentInfo, final String SessionId, final FlightInfo FlightInfo, final Integer NoOfRooms, final Integer ResultIndex, final String HotelCode, final String HotelName, final ArrayOfRequestedRooms HotelRooms, final ArrayOfSpecialRequest SpecialRequests, final String AgencyReferenceNumber, final Boolean RestrictDuplicateBooking, final AuthenticationData Credentials) {
+    public android.os.AsyncTask<Void, Void, OperationResult<HotelBookResponse>> HotelBookAsync(final String CheckInDate, final String CheckOutDate, final String ClientReferenceNumber, final String GuestNationality, final ArrayOfGuest Guests, final AddressInfo AddressInfo, final PaymentInfo PaymentInfo, final String SessionId, final FlightInfo FlightInfo, final Integer NoOfRooms, final Integer ResultIndex, final String HotelCode, final String HotelName, final ArrayOfRequestedRooms HotelRooms, final ArrayOfSpecialRequest SpecialRequests, final String AgencyReferenceNumber, final Boolean RestrictDuplicateBooking, final AuthenticationData Credentials) {
         return executeAsync(new Functions.IFunc<HotelBookResponse>() {
             public HotelBookResponse Func() throws java.lang.Exception {
                 return HotelBook(CheckInDate, CheckOutDate, ClientReferenceNumber, GuestNationality, Guests, AddressInfo, PaymentInfo, SessionId, FlightInfo, NoOfRooms, ResultIndex, HotelCode, HotelName, HotelRooms, SpecialRequests, AgencyReferenceNumber, RestrictDuplicateBooking, Credentials);
