@@ -4,16 +4,19 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
@@ -39,11 +42,31 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 import static java.util.Calendar.YEAR;
 
 public class FindHotels extends AppCompatActivity {
 
 
+    @BindView(R.id.startDate_day)
+    TextView startDateDay;
+    @BindView(R.id.startDate_month)
+    TextView startDateMonth;
+    @BindView(R.id.startDate_year)
+    TextView startDateYear;
+    @BindView(R.id.layout_check)
+    LinearLayout layoutCheck;
+    @BindView(R.id.endDate_day)
+    TextView endDateDay;
+    @BindView(R.id.endDate_month)
+    TextView endDateMonth;
+    @BindView(R.id.endDate_year)
+    TextView endDateYear;
+    @BindView(R.id.layout_check_out)
+    LinearLayout layoutCheckOut;
     private Button findHotel;
     ArrayList<Integer> ratrHotel = new ArrayList<Integer>();
     private List<String> list = new ArrayList<>();
@@ -66,7 +89,7 @@ public class FindHotels extends AppCompatActivity {
     private List<String> listID = new ArrayList<>();
     private String nameCountry;
     private String name_city;
-    private TextView startDate, endDate , nights;
+    private TextView nights;
     private String mendTime;
     private String mstartTime;
     private List<Integer> listOfRooms = new ArrayList<>();
@@ -78,21 +101,46 @@ public class FindHotels extends AppCompatActivity {
     private int resultIndex = 0;
     private Date time1;
     private Date time2;
+    private RecyclerView recycl_child_spiner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_hotels);
-        findHotel = findViewById(R.id.findHotels);
+        ButterKnife.bind(this);
+
+        listOfChildCount();
+
+
+
+        String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
+        String date_m = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());
+        String date_d = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
+
+
+
+
+        endDateDay.setText(date_n);
+        endDateMonth.setText(date_m);
+        endDateYear.setText(date_d);
+        startDateDay.setText(date_n);
+        startDateMonth.setText(date_m);
+        startDateYear.setText(date_d);
+
+
+
         areas = findViewById(R.id.area_spinner);
         regions = findViewById(R.id.region_spinner);
         roomCount = findViewById(R.id.no_of_rooms);
         adultCount = findViewById(R.id.adilt_count);
-        childCount = findViewById(R.id.child_count);
-        startDate = findViewById(R.id.startDate);
-        endDate = findViewById(R.id.endDate);
+        childCount = findViewById(R.id.no_of_childs);
+        findHotel = findViewById(R.id.findHotels);
+//        startDate = findViewById(R.id.startDate);
+//        endDate = findViewById(R.id.endDate);
         nights = findViewById(R.id.nights);
-        noRomes =1 ;
+        noRomes = 1;
+        recycl_child_spiner = findViewById(R.id.rv_child);
         arrayOfResultIndex = new ArrayList<>();
         for (int i = 1; i < 7; i++) {
 
@@ -100,13 +148,9 @@ public class FindHotels extends AppCompatActivity {
         }
 
 
+        ArrayAdapter adapterRoomCount = new ArrayAdapter(this, R.layout.item_spener, listOfRooms);
 
-
-
-
-        ArrayAdapter adapterRoomCount = new ArrayAdapter(this, android.R.layout.simple_spinner_item, listOfRooms);
-
-        adapterRoomCount.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapterRoomCount.setDropDownViewResource(R.layout.drop_dowen);
         roomCount.setAdapter(adapterRoomCount);
         roomCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -135,9 +179,9 @@ public class FindHotels extends AppCompatActivity {
                 }
 
 
-                ArrayAdapter adapteradult = new ArrayAdapter(FindHotels.this, android.R.layout.simple_spinner_item, listOfAdult);
+                ArrayAdapter adapteradult = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfAdult);
 
-                adapteradult.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                adapteradult.setDropDownViewResource(R.layout.drop_dowen);
                 adultCount.setAdapter(adapteradult);
                 adultCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
@@ -145,6 +189,7 @@ public class FindHotels extends AppCompatActivity {
 
                         int nom_adult = listOfAdult.get(i);
                         SharedPreferencesManger.SaveData(FindHotels.this, "no_adult", nom_adult);
+
 
                     }
 
@@ -164,17 +209,17 @@ public class FindHotels extends AppCompatActivity {
         });
 
 
-        ArrayAdapter adapterchild = new ArrayAdapter(FindHotels.this, android.R.layout.simple_spinner_item, listOfChild);
+        ArrayAdapter adapterchild = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfChild);
 
-        adapterchild.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapterchild.setDropDownViewResource(R.layout.drop_dowen);
         childCount.setAdapter(adapterchild);
         childCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 int no_child = listOfChild.get(i);
-                SharedPreferencesManger.SaveData(FindHotels.this,"no_child",no_child);
-                Toast.makeText(FindHotels.this, ""+no_child, Toast.LENGTH_SHORT).show();
+                SharedPreferencesManger.SaveData(FindHotels.this, "no_child", no_child);
+                Toast.makeText(FindHotels.this, "" + no_child, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -185,26 +230,26 @@ public class FindHotels extends AppCompatActivity {
 
 
         myCalendar = Calendar.getInstance();
-        startDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                dilogstart();
-
-            }
-        });
-
-
-        endDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//        startDate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                dilogstart();
+//
+//            }
+//        });
 
 
-                dialogendTime();
-
-
-            }
-        });
+//        endDate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//                dialogendTime();
+//
+//
+//            }
+//        });
 
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -217,24 +262,18 @@ public class FindHotels extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                if (startDate.getText().toString().matches("")) {
+                if (startDateDay.getText().toString().matches("")) {
                     dilogstart();
-                } else if (endDate.getText().toString().matches("")) {
+                } else if (endDateDay.getText().toString().matches("")) {
 
                     dialogendTime();
                 } else {
 
 
+                    SharedPreferencesManger.SaveData(FindHotels.this, "start_date", mstartTime);
+                    SharedPreferencesManger.SaveData(FindHotels.this, "end_date", mendTime);
 
-
-SharedPreferencesManger.SaveData(FindHotels.this,"start_date",mstartTime);
-                    SharedPreferencesManger.SaveData(FindHotels.this,"end_date",mendTime);
-
-                    SharedPreferencesManger.SaveData(FindHotels.this,"no_room",noRomes);
-
-
-
-
+                    SharedPreferencesManger.SaveData(FindHotels.this, "no_room", noRomes);
 
 
                     gethotelsInfo(ctyId);
@@ -301,7 +340,7 @@ SharedPreferencesManger.SaveData(FindHotels.this,"start_date",mstartTime);
 
     private void listOfChildCount() {
 
-        for (int i = 1; i < 5; i++) {
+        for (int i = 1; i < 4; i++) {
             listOfChild.add(i);
         }
 
@@ -354,8 +393,8 @@ SharedPreferencesManger.SaveData(FindHotels.this,"start_date",mstartTime);
                 nameCity.add(cityName);
 
 
-                ArrayAdapter adapterCity = new ArrayAdapter(FindHotels.this, android.R.layout.simple_spinner_item, nameCity);
-                adapterCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                ArrayAdapter adapterCity = new ArrayAdapter(FindHotels.this, R.layout.item_spener, nameCity);
+                adapterCity.setDropDownViewResource(R.layout.drop_dowen);
                 areas.setAdapter(adapterCity);
                 areas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
@@ -461,7 +500,7 @@ SharedPreferencesManger.SaveData(FindHotels.this,"start_date",mstartTime);
         intent.putExtra("cityId", ctyId);
         intent.putExtra("noOfRooms", noRomes);
         intent.putExtra("resultIndex", arrayOfResultIndex);
-       // intent.putExtra("roomGuest",roomguests);
+        // intent.putExtra("roomGuest",roomguests);
 
         startActivity(intent);
 
@@ -469,7 +508,7 @@ SharedPreferencesManger.SaveData(FindHotels.this,"start_date",mstartTime);
 
     private void auth() {
 
-        service = new com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1();
+        service = new BasicHttpBinding_IHotelService1();
         authenticationData = new AuthenticationData();
         authenticationData.UserName = ("Tammtest");
         authenticationData.Password = ("Tam@18418756");
@@ -490,14 +529,24 @@ SharedPreferencesManger.SaveData(FindHotels.this,"start_date",mstartTime);
                 SimpleDateFormat start = new SimpleDateFormat(myFormat, Locale.US);
                 time1 = myCalendar.getTime();
                 mstartTime = start.format(myCalendar.getTime());
-                startDate.setText(mstartTime);
+              //  startDate.setText(mstartTime);
 
+                long time = time1.getTime();
+
+                String dayOfTheWeek = (String) DateFormat.format("EEEE", time); // Thursday
+                String day = (String) DateFormat.format("dd", time); // Thursday
+                String monthString = (String) DateFormat.format("MMM", time); // Thursday
+
+              startDateDay.setText(day);
+              startDateMonth.setText(monthString);
+
+              startDateYear.setText(dayOfTheWeek);
 
             }
         };
 
 
-        new DatePickerDialog(FindHotels.this, date, myCalendar.get(Calendar.YEAR),
+        new DatePickerDialog(FindHotels.this, date, myCalendar.get(YEAR),
                 myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
     }
@@ -513,13 +562,22 @@ SharedPreferencesManger.SaveData(FindHotels.this,"start_date",mstartTime);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
                 String myFormat = "yyyy-MM-dd"; //In which you need put here
-                SimpleDateFormat end = new SimpleDateFormat(myFormat, Locale.US);
+                SimpleDateFormat end = new SimpleDateFormat(myFormat);
 
-                 time2 = myCalendar.getTime();
+                time2 = myCalendar.getTime();
 
                 mendTime = end.format(myCalendar.getTime());
-                endDate.setText(mendTime);
+               // endDate.setText(mendTime);
 
+                long time = time2.getTime();
+
+                String dayOfTheWeek = (String) DateFormat.format("EEEE", time); // Thursday
+                String day = (String) DateFormat.format("dd", time); // Thursday
+                String monthString = (String) DateFormat.format("MMM", time); // Thursday
+
+                endDateDay.setText(day);
+                endDateMonth.setText(monthString);
+                endDateYear.setText(dayOfTheWeek);
 
                 long diff = time2.getTime() - time1.getTime();
 
@@ -529,21 +587,31 @@ SharedPreferencesManger.SaveData(FindHotels.this,"start_date",mstartTime);
                 long days = hours / 24;
 
 
-                nights.setText(+days+" Nights");
-                SharedPreferencesManger.SaveData(FindHotels.this ,"nights",days);
+                nights.setText(" "+days + " " );
+                SharedPreferencesManger.SaveData(FindHotels.this, "nights", days);
 
 
             }
         };
 
 
-        new DatePickerDialog(FindHotels.this, date, myCalendar.get(Calendar.YEAR),
+        new DatePickerDialog(FindHotels.this, date, myCalendar.get(YEAR),
                 myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
     }
 
 
+    @OnClick({R.id.layout_check, R.id.layout_check_out})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.layout_check:
 
+                dilogstart();
 
-
+                break;
+            case R.id.layout_check_out:
+                dialogendTime();
+                break;
+        }
+    }
 }
