@@ -1,315 +1,374 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.FindHotels"
-    android:orientation="vertical"
-    android:background="@drawable/plane">
+    android:background="@drawable/plane"
+    tools:context=".activities.FindHotels">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_back_arrow"
-            android:backgroundTint="#FFEB3B"
-            android:layout_gravity="center"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="BACK"
-            android:textColor="#ffff"
-            android:layout_marginLeft="5dp"
-            android:layout_gravity="center"/>
-
-        <ImageView
-            android:layout_width="34dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginLeft="100dp"
-            android:background="@drawable/logo"
-            />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:background="@drawable/ic_button"
-            android:layout_gravity="center"/>
-    </LinearLayout>
-
-    <LinearLayout
+    <RelativeLayout
+        android:id="@id/toolbar_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_margin="10dp"
         android:gravity="center">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/toolbar_back"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/ic_back_arrow"
+            android:backgroundTint="#FFEB3B" />
 
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Country"
-                android:textColor="@color/app_color"
-                android:gravity="center"
-                />
-
-            <LinearLayout
-                android:background="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <Spinner
-                    android:id="@+id/region_spinner"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"/>
-
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_margin="4dp"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/toolbar_back"
+            android:text="BACK"
+            android:textColor="#ffff"
+            android:textSize="12sp" />
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="City"
-                android:textColor="@color/app_color"
-                android:gravity="center"
-                android:layout_marginLeft="20dp"/>
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="34dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100dp"
+            android:background="@drawable/logo" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/ic_button" />
+    </RelativeLayout>
 
 
-
-            <LinearLayout
-                android:background="@color/white"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <Spinner
-                    android:id="@+id/area_spinner"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-
-    </LinearLayout>
-    <LinearLayout
+    <View
+        android:id="@+id/line1"
         android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/toolbar_back"
+        android:background="@drawable/line1" />
+
+    <TextView
+        android:id="@+id/tv_country"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="81dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="CHECK IN "
-                android:textColor="@color/app_color" />
-
-            <TextView
-                android:id="@+id/startDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:hint="22  July  Friday"
-                android:textColor="#fff"
-                android:textColorHint="#fff"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/nights"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:text="0 Nights "
-            android:textColor="@color/app_color" />
-
-        <LinearLayout
-            android:layout_width="81dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="CHECK OUT "
-                android:textColor="@color/app_color" />
-
-            <TextView
-                android:id="@+id/endDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:hint="22  July  Friday"
-                android:textColor="#fff"
-                android:textColorHint="#fff"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:background="@color/white"
-            android:layout_width="81dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
-
-
-            <Spinner
-                android:id="@+id/no_of_rooms"
-                android:layout_width="102dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="81dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="@color/white"
-            android:orientation="vertical">
-
-
-            <Spinner
-                android:id="@+id/adilt_count"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="81dp"
-            android:background="@color/white"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
-
-
-            <Spinner
-                android:id="@+id/child_count"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:text="Children 1 Age :  "
-            android:textColor="#fff" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1 Year"
-            android:textColor="@color/app_color" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:text="Children 2 Age :  "
-            android:textColor="#fff" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2 Years"
-            android:textColor="@color/app_color" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:text="Children 3 Age :  "
-            android:textColor="#fff" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3 Years"
-            android:textColor="@color/app_color" />
-
-    </LinearLayout>
-
-
-
-    <Button
-        android:id="@+id/findHotels"
-        android:layout_width="140dp"
-        android:layout_height="40dp"
+        android:layout_below="@+id/line1"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@color/app_color"
-        android:text="FIND HOTELS" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="Country"
+        android:textColor="@color/app_color" />
 
 
+    <TextView
 
-</LinearLayout>
+        android:layout_toEndOf="@+id/tv_country"
+        android:id="@+id/tv_city"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        android:layout_gravity="center"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="City"
+        android:textColor="@color/app_color" />
+
+
+
+    <RelativeLayout
+        android:layout_marginTop="8dp"
+        android:id="@+id/spinner_layout"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_country"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_person"
+        android:gravity="end">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:drawableStart="@drawable/ic_person" />
+
+
+        <Spinner
+
+            android:id="@+id/region_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <View
+            android:layout_marginTop="4dp"
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/region_spinner"
+            android:background="@drawable/line1" />
+
+    </RelativeLayout>
+
+
+
+
+
+    <RelativeLayout
+        android:layout_below="@+id/tv_country"
+        android:layout_marginTop="8dp"
+        android:id="@+id/spinner_layout2"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+android:layout_toEndOf="@+id/spinner_layout"        android:layout_marginStart="50dp"
+        android:background="@android:color/transparent"
+        android:drawableStart="@drawable/ic_person"
+        android:gravity="end">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:drawableStart="@drawable/ic_person" />
+
+
+        <Spinner
+
+            android:id="@+id/area_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <View
+            android:layout_marginTop="4dp"
+            android:id="@+id/line3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/area_spinner"
+            android:background="@drawable/line1" />
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="81dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:gravity="center"-->
+    <!--android:text="CHECK IN "-->
+    <!--android:textColor="@color/app_color" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/startDate"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:gravity="center"-->
+    <!--android:hint="22  July  Friday"-->
+    <!--android:textColor="#fff"-->
+    <!--android:textColorHint="#fff"-->
+    <!--android:textSize="15sp" />-->
+    <!--</LinearLayout>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/nights"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_vertical"-->
+    <!--android:layout_marginLeft="20dp"-->
+    <!--android:text="0 Nights "-->
+    <!--android:textColor="@color/app_color" />-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="81dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:gravity="center"-->
+    <!--android:text="CHECK OUT "-->
+    <!--android:textColor="@color/app_color" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/endDate"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:gravity="center"-->
+    <!--android:hint="22  July  Friday"-->
+    <!--android:textColor="#fff"-->
+    <!--android:textColorHint="#fff"-->
+    <!--android:textSize="15sp" />-->
+    <!--</LinearLayout>-->
+
+
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<LinearLayout-->
+    <!--android:background="@color/white"-->
+    <!--android:layout_width="81dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:orientation="vertical">-->
+
+
+    <!--<Spinner-->
+    <!--android:id="@+id/no_of_rooms"-->
+    <!--android:layout_width="102dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:gravity="center" />-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="81dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:background="@color/white"-->
+    <!--android:orientation="vertical">-->
+
+
+    <!--<Spinner-->
+    <!--android:id="@+id/adilt_count"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:gravity="center" />-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_width="81dp"-->
+    <!--android:background="@color/white"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:orientation="vertical">-->
+
+
+    <!--<Spinner-->
+    <!--android:id="@+id/child_count"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:gravity="center" />-->
+    <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="40dp"-->
+    <!--android:text="Children 1 Age :  "-->
+    <!--android:textColor="#fff" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="1 Year"-->
+    <!--android:textColor="@color/app_color" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="40dp"-->
+    <!--android:text="Children 2 Age :  "-->
+    <!--android:textColor="#fff" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="2 Years"-->
+    <!--android:textColor="@color/app_color" />-->
+
+
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="10dp"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="40dp"-->
+    <!--android:text="Children 3 Age :  "-->
+    <!--android:textColor="#fff" />-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="3 Years"-->
+    <!--android:textColor="@color/app_color" />-->
+
+    <!--</LinearLayout>-->
+
+
+    <!--<Button-->
+    <!--android:id="@+id/findHotels"-->
+    <!--android:layout_width="140dp"-->
+    <!--android:layout_height="40dp"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_marginTop="20dp"-->
+    <!--android:background="@color/app_color"-->
+    <!--android:text="FIND HOTELS" />-->
+
+    <!--<androidx.recyclerview.widget.RecyclerView-->
+    <!--android:id="@+id/rv"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>-->
+
+
+</RelativeLayout>
 
 
 

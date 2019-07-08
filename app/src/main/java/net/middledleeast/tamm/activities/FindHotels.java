@@ -267,8 +267,8 @@ SharedPreferencesManger.SaveData(FindHotels.this,"start_date",mstartTime);
 //                countryListResponse.Status.Category
                 list.add(name);
 
-                ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, list);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, list);
+                adapter.setDropDownViewResource(R.layout.drop_dowen);
                 regions.setAdapter(adapter);
 
 

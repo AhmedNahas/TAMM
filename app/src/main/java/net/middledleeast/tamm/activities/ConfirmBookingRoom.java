@@ -107,7 +107,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         paymentInfo.PaymentModeType = Enums.PaymentModeType.CreditCard;
         arrayOfRooms = ChooseBookingDate.transferClass.getArrayOfRequestedRooms();
         try {
-            HotelBookResponse hotelBookingResponse = service.HotelBook(DateTime.parse(start_time), DateTime.parse(end_time),
+            HotelBookResponse hotelBookingResponse = service.HotelBook(start_time, end_time,
                     "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo
                     , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
                     null, false, authenticandata);
@@ -160,10 +160,11 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         Serializable paymentSdkResponse = data.getSerializableExtra(Client.EXTRA_PAYMENT_SDK_RESPONSE);
         if (paymentSdkResponse instanceof PaymentResponse) {
             String formattedResponse = ResponseHelper.getFormattedResponse((PaymentResponse) paymentSdkResponse);
-            Toast.makeText(this, formattedResponse, Toast.LENGTH_SHORT).show();
+
 
         }
         if (resultCode == RESULT_OK) {
+            Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(ConfirmBookingRoom.this, RoomBooked.class));
         }
     }
