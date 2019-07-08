@@ -101,10 +101,12 @@ public class HotelDetails extends AppCompatActivity {
             // code = hotelDetailsResponse.HotelDetails.HotelRating.getCode();
             description = hotelDetailsResponse.HotelDetails.Description;
 
+
+
+
             //    phoneNumber = hotelDetailsResponse.HotelDetails.PhoneNumber;
             //map = hotelDetailsResponse.HotelDetails.Map;
 
-            Toast.makeText(this, "" + description, Toast.LENGTH_LONG).show();
 
 
         } catch (Exception e) {

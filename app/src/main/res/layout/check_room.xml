@@ -16,6 +16,7 @@
 
         />
     <TextView
+        android:id="@+id/room_Tybe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Deluxe Room 1 King Red"
@@ -39,60 +40,59 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-        
-    
-    
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-        <TextView
+
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sleeps 3 People"
-            android:textColor="#fff"
-            android:layout_marginTop="5dp"
+            android:orientation="vertical">
 
-            android:textSize="15dp"
-            android:textStyle="bold"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Sleeps 3 People"
+                android:textColor="#fff"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
-            android:text="(including up to 1 child)"
-            android:textColor="#fff"
-            android:textSize="10dp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bed choices:"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_marginTop="5dp"
-            android:textSize="15dp"
-            android:textColor="#fff"
-            android:textStyle="bold"
-            />
+                android:text="(including up to 1 child)"
+                android:textColor="#fff"
+                android:textSize="10dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=". 1 King Bed"
-            android:textColor="#fff"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
 
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Extra beds avilable :"
-            android:textColor="#fff"
-            android:layout_marginTop="5dp"
-            android:textStyle="bold"
+                android:text="Bed choices:"
+                android:textColor="#fff"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=". 1 King Bed"
+                android:textColor="#fff"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Extra beds avilable :"
+                android:textColor="#fff"
+                android:textStyle="bold"
+
+                />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,52 +101,53 @@
                 android:textColor="#fff"
 
                 />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=". Rollaway bed"
 
-            android:textColor="#fff"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=". Rollaway bed"
 
-            />
+                android:textColor="#fff"
+
+                />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Free Cancellation"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
 
-            android:layout_marginTop="10dp"
-            android:textColor="#fff"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Until 11/01/2018"
+                android:text="Free Cancellation"
+                android:textColor="#fff" />
 
-            android:textColor="@color/app_color"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Until 11/01/2018"
 
-            />
+                android:textColor="@color/app_color"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_wifi"
+                />
 
-            android:text="  Free WiFi"
-            android:textColor="#fff"
-            android:layout_marginTop="15dp"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
 
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_breakfast"
+                android:drawableLeft="@drawable/ic_wifi"
+                android:text="  Free WiFi"
+                android:textColor="#fff"
 
-            android:text="  Breakfast included"
-            android:textColor="#fff"
-            />
-    </LinearLayout>
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_breakfast"
+
+                android:text="  Breakfast included"
+                android:textColor="#fff" />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

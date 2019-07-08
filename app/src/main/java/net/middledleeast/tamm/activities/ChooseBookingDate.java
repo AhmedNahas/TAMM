@@ -3,13 +3,16 @@ package net.middledleeast.tamm.activities;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Tamm.Hotels.wcf.ArrayOfHotel_Room;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
+import com.Tamm.Hotels.wcf.ArrayOfString;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
@@ -19,6 +22,7 @@ import com.Tamm.Hotels.wcf.RequestedRooms;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.RoomsAdapter;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +30,7 @@ import java.util.List;
 public class ChooseBookingDate extends AppCompatActivity {
 
 
-    private TextView startDate, endDate;
+    private TextView startDate, endDate  , nights , no_room ,no_child , adult_tv;
     private String mendTime;
     private String mstartTime;
     private BasicHttpBinding_IHotelService1 service;
@@ -43,7 +47,7 @@ public class ChooseBookingDate extends AppCompatActivity {
     private int resultIndex;
     private RecyclerView roomRecyclerView;
     private RoomsAdapter roomAdapter;
-    private List<Hotel_Room> rooms;
+    private List<Hotel_Room> rooms  = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +57,35 @@ public class ChooseBookingDate extends AppCompatActivity {
 
         StrictMode.setThreadPolicy(policy);
         roomRecyclerView = findViewById(R.id.rv_hotel);
-        rooms = new ArrayList<>();
+        nights = findViewById(R.id.nights_booking);
+        startDate= findViewById(R.id.startDate2);
+        endDate = findViewById(R.id.endDate2);
+        no_room = findViewById(R.id.no_room);
+        no_child = findViewById(R.id.no_child2);
+        adult_tv = findViewById(R.id.adult2);
+
+
+
+
+        long nightsDeff = SharedPreferencesManger.LoadLongData(ChooseBookingDate.this, "nights");
+        String start_time = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "start_date");
+        String end_time = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "end_date");
+        long no_roomS = SharedPreferencesManger.LoadLongData(this, "no_room");
+        long no_adult = SharedPreferencesManger.LoadLongData(this, "no_adult");
+        int no_childS = SharedPreferencesManger.LoadIntegerData(this, "no_child");
+
+        no_child.setText(no_childS+"Children");
+
+        no_room.setText(""+no_roomS+" room");
+        adult_tv.setText(no_adult+"Adult");
+
+
+        startDate.setText(start_time);
+        endDate.setText(end_time);
+
+        nights.setText(nightsDeff+" Nights");
         LinearLayoutManager manager = new LinearLayoutManager(this);
-        roomRecyclerView.setLayoutManager(manager);
+       roomRecyclerView.setLayoutManager(manager);
         auth();
         mstartTime = getIntent().getStringExtra("checkInDate");
         mendTime = getIntent().getStringExtra("checkOutDate");
@@ -75,7 +105,7 @@ public class ChooseBookingDate extends AppCompatActivity {
 
         try {
 
-
+            service.enableLogging = true;
             HotelRoomAvailabilityResponse response = service.AvailableHotelRooms(sessionId, resultIndex, mHotelCode, 6000, false, authenticationData);
 
             rooms = response.HotelRooms;
@@ -93,44 +123,15 @@ public class ChooseBookingDate extends AppCompatActivity {
             arrayOfRooms.add(requestedRooms);
             transferClass.setArrayOfRequestedRooms(arrayOfRooms);
 
-            roomAdapter = new RoomsAdapter(rooms, hotel_room, arrayOfRooms, mstartTime, mendTime, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
+            roomAdapter = new RoomsAdapter(rooms,hotel_room,arrayOfRooms,null,null,noOfRooms,resultIndex,mHotelCode,authenticationData,sessionId,this);
 
 
             roomRecyclerView.setAdapter(roomAdapter);
             roomAdapter.notifyDataSetChanged();
-            for (int i = 0; i < response.HotelRooms.size(); i++) {
 
 
-//                String description = String.valueOf(response.HotelRooms.get(i).CancelPolicies.DefaultPolicy);
-//
-//                Toast.makeText(this, "descrip" + description, Toast.LENGTH_SHORT).show();
 
 
-            }
-//        try {
-//            service.enableLogging = true;
-//
-//            HotelRoomAvailabilityResponse hotelRoomAvailabilityResponse = service.AvailableHotelRooms(sessionId, 15, mHotelCode, 10000, false, authenticationData);
-//            ArrayOfHotel_Room hotelRooms1 = hotelRoomAvailabilityResponse.HotelRooms;
-//            for (int i = 0; i <hotelRooms1.size(); i++) {
-//
-//                ArrayOfString imageURLs = hotelRooms1.get(i).RoomAdditionalInfo.ImageURLs;
-//
-//                Toast.makeText(this, ""+imageURLs.size(), Toast.LENGTH_SHORT).show();
-//
-//
-//
-//
-//            }
-
-//            //  address = hotelDetailsResponse.HotelDetails.Address;
-//            hotelName = hotelDetailsResponse.HotelDetails.HotelName;
-//            // code = hotelDetailsResponse.HotelDetails.HotelRating.getCode();
-//            description = hotelDetailsResponse.HotelDetails.Description;
-//            //    phoneNumber = hotelDetailsResponse.HotelDetails.PhoneNumber;
-//            //map = hotelDetailsResponse.HotelDetails.Map;
-//
-//            Toast.makeText(this, "" + description, Toast.LENGTH_LONG).show();
 
 
         } catch (Exception e) {
@@ -138,6 +139,22 @@ public class ChooseBookingDate extends AppCompatActivity {
         }
 
 
+
+//
+//        try {
+//            service.enableLogging = true;
+//
+//            HotelRoomAvailabilityResponse hotelRoomAvailabilityResponse = service.AvailableHotelRooms(sessionId, 1, mHotelCode,
+//                    1000, true, authenticationData);
+//
+//
+//            String roomTypeName = hotelRoomAvailabilityResponse.HotelRooms.get(0).RoomTypeName;
+//            Toast.makeText(this, ""+roomTypeName, Toast.LENGTH_SHORT).show();
+//
+//        }catch (Exception e){
+//
+//            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+//        }
     }
 
     private void auth() {
