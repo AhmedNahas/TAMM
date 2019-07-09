@@ -73,7 +73,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
        // StringTokenizer st = new StringTokenizer(savedString, ",");
 
         Toast.makeText(this, ""+child_count, Toast.LENGTH_SHORT).show();
-        SharedPreferencesManger.clean(this);
+        SharedPreferencesManger.remove(this,"child_count");
       //  while (st.hasMoreTokens()) {
       //      childCont.add(Integer.parseInt(st.nextToken()));
 

@@ -3,6 +3,7 @@ package net.middledleeast.tamm.activities;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,6 +24,7 @@ import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class ChooseBookingDate extends AppCompatActivity {
 
@@ -47,6 +49,7 @@ public class ChooseBookingDate extends AppCompatActivity {
     private List<Hotel_Room> rooms  = new ArrayList<>();
     private String end_time;
     private String start_time;
+    List<Integer> list_count_child = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +66,19 @@ public class ChooseBookingDate extends AppCompatActivity {
         no_child = findViewById(R.id.no_child2);
         adult_tv = findViewById(R.id.adult2);
 
+//
+//        String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
+//
+//         StringTokenizer st = new StringTokenizer(child_count, ",");
+//
+//         while (st.hasMoreTokens()){
+//
+//             //Toast.makeText(this, ""+list_count_child.add(Integer.parseInt(st.nextToken())), Toast.LENGTH_SHORT).show();
+//
+//         }
 
 
+        //SharedPreferencesManger.clean(this);
 
         long nightsDeff = SharedPreferencesManger.LoadLongData(ChooseBookingDate.this, "nights");
         start_time = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "start_date");

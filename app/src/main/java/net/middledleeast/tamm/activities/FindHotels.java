@@ -116,6 +116,7 @@ public class FindHotels extends AppCompatActivity {
     private List<Integer> listOfChildAge = new ArrayList<>();
     boolean chicDateStart = false;
     boolean chicDateEnd = false;
+    boolean child_mor = false;
 
 
     @Override
@@ -142,11 +143,18 @@ public class FindHotels extends AppCompatActivity {
         for (int i = 0; i < 18; i++) {
             listOfChildAge.add(i);
         }
-        adapterChildCount = new AdapterChildCount(this, listChildernCount, listOfChildAge);
+        adapterChildCount = new AdapterChildCount(this, listChildernCount, listOfChildAge,this);
 
         recycl_child_spiner.setAdapter(adapterChildCount);
 
+        adapterChildCount.notifyDataSetChanged();
 
+        boolean child_m = adapterChildCount.child_m;
+        if (child_m){
+            childCount.setSelection(0);
+        }
+
+        adapterChildCount.notifyDataSetChanged();
         listOfChild.add(0);
 
         String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
@@ -339,7 +347,7 @@ public class FindHotels extends AppCompatActivity {
 
 
                     new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                            .setTitleText("Select Check Out Dat First")
+                            .setTitleText("Select Check Out Date First")
                             .setConfirmText("open")
                             .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
