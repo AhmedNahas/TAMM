@@ -10,14 +10,14 @@ import java.util.UUID;
 public class PaymentObjectProvider {
 
 
-    public CardPayment getCardPayment(boolean isAnimated, BigDecimal amount) {
+    public CardPayment getCardPayment(boolean isAnimated, BigDecimal amount, String currency) {
         String timestamp = SignatureHelper.generateTimestamp();
         String merchantID = "33f6d473-3036-4ca5-acb5-8c64dac862d1";
         String secretKey = "9e0130f6-2e1e-4185-b0d5-dc69079c75cc";
         String requestID = UUID.randomUUID().toString();
         TransactionType transactionType = TransactionType.PURCHASE;
 //        BigDecimal amount = new BigDecimal(1);
-        String currency = "USD";
+//        String currency = "USD";
         String signature = SignatureHelper.generateSignature(timestamp, merchantID, requestID, transactionType.getValue(), amount, currency, secretKey);
 
         CardPayment cardPayment = new CardPayment.Builder()

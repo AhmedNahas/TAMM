@@ -106,7 +106,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         paymentInfo.PaymentModeType = Enums.PaymentModeType.CreditCard;
         arrayOfRooms = ChooseBookingDate.transferClass.getArrayOfRequestedRooms();
         BigDecimal amount = BigDecimal.valueOf(0);
-
+        String clientReferenceNo = DateTime.now().toString() + "#TAMM";
+        String currency = "";
         try {
             HotelBookResponse hotelBookingResponse = service.HotelBook(start_time, end_time,
                     "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo
@@ -122,7 +123,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
             String confirmationNo = hotelBookingResponse.ConfirmationNo;
             hotel_room = ChooseBookingDate.transferClass.hotel_room;
             amount = hotel_room.RoomRate.TotalFare;
-
+            currency = hotel_room.RoomRate.Currency;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -130,12 +131,13 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         confirmRoom = findViewById(R.id.confirm_room_booking);
         PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
         BigDecimal finalAmount = amount;
+        String finalCurrency = currency;
         confirmRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                startActivity(new Intent(ConfirmBookingRoom.this, PaymentActivity.class ));
                 Client client = new Client(ConfirmBookingRoom.this, "https://api-test.wirecard.com");
-                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount));
+                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
             }
         });
 

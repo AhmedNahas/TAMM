@@ -2,7 +2,6 @@ package net.middledleeast.tamm.adapters;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +14,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.core.Context;
-
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.SingleView> {
 
@@ -80,14 +74,16 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
                 //list_age_save.add(list_age.get(i));
 
 
+                if (list_age_save.get(i) != null) {
+                    list_age_save.remove(i);
+                }
 
-               list_age_save.add(list_age.get(i));
+                list_age_save.add(list_age.get(i));
 
                 StringBuilder str = new StringBuilder();
 
 
-
-                if (list_age.get(i)!=0){
+                if (list_age.get(i) != 0) {
 
                     for (int j = listCountCild.size(); j < list_age_save.size(); j++) {
 
@@ -97,9 +93,9 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
                     }
 
 
-                    SharedPreferencesManger.SaveData(activity,"child_count",str.toString());
+                    SharedPreferencesManger.SaveData(activity, "child_count", str.toString());
 
-                    Toast.makeText(activity,""+list_age.get(i)+",", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "" + list_age.get(i) + ",", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -118,7 +114,6 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
 //            str.append(list_age_save.get(j)).append(",");
 //        }
 //        prefs.edit().putString("child_count", str.toString());
-
 
 
     }
