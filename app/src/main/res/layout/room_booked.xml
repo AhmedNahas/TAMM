@@ -1,47 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.RoomBooked"
     android:orientation="vertical"
     android:background="@drawable/success">
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/relative_flight"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-
+        android:layout_height="50dp"
         >
-        <Button
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:background="@drawable/ic_back_arrow"
-            android:layout_marginTop="15dp"
-            />
+            android:backgroundTint="#FFEB3B" />
         <ImageView
-
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/logo"
-            android:layout_marginLeft="140dp"
-
-            />
+            android:layout_width="34dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@drawable/logo" />
         <ImageView
-
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:background="@drawable/ic_button"
-            android:layout_marginLeft="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="15dp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
+            android:background="@drawable/ic_button" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_line"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:src="@drawable/line"
+        android:layout_below="@+id/relative_flight"
+        android:layout_centerInParent="true"
+        />
+
+
+
+    <RelativeLayout
+        android:id="@+id/relative_right_success"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_below="@+id/iv_line"
+        android:layout_centerInParent="true"
         >
 
         <ImageView
+            android:id="@+id/iv_right"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/right"
@@ -51,90 +61,87 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SUCCESS !"
-            android:textSize="35dp"
+            android:textSize="40sp"
             android:textColor="#fff"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_toRightOf="@+id/iv_right"
 
 
             />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+    </RelativeLayout>
+
     <ImageView
+        android:id="@+id/iv_mantxt"
         android:layout_width="wrap_content"
-        android:layout_height="130dp"
+        android:layout_height="150dp"
         android:src="@drawable/manright"
+        android:layout_below="@+id/relative_right_success"
+        />
+
+
+
+
+    <Button
+        android:id="@+id/get_code"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:text="GET RESERVITION CODE"
+        android:background="@drawable/shape"
+        android:layout_below="@+id/iv_mantxt"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_centerInParent="true"
+        />
+
+    <ImageView
+        android:id="@+id/iv_lines"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/line"
+        android:layout_below="@+id/get_code"
+        />
+
+    <Button
+        android:id="@+id/btn_book_hotel"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:text="RESERVE FLIGHT"
+        android:layout_below="@+id/iv_lines"
+        android:background="@android:color/transparent"
+        android:textColor="@color/app_color"
+        android:layout_centerInParent="true"
+
+
+        />
+
+
+
+    <ImageView
+        android:id="@+id/iv_man1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/man1"
+        android:layout_below="@+id/btn_book_hotel"
 
         />
 
 
 
 
-
-
-    </LinearLayout>
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-        <Button
-            android:id="@+id/get_code"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:text="GET RESERVITION CODE"
-            android:background="@drawable/shape"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:layout_marginTop="15dp"
-
-
-            />
-        <ImageView
-            android:layout_width="310dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/line"
-            android:layout_marginLeft="89dp"
-            android:layout_marginTop="5dp"
-            />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="RESERVE FLIGHT"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:background="@android:color/transparent"
-            android:textColor="@color/app_color"
-
-
-            />
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="130dp"
-            android:src="@drawable/man1"
-            android:layout_marginBottom="20dp"
-
-            />
-
-
-    </LinearLayout>
+        android:text="Tap me if you need MY ASSISTANCE "
+        android:textColor="#fff"
+        android:gravity="center"
+        android:layout_below="@+id/iv_man1"
+        />
 
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 

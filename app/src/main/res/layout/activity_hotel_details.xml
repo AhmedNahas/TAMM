@@ -1,82 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/main"
     tools:context=".activities.HotelDetails">
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/relative_hotel_detail"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:layout_height="50dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:background="@drawable/ic_back_arrow"
-            android:backgroundTint="#FFEB3B"
-            android:layout_gravity="center"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="BACK"
-            android:textColor="#ffff"
-            android:layout_marginLeft="5dp"
-            android:layout_gravity="center"/>
+            android:backgroundTint="#FFEB3B"/>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="BACK"-->
+            <!--android:textColor="#ffff"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_gravity="center"/>-->
 
         <ImageView
             android:layout_width="34dp"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginLeft="120dp"
+            android:layout_centerInParent="true"
             android:background="@drawable/logo" />
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="100dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp"
             android:background="@drawable/ic_button" />
-    </LinearLayout>
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/img_li"
+        android:layout_width="wrap_content"
+        android:layout_height="12dp"
+        android:src="@drawable/line"
+        android:layout_below="@+id/relative_hotel_detail"
+        />
 
 
     <androidx.viewpager.widget.ViewPager
-        android:layout_width="match_parent"
+        android:layout_below="@+id/img_li"
+        android:layout_width="250dp"
         android:id="@+id/hotel_image_detail"
-        android:layout_height="150dp" />
+        android:layout_height="140dp"
+        android:layout_centerInParent="true"/>
 
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/SliderDots"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/viewPager"
+        android:layout_below="@+id/hotel_image_detail"
         android:gravity="center_vertical|center_horizontal"
         android:layout_width="match_parent"
         android:orientation="horizontal">
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/hotel_name_detail"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
+        android:layout_below="@+id/hotel_image_detail"
+        android:layout_centerInParent="true"
         android:textColor="#ffff"/>
+
     <TextView
         android:id="@+id/hotel_desc_detail"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:gravity="center"
+        android:layout_height="120dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/hotel_name_detail"
         android:textColor="#ffff"
         android:layout_margin="20dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:id="@+id/relative_map_next"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_below="@+id/hotel_desc_detail"
+        android:layout_centerInParent="true">
         <Button
             android:id="@+id/btn_map"
             android:layout_width="wrap_content"
@@ -84,7 +93,7 @@
             android:textAllCaps="false"
             android:text="Map"
             android:background="#BE973B"
-            android:layout_marginLeft="80dp"/>
+            />
 
         <Button
             android:id="@+id/btn_next"
@@ -92,10 +101,12 @@
             android:layout_height="wrap_content"
             android:textAllCaps="false"
             android:text="Next"
+            android:layout_toRightOf="@+id/btn_map"
             android:background="#BE973B"
-            android:layout_marginLeft="50dp"/>
+            android:layout_marginLeft="20dp"
+            />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <ImageView
         android:layout_width="match_parent"
@@ -104,4 +115,4 @@
         android:baselineAlignBottom="true"
         android:src="@drawable/manhelp" />
 
-</LinearLayout>
+</RelativeLayout>
