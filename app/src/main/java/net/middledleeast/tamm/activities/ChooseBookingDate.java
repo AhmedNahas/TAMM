@@ -71,7 +71,7 @@ public class ChooseBookingDate extends AppCompatActivity {
         end_time = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "end_date");
         long no_roomS = SharedPreferencesManger.LoadLongData(this, "no_room");
         long no_adult = SharedPreferencesManger.LoadLongData(this, "no_adult");
-        int no_childS = SharedPreferencesManger.LoadIntegerData(this, "no_child");
+        long no_childS = SharedPreferencesManger.LoadLongData(this, "no_child");
 
         no_child.setText(no_childS+"Children");
 

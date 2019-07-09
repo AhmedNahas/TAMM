@@ -2,6 +2,7 @@ package net.middledleeast.tamm.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.MatrixCursor;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
@@ -50,6 +51,7 @@ import java.util.Queue;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static java.util.Calendar.YEAR;
 
@@ -109,6 +111,11 @@ public class FindHotels extends AppCompatActivity {
     AdapterChildCount adapterChildCount;
     private List<Integer> listOfChild = new ArrayList<>();
     private List<Integer> listChildernCount = new ArrayList<>();
+    private int nom_adult;
+    private int mChildCount;
+    private List<Integer> listOfChildAge = new ArrayList<>();
+    boolean chicDateStart = false;
+    boolean chicDateEnd = false;
 
 
     @Override
@@ -132,18 +139,19 @@ public class FindHotels extends AppCompatActivity {
 
         recycl_child_spiner.setLayoutManager(new GridLayoutManager(this, 2));
 
-        adapterChildCount = new AdapterChildCount(this, listChildernCount);
+        for (int i = 0; i < 18; i++) {
+            listOfChildAge.add(i);
+        }
+        adapterChildCount = new AdapterChildCount(this, listChildernCount, listOfChildAge);
 
         recycl_child_spiner.setAdapter(adapterChildCount);
 
 
         listOfChild.add(0);
 
-
         String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
         String date_m = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());
         String date_d = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
-
 
         endDateDay.setText(date_n);
         endDateMonth.setText(date_m);
@@ -200,7 +208,7 @@ public class FindHotels extends AppCompatActivity {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                        int nom_adult = listOfAdult.get(i);
+                        nom_adult = listOfAdult.get(i);
                         SharedPreferencesManger.SaveData(FindHotels.this, "no_adult", nom_adult);
 
 
@@ -235,27 +243,28 @@ public class FindHotels extends AppCompatActivity {
 
                     if (i == 1) {
 
+                        mChildCount = 1;
                         listChildernCount.clear();
-                        for (int j = 1; j <2; j++) {
+                        for (int j = 1; j < 2; j++) {
                             listChildernCount.add(j);
                             adapterChildCount.notifyDataSetChanged();
                         }
                     } else if (i == 2) {
-
+                        mChildCount = 2;
                         listChildernCount.clear();
-                        for (int j = 1; j <3; j++) {
+                        for (int j = 1; j < 3; j++) {
                             listChildernCount.add(j);
                             adapterChildCount.notifyDataSetChanged();
                         }
                     } else if (i == 3) {
-
+                        mChildCount = 3;
                         listChildernCount.clear();
-                        for (int j = 1; j <4; j++) {
+                        for (int j = 1; j < 4; j++) {
                             listChildernCount.add(j);
                             adapterChildCount.notifyDataSetChanged();
                         }
-                    }else if (i==4){
-
+                    } else if (i == 4) {
+                        mChildCount = 4;
 
                         listChildernCount.clear();
                         for (int j = 1; j < 5; j++) {
@@ -268,12 +277,12 @@ public class FindHotels extends AppCompatActivity {
 
 
                 } else {
-
+                    mChildCount = 0;
                     listChildernCount.clear();
                     adapterChildCount.notifyDataSetChanged();
                 }
 
-                //   SharedPreferencesManger.SaveData(FindHotels.this, "no_child", no_child);
+                SharedPreferencesManger.SaveData(FindHotels.this, "no_child", mChildCount);
 
             }
 
@@ -317,25 +326,54 @@ public class FindHotels extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                if (startDateDay.getText().toString().matches("")) {
-                    dilogstart();
-                } else if (endDateDay.getText().toString().matches("")) {
-
-                    dialogendTime();
-                } else {
-
+                if (chicDateStart && chicDateEnd) {
 
                     SharedPreferencesManger.SaveData(FindHotels.this, "start_date", mstartTime);
-                    SharedPreferencesManger.SaveData(FindHotels.this, "end_date", mendTime);
 
                     SharedPreferencesManger.SaveData(FindHotels.this, "no_room", noRomes);
 
-
+                    SharedPreferencesManger.SaveData(FindHotels.this, "end_date", mendTime);
                     gethotelsInfo(ctyId);
-                }
+
+                }else if (chicDateStart){
+
+
+                    new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Select Check Out Dat First")
+                            .setConfirmText("open")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    dialogendTime();
+                                    sDialog.dismissWithAnimation();
+                                }
+                            })
+                            .show();
+
+
+
+                }else{
+
+                    new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Select Check In Dat First")
+                            .setConfirmText("open")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                 dilogstart();
+                                    sDialog.dismissWithAnimation();
+                                }
+                            })
+                            .show();
+
 
 
             }
+
+
+            }
+
+
         });
 
         auth();
@@ -495,7 +533,7 @@ public class FindHotels extends AppCompatActivity {
         service.enableLogging = true;
 
         RoomGuest roomGuest = new RoomGuest();
-        roomGuest.AdultCount = 1;
+        roomGuest.AdultCount = nom_adult;
         roomGuest.ChildCount = 0;
         ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
         roomguests.add(roomGuest);
@@ -573,6 +611,7 @@ public class FindHotels extends AppCompatActivity {
 
     private void dilogstart() {
 
+        chicDateStart = true;
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -609,6 +648,7 @@ public class FindHotels extends AppCompatActivity {
 
     private void dialogendTime() {
 
+        chicDateEnd = true;
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -665,7 +705,26 @@ public class FindHotels extends AppCompatActivity {
 
                 break;
             case R.id.layout_check_out:
-                dialogendTime();
+
+
+                if (!chicDateStart){
+                    new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Select Check in Dat First")
+                            .setConfirmText("open")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                  dilogstart();
+                                    sDialog.dismissWithAnimation();
+                                }
+                            })
+                            .show();
+
+                }
+                else {
+
+                    dialogendTime();
+                }
                 break;
         }
     }
