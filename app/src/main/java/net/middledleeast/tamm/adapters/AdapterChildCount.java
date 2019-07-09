@@ -80,8 +80,7 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
 //                }
                 if (list_age_save.size() > i) {
                     if (!list_age_save.get(i).equals(list_age.get(i))) {
-                        list_age_save.remove(i);
-                        list_age_save.add(i);
+                        list_age_save.set(i, list_age.get(i));
                     }
                 }
                 StringBuilder str = new StringBuilder();
