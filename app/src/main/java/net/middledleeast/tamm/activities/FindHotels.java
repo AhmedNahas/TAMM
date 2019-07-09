@@ -149,12 +149,9 @@ public class FindHotels extends AppCompatActivity {
 
         adapterChildCount.notifyDataSetChanged();
 
-        boolean child_m = adapterChildCount.child_m;
-        if (child_m){
-            childCount.setSelection(0);
-        }
 
-        adapterChildCount.notifyDataSetChanged();
+
+
         listOfChild.add(0);
 
         String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
@@ -437,6 +434,10 @@ public class FindHotels extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+
+
     }
 
     private void listOfChildCount() {
