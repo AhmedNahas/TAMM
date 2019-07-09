@@ -74,7 +74,7 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
                 //list_age_save.add(list_age.get(i));
 
 
-                if (list_age_save.get(i) != null) {
+                if (list_age_save.get(i) != null && list_age_save.size() > 0) {
                     list_age_save.remove(i);
                 }
 
