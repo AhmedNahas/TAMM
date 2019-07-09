@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,51 +8,67 @@
     android:orientation="vertical"
     tools:context=".activities.MemberShipPlan">
 
-    <ImageView
-
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_gravity="center_horizontal"
-        android:foregroundGravity="center"
-        android:src="@drawable/logogrey"
-        android:layout_marginTop="60dp"
-        />
-
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
 
-        android:text="MEMBERSHIP ACCOUNT PLAN"
-        android:textColor="@color/app_color"
-        android:textSize="25dp"
-        android:textStyle="bold" />
+        >
+        <ImageView
+            android:id="@+id/iv_logo_grey"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:src="@drawable/logogrey"
+            android:layout_centerHorizontal="true"
 
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/line" />
+            />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="By choosing this plan,\n You will have free account for tamm \n from you account"
-        android:textColor="@color/app_color"
-        android:textSize="15dp" />
+        <TextView
+            android:id="@+id/tv_free_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MEMBERSHIP ACCOUNT PLAN"
+            android:textColor="@color/app_color"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_below="@+id/iv_logo_grey"
+            android:layout_centerInParent="true"
+            />
+
+        <ImageView
+            android:id="@+id/iv_line_small"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/line"
+            android:layout_below="@+id/tv_free_account"
+            android:layout_centerInParent="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="              By choosing this plan,\n You will have free account for tamm \n                   from you account"
+            android:textColor="@color/app_color"
+            android:textSize="15dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/iv_line_small"
+            />
 
 
 
-    <Button
-        android:id="@+id/btn_register_signup"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="20dp"
-        android:background="@drawable/border"
-        android:text="GET THIS PLAN"
-        android:textColor="#FFF" />
+        <Button
+            android:id="@+id/btn_register_signup"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:text="GET THIS PLAN"
+            android:textColor="#FFF"
+            android:layout_below="@+id/tv_by"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

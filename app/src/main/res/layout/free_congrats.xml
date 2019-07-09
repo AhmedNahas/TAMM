@@ -1,85 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.MemberCongrats"
     android:background="@drawable/plans_background"
     android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:id="@+id/relative_free_congrats"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+
         >
 
 
 
         <ImageView
+            android:id="@+id/iv_ok1"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:src="@drawable/ok1"
+            android:layout_centerHorizontal="true"
             />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/tv_congrats"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CONGRATULATION"
             android:textSize="35dp"
             android:textColor="@color/app_color"
-            android:gravity="center"
+            android:layout_below="@+id/iv_ok1"
+            android:layout_centerInParent="true"
             />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/tv_now"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NOW YOU ARE A FREE ACCOUNT OF"
             android:textSize="15dp"
             android:textColor="#fff"
-            android:gravity="center"
+            android:layout_below="@+id/tv_congrats"
+            android:layout_centerInParent="true"
             />
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/tv_community"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TAMM COMMUNITY"
             android:textColor="@color/app_color"
-            android:textSize="27dp"
-            android:gravity="center"
+            android:textSize="20dp"
             android:textStyle="bold"
-
+            android:layout_below="@+id/tv_now"
+            android:layout_centerInParent="true"
             />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-
-                android:layout_width="367dp"
-                android:layout_height="185dp"
-                android:src="@drawable/theman2" />
-
-        </LinearLayout>
 
 
-    </LinearLayout>
-    <Button
-        android:id="@+id/continueTo"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
-        android:background="@drawable/border"
-        android:text="Continue"
-        android:textColor="#FFF"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="612dp"
-        tools:ignore="MissingConstraints" />
+        <ImageView
+            android:id="@+id/iv_theman2"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
+            android:src="@drawable/theman2"
+            android:layout_below="@+id/tv_community"
+            android:layout_centerInParent="true"
+            />
+        <Button
+            android:id="@+id/continueTo"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:text="Continue"
+            android:textColor="#FFF"
+            tools:ignore="MissingConstraints"
+            android:layout_below="@+id/iv_theman2"
+            android:layout_centerInParent="true"
+            />
+
+
+
+    </RelativeLayout>
 
 
 
 
-</LinearLayout>
+</RelativeLayout>
