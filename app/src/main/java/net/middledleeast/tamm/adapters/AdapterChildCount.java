@@ -73,13 +73,17 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
                 // add list of age to save list
                 //list_age_save.add(list_age.get(i));
 
-
-                if (list_age_save.get(i) != null && list_age_save.size() > 0) {
-                    list_age_save.remove(i);
+//                if (list_age_save.size() > 0) {
+//                    if (list_age_save.get(i) != null) {
+//                        list_age_save.remove(i);
+//                    }
+//                }
+                if (list_age_save.size() > i) {
+                    if (!list_age_save.get(i).equals(list_age.get(i))) {
+                        list_age_save.remove(i);
+                        list_age_save.add(i);
+                    }
                 }
-
-                list_age_save.add(list_age.get(i));
-
                 StringBuilder str = new StringBuilder();
 
 
