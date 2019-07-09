@@ -82,6 +82,7 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
 
 
                list_age_save.add(list_age.get(i));
+
                 StringBuilder str = new StringBuilder();
 
 
@@ -96,11 +97,6 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
                     }
 
 
-                    if (list_age.get(i).equals(list_age_save.get(i))){
-
-
-                        Toast.makeText(activity, "booom", Toast.LENGTH_SHORT).show();
-                    }
                     SharedPreferencesManger.SaveData(activity,"child_count",str.toString());
 
                     Toast.makeText(activity,""+list_age.get(i)+",", Toast.LENGTH_SHORT).show();
