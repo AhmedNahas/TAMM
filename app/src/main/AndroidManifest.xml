@@ -59,6 +59,7 @@
         </activity>
         <activity android:name=".activities.ConfirmBookingRoom" />
         <activity android:name=".activities.MainActivity" />
+
         <activity android:name=".model.ReserveRoom" />
         <activity android:name=".activities.SplashActivity" >
             <intent-filter>
