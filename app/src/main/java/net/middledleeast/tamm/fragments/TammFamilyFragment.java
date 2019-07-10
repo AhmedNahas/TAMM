@@ -24,7 +24,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.model.Freeuser;
 
 import org.json.JSONArray;
 import org.json.JSONException;

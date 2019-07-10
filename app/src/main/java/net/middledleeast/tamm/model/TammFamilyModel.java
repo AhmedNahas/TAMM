@@ -1,9 +1,9 @@
-
 package net.middledleeast.tamm.model;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Freeuser {
+public class TammFamilyModel {
 
     @SerializedName("Msgbody")
     @Expose
@@ -16,5 +16,4 @@ public class Freeuser {
     public void setMsgbody(String msgbody) {
         this.msgbody = msgbody;
     }
-
 }

@@ -5,8 +5,6 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import net.middledleeast.tamm.model.Freeuser;
-
 public class Text {
 
     @SerializedName("freeusers")
