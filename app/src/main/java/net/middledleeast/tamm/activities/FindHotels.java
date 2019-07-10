@@ -118,6 +118,7 @@ public class FindHotels extends AppCompatActivity {
     boolean chicDateStart = false;
     boolean chicDateEnd = false;
     private ImageView toolbar_back;
+    boolean child_mor = false;
 
 
     @Override
@@ -153,6 +154,10 @@ public class FindHotels extends AppCompatActivity {
         adapterChildCount = new AdapterChildCount(this, listChildernCount, listOfChildAge);
 
         recycl_child_spiner.setAdapter(adapterChildCount);
+
+        adapterChildCount.notifyDataSetChanged();
+
+
 
 
         listOfChild.add(0);
@@ -347,7 +352,7 @@ public class FindHotels extends AppCompatActivity {
 
 
                     new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                            .setTitleText("Select Check Out Dat First")
+                            .setTitleText("Select Check Out Date First")
                             .setConfirmText("open")
                             .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override

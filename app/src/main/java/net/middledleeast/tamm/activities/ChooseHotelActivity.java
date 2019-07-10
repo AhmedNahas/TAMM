@@ -44,40 +44,29 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_hotel);
 
-//        reInfoHotels = findViewById(R.id.hotels_rv);
-//        resultIndex = new ArrayList<>();
+        reInfoHotels = findViewById(R.id.hotels_rv);
+        resultIndex = new ArrayList<>();
 
-//        hotelAddress = (ArrayList<String>) getIntent().getSerializableExtra("hotelAddress");
-//        hotelName = (ArrayList<String>) getIntent().getSerializableExtra("hotelName");
-//        hotelrat = (ArrayList<Integer>) getIntent().getSerializableExtra("hotelrat");
-//        hotelphoto = (ArrayList<String>) getIntent().getSerializableExtra("hotelPhoto");
-//        hotelCode = (ArrayList<String>) getIntent().getSerializableExtra("hotelCode");
-//        mstartTime = getIntent().getStringExtra("checkInDate");
-//        mendTime = getIntent().getStringExtra("checkOutDate");
-//        countryName = getIntent().getStringExtra("countryName");
-//        cityName = getIntent().getStringExtra("cityName");
-//        cityId = getIntent().getStringExtra("cityId");
-//        noOfRooms = getIntent().getIntExtra("noOfRooms", 1);
-//        roomGuests = getIntent().getStringArrayListExtra("roomGuest");
-//        String sessionId = getIntent().getStringExtra("sessionId");
-//        resultIndex = (ArrayList<Integer>) getIntent().getSerializableExtra("resultIndex");
-//
-//        reInfoHotels.setLayoutManager(new LinearLayoutManager(this));
-//        adapterHotelInfo = new AdapterHotelInfo(ChooseHotelActivity.this, hotelName, hotelrat, hotelphoto, this, onHotelListener, hotelAddress, hotelCode, sessionId,
-//                mstartTime, mendTime, countryName, cityName, cityId, noOfRooms, roomGuests, resultIndex);
-//        reInfoHotels.setAdapter(adapterHotelInfo);
-//        adapterHotelInfo.notifyDataSetChanged();
+        hotelAddress = (ArrayList<String>) getIntent().getSerializableExtra("hotelAddress");
+        hotelName = (ArrayList<String>) getIntent().getSerializableExtra("hotelName");
+        hotelrat = (ArrayList<Integer>) getIntent().getSerializableExtra("hotelrat");
+        hotelphoto = (ArrayList<String>) getIntent().getSerializableExtra("hotelPhoto");
+        hotelCode = (ArrayList<String>) getIntent().getSerializableExtra("hotelCode");
+        mstartTime = getIntent().getStringExtra("checkInDate");
+        mendTime = getIntent().getStringExtra("checkOutDate");
+        countryName = getIntent().getStringExtra("countryName");
+        cityName = getIntent().getStringExtra("cityName");
+        cityId = getIntent().getStringExtra("cityId");
+        noOfRooms = getIntent().getIntExtra("noOfRooms", 1);
+        roomGuests = getIntent().getStringArrayListExtra("roomGuest");
+        String sessionId = getIntent().getStringExtra("sessionId");
+        resultIndex = (ArrayList<Integer>) getIntent().getSerializableExtra("resultIndex");
 
-        String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
-
-       // StringTokenizer st = new StringTokenizer(savedString, ",");
-
-        Toast.makeText(this, ""+child_count, Toast.LENGTH_SHORT).show();
-        SharedPreferencesManger.clean(this);
-      //  while (st.hasMoreTokens()) {
-      //      childCont.add(Integer.parseInt(st.nextToken()));
-
-      //  }
+        reInfoHotels.setLayoutManager(new LinearLayoutManager(this));
+        adapterHotelInfo = new AdapterHotelInfo(ChooseHotelActivity.this, hotelName, hotelrat, hotelphoto, this, onHotelListener, hotelAddress, hotelCode, sessionId,
+                mstartTime, mendTime, countryName, cityName, cityId, noOfRooms, roomGuests, resultIndex);
+        reInfoHotels.setAdapter(adapterHotelInfo);
+        adapterHotelInfo.notifyDataSetChanged();
 
 
     }
