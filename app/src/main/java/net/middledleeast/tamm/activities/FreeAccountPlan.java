@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.RegisterationActivity;
 
 public  class FreeAccountPlan extends AppCompatActivity {
     private Button accept;
@@ -21,7 +22,7 @@ public  class FreeAccountPlan extends AppCompatActivity {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FreeAccountPlan.this, ProceedCheckout.class);
+                Intent intent = new Intent(FreeAccountPlan.this, RegisterationActivity.class);
                 startActivity(intent);
 
             }

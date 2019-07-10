@@ -151,7 +151,7 @@ public class FindHotels extends AppCompatActivity {
         for (int i = 0; i < 18; i++) {
             listOfChildAge.add(i);
         }
-        adapterChildCount = new AdapterChildCount(this, listChildernCount, listOfChildAge);
+        adapterChildCount = new AdapterChildCount(this, listChildernCount, listOfChildAge,this);
 
         recycl_child_spiner.setAdapter(adapterChildCount);
 
@@ -185,6 +185,8 @@ public class FindHotels extends AppCompatActivity {
         ArrayAdapter adapterRoomCount = new ArrayAdapter(this, R.layout.item_spener, listOfRooms);
 
         adapterRoomCount.setDropDownViewResource(R.layout.drop_dowen);
+        roomCount.setDropDownWidth(420);
+        roomCount.setDropDownVerticalOffset(200);
         roomCount.setAdapter(adapterRoomCount);
         roomCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -216,6 +218,8 @@ public class FindHotels extends AppCompatActivity {
                 ArrayAdapter adapteradult = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfAdult);
 
                 adapteradult.setDropDownViewResource(R.layout.drop_dowen);
+                adultCount.setDropDownWidth(420);
+                adultCount.setDropDownVerticalOffset(200);
                 adultCount.setAdapter(adapteradult);
                 adultCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
@@ -246,6 +250,8 @@ public class FindHotels extends AppCompatActivity {
         ArrayAdapter adapterchild = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfChild);
 
         adapterchild.setDropDownViewResource(R.layout.drop_dowen);
+        childCount.setDropDownWidth(420);
+        childCount.setDropDownVerticalOffset(200);
         childCount.setAdapter(adapterchild);
         childCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -352,7 +358,7 @@ public class FindHotels extends AppCompatActivity {
 
 
                     new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                            .setTitleText("Select Check Out Date First")
+                            .setTitleText("Select Check Out Dat First")
                             .setConfirmText("open")
                             .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
@@ -410,12 +416,18 @@ public class FindHotels extends AppCompatActivity {
 //                countryListResponse.Status.Category
                 list.add(name);
 
+
+
                 ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, list);
                 adapter.setDropDownViewResource(R.layout.drop_dowen);
+                regions.setDropDownWidth(420);
+                regions.setDropDownVerticalOffset(200);
                 regions.setAdapter(adapter);
 
 
             }
+
+
             regions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
@@ -501,6 +513,8 @@ public class FindHotels extends AppCompatActivity {
 
                 ArrayAdapter adapterCity = new ArrayAdapter(FindHotels.this, R.layout.item_spener, nameCity);
                 adapterCity.setDropDownViewResource(R.layout.drop_dowen);
+                areas.setDropDownWidth(420);
+                areas.setDropDownVerticalOffset(200);
                 areas.setAdapter(adapterCity);
                 areas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override

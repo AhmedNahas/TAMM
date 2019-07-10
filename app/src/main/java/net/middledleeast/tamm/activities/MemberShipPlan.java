@@ -8,6 +8,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.RegisterationActivity;
 
 public class MemberShipPlan extends AppCompatActivity {
 
@@ -22,7 +23,7 @@ public class MemberShipPlan extends AppCompatActivity {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MemberShipPlan.this, ProceedCheckout.class);
+                Intent intent = new Intent(MemberShipPlan.this, RegisterationActivity.class);
                 startActivity(intent);
             }
         });

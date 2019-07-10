@@ -46,7 +46,11 @@
 
         <activity android:name=".activities.FindHotels">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".activities.ConfirmBookingRoom" />
@@ -55,16 +59,11 @@
         <activity android:name=".activities.MemberShip" />
         <activity android:name=".activities.MemberShipPlan" />
         <activity android:name=".activities.FreeAccountPlan" />
-        <activity android:name=".activities.ProceedCheckout" />
         <activity android:name=".activities.MemberCongrats" />
         <activity android:name=".activities.FREEcONGRATS" />
         <activity android:name=".model.ReserveRoom" />
         <activity android:name=".activities.SplashActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
     </application>
