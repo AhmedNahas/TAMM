@@ -151,7 +151,7 @@ public class FindHotels extends AppCompatActivity {
         for (int i = 0; i < 18; i++) {
             listOfChildAge.add(i);
         }
-        adapterChildCount = new AdapterChildCount(this, listChildernCount, listOfChildAge);
+        adapterChildCount = new AdapterChildCount(this, listChildernCount, listOfChildAge,this);
 
         recycl_child_spiner.setAdapter(adapterChildCount);
 

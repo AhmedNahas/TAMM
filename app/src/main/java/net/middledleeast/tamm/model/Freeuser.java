@@ -1,0 +1,20 @@
+
+package net.middledleeast.tamm.model;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+public class Freeuser {
+
+    @SerializedName("Msgbody")
+    @Expose
+    private String msgbody;
+
+    public String getMsgbody() {
+        return msgbody;
+    }
+
+    public void setMsgbody(String msgbody) {
+        this.msgbody = msgbody;
+    }
+
+}

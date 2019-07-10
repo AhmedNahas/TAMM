@@ -10,23 +10,40 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.model.Freeuser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TammFamilyFragment extends Fragment {
 
+    private TextView textfamily;
+    private Button btnContinue;
+
+    private static final String url ="http://egyptgoogle.com/backend/terms/tammfamily.php" ;
 
     public TammFamilyFragment() {
         // Required empty public constructor
     }
 
-    private Button btnContinue;
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -35,6 +52,9 @@ public class TammFamilyFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tamm_family, container, false);
         btnContinue = view.findViewById(R.id.btn_continue_to_authentication);
+        textfamily=view.findViewById(R.id.family_message);
+
+
 
         final Drawable upArrow = getResources().getDrawable(R.drawable.ic_back_arrow);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -56,7 +76,46 @@ public class TammFamilyFragment extends Fragment {
             }
         });
 
+        gettextfamily();
+
         return view;
+    }
+
+
+
+
+
+    private void gettextfamily() {
+
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject=new JSONObject(response);
+                    JSONArray array=jsonObject.getJSONArray("freeusers");
+                    for (int i=0; i<array.length(); i++ ){
+                        JSONObject ob=array.getJSONObject(i);
+                        final String msgbody = ob.getString("Msgbody");
+
+                        textfamily.setText(msgbody);
+
+//                        Toast.makeText(getContext(), ""+array.length(), Toast.LENGTH_SHORT).show();
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
     }
 
 }

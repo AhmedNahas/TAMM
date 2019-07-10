@@ -48,23 +48,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="1-Utiwisi enim ad  minim veniam, quis\n nostrud exerci tation ullamcorper suscipit\n lobortis nislut aliquip ex ea commodo\n
- cosequat"
+        android:text="     1-Utiwisi enim ad  minim veniam, quis\n nostrud exerci tation ullamcorper suscipit\n lobortis nislut aliquip ex ea commodo\n
+ cosequat\n  2-Duis autem vel eum iriure dolor in\n   hendrerit in vulputate velit esse molestie\n consequat,vel illum dolore eu fengiat nulla\n   facilisis at vero eros et accumsan et iusto\n     odio dignissim qui blandit praesent\n    minim veniam,quis nostrud exerci tation\n            ullamcorper suscipit lobortis"
         android:textColor="#fff"
         android:layout_below="@+id/textView1"
         android:layout_centerInParent="true"
         />
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="    2-Duis autem vel eum iriure dolor in\n   hendrerit in vulputate velit esse molestie\n consequat,vel illum dolore eu fengiat nulla\n   facilisis at vero eros et accumsan et iusto\n     odio dignissim qui blandit praesent\n    minim veniam,quis nostrud exerci tation\n            ullamcorper suscipit lobortis"
-        android:textColor="#fff"
-        android:layout_below="@+id/textView2"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="5dp"
-        />
+
 
 
 
@@ -76,7 +66,7 @@
         android:text="ACCEPT"
         android:textColor="#FFF"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/textView2"
 
         />
 
