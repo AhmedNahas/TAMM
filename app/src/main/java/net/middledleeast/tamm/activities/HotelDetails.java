@@ -67,6 +67,7 @@ public class HotelDetails extends AppCompatActivity {
     private ArrayList<String> roomGuests;
     private int resultIndex;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -182,6 +183,7 @@ public class HotelDetails extends AppCompatActivity {
                 intent.putExtra("noOfRooms", noOfRooms);
                 intent.putExtra("roomGuest", roomGuests);
                 intent.putExtra("resultIndex", resultIndex);
+                intent.putExtra("hotel_name_s", hotelName);
                 startActivity(intent);
 
 

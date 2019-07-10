@@ -151,7 +151,7 @@ public class FindHotels extends AppCompatActivity {
         for (int i = 0; i < 18; i++) {
             listOfChildAge.add(i);
         }
-        adapterChildCount = new AdapterChildCount(this, listChildernCount, listOfChildAge);
+        adapterChildCount = new AdapterChildCount(this, listChildernCount, listOfChildAge,this);
 
         recycl_child_spiner.setAdapter(adapterChildCount);
 
@@ -172,6 +172,7 @@ public class FindHotels extends AppCompatActivity {
         startDateDay.setText(date_n);
         startDateMonth.setText(date_m);
         startDateYear.setText(date_d);
+
 
 
         arrayOfResultIndex = new ArrayList<>();
@@ -547,7 +548,7 @@ public class FindHotels extends AppCompatActivity {
 
         RoomGuest roomGuest = new RoomGuest();
         roomGuest.AdultCount = nom_adult;
-        roomGuest.ChildCount = 0;
+        roomGuest.ChildCount = mChildCount;
         ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
         roomguests.add(roomGuest);
 
@@ -644,6 +645,9 @@ public class FindHotels extends AppCompatActivity {
                 String day = (String) DateFormat.format("dd", time); // Thursday
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
+
+
+                SharedPreferencesManger.SaveData(FindHotels.this,"startDateS",dayOfTheWeek+" "+day+" "+monthString+" "+"till ");
                 startDateDay.setText(day);
                 startDateMonth.setText(monthString);
 
@@ -683,6 +687,8 @@ public class FindHotels extends AppCompatActivity {
                 String day = (String) DateFormat.format("dd", time); // Thursday
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
+
+
                 endDateDay.setText(day);
                 endDateMonth.setText(monthString);
                 endDateYear.setText(dayOfTheWeek);
@@ -698,7 +704,7 @@ public class FindHotels extends AppCompatActivity {
                 nights.setText(" " + days + " ");
                 SharedPreferencesManger.SaveData(FindHotels.this, "nights", days);
 
-
+                SharedPreferencesManger.SaveData(FindHotels.this,"endDateS",dayOfTheWeek+" "+day+" "+monthString+" "+"-"+days+"  nights");
             }
         };
 

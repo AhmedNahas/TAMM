@@ -2,6 +2,11 @@ package net.middledleeast.tamm.activities;
 
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +55,9 @@ public class ChooseBookingDate extends AppCompatActivity {
     private String end_time;
     private String start_time;
     List<Integer> list_count_child = new ArrayList<>();
+    private String hotel_name_s;
+    private TextView tv_name_hotel,tv_date_hotels;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +73,8 @@ public class ChooseBookingDate extends AppCompatActivity {
         no_room = findViewById(R.id.no_room);
         no_child = findViewById(R.id.no_child2);
         adult_tv = findViewById(R.id.adult2);
+        tv_name_hotel = findViewById(R.id.tv_name_hotel);
+        tv_date_hotels = findViewById(R.id.tv_date_hotels);
 
 //
 //        String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
@@ -114,6 +124,7 @@ public class ChooseBookingDate extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this);
        roomRecyclerView.setLayoutManager(manager);
         auth();
+         hotel_name_s = getIntent().getStringExtra("hotel_name_s");
         mstartTime = getIntent().getStringExtra("checkInDate");
         mendTime = getIntent().getStringExtra("checkOutDate");
         sessionId = getIntent().getStringExtra("sessionId");
@@ -125,7 +136,18 @@ public class ChooseBookingDate extends AppCompatActivity {
         //roomGuests =getIntent().getStringArrayListExtra("roomGuest");
         resultIndex = getIntent().getIntExtra("resultIndex", 1);
 
+        String startDateS = SharedPreferencesManger.LoadStringData(this, "startDateS");
+        String endDateS = SharedPreferencesManger.LoadStringData(this, "endDateS");
 
+
+
+
+
+
+        tv_name_hotel.setText(hotel_name_s);
+
+
+        tv_date_hotels.setText(startDateS+endDateS);
 
 
 
@@ -156,8 +178,6 @@ public class ChooseBookingDate extends AppCompatActivity {
 
             roomRecyclerView.setAdapter(roomAdapter);
             roomAdapter.notifyDataSetChanged();
-
-
 
 
 

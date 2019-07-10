@@ -82,8 +82,8 @@ public class SignInFragment extends Fragment {
 
 
         // for test
-//        userName.setText("ahmed");
-//        pass.setText("0125016341");
+        userName.setText("ahmed");
+        pass.setText("0125016341");
 
 
 ////        btnSignIn.setOnTouchListener(new View.OnTouchListener() {
