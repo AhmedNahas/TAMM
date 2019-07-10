@@ -27,6 +27,7 @@ import com.android.volley.toolbox.Volley;
 import net.middledleeast.tamm.activities.RenewAccount;
 import net.middledleeast.tamm.fragments.ForgotPasswordFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.Freeuser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
