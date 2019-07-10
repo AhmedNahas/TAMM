@@ -1,11 +1,16 @@
 package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,18 +21,23 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.ReserveRoom;
+
+import java.io.FileNotFoundException;
 
 public class RenewAccount extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    ImageView img1 , img2;
+    ImageView img1 , img2 , addPic;
+    TextView user_name_profile;
+    private String user;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.renew_account);
         img2 = findViewById(R.id.imageView10);
         img1 = findViewById(R.id.imageView9);
-
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,11 +53,32 @@ public class RenewAccount extends AppCompatActivity
             }
         });
 
+        user = SharedPreferencesManger.LoadStringData(this, "user");
         Toolbar toolbar = findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+
+       // NavigationView navigationView = findViewById(R.id.nav_view);
+
+        NavigationView navigationView =  findViewById(R.id.nav_view);
+
+        View hView =  navigationView.getHeaderView(0);
+
+        addPic = hView.findViewById(R.id.imageViewAddPic);
+        user_name_profile = hView.findViewById(R.id.user_name_profile);
+        user_name_profile.setText(user);
+        addPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 0);
+
+            }
+        });
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -68,10 +99,19 @@ public class RenewAccount extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-
+        getMenuInflater().inflate(R.menu.renew_account_drawer,menu);
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_logout:
+
+                break;
+        }
+        return true;
+    }
 
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -101,5 +141,26 @@ public class RenewAccount extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK){
+            Uri targetUri = data.getData();
+            String textTargetUri=(targetUri.toString());
+
+
+            Bitmap bitmap;
+            try {
+                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
+                addPic.setImageBitmap(bitmap);
+
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 }

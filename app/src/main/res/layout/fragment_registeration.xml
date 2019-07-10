@@ -1,150 +1,336 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterationActivity"
-    android:orientation="vertical">
+    android:background="@drawable/plans_background"
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="vertical">
+    >
 
 
 
-        <ImageView
-            android:id="@+id/img_view"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/logo" />
-
-        <EditText
-            android:id="@+id/tv_register_name"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/border"
-            android:gravity="center"
-            android:hint="Name"
-            android:padding="16dp"
-            android:textColor="#FFF"
-            android:textColorHint="#FFF" />
-
-        <EditText
-            android:id="@+id/tv_register_email"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="3dp"
-            android:background="@drawable/border"
-            android:gravity="center"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:padding="16dp"
-            android:textColor="#FFF"
-            android:textColorHint="#FFF" />
-       <EditText
-           android:id="@+id/tv_register_phone"
-           android:layout_width="250dp"
-           android:layout_height="wrap_content"
-           android:layout_gravity="center"
-           android:layout_marginTop="3dp"
-           android:inputType="phone"
-           android:background="@drawable/border"
-           android:gravity="center"
-           android:hint="Phone"
-           android:padding="16dp"
-           android:textColor="#FFF"
-           android:textColorHint="#FFF" />
-
-        <EditText
-            android:id="@+id/tv_register_password"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="3dp"
-            android:background="@drawable/border"
-            android:gravity="center"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="16dp"
-            android:textColor="#FFF"
-            android:textColorHint="#FFF" />
 
 
-
-        <EditText
-            android:id="@+id/tv_register_confpassword"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="3dp"
-            android:background="@drawable/border"
-            android:gravity="center"
-            android:hint="conf. Password"
-            android:inputType="textPassword"
-            android:padding="16dp"
-            android:textColor="#FFF"
-            android:textColorHint="#FFF" />
-
-
-        <Button
-            android:id="@+id/btn_register_signup"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="20dp"
-            android:layout_gravity="center"
-            android:background="@drawable/border"
-            android:text="REGISTER"
-            android:textColor="#FFF"
-             />
-
-   </LinearLayout>
-
-
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:text="PLEASE TAKE A MINUTE TO SIGN UP"
+        android:textSize="20dp"
+        android:textColor="#fff"
+        android:id="@+id/tv_please"
 
-        <Button
+        />
 
-            android:id="@+id/sign_in_if_not_register"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Already Have An Account ?  Sign in"
-            android:textSize="18dp"
+
+    <RelativeLayout
+        android:id="@+id/relative_first_last"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_please"
+        >
+        <Spinner
+            android:id="@+id/mromiss"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical" />
+
+
+        <EditText
+            android:id="@+id/ed_first_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="FIRST NAME"
+            android:textColorHint="#fff"
             android:textColor="#fff"
-            android:background="@drawable/border"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:padding="10dp"
+            android:layout_toRightOf="@+id/mromiss"
+
+            />
+        <EditText
+            android:id="@+id/ed_last_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="LAST NAME"
+            android:layout_toRightOf="@+id/ed_first_name"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:layout_marginLeft="30dp"
             />
 
-    </LinearLayout>
-
-
-    </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relative_dmy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_first_last"
+        >
+        <TextView
+            android:id="@+id/tv_dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DOB"
+            android:textColor="@color/app_color"
+            android:layout_marginTop="10dp"
 
 
 
+            />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+
+            >
+
+            <EditText
+                android:id="@+id/ed_Day"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:hint="day"
+                android:textColorHint="#fff"
+                android:textColor="#fff"
+                android:padding="10dp"
+                />
+            <EditText
+                android:id="@+id/ed_Month"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:hint="Month"
+                android:textColorHint="#fff"
+                android:textColor="#fff"
+                android:padding="10dp"
+                android:layout_toRightOf="@+id/ed_Day"/>
+            <EditText
+                android:id="@+id/ed_Year"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:hint="Year"
+                android:textColorHint="#fff"
+                android:textColor="#fff"
+                android:padding="10dp"
+                android:layout_toRightOf="@+id/ed_Month"
+                />
+        </RelativeLayout>
+        <!--<TextView-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="DD - MM - YYYY"-->
+        <!--android:id="@+id/tvDate"-->
+        <!--android:textSize="25sp"-->
+        <!--android:textColorHint="@color/app_color"-->
+        <!--android:layout_alignParentRight="true"-->
+
+        <!--/>-->
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relative_country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_dmy"
+        >
+
+        <TextView
+            android:id="@+id/tv_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Country"
+            android:textColor="#fff"
+            android:drawableLeft="@drawable/ic_search"
+
+
+            />
+        <EditText
+            android:id="@+id/ed_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Lebanon"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:layout_below="@+id/tv_country"
+            android:layout_marginLeft="20dp"
+            />
+
+        <EditText
+            android:id="@+id/ed_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="CITY/PROVINCE"
+            android:textColorHint="#fff"
+            android:layout_alignParentRight="true"
+            android:textColor="#fff"
+
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_email_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_country"
+        >
+        <EditText
+            android:id="@+id/ed_email"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:textColorHint="#fff"
+            android:hint="E-MAIL"
+            android:textColor="#fff"
+
+
+            />
+
+        <EditText
+            android:id="@+id/ed_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:hint="PHONE NUMBER"
+            android:textColorHint="#fff"
+            android:textSize="15sp"
+            android:layout_alignParentRight="true"
+            android:textColor="#fff"
+
+
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relative_occupation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_email_phone"
+        >
+        <TextView
+            android:id="@+id/tv_occupation1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OCCUPATION"
+            android:textColor="#fff"
+
+
+            />
+
+        <EditText
+            android:id="@+id/ed_occupation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Engineer"
+            android:textColorHint="#fff"
+            android:layout_below="@+id/tv_occupation1"
+            android:textColor="#fff"
+
+            />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            >
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SPECIAL NEEDS"
+                android:textColor="#fff"
+
+                android:buttonTint="@color/app_color"
+
+                />
+
+        </RadioGroup>
+
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relative_user_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_occupation"
+        >
+        <EditText
+            android:id="@+id/ed_user_name"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:hint="USERNAME"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+
+
+
+
+            />
+        <EditText
+            android:id="@+id/ed_password"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:hint="PASSWORD"
+            android:textColorHint="#fff"
+            android:layout_toRightOf="@+id/ed_user_name"
+            android:textColor="#fff"
+
+            />
+
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relative_visa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_user_pass"
+        >
+        <TextView
+            android:id="@+id/tv_payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PAYMENT METHOD"
+            android:textColor="#fff"
+
+            />
+        <EditText
+            android:id="@+id/ed_visa"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:hint="Visa"
+            android:textSize="20sp"
+            android:textColorHint="#fff"
+            android:textColor="#fff"
+            android:layout_below="@+id/tv_payment"
+
+            />
+
+    </RelativeLayout>
+    <RadioGroup
+        android:id="@+id/radio_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_visa"
+        >
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I agree to the Terms &amp; Condition"
+            android:textColor="#fff"
+
+            android:buttonTint="@color/app_color"
+
+            />
+    </RadioGroup>
+    <Button
+
+        android:id="@+id/proceedcheck_out"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:text="PROCEED TO CHECKOUT"
+        android:textColor="#FFF"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/radio_btn"
+
+
+
+        />
 
 
 
@@ -161,3 +347,8 @@
 
 
 
+
+
+
+
+</RelativeLayout>

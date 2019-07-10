@@ -105,7 +105,6 @@ public  static  boolean child_m ;
                str=  str.replace("]", "");
                         SharedPreferencesManger.SaveData(activity, "child_count", str);
 
-                            Toast.makeText(activity, ""+list_age_save.get(position), Toast.LENGTH_SHORT).show();
 
 
 

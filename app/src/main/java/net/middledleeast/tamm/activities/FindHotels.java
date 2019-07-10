@@ -174,6 +174,7 @@ public class FindHotels extends AppCompatActivity {
         startDateYear.setText(date_d);
 
 
+
         arrayOfResultIndex = new ArrayList<>();
         noRomes = 1;
         for (int i = 1; i < 7; i++) {
@@ -185,6 +186,8 @@ public class FindHotels extends AppCompatActivity {
         ArrayAdapter adapterRoomCount = new ArrayAdapter(this, R.layout.item_spener, listOfRooms);
 
         adapterRoomCount.setDropDownViewResource(R.layout.drop_dowen);
+        roomCount.setDropDownWidth(420);
+        roomCount.setDropDownVerticalOffset(200);
         roomCount.setAdapter(adapterRoomCount);
         roomCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -216,6 +219,8 @@ public class FindHotels extends AppCompatActivity {
                 ArrayAdapter adapteradult = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfAdult);
 
                 adapteradult.setDropDownViewResource(R.layout.drop_dowen);
+                adultCount.setDropDownWidth(420);
+                adultCount.setDropDownVerticalOffset(200);
                 adultCount.setAdapter(adapteradult);
                 adultCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
@@ -246,6 +251,8 @@ public class FindHotels extends AppCompatActivity {
         ArrayAdapter adapterchild = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfChild);
 
         adapterchild.setDropDownViewResource(R.layout.drop_dowen);
+        childCount.setDropDownWidth(420);
+        childCount.setDropDownVerticalOffset(200);
         childCount.setAdapter(adapterchild);
         childCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -352,7 +359,7 @@ public class FindHotels extends AppCompatActivity {
 
 
                     new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                            .setTitleText("Select Check Out Date First")
+                            .setTitleText("Select Check Out Dat First")
                             .setConfirmText("open")
                             .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
@@ -410,12 +417,18 @@ public class FindHotels extends AppCompatActivity {
 //                countryListResponse.Status.Category
                 list.add(name);
 
+
+
                 ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, list);
                 adapter.setDropDownViewResource(R.layout.drop_dowen);
+                regions.setDropDownWidth(420);
+                regions.setDropDownVerticalOffset(200);
                 regions.setAdapter(adapter);
 
 
             }
+
+
             regions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
@@ -501,6 +514,8 @@ public class FindHotels extends AppCompatActivity {
 
                 ArrayAdapter adapterCity = new ArrayAdapter(FindHotels.this, R.layout.item_spener, nameCity);
                 adapterCity.setDropDownViewResource(R.layout.drop_dowen);
+                areas.setDropDownWidth(420);
+                areas.setDropDownVerticalOffset(200);
                 areas.setAdapter(adapterCity);
                 areas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
@@ -547,7 +562,7 @@ public class FindHotels extends AppCompatActivity {
 
         RoomGuest roomGuest = new RoomGuest();
         roomGuest.AdultCount = nom_adult;
-        roomGuest.ChildCount = 0;
+        roomGuest.ChildCount = mChildCount;
         ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
         roomguests.add(roomGuest);
 
@@ -644,6 +659,9 @@ public class FindHotels extends AppCompatActivity {
                 String day = (String) DateFormat.format("dd", time); // Thursday
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
+
+
+                SharedPreferencesManger.SaveData(FindHotels.this,"startDateS",dayOfTheWeek+" "+day+" "+monthString+" "+"till ");
                 startDateDay.setText(day);
                 startDateMonth.setText(monthString);
 
@@ -683,6 +701,8 @@ public class FindHotels extends AppCompatActivity {
                 String day = (String) DateFormat.format("dd", time); // Thursday
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
+
+
                 endDateDay.setText(day);
                 endDateMonth.setText(monthString);
                 endDateYear.setText(dayOfTheWeek);
@@ -698,7 +718,7 @@ public class FindHotels extends AppCompatActivity {
                 nights.setText(" " + days + " ");
                 SharedPreferencesManger.SaveData(FindHotels.this, "nights", days);
 
-
+                SharedPreferencesManger.SaveData(FindHotels.this,"endDateS",dayOfTheWeek+" "+day+" "+monthString+" "+"-"+days+"  nights");
             }
         };
 

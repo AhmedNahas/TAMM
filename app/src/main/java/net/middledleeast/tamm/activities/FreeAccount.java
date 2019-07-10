@@ -2,12 +2,15 @@ package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,28 +26,30 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class FreeAccount extends AppCompatActivity {
+public class FreeAccount extends Fragment {
     Button accept;
     TextView textfreeaccount;
     private static final String url ="http://egyptgoogle.com/backend/freeaccount/freeaccount.php" ;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.freeaccount);
-        accept = findViewById(R.id.btn_register_signup);
 
-        textfreeaccount=findViewById(R.id.textView2);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.freeaccount, container, false);
 
-        getfreeaccount();
+        accept = view.findViewById(R.id.btn_register_signup);
+            textfreeaccount=view.findViewById(R.id.textView2);
+
+            getfreeaccount();
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(FreeAccount.this, FreeAccountPlan.class);
-                startActivity(intent);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.welcome_container, new FreeAccountPlan())
+                        .commit();
 
             }
         });
+        return view;
     }
 
     private void getfreeaccount() {
@@ -63,7 +68,7 @@ public class FreeAccount extends AppCompatActivity {
 
                         textfreeaccount.setText(msgbody);
 
-                        Toast.makeText(getApplicationContext(), ""+array.length(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), ""+array.length(), Toast.LENGTH_SHORT).show();
 
                     }
                 } catch (JSONException e) {
@@ -75,10 +80,10 @@ public class FreeAccount extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(FreeAccount.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        RequestQueue requestQueue= Volley.newRequestQueue(FreeAccount.this);
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
 
       }

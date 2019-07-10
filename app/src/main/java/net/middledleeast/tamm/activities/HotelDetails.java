@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +43,7 @@ public class HotelDetails extends AppCompatActivity {
     Button btnMap;
     @BindView(R.id.btn_next)
     Button btnNext;
-    LinearLayout sliderDotspanel;
+    RelativeLayout sliderDotspanel;
     private AuthenticationData authenticationData;
     private int dotscount;
     private ImageView[] dots;
@@ -66,18 +67,21 @@ public class HotelDetails extends AppCompatActivity {
     private ArrayList<String> roomGuests;
     private int resultIndex;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel_details);
+        ViewPager viewPager = findViewById(R.id.hotel_image_detail);
+        sliderDotspanel = findViewById(R.id.SliderDots);
         ButterKnife.bind(this);
         //testing
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
         // imageView=findViewById(R.id.hotel_image_detail);
-        ViewPager viewPager = findViewById(R.id.hotel_image_detail);
-        sliderDotspanel = findViewById(R.id.SliderDots);
+
+
 
         auth();
         getdataIntent();
@@ -179,6 +183,7 @@ public class HotelDetails extends AppCompatActivity {
                 intent.putExtra("noOfRooms", noOfRooms);
                 intent.putExtra("roomGuest", roomGuests);
                 intent.putExtra("resultIndex", resultIndex);
+                intent.putExtra("hotel_name_s", hotelName);
                 startActivity(intent);
 
 

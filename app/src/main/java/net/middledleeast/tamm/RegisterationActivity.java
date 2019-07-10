@@ -1,19 +1,30 @@
 package net.middledleeast.tamm;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -22,15 +33,41 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterationActivity extends Fragment {
-        private ImageView imageView;
-        private Button sign_in_button;
-        private EditText email,password,confpassword,name,phone;
-        private Button button;
-        private FirebaseAuth auth;
-        private DatabaseReference reference;
+    private EditText etFirstName;
+    private EditText etLastName;
+    private EditText etUserName;
+    private Button register;
+    private EditText etPhone;
+    private EditText etEmail;
+    private EditText etPassword;
+    private EditText etConfirmPassword;
+    private EditText etDay;
+    private EditText etMonth;
+    private EditText etYear;
+    private EditText etLocation;
+    private EditText etOccupation;
+    private EditText etCity;
+    private EditText etVisa;
+
+
+    RelativeLayout relative_visa;
+    int free;
+    int member;
+    int user_id;
+
+    RequestQueue requestQueue;
+    private String register_url_free = "http://egyptgoogle.com/freeusers/insertusers.php";
+    private String register_url_member = "http://egyptgoogle.com/paymentusers/insertstudents.php";
+
+
+    private ArrayList<String> mrOrMissArray;
+    private ArrayAdapter mrOrMissAdapter;
+    private Spinner mrormissSpinner;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,101 +75,190 @@ public class RegisterationActivity extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_registeration, container, false);
 
-        imageView = view.findViewById(R.id.img_view);
-        sign_in_button = view.findViewById(R.id.sign_in_if_not_register);
-        email = view.findViewById(R.id.tv_register_email);
-        password = view.findViewById(R.id.tv_register_password);
-        confpassword = view.findViewById(R.id.tv_register_confpassword);
-        name = view.findViewById(R.id.tv_register_name);
-        phone = view.findViewById(R.id.tv_register_phone);
-        button = view.findViewById(R.id.btn_register_signup);
+        etFirstName=view.findViewById(R.id.ed_first_name);
+        etLastName=view.findViewById(R.id.ed_last_name);
+        etUserName =view.findViewById(R.id.ed_user_name);
+        etPhone=view.findViewById(R.id.ed_phone);
+        etEmail=view.findViewById(R.id.ed_email);
+        etPassword =view.findViewById(R.id.ed_password);
+        etDay=view.findViewById(R.id.ed_Day);
+        etMonth=view.findViewById(R.id.ed_Month);
+        etYear=view.findViewById(R.id.ed_Year);
+        etLocation=view.findViewById(R.id.ed_location);
+        etOccupation=view.findViewById(R.id.ed_occupation);
+        etCity=view.findViewById(R.id.ed_city);
 
-        auth = FirebaseAuth.getInstance();
-        reference = FirebaseDatabase.getInstance().getReference();
+        etVisa=view.findViewById(R.id.ed_visa);
+        register = view.findViewById(R.id.proceedcheck_out);
 
-        sign_in_button.setOnClickListener(new View.OnClickListener() {
+        Context context = getActivity();
+        requestQueue = Volley.newRequestQueue(context);
+
+
+
+
+
+
+
+        relative_visa = view.findViewById(R.id.relative_visa);
+
+        Bundle arguments = getArguments();
+        try {
+            free = arguments.getInt("free");
+
+            member = arguments.getInt("member");
+
+        }catch (Exception ignored){
+
+        }
+
+
+        if (free==2){
+
+            user_id = 1 ;
+            relative_visa.setVisibility(View.GONE);
+            Toast.makeText(getContext(), "free", Toast.LENGTH_SHORT).show();
+
+        }else if (member==1){
+            user_id = 2;
+            Toast.makeText(getContext(), "member", Toast.LENGTH_SHORT).show();
+
+        }else {
+            return null;
+        }
+
+
+
+        mrOrMissArray = new ArrayList<>();
+        mrOrMissArray.add("Mr.");
+        mrOrMissArray.add("Mrs.");
+
+//        mDisplayDate = view.findViewById(R.id.tvDate);
+
+
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.welcome_container, new SignInFragment())
-                        .commit();
+                connectdatabase();
+
             }
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String strName = name.getText().toString();
-                String strEmail = email.getText().toString();
-                String strpass = password.getText().toString();
-                String strconfpass = confpassword.getText().toString();
-                String strphone = phone.getText().toString();
+
+        mrOrMissAdapter = new ArrayAdapter(getContext(), R.layout.mrormissspinnerlist, mrOrMissArray);
+        mrormissSpinner = view.findViewById(R.id.mromiss);
+        mrormissSpinner.setSelection(1);
+        mrormissSpinner.setAdapter(mrOrMissAdapter);
 
 
-                if (TextUtils.isEmpty(strName)) {
-                    name.setError("Name Is Required");
-
-                } else if (TextUtils.isEmpty(strEmail)) {
-                    email.setError("Email Is Required");
-                } else if (TextUtils.isEmpty(strpass)) {
-                    password.setError("Password Is Required");
-                } else if (TextUtils.isEmpty(strconfpass)) {
-                    confpassword.setError("Conf. Password Is Required");
-                } else {
-                    doRegister(strName, strEmail, strpass, strconfpass);
-                }
-            }
-        });
-
+//        mDisplayDate.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                Calendar cal = Calendar.getInstance();
+//                int year = cal.get(Calendar.YEAR);
+//                int month = cal.get(Calendar.MONTH);
+//                int day = cal.get(Calendar.DAY_OF_MONTH);
+//
+//                DatePickerDialog dialog = new DatePickerDialog(getContext(),
+//                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+//                        mDateSetListener,
+//                        year, month, day);
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                dialog.show();
+//            }
+//
+//        });
+//
+//        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+//            @Override
+//            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+//                month = month + 1;
+//
+//
+//                String date = month + "/" + day + "/" + year;
+//                mDisplayDate.setText(date);
+//            }
+//        };
         return view;
     }
 
+    private void connectdatabase() {
+        if (user_id==1){
+            StringRequest request = new StringRequest(Request.Method.POST, register_url_free, new Response.Listener<String>() {
 
-    private void doRegister(final String strName, String strEmail, String strpass, String strconfpass) {
+                @Override
 
-        auth.createUserWithEmailAndPassword(strEmail,strpass)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            FirebaseUser firebaseUser=auth.getCurrentUser();
-                            Log.d("user_id",firebaseUser.getUid());
-                            Toast.makeText(getActivity(), "Register Success", Toast.LENGTH_SHORT).show();
-                            getActivity().getSupportFragmentManager().beginTransaction()
-                                    .replace(R.id.welcome_container, new SignInFragment())
-                                    .commit();
+                public void onResponse(String response) {
+                    Toast.makeText(getContext(), ""+response, Toast.LENGTH_SHORT).show();
 
-                            reference =FirebaseDatabase.getInstance().getReference()
-                                    .child("users").child(auth.getCurrentUser().getUid());
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
 
-                            HashMap<String,String> hashMap=new HashMap<>();
-                            hashMap.put("id",auth.getCurrentUser().getUid());
-                            hashMap.put("name",strName);
-                            reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()){
-                                        Toast.makeText(getActivity(), "Register Success", Toast.LENGTH_SHORT).show();
+                }
 
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> parameters = new HashMap<String, String>();
+                    parameters.put("firstname", etFirstName.getText().toString());
+                    parameters.put("lastname", etLastName.getText().toString());
+                    parameters.put("username", etUserName.getText().toString());
+                    parameters.put("password", etPassword.getText().toString());
+                    parameters.put("day", etDay.getText().toString());
+                    parameters.put("month", etMonth.getText().toString());
+                    parameters.put("year", etYear.getText().toString());
+                    parameters.put("location", etLocation.getText().toString());
+                    parameters.put("occupation", etOccupation.getText().toString());
+                    parameters.put("email", etEmail.getText().toString());
+                    parameters.put("phone", etPhone.getText().toString());
+                    parameters.put("city", etCity.getText().toString());
+                    return parameters;
+                }
+            };
+            requestQueue.add(request);
 
-                                    }
-                                }
-                            });
+        }else if (user_id==2){
+            StringRequest request = new StringRequest(Request.Method.POST, register_url_member, new Response.Listener<String>() {
 
-                        } else{
-                            Toast.makeText(getActivity(), "Something Wrong ", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                @Override
+
+                public void onResponse(String response) {
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> parameters = new HashMap<String, String>();
+                    parameters.put("firstname", etFirstName.getText().toString());
+                    parameters.put("lastname", etLastName.getText().toString());
+                    parameters.put("username", etUserName.getText().toString());
+                    parameters.put("password", etPassword.getText().toString());
+                    parameters.put("day", etDay.getText().toString());
+                    parameters.put("month", etMonth.getText().toString());
+                    parameters.put("year", etYear.getText().toString());
+                    parameters.put("location", etLocation.getText().toString());
+                    parameters.put("occupation", etOccupation.getText().toString());
+                    parameters.put("email", etEmail.getText().toString());
+                    parameters.put("phone", etPhone.getText().toString());
+                    parameters.put("city", etCity.getText().toString());
+                    parameters.put("visa", etVisa.getText().toString());
+
+                    return parameters;
+                }
+            };
+            requestQueue.add(request);
+
+        }
 
 
     }
-
-//    public void sign_in_text(View view) {
-//
-//        getActivity().getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.welcome_container, new SignInFragment())
-//                .commit();
-//
-//    }
 }
