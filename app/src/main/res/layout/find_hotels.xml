@@ -118,7 +118,8 @@ android:id="@+id/icon"
 
 
         <Spinner
-android:gravity="center"
+            android:backgroundTint="@color/app_color"
+            android:gravity="center"
             android:id="@+id/region_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -164,7 +165,7 @@ android:layout_marginTop="8dp"
 
 
         <Spinner
-
+            android:backgroundTint="@color/app_color"
             android:id="@+id/area_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -402,7 +403,7 @@ android:layout_marginTop="8dp"
 
 
         <Spinner
-
+            android:backgroundTint="@color/app_color"
             android:id="@+id/no_of_rooms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -446,7 +447,7 @@ android:layout_marginTop="8dp"
 
 
         <Spinner
-
+            android:backgroundTint="@color/app_color"
             android:id="@+id/adilt_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -488,7 +489,7 @@ android:layout_marginTop="22dp"
 
 
         <Spinner
-
+            android:backgroundTint="@color/app_color"
             android:id="@+id/no_of_childs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
