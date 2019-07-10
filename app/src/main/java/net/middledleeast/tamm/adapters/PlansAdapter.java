@@ -12,11 +12,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.FreeAccount;
 import net.middledleeast.tamm.activities.MemberShip;
+import net.middledleeast.tamm.fragments.PlansFragment;
 import net.middledleeast.tamm.model.PlanModel;
 
 import java.util.List;
@@ -50,13 +52,15 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHol
 
 if(i==0)
 {
-    Intent intent = new Intent(context, MemberShip.class);
-    context.startActivity(intent);
+    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
+            .replace(R.id.welcome_container, new MemberShip())
+            .commit();
 }
 else
 {
-    Intent intent = new Intent(context, FreeAccount.class);
-    context.startActivity(intent);
+    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
+            .replace(R.id.welcome_container, new FreeAccount())
+            .commit();
 }
                 //todo check
 //                row_index = i;

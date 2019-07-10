@@ -47,6 +47,7 @@ android {
 repositories {
     maven {
         url "https://dl.bintray.com/wirecard/ecom-android"
+
     }
 }
 
@@ -65,6 +66,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:18.0.0'
     implementation 'com.google.firebase:firebase-core:17.0.0'
     implementation 'com.dyhdyh.support:glide:1.0.0'
+    implementation 'com.github.jlmd:AnimatedCircleLoadingView:1.1.5@aar'
+    implementation 'com.android.volley:volley:1.1.1'
     //dependencies for payment api
 
     implementation('io.reactivex.rxjava2:rxkotlin:2.2.0')

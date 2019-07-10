@@ -14,7 +14,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewAddPic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
@@ -23,6 +23,7 @@
         android:layout_gravity="center"/>
 
     <TextView
+        android:id="@+id/user_name_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"

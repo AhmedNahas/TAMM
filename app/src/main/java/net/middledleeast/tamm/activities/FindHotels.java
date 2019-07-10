@@ -174,6 +174,7 @@ public class FindHotels extends AppCompatActivity {
         startDateYear.setText(date_d);
 
 
+
         arrayOfResultIndex = new ArrayList<>();
         noRomes = 1;
         for (int i = 1; i < 7; i++) {
@@ -561,7 +562,7 @@ public class FindHotels extends AppCompatActivity {
 
         RoomGuest roomGuest = new RoomGuest();
         roomGuest.AdultCount = nom_adult;
-        roomGuest.ChildCount = 0;
+        roomGuest.ChildCount = mChildCount;
         ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
         roomguests.add(roomGuest);
 
@@ -658,6 +659,9 @@ public class FindHotels extends AppCompatActivity {
                 String day = (String) DateFormat.format("dd", time); // Thursday
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
+
+
+                SharedPreferencesManger.SaveData(FindHotels.this,"startDateS",dayOfTheWeek+" "+day+" "+monthString+" "+"till ");
                 startDateDay.setText(day);
                 startDateMonth.setText(monthString);
 
@@ -697,6 +701,8 @@ public class FindHotels extends AppCompatActivity {
                 String day = (String) DateFormat.format("dd", time); // Thursday
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
+
+
                 endDateDay.setText(day);
                 endDateMonth.setText(monthString);
                 endDateYear.setText(dayOfTheWeek);
@@ -712,7 +718,7 @@ public class FindHotels extends AppCompatActivity {
                 nights.setText(" " + days + " ");
                 SharedPreferencesManger.SaveData(FindHotels.this, "nights", days);
 
-
+                SharedPreferencesManger.SaveData(FindHotels.this,"endDateS",dayOfTheWeek+" "+day+" "+monthString+" "+"-"+days+"  nights");
             }
         };
 

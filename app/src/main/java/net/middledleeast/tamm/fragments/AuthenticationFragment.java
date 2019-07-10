@@ -57,7 +57,7 @@ public class AuthenticationFragment extends Fragment {
                 if (event.getAction() == MotionEvent.ACTION_DOWN){
                     btnRegister.setBackgroundColor(Color.parseColor("#BE973B"));
                     getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.welcome_container, new RegisterationActivity())
+                            .replace(R.id.welcome_container, new PlansFragment())
                             .commit();
                 }else if (event.getAction() == MotionEvent.ACTION_UP){
                     btnSignin.setBackground(getActivity().getDrawable(R.drawable.border));

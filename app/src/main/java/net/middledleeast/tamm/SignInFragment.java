@@ -2,6 +2,8 @@ package net.middledleeast.tamm;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,16 +18,35 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import net.middledleeast.tamm.activities.RenewAccount;
 import net.middledleeast.tamm.fragments.ForgotPasswordFragment;
 import net.middledleeast.tamm.fragments.PlansFragment;
 import net.middledleeast.tamm.fragments.UsersFreeFragment;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.Freeuser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.internal.cache.DiskLruCache;
 
 
 /**
@@ -36,9 +57,12 @@ public class SignInFragment extends Fragment {
     private TextView txtForgotPassword;
     private Button btnSignIn;
     private EditText userName, pass;
-    private FirebaseUser user;
-    private FirebaseAuth auth;
-
+    private static final String HI ="http://egyptgoogle.com/freeusers/checkusers.php" ;
+    private List<Freeuser> freeusers =new ArrayList<>();
+    private List<String> listUserName = new ArrayList<>();
+    private List<String> listUserPass = new ArrayList<>();
+    private String password;
+    private String username;
 
 
     public SignInFragment() {
@@ -52,34 +76,39 @@ public class SignInFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = getView(inflater, container);
 
-        if (user != null) {
+        getFreeData();
 
 
-        }
-
-        btnSignIn.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                if (userName.getText().toString().equals("tamm@gmail.com") && pass.getText().toString().equals("0123456")) {
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.welcome_container, new UsersFreeFragment())
-                            .commit();
-                }
-
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    btnSignIn.setTextColor(Color.parseColor("#BE973B"));
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.welcome_container, new PlansFragment())
-                            .commit();
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    btnSignIn.setBackground(getActivity().getDrawable(R.drawable.border));
-                }
-                return false;
 
 
-            }
-        });
+        // for test
+        userName.setText("ahmed");
+        pass.setText("0125016341");
+
+
+////        btnSignIn.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//
+//                if (userName.getText().toString().equals("tamm@gmail.com") && pass.getText().toString().equals("0123456")) {
+//                    getActivity().getSupportFragmentManager().beginTransaction()
+//                            .replace(R.id.welcome_container, new UsersFreeFragment())
+//                            .commit();
+//                }
+//
+//                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//                    btnSignIn.setTextColor(Color.parseColor("#BE973B"));
+//                    getActivity().getSupportFragmentManager().beginTransaction()
+//                            .replace(R.id.welcome_container, new PlansFragment())
+//                            .commit();
+//                } else if (event.getAction() == MotionEvent.ACTION_UP) {
+//                    btnSignIn.setBackground(getActivity().getDrawable(R.drawable.border));
+//                }
+//                return false;
+//
+//
+//            }
+        //   });
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,16 +118,31 @@ public class SignInFragment extends Fragment {
                 String password = pass.getText().toString();
 
 
-
                 if (TextUtils.isEmpty(user_Name)) {
                     userName.setError("Name Is Required");
 
                 } else if (TextUtils.isEmpty(password)) {
                     pass.setError("Conf. Password Is Required");
-                } else {
-                    signInLogin(user_Name, password);
                 }
+
+
+
+                if (listUserPass.contains(pass.getText().toString())&&listUserName.contains(userName.getText().toString())){
+
+                    Intent intent =new Intent(getContext(), RenewAccount.class);
+                    startActivity(intent);
+
+
+
+                }else {
+
+                    Toast.makeText(getContext(), "Your UserName Or Password Is Not Correct", Toast.LENGTH_SHORT).show();
+                }
+
+
+
             }
+
         });
 
 
@@ -121,31 +165,57 @@ public class SignInFragment extends Fragment {
         return view;
     }
 
+    private void getFreeData() {
+
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, HI, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject=new JSONObject(response);
+                    JSONArray array=jsonObject.getJSONArray("freeusers");
+                    for (int i=0; i<array.length(); i++ ){
+                        JSONObject ob=array.getJSONObject(i);
+                        Freeuser listData=new Freeuser(ob.getString("username")
+                                ,ob.getString("password"));
+                        freeusers.add(listData);
+
+                         password = freeusers.get(i).getPassword();
+                         username = freeusers.get(i).getUsername();
+
+
+
+                        SharedPreferencesManger.SaveData(getActivity(),"user",username);
+
+                        listUserName.add(username);
+                        listUserPass.add(password);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+    }
+
+
+
+
+
     private View getView(LayoutInflater inflater, ViewGroup container) {
         View view = inflater.inflate(R.layout.fragment_sign_in, container, false);
         txtForgotPassword = view.findViewById(R.id.goto_forgot_pass);
         btnSignIn = view.findViewById(R.id.btn_sign_in_user);
         userName = view.findViewById(R.id.tv_signin_username);
         pass = view.findViewById(R.id.tv_signin_password);
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        auth = FirebaseAuth.getInstance();
         return view;
-    }
-
-    private void signInLogin(String userName2, String passwor) {
-        auth.signInWithEmailAndPassword(userName2, passwor).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                 if (task.isSuccessful()) {
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.welcome_container, new PlansFragment())
-                            .commit();
-                }else {
-                    Toast.makeText(getActivity(), "Wrong Email or Password", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 
 }

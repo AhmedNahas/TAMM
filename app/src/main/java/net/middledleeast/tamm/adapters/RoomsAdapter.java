@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -86,7 +87,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
             description = rooms.get(position).RoomAdditionalInfo.Description;
         }
 
-        holder.mName.getRootView().setOnClickListener(new View.OnClickListener() {
+        holder.roomBooken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, checkroom.class);
@@ -122,14 +123,16 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         // each data item is just a string in this case
         public TextView mName , roomPrice;
         public ImageView img_photo_hotel ;
+        public Button roomBooken ;
 
 
         public ViewHolder(View linearLayout) {
             super(linearLayout);
 
             this.mName = linearLayout.findViewById(R.id.nametext_room);
-            this.img_photo_hotel = linearLayout.findViewById(R.id.img_photo_hotel);
+            this.img_photo_hotel = linearLayout.findViewById(R.id.room_image);
             this.roomPrice = linearLayout.findViewById(R.id.room_price);
+            this.roomBooken = linearLayout.findViewById(R.id.room_booking_btn);
 
 
         }
