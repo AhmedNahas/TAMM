@@ -21,13 +21,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ProceedCheckout extends AppCompatActivity {
-    Spinner mrormissSpinner;
+    private Spinner mrormissSpinner;
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
-    ArrayAdapter mrOrMissAdapter;
-    ArrayList<String> mrOrMissArray;
-
-    private Button proceedCheckOut;
+    private ArrayAdapter mrOrMissAdapter;
+    private ArrayList<String> mrOrMissArray;
+    private Button proceedCheckOut , backBtn;
     @Override
 
     @SuppressLint("unchecked")
@@ -40,7 +39,13 @@ public class ProceedCheckout extends AppCompatActivity {
 
         mDisplayDate = findViewById(R.id.tvDate);
         proceedCheckOut=findViewById(R.id.proceed_check_out);
-
+        backBtn=findViewById(R.id.btn_baack_register);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProceedCheckout.super.finish();
+            }
+        });
         proceedCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

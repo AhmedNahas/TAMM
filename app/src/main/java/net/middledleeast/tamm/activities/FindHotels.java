@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -116,6 +117,7 @@ public class FindHotels extends AppCompatActivity {
     private List<Integer> listOfChildAge = new ArrayList<>();
     boolean chicDateStart = false;
     boolean chicDateEnd = false;
+    private ImageView toolbar_back;
 
 
     @Override
@@ -134,8 +136,14 @@ public class FindHotels extends AppCompatActivity {
 //        startDate = findViewById(R.id.startDate);
 //        endDate = findViewById(R.id.endDate);
         nights = findViewById(R.id.nights);
-
+        toolbar_back=findViewById(R.id.toolbar_back1);
         recycl_child_spiner = findViewById(R.id.rv_child);
+        toolbar_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FindHotels.super.finish();
+            }
+        });
 
         recycl_child_spiner.setLayoutManager(new GridLayoutManager(this, 2));
 
