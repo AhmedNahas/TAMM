@@ -27,6 +27,7 @@ import com.android.volley.toolbox.Volley;
 import net.middledleeast.tamm.activities.RenewAccount;
 import net.middledleeast.tamm.fragments.ForgotPasswordFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.Freeuser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,7 +46,7 @@ public class SignInFragment extends Fragment {
     private Button btnSignIn;
     private EditText userName, pass;
     private static final String HI ="http://egyptgoogle.com/freeusers/checkusers.php" ;
-    private List<Freeuser> freeusers =new ArrayList<>();
+  private List<Freeuser> freeusers =new ArrayList<>();
     private List<String> listUserName = new ArrayList<>();
     private List<String> listUserPass = new ArrayList<>();
     private String password;

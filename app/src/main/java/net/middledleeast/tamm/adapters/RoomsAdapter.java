@@ -93,7 +93,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 Intent intent = new Intent(context, checkroom.class);
 //                intent.putExtra("arrayOfRooms", new Gson().toJson(arrayOfRooms));
 //                intent.putExtra("rooms", new Gson().toJson(rooms));
-//                intent.putExtra("hotel_room", new Gson().toJson(hotel_room));
+//                intent.putExtra("hotel_room(xxhdpi)", new Gson().toJson(hotel_room(xxhdpi)));
                 intent.putExtra("sessionId", sessionId);
                 intent.putExtra("noOfRooms", noOfRooms);
                 intent.putExtra("resultIndex", resultIndex);

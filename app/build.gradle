@@ -100,13 +100,20 @@ dependencies {
     }
 
 
+
     implementation 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 
     // sweet dialog
     implementation 'com.github.f0ris.sweetalert:library:1.5.1'
 
+    // round img
+    implementation 'com.jcminarro:RoundKornerLayouts:0.4.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
 
 }
+
+
+
 apply plugin: 'com.google.gms.google-services'

@@ -146,7 +146,6 @@
         android:text="RESERVE ROOM"
         android:textColor="#FFF"
         android:background="@drawable/border"
-        android:onClick="reverse_room"
         android:layout_below="@+id/relative_where_time"
         android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
@@ -155,12 +154,13 @@
 
     <ImageView
         android:id="@+id/img_man"
-        android:layout_width="350dp"
-        android:layout_height="130dp"
+        android:layout_width="407dp"
+        android:layout_height="178dp"
         android:layout_below="@+id/btn_reserve_user"
-        android:layout_centerInParent="true"
 
-        android:layout_marginTop="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="90dp"
+        android:layout_marginBottom="52dp"
         android:src="@drawable/man1"
         app:srcCompat="@drawable/manhelp" />
 

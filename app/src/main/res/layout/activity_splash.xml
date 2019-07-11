@@ -93,7 +93,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.02" />
 
-    <com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/circle_loading_view"
         android:layout_width="209dp"
         android:layout_height="203dp"

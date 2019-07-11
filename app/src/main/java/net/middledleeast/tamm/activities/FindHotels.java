@@ -48,6 +48,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Queue;
+import java.util.StringTokenizer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -559,6 +560,19 @@ public class FindHotels extends AppCompatActivity {
 
 
         service.enableLogging = true;
+        String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
+
+
+        StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
+
+        while (st.hasMoreTokens()){
+
+            // child age count
+            String ageChildCount = st.nextToken().toString().trim();
+
+            // TODO: 7/11/2019  creat list of integer and add ageChildCount in it   by Integer.parseInt(ageChildCount)
+
+        }
 
         RoomGuest roomGuest = new RoomGuest();
         roomGuest.AdultCount = nom_adult;
@@ -576,10 +590,12 @@ public class FindHotels extends AppCompatActivity {
             HotelSearchResponse hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
                     true, noRomes, "EG", roomguests, null, 100, null, null, null,
                     600, authenticationData);
-            ratrHotel.clear();
+            ratrHotel          .clear();
             nameHotel.clear();
             photoHotel.clear();
             listcodeHotel.clear();
+
+
             for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
 
                 Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);

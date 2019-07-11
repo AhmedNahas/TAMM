@@ -1,8 +1,10 @@
 package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,12 +22,14 @@ import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.HotelDetailsResponse;
 import com.Tamm.Hotels.wcf.ImageUrlDetails;
+import com.google.android.gms.maps.model.LatLng;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.adapterPhotoHotels;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,7 +47,7 @@ public class HotelDetails extends AppCompatActivity {
     Button btnMap;
     @BindView(R.id.btn_next)
     Button btnNext;
-    RelativeLayout sliderDotspanel;
+    LinearLayout sliderDotspanel;
     private AuthenticationData authenticationData;
     private int dotscount;
     private ImageView[] dots;
@@ -57,7 +61,6 @@ public class HotelDetails extends AppCompatActivity {
     private int code;
     private String description;
     private String phoneNumber;
-    private String map;
     private String mendTime;
     private String mstartTime;
     private String countryName;
@@ -66,6 +69,9 @@ public class HotelDetails extends AppCompatActivity {
     private int noOfRooms;
     private ArrayList<String> roomGuests;
     private int resultIndex;
+    private String part1;
+    private String part2;
+    private String map;
 
 
     @Override
@@ -106,10 +112,17 @@ public class HotelDetails extends AppCompatActivity {
             description = hotelDetailsResponse.HotelDetails.Description;
 
 
+            map = hotelDetailsResponse.HotelDetails.Map;
+
+            // TODO: 7/11/2019  split map to 2 part
+            String[] parts = map.split("|",2);
+
+            part1 = parts[0];
+      part2= parts[1];
 
 
-            //    phoneNumber = hotelDetailsResponse.HotelDetails.PhoneNumber;
-            //map = hotelDetailsResponse.HotelDetails.Map;
+
+
 
 
 
@@ -221,10 +234,29 @@ public class HotelDetails extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_map:
+              openMap();
                 break;
             case R.id.btn_next:
+
                 break;
         }
+    }
+
+    private void openMap() {
+
+
+        // Create a Uri from an intent string. Use the result to create an Intent.
+        // parse lang and lat
+        Uri gmmIntentUri = Uri.parse("google.streetview:cbll="+part1+"."+part2);
+
+// Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+// Make the Intent explicit by setting the Google Maps package
+        mapIntent.setPackage("com.google.android.apps.maps");
+
+// Attempt to start an activity that can handle the Intent
+        startActivity(mapIntent);
+
     }
 }
 

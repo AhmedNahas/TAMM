@@ -38,6 +38,8 @@ public class RenewAccount extends AppCompatActivity
         setContentView(R.layout.renew_account);
         img2 = findViewById(R.id.imageView10);
         img1 = findViewById(R.id.imageView9);
+
+
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,16 +48,22 @@ public class RenewAccount extends AppCompatActivity
                 startActivity(intent);
             }
         });
-        img1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RenewAccount.this,FlightTamm.class));
-            }
-        });
+//        img1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(RenewAccount.this,FlightTamm.class));
+//            }
+//        });
 
-        user = SharedPreferencesManger.LoadStringData(this, "user");
+        try {
+            user = SharedPreferencesManger.LoadStringData(this, "user");
+
+        }catch (Exception e){
+
+
+        }
+
         Toolbar toolbar = findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -68,7 +76,11 @@ public class RenewAccount extends AppCompatActivity
 
         addPic = hView.findViewById(R.id.imageViewAddPic);
         user_name_profile = hView.findViewById(R.id.user_name_profile);
-        user_name_profile.setText(user);
+
+        try {
+            user_name_profile.setText(user);
+
+
         addPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +90,10 @@ public class RenewAccount extends AppCompatActivity
 
             }
         });
+        }catch (Exception e){
 
+
+        }
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);

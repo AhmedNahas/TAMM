@@ -73,7 +73,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         authenticandata.Password = ("Tam@18418756");
 //        arrayOfRooms = (ArrayOfRequestedRooms) intent.getSerializableExtra("arrayOfRooms");
 //        rooms = (List<Hotel_Room>) gson.fromJson(intent.getStringExtra("rooms"), List.class);
-//        hotel_room = gson.fromJson(intent.getStringExtra("hotel_room"), Hotel_Room.class);
+//        hotel_room(xxhdpi) = gson.fromJson(intent.getStringExtra("hotel_room(xxhdpi)"), Hotel_Room.class);
         sessionId = intent.getStringExtra("sessionId");
         noOfRooms = intent.getIntExtra("noOfRooms", 1);
         resultIndex = intent.getIntExtra("resultIndex", 1);
@@ -115,7 +115,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                     null, false, authenticandata);
 
 
-            Toast.makeText(this, "" + hotelBookingResponse.ConfirmationNo, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "" + hotelBookingResponse.ConfirmationNo, Toast.LENGTH_SHORT).show();
 
 //            HotelBookResponse hotelBookingResponse = service.HotelBook(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
 

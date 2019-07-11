@@ -45,9 +45,9 @@ public class checkroom extends AppCompatActivity {
         auth();
         getIntentInfo();
 
-        if (mealTybe == null) {
-            Toast.makeText(this, "" + mealTybe, Toast.LENGTH_SHORT).show();
-        }
+//        if (mealTybe == null) {
+//            Toast.makeText(this, "" + mealTybe, Toast.LENGTH_SHORT).show();
+//        }
 
 
 

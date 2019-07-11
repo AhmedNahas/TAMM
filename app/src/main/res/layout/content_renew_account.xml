@@ -12,8 +12,9 @@
 
 
     <LinearLayout
+        android:visibility="invisible"
         android:id="@+id/topBottomslayout"
-        android:layout_width="395dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -39,11 +40,11 @@
             android:id="@+id/button2"
             android:layout_width="35dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_weight="1"
+            android:background="@drawable/shape"
             android:text="BEST HOTELS"
             tools:layout_editor_absoluteX="132dp"
-            android:background="@drawable/shape"
-            android:layout_margin="10dp"
 
             />
 
@@ -90,12 +91,13 @@
             android:layout_width="249dp"
             android:layout_height="164dp"
             android:layout_marginBottom="8dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button7"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/button6"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/bottom_background" />
+            android:background="@drawable/fourseasonshotel"/>
 
         <Button
             android:id="@+id/button7"
