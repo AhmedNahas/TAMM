@@ -4,14 +4,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -22,14 +19,12 @@ import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.HotelDetailsResponse;
 import com.Tamm.Hotels.wcf.ImageUrlDetails;
-import com.google.android.gms.maps.model.LatLng;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.adapterPhotoHotels;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -88,7 +83,6 @@ public class HotelDetails extends AppCompatActivity {
         // imageView=findViewById(R.id.hotel_image_detail);
 
 
-
         auth();
         getdataIntent();
 
@@ -114,16 +108,10 @@ public class HotelDetails extends AppCompatActivity {
 
             map = hotelDetailsResponse.HotelDetails.Map;
 
-            // TODO: 7/11/2019  split map to 2 part
-            String[] parts = map.split("|",2);
+            String[] parts = map.split("\\|", 2);
 
             part1 = parts[0];
-      part2= parts[1];
-
-
-
-
-
+            part2 = parts[1];
 
 
         } catch (Exception e) {
@@ -234,7 +222,7 @@ public class HotelDetails extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_map:
-              openMap();
+                openMap();
                 break;
             case R.id.btn_next:
 
@@ -244,18 +232,13 @@ public class HotelDetails extends AppCompatActivity {
 
     private void openMap() {
 
+        float lang = Float.parseFloat(part1);
+        float longi = Float.parseFloat(part2);
+        // TODO: 12/07/19 replace "Hotel" with hotel name from api
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:<" + lang + ">,<" + longi + ">?q=<" + lang + ">,<" + longi + ">(" + "Hotel" + ")"));
 
-        // Create a Uri from an intent string. Use the result to create an Intent.
-        // parse lang and lat
-        Uri gmmIntentUri = Uri.parse("google.streetview:cbll="+part1+"."+part2);
 
-// Create an Intent from gmmIntentUri. Set the action to ACTION_VIEW
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-// Make the Intent explicit by setting the Google Maps package
-        mapIntent.setPackage("com.google.android.apps.maps");
-
-// Attempt to start an activity that can handle the Intent
-        startActivity(mapIntent);
+        startActivity(intent);
 
     }
 }

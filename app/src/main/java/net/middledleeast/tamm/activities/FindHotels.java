@@ -2,12 +2,10 @@ package net.middledleeast.tamm.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.database.MatrixCursor;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,13 +14,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Tamm.Hotels.wcf.ArrayOfInt;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
@@ -47,7 +44,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 import butterknife.BindView;
@@ -563,22 +559,27 @@ public class FindHotels extends AppCompatActivity {
         String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
 
 
-        StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
 
-        while (st.hasMoreTokens()){
-
-            // child age count
-            String ageChildCount = st.nextToken().toString().trim();
-
-            // TODO: 7/11/2019  creat list of integer and add ageChildCount in it   by Integer.parseInt(ageChildCount)
-
-        }
 
         RoomGuest roomGuest = new RoomGuest();
         roomGuest.AdultCount = nom_adult;
         roomGuest.ChildCount = mChildCount;
+        roomGuest.ChildAge = new ArrayOfInt();
         ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
+
+
+        StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
+
+
+        while (st.hasMoreTokens()) {
+
+            // child age count
+            String ageChildCount = st.nextToken().trim();
+            roomGuest.ChildAge.add(Integer.parseInt(ageChildCount));
+
+        }
         roomguests.add(roomGuest);
+
 
         GeoCodes geoCodes = new GeoCodes();
         String countryCode = geoCodes.CountryCode;
