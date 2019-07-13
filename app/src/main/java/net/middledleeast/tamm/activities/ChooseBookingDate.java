@@ -179,10 +179,12 @@ public class ChooseBookingDate extends AppCompatActivity {
 
             service.enableLogging = true;
             HotelRoomAvailabilityResponse response = service.AvailableHotelRooms(sessionId, resultIndex, mHotelCode, 6000, false, authenticationData);
-
             rooms = response.HotelRooms;
 
+// TODO: 13/07/19 remove
+
             Hotel_Room hotel_room = rooms.get(0);
+//
             transferClass.setHotel_room(hotel_room);
             ArrayOfRequestedRooms arrayOfRooms = new ArrayOfRequestedRooms();
             RequestedRooms requestedRooms = new RequestedRooms();
