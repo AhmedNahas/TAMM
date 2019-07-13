@@ -14,12 +14,7 @@ import com.Tamm.Hotels.wcf.ArrayOfGuest;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
-import com.Tamm.Hotels.wcf.Enums;
-import com.Tamm.Hotels.wcf.Guest;
-import com.Tamm.Hotels.wcf.HotelBookResponse;
-import com.Tamm.Hotels.wcf.HotelBookingDetailResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
-import com.Tamm.Hotels.wcf.PaymentInfo;
 import com.google.gson.Gson;
 import com.wirecard.ecom.Client;
 import com.wirecard.ecom.model.out.PaymentResponse;
@@ -28,8 +23,6 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -75,9 +68,12 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 //        rooms = (List<Hotel_Room>) gson.fromJson(intent.getStringExtra("rooms"), List.class);
 //        hotel_room(xxhdpi) = gson.fromJson(intent.getStringExtra("hotel_room(xxhdpi)"), Hotel_Room.class);
         sessionId = intent.getStringExtra("sessionId");
+        SharedPreferencesManger.SaveData(this, "sessionId", sessionId);
         noOfRooms = intent.getIntExtra("noOfRooms", 1);
+        SharedPreferencesManger.SaveData(this, "noOfRooms", noOfRooms);
         resultIndex = intent.getIntExtra("resultIndex", 1);
-        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
+        SharedPreferencesManger.SaveData(this, "resultIndex", resultIndex);
+//        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 
         start_time = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "start_date");
         end_time = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "end_date");
@@ -89,38 +85,41 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         //  date2 = formatter.parseDateTime(intent.getStringExtra("date2"));
 
         roomIndex = intent.getIntExtra("roomIndex", 0);
+        SharedPreferencesManger.SaveData(this, "roomIndex", roomIndex);
         mHOtelCode = intent.getStringExtra("mHOtelCode");
+        SharedPreferencesManger.SaveData(this, "mHOtelCode", mHOtelCode);
 //        authenticandata = gson.fromJson(intent.getStringExtra("authenticandata"), AuthenticationData.class);
-        arrayOfGuest = new ArrayOfGuest();
-        Guest guest = new Guest();
-        guest.Title = "Mr";
-        guest.Age = 25;
-        guest.FirstName = "Tester";
-        guest.LeadGuest = true;
-        guest.GuestType = Enums.GuestType.Adult;
-        guest.LastName = "Test";
-        guest.GuestInRoom = 1;
-        arrayOfGuest.add(guest);
-        PaymentInfo paymentInfo = new PaymentInfo();
-        paymentInfo.VoucherBooking = false;
-        paymentInfo.PaymentModeType = Enums.PaymentModeType.CreditCard;
-        arrayOfRooms = ChooseBookingDate.transferClass.getArrayOfRequestedRooms();
+//        arrayOfGuest = new ArrayOfGuest();
+//        Guest guest = new Guest();
+//        guest.Title = "Mr";
+//        guest.Age = 25;
+//        guest.FirstName = "Tester";
+//        guest.LeadGuest = true;
+//        guest.GuestType = Enums.GuestType.Adult;
+//        guest.LastName = "Test";
+//        guest.GuestInRoom = 1;
+//        arrayOfGuest.add(guest);
+//        PaymentInfo paymentInfo = new PaymentInfo();
+//        paymentInfo.VoucherBooking = false;
+//        paymentInfo.PaymentModeType = Enums.PaymentModeType.CreditCard;
+//        arrayOfRooms = ChooseBookingDate.transferClass.getArrayOfRequestedRooms();
         BigDecimal amount = BigDecimal.valueOf(0);
-        String clientReferenceNo = DateTime.now().toString() + "#TAMM";
+
+
         String currency = "";
         try {
-            HotelBookResponse hotelBookingResponse = service.HotelBook(start_time, end_time,
-                    "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo
-                    , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
-                    null, false, authenticandata);
-
-
-//            Toast.makeText(this, "" + hotelBookingResponse.ConfirmationNo, Toast.LENGTH_SHORT).show();
-
-//            HotelBookResponse hotelBookingResponse = service.HotelBook(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
-
-            HotelBookingDetailResponse hotelBookingDetailResponse = service.HotelBookingDetail(hotelBookingResponse.BookingId, hotelBookingResponse.ConfirmationNo, "070817125855789#kuld", authenticandata);
-            String confirmationNo = hotelBookingResponse.ConfirmationNo;
+//            HotelBookResponse hotelBookingResponse = service.HotelBook(start_time, end_time,
+//                    "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo
+//                    , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
+//                    null, false, authenticandata);
+//
+//
+////            Toast.makeText(this, "" + hotelBookingResponse.ConfirmationNo, Toast.LENGTH_SHORT).show();
+//
+////            HotelBookResponse hotelBookingResponse = service.HotelBook(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
+//
+//            HotelBookingDetailResponse hotelBookingDetailResponse = service.HotelBookingDetail(hotelBookingResponse.BookingId, hotelBookingResponse.ConfirmationNo, "070817125855789#kuld", authenticandata);
+//            String confirmationNo = hotelBookingResponse.ConfirmationNo;
             hotel_room = ChooseBookingDate.transferClass.hotel_room;
             amount = hotel_room.RoomRate.TotalFare;
             currency = hotel_room.RoomRate.Currency;
