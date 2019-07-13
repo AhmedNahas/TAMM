@@ -14,7 +14,6 @@ import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.Guest;
 import com.Tamm.Hotels.wcf.HotelBookResponse;
-import com.Tamm.Hotels.wcf.HotelBookingDetailResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.PaymentInfo;
 
@@ -96,13 +95,6 @@ public class RoomBooked extends AppCompatActivity {
             SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
             SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
             SharedPreferencesManger.SaveData(this, "ConfirmationNo", hotelBookingResponse.ConfirmationNo);
-
-//            Toast.makeText(this, "" + hotelBookingResponse.ConfirmationNo, Toast.LENGTH_SHORT).show();
-
-//            HotelBookResponse hotelBookingResponse = service.HotelBook(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
-
-            HotelBookingDetailResponse hotelBookingDetailResponse = service.HotelBookingDetail(hotelBookingResponse.BookingId, hotelBookingResponse.ConfirmationNo, clientReferenceNo, authenticandata);
-            String confirmationNo = hotelBookingResponse.ConfirmationNo;
 
         } catch (Exception e) {
             e.printStackTrace();
