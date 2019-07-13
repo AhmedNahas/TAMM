@@ -1,18 +1,12 @@
 package net.middledleeast.tamm.activities;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
+import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
+import com.Tamm.Hotels.wcf.HotelCancellationPolicyResponse;
 import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.Rate;
@@ -124,7 +120,7 @@ public class ChooseBookingDate extends AppCompatActivity {
         StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
 
          while (st.hasMoreTokens()){
-             list_count_child.add(Integer.parseInt(st.nextToken().toString().trim()));
+             list_count_child.add(Integer.parseInt(st.nextToken().trim()));
 
              //Toast.makeText(this, ""+list_count_child.get(0), Toast.LENGTH_SHORT).show();
 
@@ -199,6 +195,12 @@ public class ChooseBookingDate extends AppCompatActivity {
             requestedRooms.RoomTypeCode = hotel_room.RoomTypeCode;
             arrayOfRooms.add(requestedRooms);
             transferClass.setArrayOfRequestedRooms(arrayOfRooms);
+
+
+            HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, null, authenticationData);
+
+            AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, null, authenticationData);
+
 
             roomAdapter = new RoomsAdapter(rooms, hotel_room, arrayOfRooms, start_time, end_time, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
 

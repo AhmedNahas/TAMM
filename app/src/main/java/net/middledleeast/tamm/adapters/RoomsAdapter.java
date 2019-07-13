@@ -82,7 +82,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
         //image
         if (roomInformation != null) {
-            List<String> images = roomInformation.ImageURLs;
+            List<String> images = rooms.get(0).RoomAdditionalInfo.ImageURLs;
             roomInstructions = rooms.get(position).MealType;
             description = rooms.get(position).RoomAdditionalInfo.Description;
         }

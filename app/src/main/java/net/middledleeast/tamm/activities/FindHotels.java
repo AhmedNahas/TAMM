@@ -589,8 +589,13 @@ public class FindHotels extends AppCompatActivity {
 
 
             HotelSearchResponse hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
-                    true, noRomes, "EG", roomguests, null, 100, null, null, null,
+                    true, noRomes, "EG", roomguests, null, 100, null, "true", null,
                     600, authenticationData);
+
+//            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
+//                    true, noRomes, "EG", roomguests, null, 100, null, null, false, authenticationData);
+
+
             ratrHotel          .clear();
             nameHotel.clear();
             photoHotel.clear();

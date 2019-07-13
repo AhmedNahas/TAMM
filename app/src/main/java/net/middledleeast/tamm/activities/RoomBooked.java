@@ -7,13 +7,18 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.Tamm.Hotels.wcf.AmendInformation;
+import com.Tamm.Hotels.wcf.AmendmentRequestType;
+import com.Tamm.Hotels.wcf.AmendmentResponse;
 import com.Tamm.Hotels.wcf.ArrayOfGuest;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
+import com.Tamm.Hotels.wcf.CheckInReq;
 import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.Guest;
 import com.Tamm.Hotels.wcf.HotelBookResponse;
+import com.Tamm.Hotels.wcf.HotelCancelResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.PaymentInfo;
 
@@ -95,6 +100,14 @@ public class RoomBooked extends AppCompatActivity {
             SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
             SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
             SharedPreferencesManger.SaveData(this, "ConfirmationNo", hotelBookingResponse.ConfirmationNo);
+
+            AmendmentRequestType amendmentRequestType = new AmendmentRequestType();
+            amendmentRequestType.Type = Enums.AmendmentType.CheckStatus;
+            AmendInformation amendInformation = new AmendInformation();
+            amendInformation.CheckIn = new CheckInReq();
+
+            AmendmentResponse amendmentResponse = service.Amendment(amendmentRequestType, hotelBookingResponse.BookingId, amendInformation, hotelBookingResponse.ConfirmationNo, authenticandata);
+            HotelCancelResponse hotelCancelResponse = service.HotelCancel(hotelBookingResponse.BookingId, Enums.CancelRequestType.HotelCancel, "Test", hotelBookingResponse.ConfirmationNo, authenticandata);
 
         } catch (Exception e) {
             e.printStackTrace();
