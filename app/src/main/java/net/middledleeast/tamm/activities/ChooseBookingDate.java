@@ -1,14 +1,12 @@
 package net.middledleeast.tamm.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.RelativeSizeSpan;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
+import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
+import com.Tamm.Hotels.wcf.HotelCancellationPolicyResponse;
 import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.Rate;
@@ -57,6 +57,9 @@ public class ChooseBookingDate extends AppCompatActivity {
     List<Integer> list_count_child = new ArrayList<>();
     private String hotel_name_s;
     private TextView tv_name_hotel,tv_date_hotels;
+    private Button btn_search_change  ;
+    private ImageView back_chose_booking;
+    private TextView tv_word;
 
 
     @Override
@@ -73,9 +76,16 @@ public class ChooseBookingDate extends AppCompatActivity {
         no_room = findViewById(R.id.no_room);
         no_child = findViewById(R.id.no_child2);
         adult_tv = findViewById(R.id.adult2);
+
 //        tv_name_hotel = findViewById(R.id.tv_name_hotel);
 //        tv_date_hotels = findViewById(R.id.tv_date_hotels);
+      tv_name_hotel = findViewById(R.id.tv_name_hotel);
+        tv_date_hotels = findViewById(R.id.tv_date_hotels);
+        tv_word = findViewById(R.id.tv_word);
+        back_chose_booking = findViewById(R.id.back_chose_booking);
 
+
+        btn_search_change = findViewById(R.id.btn_search_change);
 //
 //        String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
 //
@@ -87,16 +97,32 @@ public class ChooseBookingDate extends AppCompatActivity {
 //
 //         }
 
+        back_chose_booking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                backIntent();
+
+            }
+        });
+
+
+        btn_search_change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                backIntent();
+            }
+        });
         String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
 
 
         StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
 
          while (st.hasMoreTokens()){
-             list_count_child.add(Integer.parseInt(st.nextToken().toString().trim()));
+             list_count_child.add(Integer.parseInt(st.nextToken().trim()));
 
-             Toast.makeText(this, ""+list_count_child.get(0), Toast.LENGTH_SHORT).show();
+             //Toast.makeText(this, ""+list_count_child.get(0), Toast.LENGTH_SHORT).show();
 
          }
       //  Toast.makeText(this, ""+child_count, Toast.LENGTH_SHORT).show();
@@ -140,12 +166,9 @@ public class ChooseBookingDate extends AppCompatActivity {
         String endDateS = SharedPreferencesManger.LoadStringData(this, "endDateS");
 
 
+        tv_name_hotel.setText(hotel_name_s+" - "+countryName);
 
-
-
-
-        tv_name_hotel.setText(hotel_name_s);
-
+        tv_word.setText(hotel_name_s+" - "+countryName);
 
         tv_date_hotels.setText(startDateS+endDateS);
 
@@ -156,10 +179,12 @@ public class ChooseBookingDate extends AppCompatActivity {
 
             service.enableLogging = true;
             HotelRoomAvailabilityResponse response = service.AvailableHotelRooms(sessionId, resultIndex, mHotelCode, 6000, false, authenticationData);
-
             rooms = response.HotelRooms;
 
+// TODO: 13/07/19 remove
+
             Hotel_Room hotel_room = rooms.get(0);
+//
             transferClass.setHotel_room(hotel_room);
             ArrayOfRequestedRooms arrayOfRooms = new ArrayOfRequestedRooms();
             RequestedRooms requestedRooms = new RequestedRooms();
@@ -172,6 +197,12 @@ public class ChooseBookingDate extends AppCompatActivity {
             requestedRooms.RoomTypeCode = hotel_room.RoomTypeCode;
             arrayOfRooms.add(requestedRooms);
             transferClass.setArrayOfRequestedRooms(arrayOfRooms);
+
+
+            HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, null, authenticationData);
+
+            AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, null, authenticationData);
+
 
             roomAdapter = new RoomsAdapter(rooms, hotel_room, arrayOfRooms, start_time, end_time, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
 
@@ -203,6 +234,14 @@ public class ChooseBookingDate extends AppCompatActivity {
 //
 //            Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
 //        }
+    }
+
+    private void backIntent() {
+
+        Intent intent = new Intent(ChooseBookingDate.this,FindHotels.class);
+        startActivity(intent);
+
+
     }
 
     private void auth() {

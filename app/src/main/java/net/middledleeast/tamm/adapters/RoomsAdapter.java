@@ -13,9 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
+import com.Tamm.Hotels.wcf.ArrayOfSupplement;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.RoomInformation;
+import com.Tamm.Hotels.wcf.Supplement;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.checkroom;
@@ -79,10 +81,16 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         holder.mName.setText(roomType);
 //        holder.roomPrice.setText((CharSequence) price);
 
+        ArrayOfSupplement arrayOfSupplement = rooms.get(position).Supplements;
+        if (arrayOfSupplement != null) {
+            for (Supplement supplement : arrayOfSupplement) {
+                boolean requiredSupplement = supplement.SuppIsMandatory;
 
+            }
+        }
         //image
         if (roomInformation != null) {
-            List<String> images = roomInformation.ImageURLs;
+            List<String> images = rooms.get(0).RoomAdditionalInfo.ImageURLs;
             roomInstructions = rooms.get(position).MealType;
             description = rooms.get(position).RoomAdditionalInfo.Description;
         }
@@ -93,7 +101,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 Intent intent = new Intent(context, checkroom.class);
 //                intent.putExtra("arrayOfRooms", new Gson().toJson(arrayOfRooms));
 //                intent.putExtra("rooms", new Gson().toJson(rooms));
-//                intent.putExtra("hotel_room", new Gson().toJson(hotel_room));
+//                intent.putExtra("hotel_room(xxhdpi)", new Gson().toJson(hotel_room(xxhdpi)));
                 intent.putExtra("sessionId", sessionId);
                 intent.putExtra("noOfRooms", noOfRooms);
                 intent.putExtra("resultIndex", resultIndex);
@@ -102,9 +110,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 intent.putExtra("mHOtelCode", mHOtelCode);
 //                intent.putExtra("authenticandata", new Gson().toJson(authenticandata));
                 intent.putExtra("roomIndex", position);
-                intent.putExtra("smok",roomInstructions);
-                intent.putExtra("roomTybe",roomType);
-                intent.putExtra("description",description);
+                intent.putExtra("smok", roomInstructions);
+                intent.putExtra("roomTybe", roomType);
+                intent.putExtra("description", description);
                 intent.putExtra("mealTybe", roomInstructions);
                 context.startActivity(intent);
             }
@@ -121,9 +129,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView mName , roomPrice;
-        public ImageView img_photo_hotel ;
-        public Button roomBooken ;
+        public TextView mName, roomPrice;
+        public ImageView img_photo_hotel;
+        public Button roomBooken;
 
 
         public ViewHolder(View linearLayout) {

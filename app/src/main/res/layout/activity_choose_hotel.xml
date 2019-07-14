@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/success"
+    android:background="@drawable/plans_background"
     tools:context=".activities.ChooseHotelActivity">
 
     <RelativeLayout
@@ -56,76 +56,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imgli">
 
-        <EditText
-            android:id="@+id/ed_write_hotel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Write Hotel Name"
-            android:textColorHint="#ffff"
-            android:textSize="12sp"
-            android:textStyle="italic"
-            android:layout_centerInParent="true"/>
 
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_search_black_24dp"
-            android:backgroundTint="#FFEB3B"
-            android:layout_toRightOf="@+id/ed_write_hotel"
-            android:layout_marginTop="5dp"/>
+
 
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/imgli2"
-        android:layout_width="match_parent"
-        android:layout_height="6dp"
-        android:src="@drawable/line"
-        android:layout_below="@+id/relative_2"/>
 
-    <RelativeLayout
-        android:id="@+id/relative_star"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imgli2"
-        android:layout_centerInParent="true">
 
-        <ImageView
-            android:id="@+id/img1"
-            android:layout_width="38dp"
-            android:layout_height="75dp"
-            android:src="@drawable/fullstar" />
-
-        <ImageView
-            android:id="@+id/img2"
-            android:layout_width="38dp"
-            android:layout_height="75dp"
-            android:src="@drawable/fullstar"
-            android:layout_toRightOf="@+id/img1"/>
-
-        <ImageView
-            android:id="@+id/img3"
-            android:layout_width="38dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/emptystar"
-            android:layout_toRightOf="@+id/img2"/>
-
-        <ImageView
-            android:id="@+id/img4"
-            android:layout_width="38dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/emptystar"
-            android:layout_toRightOf="@+id/img3" />
-
-        <ImageView
-            android:id="@+id/img5"
-            android:layout_width="38dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/emptystar"
-            android:layout_toRightOf="@+id/img4"/>
-
-    </RelativeLayout>
 
 
 
@@ -134,13 +72,15 @@
         android:id="@+id/hotels_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relative_star" >
+        android:layout_below="@+id/relative_2" >
 
     </androidx.recyclerview.widget.RecyclerView>
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/manhelp"
-        android:layout_below="@+id/hotels_rv"/>
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        android:layout_below="@+id/hotels_rv"
+        android:layout_marginTop="210dp"
+        android:src="@drawable/manhelp" />
 
 </RelativeLayout>

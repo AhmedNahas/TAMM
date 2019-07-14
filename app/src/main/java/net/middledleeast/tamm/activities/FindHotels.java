@@ -2,12 +2,10 @@ package net.middledleeast.tamm.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.database.MatrixCursor;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,13 +14,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Tamm.Hotels.wcf.ArrayOfInt;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
@@ -47,7 +44,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Queue;
+import java.util.StringTokenizer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -559,12 +556,30 @@ public class FindHotels extends AppCompatActivity {
 
 
         service.enableLogging = true;
+        String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
+
+
+
 
         RoomGuest roomGuest = new RoomGuest();
         roomGuest.AdultCount = nom_adult;
         roomGuest.ChildCount = mChildCount;
+        roomGuest.ChildAge = new ArrayOfInt();
         ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
+
+
+        StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
+
+
+        while (st.hasMoreTokens()) {
+
+            // child age count
+            String ageChildCount = st.nextToken().trim();
+            roomGuest.ChildAge.add(Integer.parseInt(ageChildCount));
+
+        }
         roomguests.add(roomGuest);
+
 
         GeoCodes geoCodes = new GeoCodes();
         String countryCode = geoCodes.CountryCode;
@@ -574,12 +589,19 @@ public class FindHotels extends AppCompatActivity {
 
 
             HotelSearchResponse hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
-                    true, noRomes, "EG", roomguests, null, 100, null, null, null,
+                    true, noRomes, "EG", roomguests, null, 100, null, "true", null,
                     600, authenticationData);
-            ratrHotel.clear();
+
+//            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
+//                    true, noRomes, "EG", roomguests, null, 100, null, null, false, authenticationData);
+
+
+            ratrHotel          .clear();
             nameHotel.clear();
             photoHotel.clear();
             listcodeHotel.clear();
+
+
             for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
 
                 Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);

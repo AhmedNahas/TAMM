@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/man_hand"
+    android:background="@drawable/manhand"
     tools:context=".activities.ChooseBookingDate">
 
 
@@ -13,6 +13,7 @@
         android:layout_height="50dp">
 
         <ImageView
+            android:id="@+id/back_chose_booking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"

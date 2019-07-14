@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -129,7 +130,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         TextView name, rat;
         ImageView photoHotel ;
         onHotelListener onHotelListener;
-        FrameLayout parentLayout;
+        RelativeLayout parentLayout;
 
         public SingleView(@NonNull View itemView, onHotelListener onHotelListener) {
             super(itemView);

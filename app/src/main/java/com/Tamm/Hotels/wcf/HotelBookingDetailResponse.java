@@ -23,7 +23,7 @@ public class HotelBookingDetailResponse extends AttributeContainer implements Kv
     
     public ResponseStatus Status;
 
-    public RoomRate RoomRate;
+//    public RoomRate RoomRate;
 
 
     public APIBookingDetail BookingDetail;
@@ -64,13 +64,13 @@ public class HotelBookingDetailResponse extends AttributeContainer implements Kv
             }
             return true;
         }
-        if (info.name.equals("RoomRate")) {
-            if (obj != null) {
-                java.lang.Object j = obj;
-                this.RoomRate = (RoomRate) __envelope.get(j, RoomRate.class, false);
-            }
-            return true;
-        }
+//        if (info.name.equals("RoomRate")) {
+//            if (obj != null) {
+//                java.lang.Object j = obj;
+//                this.RoomRate = (RoomRate) __envelope.get(j, RoomRate.class, false);
+//            }
+//            return true;
+//        }
         return false;
     }
 

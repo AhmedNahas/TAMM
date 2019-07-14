@@ -18,7 +18,7 @@
         android:textSize="20dp"
         android:textColor="#fff"
         android:id="@+id/tv_please"
-
+        android:layout_marginLeft="10dp"
         />
 
 
@@ -27,13 +27,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_please"
-        >
+        android:layout_marginLeft="5dp">
         <Spinner
+            android:backgroundTint="@color/app_color"
             android:id="@+id/mromiss"
             android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            android:gravity="center"/>
 
 
         <EditText
@@ -44,7 +46,7 @@
             android:textColorHint="#fff"
             android:textColor="#fff"
             android:layout_toRightOf="@+id/mromiss"
-
+            android:backgroundTint="@color/app_color"
             />
         <EditText
             android:id="@+id/ed_last_name"
@@ -55,7 +57,7 @@
             android:textColorHint="#fff"
             android:textColor="#fff"
             android:layout_marginLeft="30dp"
-            />
+            android:backgroundTint="@color/app_color"/>
 
     </RelativeLayout>
     <RelativeLayout
@@ -63,7 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_first_last"
-        >
+        android:layout_marginLeft="10dp">
         <TextView
             android:id="@+id/tv_dob"
             android:layout_width="wrap_content"
@@ -76,10 +78,10 @@
 
             />
         <RelativeLayout
+            android:layout_toRightOf="@+id/tv_dob"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-
+            android:layout_marginLeft="100dp"
             >
 
             <EditText
@@ -90,7 +92,8 @@
                 android:textColorHint="#fff"
                 android:textColor="#fff"
                 android:padding="10dp"
-                />
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/app_color"/>
             <EditText
                 android:id="@+id/ed_Month"
                 android:layout_width="wrap_content"
@@ -99,7 +102,9 @@
                 android:textColorHint="#fff"
                 android:textColor="#fff"
                 android:padding="10dp"
-                android:layout_toRightOf="@+id/ed_Day"/>
+                android:layout_toRightOf="@+id/ed_Day"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/app_color"/>
             <EditText
                 android:id="@+id/ed_Year"
                 android:layout_width="wrap_content"
@@ -109,18 +114,10 @@
                 android:textColor="#fff"
                 android:padding="10dp"
                 android:layout_toRightOf="@+id/ed_Month"
-                />
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/app_color"/>
         </RelativeLayout>
-        <!--<TextView-->
-        <!--android:layout_width="200dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:hint="DD - MM - YYYY"-->
-        <!--android:id="@+id/tvDate"-->
-        <!--android:textSize="25sp"-->
-        <!--android:textColorHint="@color/app_color"-->
-        <!--android:layout_alignParentRight="true"-->
 
-        <!--/>-->
 
     </RelativeLayout>
     <RelativeLayout
@@ -128,7 +125,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_dmy"
-        >
+        android:layout_marginLeft="10dp">
 
         <TextView
             android:id="@+id/tv_country"
@@ -136,10 +133,7 @@
             android:layout_height="wrap_content"
             android:text="Country"
             android:textColor="#fff"
-            android:drawableLeft="@drawable/ic_search"
-
-
-            />
+            android:drawableLeft="@drawable/ic_search" />
         <EditText
             android:id="@+id/ed_location"
             android:layout_width="wrap_content"
@@ -149,7 +143,7 @@
             android:textColor="#fff"
             android:layout_below="@+id/tv_country"
             android:layout_marginLeft="20dp"
-            />
+            android:backgroundTint="@color/app_color"/>
 
         <EditText
             android:id="@+id/ed_city"
@@ -159,8 +153,8 @@
             android:textColorHint="#fff"
             android:layout_alignParentRight="true"
             android:textColor="#fff"
-
-            />
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/app_color"/>
 
     </RelativeLayout>
 
@@ -169,28 +163,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_country"
-        >
+        android:layout_marginLeft="10dp">
         <EditText
             android:id="@+id/ed_email"
-            android:layout_width="130dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:textColorHint="#fff"
             android:hint="E-MAIL"
             android:textColor="#fff"
+            android:backgroundTint="@color/app_color"
 
 
             />
 
         <EditText
             android:id="@+id/ed_phone"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="45dp"
             android:hint="PHONE NUMBER"
             android:textColorHint="#fff"
             android:textSize="15sp"
             android:layout_alignParentRight="true"
             android:textColor="#fff"
-
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/app_color"
 
             />
 
@@ -200,7 +196,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_email_phone"
-        >
+        android:layout_marginLeft="10dp">
         <TextView
             android:id="@+id/tv_occupation1"
             android:layout_width="wrap_content"
@@ -219,6 +215,7 @@
             android:textColorHint="#fff"
             android:layout_below="@+id/tv_occupation1"
             android:textColor="#fff"
+            android:backgroundTint="@color/app_color"
 
             />
 
@@ -247,7 +244,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_occupation"
-        >
+        android:layout_marginLeft="10dp">
         <EditText
             android:id="@+id/ed_user_name"
             android:layout_width="160dp"
@@ -255,6 +252,7 @@
             android:hint="USERNAME"
             android:textColorHint="#fff"
             android:textColor="#fff"
+            android:backgroundTint="@color/app_color"
 
 
 
@@ -268,6 +266,7 @@
             android:textColorHint="#fff"
             android:layout_toRightOf="@+id/ed_user_name"
             android:textColor="#fff"
+            android:backgroundTint="@color/app_color"
 
             />
 
@@ -279,7 +278,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_user_pass"
-        >
+        android:layout_marginLeft="10dp">
         <TextView
             android:id="@+id/tv_payment"
             android:layout_width="wrap_content"
@@ -290,47 +289,57 @@
             />
         <EditText
             android:id="@+id/ed_visa"
-            android:layout_width="130dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Visa"
             android:textSize="20sp"
             android:textColorHint="#fff"
             android:textColor="#fff"
             android:layout_below="@+id/tv_payment"
-
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/app_color"
             />
 
     </RelativeLayout>
-    <RadioGroup
-        android:id="@+id/radio_btn"
+
+
+    <RelativeLayout
+        android:id="@+id/relative_radio_btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/relative_visa"
-        >
-        <RadioButton
-            android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relative_visa">
+
+        <RadioGroup
+            android:id="@+id/radio_btn"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I agree to the Terms &amp; Condition"
-            android:textColor="#fff"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
 
-            android:buttonTint="@color/app_color"
+            <RadioButton
+                android:id="@+id/rd_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/app_color"
+                android:text="I agree to the Terms &amp; Condition"
+                android:textColor="#fff" />
 
-            />
-    </RadioGroup>
-    <Button
+            <Button
 
-        android:id="@+id/proceedcheck_out"
-        android:layout_width="270dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border"
-        android:text="PROCEED TO CHECKOUT"
-        android:textColor="#FFF"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/radio_btn"
-
+                android:id="@+id/proceedcheck_out"
+                android:layout_width="210dp"
+                android:layout_height="46dp"
+                android:layout_below="@+id/rd_btn"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/border"
+                android:text="PROCEED TO CHECKOUT"
+                android:textColor="#FFF" />
+        </RadioGroup>
 
 
-        />
+    </RelativeLayout>
+
+
 
 
 

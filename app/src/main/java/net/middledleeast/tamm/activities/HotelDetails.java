@@ -1,15 +1,14 @@
 package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -43,7 +42,7 @@ public class HotelDetails extends AppCompatActivity {
     Button btnMap;
     @BindView(R.id.btn_next)
     Button btnNext;
-    RelativeLayout sliderDotspanel;
+    LinearLayout sliderDotspanel;
     private AuthenticationData authenticationData;
     private int dotscount;
     private ImageView[] dots;
@@ -57,7 +56,6 @@ public class HotelDetails extends AppCompatActivity {
     private int code;
     private String description;
     private String phoneNumber;
-    private String map;
     private String mendTime;
     private String mstartTime;
     private String countryName;
@@ -66,6 +64,9 @@ public class HotelDetails extends AppCompatActivity {
     private int noOfRooms;
     private ArrayList<String> roomGuests;
     private int resultIndex;
+    private String part1;
+    private String part2;
+    private String map;
 
 
     @Override
@@ -80,7 +81,6 @@ public class HotelDetails extends AppCompatActivity {
 
         StrictMode.setThreadPolicy(policy);
         // imageView=findViewById(R.id.hotel_image_detail);
-
 
 
         auth();
@@ -106,11 +106,12 @@ public class HotelDetails extends AppCompatActivity {
             description = hotelDetailsResponse.HotelDetails.Description;
 
 
+            map = hotelDetailsResponse.HotelDetails.Map;
 
+            String[] parts = map.split("\\|", 2);
 
-            //    phoneNumber = hotelDetailsResponse.HotelDetails.PhoneNumber;
-            //map = hotelDetailsResponse.HotelDetails.Map;
-
+            part1 = parts[0];
+            part2 = parts[1];
 
 
         } catch (Exception e) {
@@ -221,10 +222,24 @@ public class HotelDetails extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_map:
+                openMap();
                 break;
             case R.id.btn_next:
+
                 break;
         }
+    }
+
+    private void openMap() {
+
+        float lang = Float.parseFloat(part1);
+        float longi = Float.parseFloat(part2);
+        // TODO: 12/07/19 replace "Hotel" with hotel name from api
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:<" + lang + ">,<" + longi + ">?q=<" + lang + ">,<" + longi + ">(" + "Hotel" + ")"));
+
+
+        startActivity(intent);
+
     }
 }
 
