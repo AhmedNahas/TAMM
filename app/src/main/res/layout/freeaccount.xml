@@ -3,9 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/plans_background"
     tools:context=".fragments.PlansFragment"
+    android:background="@color/black"
     android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="@dimen/_600sdp"
+        android:layout_height="match_parent"
+        android:background="@drawable/plans_background1"
+        />
 
 
     <ImageView
@@ -26,46 +32,34 @@
         android:layout_height="81dp"
         android:layout_below="@+id/imageView2"
 
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="170dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="145dp"
+        android:layout_centerInParent="true"
         android:src="@drawable/logo_colored" />
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/iv_logo_colored"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="143dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="124dp"
+       android:gravity="center"
         android:text="FREE ACCOUNT PLAN \n Terms and conditions"
         android:textColor="@color/app_color"
         android:textStyle="bold" />
 <ScrollView
     android:layout_below="@+id/textView1"
-android:id="@+id/scrool_freeAcount"
-    android:layout_width="match_parent"
-    android:layout_height="222dp">
+    android:id="@+id/scrool_freeAcount"
+    android:layout_width="wrap_content"
+    android:layout_height="222dp"
+    android:layout_centerInParent="true">
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginStart="43dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="32dp"
         android:gravity="center"
-        android:text="     1-Utiwisi enim ad  minim veniam, quis\n nostrud exerci tation ullamcorper suscipit\n lobortis nislut aliquip ex ea commodo\n
- cosequat\n  2-Duis autem vel eum iriure dolor in\n   hendrerit in vulputate velit esse molestie\n consequat,vel illum dolore eu fengiat nulla\n   facilisis at vero eros et accumsan et iusto\n     odio dignissim qui blandit praesent\n    minim veniam,quis nostrud exerci tation\n            ullamcorper suscipit lobortis"
         android:textColor="#fff" />
 
 </ScrollView>
@@ -79,7 +73,6 @@ android:id="@+id/scrool_freeAcount"
         android:layout_below="@+id/scrool_freeAcount"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-
         android:layout_centerHorizontal="true"
         android:layout_marginStart="132dp"
         android:layout_marginTop="28dp"

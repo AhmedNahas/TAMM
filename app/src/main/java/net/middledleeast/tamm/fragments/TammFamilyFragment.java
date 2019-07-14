@@ -110,7 +110,6 @@ public class TammFamilyFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
