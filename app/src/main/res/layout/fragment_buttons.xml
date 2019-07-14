@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.Buttons"
+    android:background="@color/colorPrimary"
+
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+
+        >
+
+
+
+        <Button
+            android:id="@+id/btn_list_of_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="List Of Users"
+            android:textColor="#FFF"
+            android:background="@drawable/border"
+
+            />
+        <Button
+            android:id="@+id/btn_contact_us"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contact Us"
+            android:textColor="#FFF"
+            android:background="@drawable/border"
+            android:layout_below="@+id/btn_list_of_user"
+
+            />
+        <Button
+            android:id="@+id/btn_about_us"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About Us"
+            android:textColor="#FFF"
+            android:background="@drawable/border"
+            android:layout_below="@+id/btn_contact_us"
+            />
+
+    </RelativeLayout>
+</RelativeLayout>

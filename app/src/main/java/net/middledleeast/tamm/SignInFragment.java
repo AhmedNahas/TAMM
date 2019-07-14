@@ -4,6 +4,7 @@ package net.middledleeast.tamm;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -25,9 +26,14 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.activities.RenewAccount;
+import net.middledleeast.tamm.fragments.Buttons;
 import net.middledleeast.tamm.fragments.ForgotPasswordFragment;
+import net.middledleeast.tamm.fragments.PlansFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.Freeuser;
+import net.middledleeast.tamm.model.MemberAccount;
+import net.middledleeast.tamm.model.Paymentuser;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,8 +53,16 @@ public class SignInFragment extends Fragment {
     private EditText userName, pass;
     private static final String HI ="http://egyptgoogle.com/freeusers/checkusers.php" ;
     private List<Freeuser> freeusers =new ArrayList<>();
+
     private List<String> listUserName = new ArrayList<>();
     private List<String> listUserPass = new ArrayList<>();
+
+    private static final String HIMEMBER ="http://egyptgoogle.com/paymentusers/checkpayment.php" ;
+
+    private List<Paymentuser> paymentusers =new ArrayList<>();
+    private List<String> listUserNamemember = new ArrayList<>();
+    private List<String> listUserPassmember = new ArrayList<>();
+
     private String password;
     private String username;
 
@@ -57,15 +71,18 @@ public class SignInFragment extends Fragment {
         // Required empty public constructor
     }
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint({"ClickableViewAccessibility", "StaticFieldLeak"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = getView(inflater, container);
 
-        getFreeData();
 
+
+
+                getFreeData();
+                getMemberData();
 
 
 
@@ -74,16 +91,16 @@ public class SignInFragment extends Fragment {
         pass.setText("0125016341");
 
 
-////        btnSignIn.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//
-//                if (userName.getText().toString().equals("tamm@gmail.com") && pass.getText().toString().equals("0123456")) {
-//                    getActivity().getSupportFragmentManager().beginTransaction()
-//                            .replace(R.id.welcome_container, new UsersFreeFragment())
-//                            .commit();
-//                }
-//
+        btnSignIn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if (userName.getText().toString().equals("tamm") && pass.getText().toString().equals("0123456")) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.welcome_container, new Buttons())
+                            .commit();
+                }
+
 //                if (event.getAction() == MotionEvent.ACTION_DOWN) {
 //                    btnSignIn.setTextColor(Color.parseColor("#BE973B"));
 //                    getActivity().getSupportFragmentManager().beginTransaction()
@@ -92,11 +109,11 @@ public class SignInFragment extends Fragment {
 //                } else if (event.getAction() == MotionEvent.ACTION_UP) {
 //                    btnSignIn.setBackground(getActivity().getDrawable(R.drawable.border));
 //                }
-//                return false;
-//
-//
-//            }
-        //   });
+                return false;
+
+
+            }
+           });
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,11 +132,17 @@ public class SignInFragment extends Fragment {
 
 
 
+
                 if (listUserPass.contains(pass.getText().toString())&&listUserName.contains(userName.getText().toString())){
 
                     Intent intent =new Intent(getContext(), RenewAccount.class);
                     startActivity(intent);
 
+
+
+                }else if (listUserNamemember.contains(userName.getText().toString())&&listUserPassmember.contains(pass.getText().toString())){
+                    Intent intent =new Intent(getContext(), RenewAccount.class);
+                    startActivity(intent);
 
 
                 }else {
@@ -153,6 +176,48 @@ public class SignInFragment extends Fragment {
         return view;
     }
 
+    private void getMemberData() {
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, HIMEMBER, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject=new JSONObject(response);
+                    JSONArray array=jsonObject.getJSONArray("paymentusers");
+                    for (int i=0; i<array.length(); i++ ){
+                        JSONObject ob=array.getJSONObject(i);
+
+                        Paymentuser listData=new Paymentuser(ob.getString("username")
+                                ,ob.getString("password"));
+                        paymentusers.add(listData);
+
+                        password = paymentusers.get(i).getPassword();
+                        username = paymentusers.get(i).getUsername();
+
+
+
+                        SharedPreferencesManger.SaveData(getActivity(),"user",username);
+
+                        listUserNamemember.add(username);
+                        listUserPassmember.add(password);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+    }
+
+
+
     private void getFreeData() {
 
         StringRequest stringRequest=new StringRequest(Request.Method.GET, HI, new Response.Listener<String>() {
@@ -183,6 +248,7 @@ public class SignInFragment extends Fragment {
 
             }
         }, new Response.ErrorListener() {
+
             @Override
             public void onErrorResponse(VolleyError error) {
 

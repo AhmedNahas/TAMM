@@ -9,13 +9,13 @@ public class Example {
 
     @SerializedName("freeusers")
     @Expose
-    private List<Freeuser> freeusers = null;
+    private List<UserList> freeusers = null;
 
-    public List<Freeuser> getFreeusers() {
+    public List<UserList> getFreeusers() {
         return freeusers;
     }
 
-    public void setFreeusers(List<Freeuser> freeusers) {
+    public void setFreeusers(List<UserList> freeusers) {
         this.freeusers = freeusers;
     }
 

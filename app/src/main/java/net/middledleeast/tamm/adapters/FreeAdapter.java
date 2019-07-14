@@ -13,15 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.model.UserList;
 import net.middledleeast.tamm.model.Users;
 
 import java.util.List;
 
 public class FreeAdapter extends RecyclerView.Adapter<FreeAdapter.Freeviewholder> {
     Context context;
-    List<Users> users;
+    List<UserList> users;
 
-    public FreeAdapter(Context context, List<Users> users) {
+    public FreeAdapter(Context context, List<UserList> users) {
         this.context = context;
         this.users = users;
     }
@@ -34,20 +35,17 @@ public class FreeAdapter extends RecyclerView.Adapter<FreeAdapter.Freeviewholder
     }
 
     @Override
-    public void onBindViewHolder( Freeviewholder freeviewholder, int i) {
-        final Users users = this.users.get(i);
-        final String image = users.getImage();
-        freeviewholder.name.setText(this.users.get(i).getName());
-        freeviewholder.phone.setText(this.users.get(i).getPhone());
+    public void onBindViewHolder( Freeviewholder holder, int i) {
 
 
-        if (image.matches("")){
-            freeviewholder.imageView.setImageResource(R.drawable.logo);
-        }else {
-            Glide.with(context).load(image).into(freeviewholder.imageView);
-        }
+        final UserList userList = users.get(i);
+
+        final String phone = userList.getPhone();
+        final String username = userList.getUsername();
 
 
+holder.name.setText(username);
+holder.phone.setText(phone);
 
     }
 

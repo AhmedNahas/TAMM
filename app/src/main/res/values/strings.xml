@@ -20,6 +20,7 @@
     <string name="plans_long_text">You can know more about the plans\nby clicking on them</string>
     <string name="plan_details_text">Details go here, detail go here, detail go here,  detail go here, detail go here, detail go here</string>
     <string name="sign_text" translatable="false">Already Have An Account ? <u>Sign in</u></string>
+
     <string name="title_activity_renew_account">RenewAccount</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
