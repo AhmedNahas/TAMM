@@ -1,51 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorPrimary"
     tools:context=".fragments.AuthenticationFragment"
     >
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_quotation_mark"/>
-
-
-    <FrameLayout
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:id="@+id/relative_1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:src="@drawable/authintication_image" />
+
+
+        <TextView
+            android:layout_width="178dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginEnd="207dp"
+            android:layout_marginBottom="64dp"
             android:text="@string/authintication_text"
             android:textColor="#FFF"
-            android:textSize="20sp"
-            android:gravity="end"
-            android:layout_marginLeft="16dp"/>
+            android:textSize="20sp" />
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/authintication_image"
-            android:layout_marginTop="105dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_alignTop="@+id/imageView2"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="337dp"
+            android:layout_marginBottom="255dp"
+            android:src="@drawable/ic_quotation_mark" />
 
-    </FrameLayout>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btn_signin"
@@ -55,8 +57,9 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@drawable/full_border"
-        android:textColor="#FFF"/>
-
+        android:textColor="#FFF"
+        android:layout_below="@+id/relative_1"
+        android:layout_centerHorizontal="true"/>
     <Button
         android:id="@+id/btn_signup"
         android:layout_width="150dp"
@@ -65,19 +68,19 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:background="@drawable/full_border"
-        android:textColor="#FFF"/>
-
-        <Button
-            android:id="@+id/btn_signin_as_aguest"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/full_border"
-            android:text="sign in as a guest"
-            android:textColor="#FFF" />
-
-    </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+        android:textColor="#FFF"
+        android:layout_below="@+id/btn_signin"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/btn_signin_as_aguest"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/full_border"
+        android:text="sign in as a guest"
+        android:textColor="#FFF"
+        android:layout_below="@+id/btn_signup"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

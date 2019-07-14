@@ -9,95 +9,86 @@
     tools:context=".fragments.PlansFragment">
 
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/plans_image"
-     />
-
     <RelativeLayout
         android:id="@+id/relative_1"
-        android:layout_width="match_parent"
-        android:layout_height="450dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/plans_image" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageView2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="232dp"
+            android:layout_marginTop="42dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="97dp"
+            android:text="@string/plans_text"
+            android:textColor="#FFF"
+            android:textSize="20sp" />
 
         <ImageView
             android:layout_width="43dp"
             android:layout_height="43dp"
+            android:layout_alignTop="@+id/imageView2"
+            android:layout_alignBottom="@+id/imageView2"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="186dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="182dp"
-            android:layout_marginBottom="387dp"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="192dp"
+            android:layout_marginBottom="158dp"
             android:src="@drawable/ic_quotation_mark" />
-
-        <TextView
-            android:layout_width="170dp"
-            android:layout_height="121dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="237dp"
-            android:layout_marginTop="47dp"
-            android:layout_marginEnd="3dp"
-            android:layout_marginBottom="282dp"
-            android:text="@string/plans_text"
-            android:textColor="#FFF"
-            android:textSize="20sp" />
 
     </RelativeLayout>
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
-        android:layout_height="41dp"
-        android:layout_alignBottom="@+id/plans_recyclerview"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="81dp"
-        android:layout_marginTop="225dp"
-        android:layout_marginEnd="73dp"
-        android:layout_marginBottom="374dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="132dp"
         android:gravity="center"
         android:text="The Plans"
         android:textAllCaps="true"
         android:textColor="#FFF"
         android:textSize="25sp" />
 
+
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="318dp"
-        android:layout_height="58dp"
-        android:layout_alignBottom="@+id/relative_1"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="57dp"
-        android:layout_marginTop="278dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="114dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="@string/plans_long_text"
         android:textColor="@color/app_color"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textStyle="italic" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/plans_recyclerview"
-        android:layout_width="375dp"
-        android:layout_height="260dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
+        android:layout_width="370dp"
+        android:layout_height="323dp"
+        android:layout_below="@+id/textView4"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="380dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="91dp" />
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="48dp"
+        android:layout_centerHorizontal="true"/>
 
 
 
