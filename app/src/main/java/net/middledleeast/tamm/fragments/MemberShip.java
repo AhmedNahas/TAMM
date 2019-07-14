@@ -1,6 +1,5 @@
-package net.middledleeast.tamm.activities;
+package net.middledleeast.tamm.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -20,53 +18,59 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.model.Freeaccount;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class FreeAccount extends Fragment {
+
+
+
+public class MemberShip extends Fragment {
     Button accept;
-    TextView textfreeaccount;
-    private static final String url ="http://egyptgoogle.com/backend/freeaccount/freeaccount.php" ;
+    TextView textmemberaccount ;
 
-
+    private static final String urlmember ="http://egyptgoogle.com/backend/membership/membership.php";
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.freeaccount, container, false);
+        View view = inflater.inflate(R.layout.member_ship, container, false);
+
+
+        getmemberaccount();
 
         accept = view.findViewById(R.id.btn_register_signup);
-            textfreeaccount=view.findViewById(R.id.textView2);
+        textmemberaccount = view.findViewById(R.id.textView2);
 
-            getfreeaccount();
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.welcome_container, new FreeAccountPlan())
+                        .replace(R.id.welcome_container, new MemberShipPlan())
                         .commit();
-
             }
+
         });
         return view;
     }
 
-    private void getfreeaccount() {
 
 
 
-        StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+
+    private void getmemberaccount() {
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, urlmember, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject=new JSONObject(response);
-                    JSONArray array=jsonObject.getJSONArray("freeaccount");
+                    JSONArray array=jsonObject.getJSONArray("memberbody");
                     for (int i=0; i<array.length(); i++ ){
                         JSONObject ob=array.getJSONObject(i);
-                        final String msgbody = ob.getString("freebody");
+                        final String member = ob.getString("memberbody");
 
-                        textfreeaccount.setText(msgbody);
+                        textmemberaccount.setText(member);
 
                         Toast.makeText(getContext(), ""+array.length(), Toast.LENGTH_SHORT).show();
 
@@ -86,6 +90,6 @@ public class FreeAccount extends Fragment {
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
 
-      }
+    }
     }
 

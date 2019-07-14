@@ -19,6 +19,7 @@
 
 
 
+
     <ImageView
         android:id="@+id/iv_logo_black"
         android:layout_width="100dp"
@@ -31,30 +32,31 @@
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MEMBERSHIP ACCOUNT PLAN \n         Terms and conditions"
         android:textColor="@color/app_color"
         android:textStyle="bold"
-        android:gravity="center"
         android:layout_below="@+id/iv_logo_black"
         android:layout_centerInParent="true"
         />
 
+    <ScrollView
+        android:layout_below="@+id/textView1"
+        android:id="@+id/scrool_freeAcount"
+        android:layout_width="match_parent"
+        android:layout_height="222dp">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="32dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="#fff"
         android:layout_below="@+id/textView1"
         android:layout_centerInParent="true"
         />
-
+    </ScrollView>
 
 
 
@@ -66,7 +68,7 @@
         android:text="ACCEPT"
         android:textColor="#FFF"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/scrool_freeAcount"
 
         />
 

@@ -1,7 +1,6 @@
 package net.middledleeast.tamm.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -16,9 +15,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.FreeAccount;
-import net.middledleeast.tamm.activities.MemberShip;
-import net.middledleeast.tamm.fragments.PlansFragment;
+import net.middledleeast.tamm.fragments.FreeAccount;
+import net.middledleeast.tamm.fragments.MemberShip;
 import net.middledleeast.tamm.model.PlanModel;
 
 import java.util.List;

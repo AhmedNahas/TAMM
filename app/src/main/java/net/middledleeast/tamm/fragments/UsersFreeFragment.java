@@ -6,14 +6,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.gms.vision.L;
+
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.FreeAdapter;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.ListUser;
+import net.middledleeast.tamm.model.UserList;
 import net.middledleeast.tamm.model.Users;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +47,11 @@ public class UsersFreeFragment extends Fragment {
     ImageView imgView;
     RecyclerView recyclerView;
     FreeAdapter freeAdapter;
-    List<Users> users=new ArrayList<>();
+    private static final String url_user_phone ="http://egyptgoogle.com/freeusers/listusers.php" ;
+    List<UserList> users=new ArrayList<>();
+    private List<String> listUserName = new ArrayList<>();
+    private List<String> listUserPhone = new ArrayList<>();
+
 
 
     @Override
@@ -38,60 +59,69 @@ public class UsersFreeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_users_free, container, false);
 
-        imgView=view.findViewById(R.id.img_tamm);
+
         recyclerView=view.findViewById(R.id.recycler_view);
 
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        users.add(new Users("Mohamed","01062594878",""));
-        freeAdapter=new FreeAdapter(getContext(),users);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(freeAdapter);
-        freeAdapter.notifyDataSetChanged();
+        getUserData();
+
+//        users.add(new Users("Mohamed","01062594878",""));
+//        users.add(new Users("Mohamed","01062594878",""));
+//        users.add(new Users("Mohamed","01062594878",""));
+//        users.add(new Users("Mohamed","01062594878",""));
+//        users.add(new Users("Mohamed","01062594878",""));
+//        users.add(new Users("Mohamed","01062594878",""));
+//
+//
+//
+//        freeAdapter=new FreeAdapter(getContext(),users);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        recyclerView.setAdapter(freeAdapter);
+//        freeAdapter.notifyDataSetChanged();
         // Inflate the layout for this fragment
+
+
+
         return view;
+    }
+
+    private void getUserData() {
+
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, url_user_phone, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject=new JSONObject(response);
+                    JSONArray array=jsonObject.getJSONArray("freeusers");
+                    for (int i=0; i<array.length(); i++ ){
+                        JSONObject ob=array.getJSONObject(i);
+                        UserList listData=new UserList(ob.getString("username")
+                                ,ob.getString("phone"));
+                        users.add(listData);
+
+                     freeAdapter = new FreeAdapter(getContext(),users);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                        recyclerView.setAdapter(freeAdapter);
+                        freeAdapter.notifyDataSetChanged();
+
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+
     }
 
 }

@@ -1,10 +1,9 @@
-
 package net.middledleeast.tamm.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Memberbody {
+public class MemberShipaccount {
 
     @SerializedName("memberbody")
     @Expose
@@ -17,5 +16,4 @@ public class Memberbody {
     public void setMemberbody(String memberbody) {
         this.memberbody = memberbody;
     }
-
 }
