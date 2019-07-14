@@ -6,7 +6,7 @@
     android:layout_gravity="center_horizontal"
     android:background="@drawable/plans_background"
     android:orientation="vertical"
-    tools:context=".activities.MemberShipPlan">
+    tools:context=".fragments.MemberShipPlan">
 
     <RelativeLayout
         android:layout_width="wrap_content"

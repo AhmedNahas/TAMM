@@ -1,4 +1,4 @@
-package net.middledleeast.tamm.activities;
+package net.middledleeast.tamm.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;

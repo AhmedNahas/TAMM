@@ -7,16 +7,16 @@ import com.google.gson.annotations.SerializedName;
 
 public class AccountMember {
 
-    @SerializedName("memberbody")
+    @SerializedName("memberaccount")
     @Expose
-    private List<Memberbody> memberbody = null;
+    private List<MemberShipaccount> memberaccount = null;
 
-    public List<Memberbody> getMemberbody() {
-        return memberbody;
+    public List<MemberShipaccount> getMemberbody() {
+        return memberaccount;
     }
 
-    public void setMemberbody(List<Memberbody> memberbody) {
-        this.memberbody = memberbody;
+    public void setMemberbody(List<MemberShipaccount> memberbody) {
+        this.memberaccount = memberbody;
     }
 
 }

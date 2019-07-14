@@ -64,8 +64,6 @@ android:id="@+id/scrool_freeAcount"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="32dp"
         android:gravity="center"
-        android:text="     1-Utiwisi enim ad  minim veniam, quis\n nostrud exerci tation ullamcorper suscipit\n lobortis nislut aliquip ex ea commodo\n
- cosequat\n  2-Duis autem vel eum iriure dolor in\n   hendrerit in vulputate velit esse molestie\n consequat,vel illum dolore eu fengiat nulla\n   facilisis at vero eros et accumsan et iusto\n     odio dignissim qui blandit praesent\n    minim veniam,quis nostrud exerci tation\n            ullamcorper suscipit lobortis"
         android:textColor="#fff" />
 
 </ScrollView>

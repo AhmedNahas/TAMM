@@ -41,17 +41,22 @@
         android:layout_centerInParent="true"
         />
 
+    <ScrollView
+        android:layout_below="@+id/textView1"
+        android:id="@+id/scrool_freeAcount"
+        android:layout_width="match_parent"
+        android:layout_height="222dp">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
-                android:textColor="#fff"
+        android:textColor="#fff"
         android:layout_below="@+id/textView1"
         android:layout_centerInParent="true"
         />
-
+    </ScrollView>
 
 
 
@@ -63,7 +68,7 @@
         android:text="ACCEPT"
         android:textColor="#FFF"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/scrool_freeAcount"
 
         />
 
