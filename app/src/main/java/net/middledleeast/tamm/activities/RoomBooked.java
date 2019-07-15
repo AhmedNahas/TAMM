@@ -39,7 +39,7 @@ public class RoomBooked extends AppCompatActivity {
     private ArrayOfRequestedRooms arrayOfRooms;
     private DateTime date1;
     private DateTime date2;
-    private int noOfRooms;
+    private long noOfRooms;
     private int resultIndex;
     private String mHOtelCode;
     private AuthenticationData authenticandata;
@@ -65,7 +65,7 @@ public class RoomBooked extends AppCompatActivity {
         authenticandata.UserName = ("Tammtest");
         authenticandata.Password = ("Tam@18418756");
         sessionId = SharedPreferencesManger.LoadStringData(this, "sessionId");
-        noOfRooms = SharedPreferencesManger.LoadIntegerData(this, "noOfRooms");
+        noOfRooms = SharedPreferencesManger.LoadLongData(this, "noOfRooms");
         resultIndex = SharedPreferencesManger.LoadIntegerData(this, "resultIndex");
         roomIndex = SharedPreferencesManger.LoadIntegerData(this, "roomIndex");
         mHOtelCode = SharedPreferencesManger.LoadStringData(this, "mHOtelCode");
@@ -95,7 +95,7 @@ public class RoomBooked extends AppCompatActivity {
             String clientReferenceNo = dtStr + "#TAMM";
             HotelBookResponse hotelBookingResponse = service.HotelBook(start_time, end_time,
                     clientReferenceNo, "EG", arrayOfGuest, null, paymentInfo
-                    , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
+                    , sessionId, null, (int) noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
                     null, false, authenticandata);
             SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
             SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
