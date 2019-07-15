@@ -50,17 +50,19 @@
         android:src="@drawable/line"
         android:layout_below="@+id/relative_1"/>
 
-    <RelativeLayout
-        android:id="@+id/relative_2"
-        android:layout_width="match_parent"
+    <RatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imgli">
+        android:layout_below="@+id/imgli"
+        android:layout_centerInParent="true"
+        android:numStars="5"
+        android:stepSize="2.0"
+        android:rating="2.0"
+        android:backgroundTint="@color/app_color"
+        android:outlineSpotShadowColor="@color/app_color"/>
 
 
-
-
-
-    </RelativeLayout>
 
 
 
@@ -72,7 +74,7 @@
         android:id="@+id/hotels_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relative_2" >
+        android:layout_below="@+id/rating_bar" >
 
     </androidx.recyclerview.widget.RecyclerView>
 

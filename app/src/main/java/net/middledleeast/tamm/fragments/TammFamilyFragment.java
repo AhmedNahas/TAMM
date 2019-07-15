@@ -60,6 +60,7 @@ public class TammFamilyFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setShowHideAnimationEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeAsUpIndicator(upArrow);
 
+
         btnContinue.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -115,5 +116,6 @@ public class TammFamilyFragment extends Fragment {
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
     }
+
 
 }

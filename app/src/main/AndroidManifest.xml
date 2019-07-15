@@ -29,6 +29,8 @@
         <activity android:name=".activities.FlightsSummary" />
         <activity android:name=".activities.PaymentFlights" />
         <activity android:name=".activities.Proceedbeybey" />
+
+
         <activity android:name=".activities.FlightTamm" />
         <activity android:name=".activities.PaymentActivity" />
         <activity android:name=".activities.HotelBooking" />

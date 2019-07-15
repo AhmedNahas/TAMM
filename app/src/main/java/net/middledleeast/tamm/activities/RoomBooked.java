@@ -40,13 +40,13 @@ public class RoomBooked extends AppCompatActivity {
     private DateTime date1;
     private DateTime date2;
     private long noOfRooms;
-    private int resultIndex;
+    private long resultIndex;
     private String mHOtelCode;
     private AuthenticationData authenticandata;
     private String sessionId;
     private List<Hotel_Room> rooms;
     private BasicHttpBinding_IHotelService1 service;
-    private int roomIndex;
+    private long roomIndex;
     private String start_time;
     private String end_time;
     private String hotel_name;
@@ -66,8 +66,8 @@ public class RoomBooked extends AppCompatActivity {
         authenticandata.Password = ("Tam@18418756");
         sessionId = SharedPreferencesManger.LoadStringData(this, "sessionId");
         noOfRooms = SharedPreferencesManger.LoadLongData(this, "noOfRooms");
-        resultIndex = SharedPreferencesManger.LoadIntegerData(this, "resultIndex");
-        roomIndex = SharedPreferencesManger.LoadIntegerData(this, "roomIndex");
+        resultIndex = SharedPreferencesManger.LoadLongData(this, "resultIndex");
+        roomIndex = SharedPreferencesManger.LoadLongData(this, "roomIndex");
         mHOtelCode = SharedPreferencesManger.LoadStringData(this, "mHOtelCode");
         arrayOfGuest = new ArrayOfGuest();
         Guest guest = new Guest();
@@ -95,7 +95,7 @@ public class RoomBooked extends AppCompatActivity {
             String clientReferenceNo = dtStr + "#TAMM";
             HotelBookResponse hotelBookingResponse = service.HotelBook(start_time, end_time,
                     clientReferenceNo, "EG", arrayOfGuest, null, paymentInfo
-                    , sessionId, null, (int) noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
+                    , sessionId, null, (int) noOfRooms, (int)resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
                     null, false, authenticandata);
             SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
             SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
