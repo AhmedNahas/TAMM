@@ -116,6 +116,7 @@ public class FindHotels extends AppCompatActivity {
     boolean chicDateEnd = false;
     private ImageView toolbar_back;
     boolean child_mor = false;
+    private HotelSearchResponse hotelSearchResponse;
 
 
     @Override
@@ -341,6 +342,7 @@ public class FindHotels extends AppCompatActivity {
         findHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
 
                 if (chicDateStart && chicDateEnd) {
@@ -588,9 +590,9 @@ public class FindHotels extends AppCompatActivity {
             //HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), Integer.parseInt(ctyId), 1, roomguests, "EG", authenticationData);
 
 
-            HotelSearchResponse hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
+             hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
                     true, noRomes, "EG", roomguests, null, 100, null, "true", null,
-                    600, authenticationData);
+                    100000, authenticationData);
 
 //            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
 //                    true, noRomes, "EG", roomguests, null, 100, null, null, false, authenticationData);

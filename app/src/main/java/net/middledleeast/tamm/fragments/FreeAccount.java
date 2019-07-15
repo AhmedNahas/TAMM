@@ -66,7 +66,6 @@ public class FreeAccount extends Fragment {
 
                         textfreeaccount.setText(msgbody);
 
-                        Toast.makeText(getContext(), ""+array.length(), Toast.LENGTH_SHORT).show();
 
                     }
                 } catch (JSONException e) {

@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -135,9 +136,10 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         public SingleView(@NonNull View itemView, onHotelListener onHotelListener) {
             super(itemView);
             name = itemView.findViewById(R.id.hotel_name);
-            rat = itemView.findViewById(R.id.hotel_rat);
+            rat = itemView.findViewById(R.id.shape_rat);
             photoHotel = itemView.findViewById(R.id.hotel_image);
             parentLayout = itemView.findViewById(R.id.linear);
+
             this.onHotelListener = onHotelListener;
             itemView.setOnClickListener(this);
         }

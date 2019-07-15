@@ -1,6 +1,8 @@
 package net.middledleeast.tamm;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -32,6 +34,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import net.middledleeast.tamm.activities.PaymentActivity;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.PaymentActivityFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -117,11 +123,11 @@ public class RegisterationActivity extends Fragment {
 
             user_id = 1 ;
             relative_visa.setVisibility(View.GONE);
-            Toast.makeText(getContext(), "free", Toast.LENGTH_SHORT).show();
+
 
         }else if (member==1){
             user_id = 2;
-            Toast.makeText(getContext(), "member", Toast.LENGTH_SHORT).show();
+
 
         }else {
             return null;
@@ -139,14 +145,26 @@ public class RegisterationActivity extends Fragment {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferencesManger.SaveData(getActivity(),"username",etUserName.getText().toString());
                 connectdatabase();
+                if (user_id == 2){
+
+                    Intent intent= new Intent(getContext(), PaymentActivity.class);
+                    startActivity(intent);
+                }else if (user_id == 1) {
+
+                    Intent intent= new Intent(getContext(), PaymentActivityFragment.class);
+                    startActivity(intent);
+                }
+
 
             }
         });
 
 
-        mrOrMissAdapter = new ArrayAdapter(getContext(), R.layout.mrormissspinnerlist, mrOrMissArray);
+        mrOrMissAdapter = new ArrayAdapter(getContext(), R.layout.item_spener, mrOrMissArray);
         mrormissSpinner = view.findViewById(R.id.mromiss);
+        mrOrMissAdapter.setDropDownViewResource(R.layout.drop_dowen);
         mrormissSpinner.setSelection(1);
         mrormissSpinner.setAdapter(mrOrMissAdapter);
 
@@ -215,6 +233,8 @@ public class RegisterationActivity extends Fragment {
                     parameters.put("email", etEmail.getText().toString());
                     parameters.put("phone", etPhone.getText().toString());
                     parameters.put("city", etCity.getText().toString());
+
+
                     return parameters;
                 }
             };

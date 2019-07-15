@@ -72,7 +72,6 @@ public class MemberShip extends Fragment {
 
                         textmemberaccount.setText(member);
 
-                        Toast.makeText(getContext(), ""+array.length(), Toast.LENGTH_SHORT).show();
 
                     }
                 } catch (JSONException e) {

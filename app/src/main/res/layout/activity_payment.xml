@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.PaymentActivity"
-    android:background="@drawable/main">
+    android:background="@drawable/plans_background1">
 
     <RelativeLayout
         android:id="@+id/relative_payment"
@@ -57,7 +57,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Mr /Mrs"
-            android:textColorHint="#fff"
+            android:textColorHint="#40FFFFFF"
+            android:textColor="@color/white"
             />
 
         <EditText
@@ -65,9 +66,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="FIRST NAME"
-            android:textColorHint="#fff"
+            android:textColorHint="#45FFFFFF"
             android:layout_toRightOf="@+id/ed_mr_mrs"
             android:layout_marginLeft="25dp"
+            android:textColor="@color/white"
 
 
             />
@@ -75,9 +77,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="LAST NAME"
-            android:textColorHint="#fff"
+            android:textColorHint="#40FFFFFF"
             android:layout_toRightOf="@+id/ed_firstName"
             android:layout_marginLeft="45dp"
+            android:textColor="@color/white"
             />
 
     </RelativeLayout>
@@ -115,7 +118,8 @@
                     android:layout_height="wrap_content"
                     android:hint="VISA"
                     android:drawableRight="@drawable/visa"
-                    android:textColorHint="#fff"
+                    android:textColorHint="#40FFFFFF"
+                    android:textColor="@color/white"
 
 
                     />
@@ -125,8 +129,9 @@
                     android:layout_height="wrap_content"
                     android:hint="MASTERCARD"
                     android:drawableRight="@drawable/mastercard"
-                    android:textColorHint="#fff"
+                    android:textColorHint="#41FFFFFF"
                     android:layout_below="@+id/ed_visaa"
+                    android:textColor="@color/white"
 
                     />
                 <EditText
@@ -135,8 +140,9 @@
                     android:layout_height="wrap_content"
                     android:hint="KNET"
                     android:drawableRight="@drawable/knet"
-                    android:textColorHint="#fff"
+                    android:textColorHint="#41FFFFFF"
                     android:layout_below="@+id/ed_master_card"
+                    android:textColor="@color/white"
 
                     />
             </RelativeLayout>

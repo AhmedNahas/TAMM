@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/plans_background"
+    android:background="@drawable/plans_background1"
     tools:context=".activities.ChooseHotelActivity">
 
     <RelativeLayout
@@ -58,7 +58,7 @@
         android:layout_centerInParent="true"
         android:numStars="5"
         android:stepSize="2.0"
-        android:rating="2.0"
+        android:rating="4.0"
         android:backgroundTint="@color/app_color"
         android:outlineSpotShadowColor="@color/app_color"/>
 
