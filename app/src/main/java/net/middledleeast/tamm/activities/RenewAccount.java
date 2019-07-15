@@ -111,22 +111,6 @@ public class RenewAccount extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.renew_account_drawer,menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.nav_logout:
-
-                break;
-        }
-        return true;
-    }
 
 
     @SuppressWarnings("StatementWithEmptyBody")
