@@ -79,6 +79,10 @@ public class SignInFragment extends Fragment {
         View view = getView(inflater, container);
 
 
+        String username = SharedPreferencesManger.LoadStringData(getActivity(), "username");
+
+        userName.setText(username);
+
 
 
                 getFreeData();
@@ -87,8 +91,8 @@ public class SignInFragment extends Fragment {
 
 
         // for test
-        userName.setText("ahmed");
-        pass.setText("0125016341");
+//        userName.setText("ahmed");
+//        pass.setText("0125016341");
 
 
         btnSignIn.setOnTouchListener(new View.OnTouchListener() {

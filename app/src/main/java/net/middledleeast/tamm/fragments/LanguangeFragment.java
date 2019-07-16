@@ -33,6 +33,8 @@ public class LanguangeFragment extends Fragment {
         btnEnglish = view.findViewById(R.id.btn_choose_english);
         btnArabic = view.findViewById(R.id.btn_choose_arabic);
 
+
+
         btnEnglish.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

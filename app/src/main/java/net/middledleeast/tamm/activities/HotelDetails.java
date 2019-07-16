@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -106,6 +107,8 @@ public class HotelDetails extends AppCompatActivity {
             description = hotelDetailsResponse.HotelDetails.Description;
 
 
+            int s = hotelDetailsResponse.HotelDetails.RoomInfo.get(1).Images.size();
+            Toast.makeText(this, "size is : "+s, Toast.LENGTH_SHORT).show();
             map = hotelDetailsResponse.HotelDetails.Map;
 
             String[] parts = map.split("\\|", 2);
