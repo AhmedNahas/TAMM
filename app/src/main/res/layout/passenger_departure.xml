@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.PassengerDeparture"
-    android:orientation="vertical"
     android:background="@drawable/manlap">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relative_passenger"
         >
 
         <Button
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"
+
             android:background="@drawable/ic_back_arrow" />
 
         <ImageView
 
             android:layout_width="73dp"
-            android:layout_height="65dp"
-            android:layout_alignParentStart="false"
-            android:layout_alignParentEnd="false"
+            android:layout_height="@dimen/_30sdp"
             android:layout_centerInParent="true"
-            android:layout_marginStart="159dp"
-            android:layout_marginEnd="179dp"
             android:src="@drawable/logo" />
 
         <ImageView
@@ -36,74 +32,99 @@
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="330dp"
+           android:layout_alignParentRight="true"
             android:background="@drawable/ic_button" />
 
 
 
     </RelativeLayout>
+
     <ImageView
+        android:id="@+id/im_medium_line"
         android:layout_width="match_parent"
         android:layout_height="12dp"
         android:src="@drawable/mediumline"
+        android:layout_below="@+id/relative_passenger"
         />
     <TextView
+        android:id="@+id/tv_passenger"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Passenger"
         android:textColor="#fff"
         android:textSize="20dp"
+        android:layout_below="@+id/im_medium_line"
 
         />
     <TextView
+        android:id="@+id/tv_depature"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:text="Departure :"
         android:textSize="20dp"
         android:textColor="@color/app_color"
         android:drawableLeft="@drawable/plane2"
+        android:layout_below="@+id/tv_passenger"
+
         />
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/relative_chair_bag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+        android:layout_below="@+id/tv_depature"
 
 
-            >
-            <ImageView
-
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/walchair"
-                android:layout_marginLeft="90dp"
-
-                />
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/logoplane"
-                android:layout_marginLeft="45dp"
-
-                />
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/bag"
-                android:layout_marginLeft="40dp"
-
-                />
-        </LinearLayout>
+        >
+        <ImageView
+            android:id="@+id/iv_walchair"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/walchair"
+            android:layout_marginLeft="@dimen/_50sdp"
 
 
-        <LinearLayout
+            />
+        <ImageView
+            android:id="@+id/iv_logo_plane"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/logoplane"
+            android:layout_toRightOf="@+id/iv_walchair"
+            android:layout_marginLeft="@dimen/_30sdp"
+
+
+            />
+        <ImageView
+            android:layout_marginLeft="@dimen/_50sdp"
+            android:id="@+id/iv_bag"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/bag"
+            android:layout_toRightOf="@+id/iv_logo_plane"
+
+            />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/relative_many"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/relative_chair_bag"
+        >
+
+
+
+        <RelativeLayout
+            android:id="@+id/relative_adult"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:orientation="horizontal"
             android:layout_marginTop="1dp"
+
             >
 
             <TextView
@@ -112,12 +133,16 @@
                 android:text="1* Adult"
                 android:textSize="13dp"
                 android:textColor="#fff"
+                android:id="@+id/tv_adult"
 
                 />
             <RadioGroup
+                android:id="@+id/rd_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_toRightOf="@+id/tv_adult"
+                android:layout_marginLeft="@dimen/_10sdp"
                 >
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -125,7 +150,8 @@
                     android:textColor="#fff"
                     android:checked="false"
                     android:buttonTint="#fff"
-                    android:layout_marginLeft="40dp"
+
+                    android:id="@+id/rd_wal_chair"
                     />
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -134,21 +160,30 @@
                     android:checked="false"
                     android:buttonTint="#fff"
                     android:layout_marginLeft="37dp"
+                    android:id="@+id/rd_passenger"
                     />
 
             </RadioGroup>
-            <LinearLayout
+
+            <RelativeLayout
+                android:id="@+id/relative_decrease_increase"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/rd_group"
+                android:layout_marginLeft="@dimen/_30sdp"
                 >
+
+
+
+
                 <ImageView
                     android:id="@+id/decrease_adult"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/minusicon" />
+                    android:src="@drawable/minusicon"
+
+
+                    />
 
                 <TextView
                     android:id="@+id/txtview_adult"
@@ -158,19 +193,23 @@
                     android:textStyle="bold"
                     android:textSize="15sp"
                     android:textColor="#fff"
+                    android:layout_toRightOf="@id/decrease_adult"
 
                     />
                 <ImageView
                     android:id="@+id/increase_adult"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:src="@drawable/add"
+                    android:layout_toRightOf="@+id/txtview_adult"
 
-                    android:src="@drawable/add" />
+                    />
 
+            </RelativeLayout>
 
-            </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_kd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="150KD"
@@ -178,34 +217,52 @@
                 android:layout_marginLeft="15dp"
                 android:textSize="17dp"
                 android:layout_marginTop="5dp"
+                android:layout_alignParentRight="true"
                 />
-        </LinearLayout>
+        </RelativeLayout>
+
+
+
 
         <ImageView
+            android:id="@+id/iv_line01"
             android:layout_width="match_parent"
             android:layout_height="12dp"
             android:src="@drawable/line1"
+            android:layout_below="@id/relative_adult"
+
             />
 
-        <LinearLayout
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/relative_child"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
+            android:layout_below="@+id/iv_line01"
             >
 
             <TextView
+                android:id="@+id/tv_child"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1* Child"
                 android:textSize="13dp"
                 android:textColor="#fff"
 
+
                 />
             <RadioGroup
+                android:id="@+id/rd_group1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_toRightOf="@+id/tv_child"
+                android:layout_marginLeft="@dimen/_12sdp"
                 >
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -213,7 +270,7 @@
                     android:textColor="#fff"
                     android:checked="true"
                     android:buttonTint="#fff"
-                    android:layout_marginLeft="42dp"
+
                     />
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -225,61 +282,82 @@
                     />
 
             </RadioGroup>
-            <LinearLayout
+
+            <RelativeLayout
+                android:id="@+id/relative_decrease_increase2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="14dp"
-                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/rd_group1"
+                android:layout_marginLeft="@dimen/_30sdp"
                 >
-                <ImageView
 
+                <ImageView
+                    android:id="@+id/iv_decrease"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/minusicon" />
+                    android:src="@drawable/minusicon"
+                    />
 
                 <TextView
-
+                    android:id="@+id/tv_kg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="40kg"
                     android:textStyle="bold"
                     android:textSize="15sp"
                     android:textColor="#fff"
+                    android:layout_toRightOf="@+id/iv_decrease"
 
                     />
                 <ImageView
-
+                    android:id="@+id/iv_increase"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:src="@drawable/add"
+                    android:layout_toRightOf="@+id/tv_kg"
+                    />
 
-                    android:src="@drawable/add" />
+            </RelativeLayout>
 
-
-            </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_kd1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:text="170KD"
                 android:textColor="#fff"
-                android:textSize="17dp" />
-        </LinearLayout>
+                android:textSize="17dp"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+
+
+
+
         <ImageView
+            android:id="@+id/iv_line02"
             android:layout_width="match_parent"
             android:layout_height="12dp"
             android:src="@drawable/line1"
+            android:layout_below="@+id/relative_child"
             />
-        <LinearLayout
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/relative_infant"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
+            android:layout_below="@+id/iv_line02"
             >
 
             <TextView
+                android:id="@+id/tv_infant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1* Infant"
@@ -287,10 +365,14 @@
                 android:textColor="#fff"
 
                 />
+
             <RadioGroup
+                android:id="@+id/rd_group2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_toRightOf="@+id/tv_infant"
+                android:layout_marginLeft="@dimen/_9sdp"
                 >
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -298,7 +380,7 @@
                     android:textColor="#fff"
                     android:checked="false"
                     android:buttonTint="#fff"
-                    android:layout_marginLeft="39dp"
+
                     />
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -310,40 +392,44 @@
                     />
 
             </RadioGroup>
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/relative_decrease_increase3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/rd_group2"
+                android:layout_marginLeft="@dimen/_30sdp"
                 >
-                <ImageView
 
+                <ImageView
+                    android:id="@+id/iv_decrease1"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-
-                    android:src="@drawable/minusicon" />
+                    android:src="@drawable/minusicon"
+                    />
 
                 <TextView
-
+                    android:id="@+id/tv_kg1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="60kg"
                     android:textStyle="bold"
                     android:textSize="15sp"
                     android:textColor="#fff"
+                    android:layout_toRightOf="@id/iv_decrease1"
 
                     />
-                <ImageView
 
+                <ImageView
+                    android:id="@+id/iv_increase1"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:src="@drawable/add"
+                    android:layout_toRightOf="@+id/tv_kg1"/>
 
-                    android:src="@drawable/add" />
+            </RelativeLayout>
 
-
-            </LinearLayout>
             <TextView
+                android:id="@+id/tv_kd2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="175KD"
@@ -351,18 +437,30 @@
                 android:layout_marginLeft="10dp"
                 android:textSize="17dp"
                 android:layout_marginTop="5dp"
+                android:layout_alignParentRight="true"
                 />
-        </LinearLayout>
+        </RelativeLayout>
+
+
+
         <ImageView
+            android:id="@+id/iv_line03"
             android:layout_width="match_parent"
             android:layout_height="12dp"
             android:src="@drawable/line1"
+            android:layout_below="@+id/relative_infant"
             />
-        <LinearLayout
+
+
+
+        <RelativeLayout
+            android:id="@+id/relative_total_taxes"
+            android:layout_below="@+id/iv_line03"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:orientation="horizontal">
             <TextView
+                android:id="@+id/tv_total-taxes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total Taxes"
@@ -371,79 +469,110 @@
                 android:textStyle="bold"
                 />
             <TextView
+                android:id="@+id/tv_kd3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="150KD"
                 android:textColor="#fff"
                 android:textSize="17dp"
-                android:layout_marginLeft="220dp"
+                android:layout_alignParentRight="true"
 
                 />
-        </LinearLayout>
+        </RelativeLayout>
+
+
+
         <ImageView
+            android:id="@+id/iv_line04"
             android:layout_width="match_parent"
             android:layout_height="12dp"
             android:src="@drawable/line1"
+            android:layout_below="@+id/relative_total_taxes"
             />
+
+
         <TextView
+            android:id="@+id/tv_kd4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="600KD"
             android:textColor="#fff"
             android:textSize="17dp"
-            android:layout_marginLeft="285dp"
+            android:layout_below="@+id/iv_line04"
+            android:layout_alignParentRight="true"
+
 
             />
-    </LinearLayout>
+    </RelativeLayout>
 
     <TextView
+        android:id="@+id/tv_return"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:text="Return :"
         android:textSize="20dp"
         android:textColor="@color/app_color"
         android:drawableLeft="@drawable/calender"
+        android:layout_below="@+id/relative_many"
         />
-    <LinearLayout
+
+
+    <RelativeLayout
+        android:id="@+id/relative_chair_bag2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+        android:layout_below="@+id/tv_return"
 
 
-            >
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/walchair"
-                android:layout_marginLeft="90dp"
-
-                />
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/logoplane"
-                android:layout_marginLeft="45dp"
-
-                />
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/bag"
-                android:layout_marginLeft="40dp"
-
-                />
-        </LinearLayout>
+        >
+        <ImageView
+            android:id="@+id/iv_walchair2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/walchair"
+            android:layout_marginLeft="@dimen/_50sdp"
 
 
-        <LinearLayout
+            />
+        <ImageView
+            android:id="@+id/iv_logo_plane2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/logoplane"
+            android:layout_toRightOf="@+id/iv_walchair2"
+            android:layout_marginLeft="@dimen/_30sdp"
+
+
+            />
+        <ImageView
+            android:layout_marginLeft="@dimen/_50sdp"
+            android:id="@+id/iv_bag2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/bag"
+            android:layout_toRightOf="@+id/iv_logo_plane2"
+
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_many2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/relative_chair_bag2"
+        >
+
+
+
+        <RelativeLayout
+            android:id="@+id/relative_adult2"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:orientation="horizontal"
             android:layout_marginTop="1dp"
+
             >
 
             <TextView
@@ -452,12 +581,16 @@
                 android:text="1* Adult"
                 android:textSize="13dp"
                 android:textColor="#fff"
+                android:id="@+id/tv_adult2"
 
                 />
             <RadioGroup
+                android:id="@+id/rd_group3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_toRightOf="@+id/tv_adult2"
+                android:layout_marginLeft="@dimen/_10sdp"
                 >
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -465,7 +598,7 @@
                     android:textColor="#fff"
                     android:checked="false"
                     android:buttonTint="#fff"
-                    android:layout_marginLeft="40dp"
+                    android:id="@+id/rd_wal_chair2"
                     />
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -474,78 +607,108 @@
                     android:checked="false"
                     android:buttonTint="#fff"
                     android:layout_marginLeft="37dp"
+                    android:id="@+id/rd_passenger2"
                     />
 
             </RadioGroup>
-            <LinearLayout
+
+            <RelativeLayout
+                android:id="@+id/relative_decrease_increase4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/rd_group3"
+                android:layout_marginLeft="@dimen/_30sdp"
                 >
-                <ImageView
 
+
+
+
+                <ImageView
+                    android:id="@+id/decrease_adult1"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/minusicon" />
+                    android:src="@drawable/minusicon"
+
+
+                    />
 
                 <TextView
-
+                    android:id="@+id/txtview_adult1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="40kg"
                     android:textStyle="bold"
                     android:textSize="15sp"
                     android:textColor="#fff"
+                    android:layout_toRightOf="@id/decrease_adult1"
 
                     />
                 <ImageView
-
+                    android:id="@+id/increase_adult1"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:src="@drawable/add"
+                    android:layout_toRightOf="@+id/txtview_adult1"
 
-                    android:src="@drawable/add" />
+                    />
 
+            </RelativeLayout>
 
-            </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_kd5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="150KD"
                 android:textColor="#fff"
-                android:layout_marginLeft="10dp"
                 android:textSize="17dp"
                 android:layout_marginTop="5dp"
+                android:layout_alignParentRight="true"
                 />
-        </LinearLayout>
+        </RelativeLayout>
+
+
+
 
         <ImageView
+            android:id="@+id/iv_line05"
             android:layout_width="match_parent"
             android:layout_height="12dp"
             android:src="@drawable/line1"
+            android:layout_below="@id/relative_adult2"
+
             />
 
-        <LinearLayout
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/relative_child2"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
+            android:layout_below="@+id/iv_line05"
             >
 
             <TextView
+                android:id="@+id/tv_child2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1* Child"
                 android:textSize="13dp"
                 android:textColor="#fff"
 
+
                 />
             <RadioGroup
+                android:id="@+id/rd_group4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_toRightOf="@+id/tv_child2"
+                android:layout_marginLeft="@dimen/_10sdp"
                 >
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -553,7 +716,7 @@
                     android:textColor="#fff"
                     android:checked="true"
                     android:buttonTint="#fff"
-                    android:layout_marginLeft="42dp"
+
                     />
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -565,61 +728,82 @@
                     />
 
             </RadioGroup>
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/relative_decrease_increase5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="14dp"
-                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/rd_group4"
+                android:layout_marginLeft="@dimen/_30sdp"
                 >
-                <ImageView
 
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/minusicon" />
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="40kg"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:textColor="#fff"
-
-                    />
-                <ImageView
-
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-
-                    android:src="@drawable/add" />
-
-
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_decrease2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/minusicon"
+               />
 
             <TextView
+                android:id="@+id/tv_kg3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:text="40kg"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#fff"
+                android:layout_toRightOf="@+id/iv_decrease2"
+
+                />
+
+            <ImageView
+                android:id="@+id/iv_increase2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/add"
+                android:layout_toRightOf="@+id/tv_kg3"
+                />
+            </RelativeLayout>
+
+
+
+
+            <TextView
+                android:id="@+id/tv_kd6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="170KD"
                 android:textColor="#fff"
-                android:textSize="17dp" />
-        </LinearLayout>
+                android:textSize="17dp"
+                android:layout_alignParentRight="true"
+                />
+        </RelativeLayout>
+
+
+
+
         <ImageView
+            android:id="@+id/iv_line06"
             android:layout_width="match_parent"
             android:layout_height="12dp"
             android:src="@drawable/line1"
+            android:layout_below="@+id/relative_child2"
             />
-        <LinearLayout
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/relative_infant2"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
+            android:layout_below="@+id/iv_line06"
             >
 
             <TextView
+                android:id="@+id/tv_infant2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1* Infant"
@@ -628,9 +812,12 @@
 
                 />
             <RadioGroup
+                android:id="@+id/rd_group5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_toRightOf="@+id/tv_infant2"
+                android:layout_marginLeft="@dimen/_10sdp"
                 >
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -638,7 +825,7 @@
                     android:textColor="#fff"
                     android:checked="false"
                     android:buttonTint="#fff"
-                    android:layout_marginLeft="39dp"
+
                     />
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -650,59 +837,75 @@
                     />
 
             </RadioGroup>
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/relative_decrease_increase6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/rd_group5"
+                android:layout_marginLeft="@dimen/_30sdp"
                 >
-                <ImageView
-
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-
-                    android:src="@drawable/minusicon" />
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="60kg"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:textColor="#fff"
-
-                    />
-                <ImageView
-
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-
-                    android:src="@drawable/add" />
 
 
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_decrease3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/minusicon"
+                />
+
             <TextView
+                android:id="@+id/tv_kg4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60kg"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#fff"
+                android:layout_toRightOf="@id/iv_decrease3"
+
+                />
+
+            <ImageView
+                android:id="@+id/iv_increase3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/add"
+                android:layout_toRightOf="@+id/tv_kg4"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_kd7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="175KD"
                 android:textColor="#fff"
-                android:layout_marginLeft="10dp"
+
                 android:textSize="17dp"
                 android:layout_marginTop="5dp"
+                android:layout_alignParentRight="true"
                 />
-        </LinearLayout>
+        </RelativeLayout>
+
+
+
         <ImageView
+            android:id="@+id/iv_line07"
             android:layout_width="match_parent"
             android:layout_height="12dp"
             android:src="@drawable/line1"
+            android:layout_below="@+id/relative_infant2"
             />
-        <LinearLayout
+
+
+
+        <RelativeLayout
+            android:id="@+id/relative_total_taxes2"
+            android:layout_below="@+id/iv_line07"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:orientation="horizontal">
             <TextView
+                android:id="@+id/tv_total-taxes2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total Taxes"
@@ -711,40 +914,55 @@
                 android:textStyle="bold"
                 />
             <TextView
+                android:id="@+id/tv_kd9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="150KD"
                 android:textColor="#fff"
                 android:textSize="17dp"
-                android:layout_marginLeft="220dp"
+                android:layout_alignParentRight="true"
 
                 />
-        </LinearLayout>
+        </RelativeLayout>
+
+
+
         <ImageView
+            android:id="@+id/iv_line08"
             android:layout_width="match_parent"
             android:layout_height="12dp"
             android:src="@drawable/line1"
+            android:layout_below="@+id/relative_total_taxes2"
             />
+
+
         <TextView
+            android:id="@+id/tv_kd10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="600KD"
             android:textColor="#fff"
             android:textSize="17dp"
-            android:layout_marginLeft="285dp"
+            android:layout_below="@+id/iv_line08"
+            android:layout_alignParentRight="true"
+
 
             />
-    </LinearLayout>
+    </RelativeLayout>
+
+
+
+
+
     <Button
 
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:background="@drawable/border"
-        android:foregroundGravity="center"
         android:text="Price : 1200KD"
         android:textColor="#FFF"
-        android:layout_marginLeft="115dp"
-        android:layout_gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/relative_many2"
         />
 
 
@@ -754,4 +972,4 @@
 
 
 
-</LinearLayout>
+</RelativeLayout>

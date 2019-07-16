@@ -31,6 +31,7 @@ import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.Hotel_Result;
 import com.Tamm.Hotels.wcf.RoomGuest;
+import com.Tamm.Hotels.wcf.TopDestinationsResponse;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterChildCount;
