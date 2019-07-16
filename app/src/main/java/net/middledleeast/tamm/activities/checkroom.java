@@ -59,6 +59,7 @@ public class checkroom extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(checkroom.this,ConfirmBookingRoom.class));
+
             }
         });
 
@@ -76,6 +77,7 @@ public class checkroom extends AppCompatActivity {
     }
 
     private void getIntentInfo() {
+
         intent = getIntent().getStringExtra("smok");
         roomTybe = getIntent().getStringExtra("roomTybe");
         description = getIntent().getStringExtra("description");
