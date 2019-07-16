@@ -85,7 +85,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         String photos = listPhotoHotel.get(position);
         int rat = listrat.get(position);
         holder.name.setText(name);
-        holder.rat.setText(rat + "  of 5 guest rating");
+        holder.rat.setText(rat+"");
 
         Glide.with(context).load(photos).into(holder.photoHotel);
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {

@@ -76,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginTop="20dp"
-                    android:text=" 5 guest rating"
+                    android:text="of 5 Guest Rating"
                     android:textColor="#FFFFFF" />
 
             </LinearLayout>
