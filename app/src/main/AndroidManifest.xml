@@ -16,8 +16,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".model.PaymentActivityFragment"></activity>
-        <!-- <activity android:name=".activities.UsersFree"></activity> -->
+        <activity android:name=".activities.RecommendedTwoWay"></activity>
+        <activity android:name=".activities.RecommendedOneWay" />
+        <activity android:name=".model.PaymentActivityFragment" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
         <activity
             android:name=".activities.RenewAccount"
             android:label="@string/title_activity_renew_account"
@@ -28,24 +29,18 @@
         <activity android:name=".activities.PassengerInformation" />
         <activity android:name=".activities.FlightsSummary" />
         <activity android:name=".activities.PaymentFlights" />
-        <activity android:name=".activities.Proceedbeybey">
-
-
-        </activity>
-
-
+        <activity android:name=".activities.Proceedbeybey" />
         <activity android:name=".activities.FlightTamm" />
         <activity android:name=".activities.PaymentActivity" />
         <activity android:name=".activities.HotelBooking" />
         <activity android:name=".activities.RoomBooked" />
         <activity android:name=".activities.checkroom" />
-        <activity android:name=".activities.ChooseBookingDate"></activity>
+        <activity android:name=".activities.ChooseBookingDate" />
         <activity android:name=".activities.HotelDetails" />
         <activity android:name=".activities.ChooseHotelActivity" />
-        <activity android:name=".activities.WelcomeActivity"></activity>
+        <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".LanguageActivity" />
-        <activity android:name=".activities.FindHotels"/>
-
+        <activity android:name=".activities.FindHotels" />
         <activity android:name=".activities.ConfirmBookingRoom" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".model.ReserveRoom" />
@@ -55,7 +50,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 
