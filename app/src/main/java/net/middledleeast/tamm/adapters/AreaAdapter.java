@@ -33,13 +33,13 @@ public class AreaAdapter extends ArrayAdapter<AreaItem> {
 
     private View initView (int position , View convertView , ViewGroup parent){
         if (convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.area_row,parent,false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.from_to_row,parent,false);
         }
-        TextView areaName = convertView.findViewById(R.id.area_name);
+
         AreaItem areaSelected = getItem(position);
 
         if (areaSelected != null){
-            areaName.setText(areaSelected.getAreaName());
+            
         }
         return convertView;
     }
