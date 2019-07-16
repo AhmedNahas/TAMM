@@ -64,7 +64,6 @@
 
     <TextView
 
-        android:fontFamily="sans-serif-light"
         android:id="@+id/tv_country"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -72,14 +71,13 @@
         android:layout_gravity="center"
         android:layout_marginStart="30dp"
         android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:text="Country"
         android:textColor="@color/app_color" />
 
 
     <TextView
-        android:fontFamily="sans-serif-light"
-        android:layout_toEndOf="@+id/tv_country"
         android:id="@+id/tv_city"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -87,69 +85,62 @@
         android:layout_gravity="center"
         android:layout_marginStart="100dp"
         android:layout_marginTop="4dp"
+        android:layout_toEndOf="@+id/tv_country"
+        android:fontFamily="sans-serif-light"
         android:gravity="center"
         android:text="City"
         android:textColor="@color/app_color" />
 
     <TextView
 
-        android:layout_below="@+id/tv_country"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="12dp"
-android:id="@+id/icon"
+        android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_earth"/>
+        android:layout_below="@+id/tv_country"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:drawableStart="@drawable/ic_earth" />
 
 
     <RelativeLayout
-        android:layout_toRightOf="@+id/icon"
-        android:layout_marginTop="8dp"
         android:id="@+id/spinner_layout"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_country"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@+id/icon"
         android:background="@android:color/transparent"
         android:gravity="end">
 
 
-
-
-
         <Spinner
-            android:backgroundTint="@color/app_color"
-            android:gravity="center"
             android:id="@+id/region_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:spinnerMode="dropdown"
-            />
+            android:backgroundTint="@color/app_color"
+            android:gravity="center"
+            android:spinnerMode="dropdown" />
 
         <View
-            android:layout_marginTop="8dp"
             android:id="@+id/line2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/region_spinner"
+            android:layout_marginTop="8dp"
             android:background="@drawable/line1" />
 
     </RelativeLayout>
 
 
-
-
-
-
-
     <TextView
-        android:layout_marginStart="50dp"
-android:layout_marginTop="8dp"
-        android:layout_toRightOf="@+id/spinner_layout"
-        android:layout_below="@+id/tv_city"
+        android:id="@+id/icon2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/icon2"
+        android:layout_below="@+id/tv_city"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@+id/spinner_layout"
         android:drawableStart="@drawable/ic_map" />
 
     <RelativeLayout
@@ -166,11 +157,11 @@ android:layout_marginTop="8dp"
 
 
         <Spinner
-            android:backgroundTint="@color/app_color"
             android:id="@+id/area_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:backgroundTint="@color/app_color" />
 
         <View
             android:id="@+id/line3"
@@ -183,87 +174,76 @@ android:layout_marginTop="8dp"
     </RelativeLayout>
 
 
-
-
-
-
-
-
-
-
     <TextView
         android:id="@+id/tv_check_in"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_layout"
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/spinner_layout"
-    android:layout_width="100dp"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-        android:textSize="10sp"
         android:fontFamily="sans-serif-light"
-    android:text="CHECK IN "
+        android:gravity="center"
+        android:text="CHECK IN "
+        android:textColor="@color/app_color"
 
-    android:textColor="@color/app_color" />
+        android:textSize="10sp" />
 
 
     <LinearLayout
         android:id="@+id/layout_check"
-        android:orientation="horizontal"
-        android:layout_marginStart="20dp"
-        android:layout_below="@+id/tv_check_in"
         android:layout_width="130dp"
-        android:layout_height="50dp">
-
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_check_in"
+        android:layout_marginStart="20dp"
+        android:orientation="horizontal">
 
 
         <LinearLayout
-            android:layout_marginStart="8dp"
-            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1">
 
 
             <TextView
-                android:lines="1"
-                android:layout_marginTop="4dp"
-                android:fontFamily="sans-serif-thin"
                 android:id="@+id/startDate_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-thin"
+                android:lines="1"
                 android:textColor="#fff"
                 android:textSize="30sp" />
         </LinearLayout>
 
 
-
-
         <LinearLayout
-            android:layout_weight=".5"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:orientation="vertical">
 
 
             <TextView
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-medium"
                 android:id="@+id/startDate_month"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:textSize="15sp" />
+
             <TextView
-                android:layout_marginTop="5.8dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-thin"
                 android:id="@+id/startDate_year"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5.8dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-thin"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:textSize="12sp" />
@@ -272,56 +252,54 @@ android:layout_marginTop="8dp"
 
     </LinearLayout>
 
-<LinearLayout
-    android:id="@+id/nights_difference"
-    android:layout_below="@+id/tv_check_in"
-    android:layout_toEndOf="@+id/layout_check"
-    android:layout_marginStart="30dp"
-    android:orientation="vertical"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:gravity="center">
-
-
-
-    <TextView
-        android:textSize="18sp"
-    android:fontFamily="sans-serif-thin"
-    android:id="@+id/nights"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:text="1 "
-        android:paddingEnd="5dp"
-    android:drawableEnd="@drawable/ic_moon"
-    android:textColor="@color/white" />
-
-
-
-    <TextView
-        android:textColor="@color/white"
-        android:text="Nights"
-        android:fontFamily="sans-serif-thin"
+    <LinearLayout
+        android:id="@+id/nights_difference"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_check_in"
+        android:layout_marginStart="30dp"
+        android:layout_toEndOf="@+id/layout_check"
+        android:gravity="center"
+        android:orientation="vertical">
 
-</LinearLayout>
+
+        <TextView
+            android:id="@+id/nights"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableEnd="@drawable/ic_moon"
+            android:fontFamily="sans-serif-thin"
+            android:paddingEnd="5dp"
+            android:text="1 "
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-thin"
+            android:text="Nights"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
 
 
     <TextView
-        android:layout_toEndOf="@+id/nights_difference"
         android:id="@+id/tv_check_out"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/spinner_layout"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="10sp"
+        android:layout_below="@+id/spinner_layout"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/nights_difference"
         android:fontFamily="sans-serif-light"
+        android:gravity="center"
         android:text="CHECK OUT "
+        android:textColor="@color/app_color"
 
-        android:textColor="@color/app_color" />
+        android:textSize="10sp" />
 
 
     <LinearLayout
@@ -390,32 +368,29 @@ android:layout_marginTop="8dp"
 
 
     <RelativeLayout
-        android:layout_toRightOf="@+id/icon3"
-        android:layout_marginTop="20dp"
         android:id="@+id/spinner_room_layout"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_check"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@+id/icon3"
         android:background="@android:color/transparent"
         android:gravity="end">
 
 
-
-
-
         <Spinner
-            android:backgroundTint="@color/app_color"
             android:id="@+id/no_of_rooms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:backgroundTint="@color/app_color" />
 
         <View
-            android:layout_marginTop="8dp"
             android:id="@+id/line4"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_below="@+id/no_of_rooms"
+            android:layout_marginTop="8dp"
             android:background="@drawable/line1" />
 
     </RelativeLayout>
@@ -433,47 +408,45 @@ android:layout_marginTop="8dp"
 
 
     <RelativeLayout
-        android:layout_centerInParent="true"
-        android:layout_marginTop="20dp"
         android:id="@+id/spinner_adult_layout"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_check"
+        android:layout_centerInParent="true"
         android:layout_marginStart="2dp"
-        android:background="@android:color/transparent"
+        android:layout_marginTop="20dp"
         android:layout_toRightOf="@+id/icon4"
+        android:background="@android:color/transparent"
         android:gravity="end">
 
 
-
-
         <Spinner
-            android:backgroundTint="@color/app_color"
             android:id="@+id/adilt_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:backgroundTint="@color/app_color" />
 
         <View
-            android:layout_marginTop="8dp"
             android:id="@+id/line5"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_below="@+id/adilt_count"
+            android:layout_marginTop="8dp"
             android:background="@drawable/line1" />
 
     </RelativeLayout>
 
 
     <TextView
-        android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/spinner_room_layout"
-        android:layout_below="@+id/layout_check"
-android:layout_marginTop="22dp"
+        android:id="@+id/icon4"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:id="@+id/icon4"
-        android:drawableStart="@drawable/ic_man_adult_room"/>
+        android:layout_below="@+id/layout_check"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="22dp"
+        android:layout_toRightOf="@+id/spinner_room_layout"
+        android:drawableStart="@drawable/ic_man_adult_room" />
 
 
     <RelativeLayout
@@ -490,11 +463,11 @@ android:layout_marginTop="22dp"
 
 
         <Spinner
-            android:backgroundTint="@color/app_color"
             android:id="@+id/no_of_childs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:backgroundTint="@color/app_color" />
 
         <View
             android:id="@+id/line6"
@@ -508,48 +481,37 @@ android:layout_marginTop="22dp"
 
 
     <TextView
-        android:layout_marginLeft="14dp"
         android:id="@+id/icon5"
-        android:layout_toRightOf="@+id/spinner_adult_layout"
-        android:layout_marginTop="22dp"
-        android:layout_below="@+id/layout_check_out"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:drawableStart="@drawable/ic_smallman"/>
+        android:layout_below="@+id/layout_check_out"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="22dp"
+        android:layout_toRightOf="@+id/spinner_adult_layout"
+        android:drawableStart="@drawable/ic_smallman" />
 
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_child"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_child_layout"
+        android:layout_marginTop="12dp"
+        android:padding="12dp">
 
-
-<androidx.recyclerview.widget.RecyclerView
-    android:padding="12dp"
-    android:layout_marginTop="12dp"
-android:id="@+id/rv_child"
-    android:layout_below="@+id/spinner_child_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-</androidx.recyclerview.widget.RecyclerView>
-
-
-
-
+    </androidx.recyclerview.widget.RecyclerView>
 
 
     <Button
-        android:layout_centerInParent="true"
-    android:id="@+id/findHotels"
-    android:layout_width="140dp"
+        android:id="@+id/findHotels"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/rv_child"
-    android:layout_height="40dp"
-    android:layout_gravity="center"
-    android:layout_marginTop="20dp"
-    android:background="@color/app_color"
-    android:text="FIND HOTELS" />
-
-
-
-
-
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/app_color"
+        android:text="FIND HOTELS" />
 
 
 </RelativeLayout>

@@ -14,7 +14,7 @@ import net.middledleeast.tamm.fragments.TammFamilyFragment;
 
 public class Proceedbeybey extends AppCompatActivity {
 
-    CheckedTextView passenger , jet , one_way , return_passe , multi_cities;
+    private CheckedTextView passenger , jet , one_way , return_passe , multi_cities , royalClass , firstClass , businessClass , economyClass;
 
 
 
@@ -29,6 +29,11 @@ public class Proceedbeybey extends AppCompatActivity {
         one_way=findViewById(R.id.one_way);
         return_passe=findViewById(R.id.return_passe);
         multi_cities=findViewById(R.id.multi_cities);
+        royalClass=findViewById(R.id.royal_class);
+        firstClass=findViewById(R.id.first_class);
+        businessClass=findViewById(R.id.business_class);
+        economyClass=findViewById(R.id.economy_class);
+
 
        passenger.setOnTouchListener(new View.OnTouchListener() {
            @Override
@@ -87,5 +92,57 @@ public class Proceedbeybey extends AppCompatActivity {
                return false;
            }
        });
+        royalClass.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                    royalClass.setTextColor(0xFFFFFFFF);
+                    businessClass.setTextColor(0xFFBE973B);
+                    economyClass.setTextColor(0xFFBE973B);
+                    firstClass.setTextColor(0xFFBE973B);
+
+                }
+                return false;
+            }
+        });
+        firstClass.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                    firstClass.setTextColor(0xFFFFFFFF);
+                    royalClass.setTextColor(0xFFBE973B);
+                    businessClass.setTextColor(0xFFBE973B);
+                    economyClass.setTextColor(0xFFBE973B);
+
+                }
+                return false;
+            }
+        });
+        businessClass.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                    businessClass.setTextColor(0xFFFFFFFF);
+                    royalClass.setTextColor(0xFFBE973B);
+                    firstClass.setTextColor(0xFFBE973B);
+                    economyClass.setTextColor(0xFFBE973B);
+
+                }
+                return false;
+            }
+        });
+        economyClass.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                    economyClass.setTextColor(0xFFFFFFFF);
+                    royalClass.setTextColor(0xFFBE973B);
+                    firstClass.setTextColor(0xFFBE973B);
+                    businessClass.setTextColor(0xFFBE973B);
+
+                }
+                return false;
+            }
+        });
     }
 }

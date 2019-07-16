@@ -28,7 +28,14 @@
         <activity android:name=".activities.PassengerInformation" />
         <activity android:name=".activities.FlightsSummary" />
         <activity android:name=".activities.PaymentFlights" />
-        <activity android:name=".activities.Proceedbeybey" />
+        <activity android:name=".activities.Proceedbeybey">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".activities.FlightTamm" />
         <activity android:name=".activities.PaymentActivity" />
         <activity android:name=".activities.HotelBooking" />
@@ -44,11 +51,7 @@
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".model.ReserveRoom" />
         <activity android:name=".activities.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
