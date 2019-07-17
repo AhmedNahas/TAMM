@@ -16,6 +16,8 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.Tamm.Hotels.wcf.ArrayOfImageUrlDetails;
+import com.Tamm.Hotels.wcf.ArrayOfRoomInfo;
+import com.Tamm.Hotels.wcf.ArrayOfString5;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.HotelDetailsResponse;
@@ -107,8 +109,13 @@ public class HotelDetails extends AppCompatActivity {
             description = hotelDetailsResponse.HotelDetails.Description;
 
 
-            int s = hotelDetailsResponse.HotelDetails.RoomInfo.get(1).Images.size();
-            Toast.makeText(this, "size is : "+s, Toast.LENGTH_SHORT).show();
+            ArrayOfRoomInfo arrayOfRoomInfo = hotelDetailsResponse.HotelDetails.RoomInfo;
+            if (arrayOfRoomInfo != null) {
+                ArrayOfString5 images = arrayOfRoomInfo.get(0).Images;
+                int s = hotelDetailsResponse.HotelDetails.RoomInfo.get(1).Images.size();
+
+                Toast.makeText(this, "size is : " + s, Toast.LENGTH_SHORT).show();
+            }
             map = hotelDetailsResponse.HotelDetails.Map;
 
             String[] parts = map.split("\\|", 2);

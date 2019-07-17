@@ -17,6 +17,7 @@ import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
+import com.Tamm.Hotels.wcf.BookingOptions;
 import com.Tamm.Hotels.wcf.HotelCancellationPolicyResponse;
 import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
@@ -198,13 +199,24 @@ public class ChooseBookingDate extends AppCompatActivity {
             arrayOfRooms.add(requestedRooms);
             transferClass.setArrayOfRequestedRooms(arrayOfRooms);
 
+            BookingOptions bookingOptions = response.OptionsForBooking;
+//            bookingOptions.RoomCombination.clear();
+//            RoomCombination roomCombination = new RoomCombination();
+//            roomCombination.RoomIndex = new ArrayList<>();
 
-            HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, null, authenticationData);
+            // TODO: 17/07/19 fix
+//            for (int i =1;i<=rooms.size();i++) {
+//                roomCombination.RoomIndex.add(i);
+//            }
 
-            AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, null, authenticationData);
+//            bookingOptions.RoomCombination.add(roomCombination);
 
+// TODO: 17/07/19 fix
+            HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
 
-            roomAdapter = new RoomsAdapter(rooms, hotel_room, arrayOfRooms, start_time, end_time, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
+            AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, bookingOptions, authenticationData);
+
+            roomAdapter = new RoomsAdapter(authenticationData, service, response, rooms, hotel_room, arrayOfRooms, start_time, end_time, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
 
 
             roomRecyclerView.setAdapter(roomAdapter);
