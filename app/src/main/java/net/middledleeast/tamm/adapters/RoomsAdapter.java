@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfSupplement;
 import com.Tamm.Hotels.wcf.AuthenticationData;
+import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.CancelPolicies;
+import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.RoomInformation;
 import com.Tamm.Hotels.wcf.Supplement;
@@ -45,9 +47,12 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     RoomInformation roomInformation;
     private String roomInstructions;
     private String description;
+    HotelRoomAvailabilityResponse response;
+    BasicHttpBinding_IHotelService1 service;
+    AuthenticationData authenticationData;
 
 
-    public RoomsAdapter(List<Hotel_Room> rooms, Hotel_Room hotel_room, ArrayOfRequestedRooms arrayOfRooms,
+    public RoomsAdapter(AuthenticationData data, BasicHttpBinding_IHotelService1 service, HotelRoomAvailabilityResponse response, List<Hotel_Room> rooms, Hotel_Room hotel_room, ArrayOfRequestedRooms arrayOfRooms,
                         String date1, String date2, int noOfRooms, int resultIndex, String mHotelCode, AuthenticationData authenticationData, String sessionId, Context context) {
         this.rooms = rooms;
         this.hotel_room = hotel_room;
@@ -61,6 +66,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         this.sessionId = sessionId;
         this.context = context;
         this.roomInformation = hotel_room.RoomAdditionalInfo;
+        this.response = response;
+        this.service = service;
+        this.authenticationData = data;
         notifyDataSetChanged();
     }
 

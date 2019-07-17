@@ -23,7 +23,6 @@ import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.Rate;
 import com.Tamm.Hotels.wcf.RequestedRooms;
-import com.Tamm.Hotels.wcf.RoomCombination;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.RoomsAdapter;
@@ -201,20 +200,23 @@ public class ChooseBookingDate extends AppCompatActivity {
             transferClass.setArrayOfRequestedRooms(arrayOfRooms);
 
             BookingOptions bookingOptions = response.OptionsForBooking;
-            bookingOptions.RoomCombination.clear();
-            RoomCombination roomCombination = new RoomCombination();
-            roomCombination.RoomIndex = new ArrayList<>();
+//            bookingOptions.RoomCombination.clear();
+//            RoomCombination roomCombination = new RoomCombination();
+//            roomCombination.RoomIndex = new ArrayList<>();
+
             // TODO: 17/07/19 fix
-            roomCombination.RoomIndex.add(1);
-            bookingOptions.RoomCombination.add(roomCombination);
+//            for (int i =1;i<=rooms.size();i++) {
+//                roomCombination.RoomIndex.add(i);
+//            }
+
+//            bookingOptions.RoomCombination.add(roomCombination);
 
 // TODO: 17/07/19 fix
             HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
 
             AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, bookingOptions, authenticationData);
 
-
-            roomAdapter = new RoomsAdapter(rooms, hotel_room, arrayOfRooms, start_time, end_time, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
+            roomAdapter = new RoomsAdapter(authenticationData, service, response, rooms, hotel_room, arrayOfRooms, start_time, end_time, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
 
 
             roomRecyclerView.setAdapter(roomAdapter);
