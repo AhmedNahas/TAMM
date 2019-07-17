@@ -2,11 +2,13 @@ package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ public class PassengerInformation extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener mDateSetListener,mDateSetListener2,mDateSetListener3,mDateSetListener4,mDateSetListener5,mDateSetListener6,mDateSetListener7,mDateSetListener8,mDateSetListener9;
     ArrayAdapter mrormiss1adapter,mrormiss2adapter,mrormiss3adapter;
     ArrayList<String> mrormiss1array,mrormiss2array,mrormiss3array;
+    private Button confirmFlight;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class PassengerInformation extends AppCompatActivity {
         endinfant=findViewById(R.id.end_date_infant);
 
 
+
         mrormiss1adapter=new ArrayAdapter(this,R.layout.mrormissspinnerlist
                 , mrormiss1array);
         mrormiss1=findViewById(R.id.mrormiss_adult);
@@ -76,7 +80,13 @@ public class PassengerInformation extends AppCompatActivity {
 
 
 
-
+        confirmFlight=findViewById(R.id.confirm_flight);
+        confirmFlight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PassengerInformation.this,FlightsSummary.class));
+            }
+        });
 
 
 

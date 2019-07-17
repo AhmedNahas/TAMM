@@ -1,4 +1,4 @@
-package net.middledleeast.tamm.model;
+package net.middledleeast.tamm.ActivityToFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 

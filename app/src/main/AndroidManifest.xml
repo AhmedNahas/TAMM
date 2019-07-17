@@ -16,27 +16,26 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".activities.RecommendedTwoWay"></activity>
+        <activity android:name=".activities.RecommendedTwoWay" />
         <activity android:name=".activities.RecommendedOneWay" />
-        <activity android:name=".model.PaymentActivityFragment" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
+        <activity android:name=".ActivityToFragment.PaymentActivityFragment" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
         <activity
             android:name=".activities.SplashActivity"
             android:label="@string/title_activity_renew_account"
-            android:theme="@style/AppTheme.NoActionBar" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".activities.PassengerDeparture" />
         <activity android:name=".activities.Passenger_inform" />
         <activity android:name=".activities.FlightDetails" />
         <activity android:name=".activities.PassengerInformation" />
         <activity android:name=".activities.FlightsSummary" />
         <activity android:name=".activities.PaymentFlights" />
-        <activity android:name=".activities.Proceedbeybey" />
+        <activity android:name=".activities.Proceedbeybey">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activities.FlightTamm" />
         <activity android:name=".activities.PaymentActivity" />
         <activity android:name=".activities.HotelBooking" />
@@ -51,9 +50,7 @@
         <activity android:name=".activities.ConfirmBookingRoom" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".model.ReserveRoom" />
-        <activity android:name=".activities.RenewAccount">
-
-        </activity>
+        <activity android:name=".activities.RenewAccount"></activity>
     </application>
 
 </manifest>

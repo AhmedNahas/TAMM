@@ -955,7 +955,7 @@
 
 
     <Button
-
+        android:id="@+id/priceFinal"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:background="@drawable/border"
