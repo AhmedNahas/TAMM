@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfSupplement;
 import com.Tamm.Hotels.wcf.AuthenticationData;
+import com.Tamm.Hotels.wcf.CancelPolicies;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.RoomInformation;
 import com.Tamm.Hotels.wcf.Supplement;
@@ -22,6 +23,9 @@ import com.Tamm.Hotels.wcf.Supplement;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.checkroom;
 
+import org.joda.time.DateTime;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -74,9 +78,20 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String roomType = rooms.get(position).RoomTypeName;
-        String mealType = rooms.get(position).Amenities;
+        String mealType = rooms.get(position).MealType;
+        String instructions = rooms.get(position).RoomInstructions;
+        String amneties = rooms.get(position).Amenities;
+        String essentialInfo = rooms.get(position).RoomEssentialInfo;
+        String currency = rooms.get(position).RoomRate.Currency;
+        CancelPolicies cancelPolicies = rooms.get(position).CancelPolicies;
+        if (cancelPolicies != null) {
+            DateTime deadLine = cancelPolicies.LastCancellationDeadline;
+        }
+        String roomPromotion = rooms.get(position).RoomPromtion;
+        BigDecimal roomprice = rooms.get(position).RoomRate.TotalFare;
+        holder.roomPrice.setText(currency + " " + roomprice);
 
-
+        roomInformation = rooms.get(position).RoomAdditionalInfo;
 //        BigDecimal price = rooms.get(position).Supplements.get(position).Price;
         holder.mName.setText(roomType);
 //        holder.roomPrice.setText((CharSequence) price);
@@ -113,7 +128,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 intent.putExtra("smok", roomInstructions);
                 intent.putExtra("roomTybe", roomType);
                 intent.putExtra("description", description);
-                intent.putExtra("mealTybe", roomInstructions);
+                intent.putExtra("mealTybe", mealType);
+                intent.putExtra("roomPrice", roomprice);
+
                 context.startActivity(intent);
             }
         });

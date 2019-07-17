@@ -17,11 +17,13 @@ import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
+import com.Tamm.Hotels.wcf.BookingOptions;
 import com.Tamm.Hotels.wcf.HotelCancellationPolicyResponse;
 import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.Rate;
 import com.Tamm.Hotels.wcf.RequestedRooms;
+import com.Tamm.Hotels.wcf.RoomCombination;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.RoomsAdapter;
@@ -198,10 +200,18 @@ public class ChooseBookingDate extends AppCompatActivity {
             arrayOfRooms.add(requestedRooms);
             transferClass.setArrayOfRequestedRooms(arrayOfRooms);
 
+            BookingOptions bookingOptions = response.OptionsForBooking;
+            bookingOptions.RoomCombination.clear();
+            RoomCombination roomCombination = new RoomCombination();
+            roomCombination.RoomIndex = new ArrayList<>();
+            // TODO: 17/07/19 fix
+            roomCombination.RoomIndex.add(1);
+            bookingOptions.RoomCombination.add(roomCombination);
 
-            HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, null, authenticationData);
+// TODO: 17/07/19 fix
+            HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
 
-            AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, null, authenticationData);
+            AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, bookingOptions, authenticationData);
 
 
             roomAdapter = new RoomsAdapter(rooms, hotel_room, arrayOfRooms, start_time, end_time, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);

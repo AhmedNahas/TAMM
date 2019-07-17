@@ -31,7 +31,6 @@ import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.Hotel_Result;
 import com.Tamm.Hotels.wcf.RoomGuest;
-import com.Tamm.Hotels.wcf.TopDestinationsResponse;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterChildCount;
@@ -507,7 +506,6 @@ public class FindHotels extends AppCompatActivity {
             for (int j = 0; j < cities.CityList.size(); j++) {
 
 
-                ctyId = cities.CityList.get(j).CityCode;
                 String cityName = cities.CityList.get(j).CityName;
                 nameCity.add(cityName);
 
@@ -524,6 +522,7 @@ public class FindHotels extends AppCompatActivity {
 //                        nameCity.add(FindHotels.this.cityName);
 
                         name_city = nameCity.get(position);
+                        ctyId = cities.CityList.get(position).CityCode;
 
 
                     }
@@ -570,16 +569,19 @@ public class FindHotels extends AppCompatActivity {
         roomGuest.ChildAge = new ArrayOfInt();
         ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
 
+        if (mChildCount == 0) {
+            roomGuest.ChildAge = null;
+        } else {
+            StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
 
-        StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
 
+            while (st.hasMoreTokens()) {
 
-        while (st.hasMoreTokens()) {
+                // child age count
+                String ageChildCount = st.nextToken().trim();
+                roomGuest.ChildAge.add(Integer.parseInt(ageChildCount));
 
-            // child age count
-            String ageChildCount = st.nextToken().trim();
-            roomGuest.ChildAge.add(Integer.parseInt(ageChildCount));
-
+            }
         }
         roomguests.add(roomGuest);
 
@@ -591,41 +593,41 @@ public class FindHotels extends AppCompatActivity {
             //HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), Integer.parseInt(ctyId), 1, roomguests, "EG", authenticationData);
 
 
-             hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
+            hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
                     true, noRomes, "EG", roomguests, null, 100, null, "true", null,
-                    100000, authenticationData);
+                    10000, authenticationData);
 
 //            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
 //                    true, noRomes, "EG", roomguests, null, 100, null, null, false, authenticationData);
 
 
-            ratrHotel          .clear();
+            ratrHotel.clear();
             nameHotel.clear();
             photoHotel.clear();
             listcodeHotel.clear();
 
+            if (hotelSearchResponse.HotelResultList != null) {
+                for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
 
-            for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
+                    Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
+                    HotelInfo hotelInfo = hotel_result.HotelInfo;
+                    sessionId = hotelSearchResponse.SessionId;
+                    hotelAddress = hotelInfo.HotelAddress;
+                    hotelName = hotelInfo.HotelName;
+                    hotelPicture = hotelInfo.HotelPicture;
+                    int code = hotelInfo.Rating.getCode();
+                    arrayOfResultIndex.add(hotel_result.ResultIndex);
 
-                Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
-                HotelInfo hotelInfo = hotel_result.HotelInfo;
-                sessionId = hotelSearchResponse.SessionId;
-                hotelAddress = hotelInfo.HotelAddress;
-                hotelName = hotelInfo.HotelName;
-                hotelPicture = hotelInfo.HotelPicture;
-                int code = hotelInfo.Rating.getCode();
-                arrayOfResultIndex.add(hotel_result.ResultIndex);
+                    String hotelCode = hotelInfo.HotelCode;
+                    listcodeHotel.add(hotelCode);
 
-                String hotelCode = hotelInfo.HotelCode;
-                listcodeHotel.add(hotelCode);
+                    nameHotel.add(hotelName);
+                    ratrHotel.add(code);
+                    photoHotel.add(hotelPicture);
+                    addressHotel.add(hotelAddress);
 
-                nameHotel.add(hotelName);
-                ratrHotel.add(code);
-                photoHotel.add(hotelPicture);
-                addressHotel.add(hotelAddress);
-
+                }
             }
-
 
         } catch (Exception e) {
             e.printStackTrace();
