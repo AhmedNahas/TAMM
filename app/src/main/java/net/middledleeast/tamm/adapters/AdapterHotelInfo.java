@@ -7,11 +7,9 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,6 +41,11 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
     private ArrayList<String> roomGuests;
     private ArrayList<Integer> resultINdex;
     Activity activity;
+    String mHotelCode;
+    String name;
+    String photos;
+    int rat;
+
 
     public AdapterHotelInfo(Activity activity, ArrayList<String> listnameHotel, ArrayList<Integer> hotelrat, ArrayList<String> listPhotoHotel,
                             Context context, onHotelListener onHotelListener, ArrayList<String> listAddressHotel, ArrayList<String> hotelCode,
@@ -80,10 +83,10 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
     @Override
     public void onBindViewHolder(@NonNull AdapterHotelInfo.SingleView holder, int position) {
 
-        String mHotelCode = listCodeHotels.get(position);
-        String name = listnameHotel.get(position);
-        String photos = listPhotoHotel.get(position);
-        int rat = listrat.get(position);
+        mHotelCode = listCodeHotels.get(position);
+        name = listnameHotel.get(position);
+        photos = listPhotoHotel.get(position);
+        rat = listrat.get(position);
         holder.name.setText(name);
         holder.rat.setText(rat+"");
 
@@ -92,7 +95,10 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, HotelDetails.class);
-
+                mHotelCode = listCodeHotels.get(position);
+                name = listnameHotel.get(position);
+                photos = listPhotoHotel.get(position);
+                rat = listrat.get(position);
                 SharedPreferencesManger.SaveData(activity, "hotel_name", name);
 //                intent.putExtra("selected_hotel_image",photos);
                 intent.putExtra("selected_hotel_name", name);
