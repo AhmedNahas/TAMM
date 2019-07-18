@@ -18,7 +18,7 @@ public class FlightsSummary extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flights_summary);
 
-        proccedBtn=findViewById(R.id.procced_btn);
+        proccedBtn = findViewById(R.id.procced_btn);
 
         proccedBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -15,7 +15,7 @@ import net.middledleeast.tamm.R;
 
 public class PassengerDeparture extends AppCompatActivity {
     int counter = 0;
-        Button priceFinal;
+    Button priceFinal;
     private ImageView imgincreaseadult,imgdecreaseadult;
     private TextView txtadult;
 
@@ -33,6 +33,7 @@ public class PassengerDeparture extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(PassengerDeparture.this,SeatSelection.class));
+                // startActivity(new Intent(PassengerDeparture.this,Seat));
             }
         });
 

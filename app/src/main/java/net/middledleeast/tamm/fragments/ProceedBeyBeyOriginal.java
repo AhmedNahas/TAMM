@@ -4,10 +4,6 @@ package net.middledleeast.tamm.fragments;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,8 +13,10 @@ import android.widget.CheckedTextView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.Proceedbeybey;
 import net.middledleeast.tamm.activities.RecommendedOneWay;
 
 /**
@@ -26,11 +24,11 @@ import net.middledleeast.tamm.activities.RecommendedOneWay;
  */
 public class ProceedBeyBeyOriginal extends Fragment {
 
-    private CheckedTextView  royalClass , firstClass , businessClass , economyClass;
-    private TextView fromTextView , toTextView;
-    private RecyclerView fromToRecycler ;
+    private CheckedTextView royalClass, firstClass, businessClass, economyClass;
+    private TextView fromTextView, toTextView;
+    private RecyclerView fromToRecycler;
     private Button proccedBtn;
-    private Spinner departure , returnFrom , passengerAdult , passengerChild , passengerInfant;
+    private Spinner departure, returnFrom, passengerAdult, passengerChild, passengerInfant;
 
     public ProceedBeyBeyOriginal() {
         // Required empty public constructor
@@ -45,31 +43,29 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_proceed_bey_bey_original, container, false);
 
-        royalClass=view.findViewById(R.id.royal_class);
-        firstClass=view.findViewById(R.id.first_class);
-        businessClass=view.findViewById(R.id.business_class);
-        economyClass=view.findViewById(R.id.economy_class);
-        fromTextView=view.findViewById(R.id.country_from_textview);
-        toTextView=view.findViewById(R.id.country_to_textview);
-        fromToRecycler=view.findViewById(R.id.from_to_rV);
-        proccedBtn=view.findViewById(R.id.procced_btn);
-        departure=view.findViewById(R.id.departure_spinner);
-        returnFrom=view.findViewById(R.id.return_spinner);
-        passengerAdult=view.findViewById(R.id.adult_spinner);
-        passengerChild=view.findViewById(R.id.child_spinner);
-        passengerInfant=view.findViewById(R.id.infant_spinner);
-
+        royalClass = view.findViewById(R.id.royal_class);
+        firstClass = view.findViewById(R.id.first_class);
+        businessClass = view.findViewById(R.id.business_class);
+        economyClass = view.findViewById(R.id.economy_class);
+        fromTextView = view.findViewById(R.id.country_from_textview);
+        toTextView = view.findViewById(R.id.country_to_textview);
+        fromToRecycler = view.findViewById(R.id.from_to_rV);
+        proccedBtn = view.findViewById(R.id.procced_btn);
+        departure = view.findViewById(R.id.departure_spinner);
+        returnFrom = view.findViewById(R.id.return_spinner);
+        passengerAdult = view.findViewById(R.id.adult_spinner);
+        passengerChild = view.findViewById(R.id.child_spinner);
+        passengerInfant = view.findViewById(R.id.infant_spinner);
 
 
         proccedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                getContext().startActivity(new Intent(getContext(),RecommendedOneWay.class));
+                getContext().startActivity(new Intent(getContext(), RecommendedOneWay.class));
 
             }
         });
-
 
 
         fromTextView.setOnClickListener(new View.OnClickListener() {
@@ -95,11 +91,10 @@ public class ProceedBeyBeyOriginal extends Fragment {
         });
 
 
-
         royalClass.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     royalClass.setTextColor(0xFFFFFFFF);
                     businessClass.setTextColor(0xFFBE973B);
                     economyClass.setTextColor(0xFFBE973B);
@@ -112,7 +107,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
         firstClass.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     firstClass.setTextColor(0xFFFFFFFF);
                     royalClass.setTextColor(0xFFBE973B);
                     businessClass.setTextColor(0xFFBE973B);
@@ -125,7 +120,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
         businessClass.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     businessClass.setTextColor(0xFFFFFFFF);
                     royalClass.setTextColor(0xFFBE973B);
                     firstClass.setTextColor(0xFFBE973B);
@@ -138,7 +133,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
         economyClass.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     economyClass.setTextColor(0xFFFFFFFF);
                     royalClass.setTextColor(0xFFBE973B);
                     firstClass.setTextColor(0xFFBE973B);

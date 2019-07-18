@@ -3,11 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MultiCitiesFlights"
-    >
-
-
-
+    tools:context=".fragments.MultiCitiesFlights">
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -20,318 +16,325 @@
 
     <RelativeLayout
         android:id="@+id/rv_add"
-        android:layout_below="@+id/multicity_rV"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:layout_below="@+id/multicity_rV"
         android:layout_alignParentEnd="true">
 
         <ImageView
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
             android:src="@drawable/ic_add_circle_outline_black_24dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="new trip"
             android:layout_marginLeft="@dimen/_50sdp"
+            android:text="new trip"
             android:textColor="@color/app_color"
-            android:textSize="@dimen/_25sdp"/>
+            android:textSize="@dimen/_25sdp" />
 
     </RelativeLayout>
 
 
+    <RelativeLayout
+        android:id="@+id/parent_relative"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_170sdp"
+        android:layout_below="@+id/rv_add"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:background="@drawable/shape2">
 
         <RelativeLayout
-            android:id="@+id/parent_relative"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_170sdp"
-            android:background="@drawable/shape2"
-            android:layout_below="@+id/rv_add"
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:layout_marginRight="@dimen/_20sdp">
+            android:id="@+id/relative_dep_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_15sdp"
 
-            <RelativeLayout
-                android:id="@+id/relative_dep_return"
+            >
+
+            <TextView
+                android:id="@+id/departure_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/_15sdp"
+                android:text="Departure"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/_15ssp" />
 
-                >
-
-                <TextView
-                    android:id="@+id/departure_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Departure"
-                    android:textColor="@color/app_color"
-                    android:textSize="@dimen/_15ssp"
-                    />
-                <TextView
-                    android:id="@+id/return_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Return"
-                    android:textColor="@color/app_color"
-                    android:textSize="@dimen/_15ssp"
-                    android:layout_toRightOf="@+id/departure_date"
-                    android:layout_marginLeft="@dimen/_80sdp"/>
-
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/spinner_depar_return"
+            <TextView
+                android:id="@+id/return_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/relative_dep_return"
-                android:layout_centerInParent="true">
-                <TextView
+                android:layout_marginLeft="@dimen/_80sdp"
+                android:layout_toRightOf="@+id/departure_date"
+                android:text="Return"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/_15ssp" />
 
-                    android:id="@+id/icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_country"
-                    android:drawableStart="@drawable/planesmallnew" />
+        </RelativeLayout>
 
-                <Spinner
-                    android:backgroundTint="@color/app_color"
-                    android:id="@+id/departure_spinner"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:spinnerMode="dropdown"
-                    android:layout_toRightOf="@+id/icon"/>
-                <View
-                    android:id="@+id/line2"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/departure_spinner"
-                    android:background="@drawable/line1"
-                    android:layout_toRightOf="@+id/icon"/>
-                <TextView
+        <RelativeLayout
+            android:id="@+id/spinner_depar_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_dep_return"
+            android:layout_centerInParent="true">
 
-                    android:id="@+id/icon2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_country"
-                    android:drawableStart="@drawable/ic_date_range_black_24dp"
-                    android:layout_toRightOf="@+id/departure_spinner"
-                    android:layout_marginLeft="@dimen/_15sdp"/>
+            <TextView
 
-                <Spinner
-                    android:backgroundTint="@color/app_color"
-                    android:id="@+id/return_spinner"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:spinnerMode="dropdown"
-                    android:layout_toRightOf="@+id/icon2"
-                    />
-                <View
-                    android:id="@+id/line3"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/departure_spinner"
-                    android:background="@drawable/line1"
-                    android:layout_toRightOf="@+id/icon2"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/relative_passengers"
+                android:id="@+id/icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/spinner_depar_return"
-                android:layout_marginLeft="@dimen/_45sdp"
-                >
+                android:layout_below="@+id/tv_country"
+                android:drawableStart="@drawable/planesmallnew" />
 
-                <TextView
-                    android:id="@+id/passengers_on"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Passengers"
-                    android:textColor="@color/app_color"
-                    android:textSize="@dimen/_15ssp"
+            <Spinner
+                android:id="@+id/departure_spinner"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon"
+                android:backgroundTint="@color/app_color"
+                android:spinnerMode="dropdown" />
 
-                    />
+            <View
+                android:id="@+id/line2"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/departure_spinner"
+                android:layout_toRightOf="@+id/icon"
+                android:background="@drawable/line1" />
 
+            <TextView
 
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/relative_adult_child"
+                android:id="@+id/icon2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/relative_passengers"
-                android:layout_centerInParent="true"
-                >
-                <TextView
-
-                    android:id="@+id/icon8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_man_adult_room" />
-
-                <Spinner
-                    android:backgroundTint="@color/app_color"
-                    android:id="@+id/adult_spinner"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:spinnerMode="dropdown"
-                    android:layout_toRightOf="@+id/icon8"/>
-                <View
-                    android:id="@+id/line4"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/adult_spinner"
-                    android:background="@drawable/line1"
-                    android:layout_toRightOf="@+id/icon8"/>
-                <TextView
-
-                    android:id="@+id/icon9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_smallman"
-                    android:layout_toRightOf="@+id/adult_spinner"
-                    android:layout_marginLeft="@dimen/_15sdp"/>
-
-                <Spinner
-                    android:backgroundTint="@color/app_color"
-                    android:id="@+id/child_spinner"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:spinnerMode="dropdown"
-                    android:layout_toRightOf="@+id/icon9"
-                    />
-                <View
-                    android:id="@+id/line5"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/adult_spinner"
-                    android:background="@drawable/line1"
-                    android:layout_toRightOf="@+id/icon9"/>
-
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:id="@+id/relative_infant"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/relative_adult_child"
+                android:layout_below="@+id/tv_country"
                 android:layout_marginLeft="@dimen/_15sdp"
-                >
-                <TextView
+                android:layout_toRightOf="@+id/departure_spinner"
+                android:drawableStart="@drawable/ic_date_range_black_24dp" />
 
-                    android:id="@+id/icon10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_man_adult_room" />
+            <Spinner
+                android:id="@+id/return_spinner"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon2"
+                android:backgroundTint="@color/app_color"
+                android:spinnerMode="dropdown" />
 
-                <Spinner
-                    android:backgroundTint="@color/app_color"
-                    android:id="@+id/infant_spinner"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="wrap_content"
-                    android:spinnerMode="dropdown"
-                    android:layout_toRightOf="@+id/icon10"/>
-                <View
-                    android:id="@+id/line6"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/infant_spinner"
-                    android:background="@drawable/line1"
-                    android:layout_toRightOf="@+id/icon10"/>
+            <View
+                android:id="@+id/line3"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/departure_spinner"
+                android:layout_toRightOf="@+id/icon2"
+                android:background="@drawable/line1" />
 
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/relative_cabin"
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_passengers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinner_depar_return"
+            android:layout_marginLeft="@dimen/_45sdp">
+
+            <TextView
+                android:id="@+id/passengers_on"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/relative_infant"
-                android:layout_marginLeft="@dimen/_45sdp"
-                >
+                android:text="Passengers"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/_15ssp"
 
-                <TextView
-                    android:id="@+id/cabin_class"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cabin Class"
-                    android:textColor="@color/app_color"
-                    android:textSize="@dimen/_15ssp"
-                    />
+                />
 
 
-            </RelativeLayout>
-            <RelativeLayout
+        </RelativeLayout>
 
-                android:id="@+id/cabin_class_details"
+        <RelativeLayout
+            android:id="@+id/relative_adult_child"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_passengers"
+            android:layout_centerInParent="true">
+
+            <TextView
+
+                android:id="@+id/icon8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/relative_cabin"
-                android:layout_centerInParent="true"
-                android:layout_marginBottom="@dimen/_15sdp">
+                android:drawableStart="@drawable/ic_man_adult_room" />
 
-                <CheckedTextView
-                    android:id="@+id/royal_class"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Royal"
-                    android:padding="@dimen/_5sdp"
-                    android:textColor="@color/white"
-                    android:textIsSelectable="true"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:background="@drawable/shapepassenger"/>
+            <Spinner
+                android:id="@+id/adult_spinner"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon8"
+                android:backgroundTint="@color/app_color"
+                android:spinnerMode="dropdown" />
 
-                <CheckedTextView
-                    android:id="@+id/first_class"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="First"
-                    android:layout_toRightOf="@+id/royal_class"
-                    android:padding="@dimen/_5sdp"
-                    android:textColor="@color/app_color"
-                    android:textIsSelectable="true"
-                    android:background="@drawable/shapepassenger"
-                    android:layout_marginLeft="@dimen/_15sdp"/>
-                <CheckedTextView
-                    android:id="@+id/business_class"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Business"
-                    android:layout_toRightOf="@+id/first_class"
-                    android:padding="@dimen/_5sdp"
-                    android:textColor="@color/app_color"
-                    android:textIsSelectable="true"
-                    android:background="@drawable/shapepassenger"
-                    android:layout_marginLeft="@dimen/_15sdp"/>
-                <CheckedTextView
-                    android:id="@+id/economy_class"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Economy"
-                    android:layout_toRightOf="@+id/business_class"
-                    android:padding="@dimen/_5sdp"
-                    android:textColor="@color/app_color"
-                    android:textIsSelectable="true"
-                    android:background="@drawable/shapepassenger"
-                    android:layout_marginLeft="@dimen/_15sdp"/>
+            <View
+                android:id="@+id/line4"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/adult_spinner"
+                android:layout_toRightOf="@+id/icon8"
+                android:background="@drawable/line1" />
 
-            </RelativeLayout>
+            <TextView
+
+                android:id="@+id/icon9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_toRightOf="@+id/adult_spinner"
+                android:drawableStart="@drawable/ic_smallman" />
+
+            <Spinner
+                android:id="@+id/child_spinner"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon9"
+                android:backgroundTint="@color/app_color"
+                android:spinnerMode="dropdown" />
+
+            <View
+                android:id="@+id/line5"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/adult_spinner"
+                android:layout_toRightOf="@+id/icon9"
+                android:background="@drawable/line1" />
+
         </RelativeLayout>
 
 
+        <RelativeLayout
+            android:id="@+id/relative_infant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_adult_child"
+            android:layout_marginLeft="@dimen/_15sdp">
+
+            <TextView
+
+                android:id="@+id/icon10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_man_adult_room" />
+
+            <Spinner
+                android:id="@+id/infant_spinner"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/icon10"
+                android:backgroundTint="@color/app_color"
+                android:spinnerMode="dropdown" />
+
+            <View
+                android:id="@+id/line6"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/infant_spinner"
+                android:layout_toRightOf="@+id/icon10"
+                android:background="@drawable/line1" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_cabin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_infant"
+            android:layout_marginLeft="@dimen/_45sdp">
+
+            <TextView
+                android:id="@+id/cabin_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cabin Class"
+                android:textColor="@color/app_color"
+                android:textSize="@dimen/_15ssp" />
 
 
-        <Button
+        </RelativeLayout>
 
-            android:id="@+id/procced_btn"
-            android:layout_width="160dp"
-            android:layout_height="30dp"
-            android:background="@drawable/shape"
-            android:text="PROCEED"
-            android:layout_below="@+id/parent_relative"
+        <RelativeLayout
+
+            android:id="@+id/cabin_class_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_cabin"
             android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_15sdp">
 
-            />
+            <CheckedTextView
+                android:id="@+id/royal_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:background="@drawable/shapepassenger"
+                android:padding="@dimen/_5sdp"
+                android:text="Royal"
+                android:textColor="@color/white"
+                android:textIsSelectable="true" />
 
+            <CheckedTextView
+                android:id="@+id/first_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_toRightOf="@+id/royal_class"
+                android:background="@drawable/shapepassenger"
+                android:padding="@dimen/_5sdp"
+                android:text="First"
+                android:textColor="@color/app_color"
+                android:textIsSelectable="true" />
 
+            <CheckedTextView
+                android:id="@+id/business_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_toRightOf="@+id/first_class"
+                android:background="@drawable/shapepassenger"
+                android:padding="@dimen/_5sdp"
+                android:text="Business"
+                android:textColor="@color/app_color"
+                android:textIsSelectable="true" />
+
+            <CheckedTextView
+                android:id="@+id/economy_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_toRightOf="@+id/business_class"
+                android:background="@drawable/shapepassenger"
+                android:padding="@dimen/_5sdp"
+                android:text="Economy"
+                android:textColor="@color/app_color"
+                android:textIsSelectable="true" />
+
+        </RelativeLayout>
     </RelativeLayout>
+
+
+    <Button
+
+        android:id="@+id/procced_btn"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/parent_relative"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/shape"
+        android:text="PROCEED"
+
+        />
+
+
+</RelativeLayout>
 

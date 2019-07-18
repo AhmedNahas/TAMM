@@ -527,15 +527,16 @@
             </RelativeLayout>
 
         </RelativeLayout>
+
         <Button
             android:id="@+id/procced_btn"
             android:layout_width="160dp"
             android:layout_height="30dp"
-            android:background="@drawable/shape"
-            android:text="PROCEED"
             android:layout_below="@+id/closure"
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/_15sdp"
+            android:background="@drawable/shape"
+            android:text="PROCEED"
 
             />
 

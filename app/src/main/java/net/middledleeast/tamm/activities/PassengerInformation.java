@@ -79,12 +79,11 @@ public class PassengerInformation extends AppCompatActivity {
         mrormiss3.setAdapter(mrormiss3adapter);
 
 
-
-        confirmFlight=findViewById(R.id.confirm_flight);
+        confirmFlight = findViewById(R.id.confirm_flight);
         confirmFlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PassengerInformation.this,FlightsSummary.class));
+                startActivity(new Intent(PassengerInformation.this, FlightsSummary.class));
             }
         });
 

@@ -1,31 +1,20 @@
 package net.middledleeast.tamm.adapters;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CheckedTextView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.Proceedbeybey;
 import net.middledleeast.tamm.fragments.SearchFlightByCity;
-import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FlightAddingAdapter extends RecyclerView.Adapter<FlightAddingAdapter.SingleView> {
@@ -36,11 +25,8 @@ public class FlightAddingAdapter extends RecyclerView.Adapter<FlightAddingAdapte
     Context context;
 
 
-
-
-
-    public FlightAddingAdapter( List<Integer> listCountCild  ) {
-        this.listCountCild = listCountCild;;
+    public FlightAddingAdapter(List<Integer> listCountCild) {
+        this.listCountCild = listCountCild;
 
     }
 
@@ -54,7 +40,6 @@ public class FlightAddingAdapter extends RecyclerView.Adapter<FlightAddingAdapte
     @SuppressLint({"SetTextI18n", "CommitPrefEdits"})
     @Override
     public void onBindViewHolder(@NonNull SingleView holder, int position) {
-
 
 
         holder.fromTextView.setOnClickListener(new View.OnClickListener() {
@@ -82,10 +67,7 @@ public class FlightAddingAdapter extends RecyclerView.Adapter<FlightAddingAdapte
         });
 
 
-
-
-
-            }
+    }
 
 
     @Override
@@ -97,15 +79,15 @@ public class FlightAddingAdapter extends RecyclerView.Adapter<FlightAddingAdapte
 
         Spinner spinner_no_Child;
         TextView child_no_tv;
-        private TextView fromTextView , toTextView;
+        private TextView fromTextView, toTextView;
 
         public SingleView(@NonNull View itemView) {
             super(itemView);
             spinner_no_Child = itemView.findViewById(R.id.spinner_no_Child);
             child_no_tv = itemView.findViewById(R.id.child_no_tv);
 
-            fromTextView=itemView.findViewById(R.id.country_from_textview);
-            toTextView=itemView.findViewById(R.id.country_to_textview);
+            fromTextView = itemView.findViewById(R.id.country_from_textview);
+            toTextView = itemView.findViewById(R.id.country_to_textview);
         }
     }
 }

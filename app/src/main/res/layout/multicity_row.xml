@@ -1,109 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relative_from_to"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/from_country"
     android:layout_margin="@dimen/_4ssp"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/relative_from_to"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/from_country"
     android:background="@android:color/transparent">
 
     <RelativeLayout
         android:id="@+id/rel_from_to"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/from_country"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/rel2_checked"
+            android:layout_marginLeft="@dimen/_50sdp"
             android:text="From"
             android:textAllCaps="false"
-            android:layout_below="@+id/rel2_checked"
-            android:textColor="@color/white"
-            android:layout_marginLeft="@dimen/_50sdp"/>
+            android:textColor="@color/white" />
+
         <TextView
             android:id="@+id/to_country"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/rel2_checked"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/_70sdp"
             android:text="To"
             android:textAllCaps="false"
-            android:layout_below="@+id/rel2_checked"
-            android:textColor="@color/white"
-            android:layout_marginRight="@dimen/_70sdp"
-            android:layout_alignParentRight="true"/>
+            android:textColor="@color/white" />
     </RelativeLayout>
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/rel_from_to">
-    <TextView
-        android:gravity="center"
-        android:id="@+id/country_from_textview"
-        android:layout_width="@dimen/_100sdp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
-        android:text="BEY"
-        android:textColor="@color/app_color"
-        android:textSize="@dimen/_40ssp"
-        />
-    <View
-        android:id="@+id/view_blo4"
-        android:layout_width="@dimen/_10sdp"
-        android:layout_height="1dp"
-        android:layout_toRightOf="@+id/country_from_textview"
-        android:layout_marginTop="@dimen/_30sdp"
-        android:background="@color/white"
-        android:layout_marginLeft="@dimen/_5sdp"/>
+        android:layout_below="@+id/rel_from_to">
 
-    <View
-        android:id="@+id/view_blo5"
-        android:layout_width="90dp"
-        android:layout_height="82dp"
-        android:layout_toRightOf="@+id/view_blo4"
-        android:background="@drawable/jetplane" />
-    <View
-        android:id="@+id/view_blo6"
-        android:layout_width="@dimen/_10sdp"
-        android:layout_height="1dp"
-        android:layout_toRightOf="@+id/view_blo5"
-        android:layout_marginTop="@dimen/_30sdp"
-        android:background="@color/white"/>
-    <TextView
-        android:gravity="center"
-        android:id="@+id/country_to_textview"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
-        android:text="DXB"
-        android:textColor="@color/app_color"
-        android:textSize="@dimen/_40ssp"
-        android:layout_toRightOf="@+id/view_blo6"
-        />
-    <TextView
-        android:id="@+id/country_selected_from_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/country_from_textview"
-        android:text="BEIRUT"
-        android:textColor="@color/white"
-        android:layout_marginLeft="@dimen/_40sdp"
-        android:textSize="@dimen/_15ssp"/>
-    <TextView
-        android:id="@+id/to_country_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/country_from_textview"
-        android:text="DUBAI"
-        android:textColor="@color/white"
-        android:layout_marginLeft="@dimen/_130sdp"
-        android:textSize="@dimen/_15ssp"
-        android:layout_toRightOf="@+id/country_selected_from_spinner"/>
+        <TextView
+            android:id="@+id/country_from_textview"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+            android:gravity="center"
+            android:text="BEY"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/_40ssp" />
+
+        <View
+            android:id="@+id/view_blo4"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_toRightOf="@+id/country_from_textview"
+            android:background="@color/white" />
+
+        <View
+            android:id="@+id/view_blo5"
+            android:layout_width="90dp"
+            android:layout_height="82dp"
+            android:layout_toRightOf="@+id/view_blo4"
+            android:background="@drawable/jetplane" />
+
+        <View
+            android:id="@+id/view_blo6"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_toRightOf="@+id/view_blo5"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/country_to_textview"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/view_blo6"
+            android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+            android:gravity="center"
+            android:text="DXB"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/_40ssp" />
+
+        <TextView
+            android:id="@+id/country_selected_from_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/country_from_textview"
+            android:layout_marginLeft="@dimen/_40sdp"
+            android:text="BEIRUT"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15ssp" />
+
+        <TextView
+            android:id="@+id/to_country_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/country_from_textview"
+            android:layout_marginLeft="@dimen/_130sdp"
+            android:layout_toRightOf="@+id/country_selected_from_spinner"
+            android:text="DUBAI"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15ssp" />
+
+    </RelativeLayout>
+
 
 </RelativeLayout>
-
-
-    </RelativeLayout>
 

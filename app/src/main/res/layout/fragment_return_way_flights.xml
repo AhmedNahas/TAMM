@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-
 
 
     <TextView
         android:id="@+id/from_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="From"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:textAllCaps="false"
         android:layout_below="@+id/rel2_checked"
-        android:textColor="@color/white"
-        android:layout_marginLeft="@dimen/_50sdp"/>
+        android:layout_marginLeft="@dimen/_50sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="From"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
     <TextView
         android:id="@+id/to_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="To"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:textAllCaps="false"
         android:layout_below="@+id/rel2_checked"
-        android:textColor="@color/white"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_70sdp"
-        android:layout_alignParentRight="true"/>
+        android:text="To"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
 
     <RelativeLayout
         android:id="@+id/relative_from_to"
@@ -37,23 +35,24 @@
         android:layout_below="@+id/from_country">
 
         <TextView
-            android:gravity="center"
             android:id="@+id/country_from_textview"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_5sdp"
             android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+            android:gravity="center"
             android:text="BEY"
             android:textColor="@color/app_color"
-            android:textSize="@dimen/_40ssp"/>
+            android:textSize="@dimen/_40ssp" />
+
         <View
             android:id="@+id/view_blo4"
             android:layout_width="@dimen/_10sdp"
             android:layout_height="1dp"
-            android:layout_toRightOf="@+id/country_from_textview"
+            android:layout_marginLeft="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_30sdp"
-            android:background="@color/white"
-            android:layout_marginLeft="@dimen/_5sdp"/>
+            android:layout_toRightOf="@+id/country_from_textview"
+            android:background="@color/white" />
 
         <View
             android:id="@+id/view_blo5"
@@ -61,44 +60,47 @@
             android:layout_height="82dp"
             android:layout_toRightOf="@+id/view_blo4"
             android:background="@drawable/jetplane" />
+
         <View
             android:id="@+id/view_blo6"
             android:layout_width="@dimen/_10sdp"
             android:layout_height="1dp"
-            android:layout_toRightOf="@+id/view_blo5"
             android:layout_marginTop="@dimen/_30sdp"
-            android:background="@color/white"/>
+            android:layout_toRightOf="@+id/view_blo5"
+            android:background="@color/white" />
+
         <TextView
-            android:gravity="center"
             android:id="@+id/country_to_textview"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/view_blo6"
             android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+            android:gravity="center"
             android:text="DXB"
             android:textColor="@color/app_color"
-            android:textSize="@dimen/_40ssp"
-            android:layout_toRightOf="@+id/view_blo6"
-            />
+            android:textSize="@dimen/_40ssp" />
+
         <TextView
             android:id="@+id/country_selected_from_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/country_from_textview"
+            android:layout_marginLeft="@dimen/_40sdp"
             android:text="BEIRUT"
             android:textColor="@color/white"
-            android:layout_marginLeft="@dimen/_40sdp"
-            android:textSize="@dimen/_15ssp"/>
+            android:textSize="@dimen/_15ssp" />
+
         <TextView
             android:id="@+id/to_country_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/country_from_textview"
+            android:layout_marginLeft="@dimen/_130sdp"
+            android:layout_toRightOf="@+id/country_selected_from_spinner"
             android:text="DUBAI"
             android:textColor="@color/white"
-            android:layout_marginLeft="@dimen/_130sdp"
-            android:textSize="@dimen/_15ssp"
-            android:layout_toRightOf="@+id/country_selected_from_spinner"/>
+            android:textSize="@dimen/_15ssp" />
 
     </RelativeLayout>
 
@@ -106,11 +108,11 @@
         android:id="@+id/parent_relative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape2"
         android:layout_below="@+id/relative_from_to"
-        android:layout_marginTop="@dimen/_15sdp"
         android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginRight="@dimen/_20sdp">
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:background="@drawable/shape2">
 
         <RelativeLayout
             android:id="@+id/relative_dep_return"
@@ -127,19 +129,20 @@
                 android:layout_height="wrap_content"
                 android:text="Departure"
                 android:textColor="@color/app_color"
-                android:textSize="@dimen/_15ssp"
-                />
+                android:textSize="@dimen/_15ssp" />
+
             <TextView
                 android:id="@+id/return_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_80sdp"
+                android:layout_toRightOf="@+id/departure_date"
                 android:text="Return"
                 android:textColor="@color/app_color"
-                android:textSize="@dimen/_15ssp"
-                android:layout_toRightOf="@+id/departure_date"
-                android:layout_marginLeft="@dimen/_80sdp"/>
+                android:textSize="@dimen/_15ssp" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/spinner_depar_return"
             android:layout_width="wrap_content"
@@ -147,6 +150,7 @@
             android:layout_below="@+id/relative_dep_return"
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/_5sdp">
+
             <TextView
 
                 android:id="@+id/icon"
@@ -156,30 +160,30 @@
                 android:drawableStart="@drawable/planesmallnew" />
 
             <Spinner
-                android:backgroundTint="@color/app_color"
                 android:id="@+id/departure_spinner"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"
-                android:layout_toRightOf="@+id/icon"/>
+                android:layout_toRightOf="@+id/icon"
+                android:backgroundTint="@color/app_color"
+                android:spinnerMode="dropdown" />
+
             <TextView
 
                 android:id="@+id/icon2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_country"
-                android:drawableStart="@drawable/ic_date_range_black_24dp"
+                android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_toRightOf="@+id/departure_spinner"
-                android:layout_marginLeft="@dimen/_15sdp"/>
+                android:drawableStart="@drawable/ic_date_range_black_24dp" />
 
             <Spinner
-                android:backgroundTint="@color/app_color"
                 android:id="@+id/return_spinner"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"
                 android:layout_toRightOf="@+id/icon2"
-                />
+                android:backgroundTint="@color/app_color"
+                android:spinnerMode="dropdown" />
 
         </RelativeLayout>
 
@@ -203,6 +207,7 @@
 
 
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/relative_adult_child"
             android:layout_width="wrap_content"
@@ -210,6 +215,7 @@
             android:layout_below="@+id/relative_passengers"
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/_5sdp">
+
             <TextView
 
                 android:id="@+id/icon8"
@@ -218,29 +224,29 @@
                 android:drawableStart="@drawable/ic_man_adult_room" />
 
             <Spinner
-                android:backgroundTint="@color/app_color"
                 android:id="@+id/adult_spinner"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"
-                android:layout_toRightOf="@+id/icon8"/>
+                android:layout_toRightOf="@+id/icon8"
+                android:backgroundTint="@color/app_color"
+                android:spinnerMode="dropdown" />
+
             <TextView
 
                 android:id="@+id/icon9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_smallman"
+                android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_toRightOf="@+id/adult_spinner"
-                android:layout_marginLeft="@dimen/_15sdp"/>
+                android:drawableStart="@drawable/ic_smallman" />
 
             <Spinner
-                android:backgroundTint="@color/app_color"
                 android:id="@+id/child_spinner"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"
                 android:layout_toRightOf="@+id/icon9"
-                />
+                android:backgroundTint="@color/app_color"
+                android:spinnerMode="dropdown" />
 
         </RelativeLayout>
 
@@ -250,9 +256,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative_adult_child"
-            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginLeft="@dimen/_15sdp"
-            >
+            android:layout_marginTop="@dimen/_5sdp">
+
             <TextView
 
                 android:id="@+id/icon10"
@@ -261,14 +267,15 @@
                 android:drawableStart="@drawable/ic_man_adult_room" />
 
             <Spinner
-                android:backgroundTint="@color/app_color"
                 android:id="@+id/infant_spinner"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"
-                android:layout_toRightOf="@+id/icon10"/>
+                android:layout_toRightOf="@+id/icon10"
+                android:backgroundTint="@color/app_color"
+                android:spinnerMode="dropdown" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/relative_cabin"
             android:layout_width="wrap_content"
@@ -283,80 +290,80 @@
                 android:layout_height="wrap_content"
                 android:text="Cabin Class"
                 android:textColor="@color/app_color"
-                android:textSize="@dimen/_15ssp"
-                />
+                android:textSize="@dimen/_15ssp" />
 
 
         </RelativeLayout>
+
         <RelativeLayout
-            android:layout_marginTop="@dimen/_10sdp"
             android:id="@+id/cabin_class_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative_cabin"
             android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_15sdp">
 
             <CheckedTextView
                 android:id="@+id/royal_class"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Royal"
-                android:padding="@dimen/_5sdp"
-                android:textColor="@color/white"
-                android:textIsSelectable="true"
                 android:layout_marginLeft="@dimen/_10sdp"
-                android:background="@drawable/shapepassenger"/>
+                android:background="@drawable/shapepassenger"
+                android:padding="@dimen/_5sdp"
+                android:text="Royal"
+                android:textColor="@color/white"
+                android:textIsSelectable="true" />
 
             <CheckedTextView
                 android:id="@+id/first_class"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="First"
+                android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_toRightOf="@+id/royal_class"
-                android:padding="@dimen/_5sdp"
-                android:textColor="@color/app_color"
-                android:textIsSelectable="true"
                 android:background="@drawable/shapepassenger"
-                android:layout_marginLeft="@dimen/_15sdp"/>
+                android:padding="@dimen/_5sdp"
+                android:text="First"
+                android:textColor="@color/app_color"
+                android:textIsSelectable="true" />
+
             <CheckedTextView
                 android:id="@+id/business_class"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Business"
+                android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_toRightOf="@+id/first_class"
-                android:padding="@dimen/_5sdp"
-                android:textColor="@color/app_color"
-                android:textIsSelectable="true"
                 android:background="@drawable/shapepassenger"
-                android:layout_marginLeft="@dimen/_15sdp"/>
+                android:padding="@dimen/_5sdp"
+                android:text="Business"
+                android:textColor="@color/app_color"
+                android:textIsSelectable="true" />
+
             <CheckedTextView
                 android:id="@+id/economy_class"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Economy"
+                android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_toRightOf="@+id/business_class"
-                android:padding="@dimen/_5sdp"
-                android:textColor="@color/app_color"
-                android:textIsSelectable="true"
                 android:background="@drawable/shapepassenger"
-                android:layout_marginLeft="@dimen/_15sdp"/>
+                android:padding="@dimen/_5sdp"
+                android:text="Economy"
+                android:textColor="@color/app_color"
+                android:textIsSelectable="true" />
 
         </RelativeLayout>
     </RelativeLayout>
-
-
 
 
     <Button
         android:id="@+id/procced_btn"
         android:layout_width="160dp"
         android:layout_height="30dp"
-        android:background="@drawable/shape"
-        android:text="PROCEED"
         android:layout_below="@+id/parent_relative"
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/shape"
+        android:text="PROCEED"
 
         />
 

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.SeatSelection"
-    android:background="@drawable/bg">
-
-
+    android:background="@drawable/bg"
+    tools:context=".activities.SeatSelection">
 
 
     <RelativeLayout
@@ -70,31 +67,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/line1"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:text="Seat Selection"
         android:textColor="#fff"
         android:textSize="@dimen/_15ssp"
-        android:layout_marginLeft="@dimen/_10sdp"
         android:textStyle="italic"
-        android:layout_marginTop="@dimen/_10sdp"
 
 
         />
+
     <View
         android:id="@+id/line2"
         android:layout_width="@dimen/_300sdp"
         android:layout_height="2dp"
         android:layout_below="@+id/tv_seat_selection"
-        android:background="@drawable/line1"
-        android:layout_marginLeft="@dimen/_10sdp"/>
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:background="@drawable/line1" />
 
     <TextView
         android:id="@+id/tv_choosing_seat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/line2"
+        android:layout_marginLeft="@dimen/_10sdp"
         android:text="Choosing your seats will be charged for extra fees"
         android:textColor="#fff"
-        android:layout_marginLeft="@dimen/_10sdp"
 
         />
 
@@ -105,71 +103,53 @@
         android:layout_below="@+id/tv_choosing_seat"
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/_1sdp">
+
         <Button
             android:id="@+id/btn_accept"
             android:layout_width="@dimen/_70sdp"
             android:layout_height="@dimen/_25sdp"
             android:background="@drawable/shape"
-            android:text="I ACCEPT"
-            />
+            android:text="I ACCEPT" />
+
         <Button
             android:id="@+id/btn_cancel"
             android:layout_width="@dimen/_70sdp"
             android:layout_height="@dimen/_25sdp"
-            android:background="@drawable/shape"
-            android:text="CANCEL"
-            android:layout_toRightOf="@+id/btn_accept"
             android:layout_marginLeft="@dimen/_10sdp"
-            />
+            android:layout_toRightOf="@+id/btn_accept"
+            android:background="@drawable/shape"
+            android:text="CANCEL" />
 
 
     </RelativeLayout>
-
-
-
-
 
 
     <FrameLayout
         android:id="@+id/frame_seats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
         android:layout_below="@+id/relative_buttons"
         android:layout_marginTop="@dimen/_5sdp"
-        />
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/man_seat"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:src="@drawable/man1"
         android:layout_below="@+id/frame_seats"
+        android:src="@drawable/man1"
 
         />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/man_seat"
+        android:gravity="center"
         android:text="Tap me if you need MY ASSISTANCE "
         android:textColor="#fff"
-        android:gravity="center"
-        android:layout_below="@+id/man_seat"
 
         />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </RelativeLayout>
