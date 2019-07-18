@@ -23,6 +23,7 @@ import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.Rate;
 import com.Tamm.Hotels.wcf.RequestedRooms;
+import com.Tamm.Hotels.wcf.RoomCombination;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.RoomsAdapter;
@@ -158,6 +159,8 @@ public class ChooseBookingDate extends AppCompatActivity {
         mendTime = getIntent().getStringExtra("checkOutDate");
         sessionId = getIntent().getStringExtra("sessionId");
         mHotelCode = getIntent().getStringExtra("hotelCode");
+//        SharedPreferencesManger.SaveData(this, "mHOtelCode", mHotelCode);
+//        SharedPreferencesManger.SaveData(this, "sessionId", sessionId);
         countryName = getIntent().getStringExtra("countryName");
         cityName = getIntent().getStringExtra("cityName");
         cityId = getIntent().getStringExtra("cityId");
@@ -202,7 +205,12 @@ public class ChooseBookingDate extends AppCompatActivity {
             transferClass.setArrayOfRequestedRooms(arrayOfRooms);
 
             BookingOptions bookingOptions = response.OptionsForBooking;
-//            bookingOptions.RoomCombination.clear();
+            if (bookingOptions.RoomCombination != null) {
+                ArrayList tempBOok = new ArrayList(bookingOptions.RoomCombination);
+                bookingOptions.RoomCombination.clear();
+                bookingOptions.RoomCombination.add((RoomCombination) tempBOok.get(0));
+            }
+            //            bookingOptions.RoomCombination.clear();
 //            RoomCombination roomCombination = new RoomCombination();
 //            roomCombination.RoomIndex = new ArrayList<>();
 
@@ -217,6 +225,9 @@ public class ChooseBookingDate extends AppCompatActivity {
             HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
 
             AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, bookingOptions, authenticationData);
+            SharedPreferencesManger.SaveData(this, "sessionId", sessionId);
+            SharedPreferencesManger.SaveData(this, "mHOtelCode", mHotelCode);
+            SharedPreferencesManger.SaveData(this, "resultIndex", resultIndex);
 
             roomAdapter = new RoomsAdapter(authenticationData, service, response, rooms, hotel_room, arrayOfRooms, start_time, end_time, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
 

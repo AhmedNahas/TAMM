@@ -18,7 +18,6 @@ import com.Tamm.Hotels.wcf.CheckInReq;
 import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.Guest;
 import com.Tamm.Hotels.wcf.HotelBookResponse;
-import com.Tamm.Hotels.wcf.HotelCancelResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.PaymentInfo;
 
@@ -80,8 +79,10 @@ public class RoomBooked extends AppCompatActivity {
         guest.GuestInRoom = 1;
         arrayOfGuest.add(guest);
         PaymentInfo paymentInfo = new PaymentInfo();
-        paymentInfo.VoucherBooking = false;
-        paymentInfo.PaymentModeType = Enums.PaymentModeType.CreditCard;
+        paymentInfo.VoucherBooking = true;
+        paymentInfo.PaymentModeType = Enums.PaymentModeType.Limit;
+
+//        paymentInfo.CvvNumber="500";
         arrayOfRooms = ChooseBookingDate.transferClass.getArrayOfRequestedRooms();
 
         start_time = SharedPreferencesManger.LoadStringData(RoomBooked.this, "start_date");
@@ -107,7 +108,7 @@ public class RoomBooked extends AppCompatActivity {
             amendInformation.CheckIn = new CheckInReq();
 
             AmendmentResponse amendmentResponse = service.Amendment(amendmentRequestType, hotelBookingResponse.BookingId, amendInformation, hotelBookingResponse.ConfirmationNo, authenticandata);
-            HotelCancelResponse hotelCancelResponse = service.HotelCancel(hotelBookingResponse.BookingId, Enums.CancelRequestType.HotelCancel, "Test", hotelBookingResponse.ConfirmationNo, authenticandata);
+//            HotelCancelResponse hotelCancelResponse = service.HotelCancel(hotelBookingResponse.BookingId, Enums.CancelRequestType.HotelCancel, "Test", hotelBookingResponse.ConfirmationNo, authenticandata);
 
         } catch (Exception e) {
             e.printStackTrace();

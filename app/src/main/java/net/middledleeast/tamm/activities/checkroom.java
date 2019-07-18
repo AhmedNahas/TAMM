@@ -12,10 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
-import com.Tamm.Hotels.wcf.BookingOptions;
-import com.Tamm.Hotels.wcf.HotelCancellationPolicyResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
-import com.Tamm.Hotels.wcf.RoomCombination;
 
 import net.middledleeast.tamm.R;
 
@@ -51,17 +48,17 @@ public class checkroom extends AppCompatActivity {
 //        if (mealTybe == null) {
 //            Toast.makeText(this, "" + mealTybe, Toast.LENGTH_SHORT).show();
 //        }
-        BookingOptions bookingOptions = new BookingOptions();
-        bookingOptions.RoomCombination = new ArrayList<>();
-        RoomCombination roomCombination = new RoomCombination();
-        roomCombination.RoomIndex = new ArrayList<>();
-        roomCombination.RoomIndex.add(roomIndex);
-        bookingOptions.RoomCombination.add(roomCombination);
-        try {
-            HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        BookingOptions bookingOptions = new BookingOptions();
+//        bookingOptions.RoomCombination = new ArrayList<>();
+//        RoomCombination roomCombination = new RoomCombination();
+//        roomCombination.RoomIndex = new ArrayList<>();
+//        roomCombination.RoomIndex.add(roomIndex);
+//        bookingOptions.RoomCombination.add(roomCombination);
+//        try {
+//            HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
 
         checkRoom=findViewById(R.id.checkOutRoom);

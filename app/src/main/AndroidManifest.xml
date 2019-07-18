@@ -16,21 +16,12 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".activities.SeatSelection">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-
-        </activity>
+        <activity android:name=".activities.SeatSelection" />
         <activity android:name=".activities.RecommendedTwoWay" />
         <activity android:name=".activities.RecommendedOneWay" />
         <activity android:name=".ActivityToFragment.PaymentActivityFragment" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
         <activity
-            android:name=".activities.SplashActivity"
+            android:name=".activities.FindHotels"
             android:label="@string/title_activity_renew_account"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.PassengerDeparture" />
@@ -48,9 +39,9 @@
         <activity android:name=".activities.ChooseBookingDate" />
         <activity android:name=".activities.HotelDetails" />
         <activity android:name=".activities.ChooseHotelActivity" />
-        <activity android:name=".activities.WelcomeActivity" />
+        <activity android:name=".activities.SplashActivity" />
         <activity android:name=".LanguageActivity" />
-        <activity android:name=".activities.FindHotels" />
+        <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".activities.ConfirmBookingRoom" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".model.ReserveRoom" />
