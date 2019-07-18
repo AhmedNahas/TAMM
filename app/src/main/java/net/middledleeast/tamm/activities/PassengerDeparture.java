@@ -2,6 +2,7 @@ package net.middledleeast.tamm.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,7 +14,7 @@ import net.middledleeast.tamm.R;
 
 public class PassengerDeparture extends AppCompatActivity {
     int counter = 0;
-
+    Button priceFinal;
     private ImageView imgincreaseadult,imgdecreaseadult;
     private TextView txtadult;
 
@@ -22,12 +23,17 @@ public class PassengerDeparture extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.passenger_departure);
-
+        priceFinal = findViewById(R.id.priceFinal);
         imgdecreaseadult=findViewById(R.id.decrease_adult);
         imgincreaseadult=findViewById(R.id.increase_adult);
         txtadult=findViewById(R.id.txtview_adult);
 
-
+        priceFinal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // startActivity(new Intent(PassengerDeparture.this,Seat));
+            }
+        });
 
         imgincreaseadult.setOnClickListener(new View.OnClickListener() {
             @Override

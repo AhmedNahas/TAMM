@@ -118,14 +118,16 @@ public class ChooseBookingDate extends AppCompatActivity {
         String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
 
 
-        StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
+        if (child_count == null) {
 
-         while (st.hasMoreTokens()){
-             list_count_child.add(Integer.parseInt(st.nextToken().trim()));
+        } else {
+            StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
+            while (st.hasMoreTokens()) {
+                list_count_child.add(Integer.parseInt(st.nextToken().trim()));
+            }
+            //Toast.makeText(this, ""+list_count_child.get(0), Toast.LENGTH_SHORT).show();
 
-             //Toast.makeText(this, ""+list_count_child.get(0), Toast.LENGTH_SHORT).show();
-
-         }
+        }
       //  Toast.makeText(this, ""+child_count, Toast.LENGTH_SHORT).show();
       //  SharedPreferencesManger.remove(this,"child_count");
 

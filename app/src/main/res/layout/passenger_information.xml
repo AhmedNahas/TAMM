@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.PassengerInformation"
     android:orientation="vertical"
-    android:background="@drawable/manlap">
+    android:background="@drawable/plane">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -533,6 +533,7 @@
             />
     </LinearLayout>
     <Button
+        android:id="@+id/confirm_flight"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="CONFIRM"

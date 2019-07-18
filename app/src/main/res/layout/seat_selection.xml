@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".activities.SeatSelection">
+
+
+    <RelativeLayout
+        android:id="@+id/toolbar_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/toolbar_back1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/ic_back_arrow"
+            android:backgroundTint="#FFEB3B" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/toolbar_back1"
+            android:text="BACK"
+            android:textColor="#ffff"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="34dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100dp"
+            android:background="@drawable/logo" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/ic_button" />
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/toolbar_back"
+        android:background="@drawable/line1" />
+
+    <TextView
+        android:id="@+id/tv_seat_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line1"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Seat Selection"
+        android:textColor="#fff"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="italic"
+
+
+        />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="2dp"
+        android:layout_below="@+id/tv_seat_selection"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:background="@drawable/line1" />
+
+    <TextView
+        android:id="@+id/tv_choosing_seat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line2"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:text="Choosing your seats will be charged for extra fees"
+        android:textColor="#fff"
+
+        />
+
+    <RelativeLayout
+        android:id="@+id/relative_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_choosing_seat"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_1sdp">
+
+        <Button
+            android:id="@+id/btn_accept"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:background="@drawable/shape"
+            android:text="I ACCEPT" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_toRightOf="@+id/btn_accept"
+            android:background="@drawable/shape"
+            android:text="CANCEL" />
+
+
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:id="@+id/frame_seats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_buttons"
+        android:layout_marginTop="@dimen/_5sdp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/man_seat"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/frame_seats"
+        android:src="@drawable/man1"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/man_seat"
+        android:gravity="center"
+        android:text="Tap me if you need MY ASSISTANCE "
+        android:textColor="#fff"
+
+        />
+
+
+</RelativeLayout>

@@ -21,6 +21,7 @@ import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.RoomInformation;
 import com.Tamm.Hotels.wcf.Supplement;
+import com.bumptech.glide.Glide;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.checkroom;
@@ -113,7 +114,8 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         }
         //image
         if (roomInformation != null) {
-            List<String> images = rooms.get(0).RoomAdditionalInfo.ImageURLs;
+            List<String> images = rooms.get(position).RoomAdditionalInfo.ImageURLs;
+            Glide.with(context).load(images).into(holder.img_photo_hotel);
             roomInstructions = rooms.get(position).MealType;
             description = rooms.get(position).RoomAdditionalInfo.Description;
         }
