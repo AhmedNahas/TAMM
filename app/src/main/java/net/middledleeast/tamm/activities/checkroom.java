@@ -98,6 +98,8 @@ public class checkroom extends AppCompatActivity {
             service.enableLogging = true;
 
 
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -113,8 +115,6 @@ public class checkroom extends AppCompatActivity {
         resultIndex = getIntent().getIntExtra("resultIndex", 0);
         mealTybe = getIntent().getStringExtra("mealTybe");
         roomIndex = getIntent().getIntExtra("roomIndex", 0);
-//        roomPrice = getIntent().getStringExtra("roomPrice");
-//        currency = getIntent().getStringExtra("currency");
     }
 
     private void auth() {
@@ -126,7 +126,6 @@ public class checkroom extends AppCompatActivity {
         authenticationData.Password = ("Tam@18418756");
 
     }
-
     public static class transferClass {
 
         public static ArrayOfRequestedRooms arrayOfRequestedRooms;

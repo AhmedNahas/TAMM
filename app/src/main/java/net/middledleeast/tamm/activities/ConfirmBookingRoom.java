@@ -70,11 +70,11 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 //        rooms = (List<Hotel_Room>) gson.fromJson(intent.getStringExtra("rooms"), List.class);
 //        hotel_room(xxhdpi) = gson.fromJson(intent.getStringExtra("hotel_room(xxhdpi)"), Hotel_Room.class);
         sessionId = intent.getStringExtra("sessionId");
-        SharedPreferencesManger.SaveData(this, "sessionId", sessionId);
+//        SharedPreferencesManger.SaveData(this, "sessionId", sessionId);
         noOfRooms = intent.getIntExtra("noOfRooms", 1);
         SharedPreferencesManger.SaveData(this, "noOfRooms", noOfRooms);
         resultIndex = intent.getIntExtra("resultIndex", 1);
-        SharedPreferencesManger.SaveData(this, "resultIndex", resultIndex);
+//        SharedPreferencesManger.SaveData(this, "resultIndex", resultIndex);
 //        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 
         start_time = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "start_date");
@@ -88,9 +88,9 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         //  date2 = formatter.parseDateTime(intent.getStringExtra("date2"));
 
         roomIndex = intent.getIntExtra("roomIndex", 0);
-        SharedPreferencesManger.SaveData(this, "roomIndex", roomIndex);
+//        SharedPreferencesManger.SaveData(this, "roomIndex", roomIndex);
         mHOtelCode = intent.getStringExtra("mHOtelCode");
-        SharedPreferencesManger.SaveData(this, "mHOtelCode", mHOtelCode);
+//        SharedPreferencesManger.SaveData(this, "mHOtelCode", mHOtelCode);
 //        authenticandata = gson.fromJson(intent.getStringExtra("authenticandata"), AuthenticationData.class);
 //        arrayOfGuest = new ArrayOfGuest();
 //        Guest guest = new Guest();
@@ -137,9 +137,9 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         confirmRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                startActivity(new Intent(ConfirmBookingRoom.this, PaymentActivity.class ));
-                Client client = new Client(ConfirmBookingRoom.this, "https://api-test.wirecard.com");
-                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+                startActivity(new Intent(ConfirmBookingRoom.this, RoomBooked.class));
+//                Client client = new Client(ConfirmBookingRoom.this, "https://api-test.wirecard.com");
+//                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
             }
         });
 
