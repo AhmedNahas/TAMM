@@ -18,11 +18,7 @@
         tools:replace="android:icon">
         <activity android:name=".activities.SeatSelection">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
 
         </activity>
@@ -32,7 +28,11 @@
         <activity
             android:name=".activities.SplashActivity"
             android:label="@string/title_activity_renew_account"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+
+
+
+        </activity>
         <activity android:name=".activities.PassengerDeparture" />
         <activity android:name=".activities.Passenger_inform" />
         <activity android:name=".activities.FlightDetails" />
@@ -50,16 +50,20 @@
         <activity android:name=".activities.ChooseHotelActivity" />
         <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".LanguageActivity" />
-        <activity android:name=".activities.FindHotels" />
-        <activity android:name=".activities.ConfirmBookingRoom" />
-        <activity android:name=".activities.MainActivity" />
-        <activity android:name=".model.ReserveRoom" />
-        <activity android:name=".activities.RenewAccount">
+        <activity android:name=".activities.FindHotels" >
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".activities.ConfirmBookingRoom" />
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".model.ReserveRoom" />
+        <activity android:name=".activities.RenewAccount">
+
         </activity>
     </application>
 

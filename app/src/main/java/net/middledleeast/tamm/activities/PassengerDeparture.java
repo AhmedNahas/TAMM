@@ -32,7 +32,7 @@ public class PassengerDeparture extends AppCompatActivity {
         priceFinal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // startActivity(new Intent(PassengerDeparture.this,Seat));
+                startActivity(new Intent(PassengerDeparture.this,SeatSelection.class));
             }
         });
 
