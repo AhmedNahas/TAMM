@@ -1,11 +1,13 @@
 package net.middledleeast.tamm.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,39 +20,52 @@ import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.RoomCombination;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class checkroom extends AppCompatActivity {
+    @BindView(R.id.tv_total_mount)
+    TextView tvTotalMount;
     private Button checkRoom;
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
     private String sessionId;
     private String mHotelCode;
     private int resultIndex;
-    private List<Hotel_Room> rooms  = new ArrayList<>();
+    private List<Hotel_Room> rooms = new ArrayList<>();
     TextView roomTyben;
     private String intent;
     private String roomTybe;
     private String description;
     private String mealTybe;
     private int roomIndex;
+    private String roomPrice;
+    private String currency;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.check_room);
+        ButterKnife.bind(this);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
         auth();
         getIntentInfo();
 
-//        if (mealTybe == null) {
-//            Toast.makeText(this, "" + mealTybe, Toast.LENGTH_SHORT).show();
-//        }
+        tvTotalMount.setText("  Total Amount:             "+roomPrice);
+
+         roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
+        currency = SharedPreferencesManger.LoadStringData(this, "currency");
+
+        tvTotalMount.setText("TOTAl AMOUNT :                            "+currency+" "+roomPrice);
+
         BookingOptions bookingOptions = new BookingOptions();
         bookingOptions.RoomCombination = new ArrayList<>();
         RoomCombination roomCombination = new RoomCombination();
@@ -64,15 +79,15 @@ public class checkroom extends AppCompatActivity {
         }
 
 
-        checkRoom=findViewById(R.id.checkOutRoom);
-        roomTyben=findViewById(R.id.room_Tybe);
+        checkRoom = findViewById(R.id.checkOutRoom);
+        roomTyben = findViewById(R.id.room_Tybe);
         roomTyben.setText(roomTybe);
 
 
         checkRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(checkroom.this,ConfirmBookingRoom.class));
+                startActivity(new Intent(checkroom.this, ConfirmBookingRoom.class));
 
             }
         });
@@ -81,8 +96,6 @@ public class checkroom extends AppCompatActivity {
         try {
 
             service.enableLogging = true;
-
-
 
 
         } catch (Exception e) {
@@ -100,6 +113,8 @@ public class checkroom extends AppCompatActivity {
         resultIndex = getIntent().getIntExtra("resultIndex", 0);
         mealTybe = getIntent().getStringExtra("mealTybe");
         roomIndex = getIntent().getIntExtra("roomIndex", 0);
+//        roomPrice = getIntent().getStringExtra("roomPrice");
+//        currency = getIntent().getStringExtra("currency");
     }
 
     private void auth() {
@@ -111,6 +126,7 @@ public class checkroom extends AppCompatActivity {
         authenticationData.Password = ("Tam@18418756");
 
     }
+
     public static class transferClass {
 
         public static ArrayOfRequestedRooms arrayOfRequestedRooms;

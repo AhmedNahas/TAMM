@@ -28,9 +28,12 @@
 
 
         <ImageView
+            android:layout_marginTop="@dimen/_10ssp"
+            android:layout_marginBottom="@dimen/_10ssp"
+            android:layout_marginStart="@dimen/_5sdp"
             android:id="@+id/plan_logo"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="wrap_content"
             android:src="@drawable/logo_colored"
             android:layout_gravity="center_vertical"/>
 

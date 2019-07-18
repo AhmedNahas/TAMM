@@ -37,6 +37,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     private ArrayList<String> roomGuests;
     private ArrayList<Integer> resultIndex;
     List<Integer> childCont = new ArrayList<>();
+    private String session_id;
 
 
     @Override
@@ -59,11 +60,11 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
         cityId = getIntent().getStringExtra("cityId");
         noOfRooms = getIntent().getIntExtra("noOfRooms", 1);
         roomGuests = getIntent().getStringArrayListExtra("roomGuest");
-        String sessionId = getIntent().getStringExtra("sessionId");
-        resultIndex = (ArrayList<Integer>) getIntent().getSerializableExtra("resultIndex");
 
+        resultIndex = (ArrayList<Integer>) getIntent().getSerializableExtra("resultIndex");
+         session_id = SharedPreferencesManger.LoadStringData(this, "session_id");
         reInfoHotels.setLayoutManager(new LinearLayoutManager(this));
-        adapterHotelInfo = new AdapterHotelInfo(ChooseHotelActivity.this, hotelName, hotelrat, hotelphoto, this, onHotelListener, hotelAddress, hotelCode, sessionId,
+        adapterHotelInfo = new AdapterHotelInfo(ChooseHotelActivity.this, hotelName, hotelrat, hotelphoto, this, onHotelListener, hotelAddress, hotelCode, session_id,
                 mstartTime, mendTime, countryName, cityName, cityId, noOfRooms, roomGuests, resultIndex);
         reInfoHotels.setAdapter(adapterHotelInfo);
         adapterHotelInfo.notifyDataSetChanged();

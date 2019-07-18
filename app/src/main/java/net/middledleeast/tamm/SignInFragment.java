@@ -2,8 +2,10 @@ package net.middledleeast.tamm;
 
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +44,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 /**
@@ -51,20 +57,21 @@ public class SignInFragment extends Fragment {
     private TextView txtForgotPassword;
     private Button btnSignIn;
     private EditText userName, pass;
-    private static final String HI ="http://egyptgoogle.com/freeusers/checkusers.php" ;
-    private List<Freeuser> freeusers =new ArrayList<>();
+    private static final String HI = "http://egyptgoogle.com/freeusers/checkusers.php";
+    private List<Freeuser> freeusers = new ArrayList<>();
 
     private List<String> listUserName = new ArrayList<>();
     private List<String> listUserPass = new ArrayList<>();
 
-    private static final String HIMEMBER ="http://egyptgoogle.com/paymentusers/checkpayment.php" ;
+    private static final String HIMEMBER = "http://egyptgoogle.com/paymentusers/checkpayment.php";
 
-    private List<Paymentuser> paymentusers =new ArrayList<>();
+    private List<Paymentuser> paymentusers = new ArrayList<>();
     private List<String> listUserNamemember = new ArrayList<>();
     private List<String> listUserPassmember = new ArrayList<>();
 
     private String password;
     private String username;
+    private Dialog dialog;
 
 
     public SignInFragment() {
@@ -82,11 +89,21 @@ public class SignInFragment extends Fragment {
         String username = SharedPreferencesManger.LoadStringData(getActivity(), "username");
 
         userName.setText(username);
-
-
+        dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.custom_dialog);
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
 
                 getFreeData();
                 getMemberData();
+
+                return null;
+            }
+        }.execute();
+
+
+
 
 
 
@@ -94,65 +111,54 @@ public class SignInFragment extends Fragment {
 //        userName.setText("ahmed");
 //        pass.setText("0125016341");
 
-
-        btnSignIn.setOnTouchListener(new View.OnTouchListener() {
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public void onClick(View view) {
+
+
+
+
+                dialog.show();
+
+
+                String user_Name = userName.getText().toString();
+                String password = pass.getText().toString();
+
+                if (TextUtils.isEmpty(user_Name)) {
+                    userName.setError("Name Is Required");
+dialog.cancel();
+                } else if (TextUtils.isEmpty(password)) {
+                    pass.setError("Conf. Password Is Required");
+                    dialog.cancel();
+                }
+
+
+
+                if (listUserPass.contains(pass.getText().toString()) && listUserName.contains(userName.getText().toString())) {
+                    dialog.cancel();
+                    Intent intent = new Intent(getContext(), RenewAccount.class);
+                    startActivity(intent);
+
+                } else if (listUserNamemember.contains(userName.getText().toString()) && listUserPassmember.contains(pass.getText().toString())) {
+                    dialog.cancel();
+                    Intent intent = new Intent(getContext(), RenewAccount.class);
+                    startActivity(intent);
+
+                }else {
+                    Toast.makeText(getContext(), "wrong user name or password", Toast.LENGTH_SHORT).show();
+                    dialog.cancel();
+
+
+                }
+
 
                 if (userName.getText().toString().equals("tamm") && pass.getText().toString().equals("0123456")) {
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.welcome_container, new Buttons())
                             .commit();
+                    dialog.cancel();
                 }
 
-//                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//                    btnSignIn.setTextColor(Color.parseColor("#BE973B"));
-//                    getActivity().getSupportFragmentManager().beginTransaction()
-//                            .replace(R.id.welcome_container, new PlansFragment())
-//                            .commit();
-//                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-//                    btnSignIn.setBackground(getActivity().getDrawable(R.drawable.border));
-//                }
-                return false;
-
-
-            }
-           });
-
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String user_Name = userName.getText().toString();
-                String password = pass.getText().toString();
-
-
-                if (TextUtils.isEmpty(user_Name)) {
-                    userName.setError("Name Is Required");
-
-                } else if (TextUtils.isEmpty(password)) {
-                    pass.setError("Conf. Password Is Required");
-                }
-
-
-
-
-                if (listUserPass.contains(pass.getText().toString())&&listUserName.contains(userName.getText().toString())){
-
-                    Intent intent =new Intent(getContext(), RenewAccount.class);
-                    startActivity(intent);
-
-
-
-                }else if (listUserNamemember.contains(userName.getText().toString())&&listUserPassmember.contains(pass.getText().toString())){
-                    Intent intent =new Intent(getContext(), RenewAccount.class);
-                    startActivity(intent);
-
-
-                }else {
-
-                    Toast.makeText(getContext(), "Your UserName Or Password Is Not Correct", Toast.LENGTH_SHORT).show();
-                }
 
 
 
@@ -181,73 +187,82 @@ public class SignInFragment extends Fragment {
     }
 
     private void getMemberData() {
-        StringRequest stringRequest=new StringRequest(Request.Method.GET, HIMEMBER, new Response.Listener<String>() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, HIMEMBER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject=new JSONObject(response);
-                    JSONArray array=jsonObject.getJSONArray("paymentusers");
-                    for (int i=0; i<array.length(); i++ ){
-                        JSONObject ob=array.getJSONObject(i);
 
-                        Paymentuser listData=new Paymentuser(ob.getString("username")
-                                ,ob.getString("password"));
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray array = jsonObject.getJSONArray("paymentusers");
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject ob = array.getJSONObject(i);
+
+                        Paymentuser listData = new Paymentuser(ob.getString("username")
+                                , ob.getString("password"));
                         paymentusers.add(listData);
 
                         password = paymentusers.get(i).getPassword();
                         username = paymentusers.get(i).getUsername();
 
 
-
-                        SharedPreferencesManger.SaveData(getActivity(),"user",username);
+                        SharedPreferencesManger.SaveData(getActivity(), "user", username);
 
                         listUserNamemember.add(username);
                         listUserPassmember.add(password);
                     }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
+
+                    Toast.makeText(getContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                dialog.cancel();
             }
         });
-        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
     }
-
 
 
     private void getFreeData() {
 
-        StringRequest stringRequest=new StringRequest(Request.Method.GET, HI, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, HI, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
-                    JSONObject jsonObject=new JSONObject(response);
-                    JSONArray array=jsonObject.getJSONArray("freeusers");
-                    for (int i=0; i<array.length(); i++ ){
-                        JSONObject ob=array.getJSONObject(i);
-                        Freeuser listData=new Freeuser(ob.getString("username")
-                                ,ob.getString("password"));
+
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray array = jsonObject.getJSONArray("freeusers");
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject ob = array.getJSONObject(i);
+                        Freeuser listData = new Freeuser(ob.getString("username")
+                                , ob.getString("password"));
                         freeusers.add(listData);
 
-                         password = freeusers.get(i).getPassword();
-                         username = freeusers.get(i).getUsername();
+                        password = freeusers.get(i).getPassword();
+                        username = freeusers.get(i).getUsername();
 
 
-
-                        SharedPreferencesManger.SaveData(getActivity(),"user",username);
+                        SharedPreferencesManger.SaveData(getActivity(), "user", username);
 
                         listUserName.add(username);
                         listUserPass.add(password);
                     }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
+
+                    Toast.makeText(getContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    dialog.cancel();
                 }
 
             }
@@ -256,15 +271,13 @@ public class SignInFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
+                dialog.cancel();
             }
         });
-        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
     }
-
-
-
 
 
     private View getView(LayoutInflater inflater, ViewGroup container) {
@@ -273,8 +286,18 @@ public class SignInFragment extends Fragment {
         btnSignIn = view.findViewById(R.id.btn_sign_in_user);
         userName = view.findViewById(R.id.tv_signin_username);
         pass = view.findViewById(R.id.tv_signin_password);
+
+
         return view;
     }
 
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        dialog.dismiss();
+    }
 }
+
 

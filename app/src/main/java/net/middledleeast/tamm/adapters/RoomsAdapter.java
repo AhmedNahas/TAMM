@@ -1,5 +1,6 @@
 package net.middledleeast.tamm.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ import com.bumptech.glide.Glide;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.checkroom;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import org.joda.time.DateTime;
 
@@ -35,6 +37,7 @@ import java.util.List;
 public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> {
 
     private final Context context;
+    Activity activity ;
     private final Hotel_Room hotel_room;
     private final ArrayOfRequestedRooms arrayOfRooms;
     private final String date1;
@@ -53,7 +56,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     AuthenticationData authenticationData;
 
 
-    public RoomsAdapter(AuthenticationData data, BasicHttpBinding_IHotelService1 service, HotelRoomAvailabilityResponse response, List<Hotel_Room> rooms, Hotel_Room hotel_room, ArrayOfRequestedRooms arrayOfRooms,
+    public RoomsAdapter( Activity activity,AuthenticationData data, BasicHttpBinding_IHotelService1 service, HotelRoomAvailabilityResponse response, List<Hotel_Room> rooms, Hotel_Room hotel_room, ArrayOfRequestedRooms arrayOfRooms,
                         String date1, String date2, int noOfRooms, int resultIndex, String mHotelCode, AuthenticationData authenticationData, String sessionId, Context context) {
         this.rooms = rooms;
         this.hotel_room = hotel_room;
@@ -70,6 +73,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         this.response = response;
         this.service = service;
         this.authenticationData = data;
+        this.activity = activity;
         notifyDataSetChanged();
     }
 
@@ -139,7 +143,13 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 intent.putExtra("roomTybe", roomType);
                 intent.putExtra("description", description);
                 intent.putExtra("mealTybe", mealType);
-                intent.putExtra("roomPrice", roomprice);
+                intent.putExtra("roomPrice", roomprice.toString());
+                intent.putExtra("currency", currency);
+                SharedPreferencesManger.SaveData(activity,"currency",currency);
+                SharedPreferencesManger.SaveData(activity,"roomPrice", roomprice.toString());
+
+
+
 
                 context.startActivity(intent);
             }

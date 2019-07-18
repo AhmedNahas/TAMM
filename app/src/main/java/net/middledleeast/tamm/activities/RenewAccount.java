@@ -48,12 +48,12 @@ public class RenewAccount extends AppCompatActivity
                 startActivity(intent);
             }
         });
-        img1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RenewAccount.this,FlightTamm.class));
-            }
-        });
+//        img1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(RenewAccount.this,FlightTamm.class));
+//            }
+//        });
 
         try {
             user = SharedPreferencesManger.LoadStringData(this, "user");

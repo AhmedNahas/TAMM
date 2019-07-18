@@ -38,7 +38,7 @@ android:id="@+id/_1"            android:gravity="center"
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="MEMBERSHIP ACCOUNT PLAN \n         Terms and conditions"
+                android:text="MEMBERSHIP  ACCOUNT   PLAN \n         Terms and conditions"
                 android:textColor="@color/app_color"
                 android:textStyle="bold"
                 android:layout_below="@+id/iv_logo_black"
@@ -68,7 +68,7 @@ android:id="@+id/_1"            android:gravity="center"
 
 
     <Button
-        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_below="@+id/_1"
         android:layout_centerHorizontal="true"
         android:id="@+id/btn_register_signup"

@@ -57,7 +57,7 @@ public class MultiCitiesFlights extends Fragment {
         adapter = new FlightAddingAdapter(integers);
         addNewTripRv.setAdapter(adapter);
 
-        fromToRecycler = view.findViewById(R.id.from_to_rV);
+
         proccedBtn = view.findViewById(R.id.procced_btn);
         departure = view.findViewById(R.id.departure_spinner);
         returnFrom = view.findViewById(R.id.return_spinner);

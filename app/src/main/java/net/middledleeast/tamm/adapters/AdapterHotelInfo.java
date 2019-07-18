@@ -90,6 +90,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         holder.name.setText(name);
         holder.rat.setText(rat+"");
 
+
         Glide.with(context).load(photos).into(holder.photoHotel);
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +117,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
 
                 context.startActivity(intent);
 
+                SharedPreferencesManger.SaveData(activity,"mHotel_code", mHotelCode);
 
             }
         });

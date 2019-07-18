@@ -156,8 +156,8 @@ public class ChooseBookingDate extends AppCompatActivity {
          hotel_name_s = getIntent().getStringExtra("hotel_name_s");
         mstartTime = getIntent().getStringExtra("checkInDate");
         mendTime = getIntent().getStringExtra("checkOutDate");
-        sessionId = getIntent().getStringExtra("sessionId");
-        mHotelCode = getIntent().getStringExtra("hotelCode");
+        sessionId =SharedPreferencesManger.LoadStringData(ChooseBookingDate.this,"session_id");
+        mHotelCode = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this,"mHotel_code");
         countryName = getIntent().getStringExtra("countryName");
         cityName = getIntent().getStringExtra("cityName");
         cityId = getIntent().getStringExtra("cityId");
@@ -218,7 +218,7 @@ public class ChooseBookingDate extends AppCompatActivity {
 
             AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, bookingOptions, authenticationData);
 
-            roomAdapter = new RoomsAdapter(authenticationData, service, response, rooms, hotel_room, arrayOfRooms, start_time, end_time, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
+            roomAdapter = new RoomsAdapter(ChooseBookingDate.this,authenticationData, service, response, rooms, hotel_room, arrayOfRooms, start_time, end_time, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
 
 
             roomRecyclerView.setAdapter(roomAdapter);

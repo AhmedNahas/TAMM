@@ -51,6 +51,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     private String start_time;
     private String end_time;
     private String hotel_name;
+    private String roomPrice;
+    private String currency;
 
 
     @Override
@@ -78,7 +80,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         start_time = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "start_date");
         end_time = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "end_date");
         hotel_name = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "hotel_name");
-
+        roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
+        currency = SharedPreferencesManger.LoadStringData(this, "currency");
 
 //        date1 = formatter.parseDateTime(intent.getStringExtra("date1"));
 //        date1.toString();
@@ -103,10 +106,11 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 //        paymentInfo.VoucherBooking = false;
 //        paymentInfo.PaymentModeType = Enums.PaymentModeType.CreditCard;
 //        arrayOfRooms = ChooseBookingDate.transferClass.getArrayOfRequestedRooms();
-        BigDecimal amount = BigDecimal.valueOf(0);
+        BigDecimal amount =new BigDecimal(roomPrice);
 
 
-        String currency = "";
+
+
         try {
 //            HotelBookResponse hotelBookingResponse = service.HotelBook(start_time, end_time,
 //                    "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo
@@ -121,8 +125,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 //            HotelBookingDetailResponse hotelBookingDetailResponse = service.HotelBookingDetail(hotelBookingResponse.BookingId, hotelBookingResponse.ConfirmationNo, "070817125855789#kuld", authenticandata);
 //            String confirmationNo = hotelBookingResponse.ConfirmationNo;
             hotel_room = ChooseBookingDate.transferClass.hotel_room;
-            amount = hotel_room.RoomRate.TotalFare;
-            currency = hotel_room.RoomRate.Currency;
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -169,7 +172,6 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         Serializable paymentSdkResponse = data.getSerializableExtra(Client.EXTRA_PAYMENT_SDK_RESPONSE);
         if (paymentSdkResponse instanceof PaymentResponse) {
             String formattedResponse = ResponseHelper.getFormattedResponse((PaymentResponse) paymentSdkResponse);
-
 
         }
         if (resultCode == RESULT_OK) {

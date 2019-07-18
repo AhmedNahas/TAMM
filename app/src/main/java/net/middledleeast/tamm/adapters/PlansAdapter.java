@@ -1,6 +1,7 @@
 package net.middledleeast.tamm.adapters;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -44,12 +45,33 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHol
     @Override
     public void onBindViewHolder(@NonNull final PlansViewHolder plansViewHolder, final int i) {
 
+
+        if (i==0){
+
+            plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_colored_background));
+            plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_black));
+            plansViewHolder.txtTitle.setTextColor(Color.BLACK);
+            plansViewHolder.txtDescription.setTextColor(Color.BLACK);
+
+        }else {
+
+
+            plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_black_background));
+            plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_colored));
+            plansViewHolder.txtTitle.setTextColor(context.getResources().getColor(R.color.app_color));
+            plansViewHolder.txtDescription.setTextColor(Color.WHITE);
+        }
+
+
+
         plansViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 if(i==0)
 {
+
+
     ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
             .replace(R.id.welcome_container, new MemberShip())
             .commit();
@@ -76,23 +98,23 @@ else
             plansViewHolder.txtDescription.setText(planModelList.get(i).getDescription());
         }
 
-        plansViewHolder.itemView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN){
-                    plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_colored_background));
-                    plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_black));
-                    plansViewHolder.txtTitle.setTextColor(Color.BLACK);
-                    plansViewHolder.txtDescription.setTextColor(Color.BLACK);
-                }else if (event.getAction() == MotionEvent.ACTION_UP){
-                    plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_black_background));
-                    plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_colored));
-                    plansViewHolder.txtTitle.setTextColor(context.getResources().getColor(R.color.app_color));
-                    plansViewHolder.txtDescription.setTextColor(Color.WHITE);
-                }
-                return false;
-            }
-        });
+//        plansViewHolder.itemView.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if (event.getAction() == MotionEvent.ACTION_DOWN){
+//                    plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_colored_background));
+//                    plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_black));
+//                    plansViewHolder.txtTitle.setTextColor(Color.BLACK);
+//                    plansViewHolder.txtDescription.setTextColor(Color.BLACK);
+//                }else if (event.getAction() == MotionEvent.ACTION_UP){
+//                    plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_black_background));
+//                    plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_colored));
+//                    plansViewHolder.txtTitle.setTextColor(context.getResources().getColor(R.color.app_color));
+//                    plansViewHolder.txtDescription.setTextColor(Color.WHITE);
+//                }
+//                return false;
+//            }
+//        });
 
     }
 

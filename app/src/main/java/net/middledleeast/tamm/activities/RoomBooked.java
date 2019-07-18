@@ -64,11 +64,13 @@ public class RoomBooked extends AppCompatActivity {
         authenticandata = new AuthenticationData();
         authenticandata.UserName = ("Tammtest");
         authenticandata.Password = ("Tam@18418756");
-        sessionId = SharedPreferencesManger.LoadStringData(this, "sessionId");
+        sessionId = SharedPreferencesManger.LoadStringData(this, "session_id");
         noOfRooms = SharedPreferencesManger.LoadLongData(this, "noOfRooms");
         resultIndex = SharedPreferencesManger.LoadLongData(this, "resultIndex");
         roomIndex = SharedPreferencesManger.LoadLongData(this, "roomIndex");
-        mHOtelCode = SharedPreferencesManger.LoadStringData(this, "mHOtelCode");
+        mHOtelCode = SharedPreferencesManger.LoadStringData(this, "mHotel_code");
+
+
         arrayOfGuest = new ArrayOfGuest();
         Guest guest = new Guest();
         guest.Title = "Mr";
