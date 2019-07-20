@@ -23,6 +23,7 @@ import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.RoomInformation;
 import com.Tamm.Hotels.wcf.Supplement;
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.checkroom;
@@ -110,6 +111,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 //        holder.roomPrice.setText((CharSequence) price);
 
         ArrayOfSupplement arrayOfSupplement = rooms.get(position).Supplements;
+        Gson gson = new Gson();
+        String arrayOfsupString = gson.toJson(arrayOfSupplement);
+        SharedPreferencesManger.SaveData((Activity) context, "suppArray", arrayOfsupString);
         if (arrayOfSupplement != null) {
             for (Supplement supplement : arrayOfSupplement) {
                 boolean requiredSupplement = supplement.SuppIsMandatory;
@@ -147,6 +151,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 intent.putExtra("currency", currency);
                 SharedPreferencesManger.SaveData(activity,"currency",currency);
                 SharedPreferencesManger.SaveData(activity,"roomPrice", roomprice.toString());
+                SharedPreferencesManger.SaveData(activity, "roomIndex", position);
 
 
 

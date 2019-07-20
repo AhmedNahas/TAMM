@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
+import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.HotelBookingDetailResponse;
 import com.Tamm.Hotels.wcf.ResponseStatus;
 
@@ -26,12 +28,12 @@ public class HotelBooking extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hotel_booking);
-        backToMain=findViewById(R.id.back_to_main);
-
+        backToMain = findViewById(R.id.back_to_main);
+        TextView code = findViewById(R.id.tv_code);
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HotelBooking.this,RenewAccount.class));
+                startActivity(new Intent(HotelBooking.this, RenewAccount.class));
             }
         });
         service = new BasicHttpBinding_IHotelService1();
@@ -39,14 +41,17 @@ public class HotelBooking extends AppCompatActivity {
         authenticandata = new AuthenticationData();
         authenticandata.UserName = ("Tammtest");
         authenticandata.Password = ("Tam@18418756");
-        long BookingId = SharedPreferencesManger.LoadLongData(this, "BookingID");
+        int BookingId = SharedPreferencesManger.LoadIntegerData(this, "BookingID");
         String clientReferenceNo = SharedPreferencesManger.LoadStringData(this, "ClientRef");
         String confirmationNo = SharedPreferencesManger.LoadStringData(this, "ConfirmationNo");
         try {
-            HotelBookingDetailResponse hotelBookingDetailResponse = service.HotelBookingDetail((int)BookingId, confirmationNo, clientReferenceNo, authenticandata);
+            Enums.CancelRequestType cancelRequestType = Enums.CancelRequestType.HotelCancel;
+//            HotelCancelResponse hotelCancelResponse = service.HotelCancel(BookingId,cancelRequestType , "Testing", confirmationNo, authenticandata);
+
+            HotelBookingDetailResponse hotelBookingDetailResponse = service.HotelBookingDetail(BookingId, confirmationNo, clientReferenceNo, authenticandata);
             ResponseStatus status = hotelBookingDetailResponse.Status;
             String statuscODE = status.StatusCode;
-
+            code.setText(confirmationNo);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -24,7 +24,7 @@ public class SharedPreferencesManger {
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.clear();
-            editor.commit();
+            editor.apply();
         }
     }
 
@@ -33,7 +33,7 @@ public class SharedPreferencesManger {
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.remove(data_key);
-            editor.commit();
+            editor.apply();
         }
     }
 
@@ -43,7 +43,7 @@ public class SharedPreferencesManger {
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(data_Key, data_Value);
-            editor.commit();
+            editor.apply();
         }
     }
 
@@ -52,7 +52,7 @@ public class SharedPreferencesManger {
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putLong(data_Key, data_Value);
-            editor.commit();
+            editor.apply();
         }
     }
 
@@ -61,8 +61,8 @@ public class SharedPreferencesManger {
         setSharedPreferences(activity);
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putLong(data_Key, data_Value);
-            editor.commit();
+            editor.putInt(data_Key, data_Value);
+            editor.apply();
         }
     }
 

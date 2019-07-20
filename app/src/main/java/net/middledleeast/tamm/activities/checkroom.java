@@ -1,18 +1,17 @@
 package net.middledleeast.tamm.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.AuthenticationData;
+import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.BookingOptions;
 import com.Tamm.Hotels.wcf.HotelCancellationPolicyResponse;
@@ -73,7 +72,12 @@ public class checkroom extends AppCompatActivity {
         roomCombination.RoomIndex.add(roomIndex);
         bookingOptions.RoomCombination.add(roomCombination);
         try {
+
             HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
+
+            AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, bookingOptions, authenticationData);
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
