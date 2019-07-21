@@ -1,7 +1,7 @@
 package net.middledleeast.tamm.activities;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,13 +14,16 @@ import net.middledleeast.tamm.adapters.HotelsActivityAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.StringTokenizer;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class ChooseHotelActivity extends AppCompatActivity implements HotelsActivityAdapter.onHotelListener {
 
     AdapterHotelInfo adapterHotelInfo;
+    @BindView(R.id.rating_bar)
+    RatingBar ratingBar;
     private RecyclerView reInfoHotels;
     private ArrayList<String> hotelName;
     private ArrayList<String> hotelAddress;
@@ -44,6 +47,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_hotel);
+        ButterKnife.bind(this);
 
         reInfoHotels = findViewById(R.id.hotels_rv);
         resultIndex = new ArrayList<>();
@@ -62,12 +66,19 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
         roomGuests = getIntent().getStringArrayListExtra("roomGuest");
 
         resultIndex = (ArrayList<Integer>) getIntent().getSerializableExtra("resultIndex");
-         session_id = SharedPreferencesManger.LoadStringData(this, "session_id");
+        session_id = SharedPreferencesManger.LoadStringData(this, "session_id");
         reInfoHotels.setLayoutManager(new LinearLayoutManager(this));
         adapterHotelInfo = new AdapterHotelInfo(ChooseHotelActivity.this, hotelName, hotelrat, hotelphoto, this, onHotelListener, hotelAddress, hotelCode, session_id,
                 mstartTime, mendTime, countryName, cityName, cityId, noOfRooms, roomGuests, resultIndex);
         reInfoHotels.setAdapter(adapterHotelInfo);
         adapterHotelInfo.notifyDataSetChanged();
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+
+            }
+        });
 
 
     }

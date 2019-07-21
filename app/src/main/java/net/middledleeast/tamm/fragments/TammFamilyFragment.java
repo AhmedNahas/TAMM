@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -60,6 +61,12 @@ public class TammFamilyFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setShowHideAnimationEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeAsUpIndicator(upArrow);
 
+        ((AppCompatActivity)getActivity()).getSupportActionBar().addOnMenuVisibilityListener(new ActionBar.OnMenuVisibilityListener() {
+            @Override
+            public void onMenuVisibilityChanged(boolean isVisible) {
+                Toast.makeText(getContext(), "jkkd", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         btnContinue.setOnTouchListener(new View.OnTouchListener() {
             @Override

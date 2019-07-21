@@ -53,14 +53,17 @@
         android:layout_width="match_parent"
         android:id="@+id/hotel_image_detail"
         android:layout_height="140dp"
+
         android:layout_centerInParent="true"/>
 
 
     <LinearLayout
+
         android:id="@+id/SliderDots"
         android:layout_height="wrap_content"
         android:layout_below="@+id/hotel_image_detail"
-        android:gravity="center_vertical|center_horizontal"
+        android:gravity="center"
+        android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:orientation="horizontal">
 
