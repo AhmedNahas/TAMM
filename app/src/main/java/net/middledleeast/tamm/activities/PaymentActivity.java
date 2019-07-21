@@ -16,10 +16,10 @@ import com.google.gson.Gson;
 import com.wirecard.ecom.Client;
 import com.wirecard.ecom.model.out.PaymentResponse;
 
+import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.RegisterationActivity;
 import net.middledleeast.tamm.fragments.TammFamilyFragment;
-import net.middledleeast.tamm.model.PaymentActivityFragment;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

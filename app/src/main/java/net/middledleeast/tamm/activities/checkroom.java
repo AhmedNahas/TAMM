@@ -31,7 +31,7 @@ public class checkroom extends AppCompatActivity {
     private Button checkRoom,back;
     @BindView(R.id.tv_total_mount)
     TextView tvTotalMount;
-    private Button checkRoom;
+
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
     private String sessionId;

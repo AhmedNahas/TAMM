@@ -47,7 +47,7 @@ public class PlansFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         init();
-        plansAdapter = new PlansAdapter(getContext(), planModelList , getActivity());
+        plansAdapter = new PlansAdapter(getContext(), planModelList );
         recyclerView.setAdapter(plansAdapter);
 
         toolbar = view.findViewById(R.id.welcome_toolbar);

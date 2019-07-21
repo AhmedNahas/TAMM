@@ -36,11 +36,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.activities.PaymentActivity;
 import net.middledleeast.tamm.fragments.PlansFragment;
 import net.middledleeast.tamm.fragments.TammFamilyFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
-import net.middledleeast.tamm.model.PaymentActivityFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
