@@ -34,7 +34,7 @@ import payments.ResponseHelper;
 
 public class ConfirmBookingRoom extends AppCompatActivity {
 
-    private Button confirmRoom;
+    private Button confirmRoom,back;
     ArrayOfGuest arrayOfGuest;
     private Hotel_Room hotel_room;
     private ArrayOfRequestedRooms arrayOfRooms;
@@ -58,6 +58,17 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_booking_room);
         Gson gson = new Gson();
+
+        back=findViewById(R.id.btn_baack);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ConfirmBookingRoom.this,checkroom.class));
+            }
+        });
+
+
+
         Intent intent = getIntent();
         service = new BasicHttpBinding_IHotelService1();
         service.enableLogging = true;

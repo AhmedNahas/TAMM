@@ -5,9 +5,23 @@
     android:background="@drawable/plans_background1"
 
     >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/welcome_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/back_pressed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_back_arrow"
+            android:layout_marginTop="15dp"/>
+
+    </androidx.appcompat.widget.Toolbar>
 
 
     <TextView
+        android:layout_below="@+id/welcome_toolbar"
         android:id="@+id/tv_please"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

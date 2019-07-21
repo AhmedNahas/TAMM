@@ -18,11 +18,7 @@
         tools:replace="android:icon">
         <activity android:name=".activities.SeatSelection">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
 
         </activity>
@@ -55,7 +51,11 @@
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".model.ReserveRoom" />
         <activity android:name=".activities.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

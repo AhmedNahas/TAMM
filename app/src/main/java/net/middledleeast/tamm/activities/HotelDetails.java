@@ -71,6 +71,8 @@ public class HotelDetails extends AppCompatActivity {
     private String part2;
     private String map;
 
+    ImageView imageView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,16 @@ public class HotelDetails extends AppCompatActivity {
         ViewPager viewPager = findViewById(R.id.hotel_image_detail);
         sliderDotspanel = findViewById(R.id.SliderDots);
         ButterKnife.bind(this);
+
+        imageView=findViewById(R.id.toolbar_back1);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HotelDetails.this,ChooseHotelActivity.class));
+            }
+        });
+
+
         //testing
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 

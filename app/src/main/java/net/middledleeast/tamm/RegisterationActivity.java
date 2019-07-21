@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.AuthFailureError;
@@ -36,6 +37,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import net.middledleeast.tamm.activities.PaymentActivity;
+import net.middledleeast.tamm.fragments.PlansFragment;
+import net.middledleeast.tamm.fragments.TammFamilyFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.PaymentActivityFragment;
 
@@ -75,11 +78,27 @@ public class RegisterationActivity extends Fragment {
     private ArrayAdapter mrOrMissAdapter;
     private Spinner mrormissSpinner;
 
+    Toolbar toolbar;
+    ImageView imageView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_registeration, container, false);
+
+
+        toolbar = view.findViewById(R.id.welcome_toolbar);
+        imageView = view.findViewById(R.id.back_pressed);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.welcome_container, new PlansFragment())
+                        .commit();
+            }
+        });
 
         etFirstName=view.findViewById(R.id.ed_first_name);
         etLastName=view.findViewById(R.id.ed_last_name);

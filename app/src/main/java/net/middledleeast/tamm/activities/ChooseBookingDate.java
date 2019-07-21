@@ -63,11 +63,16 @@ public class ChooseBookingDate extends AppCompatActivity {
     private TextView tv_word;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tempchoosebooking);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+
+
 
         StrictMode.setThreadPolicy(policy);
         roomRecyclerView = findViewById(R.id.rv_hotel);
@@ -117,15 +122,20 @@ public class ChooseBookingDate extends AppCompatActivity {
         });
         String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
 
+try {
+    StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
+    while (st.hasMoreTokens()){
+        list_count_child.add(Integer.parseInt(st.nextToken().trim()));
 
-        StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
+        //Toast.makeText(this, ""+list_count_child.get(0), Toast.LENGTH_SHORT).show();
 
-         while (st.hasMoreTokens()){
-             list_count_child.add(Integer.parseInt(st.nextToken().trim()));
+    }
 
-             //Toast.makeText(this, ""+list_count_child.get(0), Toast.LENGTH_SHORT).show();
+}catch (Exception e){
 
-         }
+}
+
+
       //  Toast.makeText(this, ""+child_count, Toast.LENGTH_SHORT).show();
       //  SharedPreferencesManger.remove(this,"child_count");
 

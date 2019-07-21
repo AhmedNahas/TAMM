@@ -1,7 +1,10 @@
 package net.middledleeast.tamm.activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +40,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     private ArrayList<String> roomGuests;
     private ArrayList<Integer> resultIndex;
     List<Integer> childCont = new ArrayList<>();
+    ImageView imageView;
 
 
     @Override
@@ -46,6 +50,14 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
 
         reInfoHotels = findViewById(R.id.hotels_rv);
         resultIndex = new ArrayList<>();
+
+        imageView=findViewById(R.id.toolbar_back1);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ChooseHotelActivity.this,FindHotels.class));
+            }
+        });
 
         hotelAddress = (ArrayList<String>) getIntent().getSerializableExtra("hotelAddress");
         hotelName = (ArrayList<String>) getIntent().getSerializableExtra("hotelName");

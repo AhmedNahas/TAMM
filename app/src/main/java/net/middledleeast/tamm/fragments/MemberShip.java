@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -31,11 +33,26 @@ public class MemberShip extends Fragment {
     Button accept;
     TextView textmemberaccount ;
 
+
+    Toolbar toolbar;
+    ImageView imageView;
+
     private static final String urlmember ="http://egyptgoogle.com/backend/membership/membership.php";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.member_ship, container, false);
+
+        toolbar = view.findViewById(R.id.welcome_toolbar);
+        imageView = view.findViewById(R.id.back_pressed);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.welcome_container, new PlansFragment())
+                        .commit();
+            }
+        });
 
 
         getmemberaccount();

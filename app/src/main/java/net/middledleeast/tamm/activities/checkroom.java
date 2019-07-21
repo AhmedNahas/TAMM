@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class checkroom extends AppCompatActivity {
-    private Button checkRoom;
+    private Button checkRoom,back;
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
     private String sessionId;
@@ -47,6 +47,13 @@ public class checkroom extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         auth();
         getIntentInfo();
+        back=findViewById(R.id.btn_baack);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(checkroom.this,ChooseBookingDate.class));
+            }
+        });
 
 //        if (mealTybe == null) {
 //            Toast.makeText(this, "" + mealTybe, Toast.LENGTH_SHORT).show();

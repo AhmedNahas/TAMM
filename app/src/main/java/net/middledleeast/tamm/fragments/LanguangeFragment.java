@@ -8,6 +8,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toolbar;
 
 import androidx.fragment.app.Fragment;
 
@@ -19,6 +21,7 @@ import net.middledleeast.tamm.R;
 public class LanguangeFragment extends Fragment {
 
     private Button btnEnglish, btnArabic;
+
 
     public LanguangeFragment() {
         // Required empty public constructor
@@ -32,6 +35,7 @@ public class LanguangeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_languange, container, false);
         btnEnglish = view.findViewById(R.id.btn_choose_english);
         btnArabic = view.findViewById(R.id.btn_choose_arabic);
+
 
 
 

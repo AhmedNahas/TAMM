@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -26,12 +28,29 @@ import org.json.JSONObject;
 public class FreeAccount extends Fragment {
     Button accept;
     TextView textfreeaccount;
+    Toolbar toolbar;
+    ImageView imageView;
+
+
+
     private static final String url ="http://egyptgoogle.com/backend/freeaccount/freeaccount.php" ;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.freeaccount, container, false);
+
+
+        toolbar = view.findViewById(R.id.welcome_toolbar);
+        imageView = view.findViewById(R.id.back_pressed);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.welcome_container, new PlansFragment())
+                        .commit();
+            }
+        });
 
         accept = view.findViewById(R.id.btn_register_signup);
             textfreeaccount=view.findViewById(R.id.textView2);

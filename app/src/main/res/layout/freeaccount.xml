@@ -7,79 +7,88 @@
     android:background="@drawable/plans_background1"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="@dimen/_600sdp"
-        android:layout_height="match_parent"
-        android:background="@drawable/plans_background1"
-        />
-
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="383dp"
-        android:layout_height="152dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="12dp"
-        android:src="@drawable/theman" />
-
-
-    <ImageView
-        android:id="@+id/iv_logo_colored"
-        android:layout_width="96dp"
-        android:layout_height="81dp"
-        android:layout_below="@+id/imageView2"
-
-        android:layout_centerInParent="true"
-        android:src="@drawable/logo_colored" />
-
-    <TextView
-        android:id="@+id/textView1"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/welcome_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_logo_colored"
-        android:layout_centerHorizontal="true"
-       android:gravity="center"
-        android:text="FREE ACCOUNT PLAN \n Terms and conditions"
-        android:textColor="@color/app_color"
-        android:textStyle="bold" />
-<ScrollView
-    android:layout_below="@+id/textView1"
-    android:id="@+id/scrool_freeAcount"
-    android:layout_width="wrap_content"
-    android:layout_height="222dp"
-    android:layout_centerInParent="true">
+        android:layout_height="?android:attr/actionBarSize">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="32dp"
+        <ImageView
+            android:id="@+id/back_pressed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_back_arrow"
+            android:layout_marginTop="15dp"/>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <RelativeLayout
+        android:id="@+id/_1"
         android:gravity="center"
-        android:textColor="#fff" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</ScrollView>
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="300dp"
+            android:layout_height="180dp"
+            android:src="@drawable/theman"
+            android:layout_centerHorizontal="true"
+            />
+
+        <ImageView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/iv_logo_black"
+            android:layout_width="80dp"
+            android:layout_height="@dimen/_80sdp"
+            android:src="@drawable/logo_colored"
+            android:layout_below="@+id/imageView2"
+
+            />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  FREE ACCOUNT PLAN \n Terms and conditions"
+            android:textColor="@color/app_color"
+            android:textStyle="bold"
+            android:layout_below="@+id/iv_logo_black"
+            />
+
+        <ScrollView
+            android:layout_below="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp">
+            <RelativeLayout
+                android:id="@+id/layout1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="#fff"/>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
 
 
 
     <Button
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_below="@+id/_1"
+        android:layout_centerHorizontal="true"
         android:id="@+id/btn_register_signup"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scrool_freeAcount"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="129dp"
-        android:layout_marginBottom="122dp"
         android:background="@drawable/border"
         android:text="ACCEPT"
+        android:layout_marginBottom="@dimen/_4sdp"
         android:textColor="#FFF" />
 
 

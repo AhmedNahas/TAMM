@@ -137,6 +137,7 @@ public class FindHotels extends AppCompatActivity {
         nights = findViewById(R.id.nights);
         toolbar_back=findViewById(R.id.toolbar_back1);
         recycl_child_spiner = findViewById(R.id.rv_child);
+
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

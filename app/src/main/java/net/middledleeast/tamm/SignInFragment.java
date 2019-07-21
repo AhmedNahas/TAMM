@@ -13,9 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -26,8 +28,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.activities.RenewAccount;
+import net.middledleeast.tamm.fragments.AuthenticationFragment;
 import net.middledleeast.tamm.fragments.Buttons;
 import net.middledleeast.tamm.fragments.ForgotPasswordFragment;
+import net.middledleeast.tamm.fragments.LanguangeFragment;
 import net.middledleeast.tamm.fragments.PlansFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.Freeuser;
@@ -66,6 +70,10 @@ public class SignInFragment extends Fragment {
     private String password;
     private String username;
 
+    Toolbar toolbar;
+    ImageView imageView;
+
+
 
     public SignInFragment() {
         // Required empty public constructor
@@ -77,6 +85,20 @@ public class SignInFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = getView(inflater, container);
+
+        toolbar = view.findViewById(R.id.welcome_toolbar);
+        imageView = view.findViewById(R.id.back_pressed);
+
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.welcome_container, new AuthenticationFragment())
+                        .commit();
+            }
+        });
+
 
 
         String username = SharedPreferencesManger.LoadStringData(getActivity(), "username");

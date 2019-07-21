@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +29,8 @@ public class PlansFragment extends Fragment {
     private PlansAdapter plansAdapter;
     private List<PlanModel> planModelList = new ArrayList<>();
     private TextView member;
+    Toolbar toolbar;
+    ImageView imageView;
 
     public PlansFragment() {
         // Required empty public constructor
@@ -43,8 +47,20 @@ public class PlansFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         init();
-        plansAdapter = new PlansAdapter(getContext(), planModelList);
+        plansAdapter = new PlansAdapter(getContext(), planModelList , getActivity());
         recyclerView.setAdapter(plansAdapter);
+
+        toolbar = view.findViewById(R.id.welcome_toolbar);
+        imageView = view.findViewById(R.id.back_pressed);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.welcome_container, new AuthenticationFragment())
+                        .commit();
+            }
+        });
 
 
         return view;
