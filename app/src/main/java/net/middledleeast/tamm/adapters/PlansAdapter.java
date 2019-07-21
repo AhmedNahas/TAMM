@@ -45,7 +45,7 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHol
     private String HI = "http://egyptgoogle.com/backend/freeamountformember/freememberfees.php";
     private String HI2 = "http://egyptgoogle.com/backend/amountformember/amountformember.php";
 
-    public PlansAdapter(Context context, List<PlanModel> planModelList , Activity activity) {
+    public PlansAdapter(Context context, List<PlanModel> planModelList) {
         this.context = context;
         this.planModelList = planModelList;
         this.activity = activity;
@@ -68,6 +68,25 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHol
 
 
 
+
+        if (i==0){
+
+            plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_colored_background));
+            plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_black));
+            plansViewHolder.txtTitle.setTextColor(Color.BLACK);
+            plansViewHolder.txtDescription.setTextColor(Color.BLACK);
+
+        }else {
+
+
+            plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_black_background));
+            plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_colored));
+            plansViewHolder.txtTitle.setTextColor(context.getResources().getColor(R.color.app_color));
+            plansViewHolder.txtDescription.setTextColor(Color.WHITE);
+        }
+
+
+
         plansViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +95,8 @@ if(i==0)
 {
 
 getmember();
+
+
 
     ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
             .replace(R.id.welcome_container, new MemberShip())
@@ -107,23 +128,23 @@ else
             plansViewHolder.txtDescription.setText(planModelList.get(i).getDescription());
         }
 
-        plansViewHolder.itemView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN){
-                    plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_colored_background));
-                    plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_black));
-                    plansViewHolder.txtTitle.setTextColor(Color.BLACK);
-                    plansViewHolder.txtDescription.setTextColor(Color.BLACK);
-                }else if (event.getAction() == MotionEvent.ACTION_UP){
-                    plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_black_background));
-                    plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_colored));
-                    plansViewHolder.txtTitle.setTextColor(context.getResources().getColor(R.color.app_color));
-                    plansViewHolder.txtDescription.setTextColor(Color.WHITE);
-                }
-                return false;
-            }
-        });
+//        plansViewHolder.itemView.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if (event.getAction() == MotionEvent.ACTION_DOWN){
+//                    plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_colored_background));
+//                    plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_black));
+//                    plansViewHolder.txtTitle.setTextColor(Color.BLACK);
+//                    plansViewHolder.txtDescription.setTextColor(Color.BLACK);
+//                }else if (event.getAction() == MotionEvent.ACTION_UP){
+//                    plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_black_background));
+//                    plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_colored));
+//                    plansViewHolder.txtTitle.setTextColor(context.getResources().getColor(R.color.app_color));
+//                    plansViewHolder.txtDescription.setTextColor(Color.WHITE);
+//                }
+//                return false;
+//            }
+//        });
 
     }
 

@@ -1,7 +1,9 @@
 package net.middledleeast.tamm.activities;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
@@ -14,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -72,7 +75,8 @@ public class FindHotels extends AppCompatActivity {
     TextView endDateYear;
     @BindView(R.id.layout_check_out)
     LinearLayout layoutCheckOut;
-    private Button findHotel;
+    @BindView(R.id.findHotels)
+    Button findHotels;
     ArrayList<Integer> ratrHotel = new ArrayList<Integer>();
     private List<String> list = new ArrayList<>();
     ArrayList<String> addressHotel = new ArrayList<>();
@@ -119,44 +123,52 @@ public class FindHotels extends AppCompatActivity {
     private HotelSearchResponse hotelSearchResponse;
 
 
+    @SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_hotels);
         ButterKnife.bind(this);
 
-
         areas = findViewById(R.id.area_spinner);
         regions = findViewById(R.id.region_spinner);
         roomCount = findViewById(R.id.no_of_rooms);
         adultCount = findViewById(R.id.adilt_count);
         childCount = findViewById(R.id.no_of_childs);
-        findHotel = findViewById(R.id.findHotels);
 //        startDate = findViewById(R.id.startDate);
 //        endDate = findViewById(R.id.endDate);
         nights = findViewById(R.id.nights);
-        toolbar_back=findViewById(R.id.toolbar_back1);
+        toolbar_back = findViewById(R.id.toolbar_back1);
         recycl_child_spiner = findViewById(R.id.rv_child);
+
 
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FindHotels.super.finish();
+                startActivity(new Intent(FindHotels.this, WelcomeActivity.class));
             }
         });
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+        auth();
+
+
+        getCountries();
+
 
         recycl_child_spiner.setLayoutManager(new GridLayoutManager(this, 2));
 
         for (int i = 0; i < 18; i++) {
             listOfChildAge.add(i);
         }
-        adapterChildCount = new AdapterChildCount(this, listChildernCount, listOfChildAge,this);
+        adapterChildCount = new AdapterChildCount(this, listChildernCount, listOfChildAge, this);
 
         recycl_child_spiner.setAdapter(adapterChildCount);
 
         adapterChildCount.notifyDataSetChanged();
-
-
 
 
         listOfChild.add(0);
@@ -171,7 +183,6 @@ public class FindHotels extends AppCompatActivity {
         startDateDay.setText(date_n);
         startDateMonth.setText(date_m);
         startDateYear.setText(date_d);
-
 
 
         arrayOfResultIndex = new ArrayList<>();
@@ -335,68 +346,10 @@ public class FindHotels extends AppCompatActivity {
 //        });
 
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+    }
 
-        StrictMode.setThreadPolicy(policy);
+    private void getCountries() {
 
-
-        findHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-
-                if (chicDateStart && chicDateEnd) {
-
-                    SharedPreferencesManger.SaveData(FindHotels.this, "start_date", mstartTime);
-
-                    SharedPreferencesManger.SaveData(FindHotels.this, "no_room", noRomes);
-
-                    SharedPreferencesManger.SaveData(FindHotels.this, "end_date", mendTime);
-                    gethotelsInfo(ctyId);
-
-                }else if (chicDateStart){
-
-
-                    new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                            .setTitleText("Select Check Out Dat First")
-                            .setConfirmText("open")
-                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                @Override
-                                public void onClick(SweetAlertDialog sDialog) {
-                                    dialogendTime();
-                                    sDialog.dismissWithAnimation();
-                                }
-                            })
-                            .show();
-
-
-
-                }else{
-
-                    new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                            .setTitleText("Select Check In Dat First")
-                            .setConfirmText("open")
-                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                @Override
-                                public void onClick(SweetAlertDialog sDialog) {
-                                 dilogstart();
-                                    sDialog.dismissWithAnimation();
-                                }
-                            })
-                            .show();
-
-
-
-            }
-
-
-            }
-
-
-        });
-
-        auth();
         try {
 
             service.enableLogging = true;
@@ -418,12 +371,12 @@ public class FindHotels extends AppCompatActivity {
                 list.add(name);
 
 
-
                 ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, list);
                 adapter.setDropDownViewResource(R.layout.drop_dowen);
                 regions.setDropDownWidth(420);
                 regions.setDropDownVerticalOffset(200);
                 regions.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
 
 
             }
@@ -562,8 +515,6 @@ public class FindHotels extends AppCompatActivity {
         String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
 
 
-
-
         RoomGuest roomGuest = new RoomGuest();
         roomGuest.AdultCount = nom_adult;
         roomGuest.ChildCount = mChildCount;
@@ -598,6 +549,7 @@ public class FindHotels extends AppCompatActivity {
                     true, noRomes, "EG", roomguests, null, 100, null, "true", null,
                     10000, authenticationData);
 
+
 //            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
 //                    true, noRomes, "EG", roomguests, null, 100, null, null, false, authenticationData);
 
@@ -605,7 +557,8 @@ public class FindHotels extends AppCompatActivity {
             ratrHotel.clear();
             nameHotel.clear();
             photoHotel.clear();
-            listcodeHotel.clear();
+
+
 
             if (hotelSearchResponse.HotelResultList != null) {
                 for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
@@ -641,7 +594,6 @@ public class FindHotels extends AppCompatActivity {
         intent.putExtra("hotelPhoto", photoHotel);
         intent.putExtra("hotelCode", listcodeHotel);
         intent.putExtra("hotelAddress", addressHotel);
-        intent.putExtra("sessionId", sessionId);
         intent.putExtra("checkInDate", mstartTime);
         intent.putExtra("checkOutDate", mendTime);
         intent.putExtra("countryName", nameCountry);
@@ -649,9 +601,12 @@ public class FindHotels extends AppCompatActivity {
         intent.putExtra("cityId", ctyId);
         intent.putExtra("noOfRooms", noRomes);
         intent.putExtra("resultIndex", arrayOfResultIndex);
-        // intent.putExtra("roomGuest",roomguests);
 
+        SharedPreferencesManger.SaveData(FindHotels.this,"session_id",sessionId);
+
+        // intent.putExtra("roomGuest",roomguests);
         startActivity(intent);
+
 
     }
 
@@ -688,8 +643,7 @@ public class FindHotels extends AppCompatActivity {
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
 
-
-                SharedPreferencesManger.SaveData(FindHotels.this,"startDateS",dayOfTheWeek+" "+day+" "+monthString+" "+"till ");
+                SharedPreferencesManger.SaveData(FindHotels.this, "startDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "till ");
                 startDateDay.setText(day);
                 startDateMonth.setText(monthString);
 
@@ -730,7 +684,6 @@ public class FindHotels extends AppCompatActivity {
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
 
-
                 endDateDay.setText(day);
                 endDateMonth.setText(monthString);
                 endDateYear.setText(dayOfTheWeek);
@@ -746,7 +699,7 @@ public class FindHotels extends AppCompatActivity {
                 nights.setText(" " + days + " ");
                 SharedPreferencesManger.SaveData(FindHotels.this, "nights", days);
 
-                SharedPreferencesManger.SaveData(FindHotels.this,"endDateS",dayOfTheWeek+" "+day+" "+monthString+" "+"-"+days+"  nights");
+                SharedPreferencesManger.SaveData(FindHotels.this, "endDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "-" + days + "  nights");
             }
         };
 
@@ -768,25 +721,79 @@ public class FindHotels extends AppCompatActivity {
             case R.id.layout_check_out:
 
 
-                if (!chicDateStart){
+                if (!chicDateStart) {
                     new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
                             .setTitleText("Select Check in Dat First")
                             .setConfirmText("open")
                             .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
                                 public void onClick(SweetAlertDialog sDialog) {
-                                  dilogstart();
+                                    dilogstart();
                                     sDialog.dismissWithAnimation();
                                 }
                             })
                             .show();
 
-                }
-                else {
+                } else {
 
                     dialogendTime();
                 }
                 break;
         }
+    }
+
+    @OnClick(R.id.findHotels)
+    public void onViewClicked() {
+
+
+        Toast.makeText(FindHotels.this, "loading...", Toast.LENGTH_SHORT).show();
+        if (chicDateStart && chicDateEnd) {
+
+            SharedPreferencesManger.SaveData(FindHotels.this, "start_date", mstartTime);
+
+            SharedPreferencesManger.SaveData(FindHotels.this, "no_room", noRomes);
+
+            SharedPreferencesManger.SaveData(FindHotels.this, "end_date", mendTime);
+            gethotelsInfo(ctyId);
+
+        }else if (chicDateStart){
+
+            new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("Select Check Out Dat First")
+                    .setConfirmText("open")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            dialogendTime();
+                            sDialog.dismissWithAnimation();
+                        }
+                    })
+                    .show();
+
+
+
+        }else{
+
+            new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("Select Check In Dat First")
+                    .setConfirmText("open")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            dilogstart();
+                            sDialog.dismissWithAnimation();
+                        }
+                    })
+                    .show();
+
+
+
+        }
+
+
+
+
+
+
     }
 }

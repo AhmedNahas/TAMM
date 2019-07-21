@@ -22,9 +22,11 @@
         >
 
         <Button
+            android:padding="@dimen/_4sdp"
+            android:textSize="@dimen/_10ssp"
             android:id="@+id/button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_25sdp"
             android:layout_weight="1"
             android:text="BEST FLIGHTS"
             android:background="@drawable/shape"
@@ -33,9 +35,11 @@
             />
 
         <Button
+            android:padding="@dimen/_4sdp"
+            android:textSize="@dimen/_10ssp"
             android:id="@+id/button2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_25sdp"
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/shape"
@@ -46,16 +50,20 @@
             />
 
         <Button
+            android:layout_margin="10dp"
+            android:padding="@dimen/_4sdp"
+            android:textSize="@dimen/_10ssp"
             android:id="@+id/button3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="BEST DEALS"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_toRightOf="@+id/button2"
+            android:layout_weight="1"
             android:background="@drawable/shape"
-            tools:layout_editor_absoluteX="264dp"
-            android:layout_margin="10dp"
-            />
+            android:text="BEST DEALS"
+            tools:layout_editor_absoluteX="264dp" />
     </RelativeLayout>
 
     <RelativeLayout

@@ -1,5 +1,6 @@
 package net.middledleeast.tamm.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -21,9 +22,12 @@ import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.RoomInformation;
 import com.Tamm.Hotels.wcf.Supplement;
+import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.checkroom;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import org.joda.time.DateTime;
 
@@ -34,6 +38,7 @@ import java.util.List;
 public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> {
 
     private final Context context;
+    Activity activity ;
     private final Hotel_Room hotel_room;
     private final ArrayOfRequestedRooms arrayOfRooms;
     private final String date1;
@@ -52,7 +57,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     AuthenticationData authenticationData;
 
 
-    public RoomsAdapter(AuthenticationData data, BasicHttpBinding_IHotelService1 service, HotelRoomAvailabilityResponse response, List<Hotel_Room> rooms, Hotel_Room hotel_room, ArrayOfRequestedRooms arrayOfRooms,
+    public RoomsAdapter( Activity activity,AuthenticationData data, BasicHttpBinding_IHotelService1 service, HotelRoomAvailabilityResponse response, List<Hotel_Room> rooms, Hotel_Room hotel_room, ArrayOfRequestedRooms arrayOfRooms,
                         String date1, String date2, int noOfRooms, int resultIndex, String mHotelCode, AuthenticationData authenticationData, String sessionId, Context context) {
         this.rooms = rooms;
         this.hotel_room = hotel_room;
@@ -69,6 +74,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         this.response = response;
         this.service = service;
         this.authenticationData = data;
+        this.activity = activity;
         notifyDataSetChanged();
     }
 
@@ -105,6 +111,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 //        holder.roomPrice.setText((CharSequence) price);
 
         ArrayOfSupplement arrayOfSupplement = rooms.get(position).Supplements;
+        Gson gson = new Gson();
+        String arrayOfsupString = gson.toJson(arrayOfSupplement);
+        SharedPreferencesManger.SaveData((Activity) context, "suppArray", arrayOfsupString);
         if (arrayOfSupplement != null) {
             for (Supplement supplement : arrayOfSupplement) {
                 boolean requiredSupplement = supplement.SuppIsMandatory;
@@ -113,7 +122,8 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         }
         //image
         if (roomInformation != null) {
-            List<String> images = rooms.get(0).RoomAdditionalInfo.ImageURLs;
+            List<String> images = rooms.get(position).RoomAdditionalInfo.ImageURLs;
+            Glide.with(context).load(images).into(holder.img_photo_hotel);
             roomInstructions = rooms.get(position).MealType;
             description = rooms.get(position).RoomAdditionalInfo.Description;
         }
@@ -137,7 +147,14 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 intent.putExtra("roomTybe", roomType);
                 intent.putExtra("description", description);
                 intent.putExtra("mealTybe", mealType);
-                intent.putExtra("roomPrice", roomprice);
+                intent.putExtra("roomPrice", roomprice.toString());
+                intent.putExtra("currency", currency);
+                SharedPreferencesManger.SaveData(activity,"currency",currency);
+                SharedPreferencesManger.SaveData(activity,"roomPrice", roomprice.toString());
+                SharedPreferencesManger.SaveData(activity, "roomIndex", position);
+
+
+
 
                 context.startActivity(intent);
             }

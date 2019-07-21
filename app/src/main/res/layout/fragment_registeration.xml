@@ -28,7 +28,7 @@
         android:layout_marginLeft="10dp"
         android:text="PLEASE TAKE A MINUTE TO SIGN UP"
         android:textColor="#fff"
-        android:textSize="20dp" />
+        android:textSize="@dimen/_12ssp" />
 
 
     <RelativeLayout
@@ -39,8 +39,9 @@
         android:layout_marginLeft="5dp">
 
         <Spinner
+            android:layout_marginEnd="@dimen/_4sdp"
             android:id="@+id/mromiss"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_50sdp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/app_color"
@@ -49,25 +50,28 @@
 
 
         <EditText
+            android:textSize="@dimen/_10ssp"
+
             android:id="@+id/ed_first_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_toRightOf="@+id/mromiss"
             android:backgroundTint="@color/app_color"
             android:hint="FIRST NAME"
             android:textColor="#fff"
-            android:textColorHint="#41FFFFFF" />
+            android:textColorHint="#FFFFFF" />
 
         <EditText
+            android:textSize="@dimen/_10ssp"
             android:id="@+id/ed_last_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_marginLeft="30dp"
             android:layout_toRightOf="@+id/ed_first_name"
             android:backgroundTint="@color/app_color"
             android:hint="LAST NAME"
             android:textColor="#fff"
-            android:textColorHint="#3EFFFFFF" />
+            android:textColorHint="#FFFFFF" />
 
     </RelativeLayout>
 
@@ -96,39 +100,46 @@
             android:layout_toRightOf="@+id/tv_dob">
 
             <EditText
+                android:textSize="@dimen/_10ssp"
+                android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
+
                 android:id="@+id/ed_Day"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:backgroundTint="@color/app_color"
-                android:hint="day"
+                android:hint="DD"
                 android:padding="10dp"
                 android:textColor="#fff"
-                android:textColorHint="#41FFFFFF" />
+                android:textColorHint="#FFFFFF" />
 
             <EditText
+                android:textSize="@dimen/_10ssp"
+
                 android:id="@+id/ed_Month"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/ed_Day"
                 android:backgroundTint="@color/app_color"
-                android:hint="Month"
+                android:hint="MM"
                 android:padding="10dp"
                 android:textColor="#fff"
-                android:textColorHint="#40FFFFFF" />
+                android:textColorHint="#FFFFFF" />
 
             <EditText
+                android:textSize="@dimen/_10ssp"
+
                 android:id="@+id/ed_Year"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/ed_Month"
                 android:backgroundTint="@color/app_color"
-                android:hint="Year"
+                android:hint="YYYY"
                 android:padding="10dp"
                 android:textColor="#fff"
-                android:textColorHint="#3EFFFFFF" />
+                android:textColorHint="#FFFFFF" />
         </RelativeLayout>
 
 
@@ -142,6 +153,7 @@
         android:layout_marginLeft="10dp">
 
         <TextView
+
             android:id="@+id/tv_country"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -151,16 +163,18 @@
 
         <EditText
             android:id="@+id/ed_location"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_country"
-
+android:textSize="@dimen/_10ssp"
             android:backgroundTint="@color/app_color"
-            android:hint="Lebanon"
             android:textColor="#fff"
-            android:textColorHint="#43FFFFFF" />
+            android:textColorHint="#FFFFFF" />
 
         <EditText
+            android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
+            android:textSize="@dimen/_10ssp"
+
             android:id="@+id/ed_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -170,7 +184,7 @@
             android:backgroundTint="@color/app_color"
             android:hint="CITY/PROVINCE"
             android:textColor="#fff"
-            android:textColorHint="#40FFFFFF" />
+            android:textColorHint="#FFFFFF" />
 
     </RelativeLayout>
 
@@ -182,29 +196,51 @@
         android:layout_marginLeft="10dp">
 
         <EditText
+            android:textSize="@dimen/_10ssp"
+
             android:id="@+id/ed_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/app_color"
             android:hint="E-MAIL"
             android:textColor="#fff"
-            android:textColorHint="#40FFFFFF"
+            android:textColorHint="#FFFFFF"
 
 
             />
 
+
         <EditText
+
+            android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
+            android:backgroundTint="@color/app_color"
+            android:gravity="end"
+            android:paddingStart="@dimen/_4sdp"
+android:textSize="@dimen/_10ssp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_below="@+id/ed_email"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="4dp"
+            android:layout_toStartOf="@+id/ed_phone"
+            android:text="+965"
+            android:textColor="@color/white" />
+
+        <EditText
+            android:textSize="@dimen/_10ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+
             android:id="@+id/ed_phone"
-            android:layout_width="150dp"
-            android:layout_height="45dp"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_below="@+id/ed_email"
             android:layout_alignParentRight="true"
             android:layout_marginEnd="20dp"
             android:backgroundTint="@color/app_color"
             android:hint="PHONE NUMBER"
             android:textColor="#fff"
-            android:textColorHint="#41FFFFFF"
-            android:textSize="15sp"
+            android:textColorHint="#FFFFFF"
+
 
             />
 
@@ -218,6 +254,10 @@
         android:layout_marginLeft="10dp">
 
         <TextView
+            android:textSize="@dimen/_10ssp"
+            android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
+            android:paddingTop="@dimen/_4sdp"
+
             android:id="@+id/tv_occupation1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -228,6 +268,8 @@
             />
 
         <EditText
+            android:textSize="@dimen/_10ssp"
+
             android:id="@+id/ed_occupation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -235,7 +277,7 @@
             android:backgroundTint="@color/app_color"
             android:hint="Engineer"
             android:textColor="#fff"
-            android:textColorHint="#41FFFFFF"
+            android:textColorHint="#FFFFFF"
 
             />
 
@@ -247,6 +289,8 @@
             android:layout_marginRight="@dimen/_35sdp">
 
             <RadioButton
+                android:textSize="@dimen/_10ssp"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/app_color"
@@ -268,18 +312,22 @@
         android:layout_marginLeft="10dp">
 
         <EditText
+            android:textSize="@dimen/_10ssp"
+
             android:id="@+id/ed_user_name"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/app_color"
             android:hint="USERNAME"
             android:textColor="#fff"
-            android:textColorHint="#34FFFFFF"
+            android:textColorHint="#FFFFFF"
 
 
             />
 
         <EditText
+            android:textSize="@dimen/_10ssp"
+
             android:id="@+id/ed_password"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
@@ -288,7 +336,18 @@
             android:hint="PASSWORD"
             android:inputType="textPassword"
             android:textColor="#fff"
-            android:textColorHint="#41FFFFFF" />
+            android:textColorHint="#FFFFFF" />
+
+
+        <TextView
+            android:layout_marginEnd="@dimen/_40sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/ed_password"
+            android:textSize="@dimen/_6ssp"
+            android:textColor="@color/app_color"
+            android:text="A MINIMUM OF 8 CHRACTERS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
 
     </RelativeLayout>
@@ -301,6 +360,9 @@
         android:layout_marginLeft="10dp">
 
         <TextView
+            android:textSize="@dimen/_10ssp"
+            android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
+android:paddingTop="@dimen/_4sdp"
             android:id="@+id/tv_payment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -310,6 +372,8 @@
             />
 
         <EditText
+            android:textSize="@dimen/_10ssp"
+
             android:id="@+id/ed_visa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -318,8 +382,8 @@
             android:backgroundTint="@color/app_color"
             android:hint="Visa"
             android:textColor="#fff"
-            android:textColorHint="#3CFFFFFF"
-            android:textSize="20sp" />
+            android:textColorHint="#FFFFFF"
+           />
 
     </RelativeLayout>
 

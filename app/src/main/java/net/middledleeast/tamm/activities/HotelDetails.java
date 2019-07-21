@@ -165,8 +165,13 @@ public class HotelDetails extends AppCompatActivity {
 
         }
 
+try {
+    dots[0].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.active_dot));
+}catch (Exception e){
 
-        dots[0].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.active_dot));
+
+}
+
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

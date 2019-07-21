@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/_180sdp"
     android:background="@color/shape">
@@ -11,41 +10,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Business Class 2A"
-        android:textSize="@dimen/_15sdp"
         android:textColor="#fff"
-        />
+        android:textSize="@dimen/_15sdp" />
+
     <TextView
         android:id="@+id/tv_meal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please choose your meal : "
-        android:textSize="@dimen/_15sdp"
-        android:textColor="#fff"
         android:layout_below="@+id/tv_business"
-        />
-
-
-<RelativeLayout
-    android:id="@+id/check_tv1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/_20sdp"
-    android:layout_marginTop="@dimen/_20sdp"
-    android:layout_below="@+id/tv_meal">
-    <CheckBox
-        android:id="@+id/check_box1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chicken Supreme with vegetables"
+        android:text="Please choose your meal : "
         android:textColor="#fff"
-        android:layout_toRightOf="@id/check_box1"
-        android:layout_marginTop="@dimen/_5sdp"
-        />
-</RelativeLayout>
+        android:textSize="@dimen/_15sdp" />
+
+
+    <RelativeLayout
+        android:id="@+id/check_tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_meal"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp">
+
+        <CheckBox
+            android:id="@+id/check_box1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_toRightOf="@id/check_box1"
+            android:text="Chicken Supreme with vegetables"
+            android:textColor="#fff" />
+    </RelativeLayout>
 
     <view
         android:id="@+id/view_1"
@@ -61,22 +59,22 @@
         android:id="@+id/check_tv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_below="@+id/view_1"
 
-        android:layout_below="@+id/view_1">
+        android:layout_marginLeft="@dimen/_20sdp">
+
         <CheckBox
             android:id="@+id/check_box2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chicken Supreme"
-            android:textColor="#fff"
-            android:layout_toRightOf="@id/check_box2"
             android:layout_marginTop="@dimen/_5sdp"
-            />
+            android:layout_toRightOf="@id/check_box2"
+            android:text="Chicken Supreme"
+            android:textColor="#fff" />
     </RelativeLayout>
 
     <view
@@ -92,44 +90,32 @@
         android:id="@+id/check_tv3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_below="@+id/view_2"
 
-        android:layout_below="@+id/view_2">
+        android:layout_marginLeft="@dimen/_20sdp">
+
         <CheckBox
             android:id="@+id/check_box3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chicken Supreme"
-            android:textColor="#fff"
-            android:layout_toRightOf="@id/check_box3"
             android:layout_marginTop="@dimen/_5sdp"
-            />
+            android:layout_toRightOf="@id/check_box3"
+            android:text="Chicken Supreme"
+            android:textColor="#fff" />
     </RelativeLayout>
-    
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_25sdp"
-        android:text="Proceed"
-        android:textColor="#fff"
-        android:background="@color/black"
         android:layout_below="@+id/check_tv3"
         android:layout_centerInParent="true"
-        />
-
-
-
-
-
-
-
-
-
-
-
+        android:background="@color/black"
+        android:text="Proceed"
+        android:textColor="#fff" />
 
 
 </RelativeLayout>

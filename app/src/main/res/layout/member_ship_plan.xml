@@ -39,10 +39,11 @@
             />
 
         <TextView
+            android:layout_marginTop="@dimen/_4sdp"
             android:id="@+id/tv_free_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MEMBERSHIP ACCOUNT PLAN"
+            android:text="MEMBERSHIP ACCOUNT  PLAN"
             android:textColor="@color/app_color"
             android:textSize="25dp"
             android:textStyle="bold"
@@ -51,6 +52,7 @@
             />
 
         <ImageView
+            android:layout_marginTop="@dimen/_4sdp"
             android:id="@+id/iv_line_small"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
@@ -60,6 +62,7 @@
             />
 
         <TextView
+            android:layout_marginTop="@dimen/_4sdp"
             android:id="@+id/tv_by"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,6 +76,7 @@
 
 
         <Button
+            android:layout_marginTop="@dimen/_4sdp"
             android:id="@+id/btn_register_signup"
             android:layout_width="150dp"
             android:layout_height="wrap_content"

@@ -14,15 +14,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
+import com.Tamm.Hotels.wcf.ArrayOfSuppInfo;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.BookingOptions;
-import com.Tamm.Hotels.wcf.HotelCancellationPolicyResponse;
+import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.Rate;
 import com.Tamm.Hotels.wcf.RequestedRooms;
+import com.Tamm.Hotels.wcf.SuppInfo;
+import com.Tamm.Hotels.wcf.Supplement;
+import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.RoomsAdapter;
@@ -63,16 +67,11 @@ public class ChooseBookingDate extends AppCompatActivity {
     private TextView tv_word;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tempchoosebooking);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
-
-
 
         StrictMode.setThreadPolicy(policy);
         roomRecyclerView = findViewById(R.id.rv_hotel);
@@ -122,20 +121,17 @@ public class ChooseBookingDate extends AppCompatActivity {
         });
         String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
 
-try {
-    StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
-    while (st.hasMoreTokens()){
-        list_count_child.add(Integer.parseInt(st.nextToken().trim()));
 
-        //Toast.makeText(this, ""+list_count_child.get(0), Toast.LENGTH_SHORT).show();
+        if (child_count == null) {
 
-    }
+        } else {
+            StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
+            while (st.hasMoreTokens()) {
+                list_count_child.add(Integer.parseInt(st.nextToken().trim()));
+            }
+            //Toast.makeText(this, ""+list_count_child.get(0), Toast.LENGTH_SHORT).show();
 
-}catch (Exception e){
-
-}
-
-
+        }
       //  Toast.makeText(this, ""+child_count, Toast.LENGTH_SHORT).show();
       //  SharedPreferencesManger.remove(this,"child_count");
 
@@ -144,9 +140,9 @@ try {
         long nightsDeff = SharedPreferencesManger.LoadLongData(ChooseBookingDate.this, "nights");
         start_time = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "start_date");
         end_time = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "end_date");
-        long no_roomS = SharedPreferencesManger.LoadLongData(this, "no_room");
-        long no_adult = SharedPreferencesManger.LoadLongData(this, "no_adult");
-        long no_childS = SharedPreferencesManger.LoadLongData(this, "no_child");
+        int no_roomS = SharedPreferencesManger.LoadIntegerData(this, "no_room");
+        int no_adult = SharedPreferencesManger.LoadIntegerData(this, "no_adult");
+        int no_childS = SharedPreferencesManger.LoadIntegerData(this, "no_child");
 
         no_child.setText(no_childS+"Children");
 
@@ -164,8 +160,8 @@ try {
          hotel_name_s = getIntent().getStringExtra("hotel_name_s");
         mstartTime = getIntent().getStringExtra("checkInDate");
         mendTime = getIntent().getStringExtra("checkOutDate");
-        sessionId = getIntent().getStringExtra("sessionId");
-        mHotelCode = getIntent().getStringExtra("hotelCode");
+        sessionId =SharedPreferencesManger.LoadStringData(ChooseBookingDate.this,"session_id");
+        mHotelCode = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this,"mHotel_code");
         countryName = getIntent().getStringExtra("countryName");
         cityName = getIntent().getStringExtra("cityName");
         cityId = getIntent().getStringExtra("cityId");
@@ -190,6 +186,9 @@ try {
 
             service.enableLogging = true;
             HotelRoomAvailabilityResponse response = service.AvailableHotelRooms(sessionId, resultIndex, mHotelCode, 6000, false, authenticationData);
+            Gson gson = new Gson();
+            String roomAvailability = gson.toJson(response);
+            SharedPreferencesManger.SaveData(this, "roomAvailability", roomAvailability);
             rooms = response.HotelRooms;
 
 // TODO: 13/07/19 remove
@@ -202,14 +201,31 @@ try {
             requestedRooms.RatePlanCode = hotel_room.RatePlanCode;
             requestedRooms.RoomIndex = hotel_room.RoomIndex;
             requestedRooms.RoomRate = new Rate();
+            if (hotel_room.Supplements != null) {
+                requestedRooms.Supplements = new ArrayOfSuppInfo();
+                for (Supplement supplement : hotel_room.Supplements) {
+                    SuppInfo suppInfo = new SuppInfo();
+                    suppInfo.SuppChargeType = Enums.SuppChargeType.valueOf(supplement.SuppChargeType.name());
+                    suppInfo.Price = supplement.Price;
+                    if (supplement.SuppIsMandatory) {
+                        suppInfo.SuppIsSelected = true;
+
+                    }
+                    requestedRooms.Supplements.add(suppInfo);
+                }
+            }
             requestedRooms.RoomRate.RoomFare = hotel_room.RoomRate.RoomFare;
             requestedRooms.RoomRate.RoomTax = hotel_room.RoomRate.RoomTax;
             requestedRooms.RoomRate.TotalFare = hotel_room.RoomRate.TotalFare;
             requestedRooms.RoomTypeCode = hotel_room.RoomTypeCode;
             arrayOfRooms.add(requestedRooms);
+            String requestedRoomsString = gson.toJson(arrayOfRooms);
+            SharedPreferencesManger.SaveData(this, "arrayOfroomsreq", requestedRoomsString);
+
             transferClass.setArrayOfRequestedRooms(arrayOfRooms);
 
-            BookingOptions bookingOptions = response.OptionsForBooking;
+            BookingOptions bookingOptionsResponse = response.OptionsForBooking;
+
 //            bookingOptions.RoomCombination.clear();
 //            RoomCombination roomCombination = new RoomCombination();
 //            roomCombination.RoomIndex = new ArrayList<>();
@@ -222,9 +238,10 @@ try {
 //            bookingOptions.RoomCombination.add(roomCombination);
 
 // TODO: 17/07/19 fix
-            HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
 
-            AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, bookingOptions, authenticationData);
+//            HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
+
+            SharedPreferencesManger.SaveData(this, "resultIndex", resultIndex);
 
             roomAdapter = new RoomsAdapter(authenticationData, service, response, rooms, hotel_room, arrayOfRooms, start_time, end_time, noOfRooms, resultIndex, mHotelCode, authenticationData, sessionId, this);
 
