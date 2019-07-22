@@ -29,7 +29,7 @@ public class MyService extends Service {
 
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
-    private CountryList countryList;
+    private CountryList<String> countryList;
     private List<String> listID = new ArrayList<>();
     private List<String> list = new ArrayList<>();
 
