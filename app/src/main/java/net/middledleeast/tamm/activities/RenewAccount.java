@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.Tamm.Hotels.wcf.ArrayOfHotel_Result;
+import com.Tamm.Hotels.wcf.AuthenticationData;
+import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService;
+import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
+import com.Tamm.Hotels.wcf.HotelCodesResponse;
+import com.Tamm.Hotels.wcf.HotelInfo;
+import com.Tamm.Hotels.wcf.HotelSearchResponse;
+import com.Tamm.Hotels.wcf.Hotel_Result;
+import com.Tamm.Hotels.wcf.ResponseStatus;
+import com.Tamm.Hotels.wcf.TopDestinationsResponse;
 import com.google.android.material.navigation.NavigationView;
 
 import net.middledleeast.tamm.R;
@@ -31,6 +42,13 @@ public class RenewAccount extends AppCompatActivity
     ImageView img1 , img2 , addPic;
     TextView user_name_profile;
     private String user;
+    private HotelCodesResponse hotelSearchResponse;
+    private String hotelCode;
+    private BasicHttpBinding_IHotelService1 service;
+    private AuthenticationData authenticationData;
+    private TopDestinationsResponse topDestinationsResponse;
+    private ResponseStatus status;
+    private String category;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,9 +57,41 @@ public class RenewAccount extends AppCompatActivity
         img2 = findViewById(R.id.imageView10);
         img1 = findViewById(R.id.imageView9);
 
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+        service = new BasicHttpBinding_IHotelService1();
+        authenticationData = new AuthenticationData();
+        authenticationData.UserName = ("Tammtest");
+        authenticationData.Password = ("Tam@18418756");
 
 
 
+try{
+    service.enableLogging = true;
+    TopDestinationsResponse topDestinationsResponse = service.TopDestinations(authenticationData);
+
+
+//        if (hotelSearchResponse.HotelResultList != null) {
+//            for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
+//
+//                Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
+//                HotelInfo hotelInfo = hotel_result.HotelInfo;
+//
+//
+//
+//                 hotelCode = hotelInfo.HotelPromotion;
+//
+//
+//            }
+//
+//        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+        Toast.makeText(this, "fffff"+topDestinationsResponse, Toast.LENGTH_SHORT).show();
 
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,11 +147,11 @@ public class RenewAccount extends AppCompatActivity
 
 
         }
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.syncState();
+//        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
