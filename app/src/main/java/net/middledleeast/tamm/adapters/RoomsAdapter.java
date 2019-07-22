@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -101,6 +102,12 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         if (cancelPolicies != null) {
             DateTime deadLine = cancelPolicies.LastCancellationDeadline;
         }
+
+
+
+
+
+
         String roomPromotion = rooms.get(position).RoomPromtion;
         BigDecimal roomprice = rooms.get(position).RoomRate.TotalFare;
         holder.roomPrice.setText(currency + " " + roomprice);
@@ -126,7 +133,27 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
             Glide.with(context).load(images).into(holder.img_photo_hotel);
             roomInstructions = rooms.get(position).MealType;
             description = rooms.get(position).RoomAdditionalInfo.Description;
+        }else {
+
+
+
+
+
+
+            holder.img_photo_hotel.setImageResource(R.drawable.no_image_available);
+
+
+
+
+
         }
+
+
+        Toast.makeText(context, "description"+description+"roomInstructions"+roomInstructions, Toast.LENGTH_SHORT).show();
+
+
+
+
 
         holder.roomBooken.setOnClickListener(new View.OnClickListener() {
             @Override

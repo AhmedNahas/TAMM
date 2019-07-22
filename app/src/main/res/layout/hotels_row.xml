@@ -44,7 +44,7 @@
                 android:fontFamily="sans-serif-smallcaps"
                 android:text="maring hotilgfgfgfffffffffffffffffffffffff "
                 android:id="@+id/hotel_name"
-                android:textColor="#411111"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

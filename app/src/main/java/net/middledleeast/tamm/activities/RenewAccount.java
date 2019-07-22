@@ -80,6 +80,39 @@ public class RenewAccount extends AppCompatActivity
         addPic = hView.findViewById(R.id.imageViewAddPic);
         user_name_profile = hView.findViewById(R.id.user_name_profile);
 
+
+
+
+
+
+
+
+
+        try {
+
+
+            Uri photo = Uri.parse(SharedPreferencesManger.LoadStringData(this, "img"));
+
+            Bitmap bitmap;
+            try {
+                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photo));
+                addPic.setImageBitmap(bitmap);
+
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+
+        }catch (Exception e){
+
+
+        }
+
+
+
+
+
         try {
             user_name_profile.setText(user);
 
@@ -153,6 +186,7 @@ public class RenewAccount extends AppCompatActivity
             Uri targetUri = data.getData();
             String textTargetUri=(targetUri.toString());
 
+         SharedPreferencesManger.SaveData(RenewAccount.this,"img",textTargetUri);
 
             Bitmap bitmap;
             try {

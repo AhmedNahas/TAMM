@@ -243,7 +243,8 @@ public class ChooseBookingDate extends AppCompatActivity {
 
             SharedPreferencesManger.SaveData(this, "resultIndex", resultIndex);
 
-            roomAdapter = new RoomsAdapter(ChooseBookingDate.this, authenticationData, service, response, rooms, hotel_room, arrayOfRooms, start_time, end_time, noOfRooms, resultIndex,
+            roomAdapter = new RoomsAdapter(ChooseBookingDate.this, authenticationData, service, response, rooms, hotel_room,
+                    arrayOfRooms, start_time, end_time, noOfRooms, resultIndex,
                     mHotelCode, authenticationData, sessionId, ChooseBookingDate.this);
 
 
