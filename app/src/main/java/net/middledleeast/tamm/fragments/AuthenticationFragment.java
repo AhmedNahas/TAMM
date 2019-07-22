@@ -1,6 +1,7 @@
 package net.middledleeast.tamm.fragments;
 
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public class AuthenticationFragment extends Fragment {
     Toolbar toolbar;
     ImageView imageView;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -55,12 +57,12 @@ public class AuthenticationFragment extends Fragment {
         btnSignin.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN){
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     btnSignin.setBackgroundColor(Color.parseColor("#BE973B"));
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.welcome_container, new SignInFragment())
-                            .commit();
-                }else if (event.getAction() == MotionEvent.ACTION_UP){
+                            .addToBackStack(" Authentication").commit();
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     btnSignin.setBackground(getActivity().getDrawable(R.drawable.border));
                 }
                 return false;
@@ -70,12 +72,12 @@ public class AuthenticationFragment extends Fragment {
         btnRegister.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN){
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     btnRegister.setBackgroundColor(Color.parseColor("#BE973B"));
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.welcome_container, new PlansFragment())
-                            .commit();
-                }else if (event.getAction() == MotionEvent.ACTION_UP){
+                            .addToBackStack(" Authentication").commit();
+                } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     btnSignin.setBackground(getActivity().getDrawable(R.drawable.border));
                 }
                 return false;
@@ -83,5 +85,7 @@ public class AuthenticationFragment extends Fragment {
         });
         return view;
     }
+
+
 
 }

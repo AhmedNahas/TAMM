@@ -15,18 +15,18 @@
 
     <ImageView
         android:id="@+id/imageViewAddPic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
         android:paddingTop="8dp"
         android:layout_marginTop="30dp"
-        app:srcCompat="@drawable/ic_smallman"
+        app:srcCompat="@drawable/chose_img"
         android:layout_gravity="center"/>
 
     <TextView
+        android:layout_marginTop="@dimen/_4sdp"
         android:id="@+id/user_name_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="Your name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:gravity="center"
@@ -43,9 +43,10 @@
         />
 
     <TextView
+        android:layout_marginTop="@dimen/_4sdp"
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_20sdp"
         android:text="Expires in :"
         android:layout_gravity="center"
         android:textColor="@color/app_color"/>
@@ -57,7 +58,6 @@
         android:textColor="#ff000000"
         android:background="@drawable/shape"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         />
 
 

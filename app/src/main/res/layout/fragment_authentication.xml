@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     tools:context=".fragments.AuthenticationFragment"
+
     >
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/welcome_toolbar"

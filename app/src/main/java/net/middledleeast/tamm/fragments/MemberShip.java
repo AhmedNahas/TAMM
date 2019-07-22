@@ -50,7 +50,7 @@ public class MemberShip extends Fragment {
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.welcome_container, new PlansFragment())
-                        .commit();
+                        .addToBackStack( "MemberShip" ).commit();
             }
         });
 
@@ -65,7 +65,7 @@ public class MemberShip extends Fragment {
             public void onClick(View view) {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.welcome_container, new MemberShipPlan())
-                        .commit();
+                        .addToBackStack( "MemberShip" ) .commit();
             }
 
         });

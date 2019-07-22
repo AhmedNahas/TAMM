@@ -34,7 +34,7 @@ public class Buttons extends Fragment {
         listofuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.welcome_container,new UsersFreeFragment()).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.welcome_container,new UsersFreeFragment()).addToBackStack("Buttons").commit();
             }
         });
 

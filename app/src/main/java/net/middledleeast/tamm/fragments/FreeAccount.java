@@ -48,7 +48,7 @@ public class FreeAccount extends Fragment {
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.welcome_container, new PlansFragment())
-                        .commit();
+                        .addToBackStack("freeAcount").commit();
             }
         });
 
@@ -62,7 +62,7 @@ public class FreeAccount extends Fragment {
             public void onClick(View view) {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.welcome_container, new FreeAccountPlan())
-                        .commit();
+                        .addToBackStack("freeAcount").commit();
 
             }
         });
