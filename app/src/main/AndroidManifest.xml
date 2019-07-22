@@ -18,19 +18,10 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".activities.SeatSelection">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-
-        </activity>
+        <activity android:name=".activities.SeatSelection" />
         <activity android:name=".activities.RecommendedTwoWay" />
         <activity android:name=".activities.RecommendedOneWay" />
-        <activity android:name=".model.PaymentActivityFragment" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
+        <activity android:name=".ActivityToFragment.PaymentActivityFragment" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
         <activity
             android:name=".activities.RenewAccount"
             android:label="@string/title_activity_renew_account"

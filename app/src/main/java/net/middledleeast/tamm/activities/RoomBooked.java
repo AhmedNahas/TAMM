@@ -85,6 +85,42 @@ public class RoomBooked extends AppCompatActivity {
         guest.LastName = SharedPreferencesManger.LoadStringData(this, "lastName");
         guest.GuestInRoom = 1;
         arrayOfGuest.add(guest);
+        Guest guest2 = new Guest();
+        guest2.Title = "Mr";
+        guest2.Age = 5;
+        guest2.FirstName = "CC";
+        guest2.LeadGuest = false;
+        guest2.GuestType = Enums.GuestType.Child;
+        guest2.LastName = "DD";
+        guest2.GuestInRoom = 1;
+        arrayOfGuest.add(guest2);
+        Guest guest1 = new Guest();
+        guest1.Title = "Mr";
+        guest1.Age = 35;
+        guest1.FirstName = "Farid";
+        guest1.LeadGuest = false;
+        guest1.GuestType = Enums.GuestType.Adult;
+        guest1.LastName = "Fady";
+        guest1.GuestInRoom = 2;
+        arrayOfGuest.add(guest1);
+        Guest guest3 = new Guest();
+        guest3.Title = "Mr";
+        guest3.Age = 2;
+        guest3.FirstName = "aa";
+        guest3.LeadGuest = false;
+        guest3.GuestType = Enums.GuestType.Child;
+        guest3.LastName = "BB";
+        guest3.GuestInRoom = 1;
+        arrayOfGuest.add(guest3);
+        Guest guest4 = new Guest();
+        guest4.Title = "Mr";
+        guest4.Age = 35;
+        guest4.FirstName = "Sherif";
+        guest4.LeadGuest = false;
+        guest4.GuestType = Enums.GuestType.Adult;
+        guest4.LastName = "Anwar";
+        guest4.GuestInRoom = 2;
+        arrayOfGuest.add(guest4);
         PaymentInfo paymentInfo = new PaymentInfo();
         paymentInfo.VoucherBooking = true;
         paymentInfo.PaymentModeType = Enums.PaymentModeType.Limit;
@@ -121,6 +157,9 @@ public class RoomBooked extends AppCompatActivity {
             DateTimeFormatter fmt = DateTimeFormat.forPattern("ddMMyyhhmmssSSS");
             String dtStr = fmt.print(dt);
 
+            String reqRoomString = SharedPreferencesManger.LoadStringData(this, "arrayOfroomsreq");
+
+            arrayOfRooms = gson.fromJson(reqRoomString, ArrayOfRequestedRooms.class);
 
             String arraySupp = SharedPreferencesManger.LoadStringData(this, "suppArray");
             ArrayOfSupplement arrayOfSupplement = gson.fromJson(arraySupp, ArrayOfSupplement.class);
@@ -132,9 +171,7 @@ public class RoomBooked extends AppCompatActivity {
 
                     }
                 }
-                String reqRoomString = SharedPreferencesManger.LoadStringData(this, "arrayOfroomsreq");
 
-                arrayOfRooms = gson.fromJson(reqRoomString, ArrayOfRequestedRooms.class);
                 if (atProperty) {
 
                     RequestedRooms requestedRooms = arrayOfRooms.get(0);
@@ -147,6 +184,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
             }
+
             String clientReferenceNo = dtStr + "#TAMM";
             HotelBookResponse hotelBookingResponse = service.HotelBook(start_time, end_time,
                     clientReferenceNo, "EG", arrayOfGuest, null, paymentInfo
@@ -160,9 +198,11 @@ public class RoomBooked extends AppCompatActivity {
             amendmentRequestType.Type = Enums.AmendmentType.OfflineAmendment;
             AmendInformation amendInformation = new AmendInformation();
             amendInformation.CheckIn = new CheckInReq();
-
+            amendInformation.CheckIn.Date = new DateTime(start_time);
             AmendmentResponse amendmentResponse = service.Amendment(amendmentRequestType, hotelBookingResponse.BookingId, amendInformation, hotelBookingResponse.ConfirmationNo, authenticandata);
-//            HotelCancelResponse hotelCancelResponse = service.HotelCancel(hotelBookingResponse.BookingId, Enums.CancelRequestType.HotelCancel, "Test", hotelBookingResponse.ConfirmationNo, authenticandata);
+//this is to cancel request
+
+            //HotelCancelResponse hotelCancelResponse = service.HotelCancel(hotelBookingResponse.BookingId, Enums.CancelRequestType.HotelCancel, "Test", hotelBookingResponse.ConfirmationNo, authenticandata);
 
         } catch (Exception e) {
             e.printStackTrace();

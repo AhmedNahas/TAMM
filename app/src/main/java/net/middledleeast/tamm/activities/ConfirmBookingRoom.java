@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -36,7 +37,8 @@ import payments.ResponseHelper;
 
 public class ConfirmBookingRoom extends AppCompatActivity {
 
-    private Button confirmRoom,back;
+    private Button confirmRoom;
+    private ImageView back;
     ArrayOfGuest arrayOfGuest;
     private Hotel_Room hotel_room;
     private ArrayOfRequestedRooms arrayOfRooms;
@@ -89,7 +91,6 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         sessionId = intent.getStringExtra("sessionId");
 //        SharedPreferencesManger.SaveData(this, "sessionId", sessionId);
         noOfRooms = intent.getIntExtra("noOfRooms", 1);
-        SharedPreferencesManger.SaveData(this, "noOfRooms", noOfRooms);
         resultIndex = intent.getIntExtra("resultIndex", 1);
 //        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 

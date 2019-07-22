@@ -3,7 +3,6 @@ package net.middledleeast.tamm.activities;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
@@ -536,8 +535,10 @@ public class FindHotels extends AppCompatActivity {
             }
         }
         roomguests.add(roomGuest);
-
-
+//        RoomGuest roomGuest1 = new RoomGuest();
+//        roomGuest1.AdultCount = 2;
+//        roomGuest1.ChildCount = 0;
+//        roomguests.add(roomGuest1);
         GeoCodes geoCodes = new GeoCodes();
         String countryCode = geoCodes.CountryCode;
 
@@ -557,8 +558,9 @@ public class FindHotels extends AppCompatActivity {
             ratrHotel.clear();
             nameHotel.clear();
             photoHotel.clear();
-
-
+            listcodeHotel.clear();
+            addressHotel.clear();
+            arrayOfResultIndex.clear();
 
             if (hotelSearchResponse.HotelResultList != null) {
                 for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
@@ -573,8 +575,8 @@ public class FindHotels extends AppCompatActivity {
                     arrayOfResultIndex.add(hotel_result.ResultIndex);
 
                     String hotelCode = hotelInfo.HotelCode;
-                    listcodeHotel.add(hotelCode);
 
+                    listcodeHotel.add(hotelCode);
                     nameHotel.add(hotelName);
                     ratrHotel.add(code);
                     photoHotel.add(hotelPicture);
@@ -600,9 +602,10 @@ public class FindHotels extends AppCompatActivity {
         intent.putExtra("cityName", name_city);
         intent.putExtra("cityId", ctyId);
         intent.putExtra("noOfRooms", noRomes);
+        SharedPreferencesManger.SaveData(this, "noOfRooms", noRomes);
         intent.putExtra("resultIndex", arrayOfResultIndex);
 
-        SharedPreferencesManger.SaveData(FindHotels.this,"session_id",sessionId);
+        SharedPreferencesManger.SaveData(FindHotels.this, "session_id", sessionId);
 
         // intent.putExtra("roomGuest",roomguests);
         startActivity(intent);
@@ -756,7 +759,7 @@ public class FindHotels extends AppCompatActivity {
             SharedPreferencesManger.SaveData(FindHotels.this, "end_date", mendTime);
             gethotelsInfo(ctyId);
 
-        }else if (chicDateStart){
+        } else if (chicDateStart) {
 
             new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
                     .setTitleText("Select Check Out Dat First")
@@ -771,8 +774,7 @@ public class FindHotels extends AppCompatActivity {
                     .show();
 
 
-
-        }else{
+        } else {
 
             new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
                     .setTitleText("Select Check In Dat First")
@@ -787,12 +789,7 @@ public class FindHotels extends AppCompatActivity {
                     .show();
 
 
-
         }
-
-
-
-
 
 
     }

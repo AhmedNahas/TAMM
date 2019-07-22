@@ -126,7 +126,7 @@ public class checkroom extends AppCompatActivity {
         mHotelCode = getIntent().getStringExtra("hotelCode");
         resultIndex = getIntent().getIntExtra("resultIndex", 0);
         mealTybe = getIntent().getStringExtra("mealTybe");
-        roomIndex = getIntent().getIntExtra("roomIndex", 0);
+        roomIndex = getIntent().getIntExtra("roomIndex", 1);
     }
 
     private void auth() {
