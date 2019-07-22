@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -67,8 +66,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     RelativeLayout relativeFirstlast6;
     private Button confirmRoom;
     private ImageView back;
-    private Button confirmRoom;
-    private ImageView back;
+
     ArrayOfGuest arrayOfGuest;
     private Hotel_Room hotel_room;
     private ArrayOfRequestedRooms arrayOfRooms;

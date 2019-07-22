@@ -2,16 +2,11 @@ package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,7 +22,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import com.Tamm.Hotels.wcf.ArrayOfInt;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
@@ -150,7 +144,7 @@ ProgressBar bar;
         toolbar_back = findViewById(R.id.toolbar_back1);
         recycl_child_spiner = findViewById(R.id.rv_child);
 
-        bar = (ProgressBar) findViewById(R.id.progressBar);
+        bar = findViewById(R.id.progressBar);
         bar.setProgress(0);
         bar.setMax(100);
         toolbar_back.setOnClickListener(new View.OnClickListener() {
