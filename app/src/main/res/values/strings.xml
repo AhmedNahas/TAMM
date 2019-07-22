@@ -11,7 +11,7 @@
     <string name="authintication_text">FIRST, WE NEED TO\nBEGIN WITH THE\nREGISTRATION\nPROCESS, OR\nYOU CAN SIGN IN\nIF YOU’RE ALREADY\n.A MEMBER</string>
 
     <string name="sorgot_password">Forgot Password?</string>
-    <string name="forgot_pass">Forgot\nPasswrod?</string>
+    <string name="forgot_pass">Forgot\nPassword?</string>
     <string name="password_will_be_send">The password will be sent\nto your email address</string>
 
     <string name="success_send_email">The password has beed sent\nto your email address</string>
@@ -38,6 +38,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="register">Register</string>
 
 
 </resources>

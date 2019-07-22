@@ -1,7 +1,10 @@
 package net.middledleeast.tamm.activities;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.RatingBar;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,16 +17,13 @@ import net.middledleeast.tamm.adapters.HotelsActivityAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import java.util.StringTokenizer;
 
 public class ChooseHotelActivity extends AppCompatActivity implements HotelsActivityAdapter.onHotelListener {
 
     AdapterHotelInfo adapterHotelInfo;
-    @BindView(R.id.rating_bar)
-    RatingBar ratingBar;
     private RecyclerView reInfoHotels;
     private ArrayList<String> hotelName;
     private ArrayList<String> hotelAddress;
@@ -40,6 +40,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     private ArrayList<String> roomGuests;
     private ArrayList<Integer> resultIndex;
     List<Integer> childCont = new ArrayList<>();
+    ImageView imageView;
     private String session_id;
 
 
@@ -47,10 +48,17 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_hotel);
-        ButterKnife.bind(this);
 
         reInfoHotels = findViewById(R.id.hotels_rv);
         resultIndex = new ArrayList<>();
+
+        imageView=findViewById(R.id.toolbar_back1);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ChooseHotelActivity.this,FindHotels.class));
+            }
+        });
 
         hotelAddress = (ArrayList<String>) getIntent().getSerializableExtra("hotelAddress");
         hotelName = (ArrayList<String>) getIntent().getSerializableExtra("hotelName");
@@ -64,21 +72,14 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
         cityId = getIntent().getStringExtra("cityId");
         noOfRooms = getIntent().getIntExtra("noOfRooms", 1);
         roomGuests = getIntent().getStringArrayListExtra("roomGuest");
-
+        String sessionId = getIntent().getStringExtra("sessionId");
         resultIndex = (ArrayList<Integer>) getIntent().getSerializableExtra("resultIndex");
-        session_id = SharedPreferencesManger.LoadStringData(this, "session_id");
+         session_id = SharedPreferencesManger.LoadStringData(this, "session_id");
         reInfoHotels.setLayoutManager(new LinearLayoutManager(this));
         adapterHotelInfo = new AdapterHotelInfo(ChooseHotelActivity.this, hotelName, hotelrat, hotelphoto, this, onHotelListener, hotelAddress, hotelCode, session_id,
                 mstartTime, mendTime, countryName, cityName, cityId, noOfRooms, roomGuests, resultIndex);
         reInfoHotels.setAdapter(adapterHotelInfo);
         adapterHotelInfo.notifyDataSetChanged();
-
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-
-            }
-        });
 
 
     }

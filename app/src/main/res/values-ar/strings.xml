@@ -13,4 +13,5 @@
     <string name="plans_text">LET’S CHOOSE THE RIGHT PLAN FOR YOU NOW!</string>
     <string name="plans_long_text">You can know more about the plans by clicking on them</string>
     <string name="plan_details_text">Details go here, detail go here, detail go here,  detail go here, detail go here, detail go here</string>
+    <string name="register">انشاء حساب جديد</string>
 </resources>

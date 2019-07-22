@@ -15,10 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -29,8 +31,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.activities.RenewAccount;
+import net.middledleeast.tamm.fragments.AuthenticationFragment;
 import net.middledleeast.tamm.fragments.Buttons;
 import net.middledleeast.tamm.fragments.ForgotPasswordFragment;
+import net.middledleeast.tamm.fragments.LanguangeFragment;
 import net.middledleeast.tamm.fragments.PlansFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.Freeuser;
@@ -73,6 +77,10 @@ public class SignInFragment extends Fragment {
     private String username;
     private Dialog dialog;
 
+    Toolbar toolbar;
+    ImageView imageView;
+
+
 
     public SignInFragment() {
         // Required empty public constructor
@@ -84,6 +92,20 @@ public class SignInFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = getView(inflater, container);
+
+        toolbar = view.findViewById(R.id.welcome_toolbar);
+        imageView = view.findViewById(R.id.back_pressed);
+
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.welcome_container, new AuthenticationFragment())
+                        .commit();
+            }
+        });
+
 
 
         String username = SharedPreferencesManger.LoadStringData(getActivity(), "username");
@@ -124,6 +146,7 @@ public class SignInFragment extends Fragment {
                 String user_Name = userName.getText().toString();
                 String password = pass.getText().toString();
 
+
                 if (TextUtils.isEmpty(user_Name)) {
                     userName.setError("Name Is Required");
 dialog.cancel();
@@ -131,6 +154,7 @@ dialog.cancel();
                     pass.setError("Conf. Password Is Required");
                     dialog.cancel();
                 }
+
 
 
 
@@ -144,11 +168,13 @@ dialog.cancel();
                     Intent intent = new Intent(getContext(), RenewAccount.class);
                     startActivity(intent);
 
+
                 }else {
                     Toast.makeText(getContext(), "wrong user name or password", Toast.LENGTH_SHORT).show();
                     dialog.cancel();
 
 
+                    Toast.makeText(getContext(), "Your UserName Or Password Is Not Correct", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -233,6 +259,7 @@ dialog.cancel();
     }
 
 
+
     private void getFreeData() {
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, HI, new Response.Listener<String>() {
@@ -280,6 +307,9 @@ dialog.cancel();
     }
 
 
+
+
+
     private View getView(LayoutInflater inflater, ViewGroup container) {
         View view = inflater.inflate(R.layout.fragment_sign_in, container, false);
         txtForgotPassword = view.findViewById(R.id.goto_forgot_pass);
@@ -299,5 +329,4 @@ dialog.cancel();
         dialog.dismiss();
     }
 }
-
 

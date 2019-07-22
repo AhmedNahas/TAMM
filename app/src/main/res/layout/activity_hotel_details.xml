@@ -12,11 +12,12 @@
         android:layout_height="50dp">
 
         <ImageView
+            android:id="@+id/toolbar_back1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/ic_back_arrow"
-            android:backgroundTint="#FFEB3B"/>
+            />
         <!--<TextView-->
             <!--android:layout_width="wrap_content"-->
             <!--android:layout_height="wrap_content"-->
@@ -36,6 +37,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="15dp"
             android:background="@drawable/ic_button" />
+
     </RelativeLayout>
     <!--<ImageView-->
         <!--android:scaleType="fitXY"-->

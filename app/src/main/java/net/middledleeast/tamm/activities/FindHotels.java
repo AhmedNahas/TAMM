@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -129,7 +130,7 @@ public class FindHotels extends AppCompatActivity  {
     private HotelSearchResponse hotelSearchResponse;
     private CountryList countryList;
 //    private boolean saved ;
-
+ProgressBar bar;
 
     @SuppressLint("StaticFieldLeak")
     @Override
@@ -149,7 +150,9 @@ public class FindHotels extends AppCompatActivity  {
         toolbar_back = findViewById(R.id.toolbar_back1);
         recycl_child_spiner = findViewById(R.id.rv_child);
 
-
+        bar = (ProgressBar) findViewById(R.id.progressBar);
+        bar.setProgress(0);
+        bar.setMax(100);
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -161,7 +164,7 @@ public class FindHotels extends AppCompatActivity  {
 
         StrictMode.setThreadPolicy(policy);
 
-        auth();
+     //   auth();
 
 
 
@@ -186,11 +189,58 @@ public class FindHotels extends AppCompatActivity  {
 //
 //}else {
 
-    getCountries();
+ //   getCountries();
 
 //}
 
+        new AsyncTask<String, Integer, String>() {
 
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                // code will executed before task start (main thread)
+                //
+                //
+                 auth();
+
+                 getCountries();
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+                // task will done in background
+
+                for (int i = 0; i < 100; i++) {
+                    try {
+                        // sleep 100 millisecond every loop so progress will not finished fast with out see it
+                        Thread.sleep(10);
+                        publishProgress(i);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                return null;
+
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                // code executed after task finish hide progress and change text
+                bar.animate().alpha(0).setDuration(200).start();
+            }
+
+            @Override
+            protected void onProgressUpdate(Integer... values) {
+                super.onProgressUpdate(values);
+                // progress come as array maybe there is mote than one value or progress update so i put [0]
+                bar.setProgress(values[0]);
+
+            }
+
+
+        }.execute();
 
 
 
@@ -547,7 +597,6 @@ public class FindHotels extends AppCompatActivity  {
     private void gethotelsInfo(String ctyId) {
 
 
-        auth();
 
 //        Calendar cal1 = Calendar.getInstance();
 //        cal1.set(Calendar.DAY_OF_MONTH, 22);

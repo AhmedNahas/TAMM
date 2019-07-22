@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
@@ -16,6 +18,8 @@ import com.wirecard.ecom.model.out.PaymentResponse;
 
 import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.RegisterationActivity;
+import net.middledleeast.tamm.fragments.TammFamilyFragment;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -29,6 +33,9 @@ public class PaymentActivity extends AppCompatActivity {
     private AuthenticationData authenticandata;
     private BasicHttpBinding_IHotelService1 service;
 
+    Toolbar toolbar;
+    ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +43,15 @@ public class PaymentActivity extends AppCompatActivity {
 
         button=findViewById(R.id.proceed_check_out);
 
+        toolbar = findViewById(R.id.welcome_toolbar);
+        imageView = findViewById(R.id.back_pressed);
 
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
 

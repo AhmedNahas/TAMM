@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -64,6 +65,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     @BindView(R.id.relative_firstlast6)
     RelativeLayout relativeFirstlast6;
     private Button confirmRoom;
+    private ImageView back;
     ArrayOfGuest arrayOfGuest;
     private Hotel_Room hotel_room;
     private ArrayOfRequestedRooms arrayOfRooms;
@@ -95,6 +97,17 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         lastName = findViewById(R.id.lastName);
         confirmRoom = findViewById(R.id.confirm_room_booking);
         Gson gson = new Gson();
+
+        back=findViewById(R.id.btn_baack);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ConfirmBookingRoom.this,checkroom.class));
+            }
+        });
+
+
+
         Intent intent = getIntent();
         service = new BasicHttpBinding_IHotelService1();
         service.enableLogging = true;
@@ -158,15 +171,28 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         BigDecimal amount = new BigDecimal(roomPrice);
 
 
+
+
         try {
+//            HotelBookResponse hotelBookingResponse = service.HotelBook(start_time, end_time,
+//                    "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo
+//                    , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
+//                    null, false, authenticandata);
 //
+//
+////            Toast.makeText(this, "" + hotelBookingResponse.ConfirmationNo, Toast.LENGTH_SHORT).show();
+//
+////            HotelBookResponse hotelBookingResponse = service.HotelBook(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), "070817125855789#kuld", "EG", arrayOfGuest, null, paymentInfo, sessionId, null, noOfRooms, resultIndex, mHOtelCode, null, arrayOfRooms, null, null, false, authenticandata);
+//
+//            HotelBookingDetailResponse hotelBookingDetailResponse = service.HotelBookingDetail(hotelBookingResponse.BookingId, hotelBookingResponse.ConfirmationNo, "070817125855789#kuld", authenticandata);
+//            String confirmationNo = hotelBookingResponse.ConfirmationNo;
             hotel_room = ChooseBookingDate.transferClass.hotel_room;
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
+        confirmRoom = findViewById(R.id.confirm_room_booking);
         PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
         BigDecimal finalAmount = amount;
         String finalCurrency = currency;

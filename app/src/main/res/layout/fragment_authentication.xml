@@ -5,7 +5,30 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     tools:context=".fragments.AuthenticationFragment"
+
     >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/welcome_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/back_pressed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_back_arrow"
+            android:layout_marginTop="15dp"/>
+    </androidx.appcompat.widget.Toolbar>
+<RelativeLayout
+    android:id="@+id/relative_img"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/welcome_toolbar"
+    >
+
+
+
+
 
     <RelativeLayout
         android:id="@+id/relative_1"
@@ -42,6 +65,7 @@
         android:src="@drawable/authintication_image"
         android:layout_marginTop="@dimen/_60sdp"
         />
+</RelativeLayout>
 
     <Button
         android:id="@+id/btn_signin"
@@ -52,13 +76,13 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/border"
         android:textColor="#FFF"
-        android:layout_below="@+id/imageView2"
+        android:layout_below="@+id/relative_img"
         android:layout_centerHorizontal="true"/>
     <Button
         android:id="@+id/btn_signup"
         android:layout_width="@dimen/_120sdp"
         android:layout_height="wrap_content"
-        android:text="Register"
+        android:text="@string/register"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/border"

@@ -7,20 +7,27 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.Tamm.Hotels.wcf.AuthenticationData;
@@ -29,6 +36,8 @@ import com.Tamm.Hotels.wcf.CheckOutReq;
 import com.Tamm.Hotels.wcf.CountryList;
 import com.Tamm.Hotels.wcf.CountryListResponse;
 import com.Tamm.Hotels.wcf.DestinationCityListResponse;
+import com.Tamm.Hotels.wcf.CountryList;
+import com.Tamm.Hotels.wcf.CountryListResponse;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -36,10 +45,20 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.activities.FindHotels;
 import net.middledleeast.tamm.activities.PaymentActivity;
+import net.middledleeast.tamm.fragments.PlansFragment;
+import net.middledleeast.tamm.fragments.TammFamilyFragment;
+import net.middledleeast.tamm.fragments.PlansFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
@@ -88,6 +107,9 @@ public class RegisterationActivity extends Fragment {
     private String idCountry;
     private List<String> list_city = new ArrayList<>();
 
+    Toolbar toolbar;
+    ImageView imageView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -104,6 +126,19 @@ public class RegisterationActivity extends Fragment {
         country = view.findViewById(R.id.country);
         ocupation = view.findViewById(R.id.ed_occupation);
         city = view.findViewById(R.id.ed_city);
+
+        toolbar = view.findViewById(R.id.welcome_toolbar);
+        imageView = view.findViewById(R.id.back_pressed);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.welcome_container, new PlansFragment())
+                        .commit();
+            }
+        });
+
 
         relative_visa = view.findViewById(R.id.relative_visa);
         etVisa = view.findViewById(R.id.ed_visa);
@@ -125,6 +160,7 @@ public class RegisterationActivity extends Fragment {
                country.setAdapter(adapter);
 
 
+        relative_visa = view.findViewById(R.id.relative_visa);
 
         Bundle arguments = getArguments();
         try {
@@ -150,6 +186,7 @@ public class RegisterationActivity extends Fragment {
         } else {
             return null;
         }
+
 
 
         mrOrMissArray = new ArrayList<>();
@@ -333,7 +370,6 @@ public class RegisterationActivity extends Fragment {
 
                 idCountry = listID.get(i);
 
-                Toast.makeText(getContext(), "id is : "+idCountry, Toast.LENGTH_SHORT).show();
                 getCities(idCountry);
             }
 

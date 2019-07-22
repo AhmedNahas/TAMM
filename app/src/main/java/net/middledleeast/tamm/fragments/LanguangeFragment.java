@@ -8,6 +8,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toolbar;
 
 import androidx.fragment.app.Fragment;
 
@@ -19,6 +21,7 @@ import net.middledleeast.tamm.R;
 public class LanguangeFragment extends Fragment {
 
     private Button btnEnglish, btnArabic;
+
 
     public LanguangeFragment() {
         // Required empty public constructor
@@ -35,6 +38,7 @@ public class LanguangeFragment extends Fragment {
 
 
 
+
         btnEnglish.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -42,7 +46,7 @@ public class LanguangeFragment extends Fragment {
                     btnEnglish.setBackgroundColor(Color.parseColor("#BE973B"));
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.welcome_container, new TammFamilyFragment())
-                            .commit();
+                            .addToBackStack( "LanguangeFragment" ) .commit();
                 }else if (event.getAction() == MotionEvent.ACTION_UP){
                     btnEnglish.setBackground(getActivity().getDrawable(R.drawable.border));
                 }

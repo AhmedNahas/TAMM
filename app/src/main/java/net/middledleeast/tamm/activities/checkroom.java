@@ -28,9 +28,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class checkroom extends AppCompatActivity {
+    private Button checkRoom,back;
     @BindView(R.id.tv_total_mount)
     TextView tvTotalMount;
-    private Button checkRoom;
+
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
     private String sessionId;
@@ -57,6 +58,13 @@ public class checkroom extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         auth();
         getIntentInfo();
+        back=findViewById(R.id.btn_baack);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(checkroom.this,ChooseBookingDate.class));
+            }
+        });
 
         tvTotalMount.setText("  Total Amount:             "+roomPrice);
 

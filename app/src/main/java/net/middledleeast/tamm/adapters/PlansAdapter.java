@@ -1,7 +1,7 @@
 package net.middledleeast.tamm.adapters;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -10,27 +10,45 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.fragments.FreeAccount;
 import net.middledleeast.tamm.fragments.MemberShip;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.Freeuser;
 import net.middledleeast.tamm.model.PlanModel;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
 public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHolder>  {
 
     private Context context;
+    Activity activity ;
     private List<PlanModel> planModelList;
     private int row_index = -1;
+    private String HI = "http://egyptgoogle.com/backend/freeamountformember/freememberfees.php";
+    private String HI2 = "http://egyptgoogle.com/backend/amountformember/amountformember.php";
 
     public PlansAdapter(Context context, List<PlanModel> planModelList) {
         this.context = context;
         this.planModelList = planModelList;
+        this.activity = activity;
     }
 
     @NonNull
@@ -44,6 +62,11 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHol
 
     @Override
     public void onBindViewHolder(@NonNull final PlansViewHolder plansViewHolder, final int i) {
+
+
+
+
+
 
 
         if (i==0){
@@ -71,6 +94,9 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHol
 if(i==0)
 {
 
+//getmember();
+
+
 
     ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
             .replace(R.id.welcome_container, new MemberShip())
@@ -78,6 +104,10 @@ if(i==0)
 }
 else
 {
+
+
+//    getFree();
+
     ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
             .replace(R.id.welcome_container, new FreeAccount())
             .commit();
@@ -117,6 +147,75 @@ else
 //        });
 
     }
+
+//    private void getmember() {
+//
+//        StringRequest stringRequest=new StringRequest(Request.Method.GET, HI2, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                try {
+//                    JSONObject jsonObject=new JSONObject(response);
+//                    JSONArray array=jsonObject.getJSONArray("amountformember");
+//                    for (int i=0; i<1; i++ ){
+//                        JSONObject ob=array.getJSONObject(i);
+//                        String msgbody = ob.getString("Msgbody");
+//
+//
+//
+//                        SharedPreferencesManger.SaveData(activity,"fees",msgbody);
+//
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        }, new Response.ErrorListener() {
+//
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        RequestQueue requestQueue= Volley.newRequestQueue(context);
+//        requestQueue.add(stringRequest);
+//
+//    }
+
+//    private void getFree() {
+//
+//        StringRequest stringRequest=new StringRequest(Request.Method.GET, HI, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                try {
+//                    JSONObject jsonObject=new JSONObject(response);
+//                    JSONArray array=jsonObject.getJSONArray("freeamountformember");
+//                    for (int i=0; i<1; i++ ){
+//                        JSONObject ob=array.getJSONObject(i);
+//                         String msgbody = ob.getString("Msgbody");
+//
+//
+//
+//                        SharedPreferencesManger.SaveData(activity,"fees",msgbody);
+//
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        }, new Response.ErrorListener() {
+//
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        RequestQueue requestQueue= Volley.newRequestQueue(context);
+//        requestQueue.add(stringRequest);
+//    }
 
     @Override
     public int getItemCount() {

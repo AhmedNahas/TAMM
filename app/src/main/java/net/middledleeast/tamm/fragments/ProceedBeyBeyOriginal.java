@@ -74,7 +74,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 SearchFlightByCity searchFlightByCity = new SearchFlightByCity();
 
                 getActivity().getSupportFragmentManager().beginTransaction().add(R.id.flights_container, searchFlightByCity)
-                        .commit();
+                        .addToBackStack( "ProceedBeyBeyOriginal" ) .commit();
 
 
             }
@@ -85,7 +85,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
             public void onClick(View view) {
                 SearchFlightByCity searchFlightByCity = new SearchFlightByCity();
                 getActivity().getSupportFragmentManager().beginTransaction().add(R.id.flights_container, searchFlightByCity)
-                        .commit();
+                        .addToBackStack( "ProceedBeyBeyOriginal" ) .commit();
 
             }
         });

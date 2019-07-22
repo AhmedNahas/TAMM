@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.FindHotels;
+import net.middledleeast.tamm.activities.RenewAccount;
+import net.middledleeast.tamm.fragments.TammFamilyFragment;
 
 
 public class ReserveRoom extends AppCompatActivity {
@@ -19,10 +21,21 @@ public class ReserveRoom extends AppCompatActivity {
     private ImageView logo,imgbutton,bigline,smallline,imghotel,imgman;
     private TextView tammtxt,hotelstxt,besttxt,specialtxt,anywhere,anytime;
     private Button btnarrow,reservebtn;
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reserve_room);
+
+
+        imageView = findViewById(R.id.back_pressed);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               startActivity(new Intent(ReserveRoom.this, RenewAccount.class));
+            }
+        });
 //
 
 

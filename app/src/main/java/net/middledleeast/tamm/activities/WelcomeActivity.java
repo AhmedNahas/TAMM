@@ -17,7 +17,7 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        toolbar = findViewById(R.id.welcome_toolbar);
+//        toolbar = findViewById(R.id.welcome_toolbar);
         setSupportActionBar(toolbar);
         getSupportFragmentManager().beginTransaction().replace(R.id.welcome_container, new LanguangeFragment())
                 .commit();
