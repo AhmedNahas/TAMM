@@ -392,7 +392,8 @@ getCountries();
 
         // get all name country in string
         String name_country = SharedPreferencesManger.LoadStringData(FindHotels.this, "name_country");
-
+Gson gson = new Gson();
+        listName = gson.fromJson(name_country,ArrayList.class);
         //list of name country
         listName = Arrays.asList(name_country.split(",", 1000));
 
