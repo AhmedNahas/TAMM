@@ -64,6 +64,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     EditText edFirst6;
     @BindView(R.id.relative_firstlast6)
     RelativeLayout relativeFirstlast6;
+    @BindView(R.id.specification)
+    EditText specification;
     private Button confirmRoom;
     private ImageView back;
 
@@ -99,14 +101,13 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         confirmRoom = findViewById(R.id.confirm_room_booking);
         Gson gson = new Gson();
 
-        back=findViewById(R.id.btn_baack);
+        back = findViewById(R.id.btn_baack);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ConfirmBookingRoom.this,checkroom.class));
+                startActivity(new Intent(ConfirmBookingRoom.this, checkroom.class));
             }
         });
-
 
 
         Intent intent = getIntent();
@@ -126,28 +127,28 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 //        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 
 
-        int no_adult = SharedPreferencesManger.LoadIntegerData(ConfirmBookingRoom.this, "no_adult");
+        int noOfRooms = SharedPreferencesManger.LoadIntegerData(ConfirmBookingRoom.this, "noOfRooms");
 
 
-        if (no_adult == 1) {
+        if (noOfRooms == 1) {
 
-        } else if (no_adult == 2) {
+        } else if (noOfRooms == 2) {
 
             relativeFirstlast2.setVisibility(View.VISIBLE);
 
-        } else if (no_adult == 3) {
+        } else if (noOfRooms == 3) {
             relativeFirstlast2.setVisibility(View.VISIBLE);
             relativeFirstlast3.setVisibility(View.VISIBLE);
-        }else if (no_adult==4){
+        } else if (noOfRooms == 4) {
             relativeFirstlast2.setVisibility(View.VISIBLE);
             relativeFirstlast3.setVisibility(View.VISIBLE);
             relativeFirstlast4.setVisibility(View.VISIBLE);
-        }else if (no_adult==5){
+        } else if (noOfRooms == 5) {
             relativeFirstlast2.setVisibility(View.VISIBLE);
             relativeFirstlast3.setVisibility(View.VISIBLE);
             relativeFirstlast4.setVisibility(View.VISIBLE);
             relativeFirstlast5.setVisibility(View.VISIBLE);
-        }else if (no_adult==6){
+        } else if (noOfRooms == 6) {
             relativeFirstlast2.setVisibility(View.VISIBLE);
             relativeFirstlast3.setVisibility(View.VISIBLE);
             relativeFirstlast4.setVisibility(View.VISIBLE);
@@ -170,8 +171,6 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         mHOtelCode = intent.getStringExtra("mHOtelCode");
 
         BigDecimal amount = new BigDecimal(roomPrice);
-
-
 
 
         try {
@@ -237,6 +236,20 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         s3 = findViewById(R.id.mromiss3);
         s3.setSelection(1);
         s3.setAdapter(mrOrMissAdapter);
+
+
+        String mSpecification = specification.getText().toString();
+
+
+        setSpecification(mSpecification);
+
+
+
+    }
+
+    private void setSpecification(String mSpecification) {
+
+
     }
 
     @Override

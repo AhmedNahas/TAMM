@@ -3,9 +3,11 @@ package net.middledleeast.tamm.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,14 +23,21 @@ import com.Tamm.Hotels.wcf.RoomCombination;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class checkroom extends AppCompatActivity {
-    private Button checkRoom,back;
+    @BindView(R.id.tv_9)
+    TextView deadLine_tv;
+    private Button checkRoom, back;
     @BindView(R.id.tv_total_mount)
     TextView tvTotalMount;
 
@@ -58,20 +67,24 @@ public class checkroom extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         auth();
         getIntentInfo();
-        back=findViewById(R.id.btn_baack);
+        back = findViewById(R.id.btn_baack);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(checkroom.this,ChooseBookingDate.class));
+                startActivity(new Intent(checkroom.this, ChooseBookingDate.class));
             }
         });
 
-        tvTotalMount.setText("  Total Amount:             "+roomPrice);
+        tvTotalMount.setText("  Total Amount:             " + roomPrice);
 
-         roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
+        roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
         currency = SharedPreferencesManger.LoadStringData(this, "currency");
 
-        tvTotalMount.setText("  TOTAl AMOUNT :                          "+currency+" "+roomPrice);
+
+
+
+
+        tvTotalMount.setText("  TOTAl AMOUNT :                          " + currency + " " + roomPrice);
 
         BookingOptions bookingOptions = new BookingOptions();
         bookingOptions.RoomCombination = new ArrayList<>();
@@ -83,8 +96,18 @@ public class checkroom extends AppCompatActivity {
 
             HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
 
+
+            String autoCancellationText = cancelPolicies.CancelPolicies.AutoCancellationText;
+
+
+
             AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, bookingOptions, authenticationData);
 
+            String deadline = availabilityAndPricingResponse.HotelCancellationPolicies.CancelPolicies.LastCancellationDeadline.toString();
+
+            String[] arrOfStr = deadline.split("T");
+
+            deadLine_tv.setText("Until : "+arrOfStr[0]);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -108,8 +131,6 @@ public class checkroom extends AppCompatActivity {
         try {
 
             service.enableLogging = true;
-
-
 
 
         } catch (Exception e) {
@@ -138,6 +159,7 @@ public class checkroom extends AppCompatActivity {
         authenticationData.Password = ("Tam@18418756");
 
     }
+
     public static class transferClass {
 
         public static ArrayOfRequestedRooms arrayOfRequestedRooms;

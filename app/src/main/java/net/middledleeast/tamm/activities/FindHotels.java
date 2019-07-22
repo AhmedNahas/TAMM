@@ -66,7 +66,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static java.util.Calendar.YEAR;
 
-public class FindHotels extends AppCompatActivity  {
+public class FindHotels extends AppCompatActivity {
 
 
     @BindView(R.id.startDate_day)
@@ -140,6 +140,7 @@ public class FindHotels extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_hotels);
         ButterKnife.bind(this);
+        auth();
 
         areas = findViewById(R.id.area_spinner);
         regions = findViewById(R.id.region_spinner);
@@ -156,7 +157,7 @@ public class FindHotels extends AppCompatActivity  {
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FindHotels.this, WelcomeActivity.class));
+                startActivity(new Intent(FindHotels.this, RenewAccount.class));
             }
         });
 
@@ -164,8 +165,7 @@ public class FindHotels extends AppCompatActivity  {
 
         StrictMode.setThreadPolicy(policy);
 
-     //   auth();
-
+        //   auth();
 
 
 //if (saved==true){
@@ -189,13 +189,11 @@ public class FindHotels extends AppCompatActivity  {
 //
 //}else {
 
- //   getCountries();
+        //   getCountries();
 
 //}
 
-        auth();
-getCountries();
-
+        getCountries();
 
 
         recycl_child_spiner.setLayoutManager(new GridLayoutManager(this, 2));
@@ -393,50 +391,48 @@ getCountries();
 
         // get all name country in string
         String name_country = SharedPreferencesManger.LoadStringData(FindHotels.this, "name_country");
-Gson gson = new Gson();
-        listName = gson.fromJson(name_country,ArrayList.class);
-
-
-        //list of name country
-//        listName = Arrays.asList(name_country.split(",", 1000));
+        Gson gson = new Gson();
+        listName = gson.fromJson(name_country, ArrayList.class);
 
 
         String code_country = SharedPreferencesManger.LoadStringData(FindHotels.this, "code_country");
 
+        Gson gson2 = new Gson();
+        listID = gson2.fromJson(code_country, ArrayList.class);
+
+
         //list of cod country
 
-        listID = Arrays.asList(code_country.split(",", 1000));
 
-                ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, listName);
-                adapter.setDropDownViewResource(R.layout.drop_dowen);
-                regions.setDropDownWidth(420);
-                regions.setDropDownVerticalOffset(200);
-                regions.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
+        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, listName);
+        adapter.setDropDownViewResource(R.layout.drop_dowen);
+        regions.setDropDownWidth(420);
+        regions.setDropDownVerticalOffset(200);
+        regions.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
-            regions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-
-
-                    nameCountry = listName.get(position);
-                    idCountry = listID.get(position);
-
-                    getCities(idCountry);
+        regions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
 
 
-                }
+                nameCountry = listName.get(position);
+                idCountry = listID.get(position);
+
+                getCities(idCountry);
 
 
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
+            }
 
 
-            // String test = hotelSearchResponse.Status.Description;
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        // String test = hotelSearchResponse.Status.Description;
 //            System.out.println("Hello: " + test);
 
     }
@@ -485,7 +481,7 @@ Gson gson = new Gson();
 
     private void getCities(String idCountry) {
 
-
+        nameCity.clear();
 
         try {
             DestinationCityListResponse cities = service.DestinationCityList(idCountry, "true", authenticationData);
@@ -529,7 +525,6 @@ Gson gson = new Gson();
     }
 
     private void gethotelsInfo(String ctyId) {
-
 
 
 //        Calendar cal1 = Calendar.getInstance();
@@ -647,6 +642,7 @@ Gson gson = new Gson();
     private void auth() {
 
         service = new BasicHttpBinding_IHotelService1();
+        service.enableLogging = true;
         authenticationData = new AuthenticationData();
         authenticationData.UserName = ("Tammtest");
         authenticationData.Password = ("Tam@18418756");
@@ -824,12 +820,7 @@ Gson gson = new Gson();
                     .show();
 
 
-
         }
-
-
-
-
 
 
     }

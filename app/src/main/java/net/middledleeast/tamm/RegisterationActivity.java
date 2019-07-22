@@ -52,6 +52,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
 import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.activities.FindHotels;
@@ -344,44 +345,36 @@ public class RegisterationActivity extends Fragment {
 
     private void getCountries() {
 
-        try {
-
-            service.enableLogging = true;
-//            service.DestinationCityList("IN", null, authenticationData);
 
 
-            CountryListResponse countryListResponse = service.CountryList(authenticationData);
+
+        // get all name country in string
+        String name_country = SharedPreferencesManger.LoadStringData(getActivity(), "name_country");
+        Gson gson = new Gson();
+        list_country = gson.fromJson(name_country,ArrayList.class);
 
 
-            for (int i = 0; i < countryListResponse.CountryList.size(); i++) {
 
-                CountryList countryList = countryListResponse.CountryList.get(i);
+        String code_country = SharedPreferencesManger.LoadStringData(getActivity(), "code_country");
 
-                String cod = countryList.CountryCode;
-                listID.add(cod);
-                String name = countryList.CountryName;
+        Gson gson2 = new Gson();
+        listID = gson2.fromJson(code_country,ArrayList.class);
 
-                list_country.add(name);
-
-
-            }
 
             for (int i = 0; i < list_country.size(); i++) {
 
                 idCountry = listID.get(i);
 
-                getCities(idCountry);
+              //  getCities(idCountry);
+
+
             }
-
-
-
 
 
             // String test = hotelSearchResponse.Status.Description;
 //            System.out.println("Hello: " + test);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+
     }
     private void auth() {
 
