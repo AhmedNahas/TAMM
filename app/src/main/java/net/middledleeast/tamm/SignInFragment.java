@@ -47,6 +47,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -77,9 +78,12 @@ public class SignInFragment extends Fragment {
     private String username;
     private Dialog dialog;
 
+    List<String> listCountry = new ArrayList<>();
+
     Toolbar toolbar;
     ImageView imageView;
-
+    private String HI_ = "http://egyptgoogle.com/backend/freeamountformember/freememberfees.php";
+    private String HI2_ = "http://egyptgoogle.com/backend/amountformember/amountformember.php";
 
 
     public SignInFragment() {
@@ -102,7 +106,7 @@ public class SignInFragment extends Fragment {
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.welcome_container, new AuthenticationFragment())
-                        .commit();
+                        .addToBackStack("SignInFragment").commit();
             }
         });
 
@@ -125,10 +129,6 @@ public class SignInFragment extends Fragment {
         }.execute();
 
 
-
-
-
-
         // for test
 //        userName.setText("ahmed");
 //        pass.setText("0125016341");
@@ -138,6 +138,9 @@ public class SignInFragment extends Fragment {
             public void onClick(View view) {
 
 
+                String mUsrename = userName.getText().toString();
+
+                SharedPreferencesManger.SaveData(getActivity(), "user", mUsrename);
 
 
                 dialog.show();
@@ -149,13 +152,11 @@ public class SignInFragment extends Fragment {
 
                 if (TextUtils.isEmpty(user_Name)) {
                     userName.setError("Name Is Required");
-dialog.cancel();
+                    dialog.cancel();
                 } else if (TextUtils.isEmpty(password)) {
                     pass.setError("Conf. Password Is Required");
                     dialog.cancel();
                 }
-
-
 
 
                 if (listUserPass.contains(pass.getText().toString()) && listUserName.contains(userName.getText().toString())) {
@@ -169,7 +170,7 @@ dialog.cancel();
                     startActivity(intent);
 
 
-                }else {
+                } else {
                     Toast.makeText(getContext(), "wrong user name or password", Toast.LENGTH_SHORT).show();
                     dialog.cancel();
 
@@ -184,8 +185,6 @@ dialog.cancel();
                             .commit();
                     dialog.cancel();
                 }
-
-
 
 
             }
@@ -241,7 +240,7 @@ dialog.cancel();
                 } catch (JSONException e) {
                     e.printStackTrace();
 
-                    Toast.makeText(getContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -257,7 +256,6 @@ dialog.cancel();
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
     }
-
 
 
     private void getFreeData() {
@@ -288,7 +286,7 @@ dialog.cancel();
                 } catch (JSONException e) {
                     e.printStackTrace();
 
-                    Toast.makeText(getContext(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     dialog.cancel();
                 }
 
@@ -305,9 +303,6 @@ dialog.cancel();
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
     }
-
-
-
 
 
     private View getView(LayoutInflater inflater, ViewGroup container) {
@@ -328,5 +323,75 @@ dialog.cancel();
 
         dialog.dismiss();
     }
+
+
+    private void getmember() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, HI2_, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray array = jsonObject.getJSONArray("amountformember");
+                    for (int i = 0; i < 1; i++) {
+                        JSONObject ob = array.getJSONObject(i);
+                        String msgbody = ob.getString("Msgbody");
+
+
+                        SharedPreferencesManger.SaveData(getActivity(), "fees", msgbody);
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getContext(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+
+    }
+
+    private void getFree() {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, HI_, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray array = jsonObject.getJSONArray("freeamountformember");
+                    for (int i = 0; i < 1; i++) {
+                        JSONObject ob = array.getJSONObject(i);
+                        String msgbody = ob.getString("Msgbody");
+
+
+                        SharedPreferencesManger.SaveData(getActivity(), "fees", msgbody);
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getContext(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+    }
+
+
 }
 

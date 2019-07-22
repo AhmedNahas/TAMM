@@ -196,33 +196,8 @@ public class ChooseBookingDate extends AppCompatActivity {
             Hotel_Room hotel_room = rooms.get(0);
 //
             transferClass.setHotel_room(hotel_room);
-            ArrayOfRequestedRooms arrayOfRooms = new ArrayOfRequestedRooms();
-            RequestedRooms requestedRooms = new RequestedRooms();
-            requestedRooms.RatePlanCode = hotel_room.RatePlanCode;
-            requestedRooms.RoomIndex = hotel_room.RoomIndex;
-            requestedRooms.RoomRate = new Rate();
-            if (hotel_room.Supplements != null) {
-                requestedRooms.Supplements = new ArrayOfSuppInfo();
-                for (Supplement supplement : hotel_room.Supplements) {
-                    SuppInfo suppInfo = new SuppInfo();
-                    suppInfo.SuppChargeType = Enums.SuppChargeType.valueOf(supplement.SuppChargeType.name());
-                    suppInfo.Price = supplement.Price;
-                    if (supplement.SuppIsMandatory) {
-                        suppInfo.SuppIsSelected = true;
 
-                    }
-                    requestedRooms.Supplements.add(suppInfo);
-                }
-            }
-            requestedRooms.RoomRate.RoomFare = hotel_room.RoomRate.RoomFare;
-            requestedRooms.RoomRate.RoomTax = hotel_room.RoomRate.RoomTax;
-            requestedRooms.RoomRate.TotalFare = hotel_room.RoomRate.TotalFare;
-            requestedRooms.RoomTypeCode = hotel_room.RoomTypeCode;
-            arrayOfRooms.add(requestedRooms);
-            String requestedRoomsString = gson.toJson(arrayOfRooms);
-            SharedPreferencesManger.SaveData(this, "arrayOfroomsreq", requestedRoomsString);
-
-            transferClass.setArrayOfRequestedRooms(arrayOfRooms);
+//            transferClass.setArrayOfRequestedRooms(arrayOfRooms);
 
             BookingOptions bookingOptionsResponse = response.OptionsForBooking;
 
@@ -243,7 +218,8 @@ public class ChooseBookingDate extends AppCompatActivity {
 
             SharedPreferencesManger.SaveData(this, "resultIndex", resultIndex);
 
-            roomAdapter = new RoomsAdapter(ChooseBookingDate.this, authenticationData, service, response, rooms, hotel_room, arrayOfRooms, start_time, end_time, noOfRooms, resultIndex,
+            roomAdapter = new RoomsAdapter(ChooseBookingDate.this, authenticationData,
+                    service, response, rooms, hotel_room, start_time, end_time, noOfRooms, resultIndex,
                     mHotelCode, authenticationData, sessionId, ChooseBookingDate.this);
 
 

@@ -518,11 +518,7 @@
         android:text="@string/find_hotels" />
 
 
-    <ProgressBar
-        android:layout_below="@+id/findHotels"
-        android:id="@+id/progressBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
 
 </RelativeLayout>
 

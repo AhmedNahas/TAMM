@@ -50,6 +50,8 @@ import org.joda.time.DateTime;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -85,7 +87,7 @@ public class FindHotels extends AppCompatActivity  {
     @BindView(R.id.findHotels)
     Button findHotels;
     ArrayList<Integer> ratrHotel = new ArrayList<Integer>();
-    private List<String> list = new ArrayList<>();
+    private List<String> listName = new ArrayList<>();
     ArrayList<String> addressHotel = new ArrayList<>();
     private List<String> nameCity = new ArrayList<>();
     private BasicHttpBinding_IHotelService1 service;
@@ -130,7 +132,6 @@ public class FindHotels extends AppCompatActivity  {
     private HotelSearchResponse hotelSearchResponse;
     private CountryList countryList;
 //    private boolean saved ;
-ProgressBar bar;
 
     @SuppressLint("StaticFieldLeak")
     @Override
@@ -150,9 +151,7 @@ ProgressBar bar;
         toolbar_back = findViewById(R.id.toolbar_back1);
         recycl_child_spiner = findViewById(R.id.rv_child);
 
-        bar = (ProgressBar) findViewById(R.id.progressBar);
-        bar.setProgress(0);
-        bar.setMax(100);
+
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -193,54 +192,8 @@ ProgressBar bar;
 
 //}
 
-        new AsyncTask<String, Integer, String>() {
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                // code will executed before task start (main thread)
-                //
-                //
-                 auth();
-
-                 getCountries();
-            }
-
-            @Override
-            protected String doInBackground(String... params) {
-                // task will done in background
-
-                for (int i = 0; i < 100; i++) {
-                    try {
-                        // sleep 100 millisecond every loop so progress will not finished fast with out see it
-                        Thread.sleep(10);
-                        publishProgress(i);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                return null;
-
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                // code executed after task finish hide progress and change text
-                bar.animate().alpha(0).setDuration(200).start();
-            }
-
-            @Override
-            protected void onProgressUpdate(Integer... values) {
-                super.onProgressUpdate(values);
-                // progress come as array maybe there is mote than one value or progress update so i put [0]
-                bar.setProgress(values[0]);
-
-            }
-
-
-        }.execute();
+        auth();
+getCountries();
 
 
 
@@ -436,63 +389,42 @@ ProgressBar bar;
 
     private void getCountries() {
 
-        try {
 
-            service.enableLogging = true;
-//            service.DestinationCityList("IN", null, authenticationData);
-
-
-            CountryListResponse countryListResponse = service.CountryList(authenticationData);
-
-
-            for (int i = 0; i < countryListResponse.CountryList.size(); i++) {
-
-                 countryList = countryListResponse.CountryList.get(i);
-                String cod = countryList.CountryCode;
-
-                listID.add(cod);
-                String name = countryList.CountryName;
-//                countryList.CountryCode
-//                countryListResponse.Status.Category
-                list.add(name);
+        // get all name country in string
+        String name_country = SharedPreferencesManger.LoadStringData(FindHotels.this, "name_country");
+Gson gson = new Gson();
+        listName = gson.fromJson(name_country,ArrayList.class);
+        //list of name country
+        listName = Arrays.asList(name_country.split(",", 1000));
 
 
-                ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, list);
+        String code_country = SharedPreferencesManger.LoadStringData(FindHotels.this, "code_country");
+
+        //list of cod country
+
+        listID = Arrays.asList(code_country.split(",", 1000));
+
+                ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, listName);
                 adapter.setDropDownViewResource(R.layout.drop_dowen);
                 regions.setDropDownWidth(420);
                 regions.setDropDownVerticalOffset(200);
                 regions.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
 
-
-//                    AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, "country").allowMainThreadQueries()
-//                            .build();
-//
-//                    RoomcountrytModel roomcountrytModel  = new RoomcountrytModel(cod,name);
-//
-//                    db.CountryDeo().insertAll(roomcountrytModel);
-//                    saved = true ;
-
-
-
-
-
-            }
-
-
             regions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
 
-                    nameCity.clear();
-                    idCountry = listID.get(position);
 
-                    nameCountry = list.get(position);
+                    nameCountry = listName.get(position);
+                    idCountry = listID.get(position);
 
                     getCities(idCountry);
 
 
                 }
+
+
 
                 @Override
                 public void onNothingSelected(AdapterView<?> adapterView) {
@@ -503,9 +435,7 @@ ProgressBar bar;
 
             // String test = hotelSearchResponse.Status.Description;
 //            System.out.println("Hello: " + test);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
     private void listOfChildCount() {
@@ -551,6 +481,7 @@ ProgressBar bar;
 
 
     private void getCities(String idCountry) {
+
 
 
         try {
@@ -654,8 +585,9 @@ ProgressBar bar;
             ratrHotel.clear();
             nameHotel.clear();
             photoHotel.clear();
-
-
+            listcodeHotel.clear();
+            addressHotel.clear();
+            arrayOfResultIndex.clear();
 
             if (hotelSearchResponse.HotelResultList != null) {
                 for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
@@ -670,6 +602,7 @@ ProgressBar bar;
                     arrayOfResultIndex.add(hotel_result.ResultIndex);
 
                     String hotelCode = hotelInfo.HotelCode;
+
                     listcodeHotel.add(hotelCode);
 
                     nameHotel.add(hotelName);
@@ -697,9 +630,10 @@ ProgressBar bar;
         intent.putExtra("cityName", name_city);
         intent.putExtra("cityId", ctyId);
         intent.putExtra("noOfRooms", noRomes);
+        SharedPreferencesManger.SaveData(this, "noOfRooms", noRomes);
         intent.putExtra("resultIndex", arrayOfResultIndex);
 
-        SharedPreferencesManger.SaveData(FindHotels.this,"session_id",sessionId);
+        SharedPreferencesManger.SaveData(FindHotels.this, "session_id", sessionId);
 
         // intent.putExtra("roomGuest",roomguests);
         startActivity(intent);
@@ -745,6 +679,10 @@ ProgressBar bar;
                 startDateMonth.setText(monthString);
 
                 startDateYear.setText(dayOfTheWeek);
+
+                endDateDay.setText(day);
+                endDateMonth.setText(monthString);
+                endDateYear.setText(dayOfTheWeek);
 
             }
         };
@@ -853,7 +791,7 @@ ProgressBar bar;
             SharedPreferencesManger.SaveData(FindHotels.this, "end_date", mendTime);
             gethotelsInfo(ctyId);
 
-        }else if (chicDateStart){
+        } else if (chicDateStart) {
 
             new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
                     .setTitleText("Select Check Out Dat First")
@@ -868,8 +806,7 @@ ProgressBar bar;
                     .show();
 
 
-
-        }else{
+        } else {
 
             new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
                     .setTitleText("Select Check In Dat First")

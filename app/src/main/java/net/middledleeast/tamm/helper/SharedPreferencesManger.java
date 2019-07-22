@@ -11,7 +11,7 @@ public class SharedPreferencesManger {
     private static SharedPreferences sharedPreferences = null;
 
 
-    public static void setSharedPreferences(Activity activity) {
+    public static void setSharedPreferences(Context activity) {
         if (sharedPreferences == null) {
             sharedPreferences = activity.getSharedPreferences(
                     "Tamm", Context.MODE_PRIVATE);
@@ -19,7 +19,7 @@ public class SharedPreferencesManger {
         }
     }
 
-    public static void clean(Activity activity) {
+    public static void clean(Context activity) {
         setSharedPreferences(activity);
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -28,7 +28,7 @@ public class SharedPreferencesManger {
         }
     }
 
-    public static void remove(Activity activity, String data_key) {
+    public static void remove(Context activity, String data_key) {
         setSharedPreferences(activity);
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -38,7 +38,7 @@ public class SharedPreferencesManger {
     }
 
 
-    public static void SaveData(Activity activity, String data_Key, String data_Value) {
+    public static void SaveData(Context activity, String data_Key, String data_Value) {
         setSharedPreferences(activity);
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -47,7 +47,7 @@ public class SharedPreferencesManger {
         }
     }
 
-    public static void SaveData(Activity activity, String data_Key, long data_Value) {
+    public static void SaveData(Context activity, String data_Key, long data_Value) {
         setSharedPreferences(activity);
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -57,7 +57,7 @@ public class SharedPreferencesManger {
     }
 
 
-    public static void SaveData(Activity activity, String data_Key, int data_Value) {
+    public static void SaveData(Context activity, String data_Key, int data_Value) {
         setSharedPreferences(activity);
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -66,7 +66,7 @@ public class SharedPreferencesManger {
         }
     }
 
-    public static String LoadStringData(Activity activity, String data_Key) {
+    public static String LoadStringData(Context activity, String data_Key) {
         setSharedPreferences(activity);
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -80,7 +80,7 @@ public class SharedPreferencesManger {
         return sharedPreferences.getString(data_Key, null);
     }
 
-    public static long LoadLongData(Activity activity, String data_Key) {
+    public static long LoadLongData(Context activity, String data_Key) {
         setSharedPreferences(activity);
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -94,7 +94,7 @@ public class SharedPreferencesManger {
     }
 
 
-    public static Integer LoadIntegerData(Activity activity, String data_Key) {
+    public static Integer LoadIntegerData(Context activity, String data_Key) {
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
         } else {
