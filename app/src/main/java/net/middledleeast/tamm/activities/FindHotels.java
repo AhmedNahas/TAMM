@@ -679,6 +679,10 @@ getCountries();
 
                 startDateYear.setText(dayOfTheWeek);
 
+                endDateDay.setText(day);
+                endDateMonth.setText(monthString);
+                endDateYear.setText(dayOfTheWeek);
+
             }
         };
 
