@@ -42,9 +42,9 @@
     </RelativeLayout>
     <ImageView
         android:id="@+id/img_linee"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="12dp"
-        android:src="@drawable/line"
+        android:src="@drawable/line1"
         android:layout_below="@+id/relative_booking"
         android:layout_centerInParent="true" />
 

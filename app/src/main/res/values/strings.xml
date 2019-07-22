@@ -21,23 +21,44 @@
     <string name="plan_details_text">Details go here, detail go here, detail go here,  detail go here, detail go here, detail go here</string>
     <string name="sign_text" translatable="false">Already Have An Account ? <u>Sign in</u></string>
 
-    <string name="title_activity_renew_account">RenewAccount</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <!--<string name="title_activity_renew_account">RenewAccount</string>-->
+    <!--<string name="navigation_drawer_open">Open navigation drawer</string>-->
+    <!--<string name="navigation_drawer_close">Close navigation drawer</string>-->
+    <!--<string name="nav_header_title">Android Studio</string>-->
+    <!--<string name="nav_header_subtitle">android.studio@android.com</string>-->
+    <!--<string name="nav_header_desc">Navigation header</string>-->
+    <!--<string name="action_settings">Settings</string>-->
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <!--<string name="menu_home">Home</string>-->
+    <!--<string name="menu_gallery">Gallery</string>-->
+    <!--<string name="menu_slideshow">Slideshow</string>-->
+    <!--<string name="menu_tools">Tools</string>-->
+    <!--<string name="menu_share">Share</string>-->
+    <!--<string name="menu_send">Send</string>-->
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--&lt;!&ndash; TODO: Remove or change this placeholder text &ndash;&gt;-->
+    <!--<string name="hello_blank_fragment">Hello blank fragment</string>-->
+    <string name="welcome_to">Welcome To</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
+    <string name="continue_">Continue</string>
+    <string name="sign_in">sign in</string>
+    <string name="register">Register</string>
+    <string name="sign_in_as_a_guest">sign in as a guest</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="enter">ENTER</string>
+    <string name="send_email">SEND EMAIL</string>
+    <string name="proceed">Proceed</string>
+    <string name="the_plans">The Plans</string>
+    <string name="membership">Membership</string>
+    <string name="accept">ACCEPT</string>
+    <string name="membership_account_plan">MEMBERSHIP ACCOUNT PLAN</string>
+    <string name="terms_and_conditions">Terms and conditions</string>
+    <string name="please_read_ncarefully_what_s_n_below_before_n_proceeding">PLEASE READ  CAREFULLY WHAT\'S  BELOW BEFORE   PROCEEDING!</string>
+    <string name="free_account_plan">FREE ACCOUNT PLAN</string>
+    <string name="by_choosing_this_plan_n_you_will_have_free_account_for_tamm_n_from_you_account">By choosing this plan,\n                     You will have free account for tamm \nfrom you account</string>
+    <string name="get_this_plan">GET THIS PLAN</string>
 
 
 </resources>
