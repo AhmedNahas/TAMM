@@ -1,17 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TAMM</string>
-    <string name="select_lang">Please Choose \nYour <font fgcolor='#FFFFFF'>Language :</font></string>
-    <string name="personal_assistant_app">IS YOUR PERSONAL ASSISTANCE APP</string>
-    <string name="tamm_assistant_service">TAMM Assistance Services For VisItors Company (Your Personal Assistant)</string>
-    <string name="family_message">Tamm Company is a Kuwaiti Services Company which communicate with its Customers all over the World, the Company established since 2017 which enables the customers to be locked in an enjoyable with Special Experience through our application, Call centre, Website, and the Social Media Channels.  The company has been a leader in the concept of personal assistance required by the current and future lifestyle of individuals, companies or government entities in a luxurious manner.  The company provides its members with all the distinguished services provided by the personal assistant. The application consists of a sophisticated telephone application that includes the following services (tourism and aviation sector - delivery and car rental sector - Catering services, cinema reservations, e-shopping, all other concierge services, providing services for people with special needs, in order to get the services they need at anytime, anywhere 24 hours a day, 7 days a week.  Our Priority is our Customers and we are doing our best to have their Satisfactions Through over 100 well Trained Employees working in Shifts 7/24 to sell a wonderful experience full of happiness and beautiful memories.  Our specialized Team Quest to get the best Prices, Services, Comfort and Satisfaction for our Customers all over the world and focus at the destinations in high demand and they always make sure to serve our Customers with Professional Serving and highest quality to stay Trust worthy.  We are looking forward to being one of (Tamm) Family.   Yours sincerely,</string>
-    <string name="authintication_text">FIRST, WE NEED TO BEGIN WITH THE REGISTRATION PROCESS, OR YOU CAN SIGN IN IF YOU’RE ALREADY A MEMBER.</string>
-    <string name="sorgot_password">Forgot Password?</string>
-    <string name="forgot_pass">Forgot\nPasswrod?</string>
-    <string name="password_will_be_send">The password will be sent\\nto your email address</string>
-    <string name="success_send_email">The password has beed sent to your email address</string>
-    <string name="plans_text">LET’S CHOOSE THE RIGHT PLAN FOR YOU NOW!</string>
-    <string name="plans_long_text">You can know more about the plans by clicking on them</string>
-    <string name="plan_details_text">Details go here, detail go here, detail go here,  detail go here, detail go here, detail go here</string>
+    <string name="welcome_to">مرحبا بك </string>
+
+    <string name="select_lang"> من فضلك اختار  \nYour <font fgcolor='#FFFFFF'>اللغه :</font></string>
+    <string name="english">انجليزي</string>
+    <string name="arabic">عربي</string>
+    <string name="continue_">متابعة</string>
+
+    <string name="personal_assistant_app"> تطبيق المساعدة الشخصية الخاص بك</string>
+    <string name="tamm_assistant_service">خدمات مساعدة TAMM للزائرين (مساعدك الشخصي)</string>
+    <string name="family_message">شركة Tamm هي شركة كويتية للخدمات تتواصل مع عملائها في جميع أنحاء العالم ، وهي الشركة التي تأسست منذ عام 2017 والتي تمكن العملاء من حبسهم بتجربة خاصة من خلال تطبيقنا ومركز الاتصال والموقع الإلكتروني وقنوات التواصل الاجتماعي. كانت الشركة رائدة في مفهوم المساعدة الشخصية التي يتطلبها نمط الحياة الحالي والمستقبلي للأفراد أو الشركات أو الجهات الحكومية بطريقة فاخرة. توفر الشركة لأعضائها جميع الخدمات المتميزة التي يقدمها المساعد الشخصي. يتكون التطبيق من تطبيق هاتفي متطور يتضمن الخدمات التالية (قطاع السياحة والطيران - قطاع التوصيل وتأجير السيارات - خدمات تقديم الطعام ، حجوزات السينما ، التسوق الإلكتروني ، جميع خدمات الكونسيرج الأخرى ، تقديم الخدمات لذوي الاحتياجات الخاصة ، من أجل للحصول على الخدمات التي يحتاجون إليها في أي وقت ، في أي مكان على مدار 24 ساعة في اليوم ، 7 أيام في الأسبوع. أولويتنا هي عملائنا ونحن نبذل قصارى جهدنا للحصول على رضاهم من خلال أكثر من 100 موظف متدرب جيدًا يعملون في نوبات 7/24 لبيع تجربة رائعة مليئة بالسعادة والذكريات الجميلة.سعي فريقنا المتخصص في السعي للحصول على أفضل الأسعار والخدمات والراحة والرضا لعملائنا في جميع أنحاء العالم والتركيز على الوجهات ذات الطلب المرتفع ويحرصون دائمًا على خدمة عملائنا مع المحترفين خدمة وأعلى جودة للبقاء تستحق الثقة ، ونحن نتطلع إلى أن نكون واحدة من عائلة (تام).
+</string>
+
+    <string name="authintication_text">أولاً ، يجب أن نبدأ بعملية التسجيل ، أو يمكنك تسجيل الدخول إذا كنت عضوًا بالفعل.</string>
+
+    <string name="sign_in">تسجيل الدخول</string>
     <string name="register">انشاء حساب جديد</string>
+    <string name="sign_in_as_a_guest">تسجيل الدخول كضيف</string>
+
+    <string name="username">اسم المستخدم</string>
+    <string name="password">الباسورد</string>
+    <string name="enter">دخول</string>
+    <string name="sorgot_password">هل نسيت كلمة المرور؟</string>
+
+
+    <string name="forgot_pass">هل نسيت كلمة المرور؟</string>
+    <string name="password_will_be_send">الباسورد سوف يرسل الي ايميلك الالكتروني</string>
+    <string name="send_email">ارسال</string>
+    <string name="success_send_email">تم إرسال كلمة المرور إلى عنوان بريدك الإلكتروني</string>
+    <string name="proceed">تقدم</string>
+
+
+    <string name="plans_text">دعنا نختار الخطة المناسبة لك الآن!</string>
+    <string name="plans_long_text">يمكنك معرفة المزيد عن الخطط من خلال النقر عليها</string>
+    <string name="plan_details_text">التفاصيل تذهب هنا ، التفاصيل تذهب هنا ، التفاصيل تذهب هنا ، التفاصيل تذهب هنا ، التفاصيل تذهب هنا ، التفاصيل تذهب هنا</string>
+    <string name="the_plans">الخطط</string>
+    <string name="membership">عضوية</string>
+    <string name="accept"> موافق</string>
+    <string name="membership_account_plan">خطة حساب العضوية</string>
+    <string name="terms_and_conditions">الأحكام والشروط</string>
+    <string name="please_read_ncarefully_what_s_n_below_before_n_proceeding">يرجى قراءة بعناية ما أدناه قبل المضي قدما!</string>
+    <string name="free_account_plan">خطة حساب مجانية</string>
+    <string name="by_choosing_this_plan_n_you_will_have_free_account_for_tamm_n_from_you_account">باختيار هذه الخطة ، سيكون لديك حساب مجاني لحساب tamm منك</string>
+    <string name="get_this_plan">الحصول على هذه الخطة</string>
+
+
 </resources>

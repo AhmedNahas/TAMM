@@ -64,7 +64,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:gravity="center"
-        android:text="Welcome To"
+        android:text="@string/welcome_to"
         android:textAllCaps="true"
         android:textColor="#BE973B"
         android:textSize="22sp"

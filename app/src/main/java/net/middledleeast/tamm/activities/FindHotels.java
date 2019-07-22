@@ -51,6 +51,7 @@ import org.joda.time.DateTime;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -162,10 +163,34 @@ public class FindHotels extends AppCompatActivity  {
 
         StrictMode.setThreadPolicy(policy);
 
+     //   auth();
 
 
 
+//if (saved==true){
+//
+//    final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class,
+//            "country").allowMainThreadQueries().fallbackToDestructiveMigration().build();
+//
+//    List<RoomcountrytModel> allData = db.CountryDeo().getAllData();
+//
+//    for (int i = 0; i < allData.size(); i++) {
+//
+//        String code = allData.get(i).getCode();
+//        String name = allData.get(i).getName();
+//
+//        list.add(name);
+//        listID.add(code);
+//
+//        Toast.makeText(this, ""+name, Toast.LENGTH_SHORT).show();
+//
+//    }
+//
+//}else {
 
+ //   getCountries();
+
+//}
 
         auth();
 getCountries();
@@ -493,8 +518,8 @@ getCountries();
             }
 
 
-
         } catch (Exception e) {
+            e.printStackTrace();
         }//
 
     }
@@ -561,7 +586,7 @@ getCountries();
             photoHotel.clear();
             listcodeHotel.clear();
             addressHotel.clear();
-
+            arrayOfResultIndex.clear();
 
             if (hotelSearchResponse.HotelResultList != null) {
                 for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
@@ -576,6 +601,7 @@ getCountries();
                     arrayOfResultIndex.add(hotel_result.ResultIndex);
 
                     String hotelCode = hotelInfo.HotelCode;
+
                     listcodeHotel.add(hotelCode);
 
                     nameHotel.add(hotelName);
@@ -603,9 +629,10 @@ getCountries();
         intent.putExtra("cityName", name_city);
         intent.putExtra("cityId", ctyId);
         intent.putExtra("noOfRooms", noRomes);
+        SharedPreferencesManger.SaveData(this, "noOfRooms", noRomes);
         intent.putExtra("resultIndex", arrayOfResultIndex);
 
-        SharedPreferencesManger.SaveData(FindHotels.this,"session_id",sessionId);
+        SharedPreferencesManger.SaveData(FindHotels.this, "session_id", sessionId);
 
         // intent.putExtra("roomGuest",roomguests);
         startActivity(intent);
@@ -759,7 +786,7 @@ getCountries();
             SharedPreferencesManger.SaveData(FindHotels.this, "end_date", mendTime);
             gethotelsInfo(ctyId);
 
-        }else if (chicDateStart){
+        } else if (chicDateStart) {
 
             new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
                     .setTitleText("Select Check Out Dat First")
@@ -774,8 +801,7 @@ getCountries();
                     .show();
 
 
-
-        }else{
+        } else {
 
             new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
                     .setTitleText("Select Check In Dat First")

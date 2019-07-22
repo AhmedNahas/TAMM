@@ -66,6 +66,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     RelativeLayout relativeFirstlast6;
     private Button confirmRoom;
     private ImageView back;
+
     ArrayOfGuest arrayOfGuest;
     private Hotel_Room hotel_room;
     private ArrayOfRequestedRooms arrayOfRooms;

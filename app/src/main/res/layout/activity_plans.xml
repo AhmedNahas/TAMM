@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_1"
         android:gravity="center"
-        android:text="The Plans"
+        android:text="@string/the_plans"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_centerHorizontal="true"
         android:textAllCaps="true"

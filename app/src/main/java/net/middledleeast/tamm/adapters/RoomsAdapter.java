@@ -15,13 +15,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
+import com.Tamm.Hotels.wcf.ArrayOfSuppInfo;
 import com.Tamm.Hotels.wcf.ArrayOfSupplement;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.CancelPolicies;
+import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
+import com.Tamm.Hotels.wcf.Rate;
+import com.Tamm.Hotels.wcf.RequestedRooms;
 import com.Tamm.Hotels.wcf.RoomInformation;
+import com.Tamm.Hotels.wcf.SuppInfo;
 import com.Tamm.Hotels.wcf.Supplement;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -40,8 +45,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
     private final Context context;
     Activity activity ;
-    private final Hotel_Room hotel_room;
-    private final ArrayOfRequestedRooms arrayOfRooms;
+    private Hotel_Room hotel_room;
     private final String date1;
     private final String date2;
     private final int noOfRooms;
@@ -58,11 +62,10 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     AuthenticationData authenticationData;
 
 
-    public RoomsAdapter( Activity activity,AuthenticationData data, BasicHttpBinding_IHotelService1 service, HotelRoomAvailabilityResponse response, List<Hotel_Room> rooms, Hotel_Room hotel_room, ArrayOfRequestedRooms arrayOfRooms,
+    public RoomsAdapter(Activity activity, AuthenticationData data, BasicHttpBinding_IHotelService1 service, HotelRoomAvailabilityResponse response, List<Hotel_Room> rooms, Hotel_Room hotel_room,
                         String date1, String date2, int noOfRooms, int resultIndex, String mHotelCode, AuthenticationData authenticationData, String sessionId, Context context) {
         this.rooms = rooms;
         this.hotel_room = hotel_room;
-        this.arrayOfRooms = arrayOfRooms;
         this.date1 = date1;
         this.date2 = date2;
         this.noOfRooms = noOfRooms;
@@ -93,6 +96,8 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String roomType = rooms.get(position).RoomTypeName;
+        hotel_room = rooms.get(position);
+//        Hotel_Room hotel_room1 = rooms.get(1);
         String mealType = rooms.get(position).MealType;
         String instructions = rooms.get(position).RoomInstructions;
         String amneties = rooms.get(position).Amenities;
@@ -102,12 +107,6 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         if (cancelPolicies != null) {
             DateTime deadLine = cancelPolicies.LastCancellationDeadline;
         }
-
-
-
-
-
-
         String roomPromotion = rooms.get(position).RoomPromtion;
         BigDecimal roomprice = rooms.get(position).RoomRate.TotalFare;
         holder.roomPrice.setText(currency + " " + roomprice);
@@ -149,12 +148,6 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         }
 
 
-        Toast.makeText(context, "description"+description+"roomInstructions"+roomInstructions, Toast.LENGTH_SHORT).show();
-
-
-
-
-
         holder.roomBooken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,7 +162,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 intent.putExtra("date2", date2);
                 intent.putExtra("mHOtelCode", mHOtelCode);
 //                intent.putExtra("authenticandata", new Gson().toJson(authenticandata));
-                intent.putExtra("roomIndex", position);
+                intent.putExtra("roomIndex", position + 1);
                 intent.putExtra("smok", roomInstructions);
                 intent.putExtra("roomTybe", roomType);
                 intent.putExtra("description", description);
@@ -180,6 +173,55 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 SharedPreferencesManger.SaveData(activity,"roomPrice", roomprice.toString());
                 SharedPreferencesManger.SaveData(activity, "roomIndex", position);
 
+
+                ArrayOfRequestedRooms arrayOfRooms = new ArrayOfRequestedRooms();
+                RequestedRooms requestedRooms = new RequestedRooms();
+                requestedRooms.RatePlanCode = hotel_room.RatePlanCode;
+                requestedRooms.RoomIndex = hotel_room.RoomIndex;
+                requestedRooms.RoomRate = new Rate();
+                if (hotel_room.Supplements != null) {
+                    requestedRooms.Supplements = new ArrayOfSuppInfo();
+                    for (Supplement supplement : hotel_room.Supplements) {
+                        SuppInfo suppInfo = new SuppInfo();
+                        suppInfo.SuppChargeType = Enums.SuppChargeType.valueOf(supplement.SuppChargeType.name());
+                        suppInfo.Price = supplement.Price;
+                        if (supplement.SuppIsMandatory) {
+                            suppInfo.SuppIsSelected = true;
+
+                        }
+                        requestedRooms.Supplements.add(suppInfo);
+                    }
+                }
+                requestedRooms.RoomRate.RoomFare = hotel_room.RoomRate.RoomFare;
+                requestedRooms.RoomRate.RoomTax = hotel_room.RoomRate.RoomTax;
+                requestedRooms.RoomRate.TotalFare = hotel_room.RoomRate.TotalFare;
+                requestedRooms.RoomTypeCode = hotel_room.RoomTypeCode;
+                arrayOfRooms.add(requestedRooms);
+                RequestedRooms requestedRooms1 = new RequestedRooms();
+//                requestedRooms1.RatePlanCode = hotel_room1.RatePlanCode;
+//                // TODO: 22/07/19 temp fox
+//                requestedRooms1.RoomIndex = hotel_room1.RoomIndex;
+//                requestedRooms1.RoomRate = new Rate();
+//                if (hotel_room1.Supplements != null) {
+//                    requestedRooms1.Supplements = new ArrayOfSuppInfo();
+//                    for (Supplement supplement : hotel_room1.Supplements) {
+//                        SuppInfo suppInfo = new SuppInfo();
+//                        suppInfo.SuppChargeType = Enums.SuppChargeType.valueOf(supplement.SuppChargeType.name());
+//                        suppInfo.Price = supplement.Price;
+//                        if (supplement.SuppIsMandatory) {
+//                            suppInfo.SuppIsSelected = true;
+//
+//                        }
+//                        requestedRooms1.Supplements.add(suppInfo);
+//                    }
+//                }
+//                requestedRooms1.RoomRate.RoomFare = hotel_room1.RoomRate.RoomFare;
+//                requestedRooms1.RoomRate.RoomTax = hotel_room1.RoomRate.RoomTax;
+//                requestedRooms1.RoomRate.TotalFare = hotel_room1.RoomRate.TotalFare;
+//                requestedRooms1.RoomTypeCode = hotel_room1.RoomTypeCode;
+//                arrayOfRooms.add(requestedRooms1);
+                String requestedRoomsString = gson.toJson(arrayOfRooms);
+                SharedPreferencesManger.SaveData((Activity) context, "arrayOfroomsreq", requestedRoomsString);
 
 
 

@@ -71,7 +71,7 @@
         android:id="@+id/btn_signin"
         android:layout_width="@dimen/_120sdp"
         android:layout_height="wrap_content"
-        android:text="sign in"
+        android:text="@string/sign_in"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/border"
@@ -97,7 +97,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_30sdp"
         android:background="@drawable/border"
-        android:text="sign in as a guest"
+        android:text="@string/sign_in_as_a_guest"
         android:textColor="#FFF"
         android:layout_below="@+id/btn_signup"
         android:layout_centerHorizontal="true"/>
