@@ -8,32 +8,33 @@
     <uses-permission android:name="android.permission.WRITE _EXTERNAL_STORAGE" />
 
     <application
-        android:allowBackup="true"
+        android:largeHeap="true"
         android:hardwareAccelerated="false"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_logo"
         android:label="@string/app_name"
-        android:largeHeap="true"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <service
-            android:name=".sevice.MyService"
-            android:enabled="true"
-            android:exported="true"/>
+        <activity android:name=".activities.SeatSelection">
 
-        <activity android:name=".activities.SeatSelection"></activity>
+
+
+
+        </activity>
         <activity android:name=".activities.RecommendedTwoWay" />
         <activity android:name=".activities.RecommendedOneWay" />
         <activity android:name=".ActivityToFragment.PaymentActivityFragment" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
-        <activity android:name=".activities.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".activities.SplashActivity"
+             >
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
+
+
         </activity>
         <activity android:name=".activities.PassengerDeparture" />
         <activity android:name=".activities.Passenger_inform" />
@@ -52,16 +53,21 @@
         <activity android:name=".activities.ChooseHotelActivity" />
         <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".LanguageActivity" />
-        <activity android:name=".activities.FindHotels"></activity>
+        <activity android:name=".activities.FindHotels" >
+
+
+        </activity>
         <activity android:name=".activities.ConfirmBookingRoom" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".model.ReserveRoom" />
         <activity android:name=".activities.RenewAccount">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
-
-
-        <!--<service android:name=".sevice.MyService" android:enabled="true"/>-->
     </application>
 
 </manifest>

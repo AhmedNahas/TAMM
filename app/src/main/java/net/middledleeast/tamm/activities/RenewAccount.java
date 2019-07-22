@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,10 +18,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
+import com.Tamm.Hotels.wcf.ArrayOfHotel_Result;
+import com.Tamm.Hotels.wcf.AuthenticationData;
+import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService;
+import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
+import com.Tamm.Hotels.wcf.HotelCodesResponse;
+import com.Tamm.Hotels.wcf.HotelInfo;
+import com.Tamm.Hotels.wcf.HotelSearchResponse;
+import com.Tamm.Hotels.wcf.Hotel_Result;
+import com.Tamm.Hotels.wcf.ResponseStatus;
+import com.Tamm.Hotels.wcf.TopDestinationsResponse;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.adapters.BestHotelAdapter;
+import net.middledleeast.tamm.adapters.ViewPagerAdapter;
+import net.middledleeast.tamm.fragments.BestDeals;
+import net.middledleeast.tamm.fragments.BestFlights;
+import net.middledleeast.tamm.fragments.BestHotels;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.ReserveRoom;
 
@@ -31,6 +50,23 @@ public class RenewAccount extends AppCompatActivity
     ImageView img1 , img2 , addPic;
     TextView user_name_profile;
     private String user;
+    private HotelCodesResponse hotelSearchResponse;
+    private String hotelCode;
+    private BasicHttpBinding_IHotelService1 service;
+    private AuthenticationData authenticationData;
+    private TopDestinationsResponse topDestinationsResponse;
+    private ResponseStatus status;
+    private String category;
+    TabLayout tabLayout;
+    ViewPager viewPager;
+
+//    private AuthenticationData authenticandata;
+//    private BasicHttpBinding_IHotelService1 service;
+//    private String hotelPromotion;
+//    private String sessionId;
+//    private String hotelAddress;
+//    private String hotelName;
+//    private String hotelPicture;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,10 +74,87 @@ public class RenewAccount extends AppCompatActivity
         setContentView(R.layout.renew_account);
         img2 = findViewById(R.id.imageView10);
         img1 = findViewById(R.id.imageView9);
+        tabLayout=findViewById(R.id.tap_layout);
+        viewPager=findViewById(R.id.view_pager_renew);
+
+        ViewPagerAdapter adapter=new ViewPagerAdapter(getSupportFragmentManager());
+
+
+        adapter.AddFragment(new BestFlights(),"Best Flights");
+        adapter.AddFragment(new BestHotels(),"Best Hotels");
+        adapter.AddFragment(new BestDeals(),"Best Deals");
+
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
 
 
 
 
+//        service = new BasicHttpBinding_IHotelService1();
+//        service.enableLogging = true;
+//        authenticandata = new AuthenticationData();
+//        authenticandata.UserName = ("Tammtest");
+//        authenticandata.Password = ("Tam@18418756");
+
+
+//
+//        HotelSearchResponse hotelSearchResponse  =new HotelSearchResponse() ;
+//
+//        final ArrayOfHotel_Result hotelResultList = hotelSearchResponse.HotelResultList;
+//
+//        for (int i = 0; i < hotelResultList.size() ; i++) {
+//
+//            Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
+//            HotelInfo hotelInfo = hotel_result.HotelInfo;
+//            sessionId = hotelSearchResponse.SessionId;
+//            hotelAddress = hotelInfo.HotelAddress;
+//            hotelName = hotelInfo.HotelName;
+//            hotelPicture = hotelInfo.HotelPicture;
+//            hotelPromotion = hotelInfo.HotelPromotion;
+//            int code = hotelInfo.Rating.getCode();
+//
+//            Toast.makeText(this, ""+hotelPromotion, Toast.LENGTH_SHORT).show();
+//            String hotelCode = hotelInfo.HotelCode;
+//
+//
+//        }
+
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+        service = new BasicHttpBinding_IHotelService1();
+        authenticationData = new AuthenticationData();
+        authenticationData.UserName = ("Tammtest");
+        authenticationData.Password = ("Tam@18418756");
+
+
+
+try{
+    service.enableLogging = true;
+    TopDestinationsResponse topDestinationsResponse = service.TopDestinations(authenticationData);
+
+
+//        if (hotelSearchResponse.HotelResultList != null) {
+//            for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
+//
+//                Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
+//                HotelInfo hotelInfo = hotel_result.HotelInfo;
+//
+//
+//
+//                 hotelCode = hotelInfo.HotelPromotion;
+//
+//
+//            }
+//
+//        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+        Toast.makeText(this, "fffff"+topDestinationsResponse, Toast.LENGTH_SHORT).show();
 
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,11 +243,11 @@ public class RenewAccount extends AppCompatActivity
 
 
         }
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.syncState();
+//        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override

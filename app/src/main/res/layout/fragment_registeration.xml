@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:text="PLEASE TAKE A MINUTE TO SIGN UP"
+        android:text="@string/please_take_a_minute_to_sign_up"
         android:textColor="#fff"
         android:textSize="@dimen/_12ssp" />
 
@@ -55,7 +55,7 @@
             android:layout_height="@dimen/_35sdp"
             android:layout_toRightOf="@+id/mromiss"
             android:backgroundTint="@color/app_color"
-            android:hint="FIRST NAME"
+            android:hint="@string/first_name"
             android:textColor="#fff"
             android:textColorHint="#FFFFFF"
             android:textSize="@dimen/_10ssp" />
@@ -67,7 +67,7 @@
             android:layout_marginLeft="30dp"
             android:layout_toRightOf="@+id/ed_first_name"
             android:backgroundTint="@color/app_color"
-            android:hint="LAST NAME"
+            android:hint="@string/last_name"
             android:textColor="#fff"
             android:textColorHint="#FFFFFF"
             android:textSize="@dimen/_10ssp" />
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:drawableBottom="@drawable/line1"
-            android:text="DOB"
+            android:text="@string/dob"
             android:textColor="@color/app_color"
 
 
@@ -109,7 +109,7 @@
                 android:backgroundTint="@color/app_color"
                 android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                 android:drawableBottom="@drawable/line1"
-                android:hint="DD - MM - YYY"
+                android:hint="@string/dd_mm_yyy"
                 android:padding="10dp"
                 android:textColor="#fff"
                 android:textColorHint="#FFFFFF"
@@ -130,7 +130,7 @@
 
         <AutoCompleteTextView
             android:textColor="@color/white"
-            android:hint="COUNTRY"
+            android:hint="@string/country"
             android:id="@+id/country"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_30sdp"
@@ -152,7 +152,7 @@
             android:layout_marginEnd="20dp"
             android:backgroundTint="@color/app_color"
             android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
-            android:hint="CITY"
+            android:hint="@string/city_province"
             android:textColor="#fff"
             android:textColorHint="#FFFFFF"
             android:textSize="@dimen/_10ssp" />
@@ -174,7 +174,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/app_color"
-            android:hint="E-MAIL"
+            android:hint="@string/e_mail"
             android:textColor="#fff"
             android:textColorHint="#FFFFFF"
             android:textSize="@dimen/_10ssp"
@@ -195,7 +195,7 @@
             android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
             android:gravity="end"
             android:paddingStart="@dimen/_4sdp"
-            android:text="+965"
+            android:text="@string/_965"
             android:textColor="@color/white"
             android:textSize="@dimen/_10ssp" />
 
@@ -209,7 +209,7 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginEnd="20dp"
             android:backgroundTint="@color/app_color"
-            android:hint="PHONE NUMBER"
+            android:hint="@string/phone_number"
             android:textColor="#fff"
             android:textColorHint="#FFFFFF"
             android:textSize="@dimen/_10ssp"
@@ -235,7 +235,7 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_30sdp"
             android:backgroundTint="@color/app_color"
-            android:hint="OCCUPATION"
+            android:hint="@string/occupation"
             android:textColor="#fff"
             android:textColorHint="#FFFFFF"
             android:textSize="@dimen/_10ssp"
@@ -254,7 +254,7 @@
 
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/app_color"
-                android:text="SPECIAL NEEDS"
+                android:text="@string/special_needs"
                 android:textColor="#fff"
                 android:textSize="@dimen/_10ssp"
 
@@ -326,7 +326,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
             android:paddingTop="@dimen/_4sdp"
-            android:text="PAYMENT METHOD"
+            android:text="@string/payment_method"
             android:textColor="#fff"
             android:textSize="@dimen/_10ssp"
 
@@ -340,7 +340,7 @@
             android:layout_below="@+id/tv_payment"
             android:layout_marginEnd="20dp"
             android:backgroundTint="@color/app_color"
-            android:hint="Visa"
+            android:hint="@string/visa"
             android:textColor="#fff"
             android:textColorHint="#FFFFFF"
             android:textSize="@dimen/_10ssp" />
@@ -366,7 +366,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/app_color"
-                android:text="I agree to the Terms &amp; Condition"
+                android:text="@string/i_agree_to_the_terms_amp_condition"
                 android:textColor="#fff" />
 
             <Button
@@ -377,7 +377,7 @@
                 android:layout_below="@+id/rd_btn"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/border"
-                android:text="PROCEED TO CHECKOUT"
+                android:text="@string/proceed_to_checkout"
                 android:textColor="#FFF" />
         </RadioGroup>
 

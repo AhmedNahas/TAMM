@@ -44,6 +44,73 @@
     <string name="free_account_plan">خطة حساب مجانية</string>
     <string name="by_choosing_this_plan_n_you_will_have_free_account_for_tamm_n_from_you_account">باختيار هذه الخطة ، سيكون لديك حساب مجاني لحساب tamm منك</string>
     <string name="get_this_plan">الحصول على هذه الخطة</string>
+    <string name="please_take_a_minute_to_sign_up">يرجى أخذ دقيقة للتسجيل</string>
+    <string name="first_name">الاسم الاول</string>
+    <string name="last_name">الاسم الاخير</string>
+    <string name="dob">تاريخ الميلاد</string>
+    <string name="dd_mm_yyy">التاريخ</string>
+    <string name="country">الدولة</string>
+    <string name="city_province">المدينة / محافظة</string>
+    <string name="e_mail">البريد الالكتروني</string>
+    <string name="_965">كود المدينة</string>
+    <string name="phone_number">رقم المحمول</string>
+    <string name="occupation">المهنة</string>
+    <string name="special_needs">الاحتياجات الخاصة</string>
+    <string name="payment_method">طريقة الدفع او السداد</string>
+    <string name="visa">فيزا</string>
+    <string name="i_agree_to_the_terms_amp_condition">أوافق على الشروط والأحكام!</string>
+    <string name="proceed_to_checkout">تأكيد الحجز</string>
+
+    <string name="now_you_are_a_free_account_of">الآن أنت حساب مجاني من</string>
+    <string name="tamm_community">مجتمع تام</string>
+    <string name="enjoy_your_stay_amp_n_wait_for_the_deals_n_that_are_being_n_crafted_just_n_for_you">استمتع بإقامتك أو في انتظار الصفقات التي يتم إنشاؤها فقط من أجلك</string>
+    <string name="congratulations">تهانينا</string>
+    <string name="now_you_are_a_membership_of">أنت الآن عضو في</string>
+    <string name="hotels">فنادق</string>
+    <string name="best_hotels_deals">أفضل عروض الفنادق</string>
+    <string name="with_special_assistance">مع مساعدة خاصة</string>
+    <string name="anywhere">في أى مكان</string>
+    <string name="anytime">,في اي وقت</string>
+    <string name="reserve_room">حجز الغرفة </string>
+    <string name="back">العودة</string>
+    <string name="city">المدينة</string>
+    <string name="check_in">تاريخ الحجز</string>
+    <string name="check_out">تاريخ المغادرة</string>
+    <string name="nights">ليله</string>
+    <string name="_1">1</string>
+    <string name="find_hotels">ابحث عن الفنادق</string>
+    <string name="view_results">عرض النتائج</string>
+    <string name="change_search">تغيير البحث</string>
+
+
+    <string name="checkout">حجز</string>
+
+
+    <string name="guest_s_information">ضيف (ق) المعلومات</string>
+    <string name="adult">الافراد</string>
+    <string name="request">الطلب :</string>
+    <string name="write_your_room_specification">اكتب مواصفات غرفتك</string>
+    <string name="confirm">موافق</string>
+    <string name="please_set_your_payment">يرجى تحديد الدفع الخاص بك</string>
+    <string name="mastercard">ماستركارد</string>
+    <string name="knet">كينت</string>
+
+
+    <string name="success">تم بنجاح!</string>
+    <string name="get_reservition_code">الحصول على رمز الحجز</string>
+    <string name="reserve_flight">حجز الطيران</string>
+    <string name="tap_me_if_you_need_my_assistance">اضغط هنا إذا كنت بحاجة إلى مساعدتي</string>
+    <string name="total_amount_kd_105_00">المبلغ الإجمالي : </string>
+
+    <string name="thank_you_for_using">شكرا لأستخدامك</string>
+    <string name="tamm_app">تطبيق TAMM</string>
+    <string name="hotel_booking">حجز الفندق</string>
+    <string name="dear_mr">عزيزي    ,</string>
+    <string name="your_hotel_code_is">رمز الفندق الخاص بك هو</string>
+    <string name="code">الكود</string>
+    <string name="for_further_information">لمزيد من المعلومات</string>
+    <string name="please_check_your_e_mail">من فضلك تفقد بريدك الالكتروني.</string>
+    <string name="back_to_home_page">العودة إلى الصفحة الرئيسية</string>
 
 
 </resources>
