@@ -14,6 +14,7 @@ import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.CountryList;
 import com.Tamm.Hotels.wcf.CountryListResponse;
+import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.WelcomeActivity;
@@ -82,7 +83,7 @@ public class MyService extends Service {
             listid=  listid.replace("]", "");
             Gson gson = new Gson();
             String names = gson.toJson(countryList);
-            SharedPreferencesManger.SaveData(this, "name_country", str);
+            SharedPreferencesManger.SaveData(this, "name_country", names);
             SharedPreferencesManger.SaveData(this, "code_country", listid);
 
 
