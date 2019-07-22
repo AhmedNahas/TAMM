@@ -14,7 +14,7 @@ public class SharedPreferencesManger {
     public static void setSharedPreferences(Activity activity) {
         if (sharedPreferences == null) {
             sharedPreferences = activity.getSharedPreferences(
-                    "blood_bank", Context.MODE_PRIVATE);
+                    "Tamm", Context.MODE_PRIVATE);
 
         }
     }

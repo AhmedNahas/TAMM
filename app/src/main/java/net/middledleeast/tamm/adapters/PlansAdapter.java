@@ -94,7 +94,7 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHol
 if(i==0)
 {
 
-getmember();
+//getmember();
 
 
 
@@ -106,7 +106,7 @@ else
 {
 
 
-    getFree();
+//    getFree();
 
     ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
             .replace(R.id.welcome_container, new FreeAccount())
@@ -148,74 +148,74 @@ else
 
     }
 
-    private void getmember() {
+//    private void getmember() {
+//
+//        StringRequest stringRequest=new StringRequest(Request.Method.GET, HI2, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                try {
+//                    JSONObject jsonObject=new JSONObject(response);
+//                    JSONArray array=jsonObject.getJSONArray("amountformember");
+//                    for (int i=0; i<1; i++ ){
+//                        JSONObject ob=array.getJSONObject(i);
+//                        String msgbody = ob.getString("Msgbody");
+//
+//
+//
+//                        SharedPreferencesManger.SaveData(activity,"fees",msgbody);
+//
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        }, new Response.ErrorListener() {
+//
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        RequestQueue requestQueue= Volley.newRequestQueue(context);
+//        requestQueue.add(stringRequest);
+//
+//    }
 
-        StringRequest stringRequest=new StringRequest(Request.Method.GET, HI2, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject=new JSONObject(response);
-                    JSONArray array=jsonObject.getJSONArray("amountformember");
-                    for (int i=0; i<array.length(); i++ ){
-                        JSONObject ob=array.getJSONObject(i);
-                        String msgbody = ob.getString("Msgbody");
-
-
-
-                        SharedPreferencesManger.SaveData(activity,"fees",msgbody);
-
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        RequestQueue requestQueue= Volley.newRequestQueue(context);
-        requestQueue.add(stringRequest);
-
-    }
-
-    private void getFree() {
-
-        StringRequest stringRequest=new StringRequest(Request.Method.GET, HI, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject=new JSONObject(response);
-                    JSONArray array=jsonObject.getJSONArray("freeamountformember");
-                    for (int i=0; i<array.length(); i++ ){
-                        JSONObject ob=array.getJSONObject(i);
-                         String msgbody = ob.getString("Msgbody");
-
-
-
-                        SharedPreferencesManger.SaveData(activity,"fees",msgbody);
-
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        RequestQueue requestQueue= Volley.newRequestQueue(context);
-        requestQueue.add(stringRequest);
-    }
+//    private void getFree() {
+//
+//        StringRequest stringRequest=new StringRequest(Request.Method.GET, HI, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                try {
+//                    JSONObject jsonObject=new JSONObject(response);
+//                    JSONArray array=jsonObject.getJSONArray("freeamountformember");
+//                    for (int i=0; i<1; i++ ){
+//                        JSONObject ob=array.getJSONObject(i);
+//                         String msgbody = ob.getString("Msgbody");
+//
+//
+//
+//                        SharedPreferencesManger.SaveData(activity,"fees",msgbody);
+//
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        }, new Response.ErrorListener() {
+//
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        RequestQueue requestQueue= Volley.newRequestQueue(context);
+//        requestQueue.add(stringRequest);
+//    }
 
     @Override
     public int getItemCount() {

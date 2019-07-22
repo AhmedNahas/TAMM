@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -66,7 +67,7 @@ public class TammFamilyFragment extends Fragment {
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.welcome_container, new LanguangeFragment())
-                        .commit();
+                        .addToBackStack( "TammFamilyFragment" ).commit();
             }
         });
 
@@ -84,6 +85,12 @@ public class TammFamilyFragment extends Fragment {
 
 
 
+//        ((AppCompatActivity)getActivity()).getSupportActionBar().addOnMenuVisibilityListener(new ActionBar.OnMenuVisibilityListener() {
+//            @Override
+//            public void onMenuVisibilityChanged(boolean isVisible) {
+//                Toast.makeText(getContext(), "jkkd", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         btnContinue.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -92,7 +99,7 @@ public class TammFamilyFragment extends Fragment {
                     btnContinue.setBackgroundColor(Color.parseColor("#BE973B"));
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.welcome_container, new AuthenticationFragment())
-                            .commit();
+                            .addToBackStack( "TammFamilyFragment" ).commit();
                 }else if (event.getAction() == MotionEvent.ACTION_UP){
                     btnContinue.setBackground(getActivity().getDrawable(R.drawable.border));
                 }

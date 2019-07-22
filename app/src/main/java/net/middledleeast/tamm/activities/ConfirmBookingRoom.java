@@ -7,6 +7,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -31,12 +33,40 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import payments.PaymentObjectProvider;
 import payments.ResponseHelper;
 
 public class ConfirmBookingRoom extends AppCompatActivity {
 
+    @BindView(R.id.relative_firstlast)
+    RelativeLayout relativeFirstlast;
+    @BindView(R.id.relative_firstlast2)
+    RelativeLayout relativeFirstlast2;
+    @BindView(R.id.relative_firstlast3)
+    RelativeLayout relativeFirstlast3;
+    @BindView(R.id.mromiss4)
+    Spinner mromiss4;
+    @BindView(R.id.ed_first4)
+    EditText edFirst4;
+    @BindView(R.id.relative_firstlast4)
+    RelativeLayout relativeFirstlast4;
+    @BindView(R.id.mromiss5)
+    Spinner mromiss5;
+    @BindView(R.id.ed_first5)
+    EditText edFirst5;
+    @BindView(R.id.relative_firstlast5)
+    RelativeLayout relativeFirstlast5;
+    @BindView(R.id.mromiss6)
+    Spinner mromiss6;
+    @BindView(R.id.ed_first6)
+    EditText edFirst6;
+    @BindView(R.id.relative_firstlast6)
+    RelativeLayout relativeFirstlast6;
+    private Button confirmRoom;
+    private ImageView back;
     private Button confirmRoom;
     private ImageView back;
     ArrayOfGuest arrayOfGuest;
@@ -65,8 +95,10 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_booking_room);
+        ButterKnife.bind(this);
         firstName = findViewById(R.id.ed_first);
         lastName = findViewById(R.id.lastName);
+        confirmRoom = findViewById(R.id.confirm_room_booking);
         Gson gson = new Gson();
 
         back=findViewById(R.id.btn_baack);
@@ -91,8 +123,40 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         sessionId = intent.getStringExtra("sessionId");
 //        SharedPreferencesManger.SaveData(this, "sessionId", sessionId);
         noOfRooms = intent.getIntExtra("noOfRooms", 1);
+        SharedPreferencesManger.SaveData(this, "noOfRooms", noOfRooms);
         resultIndex = intent.getIntExtra("resultIndex", 1);
 //        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
+
+
+        int no_adult = SharedPreferencesManger.LoadIntegerData(ConfirmBookingRoom.this, "no_adult");
+
+
+        if (no_adult == 1) {
+
+        } else if (no_adult == 2) {
+
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+
+        } else if (no_adult == 3) {
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast3.setVisibility(View.VISIBLE);
+        }else if (no_adult==4){
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast3.setVisibility(View.VISIBLE);
+            relativeFirstlast4.setVisibility(View.VISIBLE);
+        }else if (no_adult==5){
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast3.setVisibility(View.VISIBLE);
+            relativeFirstlast4.setVisibility(View.VISIBLE);
+            relativeFirstlast5.setVisibility(View.VISIBLE);
+        }else if (no_adult==6){
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast3.setVisibility(View.VISIBLE);
+            relativeFirstlast4.setVisibility(View.VISIBLE);
+            relativeFirstlast5.setVisibility(View.VISIBLE);
+            relativeFirstlast6.setVisibility(View.VISIBLE);
+        }
+
 
         start_time = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "start_date");
         end_time = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "end_date");
@@ -106,23 +170,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 
         roomIndex = intent.getIntExtra("roomIndex", 0);
         mHOtelCode = intent.getStringExtra("mHOtelCode");
-//        SharedPreferencesManger.SaveData(this, "mHOtelCode", mHOtelCode);
-//        authenticandata = gson.fromJson(intent.getStringExtra("authenticandata"), AuthenticationData.class);
-//        arrayOfGuest = new ArrayOfGuest();
-//        Guest guest = new Guest();
-//        guest.Title = "Mr";
-//        guest.Age = 25;
-//        guest.FirstName = "Tester";
-//        guest.LeadGuest = true;
-//        guest.GuestType = Enums.GuestType.Adult;
-//        guest.LastName = "Test";
-//        guest.GuestInRoom = 1;
-//        arrayOfGuest.add(guest);
-//        PaymentInfo paymentInfo = new PaymentInfo();
-//        paymentInfo.VoucherBooking = false;
-//        paymentInfo.PaymentModeType = Enums.PaymentModeType.CreditCard;
-//        arrayOfRooms = ChooseBookingDate.transferClass.getArrayOfRequestedRooms();
-        BigDecimal amount =new BigDecimal(roomPrice);
+
+        BigDecimal amount = new BigDecimal(roomPrice);
 
 
 
@@ -163,9 +212,9 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName", firstName.getText().toString());
                 SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName", lastName.getText().toString());
 
-                startActivity(new Intent(ConfirmBookingRoom.this, RoomBooked.class));
-//                Client client = new Client(ConfirmBookingRoom.this, "https://api-test.wirecard.com");
-//                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+
+                Client client = new Client(ConfirmBookingRoom.this, "https://api-test.wirecard.com");
+                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
             }
         });
 

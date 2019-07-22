@@ -42,9 +42,9 @@
     </RelativeLayout>
     <ImageView
         android:id="@+id/img_linee"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="12dp"
-        android:src="@drawable/line"
+        android:src="@drawable/line1"
         android:layout_below="@+id/relative_booking"
         android:layout_centerInParent="true" />
 
@@ -74,6 +74,15 @@
         android:src="@drawable/line1"
         android:layout_below="@+id/tv_adult"
         />
+
+
+
+
+
+
+
+
+
     <RelativeLayout
         android:id="@+id/relative_firstlast"
         android:layout_width="match_parent"
@@ -81,6 +90,7 @@
         android:layout_below="@+id/img_linee2">
 
         <Spinner
+            android:backgroundTint="@color/app_color"
             android:id="@+id/mromiss1"
             android:layout_width="72dp"
             android:layout_height="wrap_content"
@@ -109,12 +119,15 @@
 
     </RelativeLayout>
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/relative_firstlast2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_firstlast">
 
         <Spinner
+            android:backgroundTint="@color/app_color"
+
             android:id="@+id/mromiss2"
             android:layout_width="72dp"
             android:layout_height="wrap_content"
@@ -143,11 +156,14 @@
 
     </RelativeLayout>
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/relative_firstlast3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_firstlast2">
         <Spinner
+            android:backgroundTint="@color/app_color"
+
             android:id="@+id/mromiss3"
             android:layout_width="72dp"
             android:layout_height="wrap_content"
@@ -177,6 +193,130 @@
 
     </RelativeLayout>
 
+
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/relative_firstlast4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_firstlast3">
+        <Spinner
+            android:backgroundTint="@color/app_color"
+
+            android:id="@+id/mromiss4"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            />
+
+        <EditText
+            android:id="@+id/ed_first4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="FIRST NAME"
+            android:textColor="@color/white"
+            android:textColorHint="@color/app_color"
+            android:layout_toRightOf="@+id/mromiss4"
+
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="LAST NAME"
+            android:textColor="@color/white"
+            android:textColorHint="@color/app_color"
+            android:layout_toRightOf="@+id/ed_first4"
+            android:layout_marginLeft="40dp"
+            />
+
+
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/relative_firstlast5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_firstlast4">
+        <Spinner
+            android:backgroundTint="@color/app_color"
+
+            android:id="@+id/mromiss5"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            />
+
+        <EditText
+            android:id="@+id/ed_first5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="FIRST NAME"
+            android:textColor="@color/white"
+            android:textColorHint="@color/app_color"
+            android:layout_toRightOf="@+id/mromiss5"
+
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="LAST NAME"
+            android:textColor="@color/white"
+            android:textColorHint="@color/app_color"
+            android:layout_toRightOf="@+id/ed_first5"
+            android:layout_marginLeft="40dp"
+            />
+
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/relative_firstlast6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_firstlast5">
+        <Spinner
+            android:backgroundTint="@color/app_color"
+
+            android:id="@+id/mromiss6"
+            android:layout_width="72dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            />
+
+        <EditText
+            android:id="@+id/ed_first6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="FIRST NAME"
+            android:textColor="@color/white"
+            android:textColorHint="@color/app_color"
+            android:layout_toRightOf="@+id/mromiss6"
+
+            />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="LAST NAME"
+            android:textColor="@color/white"
+            android:textColorHint="@color/app_color"
+            android:layout_toRightOf="@+id/ed_first6"
+            android:layout_marginLeft="40dp"
+            />
+
+
+    </RelativeLayout>
+
+
+
+
     <TextView
         android:id="@+id/tv_request"
         android:layout_width="match_parent"
@@ -185,7 +325,7 @@
 
         android:textColor="@color/app_color"
         android:textSize="20sp"
-        android:layout_below="@+id/relative_firstlast3"/>
+        android:layout_below="@+id/relative_firstlast6"/>
     <EditText
         android:id="@+id/ed_room"
         android:layout_width="match_parent"

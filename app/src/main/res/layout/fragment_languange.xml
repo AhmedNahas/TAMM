@@ -30,7 +30,7 @@
             android:id="@+id/btn_choose_english"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="English"
+            android:text="@string/english"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="@drawable/border"
@@ -40,7 +40,7 @@
             android:id="@+id/btn_choose_arabic"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Arabic"
+            android:text="@string/arabic"
             android:layout_gravity="center"
 
             android:layout_marginTop="5dp"

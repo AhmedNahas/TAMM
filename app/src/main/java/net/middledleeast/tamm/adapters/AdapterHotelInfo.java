@@ -90,7 +90,6 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         holder.name.setText(name);
         holder.rat.setText(rat+"");
 
-
         Glide.with(context).load(photos).into(holder.photoHotel);
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override

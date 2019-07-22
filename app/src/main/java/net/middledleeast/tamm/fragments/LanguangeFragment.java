@@ -46,7 +46,7 @@ public class LanguangeFragment extends Fragment {
                     btnEnglish.setBackgroundColor(Color.parseColor("#BE973B"));
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.welcome_container, new TammFamilyFragment())
-                            .commit();
+                            .addToBackStack( "LanguangeFragment" ) .commit();
                 }else if (event.getAction() == MotionEvent.ACTION_UP){
                     btnEnglish.setBackground(getActivity().getDrawable(R.drawable.border));
                 }

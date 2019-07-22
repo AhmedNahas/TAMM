@@ -1,6 +1,7 @@
 package net.middledleeast.tamm.fragments;
 
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -27,6 +28,7 @@ public class ForgotPasswordFragment extends Fragment {
     private Button btnSendEmail;
     private EditText edtEmail;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class ForgotPasswordFragment extends Fragment {
                     btnSendEmail.setBackgroundColor(Color.parseColor("#BE973B"));
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .replace(R.id.welcome_container, new SuccessSendEmailFragment())
-                            .commit();
+                            .addToBackStack("ForgotPassword").commit();
                 }else if (event.getAction() == MotionEvent.ACTION_UP){
                     btnSendEmail.setBackground(getActivity().getDrawable(R.drawable.border));
                 }

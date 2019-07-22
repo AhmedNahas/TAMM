@@ -58,7 +58,7 @@ public class PlansFragment extends Fragment {
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.welcome_container, new AuthenticationFragment())
-                        .commit();
+                        .addToBackStack( "PlansFragment" ) .commit();
             }
         });
 

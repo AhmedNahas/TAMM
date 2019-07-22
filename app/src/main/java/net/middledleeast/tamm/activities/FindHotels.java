@@ -2,10 +2,16 @@ package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +19,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +27,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import com.Tamm.Hotels.wcf.ArrayOfInt;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
@@ -55,7 +63,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static java.util.Calendar.YEAR;
 
-public class FindHotels extends AppCompatActivity {
+public class FindHotels extends AppCompatActivity  {
 
 
     @BindView(R.id.startDate_day)
@@ -120,7 +128,9 @@ public class FindHotels extends AppCompatActivity {
     private ImageView toolbar_back;
     boolean child_mor = false;
     private HotelSearchResponse hotelSearchResponse;
-
+    private CountryList countryList;
+//    private boolean saved ;
+ProgressBar bar;
 
     @SuppressLint("StaticFieldLeak")
     @Override
@@ -140,7 +150,9 @@ public class FindHotels extends AppCompatActivity {
         toolbar_back = findViewById(R.id.toolbar_back1);
         recycl_child_spiner = findViewById(R.id.rv_child);
 
-
+        bar = (ProgressBar) findViewById(R.id.progressBar);
+        bar.setProgress(0);
+        bar.setMax(100);
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -152,10 +164,84 @@ public class FindHotels extends AppCompatActivity {
 
         StrictMode.setThreadPolicy(policy);
 
-        auth();
+     //   auth();
 
 
-        getCountries();
+
+//if (saved==true){
+//
+//    final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class,
+//            "country").allowMainThreadQueries().fallbackToDestructiveMigration().build();
+//
+//    List<RoomcountrytModel> allData = db.CountryDeo().getAllData();
+//
+//    for (int i = 0; i < allData.size(); i++) {
+//
+//        String code = allData.get(i).getCode();
+//        String name = allData.get(i).getName();
+//
+//        list.add(name);
+//        listID.add(code);
+//
+//        Toast.makeText(this, ""+name, Toast.LENGTH_SHORT).show();
+//
+//    }
+//
+//}else {
+
+ //   getCountries();
+
+//}
+
+        new AsyncTask<String, Integer, String>() {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                // code will executed before task start (main thread)
+                //
+                //
+                 auth();
+
+                 getCountries();
+            }
+
+            @Override
+            protected String doInBackground(String... params) {
+                // task will done in background
+
+                for (int i = 0; i < 100; i++) {
+                    try {
+                        // sleep 100 millisecond every loop so progress will not finished fast with out see it
+                        Thread.sleep(10);
+                        publishProgress(i);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                return null;
+
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                // code executed after task finish hide progress and change text
+                bar.animate().alpha(0).setDuration(200).start();
+            }
+
+            @Override
+            protected void onProgressUpdate(Integer... values) {
+                super.onProgressUpdate(values);
+                // progress come as array maybe there is mote than one value or progress update so i put [0]
+                bar.setProgress(values[0]);
+
+            }
+
+
+        }.execute();
+
 
 
         recycl_child_spiner.setLayoutManager(new GridLayoutManager(this, 2));
@@ -234,6 +320,7 @@ public class FindHotels extends AppCompatActivity {
                 adultCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
 
                         nom_adult = listOfAdult.get(i);
                         SharedPreferencesManger.SaveData(FindHotels.this, "no_adult", nom_adult);
@@ -360,7 +447,7 @@ public class FindHotels extends AppCompatActivity {
 
             for (int i = 0; i < countryListResponse.CountryList.size(); i++) {
 
-                CountryList countryList = countryListResponse.CountryList.get(i);
+                 countryList = countryListResponse.CountryList.get(i);
                 String cod = countryList.CountryCode;
 
                 listID.add(cod);
@@ -376,6 +463,18 @@ public class FindHotels extends AppCompatActivity {
                 regions.setDropDownVerticalOffset(200);
                 regions.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
+
+
+//                    AppDatabase db = Room.databaseBuilder(this, AppDatabase.class, "country").allowMainThreadQueries()
+//                            .build();
+//
+//                    RoomcountrytModel roomcountrytModel  = new RoomcountrytModel(cod,name);
+//
+//                    db.CountryDeo().insertAll(roomcountrytModel);
+//                    saved = true ;
+
+
+
 
 
             }
@@ -498,7 +597,6 @@ public class FindHotels extends AppCompatActivity {
     private void gethotelsInfo(String ctyId) {
 
 
-        auth();
 
 //        Calendar cal1 = Calendar.getInstance();
 //        cal1.set(Calendar.DAY_OF_MONTH, 22);
@@ -535,10 +633,8 @@ public class FindHotels extends AppCompatActivity {
             }
         }
         roomguests.add(roomGuest);
-//        RoomGuest roomGuest1 = new RoomGuest();
-//        roomGuest1.AdultCount = 2;
-//        roomGuest1.ChildCount = 0;
-//        roomguests.add(roomGuest1);
+
+
         GeoCodes geoCodes = new GeoCodes();
         String countryCode = geoCodes.CountryCode;
 
@@ -793,4 +889,6 @@ public class FindHotels extends AppCompatActivity {
 
 
     }
+
+
 }
