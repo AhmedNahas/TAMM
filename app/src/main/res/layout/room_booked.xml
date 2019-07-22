@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/ic_back_arrow"
-            android:backgroundTint="#FFEB3B" />
+             />
         <ImageView
             android:layout_width="34dp"
             android:layout_height="match_parent"
@@ -33,9 +33,9 @@
 
     <ImageView
         android:id="@+id/iv_line"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="12dp"
-        android:src="@drawable/line"
+        android:src="@drawable/line1"
         android:layout_below="@+id/relative_flight"
         android:layout_centerInParent="true"
         />
@@ -60,7 +60,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SUCCESS !"
+            android:text="@string/success"
             android:textSize="40sp"
             android:textColor="#fff"
             android:layout_marginTop="40dp"
@@ -86,7 +86,7 @@
         android:id="@+id/get_code"
         android:layout_width="200dp"
         android:layout_height="30dp"
-        android:text="GET RESERVITION CODE"
+        android:text="@string/get_reservition_code"
         android:background="@drawable/shape"
         android:layout_below="@+id/iv_mantxt"
         android:textStyle="bold"
@@ -99,19 +99,21 @@
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:src="@drawable/line"
+        android:src="@drawable/line1"
         android:layout_below="@+id/get_code"
+        android:layout_marginTop="@dimen/_5sdp"
         />
 
     <Button
         android:id="@+id/btn_book_hotel"
         android:layout_width="130dp"
         android:layout_height="30dp"
-        android:text="RESERVE FLIGHT"
+        android:text="@string/reserve_flight"
         android:layout_below="@+id/iv_lines"
-        android:background="@android:color/transparent"
+        android:background="@drawable/border2"
         android:textColor="@color/app_color"
         android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_5sdp"
 
 
         />
@@ -124,6 +126,7 @@
         android:layout_height="100dp"
         android:src="@drawable/man1"
         android:layout_below="@+id/btn_book_hotel"
+        android:layout_marginTop="@dimen/_5sdp"
 
         />
 
@@ -133,7 +136,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tap me if you need MY ASSISTANCE "
+        android:text="@string/tap_me_if_you_need_my_assistance"
         android:textColor="#fff"
         android:gravity="center"
         android:layout_below="@+id/iv_man1"

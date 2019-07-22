@@ -52,7 +52,7 @@
             android:id="@+id/tv_guest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Guest (s) information"
+            android:text="@string/guest_s_information"
             android:textSize="15dp"
             android:textColor="#fff"
             android:layout_below="@+id/img_linee"/>
@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="Adult"
+        android:text="@string/adult"
         android:textColor="#ffff"
         android:layout_below="@+id/tv_guest"
         android:drawableLeft="@drawable/ic_person_black_24dp"/>
@@ -101,7 +101,7 @@
                     android:id="@+id/ed_first"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="FIRST NAME"
+                    android:hint="@string/first_name"
                     android:textColor="@color/white"
                     android:textColorHint="@color/app_color"
                     android:layout_toRightOf="@+id/mromiss1" />
@@ -112,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_toRightOf="@+id/ed_first"
-            android:hint="LAST NAME"
+            android:hint="@string/last_name"
             android:textColor="@color/white"
             android:textColorHint="@color/app_color" />
 
@@ -255,7 +255,7 @@
             android:id="@+id/ed_first5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="FIRST NAME"
+            android:hint="@string/first_name"
             android:textColor="@color/white"
             android:textColorHint="@color/app_color"
             android:layout_toRightOf="@+id/mromiss5"
@@ -264,7 +264,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="LAST NAME"
+            android:hint="@string/last_name"
             android:textColor="@color/white"
             android:textColorHint="@color/app_color"
             android:layout_toRightOf="@+id/ed_first5"
@@ -295,7 +295,7 @@
             android:id="@+id/ed_first6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="FIRST NAME"
+            android:hint="@string/first_name"
             android:textColor="@color/white"
             android:textColorHint="@color/app_color"
             android:layout_toRightOf="@+id/mromiss6"
@@ -304,7 +304,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="LAST NAME"
+            android:hint="@string/last_name"
             android:textColor="@color/white"
             android:textColorHint="@color/app_color"
             android:layout_toRightOf="@+id/ed_first6"
@@ -321,7 +321,7 @@
         android:id="@+id/tv_request"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Request : "
+        android:text="@string/request"
 
         android:textColor="@color/app_color"
         android:textSize="20sp"
@@ -330,7 +330,7 @@
         android:id="@+id/ed_room"
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:hint="Write your room specification"
+        android:hint="@string/write_your_room_specification"
         android:textColorHint="#fff"
         android:textSize="15sp"
         android:gravity="start"
@@ -340,7 +340,7 @@
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:background="@drawable/shape"
-        android:text="CONFIRM"
+        android:text="@string/confirm"
         android:layout_below="@+id/ed_room"
         android:layout_centerInParent="true"
         />

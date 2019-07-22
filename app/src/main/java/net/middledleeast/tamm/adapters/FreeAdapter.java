@@ -44,8 +44,8 @@ public class FreeAdapter extends RecyclerView.Adapter<FreeAdapter.Freeviewholder
         final String username = userList.getUsername();
 
 
-holder.name.setText(username);
-holder.phone.setText(phone);
+        holder.name.setText(username);
+        holder.phone.setText(phone);
 
     }
 
