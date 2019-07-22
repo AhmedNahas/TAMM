@@ -132,16 +132,14 @@ public class RoomBooked extends AppCompatActivity {
 
                     }
                 }
+                String reqRoomString = SharedPreferencesManger.LoadStringData(this, "arrayOfroomsreq");
+
+                arrayOfRooms = gson.fromJson(reqRoomString, ArrayOfRequestedRooms.class);
                 if (atProperty) {
-
-                    String reqRoomString = SharedPreferencesManger.LoadStringData(this, "arrayOfroomsreq");
-
-                    arrayOfRooms = gson.fromJson(reqRoomString, ArrayOfRequestedRooms.class);
 
                     RequestedRooms requestedRooms = arrayOfRooms.get(0);
                     if (requestedRooms.Supplements != null) {
                         for (SuppInfo suppInfo : requestedRooms.Supplements) {
-                            Enums.SuppChargeType suppChargeType = suppInfo.SuppChargeType;
                             suppInfo.SuppChargeType = Enums.SuppChargeType.AtProperty;
                         }
                     }
