@@ -71,7 +71,7 @@ public class checkroom extends AppCompatActivity {
          roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
         currency = SharedPreferencesManger.LoadStringData(this, "currency");
 
-        tvTotalMount.setText("TOTAl AMOUNT :                            "+currency+" "+roomPrice);
+        tvTotalMount.setText("  TOTAl AMOUNT :                          "+currency+" "+roomPrice);
 
         BookingOptions bookingOptions = new BookingOptions();
         bookingOptions.RoomCombination = new ArrayList<>();

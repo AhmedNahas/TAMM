@@ -399,7 +399,7 @@
         android:id="@+id/tv_total_mount"
         android:layout_width="300dp"
         android:layout_height="35dp"
-        android:text="TOTAl AMOUNT :                            KD 105.00"
+        android:text="@string/total_amount_kd_105_00"
         android:paddingTop="7dp"
         android:background="@drawable/full_border"
         android:textColor="#FFF"
@@ -421,7 +421,7 @@
             android:id="@+id/btn_baack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Back"
+            android:text="@string/back"
             android:background="@drawable/shape"
 
 
@@ -431,7 +431,7 @@
             android:id="@+id/checkOutRoom"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="CHECKOUT"
+            android:text="@string/checkout"
             android:background="@drawable/shape"
             android:layout_toRightOf="@id/btn_baack"
             android:layout_marginLeft="25dp"

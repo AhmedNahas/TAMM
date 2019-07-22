@@ -18,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.Tamm.Hotels.wcf.ArrayOfHotel_Result;
 import com.Tamm.Hotels.wcf.AuthenticationData;
@@ -30,8 +32,14 @@ import com.Tamm.Hotels.wcf.Hotel_Result;
 import com.Tamm.Hotels.wcf.ResponseStatus;
 import com.Tamm.Hotels.wcf.TopDestinationsResponse;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.adapters.BestHotelAdapter;
+import net.middledleeast.tamm.adapters.ViewPagerAdapter;
+import net.middledleeast.tamm.fragments.BestDeals;
+import net.middledleeast.tamm.fragments.BestFlights;
+import net.middledleeast.tamm.fragments.BestHotels;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.ReserveRoom;
 
@@ -49,6 +57,16 @@ public class RenewAccount extends AppCompatActivity
     private TopDestinationsResponse topDestinationsResponse;
     private ResponseStatus status;
     private String category;
+    TabLayout tabLayout;
+    ViewPager viewPager;
+
+//    private AuthenticationData authenticandata;
+//    private BasicHttpBinding_IHotelService1 service;
+//    private String hotelPromotion;
+//    private String sessionId;
+//    private String hotelAddress;
+//    private String hotelName;
+//    private String hotelPicture;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,6 +74,51 @@ public class RenewAccount extends AppCompatActivity
         setContentView(R.layout.renew_account);
         img2 = findViewById(R.id.imageView10);
         img1 = findViewById(R.id.imageView9);
+        tabLayout=findViewById(R.id.tap_layout);
+        viewPager=findViewById(R.id.view_pager_renew);
+
+        ViewPagerAdapter adapter=new ViewPagerAdapter(getSupportFragmentManager());
+
+
+        adapter.AddFragment(new BestFlights(),"Best Flights");
+        adapter.AddFragment(new BestHotels(),"Best Hotels");
+        adapter.AddFragment(new BestDeals(),"Best Deals");
+
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
+
+
+
+
+//        service = new BasicHttpBinding_IHotelService1();
+//        service.enableLogging = true;
+//        authenticandata = new AuthenticationData();
+//        authenticandata.UserName = ("Tammtest");
+//        authenticandata.Password = ("Tam@18418756");
+
+
+//
+//        HotelSearchResponse hotelSearchResponse  =new HotelSearchResponse() ;
+//
+//        final ArrayOfHotel_Result hotelResultList = hotelSearchResponse.HotelResultList;
+//
+//        for (int i = 0; i < hotelResultList.size() ; i++) {
+//
+//            Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
+//            HotelInfo hotelInfo = hotel_result.HotelInfo;
+//            sessionId = hotelSearchResponse.SessionId;
+//            hotelAddress = hotelInfo.HotelAddress;
+//            hotelName = hotelInfo.HotelName;
+//            hotelPicture = hotelInfo.HotelPicture;
+//            hotelPromotion = hotelInfo.HotelPromotion;
+//            int code = hotelInfo.Rating.getCode();
+//
+//            Toast.makeText(this, ""+hotelPromotion, Toast.LENGTH_SHORT).show();
+//            String hotelCode = hotelInfo.HotelCode;
+//
+//
+//        }
+
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
@@ -130,6 +193,39 @@ try{
         addPic = hView.findViewById(R.id.imageViewAddPic);
         user_name_profile = hView.findViewById(R.id.user_name_profile);
 
+
+
+
+
+
+
+
+
+        try {
+
+
+            Uri photo = Uri.parse(SharedPreferencesManger.LoadStringData(this, "img"));
+
+            Bitmap bitmap;
+            try {
+                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photo));
+                addPic.setImageBitmap(bitmap);
+
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+
+        }catch (Exception e){
+
+
+        }
+
+
+
+
+
         try {
             user_name_profile.setText(user);
 
@@ -203,6 +299,7 @@ try{
             Uri targetUri = data.getData();
             String textTargetUri=(targetUri.toString());
 
+         SharedPreferencesManger.SaveData(RenewAccount.this,"img",textTargetUri);
 
             Bitmap bitmap;
             try {

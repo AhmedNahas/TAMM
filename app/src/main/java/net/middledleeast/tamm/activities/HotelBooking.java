@@ -12,6 +12,7 @@ import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.HotelBookingDetailResponse;
+import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.ResponseStatus;
 
 import net.middledleeast.tamm.R;
@@ -51,6 +52,8 @@ public class HotelBooking extends AppCompatActivity {
             HotelBookingDetailResponse hotelBookingDetailResponse = service.HotelBookingDetail(BookingId, confirmationNo, clientReferenceNo, authenticandata);
             ResponseStatus status = hotelBookingDetailResponse.Status;
             String statuscODE = status.StatusCode;
+
+
             code.setText(confirmationNo);
         } catch (Exception e) {
             e.printStackTrace();

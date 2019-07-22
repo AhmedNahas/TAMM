@@ -14,11 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
+import com.Tamm.Hotels.wcf.ArrayOfSuppInfo;
 import com.Tamm.Hotels.wcf.AuthenticationData;
+import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.BookingOptions;
+import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
+import com.Tamm.Hotels.wcf.Rate;
+import com.Tamm.Hotels.wcf.RequestedRooms;
+import com.Tamm.Hotels.wcf.SuppInfo;
+import com.Tamm.Hotels.wcf.Supplement;
 import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
@@ -211,7 +218,8 @@ public class ChooseBookingDate extends AppCompatActivity {
 
             SharedPreferencesManger.SaveData(this, "resultIndex", resultIndex);
 
-            roomAdapter = new RoomsAdapter(ChooseBookingDate.this, authenticationData, service, response, rooms, hotel_room, start_time, end_time, noOfRooms, resultIndex,
+            roomAdapter = new RoomsAdapter(ChooseBookingDate.this, authenticationData,
+                    service, response, rooms, hotel_room, start_time, end_time, noOfRooms, resultIndex,
                     mHotelCode, authenticationData, sessionId, ChooseBookingDate.this);
 
 
