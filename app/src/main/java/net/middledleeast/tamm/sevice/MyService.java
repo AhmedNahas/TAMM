@@ -80,7 +80,8 @@ public class MyService extends Service {
 
             listid=  listid.replace("[", "");
             listid=  listid.replace("]", "");
-
+            Gson gson = new Gson();
+            String names = gson.toJson(countryList);
             SharedPreferencesManger.SaveData(this, "name_country", str);
             SharedPreferencesManger.SaveData(this, "code_country", listid);
 
