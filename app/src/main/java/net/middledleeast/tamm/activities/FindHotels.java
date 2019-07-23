@@ -2,10 +2,16 @@ package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +19,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,12 +27,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import com.Tamm.Hotels.wcf.ArrayOfInt;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.CountryList;
+import com.Tamm.Hotels.wcf.CountryListResponse;
 import com.Tamm.Hotels.wcf.DestinationCityListResponse;
 import com.Tamm.Hotels.wcf.GeoCodes;
 import com.Tamm.Hotels.wcf.HotelInfo;
@@ -43,6 +52,8 @@ import org.joda.time.DateTime;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -159,6 +170,7 @@ public class FindHotels extends AppCompatActivity {
         //   auth();
 
 
+
 //if (saved==true){
 //
 //    final AppDatabase db = Room.databaseBuilder(this, AppDatabase.class,
@@ -180,11 +192,12 @@ public class FindHotels extends AppCompatActivity {
 //
 //}else {
 
-        //   getCountries();
+ //   getCountries();
 
 //}
 
         getCountries();
+
 
 
         recycl_child_spiner.setLayoutManager(new GridLayoutManager(this, 2));
@@ -394,6 +407,7 @@ public class FindHotels extends AppCompatActivity {
 
         //list of cod country
 
+        listID = Arrays.asList(code_country.split(",", 1000));
 
         ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, listName);
         adapter.setDropDownViewResource(R.layout.drop_dowen);
