@@ -227,6 +227,8 @@ public class RegisterationActivity extends Fragment {
                 }else if (isEmpty(etPhone)){
                     etPhone.setError("Phone is required!");
 
+                }else if (isEmpty(etDate)) {
+                    etPhone.setError("Phone is required!");
                 }
                 else {
                     SharedPreferencesManger.SaveData(getActivity(), "username", etUserName.getText().toString());
@@ -461,26 +463,21 @@ public class RegisterationActivity extends Fragment {
                 "Actor",
                 "Actuary",
                 "Acupuncturist",
-
                 "Aeroplane pilot",
                 "Aged care worker",
-
                 "Air combat officer",
                 "Ambulance officer",
                 "Anaesthetist",
-
                 " farmer",
                 "Arborist",
                 "Archaeologist",
                 "Architect",
-
                 "Army officer",
-
-
                 "Art teacher",
                 "Auctioneer",
                 "Audiologist",
                 "Author",
+
 
 
         };
@@ -494,5 +491,12 @@ public class RegisterationActivity extends Fragment {
         CharSequence str = text.getText().toString();
         return TextUtils.isEmpty(str);
     }
+
+    boolean isEmpty(TextView text) {
+        CharSequence str = text.getText().toString();
+        return TextUtils.isEmpty(str);
+    }
+
+
 
 }
