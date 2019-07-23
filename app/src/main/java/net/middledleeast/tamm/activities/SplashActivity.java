@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.sevice.MyService;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -35,6 +36,8 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                Intent intent = new Intent(SplashActivity.this, MyService.class);
+                startService(intent);
                 startActivity(new Intent(SplashActivity.this, WelcomeActivity.class));
                 finish();
             }
