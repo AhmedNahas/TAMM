@@ -5,9 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,10 +24,14 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.Tamm.Hotels.wcf.ArrayOfHotel_Result;
 import com.Tamm.Hotels.wcf.AuthenticationData;
+import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
+import com.Tamm.Hotels.wcf.HotelCodesResponse;
 import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.Hotel_Result;
+import com.Tamm.Hotels.wcf.ResponseStatus;
+import com.Tamm.Hotels.wcf.TopDestinationsResponse;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
@@ -45,6 +51,13 @@ public class RenewAccount extends AppCompatActivity
     ImageView img1 , img2 , addPic;
     TextView user_name_profile;
     private String user;
+    private HotelCodesResponse hotelSearchResponse;
+    private String hotelCode;
+    private BasicHttpBinding_IHotelService1 service;
+    private AuthenticationData authenticationData;
+    private TopDestinationsResponse topDestinationsResponse;
+    private ResponseStatus status;
+    private String category;
     TabLayout tabLayout;
     ViewPager viewPager;
 
@@ -75,7 +88,12 @@ public class RenewAccount extends AppCompatActivity
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-
+        for(int i=0; i < tabLayout.getTabCount(); i++) {
+            View tab = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(i);
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) tab.getLayoutParams();
+            p.setMargins(20, 40, 20, 0);
+            tab.requestLayout();
+        }
 
 
 //        service = new BasicHttpBinding_IHotelService1();
@@ -108,9 +126,40 @@ public class RenewAccount extends AppCompatActivity
 //        }
 
 
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+        service = new BasicHttpBinding_IHotelService1();
+        authenticationData = new AuthenticationData();
+        authenticationData.UserName = ("Tammtest");
+        authenticationData.Password = ("Tam@18418756");
 
 
 
+try{
+    service.enableLogging = true;
+    TopDestinationsResponse topDestinationsResponse = service.TopDestinations(authenticationData);
+
+
+//        if (hotelSearchResponse.HotelResultList != null) {
+//            for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
+//
+//                Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
+//                HotelInfo hotelInfo = hotel_result.HotelInfo;
+//
+//
+//
+//                 hotelCode = hotelInfo.HotelPromotion;
+//
+//
+//            }
+//
+//        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 
         img2.setOnClickListener(new View.OnClickListener() {
             @Override

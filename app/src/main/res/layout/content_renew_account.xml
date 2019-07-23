@@ -14,6 +14,13 @@
         android:layout_width="@dimen/_300sdp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+
+
+
+        app:tabBackground="@drawable/shep_selector"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="@android:color/white"
+
         android:layout_marginTop="@dimen/_20sdp"
         >
 
@@ -22,6 +29,8 @@
     </com.google.android.material.tabs.TabLayout>
     
     <RelativeLayout
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
         android:id="@+id/view_pager"
         android:layout_width="@dimen/_300sdp"
         android:layout_height="@dimen/_130sdp"
@@ -38,6 +47,10 @@
             android:layout_marginBottom="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_40sdp"
             android:layout_marginRight="@dimen/_40sdp"
+
+
+
+
             android:background="@drawable/border2">
 
 

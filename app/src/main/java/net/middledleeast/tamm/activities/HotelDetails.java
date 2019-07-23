@@ -1,5 +1,6 @@
 package net.middledleeast.tamm.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -33,6 +34,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static androidx.constraintlayout.solver.widgets.ConstraintAnchor.Type.CENTER;
+
 
 public class HotelDetails extends AppCompatActivity {
 
@@ -46,6 +49,8 @@ public class HotelDetails extends AppCompatActivity {
     @BindView(R.id.btn_next)
     Button btnNext;
     LinearLayout sliderDotspanel;
+    @BindView(R.id.hotel_detils_rat)
+    TextView hotelDetilsRat;
     private AuthenticationData authenticationData;
     private int dotscount;
     private ImageView[] dots;
@@ -57,8 +62,6 @@ public class HotelDetails extends AppCompatActivity {
     private String address;
     private String hotelName;
     private int code;
-    private String description;
-    private String phoneNumber;
     private String mendTime;
     private String mstartTime;
     private String countryName;
@@ -74,6 +77,7 @@ public class HotelDetails extends AppCompatActivity {
     ImageView imageView;
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,11 +86,11 @@ public class HotelDetails extends AppCompatActivity {
         sliderDotspanel = findViewById(R.id.SliderDots);
         ButterKnife.bind(this);
 
-        imageView=findViewById(R.id.toolbar_back1);
+        imageView = findViewById(R.id.toolbar_back1);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HotelDetails.this,ChooseHotelActivity.class));
+                startActivity(new Intent(HotelDetails.this, ChooseHotelActivity.class));
             }
         });
 
@@ -118,7 +122,13 @@ public class HotelDetails extends AppCompatActivity {
             //  address = hotelDetailsResponse.HotelDetails.Address;
             hotelName = hotelDetailsResponse.HotelDetails.HotelName;
             // code = hotelDetailsResponse.HotelDetails.HotelRating.getCode();
-            description = hotelDetailsResponse.HotelDetails.Description;
+            String address = hotelDetailsResponse.HotelDetails.Address;
+            String phoneNumber = hotelDetailsResponse.HotelDetails.PhoneNumber;
+
+            int code = hotelDetailsResponse.HotelDetails.HotelRating.getCode();
+            hotelDetilsRat.setText(""+code);
+
+            hotelDescDetail.setText(address + "\n" +phoneNumber);
 
 
             ArrayOfRoomInfo arrayOfRoomInfo = hotelDetailsResponse.HotelDetails.RoomInfo;
@@ -141,7 +151,6 @@ public class HotelDetails extends AppCompatActivity {
         }
 
         hotelNameDetail.setText(hotelName);
-        hotelDescDetail.setText(description);
 
 
         adapter = new adapterPhotoHotels(this, listOfPhoto);
@@ -165,12 +174,12 @@ public class HotelDetails extends AppCompatActivity {
 
         }
 
-try {
-    dots[0].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.active_dot));
-}catch (Exception e){
+        try {
+            dots[0].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.active_dot));
+        } catch (Exception e) {
 
 
-}
+        }
 
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

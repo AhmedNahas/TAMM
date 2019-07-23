@@ -40,6 +40,7 @@ import com.Tamm.Hotels.wcf.GeoCodes;
 import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.Hotel_Result;
+import com.Tamm.Hotels.wcf.MinHotelPrice;
 import com.Tamm.Hotels.wcf.RoomGuest;
 import com.google.gson.Gson;
 
@@ -66,7 +67,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static java.util.Calendar.YEAR;
 
-public class FindHotels extends AppCompatActivity  {
+public class FindHotels extends AppCompatActivity {
 
 
     @BindView(R.id.startDate_day)
@@ -132,6 +133,7 @@ public class FindHotels extends AppCompatActivity  {
     boolean child_mor = false;
     private HotelSearchResponse hotelSearchResponse;
     private CountryList countryList;
+    ArrayList<String> listPrice = new ArrayList<>();
 //    private boolean saved ;
 
     @SuppressLint("StaticFieldLeak")
@@ -140,6 +142,7 @@ public class FindHotels extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_hotels);
         ButterKnife.bind(this);
+        auth();
 
         areas = findViewById(R.id.area_spinner);
         regions = findViewById(R.id.region_spinner);
@@ -156,7 +159,7 @@ public class FindHotels extends AppCompatActivity  {
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FindHotels.this, WelcomeActivity.class));
+                startActivity(new Intent(FindHotels.this, RenewAccount.class));
             }
         });
 
@@ -164,7 +167,7 @@ public class FindHotels extends AppCompatActivity  {
 
         StrictMode.setThreadPolicy(policy);
 
-     //   auth();
+        //   auth();
 
 
 
@@ -193,8 +196,7 @@ public class FindHotels extends AppCompatActivity  {
 
 //}
 
-        auth();
-getCountries();
+        getCountries();
 
 
 
@@ -394,47 +396,48 @@ getCountries();
         // get all name country in string
         String name_country = SharedPreferencesManger.LoadStringData(FindHotels.this, "name_country");
         Gson gson = new Gson();
-        listName = gson.fromJson(name_country,ArrayList.class);
-        //list of name country
-        listName = Arrays.asList(name_country.split(",", 1000));
+        listName = gson.fromJson(name_country, ArrayList.class);
 
 
         String code_country = SharedPreferencesManger.LoadStringData(FindHotels.this, "code_country");
+
+        Gson gson2 = new Gson();
+        listID = gson2.fromJson(code_country, ArrayList.class);
+
 
         //list of cod country
 
         listID = Arrays.asList(code_country.split(",", 1000));
 
-                ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, listName);
-                adapter.setDropDownViewResource(R.layout.drop_dowen);
-                regions.setDropDownWidth(420);
-                regions.setDropDownVerticalOffset(200);
-                regions.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
+        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, listName);
+        adapter.setDropDownViewResource(R.layout.drop_dowen);
+        regions.setDropDownWidth(420);
+        regions.setDropDownVerticalOffset(200);
+        regions.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
-            regions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-
-
-                    nameCountry = listName.get(position);
-                    idCountry = listID.get(position);
-
-                    getCities(idCountry);
+        regions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
 
 
-                }
+                nameCountry = listName.get(position);
+                idCountry = listID.get(position);
+
+                getCities(idCountry);
 
 
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
+            }
 
 
-            // String test = hotelSearchResponse.Status.Description;
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        // String test = hotelSearchResponse.Status.Description;
 //            System.out.println("Hello: " + test);
 
     }
@@ -483,7 +486,7 @@ getCountries();
 
     private void getCities(String idCountry) {
 
-
+        nameCity.clear();
 
         try {
             DestinationCityListResponse cities = service.DestinationCityList(idCountry, "true", authenticationData);
@@ -527,7 +530,6 @@ getCountries();
     }
 
     private void gethotelsInfo(String ctyId) {
-
 
 
 //        Calendar cal1 = Calendar.getInstance();
@@ -579,10 +581,11 @@ getCountries();
                     10000, authenticationData);
 
 
+
 //            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
 //                    true, noRomes, "EG", roomguests, null, 100, null, null, false, authenticationData);
 
-
+            listPrice.clear();
             ratrHotel.clear();
             nameHotel.clear();
             photoHotel.clear();
@@ -594,6 +597,11 @@ getCountries();
                 for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
 
                     Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
+
+                    MinHotelPrice minHotelPrice = hotelSearchResponse.HotelResultList.get(i).MinHotelPrice;
+                    String currency = minHotelPrice.OriginalPrice.toString();
+                    String currency1 = minHotelPrice.Currency;
+                    listPrice.add( currency1 +" "+currency);
                     HotelInfo hotelInfo = hotel_result.HotelInfo;
                     sessionId = hotelSearchResponse.SessionId;
                     hotelAddress = hotelInfo.HotelAddress;
@@ -631,6 +639,7 @@ getCountries();
         intent.putExtra("cityName", name_city);
         intent.putExtra("cityId", ctyId);
         intent.putExtra("noOfRooms", noRomes);
+        intent.putExtra("list_price", listPrice);
         SharedPreferencesManger.SaveData(this, "noOfRooms", noRomes);
         intent.putExtra("resultIndex", arrayOfResultIndex);
 
@@ -645,6 +654,7 @@ getCountries();
     private void auth() {
 
         service = new BasicHttpBinding_IHotelService1();
+        service.enableLogging = true;
         authenticationData = new AuthenticationData();
         authenticationData.UserName = ("Tammtest");
         authenticationData.Password = ("Tam@18418756");
@@ -822,12 +832,7 @@ getCountries();
                     .show();
 
 
-
         }
-
-
-
-
 
 
     }

@@ -173,6 +173,14 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 SharedPreferencesManger.SaveData(activity,"roomPrice", roomprice.toString());
                 SharedPreferencesManger.SaveData(activity, "roomIndex", position);
 
+                try {
+                    SharedPreferencesManger.SaveData(activity, "deadLine", cancelPolicies.LastCancellationDeadline.toString());
+
+                }catch (Exception e){
+
+
+                }
+
 
                 ArrayOfRequestedRooms arrayOfRooms = new ArrayOfRequestedRooms();
                 RequestedRooms requestedRooms = new RequestedRooms();

@@ -49,6 +49,7 @@
         android:layout_centerInParent="true" />
 
         <TextView
+            android:layout_margin="@dimen/_4sdp"
             android:id="@+id/tv_guest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,6 +59,7 @@
             android:layout_below="@+id/img_linee"/>
 
     <TextView
+        android:layout_margin="@dimen/_4sdp"
         android:id="@+id/tv_adult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -318,6 +320,8 @@
 
 
     <TextView
+        android:paddingStart="@dimen/_4sdp"
+        android:layout_margin="@dimen/_4sdp"
         android:id="@+id/tv_request"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -327,11 +331,14 @@
         android:textSize="20sp"
         android:layout_below="@+id/relative_firstlast6"/>
     <EditText
-        android:id="@+id/ed_room"
+        android:padding="@dimen/_4sdp"
+        android:layout_margin="@dimen/_4sdp"
+        android:background="@drawable/shape3"
+        android:id="@+id/specification"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:hint="@string/write_your_room_specification"
-        android:textColorHint="#fff"
+        android:textColorHint="#A1FFFFFF"
         android:textSize="15sp"
         android:gravity="start"
         android:layout_below="@+id/tv_request"/>
@@ -341,7 +348,7 @@
         android:layout_height="30dp"
         android:background="@drawable/shape"
         android:text="@string/confirm"
-        android:layout_below="@+id/ed_room"
+        android:layout_below="@+id/specification"
         android:layout_centerInParent="true"
         />
     <ImageView

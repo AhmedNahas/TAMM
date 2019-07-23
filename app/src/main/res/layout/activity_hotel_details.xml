@@ -72,64 +72,113 @@
     </LinearLayout>
 
     <TextView
+        android:fontFamily="sans-serif-thin"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="@dimen/_12ssp"
+        android:text="fdgfdgfhhhhhhhhhhhhhhhhhhhhhhhhhfg"
         android:id="@+id/hotel_name_detail"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/SliderDots"
         android:layout_centerInParent="true"
         android:textColor="#ffff"/>
 
-    <ScrollView
-        android:padding="8dp"
-        android:layout_below="@+id/hotel_name_detail"
-        android:id="@+id/scrool"
-        android:layout_width="match_parent"
-        android:layout_height="120dp">
+
         <TextView
+            android:fontFamily="sans-serif-thin"
+            android:textStyle="normal"
+            android:lineHeight="@dimen/_20sdp"
+            android:gravity="center"
+android:text="fgdfdgfdgdfjgjfdjgdfjkgffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+            android:layout_below="@+id/hotel_name_detail"
             android:id="@+id/hotel_desc_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textColor="#ffff"
-            android:layout_margin="20dp"/>
-    </ScrollView>
+            android:layout_margin="20dp"
+            tools:targetApi="p" />
+
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:id="@+id/layout_rat"
+        android:layout_below="@+id/hotel_desc_detail"
+        android:layout_marginEnd="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_margin="@dimen/_12sdp"
+            android:id="@+id/hotel_detils_rat"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/shape3"
+            android:gravity="center"
+            android:text="5"
+            android:textColor="#FFFFFF" />
+
+
+        <TextView
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:id="@+id/hotel_rat"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="of 5 Guest Rating"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+
+
+
+
+
 
     <RelativeLayout
+        android:layout_marginTop="@dimen/_20ssp"
         android:id="@+id/relative_map_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scrool"
+        android:layout_below="@+id/layout_rat"
         android:layout_centerInParent="true">
         <Button
+            android:gravity="center"
             android:id="@+id/btn_map"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_20sdp"
             android:textAllCaps="false"
             android:text="Map"
             android:background="#BE973B"
             />
 
         <Button
+            android:gravity="center"
             android:id="@+id/btn_next"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_20sdp"
             android:textAllCaps="false"
             android:text="Next"
             android:layout_toRightOf="@+id/btn_map"
             android:background="#BE973B"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="@dimen/_15sdp"
             />
 
     </RelativeLayout>
 
 
-
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_height="@dimen/_10sdp"
+        android:layout_below="@+id/relative_map_next"
+        android:layout_alignParentBottom="true"
         android:baselineAlignBottom="true"
-        android:src="@drawable/manhelp"
-        android:layout_below="@+id/relative_map_next"/>
+        android:src="@drawable/manhelp" />
 
 </RelativeLayout>

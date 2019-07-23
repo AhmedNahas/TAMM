@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.os.StrictMode;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
 import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.activities.FindHotels;
@@ -68,6 +70,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import okhttp3.internal.Util;
+
 public class RegisterationActivity extends Fragment {
     private EditText etFirstName;
     private EditText etLastName;
@@ -76,9 +80,8 @@ public class RegisterationActivity extends Fragment {
     private EditText etPhone;
     private EditText etEmail;
     private EditText etPassword;
-    private EditText etConfirmPassword;
     private TextView etDate;
-    private AutoCompleteTextView country , city , ocupation;
+    private AutoCompleteTextView country, city, ocupation;
     private EditText etCity;
     private EditText etVisa;
     private BasicHttpBinding_IHotelService1 service;
@@ -157,7 +160,7 @@ public class RegisterationActivity extends Fragment {
         ArrayAdapter adapter = new ArrayAdapter<String>(getContext(), R.layout.item_spener_reg, list_country);
 
 
-               country.setAdapter(adapter);
+        country.setAdapter(adapter);
 
 
         relative_visa = view.findViewById(R.id.relative_visa);
@@ -188,7 +191,6 @@ public class RegisterationActivity extends Fragment {
         }
 
 
-
         mrOrMissArray = new ArrayList<>();
         mrOrMissArray.add("Mr.");
         mrOrMissArray.add("Mrs.");
@@ -199,17 +201,54 @@ public class RegisterationActivity extends Fragment {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferencesManger.SaveData(getActivity(), "username", etUserName.getText().toString());
-                connectdatabase();
-                if (user_id == 2) {
 
-                    Intent intent = new Intent(getContext(), PaymentActivity.class);
-                    startActivity(intent);
-                } else if (user_id == 1) {
 
-                    Intent intent = new Intent(getContext(), PaymentActivityFragment.class);
-                    startActivity(intent);
+
+                if (isEmpty(etUserName)) {
+                    etUserName.setError("user name is required!");
+
+
+                }else if (isEmpty(etEmail)){
+                    etEmail.setError("Email is required!");
+
+
+            }else if (isEmpty(etFirstName)){
+                    etFirstName.setError("First Name is required!");
+
+
+                }else if (isEmpty(etLastName)){
+                    etLastName.setError("Last Name is required!");
+
+
+                }else if (isEmpty(etPassword)){
+                    etPassword.setError("Password is required!");
+
+
+                }else if (isEmpty(etPhone)){
+                    etPhone.setError("Phone is required!");
+
                 }
+                else {
+                    SharedPreferencesManger.SaveData(getActivity(), "username", etUserName.getText().toString());
+                    connectdatabase();
+                    if (user_id == 2) {
+                        if (isEmpty(etVisa)){
+                            etVisa.setError("Visa is required!");
+                    }else {
+
+                            Intent intent = new Intent(getContext(), PaymentActivity.class);
+                            startActivity(intent);
+                        }
+
+
+                    } else if (user_id == 1) {
+
+                        Intent intent = new Intent(getContext(), PaymentActivityFragment.class);
+                        startActivity(intent);
+                    }
+
+                }
+
 
 
             }
@@ -344,45 +383,35 @@ public class RegisterationActivity extends Fragment {
 
     private void getCountries() {
 
-        try {
 
-            service.enableLogging = true;
-//            service.DestinationCityList("IN", null, authenticationData);
-
-
-            CountryListResponse countryListResponse = service.CountryList(authenticationData);
+        // get all name country in string
+        String name_country = SharedPreferencesManger.LoadStringData(getActivity(), "name_country");
+        Gson gson = new Gson();
+        list_country = gson.fromJson(name_country, ArrayList.class);
 
 
-            for (int i = 0; i < countryListResponse.CountryList.size(); i++) {
+        String code_country = SharedPreferencesManger.LoadStringData(getActivity(), "code_country");
 
-                CountryList countryList = countryListResponse.CountryList.get(i);
-
-                String cod = countryList.CountryCode;
-                listID.add(cod);
-                String name = countryList.CountryName;
-
-                list_country.add(name);
+        Gson gson2 = new Gson();
+        listID = gson2.fromJson(code_country, ArrayList.class);
 
 
-            }
+        for (int i = 0; i < list_country.size(); i++) {
 
-            for (int i = 0; i < list_country.size(); i++) {
+            idCountry = listID.get(i);
 
-                idCountry = listID.get(i);
-
-                getCities(idCountry);
-            }
+            //  getCities(idCountry);
 
 
-
-
-
-            // String test = hotelSearchResponse.Status.Description;
-//            System.out.println("Hello: " + test);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
+
+
+        // String test = hotelSearchResponse.Status.Description;
+//            System.out.println("Hello: " + test);
+
+
     }
+
     private void auth() {
 
         service = new BasicHttpBinding_IHotelService1();
@@ -391,8 +420,6 @@ public class RegisterationActivity extends Fragment {
         authenticationData.Password = ("Tam@18418756");
 
     }
-
-
 
 
     private void getCities(String idCountry) {
@@ -407,32 +434,27 @@ public class RegisterationActivity extends Fragment {
                 list_city.add(cityName);
 
 
-               // Toast.makeText(getContext(), "list size is  :"+list_city.size(), Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getContext(), "list size is  :"+list_city.size(), Toast.LENGTH_SHORT).show();
 
 
                 ArrayAdapter adapter2 = new ArrayAdapter<String>(getContext(), R.layout.item_spener_reg, list_city);
                 city.setAdapter(adapter2);
 
-}
+            }
 
-            } catch (Exception e1) {
+        } catch (Exception e1) {
             e1.printStackTrace();
-            Toast.makeText(getContext(), ""+e1.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "" + e1.getMessage(), Toast.LENGTH_SHORT).show();
         }
-
-
-
 
 
     }
 
 
-
-    private void  getOcupation(){
-
+    private void getOcupation() {
 
 
-        String [] ocupation_list = new String[]{
+        String[] ocupation_list = new String[]{
 
                 "Abattoir worker",
                 "Accounts clerk",
@@ -461,8 +483,6 @@ public class RegisterationActivity extends Fragment {
                 "Author",
 
 
-
-
         };
 
 
@@ -470,6 +490,9 @@ public class RegisterationActivity extends Fragment {
         ocupation.setAdapter(adapter2);
 
     }
-
+    boolean isEmpty(EditText text) {
+        CharSequence str = text.getText().toString();
+        return TextUtils.isEmpty(str);
+    }
 
 }

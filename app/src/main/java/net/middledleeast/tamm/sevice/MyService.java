@@ -29,7 +29,7 @@ public class MyService extends Service {
 
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
-    private CountryList<String> countryList;
+    private CountryList countryList;
     private List<String> listID = new ArrayList<>();
     private List<String> list = new ArrayList<>();
 
@@ -73,18 +73,14 @@ public class MyService extends Service {
                 list.add(name);
 
             }
-            String listid = listID.toString();
-            String str = list.toString();
-            str=  str.replace("[", "");
-            str=  str.replace("]", "");
-
-
-            listid=  listid.replace("[", "");
-            listid=  listid.replace("]", "");
+//
             Gson gson = new Gson();
-            String names = gson.toJson(countryList);
-            SharedPreferencesManger.SaveData(this, "name_country", str);
-            SharedPreferencesManger.SaveData(this, "code_country", listid);
+            String names = gson.toJson(list);
+            SharedPreferencesManger.SaveData(this, "name_country", names);
+
+            String id = gson.toJson(listID);
+
+            SharedPreferencesManger.SaveData(this, "code_country", id);
 
 
         }catch (Exception e){

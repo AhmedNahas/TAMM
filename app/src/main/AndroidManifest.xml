@@ -19,17 +19,29 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".activities.SeatSelection">
+        <activity android:name=".activities.SeatSelection"
+            android:screenOrientation="portrait"
 
-
-
+            >
 
         </activity>
-        <activity android:name=".activities.RecommendedTwoWay" />
-        <activity android:name=".activities.RecommendedOneWay" />
-        <activity android:name=".ActivityToFragment.PaymentActivityFragment" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
+        <activity android:name=".activities.RecommendedTwoWay"
+            android:screenOrientation="portrait"
+
+            />
+        <activity android:name=".activities.RecommendedOneWay"
+
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".ActivityToFragment.PaymentActivityFragment"
+
+            android:screenOrientation="portrait"
+            /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
         <activity
-            android:name=".activities.SplashActivity">
+            android:name=".activities.SplashActivity"
+
+            android:screenOrientation="portrait"
+             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,34 +51,104 @@
 
 
         </activity>
-        <activity android:name=".activities.PassengerDeparture" />
-        <activity android:name=".activities.Passenger_inform" />
-        <activity android:name=".activities.FlightDetails" />
-        <activity android:name=".activities.PassengerInformation" />
-        <activity android:name=".activities.FlightsSummary" />
-        <activity android:name=".activities.PaymentFlights" />
-        <activity android:name=".activities.Proceedbeybey" />
-        <activity android:name=".activities.FlightTamm" />
-        <activity android:name=".activities.PaymentActivity" />
-        <activity android:name=".activities.HotelBooking" />
-        <activity android:name=".activities.RoomBooked" />
-        <activity android:name=".activities.checkroom" />
-        <activity android:name=".activities.ChooseBookingDate" />
-        <activity android:name=".activities.HotelDetails" />
-        <activity android:name=".activities.ChooseHotelActivity" />
-        <activity android:name=".activities.WelcomeActivity" />
-        <activity android:name=".LanguageActivity" />
-        <activity android:name=".activities.FindHotels" >
+        <activity android:name=".activities.PassengerDeparture"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activities.Passenger_inform"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activities.FlightDetails"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activities.PassengerInformation"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activities.FlightsSummary"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activities.PaymentFlights"
+
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activities.Proceedbeybey"
+
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activities.FlightTamm"
+
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activities.PaymentActivity"
+
+            android:screenOrientation="portrait"
+
+            />
+        <activity android:name=".activities.HotelBooking"
+
+
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activities.RoomBooked"
+
+            android:screenOrientation="portrait"
+
+            />
+        <activity android:name=".activities.checkroom"
+
+            android:screenOrientation="portrait"
+
+            />
+        <activity android:name=".activities.ChooseBookingDate"
+
+            android:screenOrientation="portrait"
+
+            />
+        <activity android:name=".activities.HotelDetails"
+
+            android:screenOrientation="portrait"
+
+            />
+        <activity android:name=".activities.ChooseHotelActivity"
+
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activities.WelcomeActivity"
+
+            android:screenOrientation="portrait"
+
+            />
+        <activity android:name=".LanguageActivity"
+
+            android:screenOrientation="portrait"
+
+            />
+        <activity android:name=".activities.FindHotels"
+
+            android:screenOrientation="portrait"
+            >
 
 
         </activity>
-        <activity android:name=".activities.ConfirmBookingRoom" />
-        <activity android:name=".activities.MainActivity" />
-        <activity android:name=".model.ReserveRoom" />
-        <activity android:name=".activities.RenewAccount">
+        <activity android:name=".activities.ConfirmBookingRoom"
+
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activities.MainActivity"
+
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".model.ReserveRoom"
+            android:screenOrientation="portrait"
+
+            />
+        <activity android:name=".activities.RenewAccount"
+
+            android:screenOrientation="portrait"
+            >
 
 
         </activity>
+        <service android:name=".sevice.MyService" android:enabled="true" />
     </application>
 
 </manifest>
