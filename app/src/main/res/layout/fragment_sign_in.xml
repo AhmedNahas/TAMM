@@ -33,6 +33,7 @@
             android:layout_marginBottom="20dp"/>
 
         <EditText
+            android:inputType="textPersonName"
             android:id="@+id/tv_signin_username"
             android:layout_width="250dp"
             android:layout_height="wrap_content"

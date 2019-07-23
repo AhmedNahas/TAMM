@@ -40,6 +40,7 @@ import com.Tamm.Hotels.wcf.GeoCodes;
 import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.Hotel_Result;
+import com.Tamm.Hotels.wcf.MinHotelPrice;
 import com.Tamm.Hotels.wcf.RoomGuest;
 import com.google.gson.Gson;
 
@@ -132,6 +133,7 @@ public class FindHotels extends AppCompatActivity {
     boolean child_mor = false;
     private HotelSearchResponse hotelSearchResponse;
     private CountryList countryList;
+    ArrayList<String> listPrice = new ArrayList<>();
 //    private boolean saved ;
 
     @SuppressLint("StaticFieldLeak")
@@ -576,10 +578,11 @@ public class FindHotels extends AppCompatActivity {
                     10000, authenticationData);
 
 
+
 //            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
 //                    true, noRomes, "EG", roomguests, null, 100, null, null, false, authenticationData);
 
-
+            listPrice.clear();
             ratrHotel.clear();
             nameHotel.clear();
             photoHotel.clear();
@@ -591,6 +594,11 @@ public class FindHotels extends AppCompatActivity {
                 for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
 
                     Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
+
+                    MinHotelPrice minHotelPrice = hotelSearchResponse.HotelResultList.get(i).MinHotelPrice;
+                    String currency = minHotelPrice.OriginalPrice.toString();
+                    String currency1 = minHotelPrice.Currency;
+                    listPrice.add( currency1 +" "+currency);
                     HotelInfo hotelInfo = hotel_result.HotelInfo;
                     sessionId = hotelSearchResponse.SessionId;
                     hotelAddress = hotelInfo.HotelAddress;
@@ -628,6 +636,7 @@ public class FindHotels extends AppCompatActivity {
         intent.putExtra("cityName", name_city);
         intent.putExtra("cityId", ctyId);
         intent.putExtra("noOfRooms", noRomes);
+        intent.putExtra("list_price", listPrice);
         SharedPreferencesManger.SaveData(this, "noOfRooms", noRomes);
         intent.putExtra("resultIndex", arrayOfResultIndex);
 

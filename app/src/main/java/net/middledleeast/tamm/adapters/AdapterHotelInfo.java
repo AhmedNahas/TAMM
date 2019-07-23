@@ -29,6 +29,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
     ArrayList<String> listPhotoHotel;
     ArrayList<String> listAddressHotel;
     ArrayList<String> listCodeHotels;
+    ArrayList<String> listprice;
     Context context  ;
     String sessionId;
     private String mendTime;
@@ -36,6 +37,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
     private onHotelListener onHotelListener;
     private String countryName;
     private String cityName;
+
     private String cityId;
     private int noOfRooms;
     private ArrayList<String> roomGuests;
@@ -49,7 +51,8 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
 
     public AdapterHotelInfo(Activity activity, ArrayList<String> listnameHotel, ArrayList<Integer> hotelrat, ArrayList<String> listPhotoHotel,
                             Context context, onHotelListener onHotelListener, ArrayList<String> listAddressHotel, ArrayList<String> hotelCode,
-                            String sessionId, String mstartTime, String mendTime, String countryName, String cityName, String cityId, int noOfRooms, ArrayList<String> roomGuests, ArrayList<Integer> resultINdex) {
+                            String sessionId, String mstartTime, String mendTime, String countryName, String cityName, String cityId,
+                            int noOfRooms, ArrayList<String> roomGuests, ArrayList<Integer> resultINdex , ArrayList<String> listprice) {
         this.listnameHotel = listnameHotel;
         this.listPhotoHotel = listPhotoHotel;
         this.listrat = hotelrat;
@@ -67,6 +70,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         this.roomGuests = roomGuests;
         this.resultINdex = resultINdex;
         this.activity = activity;
+        this.listprice = listprice;
 
         notifyDataSetChanged();
 
@@ -89,7 +93,8 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         rat = listrat.get(position);
         holder.name.setText(name);
         holder.rat.setText(rat+"");
-
+        String price = listprice.get(position);
+        holder.hotelPrice.setText(price);
         Glide.with(context).load(photos).into(holder.photoHotel);
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,7 +140,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
 
     public class SingleView extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView name, rat;
+        TextView name, rat ,    hotelPrice ;
         ImageView photoHotel ;
         onHotelListener onHotelListener;
         RelativeLayout parentLayout;
@@ -146,7 +151,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
             rat = itemView.findViewById(R.id.shape_rat);
             photoHotel = itemView.findViewById(R.id.hotel_image);
             parentLayout = itemView.findViewById(R.id.linear);
-
+            hotelPrice = itemView.findViewById(R.id.hotel_pric);
             this.onHotelListener = onHotelListener;
             itemView.setOnClickListener(this);
         }

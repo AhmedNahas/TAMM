@@ -41,6 +41,8 @@ public class HotelsActivityAdapter extends RecyclerView.Adapter<HotelsActivityAd
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, final int position) {
 
+
+
         holder.hotelImage.setImageResource(models.get(position).getHotelImage());
         holder.hotelName.setText(models.get(position).getHotelName());
         holder.hotelDesc.setText(models.get(position).getHotelDesc());
@@ -64,7 +66,7 @@ public class HotelsActivityAdapter extends RecyclerView.Adapter<HotelsActivityAd
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView hotelImage;
-        private TextView hotelName , hotelDesc;
+        private TextView hotelName , hotelDesc ;
         onHotelListener onHotelListener;
         LinearLayout parentLayout;
         public RecyclerViewHolder(@NonNull View itemView , onHotelListener onHotelListener) {
@@ -73,6 +75,7 @@ public class HotelsActivityAdapter extends RecyclerView.Adapter<HotelsActivityAd
             hotelName = itemView.findViewById(R.id.hotel_name_detail);
             hotelDesc = itemView.findViewById(R.id.hotel_desc_detail);
             parentLayout = itemView.findViewById(R.id.linear);
+
             this.onHotelListener = onHotelListener;
             itemView.setOnClickListener(this);
 
