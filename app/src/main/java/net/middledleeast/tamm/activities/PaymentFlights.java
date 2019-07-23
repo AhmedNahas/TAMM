@@ -16,7 +16,7 @@ Button proceed_check_out;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment_flights);
 
-        proceed_check_out=findViewById(R.id.proceed_check_out);
+        proceed_check_out=findViewById(R.id.proceed_check_out_flight);
 
         proceed_check_out.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".activities.RenewAccount">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -51,6 +52,11 @@
 
 
         </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:background="@color/app_color"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

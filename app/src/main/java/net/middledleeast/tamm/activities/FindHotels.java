@@ -407,7 +407,7 @@ public class FindHotels extends AppCompatActivity {
 
         //list of cod country
 
-        listID = Arrays.asList(code_country.split(",", 1000));
+
 
         ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, listName);
         adapter.setDropDownViewResource(R.layout.drop_dowen);
@@ -568,9 +568,6 @@ public class FindHotels extends AppCompatActivity {
         }
         roomguests.add(roomGuest);
 
-
-        GeoCodes geoCodes = new GeoCodes();
-        String countryCode = geoCodes.CountryCode;
 
         try {
             //HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), Integer.parseInt(ctyId), 1, roomguests, "EG", authenticationData);

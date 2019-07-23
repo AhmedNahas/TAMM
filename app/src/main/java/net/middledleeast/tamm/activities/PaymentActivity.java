@@ -41,7 +41,7 @@ public class PaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
-        button=findViewById(R.id.proceed_check_out);
+        button=findViewById(R.id.proceed_check_out_hotels);
 
         toolbar = findViewById(R.id.welcome_toolbar);
         imageView = findViewById(R.id.back_pressed);

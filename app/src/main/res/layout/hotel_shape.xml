@@ -12,7 +12,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/_2sdp">
+            >
 
 
             <ImageView
@@ -23,12 +23,11 @@
                 android:src="@drawable/bg" />
 
             <TextView
+                android:paddingStart="@dimen/_4sdp"
                 android:id="@+id/tv_country_hotel"
-                android:layout_width="@dimen/_50sdp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-
-                android:gravity="center"
                 android:text="Dubai"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -38,15 +37,17 @@
 
             <TextView
                 android:id="@+id/tv_price_hotel"
-                android:layout_width="@dimen/_100sdp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:text="this week for $145"
-                android:textColor="@color/white"
-                android:textStyle="bold"
 
-                />
+                android:layout_marginStart="86dp"
+                android:layout_marginEnd="0dp"
+                android:layout_toEndOf="@+id/tv_country_hotel"
+                android:textColor="@color/white"
+               />
 
             <ImageView
                 android:id="@+id/iv_star_hotel"

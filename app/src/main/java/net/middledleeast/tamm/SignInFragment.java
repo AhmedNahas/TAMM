@@ -101,6 +101,10 @@ public class SignInFragment extends Fragment {
         imageView = view.findViewById(R.id.back_pressed);
 
 
+
+
+
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,7 +118,7 @@ public class SignInFragment extends Fragment {
 
         String username = SharedPreferencesManger.LoadStringData(getActivity(), "username");
 
-        userName.setText(username);
+       userName.setText(username);
         dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.custom_dialog);
         new AsyncTask<Void, Void, Void>() {
@@ -175,7 +179,6 @@ public class SignInFragment extends Fragment {
                     dialog.cancel();
 
 
-                    Toast.makeText(getContext(), "Your UserName Or Password Is Not Correct", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -240,7 +243,6 @@ public class SignInFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
 
-                    Toast.makeText(getContext(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -249,7 +251,6 @@ public class SignInFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(getContext(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 dialog.cancel();
             }
         });
@@ -286,7 +287,6 @@ public class SignInFragment extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
 
-                    Toast.makeText(getContext(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     dialog.cancel();
                 }
 
@@ -296,7 +296,6 @@ public class SignInFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(getContext(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
                 dialog.cancel();
             }
         });
@@ -351,7 +350,6 @@ public class SignInFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(getContext(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
@@ -385,7 +383,6 @@ public class SignInFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(getContext(), "" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
