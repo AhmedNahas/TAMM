@@ -14,6 +14,7 @@ import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.CountryList;
 import com.Tamm.Hotels.wcf.CountryListResponse;
+import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.WelcomeActivity;
@@ -28,7 +29,7 @@ public class MyService extends Service {
 
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
-    private CountryList<String> countryList;
+    private CountryList countryList;
     private List<String> listID = new ArrayList<>();
     private List<String> list = new ArrayList<>();
 

@@ -49,6 +49,7 @@
 
 
         <EditText
+            android:inputType="textPersonName"
             android:id="@+id/ed_first_name"
 
             android:layout_width="@dimen/_100sdp"
@@ -58,9 +59,14 @@
             android:hint="@string/first_name"
             android:textColor="#fff"
             android:textColorHint="#FFFFFF"
-            android:textSize="@dimen/_10ssp" />
+            android:textSize="@dimen/_10ssp"
+            android:nextFocusDown="@+id/ed_last_name"
+
+            />
 
         <EditText
+            android:nextFocusDown="@+id/ed_Date"
+            android:inputType="textPersonName"
             android:id="@+id/ed_last_name"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_35sdp"
@@ -70,7 +76,9 @@
             android:hint="@string/last_name"
             android:textColor="#fff"
             android:textColorHint="#FFFFFF"
-            android:textSize="@dimen/_10ssp" />
+            android:textSize="@dimen/_10ssp"
+
+            />
 
     </RelativeLayout>
 
@@ -83,7 +91,6 @@
 
         <TextView
             android:id="@+id/tv_dob"
-
             android:layout_width="@dimen/_100ssp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -101,6 +108,7 @@
             android:layout_toRightOf="@+id/tv_dob">
 
             <TextView
+
                 android:id="@+id/ed_Date"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
@@ -129,6 +137,7 @@
 
 
         <AutoCompleteTextView
+            android:inputType="textPersonName"
             android:textColor="@color/white"
             android:hint="@string/country"
             android:id="@+id/country"
@@ -144,6 +153,7 @@
 
 
         <AutoCompleteTextView
+            android:inputType="textPersonName"
             android:id="@+id/ed_city"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_30sdp"
@@ -169,6 +179,7 @@
         android:layout_marginLeft="10dp">
 
         <EditText
+            android:inputType="textPersonName"
             android:id="@+id/ed_email"
 
             android:layout_width="match_parent"
@@ -184,7 +195,7 @@
 
 
         <EditText
-
+            android:inputType="textPersonName"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_below="@+id/ed_email"
@@ -200,6 +211,7 @@
             android:textSize="@dimen/_10ssp" />
 
         <EditText
+            android:inputType="textPersonName"
             android:id="@+id/ed_phone"
             android:layout_width="@dimen/_100sdp"
 
@@ -229,6 +241,7 @@
 
 
         <AutoCompleteTextView
+            android:inputType="textPersonName"
             android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
 
             android:id="@+id/ed_occupation"
@@ -273,6 +286,7 @@
         android:layout_marginLeft="10dp">
 
         <EditText
+            android:inputType="textPersonName"
             android:id="@+id/ed_user_name"
 
             android:layout_width="160dp"
@@ -288,7 +302,6 @@
 
         <EditText
             android:id="@+id/ed_password"
-
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -333,6 +346,7 @@
             />
 
         <EditText
+            android:inputType="textPersonName"
             android:id="@+id/ed_visa"
 
             android:layout_width="match_parent"

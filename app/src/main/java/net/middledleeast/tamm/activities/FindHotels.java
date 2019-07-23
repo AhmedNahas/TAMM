@@ -41,6 +41,7 @@ import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.Hotel_Result;
 import com.Tamm.Hotels.wcf.RoomGuest;
+import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterChildCount;
@@ -392,7 +393,7 @@ getCountries();
 
         // get all name country in string
         String name_country = SharedPreferencesManger.LoadStringData(FindHotels.this, "name_country");
-Gson gson = new Gson();
+        Gson gson = new Gson();
         listName = gson.fromJson(name_country,ArrayList.class);
         //list of name country
         listName = Arrays.asList(name_country.split(",", 1000));
