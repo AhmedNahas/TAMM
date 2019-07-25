@@ -67,7 +67,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     @BindView(R.id.specification)
     EditText specification;
     private Button confirmRoom;
-    private ImageView back;
+    private RelativeLayout back;
 
     ArrayOfGuest arrayOfGuest;
     private Hotel_Room hotel_room;
@@ -101,7 +101,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         confirmRoom = findViewById(R.id.confirm_room_booking);
         Gson gson = new Gson();
 
-        back = findViewById(R.id.btn_baack);
+        back = findViewById(R.id.toolbar_back1);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

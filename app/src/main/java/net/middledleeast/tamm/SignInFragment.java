@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,7 +82,7 @@ public class SignInFragment extends Fragment {
     List<String> listCountry = new ArrayList<>();
 
     Toolbar toolbar;
-    ImageView imageView;
+    LinearLayout imageView;
     private String HI_ = "http://egyptgoogle.com/backend/freeamountformember/freememberfees.php";
     private String HI2_ = "http://egyptgoogle.com/backend/amountformember/amountformember.php";
 
@@ -103,7 +104,9 @@ public class SignInFragment extends Fragment {
 
 
 
-
+//
+//        userName.setText("ahmed");
+//        pass.setText("123456");
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +121,7 @@ public class SignInFragment extends Fragment {
 
         String username = SharedPreferencesManger.LoadStringData(getActivity(), "username");
 
-       userName.setText(username);
+     userName.setText(username);
         dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.custom_dialog);
         new AsyncTask<Void, Void, Void>() {
@@ -141,6 +144,8 @@ public class SignInFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+
+                SharedPreferencesManger.remove(getContext(),"gustMode");
 
                 String mUsrename = userName.getText().toString();
 

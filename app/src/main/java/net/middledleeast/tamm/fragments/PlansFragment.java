@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -30,7 +31,7 @@ public class PlansFragment extends Fragment {
     private List<PlanModel> planModelList = new ArrayList<>();
     private TextView member;
     Toolbar toolbar;
-    ImageView imageView;
+    LinearLayout imageView;
 
     public PlansFragment() {
         // Required empty public constructor
@@ -42,6 +43,8 @@ public class PlansFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.activity_plans, container, false);
+
+
         recyclerView = view.findViewById(R.id.plans_recyclerview);
         member=view.findViewById(R.id.plan_title);
         recyclerView.setHasFixedSize(true);

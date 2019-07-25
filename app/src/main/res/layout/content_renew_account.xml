@@ -14,16 +14,11 @@
         android:layout_width="@dimen/_300sdp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-
-
-
         app:tabBackground="@drawable/shep_selector"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@android:color/white"
-
         android:layout_marginTop="@dimen/_20sdp"
         >
-
 
 
     </com.google.android.material.tabs.TabLayout>
@@ -46,12 +41,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_40sdp"
-            android:layout_marginRight="@dimen/_40sdp"
-
-
-
-
-            android:background="@drawable/border2">
+            android:layout_marginRight="@dimen/_40sdp">
 
 
 
@@ -61,14 +51,14 @@
 
         <ImageView
 
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_20sdp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_arrow_circle_left"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/_5sdp"
             />
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_20sdp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_arrow_circle_right"
             android:layout_centerVertical="true"
@@ -116,6 +106,7 @@
     </RelativeLayout>
 
     <ImageView
+        android:layout_marginTop="@dimen/_50sdp"
         android:id="@+id/imageView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

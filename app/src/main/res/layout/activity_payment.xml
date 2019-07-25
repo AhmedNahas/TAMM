@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.PaymentActivity"
     android:background="@drawable/plans_background1">
 
@@ -19,7 +20,10 @@
             android:layout_marginTop="15dp"/>
     </androidx.appcompat.widget.Toolbar>
 
+
     <TextView
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
         android:id="@+id/tv_please"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +33,8 @@
         android:layout_below="@+id/welcome_toolbar"
         />
     <TextView
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
         android:id="@+id/tv_kd"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -43,141 +49,166 @@
 
 
 
+
+
     <RelativeLayout
-        android:id="@+id/relative_mr_mrs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:background="@drawable/shape_plack"
+        android:layout_margin="@dimen/_10sdp"
+        android:id="@+id/relative_mr_mrs2"
+        android:layout_marginTop="@dimen/_8sdp"
         android:layout_below="@+id/tv_kd"
-        android:layout_centerInParent="true"
-        >
-
-        <EditText
-            android:id="@+id/ed_mr_mrs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Mr /Mrs"
-            android:textColorHint="#40FFFFFF"
-            android:textColor="@color/white"
-            />
-
-        <EditText
-            android:id="@+id/ed_firstName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/first_name"
-            android:textColorHint="#45FFFFFF"
-            android:layout_toRightOf="@+id/ed_mr_mrs"
-            android:layout_marginLeft="25dp"
-            android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/last_name"
-            android:textColorHint="#40FFFFFF"
-            android:layout_toRightOf="@+id/ed_firstName"
-            android:layout_marginLeft="45dp"
-            android:textColor="@color/white"
-            />
 
-    </RelativeLayout>
+
         <RelativeLayout
-            android:id="@+id/relative_vmk"
-            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:id="@+id/relative_mr_mrs"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/relative_mr_mrs"
+
             >
 
-
             <TextView
-                android:id="@+id/tv_payment_method"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/payment_method"
-                android:textColor="#fff"
-                android:layout_marginLeft="40dp"
+                android:layout_marginTop="@dimen/_8sdp"
 
+                android:fontFamily="sans-serif-thin"
+                android:backgroundTint="@color/app_color"
+                android:id="@+id/tv_mr_mrs"
+                android:layout_width="@dimen/_70sdp"
+                android:drawableBottom="@drawable/line1"
+                android:layout_height="wrap_content"
+                android:hint="Mr /Mrs"
+                android:textColorHint="#FFFFFF"
+                android:textColor="@color/white"
 
                 />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="@dimen/_70sdp"
+                android:drawableBottom="@drawable/line1"
+                android:fontFamily="sans-serif-thin"
+                android:backgroundTint="@color/app_color"
+                android:id="@+id/tv_firstName"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_payment_method"
-                android:layout_centerInParent="true"
-                >
+                android:hint="@string/first_name"
+                android:textColorHint="#FFFFFF"
+                android:layout_toRightOf="@+id/tv_mr_mrs"
+                android:layout_marginLeft="25dp"
+                android:textColor="@color/white"
 
 
-
-                <EditText
-                    android:id="@+id/ed_visaa"
-                    android:layout_width="353dp"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/visa"
-                    android:drawableRight="@drawable/wd_ecom_visa"
-                    android:textColorHint="#40FFFFFF"
-                    android:textColor="@color/white"
-
-
-                    />
-                <EditText
-                    android:id="@+id/ed_master_card"
-                    android:layout_width="353dp"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/mastercard"
-                    android:drawableRight="@drawable/wd_ecom_mastercard"
-                    android:textColorHint="#41FFFFFF"
-                    android:layout_below="@+id/ed_visaa"
-                    android:textColor="@color/white"
-
-                    />
-                <EditText
-                    android:id="@+id/ed_knet"
-                    android:layout_width="353dp"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/knet"
-                    android:drawableRight="@drawable/ic_knet"
-                    android:textColorHint="#41FFFFFF"
-                    android:layout_below="@+id/ed_master_card"
-                    android:textColor="@color/white"
-
-                    />
-            </RelativeLayout>
+                />
+            <TextView
+                android:layout_marginTop="@dimen/_8sdp"
+android:id="@+id/tv_last_name"
+                android:fontFamily="sans-serif-thin"
+                android:layout_width="@dimen/_70sdp"
+                android:drawableBottom="@drawable/line1"
+                android:backgroundTint="@color/app_color"
+                android:layout_height="wrap_content"
+                android:hint="@string/last_name"
+                android:textColorHint="#FFFFFF"
+                android:layout_toRightOf="@+id/tv_firstName"
+                android:layout_marginLeft="45dp"
+                android:textColor="@color/white"
+                />
 
         </RelativeLayout>
 
-    <RadioGroup
-        android:id="@+id/radio_terms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/relative_vmk"
-        >
-        <RadioButton
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:id="@+id/relative_vmk"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_below="@+id/relative_mr_mrs"
+            >
+
+            <Spinner
+                android:layoutDirection="ltr"
+                android:id="@+id/ed_visa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/app_color"
+                android:textColor="#fff"
+                android:textColorHint="#FFFFFF"
+                android:textSize="@dimen/_10ssp" />
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+        <RelativeLayout
+            android:layout_centerInParent="true"
+            android:id="@+id/relative_radio_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/i_agree_to_the_terms_amp_condition"
-            android:textColor="#fff"
-            android:checked="true"
-            android:buttonTint="@color/app_color"
+            android:layout_below="@+id/relative_vmk"
+            android:layout_marginTop="@dimen/_25sdp">
+
+
+
+
+            <CheckBox
+                android:textSize="@dimen/_10ssp"
+                android:text="I agree to the "
+                app:buttonTint="@color/white"
+                android:textColor="@color/white"
+                android:id="@+id/check_box_agerr2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+            <TextView
+                android:id="@+id/terms_conditions_tv2"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:textSize="@dimen/_10ssp"
+                android:drawableBottom="@drawable/line1"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:textColor="@color/app_color"
+                android:text="Terms &amp; Conditions"
+                android:layout_toRightOf="@+id/check_box_agerr2"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="wrap_content" />
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+
+        <Button
+            android:layout_marginTop="@dimen/_25sdp"
+            android:id="@+id/proceed_check_out_hotels"
+            android:layout_width="270dp"
+            android:layout_height="35dp"
+            android:background="@drawable/border"
+            android:foregroundGravity="center"
+            android:text="@string/proceed_to_checkout"
+            android:textColor="#FFF"
+            android:layout_below="@+id/relative_radio_btn"
+            android:layout_centerInParent="true"
 
             />
 
-    </RadioGroup>
-    <Button
-        android:id="@+id/proceed_check_out_hotels"
-        android:layout_width="270dp"
-        android:layout_height="35dp"
-        android:background="@drawable/border"
-        android:foregroundGravity="center"
-        android:text="@string/proceed_to_checkout"
-        android:textColor="#FFF"
-        android:layout_below="@+id/radio_terms"
-        android:layout_centerInParent="true"
 
-        />
 
+    </RelativeLayout>
 
 
 

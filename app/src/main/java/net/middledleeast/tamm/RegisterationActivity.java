@@ -18,11 +18,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,8 +45,8 @@ import com.google.gson.Gson;
 
 import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.activities.PaymentActivity;
-import net.middledleeast.tamm.adapters.AdapterPayment;
 import net.middledleeast.tamm.fragments.PlansFragment;
+import net.middledleeast.tamm.fragments.TermsFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.validation.Validationfree;
 import net.middledleeast.tamm.model.validation.Validtionmember;
@@ -59,13 +60,15 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 
 public class RegisterationActivity extends Fragment {
 
+
+    TextView termsConditionsTv;
     private EditText etFirstName;
     private EditText etLastName;
     private EditText etUserName;
@@ -74,13 +77,12 @@ public class RegisterationActivity extends Fragment {
     private EditText etEmail;
     private EditText etPassword;
     private TextView etDate;
-    private AutoCompleteTextView country, city, ocupation  ;
-    private EditText  zip_code;
+    private AutoCompleteTextView country, city, ocupation;
+    private EditText zip_code;
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
 
-    Spinner visa;
-    RelativeLayout relative_visa;
+
     int free;
     int member;
     int user_id;
@@ -105,9 +107,13 @@ public class RegisterationActivity extends Fragment {
     private List<String> list_city = new ArrayList<>();
 
     Toolbar toolbar;
-    ImageView imageView;
+    LinearLayout imageView;
 
-    RadioButton agree  , special ;
+    CheckBox agree;
+
+
+    TextView terms_conditions ;
+    RadioButton special;
     private static final String HIVALIDATIONFREE = "http://www.egyptgoogle.com/freeusers/validationfree.php";
     private List<Validationfree> validationfree = new ArrayList<>();
     private List<String> listUserNamevalidationfree = new ArrayList<>();
@@ -135,6 +141,7 @@ public class RegisterationActivity extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_registeration, container, false);
 
+        terms_conditions = view.findViewById(R.id.terms_conditions_tv);
 
         etFirstName = view.findViewById(R.id.ed_first_name);
         etLastName = view.findViewById(R.id.ed_last_name);
@@ -148,10 +155,9 @@ public class RegisterationActivity extends Fragment {
         city = view.findViewById(R.id.ed_city);
         zip_code = view.findViewById(R.id.zip_code);
         special = view.findViewById(R.id.special);
-        agree = view.findViewById(R.id.rd_i_agree);
+        agree = view.findViewById(R.id.check_box_agerr);
         toolbar = view.findViewById(R.id.welcome_toolbar);
         imageView = view.findViewById(R.id.back_pressed);
-        visa = view.findViewById(R.id.ed_visa);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,17 +168,17 @@ public class RegisterationActivity extends Fragment {
         });
 
 
-
-        String[] spinnerTitles;
-        int[] spinnerImages;
-
-        spinnerTitles = new String[]{
-                getString(R.string.payment_method), "Visa", "Master Card", "Knet"};
-        spinnerImages = new int[]{0 , R.drawable.wd_ecom_visa
-                , R.drawable.wd_ecom_mastercard
-                , R.drawable.ic_knet};
+        terms_conditions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
 
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.welcome_container, new TermsFragment())
+                        .addToBackStack("RegisterationActivity").commit();
+
+            }
+        });
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
@@ -184,31 +190,11 @@ public class RegisterationActivity extends Fragment {
         }.execute();
 
 
-        AdapterPayment adapter2 =  new AdapterPayment(getContext(), spinnerTitles , spinnerImages);
-
-        visa.setAdapter(adapter2);
-
-        visa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                Toast.makeText(getContext(), ""+spinnerTitles[i], Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-
-
         String cod = GetCountryZipCode();
 
-        zip_code.setText("+"+cod);
+        zip_code.setText("+" + cod);
 
 
-        relative_visa = view.findViewById(R.id.relative_visa);
         register = view.findViewById(R.id.proceedcheck_out);
 
         Context context = getActivity();
@@ -227,8 +213,6 @@ public class RegisterationActivity extends Fragment {
         country.setAdapter(adapter);
 
 
-        relative_visa = view.findViewById(R.id.relative_visa);
-
         Bundle arguments = getArguments();
         try {
             free = arguments.getInt("free");
@@ -243,7 +227,6 @@ public class RegisterationActivity extends Fragment {
         if (free == 2) {
 
             user_id = 1;
-            relative_visa.setVisibility(View.GONE);
 
 
         } else if (member == 1) {
@@ -272,14 +255,14 @@ public class RegisterationActivity extends Fragment {
                     etUserName.setError("user name is required!");
 
 
-                } else if (listUserNamevalidationfree.contains(etUserName.getText().toString())||listUserNamevalidationmember.contains(etUserName.getText().toString())) {
+                } else if (listUserNamevalidationfree.contains(etUserName.getText().toString()) || listUserNamevalidationmember.contains(etUserName.getText().toString())) {
                     etUserName.setError("user name  is already taken!");
 
 
-                } else if (listUserPhonefree.contains(etPhone.getText().toString())||listUserPhonemember.contains(etPhone.getText().toString())) {
+                } else if (listUserPhonefree.contains(etPhone.getText().toString()) || listUserPhonemember.contains(etPhone.getText().toString())) {
                     etPhone.setError("phone is already exist!");
 
-                } else if (listEmailvalidationfree.contains(etEmail.getText().toString())||listEmailvalidationmember.contains(etEmail.getText().toString())) {
+                } else if (listEmailvalidationfree.contains(etEmail.getText().toString()) || listEmailvalidationmember.contains(etEmail.getText().toString())) {
                     etEmail.setError("email is already exist!");
 
 
@@ -299,20 +282,19 @@ public class RegisterationActivity extends Fragment {
                     etPassword.setError("Password is required!");
 
 
-                } else if (etPassword.getText().toString().length()<8) {
+                } else if (etPassword.getText().toString().length() < 8) {
                     etPassword.setError("Password should be 8 characters or more");
 
 
+                } else if (isEmpty(city)) {
 
-                }  else if (isEmpty(city)) {
+                    city.setError("city is required!");
+                } else if (isEmpty(country)) {
 
-                        city.setError("city is required!");
-                    } else if (isEmpty(country)) {
+                    country.setError("country is required!");
+                } else if (isEmpty(ocupation)) {
 
-                        country.setError("country is required!");
-                    } else if (isEmpty(ocupation)) {
-
-                        ocupation.setError("occupation is required!");
+                    ocupation.setError("occupation is required!");
 
 
                 } else if (isEmpty(etPhone)) {
@@ -320,17 +302,22 @@ public class RegisterationActivity extends Fragment {
 
                 } else if (isEmpty(etDate)) {
                     etDate.setError("Date is required!");
-                }else if (!agree.isChecked()){
+                } else if (!agree.isChecked()) {
 
                     Toast.makeText(context, "please agree the terms and conditions", Toast.LENGTH_SHORT).show();
 
                 } else {
+
+                    SharedPreferencesManger.SaveData(getContext(), "first_name", etFirstName.getText().toString());
+                    SharedPreferencesManger.SaveData(getContext(), "last_name", etLastName.getText().toString());
+
+
                     SharedPreferencesManger.SaveData(getActivity(), "username", etUserName.getText().toString());
                     connectdatabase();
                     if (user_id == 2) {
 
-                            Intent intent = new Intent(getContext(), PaymentActivity.class);
-                            startActivity(intent);
+                        Intent intent = new Intent(getContext(), PaymentActivity.class);
+                        startActivity(intent);
 
                     } else if (user_id == 1) {
 
@@ -353,6 +340,30 @@ public class RegisterationActivity extends Fragment {
         mrormissSpinner.setAdapter(mrOrMissAdapter);
 
 
+        mrormissSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (i != 0) {
+
+                    String s = mrOrMissArray.get(i);
+
+                    SharedPreferencesManger.SaveData(getContext(), "mr", s);
+
+
+                } else {
+
+
+                }
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         etDate.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -389,7 +400,6 @@ public class RegisterationActivity extends Fragment {
         };
         return view;
     }
-
 
 
     private void connectdatabase() {
@@ -461,7 +471,7 @@ public class RegisterationActivity extends Fragment {
                     parameters.put("email", etEmail.getText().toString());
                     parameters.put("phone", etPhone.getText().toString());
                     parameters.put("city", city.getText().toString());
-                    parameters.put("visa", visa.getSelectedItem().toString());
+                    parameters.put("visa", "");
 
                     return parameters;
                 }
@@ -1137,25 +1147,23 @@ public class RegisterationActivity extends Fragment {
     }
 
 
-    public String GetCountryZipCode(){
-        String CountryID="";
-        String CountryZipCode="";
+    public String GetCountryZipCode() {
+        String CountryID = "";
+        String CountryZipCode = "";
 
         TelephonyManager manager = (TelephonyManager) getContext().getSystemService(Context.TELEPHONY_SERVICE);
         //getNetworkCountryIso
-        CountryID= manager.getSimCountryIso().toUpperCase();
-        String[] rl=this.getResources().getStringArray(R.array.CountryCodes);
-        for(int i=0;i<rl.length;i++){
-            String[] g=rl[i].split(",");
-            if(g[1].trim().equals(CountryID.trim())){
-                CountryZipCode=g[0];
+        CountryID = manager.getSimCountryIso().toUpperCase();
+        String[] rl = this.getResources().getStringArray(R.array.CountryCodes);
+        for (int i = 0; i < rl.length; i++) {
+            String[] g = rl[i].split(",");
+            if (g[1].trim().equals(CountryID.trim())) {
+                CountryZipCode = g[0];
                 break;
             }
         }
         return CountryZipCode;
     }
-
-
 
 
     private void getValidationFree() {
@@ -1171,14 +1179,13 @@ public class RegisterationActivity extends Fragment {
                         JSONObject ob = array.getJSONObject(i);
 
                         Validationfree listData = new Validationfree(ob.getString("username")
-                                , ob.getString("phone"),ob.getString("email"));
+                                , ob.getString("phone"), ob.getString("email"));
 
                         validationfree.add(listData);
 
                         phonevalidation = validationfree.get(i).getPhone();
                         usernamevalidation = validationfree.get(i).getUsername();
-                        emailvalidation=validationfree.get(i).getEmail();
-
+                        emailvalidation = validationfree.get(i).getEmail();
 
 
                         SharedPreferencesManger.SaveData(getActivity(), "user", usernamevalidation);
@@ -1186,7 +1193,6 @@ public class RegisterationActivity extends Fragment {
                         listUserNamevalidationfree.add(usernamevalidation);
                         listEmailvalidationfree.add(emailvalidation);
                         listUserPhonefree.add(phonevalidation);
-
 
 
                     }
@@ -1202,13 +1208,12 @@ public class RegisterationActivity extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-               // dialog.cancel();
+                // dialog.cancel();
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         requestQueue.add(stringRequest);
     }
-
 
 
     private void getValidationMember() {
@@ -1223,20 +1228,19 @@ public class RegisterationActivity extends Fragment {
                         JSONObject ob = array.getJSONObject(i);
 
                         Validtionmember listData = new Validtionmember(ob.getString("username")
-                                , ob.getString("phone"),ob.getString("email"));
+                                , ob.getString("phone"), ob.getString("email"));
 
                         validationmember.add(listData);
 
                         phonevalidation = validationmember.get(i).getPhone();
                         usernamevalidation = validationmember.get(i).getUsername();
-                        emailvalidation=validationmember.get(i).getEmail();
+                        emailvalidation = validationmember.get(i).getEmail();
 
                         SharedPreferencesManger.SaveData(getActivity(), "user", usernamevalidation);
 
                         listUserNamevalidationmember.add(usernamevalidation);
                         listEmailvalidationmember.add(emailvalidation);
                         listUserPhonemember.add(phonevalidation);
-
 
 
                     }
@@ -1263,4 +1267,7 @@ public class RegisterationActivity extends Fragment {
     }
 
 
+    @OnClick(R.id.terms_conditions_tv)
+    public void onViewClicked() {
+    }
 }

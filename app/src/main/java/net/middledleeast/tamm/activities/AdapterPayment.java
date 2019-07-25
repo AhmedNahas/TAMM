@@ -1,4 +1,4 @@
-package net.middledleeast.tamm.adapters;
+package net.middledleeast.tamm.activities;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,15 +13,17 @@ import androidx.annotation.Nullable;
 
 import net.middledleeast.tamm.R;
 
+import java.util.List;
+
 public class AdapterPayment extends ArrayAdapter<String> {
-    String[] spinnerTitles;
-    int[] spinnerImages;
+    List<String> spinnerTitles;
+List<Integer> spinnerImages;
     Context mContext;
 
 
-    public AdapterPayment(@NonNull Context context, String[] titles, int[] images) {
+    public AdapterPayment(@NonNull Context context, List<String> spinnerTitles,List<Integer> images) {
         super(context, R.layout.custom_spinner_row);
-        this.spinnerTitles = titles;
+        this.spinnerTitles = spinnerTitles;
         this.spinnerImages = images;
         this.mContext = context;
     }
@@ -37,14 +39,14 @@ public class AdapterPayment extends ArrayAdapter<String> {
                     getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = mInflater.inflate(R.layout.custom_spinner_row, parent, false);
 
-            mViewHolder.img = (ImageView) convertView.findViewById(R.id.img_payment);
-            mViewHolder.title = (TextView) convertView.findViewById(R.id.titel_payment);
+            mViewHolder.img = (ImageView) convertView.findViewById(R.id.payment_icon_image);
+            mViewHolder.title = (TextView) convertView.findViewById(R.id.title_);
             convertView.setTag(mViewHolder);
         } else {
             mViewHolder = (ViewHolder) convertView.getTag();
         }
-        mViewHolder.img.setImageResource(spinnerImages[position]);
-        mViewHolder.title.setText(spinnerTitles[position]);
+        mViewHolder.img.setImageResource(spinnerImages.get(position));
+        mViewHolder.title.setText(spinnerTitles.get(position));
 
         return convertView;
     }
@@ -64,6 +66,6 @@ public class AdapterPayment extends ArrayAdapter<String> {
 
     @Override
     public int getCount() {
-        return spinnerTitles.length;
+        return spinnerTitles.size();
     }
 }

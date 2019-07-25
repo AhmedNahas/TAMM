@@ -12,7 +12,6 @@
     <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         app:corner_radius="28dp">
 
 
@@ -87,6 +86,8 @@
                     android:textColor="#FFFFFF" />
 
                 <TextView
+                    android:paddingEnd="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
                     android:id="@+id/hotel_pric"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="20dp"

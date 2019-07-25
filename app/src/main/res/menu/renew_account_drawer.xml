@@ -13,9 +13,11 @@
 
             />
 
+
+
         <item
             android:id="@+id/nav_favorites"
-            android:icon="@drawable/offer"
+            android:icon="@drawable/star"
             android:title="Favorites"
 
             />
@@ -50,8 +52,15 @@
             android:icon="@drawable/ic_menu_send"
             android:title="Log out" />
 
+
     </group>
 
+
+    <group android:enabled="false">
+
+        <item android:title="Tamm \u00A9 2018"></item>
+
+    </group>
 
 
 </menu>

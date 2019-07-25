@@ -2,6 +2,7 @@ package net.middledleeast.tamm.fragments;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -17,6 +19,8 @@ import androidx.fragment.app.Fragment;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.RegisterationActivity;
 import net.middledleeast.tamm.SignInFragment;
+import net.middledleeast.tamm.activities.RenewAccount;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,7 +34,7 @@ public class AuthenticationFragment extends Fragment {
 
     private Button btnSignin, btnRegister, btnGuet;
     Toolbar toolbar;
-    ImageView imageView;
+    LinearLayout imageView;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -53,6 +57,19 @@ public class AuthenticationFragment extends Fragment {
             }
         });
 
+
+
+        btnGuet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getContext(), RenewAccount.class);
+
+                SharedPreferencesManger.SaveData(getContext(),"gustMode","gustMode");
+                startActivity(intent);
+
+            }
+        });
 
         btnSignin.setOnTouchListener(new View.OnTouchListener() {
             @Override
