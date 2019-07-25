@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.PassengerInformation"
     android:orientation="vertical"
-    android:background="@drawable/plane">
+    android:background="@drawable/bg">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,8 +23,8 @@
             android:background="@drawable/ic_back_arrow" />
 
         <ImageView
-            android:layout_width="73dp"
-            android:layout_height="65dp"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_alignParentStart="false"
             android:layout_alignParentEnd="false"
             android:layout_centerInParent="true"
@@ -33,8 +33,8 @@
             android:src="@drawable/logo" />
 
         <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginLeft="20dp"

@@ -22,15 +22,15 @@
 
         <ImageView
 
-            android:layout_width="73dp"
+            android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_30sdp"
             android:layout_centerInParent="true"
             android:src="@drawable/logo" />
 
         <ImageView
 
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
            android:layout_alignParentRight="true"
             android:background="@drawable/ic_button" />
@@ -114,6 +114,8 @@
         android:orientation="vertical"
         android:layout_centerInParent="true"
         android:layout_below="@+id/relative_chair_bag"
+        android:layout_margin="@dimen/_5sdp"
+
         >
 
 
@@ -124,6 +126,7 @@
             android:layout_height="25dp"
             android:orientation="horizontal"
             android:layout_marginTop="1dp"
+
 
             >
 
@@ -244,6 +247,8 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
             android:layout_below="@+id/iv_line01"
+
+
             >
 
             <TextView
@@ -354,6 +359,7 @@
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
             android:layout_below="@+id/iv_line02"
+
             >
 
             <TextView
@@ -458,7 +464,9 @@
             android:layout_below="@+id/iv_line03"
             android:layout_width="match_parent"
             android:layout_height="25dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+
+            >
             <TextView
                 android:id="@+id/tv_total-taxes"
                 android:layout_width="wrap_content"
@@ -500,6 +508,7 @@
             android:textSize="17dp"
             android:layout_below="@+id/iv_line04"
             android:layout_alignParentRight="true"
+
 
 
             />
@@ -562,6 +571,7 @@
         android:orientation="vertical"
         android:layout_centerInParent="true"
         android:layout_below="@+id/relative_chair_bag2"
+        android:layout_margin="@dimen/_5sdp"
         >
 
 
@@ -963,6 +973,7 @@
         android:textColor="#FFF"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/relative_many2"
+        android:layout_margin="@dimen/_5sdp"
         />
 
 
