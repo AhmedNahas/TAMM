@@ -156,7 +156,7 @@ public class checkroom extends AppCompatActivity {
     @OnClick(R.id.check_room_close)
     public void onViewClicked() {
 
-        finish();
+        startActivity(new Intent(checkroom.this,ChooseBookingDate.class));
     }
 
     public static class transferClass {
