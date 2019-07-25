@@ -11,20 +11,27 @@
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
-        <ImageView
-            android:id="@+id/toolbar_back_details"
+        <RelativeLayout
+            android:id="@+id/toolbar_back1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/ic_back_arrow"
-            />
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="BACK"-->
-            <!--android:textColor="#ffff"-->
-            <!--android:layout_marginLeft="5dp"-->
-            <!--android:layout_gravity="center"/>-->
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:id="@+id/toolbar_back2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_back_arrow"
+                />
+            <TextView
+                android:id="@+id/back_pressed_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BACK"
+                android:textColor="@color/white"
+                android:layout_marginStart="@dimen/_25sdp"/>
+
+        </RelativeLayout>
 
         <ImageView
             android:layout_width="@dimen/_20sdp"
@@ -48,13 +55,13 @@
         android:layout_below="@+id/relative_hotel_detail"
         android:layout_centerInParent="true" />
     <!--<ImageView-->
-        <!--android:scaleType="fitXY"-->
-        <!--android:id="@+id/img_li"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="12dp"-->
-        <!--android:src="@drawable/line"-->
-        <!--android:layout_below="@+id/relative_hotel_detail"-->
-        <!--/>-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:id="@+id/img_li"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="12dp"-->
+    <!--android:src="@drawable/line"-->
+    <!--android:layout_below="@+id/relative_hotel_detail"-->
+    <!--/>-->
 
 
     <androidx.viewpager.widget.ViewPager
@@ -93,20 +100,20 @@
         android:textColor="#ffff"/>
 
 
-        <TextView
-            android:fontFamily="sans-serif-thin"
-            android:textStyle="normal"
-            android:lineHeight="@dimen/_20sdp"
-            android:gravity="center"
-android:text="fgdfdgfdgdfjgjfdjgdfjkgffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
-            android:layout_below="@+id/hotel_name_detail"
-            android:id="@+id/hotel_desc_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textColor="#ffff"
-            android:layout_margin="20dp"
-            tools:targetApi="p" />
+    <TextView
+        android:fontFamily="sans-serif-thin"
+        android:textStyle="normal"
+        android:lineHeight="@dimen/_20sdp"
+        android:gravity="center"
+        android:text="fgdfdgfdgdfjgjfdjgdfjkgffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        android:layout_below="@+id/hotel_name_detail"
+        android:id="@+id/hotel_desc_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="#ffff"
+        android:layout_margin="20dp"
+        tools:targetApi="p" />
 
 
 
@@ -179,6 +186,7 @@ android:text="fgdfdgfdgdfjgjfdjgdfjkgfffffffffffffffffffffffffffffffffffffffffff
             />
 
     </RelativeLayout>
+
 
 
     <RelativeLayout
@@ -260,9 +268,4 @@ android:text="fgdfdgfdgdfjgjfdjgdfjkgfffffffffffffffffffffffffffffffffffffffffff
         android:layout_below="@+id/relative_img_hotel_details_tamm"
         android:layout_marginBottom="@dimen/_5sdp"
         />
-
-
-
-
-
 </RelativeLayout>

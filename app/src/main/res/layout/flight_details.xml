@@ -121,6 +121,7 @@
 
 
         <Button
+            android:id="@+id/back_to_hotel"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_20sdp"
             android:text="BOOK HOTEL"

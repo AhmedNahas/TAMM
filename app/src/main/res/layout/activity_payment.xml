@@ -46,6 +46,18 @@
         />
 
 
+    <Spinner
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:id="@+id/sp_convert_to"
+        android:backgroundTint="@color/app_color"
+        android:layout_below="@+id/tv_please"
+        android:layout_toEndOf="@+id/tv_kd"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="30dp">
+
+    </Spinner>
+
 
 
 
@@ -188,9 +200,6 @@ android:id="@+id/tv_last_name"
 
 
         </RelativeLayout>
-
-
-
 
         <Button
             android:layout_marginTop="@dimen/_25sdp"

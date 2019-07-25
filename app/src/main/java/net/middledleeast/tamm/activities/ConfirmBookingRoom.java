@@ -202,7 +202,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        confirmRoom = findViewById(R.id.confirm_room_booking);
+
         PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
         BigDecimal finalAmount = amount;
         String finalCurrency = currency;
@@ -222,7 +222,10 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 
 //                Client client = new Client(ConfirmBookingRoom.this, "https://api-test.wirecard.com");
 //                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
-                startActivity(new Intent(ConfirmBookingRoom.this, PaymentTemp.class));
+                Intent intent1 = new Intent(ConfirmBookingRoom.this, PaymentActivity.class);
+
+                intent1.putExtra("mId",2);
+                startActivity(intent1);
             }
         });
 
