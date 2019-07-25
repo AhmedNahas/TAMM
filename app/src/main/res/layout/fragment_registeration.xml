@@ -60,7 +60,8 @@
         <ScrollView
 
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_alignTop="@+id/viewflipper">
 
 
             <RelativeLayout
@@ -94,14 +95,15 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/mromiss"
                         android:layout_marginStart="@dimen/_4sdp"
-                        android:background="@drawable/line1"
-                        android:layout_marginTop="@dimen/_4sdp"/>
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_first_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/mromiss"
+                        android:backgroundTint="@android:color/transparent"
                         android:hint="@string/first_name"
                         android:inputType="textCapSentences"
                         android:nextFocusDown="@+id/ed_last_name"
@@ -110,6 +112,7 @@
                         android:textSize="@dimen/_10ssp"
 
                         />
+
                     <View
                         android:id="@+id/line_first_name"
                         android:layout_width="@dimen/_120sdp"
@@ -120,16 +123,19 @@
 
                     <EditText
                         android:id="@+id/ed_last_name"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="70dp"
                         android:layout_toRightOf="@+id/ed_first_name"
+                        android:backgroundTint="@android:color/transparent"
                         android:hint="@string/last_name"
                         android:inputType="textCapSentences"
                         android:nextFocusDown="@+id/ed_Date"
                         android:textColor="#fff"
                         android:textColorHint="#FFFFFF"
                         android:textSize="@dimen/_10ssp" />
+
                     <View
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="0.5dp"
@@ -154,12 +160,13 @@
                         android:layout_marginTop="10dp"
                         android:text="@string/dob"
                         android:textColor="@color/white" />
+
                     <View
                         android:layout_width="@dimen/_70sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/tv_dob"
-                        android:background="@drawable/line1"
-                        android:layout_marginTop="@dimen/_7sdp"/>
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:background="@drawable/line1" />
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -178,13 +185,13 @@
                             android:textColor="#fff"
                             android:textColorHint="#FFFFFF"
                             android:textSize="@dimen/_10ssp" />
+
                         <View
                             android:layout_width="@dimen/_130sdp"
                             android:layout_height="1dp"
                             android:layout_below="@+id/ed_Date"
-                            android:background="@drawable/line1"
                             android:layout_marginStart="@dimen/_20sdp"
-                            />
+                            android:background="@drawable/line1" />
 
 
                     </RelativeLayout>
@@ -204,8 +211,7 @@
                     <RelativeLayout
                         android:id="@+id/rel_country_parent"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        >
+                        android:layout_height="wrap_content">
 
                         <AutoCompleteTextView
                             android:id="@+id/country"
@@ -213,21 +219,20 @@
                             android:layout_height="@dimen/_30sdp"
                             android:layout_below="@+id/tv_country"
                             android:layout_marginTop="@dimen/_5sdp"
+                            android:background="@drawable/shape_plack2"
                             android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                             android:hint="@string/country"
                             android:inputType="textPersonName"
                             android:textColor="@color/white"
                             android:textColorHint="#FFFFFF"
-                            android:textSize="@dimen/_10ssp"
-                            android:background="@drawable/shape_plack2"/>
+                            android:textSize="@dimen/_10ssp" />
+
                         <View
-                            android:layout_width="@dimen/_110sdp"
+                            android:layout_width="@dimen/_100sdp"
                             android:layout_height="1dp"
                             android:layout_below="@+id/country"
-                            android:background="@drawable/line1"
-                            />
+                            android:background="@drawable/line1" />
                     </RelativeLayout>
-
 
 
                     <AutoCompleteTextView
@@ -259,62 +264,68 @@
 
                     <EditText
                         android:id="@+id/ed_email"
+
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/transparent"
                         android:hint="@string/e_mail"
                         android:inputType="textEmailAddress"
                         android:textColor="#fff"
                         android:textColorHint="#FFFFFF"
-                        android:textSize="@dimen/_10ssp"/>
+                        android:textSize="@dimen/_10ssp" />
+
                     <View
                         android:layout_width="@dimen/_110sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_email"
-                        android:background="@drawable/line1"
-                        />
+                        android:background="@drawable/line1" />
 
 
                     <EditText
                         android:id="@+id/zip_code"
-                        android:layout_width="@dimen/_50sdp"
+                        android:layout_width="@dimen/_40sdp"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_toStartOf="@+id/ed_phone"
+                        android:backgroundTint="@android:color/transparent"
                         android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:gravity="center"
                         android:inputType="textCapSentences"
                         android:paddingStart="@dimen/_4sdp"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_10ssp" />
+
                     <View
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_email"
+                        android:layout_marginStart="@dimen/_15sdp"
                         android:layout_toRightOf="@+id/ed_email"
-                        android:background="@drawable/line1"
-                        android:layout_marginStart="@dimen/_15sdp"/>
+                        android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_phone"
+
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_32sdp"
+                        android:layout_marginEnd="@dimen/_25sdp"
+                        android:backgroundTint="@android:color/transparent"
                         android:gravity="center"
                         android:hint="@string/phone_number"
                         android:inputType="phone"
                         android:textColor="#fff"
                         android:textColorHint="#FFFFFF"
-                        android:textSize="@dimen/_10ssp"
-                        />
+                        android:textSize="@dimen/_10ssp" />
+
                     <View
-                        android:layout_width="@dimen/_80sdp"
+                        android:layout_width="@dimen/_100sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_email"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:layout_toRightOf="@+id/zip_code"
-                        android:background="@drawable/line1"
-                        android:layout_marginStart="@dimen/_10sdp"/>
+                        android:background="@drawable/line1" />
 
                 </RelativeLayout>
 
@@ -333,26 +344,24 @@
                         <AutoCompleteTextView
                             android:id="@+id/ed_occupation"
                             android:layout_width="@dimen/_100sdp"
-
                             android:layout_height="@dimen/_30sdp"
+
+                            android:background="@drawable/shape_plack2"
+                            android:backgroundTint="@android:color/transparent"
                             android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                             android:hint="@string/occupation"
                             android:inputType="textPersonName"
                             android:textColor="#fff"
                             android:textColorHint="#FFFFFF"
-                            android:textSize="@dimen/_10ssp"
-                            android:background="@drawable/shape_plack2"/>
+                            android:textSize="@dimen/_10ssp" />
 
-                        />
+
                         <View
                             android:layout_width="@dimen/_110sdp"
                             android:layout_height="1dp"
                             android:layout_below="@+id/ed_occupation"
-                            android:background="@drawable/line1"
-                            />
+                            android:background="@drawable/line1" />
                     </RelativeLayout>
-
-
 
 
                     <RadioGroup
@@ -391,6 +400,7 @@
                         android:id="@+id/ed_user_name"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@android:color/transparent"
                         android:hint="USERNAME"
                         android:textColor="#fff"
                         android:textColorHint="#FFFFFF"
@@ -398,43 +408,44 @@
 
 
                         />
+
                     <View
                         android:layout_width="@dimen/_80sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_user_name"
-                        android:background="@drawable/line1"
-                        />
+                        android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_password"
+
                         android:layout_width="160dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
+                        android:backgroundTint="@android:color/transparent"
                         android:hint="PASSWORD"
                         android:inputType="textPassword"
                         android:textColor="#fff"
                         android:textColorHint="#FFFFFF"
                         android:textSize="@dimen/_10ssp" />
+
                     <View
                         android:layout_width="160dp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_password"
-                        android:background="@drawable/line1"
                         android:layout_alignParentRight="true"
-                        />
+                        android:background="@drawable/line1" />
 
 
                     <TextView
-                        android:layout_marginTop="@dimen/_4sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/ed_password"
                         android:layout_alignParentEnd="true"
+                        android:layout_marginTop="@dimen/_4sdp"
                         android:layout_marginEnd="@dimen/_40sdp"
                         android:text="A MINIMUM OF 8 CHRACTERS"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_6ssp" />
-
 
 
                 </RelativeLayout>
@@ -510,7 +521,7 @@
                     android:background="@drawable/border"
                     android:text="@string/proceed_to_checkout"
                     android:textColor="#FFF"
-                    android:textSize="@dimen/_20ssp"/>
+                    android:textSize="@dimen/_20ssp" />
 
 
             </RelativeLayout>

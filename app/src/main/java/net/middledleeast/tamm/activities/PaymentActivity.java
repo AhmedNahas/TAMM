@@ -99,8 +99,7 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        // test 1 id
-        mId = intent.getIntExtra("mId", 1);
+        mId = intent.getIntExtra("mId", 0);
 
 
         imageView.setOnClickListener(new View.OnClickListener() {
