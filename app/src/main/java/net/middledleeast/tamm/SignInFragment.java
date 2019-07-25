@@ -121,7 +121,7 @@ public class SignInFragment extends Fragment {
 
         String username = SharedPreferencesManger.LoadStringData(getActivity(), "username");
 
-     userName.setText(username);
+       userName.setText(username);
         dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.custom_dialog);
         new AsyncTask<Void, Void, Void>() {

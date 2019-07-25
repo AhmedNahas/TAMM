@@ -70,9 +70,10 @@ public class BestHotelAdapter extends RecyclerView.Adapter<BestHotelAdapter.Best
 
     }
 
+
     @Override
     public int getItemCount() {
-        return listName.size();
+        return listName != null ? listName.size() : 0;
     }
 
     public class BestHotelViewHolder extends RecyclerView.ViewHolder{

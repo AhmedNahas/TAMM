@@ -210,8 +210,9 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName", lastName.getText().toString());
 
 
-                Client client = new Client(ConfirmBookingRoom.this, "https://api-test.wirecard.com");
-                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+//                Client client = new Client(ConfirmBookingRoom.this, "https://api-test.wirecard.com");
+//                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+                startActivity(new Intent(ConfirmBookingRoom.this, PaymentTemp.class));
             }
         });
 
