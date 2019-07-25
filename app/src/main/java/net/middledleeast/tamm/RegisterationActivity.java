@@ -317,6 +317,7 @@ public class RegisterationActivity extends Fragment {
                     if (user_id == 2) {
 
                         Intent intent = new Intent(getContext(), PaymentActivity.class);
+                        intent.putExtra("mId",1);
                         startActivity(intent);
 
                     } else if (user_id == 1) {

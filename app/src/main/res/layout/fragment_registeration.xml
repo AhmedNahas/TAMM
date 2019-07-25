@@ -344,7 +344,7 @@
                         android:layout_alignParentRight="true"
                         android:backgroundTint="@color/app_color"
                         android:hint="PASSWORD"
-                        android:textColor="#fff"
+                        android:textColor="@color/white"
                         android:inputType="textPassword"
                         android:textColorHint="#FFFFFF"
                         android:textSize="@dimen/_10ssp" />
