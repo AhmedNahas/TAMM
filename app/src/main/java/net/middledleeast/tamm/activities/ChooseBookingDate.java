@@ -6,6 +6,7 @@ import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,7 +64,7 @@ public class ChooseBookingDate extends AppCompatActivity {
     private String hotel_name_s;
     private TextView tv_name_hotel,tv_date_hotels;
     private Button btn_search_change  ;
-    private ImageView back_chose_booking;
+    private RelativeLayout back_chose_booking;
     private TextView tv_word;
 
 
@@ -87,7 +88,7 @@ public class ChooseBookingDate extends AppCompatActivity {
       tv_name_hotel = findViewById(R.id.tv_name_hotel);
         tv_date_hotels = findViewById(R.id.tv_date_hotels);
         tv_word = findViewById(R.id.tv_word);
-        back_chose_booking = findViewById(R.id.back_chose_booking);
+        back_chose_booking = findViewById(R.id.toolbar_back1);
 
 
         btn_search_change = findViewById(R.id.btn_search_change);

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,7 +41,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     private ArrayList<String> roomGuests;
     private ArrayList<Integer> resultIndex;
     List<Integer> childCont = new ArrayList<>();
-    ImageView imageView;
+    RelativeLayout imageView;
     private String session_id;
     private ArrayList<String> list_price;
 

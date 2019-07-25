@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/_30ssp"
+    android:background="@drawable/shape_termes"
+    tools:context=".fragments.TermsFragment">
+
+
+    <TextView
+        android:id="@+id/termes_s"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:drawableBottom="@drawable/line1"
+        android:drawablePadding="@dimen/_4sdp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="TERMS AND CONDITIONS"
+        android:textColor="@color/app_color"
+        android:textSize="@dimen/_15ssp" />
+
+<ScrollView
+    android:layout_margin="@dimen/_10sdp"
+
+
+    android:layout_marginTop="@dimen/_8sdp"
+    android:layout_below="@+id/termes_s"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@color/white"
+        android:id="@+id/tv_term"
+        android:padding="@dimen/_4sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</ScrollView>
+
+
+</RelativeLayout>

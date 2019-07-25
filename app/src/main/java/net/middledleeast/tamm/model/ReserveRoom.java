@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -21,7 +22,7 @@ public class ReserveRoom extends AppCompatActivity {
     private ImageView logo,imgbutton,bigline,smallline,imghotel,imgman;
     private TextView tammtxt,hotelstxt,besttxt,specialtxt,anywhere,anytime;
     private Button btnarrow,reservebtn;
-    ImageView imageView;
+    LinearLayout imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

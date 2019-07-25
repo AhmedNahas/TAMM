@@ -231,11 +231,25 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 String requestedRoomsString = gson.toJson(arrayOfRooms);
                 SharedPreferencesManger.SaveData((Activity) context, "arrayOfroomsreq", requestedRoomsString);
 
+                String gustMode = SharedPreferencesManger.LoadStringData(context, "gustMode");
+                if (gustMode!=null){
 
 
-                context.startActivity(intent);
+                    Toast.makeText(context, "You hav to Sign Up First", Toast.LENGTH_SHORT).show();
+
+
+
+                }else {
+
+                    context.startActivity(intent);
+                }
+
+
+
             }
         });
+
+
     }
 
     @Override

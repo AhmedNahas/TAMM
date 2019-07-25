@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +42,7 @@ public class TammFamilyFragment extends Fragment {
     private TextView textfamily;
     private Button btnContinue;
     Toolbar toolbar;
-    ImageView imageView;
+    LinearLayout imageView;
 
 
     private static final String url ="http://egyptgoogle.com/backend/terms/tammfamily.php" ;

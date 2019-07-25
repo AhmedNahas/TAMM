@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,7 +19,7 @@ import net.middledleeast.tamm.RegisterationActivity;
 public  class FreeAccountPlan extends Fragment {
     private Button accept;
     Toolbar toolbar;
-    ImageView imageView;
+    LinearLayout imageView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

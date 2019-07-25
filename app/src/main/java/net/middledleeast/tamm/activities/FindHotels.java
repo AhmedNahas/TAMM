@@ -12,14 +12,17 @@ import android.os.StrictMode;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,7 +49,9 @@ import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterChildCount;
+import net.middledleeast.tamm.adapters.AutoCompleteAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.ReserveRoom;
 
 import org.joda.time.DateTime;
 
@@ -105,7 +110,8 @@ public class FindHotels extends AppCompatActivity {
     private String hotelAddress;
     private String hotelName;
     private String hotelPicture;
-    private Spinner regions, areas, roomCount, adultCount, childCount;
+    private Spinner roomCount, adultCount, childCount;
+    private AutoCompleteTextView regions , areas;
     private List<String> listID = new ArrayList<>();
     private String nameCountry;
     private String name_city;
@@ -129,7 +135,7 @@ public class FindHotels extends AppCompatActivity {
     private List<Integer> listOfChildAge = new ArrayList<>();
     boolean chicDateStart = false;
     boolean chicDateEnd = false;
-    private ImageView toolbar_back;
+    private RelativeLayout toolbar_back;
     boolean child_mor = false;
     private HotelSearchResponse hotelSearchResponse;
     private CountryList countryList;
@@ -159,7 +165,7 @@ public class FindHotels extends AppCompatActivity {
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FindHotels.this, RenewAccount.class));
+                startActivity(new Intent(FindHotels.this, ReserveRoom.class));
             }
         });
 
@@ -390,6 +396,7 @@ public class FindHotels extends AppCompatActivity {
 
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private void getCountries() {
 
 
@@ -408,32 +415,49 @@ public class FindHotels extends AppCompatActivity {
         //list of cod country
 
 
+//
+//        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, listName);
+//        adapter.setDropDownViewResource(R.layout.drop_dowen);
+//        regions.setAdapter(adapter);
+//        adapter.notifyDataSetChanged();
+//
 
-        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, listName);
-        adapter.setDropDownViewResource(R.layout.drop_dowen);
-        regions.setDropDownWidth(420);
-        regions.setDropDownVerticalOffset(200);
-        regions.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        AutoCompleteAdapter adapter2 = new AutoCompleteAdapter(this, R.layout.drop_dowen, android.R.id.text1, listName);
 
-        regions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        regions.setAdapter(adapter2);
+
+
+
+
+        regions.setOnTouchListener(new View.OnTouchListener() {
+
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+            public boolean onTouch(View v, MotionEvent event) {
+                regions.showDropDown();
+                return false;
+            }
+        });
 
 
-                nameCountry = listName.get(position);
-                idCountry = listID.get(position);
+
+
+
+
+
+
+        regions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
+                nameCountry = listName.get(adapter2.getPosition(adapter2.getItem(position)));
+                idCountry = listID.get(adapter2.getPosition(adapter2.getItem(position)));
 
                 getCities(idCountry);
 
 
             }
 
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
         });
 
 
@@ -484,6 +508,7 @@ public class FindHotels extends AppCompatActivity {
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     private void getCities(String idCountry) {
 
         nameCity.clear();
@@ -497,30 +522,54 @@ public class FindHotels extends AppCompatActivity {
                 nameCity.add(cityName);
 
 
-                ArrayAdapter adapterCity = new ArrayAdapter(FindHotels.this, R.layout.item_spener, nameCity);
-                adapterCity.setDropDownViewResource(R.layout.drop_dowen);
-                areas.setDropDownWidth(420);
-                areas.setDropDownVerticalOffset(200);
-                areas.setAdapter(adapterCity);
-                areas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                AutoCompleteAdapter adapter2 = new AutoCompleteAdapter(this, R.layout.drop_dowen, android.R.id.text1, nameCity);
+
+                areas.setAdapter(adapter2);
+
+
+ areas.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+     @Override
+     public void onFocusChange(View view, boolean b) {
+
+         if (b){
+
+             areas.getOnFocusChangeListener();
+         }else {
+
+             areas.getOnFocusChangeListener();
+         }
+
+     }
+ });
+
+                areas.setOnTouchListener(new View.OnTouchListener() {
+
                     @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-//                        FindHotels.this.cityName = cities.CityList.get(position).CityName;
-//                        nameCity.add(FindHotels.this.cityName);
-
-                        name_city = nameCity.get(position);
-                        ctyId = cities.CityList.get(position).CityCode;
-
-
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
-
+                    public boolean onTouch(View v, MotionEvent event) {
+                        areas.showDropDown();
+                        return false;
                     }
                 });
 
+
+
+
+                areas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
+                        name_city = nameCity.get(adapter2.getPosition(adapter2.getItem(position)));
+                        ctyId = cities.CityList.get(adapter2.getPosition(adapter2.getItem(position))).CityCode;
+
+
+                    }
+
+                });
+
             }
+
+            areas.setText("");
 
 
         } catch (Exception e) {
@@ -738,12 +787,29 @@ public class FindHotels extends AppCompatActivity {
                 long hours = minutes / 60;
                 long days = hours / 24;
 
+                String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
+                String date_m = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());
+                String date_d = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
 
-                nights.setText(" " + days + " ");
-                SharedPreferencesManger.SaveData(FindHotels.this, "nights", days);
 
-                SharedPreferencesManger.SaveData(FindHotels.this, "endDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "-" + days + "  nights");
-            }
+                if (days<0){
+                    Toast.makeText(FindHotels.this, "Choose Correct Date", Toast.LENGTH_SHORT).show();
+
+
+                    endDateDay.setText(date_n);
+                    endDateMonth.setText(date_m);
+                    endDateYear.setText(date_d);
+
+
+                }else {
+
+                    nights.setText(" " + days + " ");
+                    SharedPreferencesManger.SaveData(FindHotels.this, "nights", days);
+
+                    SharedPreferencesManger.SaveData(FindHotels.this, "endDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "-" + days + "  nights");
+                }
+
+                }
         };
 
 

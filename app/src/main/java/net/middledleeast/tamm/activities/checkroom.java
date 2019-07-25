@@ -3,11 +3,10 @@ package net.middledleeast.tamm.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,20 +22,18 @@ import com.Tamm.Hotels.wcf.RoomCombination;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class checkroom extends AppCompatActivity {
     @BindView(R.id.tv_9)
     TextView deadLine_tv;
+    @BindView(R.id.check_room_close)
+    ImageView checkRoomClose;
     private Button checkRoom, back;
     @BindView(R.id.tv_total_mount)
     TextView tvTotalMount;
@@ -81,9 +78,6 @@ public class checkroom extends AppCompatActivity {
         currency = SharedPreferencesManger.LoadStringData(this, "currency");
 
 
-
-
-
         tvTotalMount.setText("  TOTAl AMOUNT :                          " + currency + " " + roomPrice);
 
         BookingOptions bookingOptions = new BookingOptions();
@@ -100,14 +94,13 @@ public class checkroom extends AppCompatActivity {
             String autoCancellationText = cancelPolicies.CancelPolicies.AutoCancellationText;
 
 
-
             AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, bookingOptions, authenticationData);
 
             String deadline = availabilityAndPricingResponse.HotelCancellationPolicies.CancelPolicies.LastCancellationDeadline.toString();
 
             String[] arrOfStr = deadline.split("T");
 
-            deadLine_tv.setText("Until : "+arrOfStr[0]);
+            deadLine_tv.setText("Until : " + arrOfStr[0]);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -158,6 +151,12 @@ public class checkroom extends AppCompatActivity {
         authenticationData.UserName = ("Tammtest");
         authenticationData.Password = ("Tam@18418756");
 
+    }
+
+    @OnClick(R.id.check_room_close)
+    public void onViewClicked() {
+
+        finish();
     }
 
     public static class transferClass {

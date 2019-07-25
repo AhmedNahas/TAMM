@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class HotelBooking extends AppCompatActivity {
     private AuthenticationData authenticandata;
     private BasicHttpBinding_IHotelService1 service;
     private Button backToMain;
+    private RelativeLayout backButton;
 
 
     @Override
@@ -31,6 +33,14 @@ public class HotelBooking extends AppCompatActivity {
         setContentView(R.layout.hotel_booking);
         backToMain = findViewById(R.id.back_to_main);
         TextView code = findViewById(R.id.tv_code);
+        backButton=findViewById(R.id.toolbar_back1);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(HotelBooking.this, RoomBooked.class));
+            }
+        });
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

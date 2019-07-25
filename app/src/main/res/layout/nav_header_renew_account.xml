@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="250dp"
+    android:layout_height="match_parent"
     android:background="@color/app_color3"
-    android:gravity="bottom"
+
     android:orientation="vertical"
 
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -13,52 +13,106 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:id="@+id/imageViewAddPic"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_100sdp"
-        android:paddingTop="8dp"
-        android:layout_marginTop="30dp"
-        app:srcCompat="@drawable/chose_img"
-        android:layout_gravity="center"/>
 
-    <TextView
-        android:layout_marginTop="@dimen/_4sdp"
-        android:id="@+id/user_name_profile"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:gravity="center"
-        android:textColor="#fff"/>
+        android:fillViewport="true"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+
+
+            android:paddingTop="36dp">
+
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/imageViewAddPic"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:src="@drawable/choose_image"
+                app:civ_border_width="4dp"
+                app:civ_border_color="@color/app_color"
+                app:civ_border_overlay="true"
+                android:layout_centerHorizontal="true"
+                app:civ_circle_background_color="@color/app_color" />
+
+
+            <TextView
+                android:layout_below="@+id/imageViewAddPic"
+                android:id="@+id/user_name_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#fff"
+                android:textSize="16dp"
+                android:text="Mahmoud Al Dikhed" />
+
+            <TextView
+                android:layout_below="@+id/user_name_profile"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+
+                android:text="MemberShip Account"
+                android:layout_gravity="center"
+                android:textColor="@color/app_color"
+                android:textStyle="italic"/>
+
+
+
+            <TextView
+                android:layout_below="@+id/textView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_20sdp"
+                android:text="Expires in : 6 Months"
+                android:layout_gravity="center"
+                android:textColor="@color/app_color"/>
+
+
+            <Button
+                android:layout_below="@+id/textView2"
+                android:layout_centerHorizontal="true"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:text="Renew Account"
+                android:textColor="#ff000000"
+                android:background="@drawable/shape"
+                android:layout_gravity="center"
+                />
+
+
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="platinum member"
-        android:layout_gravity="center"
-        android:textColor="@color/app_color"
-        android:textStyle="bold"
-        />
-
-    <TextView
-        android:layout_marginTop="@dimen/_4sdp"
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_20sdp"
-        android:text="Expires in :"
-        android:layout_gravity="center"
-        android:textColor="@color/app_color"/>
-
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="35dp"
-        android:text="Renew Account"
-        android:textColor="#ff000000"
-        android:background="@drawable/shape"
-        android:layout_gravity="center"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="24dp"
+        android:text="Tamm \u00A9 2018"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:textColor="@color/white"
+        android:textSize="12dp"
         />
 
 
-</LinearLayout>
+</RelativeLayout>

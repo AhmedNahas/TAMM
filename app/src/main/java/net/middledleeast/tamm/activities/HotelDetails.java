@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -74,7 +75,7 @@ public class HotelDetails extends AppCompatActivity {
     private String part2;
     private String map;
 
-    ImageView imageView;
+    RelativeLayout imageView;
 
 
     @SuppressLint("SetTextI18n")
@@ -90,7 +91,7 @@ public class HotelDetails extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HotelDetails.this, ChooseHotelActivity.class));
+                startActivity(new Intent(HotelDetails.this, FindHotels.class));
             }
         });
 

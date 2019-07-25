@@ -14,25 +14,33 @@
         android:layout_margin="10dp"
         android:gravity="center">
 
-        <ImageView
+        <RelativeLayout
             android:id="@+id/toolbar_back1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/ic_back_arrow"
-             />
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/toolbar_back_image_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/ic_back_arrow"
+                />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@+id/toolbar_back1"
-            android:text="@string/back"
-            android:textColor="#ffff"
-            android:textSize="12sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="7dp"
+                android:layout_toEndOf="@+id/toolbar_back_image_back"
+                android:text="@string/back"
+                android:textColor="#ffff"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+
 
         <ImageView
             android:layout_width="@dimen/_20sdp"
@@ -97,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_country"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:drawableStart="@drawable/ic_earth" />
 
 
@@ -111,22 +119,28 @@
         android:background="@android:color/transparent"
         android:gravity="end">
 
-
-        <Spinner
+        <AutoCompleteTextView
+            android:backgroundTint="@android:color/transparent"
             android:id="@+id/region_spinner"
             android:layout_width="match_parent"
+            android:dropDownWidth="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+            android:hint="@string/country"
+            android:inputType="textPersonName"
+            android:textColor="@color/white"
+            android:textColorHint="#FFFFFF"
+            android:textSize="@dimen/_10ssp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/app_color"
-            android:gravity="center"
-            android:spinnerMode="dropdown" />
+            android:gravity="center"/>
+
+
 
         <View
             android:id="@+id/line2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/region_spinner"
-            android:layout_marginTop="8dp"
             android:background="@drawable/line1" />
 
     </RelativeLayout>
@@ -138,7 +152,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_city"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:layout_toRightOf="@+id/spinner_layout"
         android:drawableStart="@drawable/ic_map" />
 
@@ -155,23 +169,30 @@
         android:gravity="end">
 
 
-        <Spinner
+        <AutoCompleteTextView
+
             android:id="@+id/area_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="@color/app_color"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            android:scrollbarStyle="insideOverlay"
-            android:scrollbars="vertical"
-            android:verticalScrollbarPosition="right" />
+            android:gravity="center"
+            android:backgroundTint="@android:color/transparent"
+            android:dropDownWidth="wrap_content"
+            android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+            android:hint="@string/city"
+            android:inputType="textPersonName"
+            android:textSize="@dimen/_10ssp"
+            android:textColorHint="#FFFFFF"
+            android:textColor="@color/white"
+            />
+
+
 
         <View
             android:id="@+id/line3"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_below="@+id/area_spinner"
-            android:layout_marginTop="8dp"
             android:background="@drawable/line1" />
 
     </RelativeLayout>
@@ -209,6 +230,7 @@
 
 
             <TextView
+                android:text="20"
                 android:id="@+id/startDate_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -260,7 +282,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_check_in"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="10dp"
         android:layout_toEndOf="@+id/layout_check"
         android:gravity="center"
         android:orientation="vertical">
@@ -311,19 +333,23 @@
         android:layout_height="50dp"
         android:layout_below="@+id/tv_check_out"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="21dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="@dimen/_29sdp"
         android:layout_toEndOf="@id/nights_difference"
         android:orientation="horizontal">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
 
 
             <TextView
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_gravity="center_vertical"
+                android:text="20"
                 android:id="@+id/endDate_day"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -389,9 +415,9 @@
             android:backgroundTint="@color/app_color" />
 
         <View
-            android:id="@+id/line4"
+            android:id="@+id/line"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_below="@+id/no_of_rooms"
             android:layout_marginTop="8dp"
             android:background="@drawable/line1" />
@@ -433,7 +459,7 @@
         <View
             android:id="@+id/line5"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_below="@+id/adilt_count"
             android:layout_marginTop="8dp"
             android:background="@drawable/line1" />
@@ -475,7 +501,7 @@
         <View
             android:id="@+id/line6"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:layout_below="@+id/no_of_childs"
             android:layout_marginTop="8dp"
             android:background="@drawable/line1" />

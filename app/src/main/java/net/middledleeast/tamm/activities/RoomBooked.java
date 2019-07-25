@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -54,6 +55,7 @@ public class RoomBooked extends AppCompatActivity {
     private String start_time;
     private String end_time;
     private String hotel_name;
+    RelativeLayout backButton;
 
 
     private Button button;
@@ -62,6 +64,14 @@ public class RoomBooked extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.room_booked);
+
+        backButton=findViewById(R.id.toolbar_back1);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RoomBooked.this, ConfirmBookingRoom.class));
+            }
+        });
 
         service = new BasicHttpBinding_IHotelService1();
         service.enableLogging = true;
