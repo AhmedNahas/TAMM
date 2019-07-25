@@ -20,8 +20,8 @@
             android:background="@drawable/ic_back_arrow"
             />
         <ImageView
-            android:layout_width="34dp"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_centerInParent="true"
             android:background="@drawable/logo" />
         <ImageView
@@ -36,7 +36,7 @@
         android:id="@+id/img_line"
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:src="@drawable/line"
+        android:src="@drawable/line1"
         android:layout_alignBottom="@+id/relative_one"/>
 
     <TextView
@@ -221,7 +221,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:src="@drawable/line"
+        android:src="@drawable/line1"
         android:layout_marginTop="5dp"
         android:layout_below="@+id/btn_view" />
 

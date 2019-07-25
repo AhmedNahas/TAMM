@@ -33,6 +33,7 @@ public class Proceedbeybey extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.flights_container, new ProceedBeyBeyOriginal())
                 .commit();
+
         passenger.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
