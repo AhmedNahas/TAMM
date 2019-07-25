@@ -6,7 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,19 +16,34 @@ import androidx.appcompat.app.AppCompatActivity;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.FindHotels;
 import net.middledleeast.tamm.activities.RenewAccount;
-import net.middledleeast.tamm.fragments.TammFamilyFragment;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class ReserveRoom extends AppCompatActivity {
+    @BindView(R.id.relative_img_hotel_tamm)
+    RelativeLayout relativeImgHotelTamm;
+    @BindView(R.id.assistant_label_voice_hotel)
+    TextView assistantLabelVoiceHotel;
+    @BindView(R.id.assistant_label_call_hotel)
+    TextView assistantLabelCall;
+    @BindView(R.id.assistant_label_message_hotel)
+    TextView assistantLabelMessage;
     private Toolbar toolbar;
-    private ImageView logo,imgbutton,bigline,smallline,imghotel,imgman;
-    private TextView tammtxt,hotelstxt,besttxt,specialtxt,anywhere,anytime;
-    private Button btnarrow,reservebtn;
+    private ImageView logo, imgbutton, bigline, smallline, imghotel, imgman;
+    private TextView tammtxt, hotelstxt, besttxt, specialtxt, anywhere, anytime;
+    private Button btnarrow, reservebtn;
     LinearLayout imageView;
+
+    boolean ClickHotel=false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reserve_room);
+        ButterKnife.bind(this);
 
 
         imageView = findViewById(R.id.back_pressed);
@@ -34,13 +51,13 @@ public class ReserveRoom extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               startActivity(new Intent(ReserveRoom.this, RenewAccount.class));
+                startActivity(new Intent(ReserveRoom.this, RenewAccount.class));
             }
         });
 //
 
 
-        reservebtn =findViewById(R.id.btn_reserve_user);
+        reservebtn = findViewById(R.id.btn_reserve_user);
 //        bigline=findViewById(R.id.img_bigline);
 //        smallline=findViewById(R.id.img_smallline);
 //        imghotel=findViewById(R.id.img_hotel);
@@ -62,4 +79,42 @@ public class ReserveRoom extends AppCompatActivity {
     }
 
 
+    @OnClick(R.id.relative_img_hotel_tamm)
+    public void onViewClicked() {
+
+
+        if (ClickHotel == false) {
+            assistantLabelCall.setVisibility(View.VISIBLE);
+            assistantLabelMessage.setVisibility(View.VISIBLE);
+            assistantLabelVoiceHotel.setVisibility(View.VISIBLE);
+            ClickHotel = true;
+
+        } else {
+            assistantLabelCall.setVisibility(View.INVISIBLE);
+            assistantLabelMessage.setVisibility(View.INVISIBLE);
+            assistantLabelVoiceHotel.setVisibility(View.INVISIBLE);
+            ClickHotel = false;
+
+        }
+
+
+    }
+
+    @OnClick({R.id.assistant_label_voice_hotel, R.id.assistant_label_call_hotel, R.id.assistant_label_message_hotel})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.assistant_label_voice_hotel:
+                Toast.makeText(this, "Voice", Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.assistant_label_call_hotel:
+                Toast.makeText(this, "Call", Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.assistant_label_message_hotel:
+                Toast.makeText(this, "Message", Toast.LENGTH_SHORT).show();
+
+                break;
+        }
+    }
 }

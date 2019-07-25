@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +34,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import payments.PaymentObjectProvider;
 import payments.ResponseHelper;
@@ -66,6 +67,14 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     RelativeLayout relativeFirstlast6;
     @BindView(R.id.specification)
     EditText specification;
+    @BindView(R.id.assistant_label_voice_confirm_hotel)
+    TextView assistantLabelVoiceConfirmHotel;
+    @BindView(R.id.assistant_label_call_confirm_hotel)
+    TextView assistantLabelCallConfirmHotel;
+    @BindView(R.id.assistant_label_message_confirm_hotel)
+    TextView assistantLabelMessageConfirmHotel;
+    @BindView(R.id.relative_img_confirm_hotel_tamm)
+    RelativeLayout relativeImgConfirmHotelTamm;
     private Button confirmRoom;
     private RelativeLayout back;
 
@@ -89,6 +98,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     private String currency;
     EditText firstName;
     EditText lastName;
+    private boolean ClickConfirmHotel=false;
 
 
     @Override
@@ -245,7 +255,6 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         setSpecification(mSpecification);
 
 
-
     }
 
     private void setSpecification(String mSpecification) {
@@ -265,5 +274,49 @@ public class ConfirmBookingRoom extends AppCompatActivity {
             Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(ConfirmBookingRoom.this, RoomBooked.class));
         }
+    }
+
+    @OnClick({R.id.assistant_label_voice_confirm_hotel, R.id.assistant_label_call_confirm_hotel, R.id.assistant_label_message_confirm_hotel})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.assistant_label_voice_confirm_hotel:
+                Toast.makeText(this, "Voice", Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.assistant_label_call_confirm_hotel:
+
+                Toast.makeText(this, "Call", Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.assistant_label_message_confirm_hotel:
+
+
+                Toast.makeText(this, "Message", Toast.LENGTH_SHORT).show();
+
+                break;
+        }
+    }
+
+    @OnClick(R.id.relative_img_confirm_hotel_tamm)
+    public void onViewClicked() {
+
+
+        if (ClickConfirmHotel == false) {
+            assistantLabelCallConfirmHotel.setVisibility(View.VISIBLE);
+            assistantLabelMessageConfirmHotel.setVisibility(View.VISIBLE);
+            assistantLabelVoiceConfirmHotel.setVisibility(View.VISIBLE);
+            ClickConfirmHotel = true;
+
+        } else {
+            assistantLabelCallConfirmHotel.setVisibility(View.INVISIBLE);
+            assistantLabelMessageConfirmHotel.setVisibility(View.INVISIBLE);
+            assistantLabelVoiceConfirmHotel.setVisibility(View.INVISIBLE);
+            ClickConfirmHotel = false;
+
+        }
+
+
+
+
     }
 }

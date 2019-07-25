@@ -35,8 +35,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static androidx.constraintlayout.solver.widgets.ConstraintAnchor.Type.CENTER;
-
 
 public class HotelDetails extends AppCompatActivity {
 
@@ -52,6 +50,14 @@ public class HotelDetails extends AppCompatActivity {
     LinearLayout sliderDotspanel;
     @BindView(R.id.hotel_detils_rat)
     TextView hotelDetilsRat;
+    @BindView(R.id.relative_img_hotel_details_tamm)
+    RelativeLayout relativeImgHotelDetailsTamm;
+    @BindView(R.id.assistant_label_voice_details_hotel)
+    TextView assistantLabelVoiceDetailsHotel;
+    @BindView(R.id.assistant_label_call_details_hotel)
+    TextView assistantLabelCallDetailsHotel;
+    @BindView(R.id.assistant_label_message_details_hotel)
+    TextView assistantLabelMessageDetailsHotel;
     private AuthenticationData authenticationData;
     private int dotscount;
     private ImageView[] dots;
@@ -75,7 +81,8 @@ public class HotelDetails extends AppCompatActivity {
     private String part2;
     private String map;
 
-    RelativeLayout imageView;
+    ImageView imageView;
+    private boolean ClickDetailsHotel=false;
 
 
     @SuppressLint("SetTextI18n")
@@ -87,13 +94,41 @@ public class HotelDetails extends AppCompatActivity {
         sliderDotspanel = findViewById(R.id.SliderDots);
         ButterKnife.bind(this);
 
-        imageView = findViewById(R.id.toolbar_back1);
+        imageView = findViewById(R.id.toolbar_back_details);
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HotelDetails.this, FindHotels.class));
             }
         });
+
+        assistantLabelVoiceDetailsHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Toast.makeText(HotelDetails.this, "Voice", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        assistantLabelCallDetailsHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(HotelDetails.this, "Call", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        assistantLabelMessageDetailsHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(HotelDetails.this, "Message", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
 
 
         //testing
@@ -127,9 +162,9 @@ public class HotelDetails extends AppCompatActivity {
             String phoneNumber = hotelDetailsResponse.HotelDetails.PhoneNumber;
 
             int code = hotelDetailsResponse.HotelDetails.HotelRating.getCode();
-            hotelDetilsRat.setText(""+code);
+            hotelDetilsRat.setText("" + code);
 
-            hotelDescDetail.setText(address + "\n" +phoneNumber);
+            hotelDescDetail.setText(address + "\n" + phoneNumber);
 
 
             ArrayOfRoomInfo arrayOfRoomInfo = hotelDetailsResponse.HotelDetails.RoomInfo;
@@ -278,5 +313,26 @@ public class HotelDetails extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    @OnClick(R.id.relative_img_hotel_details_tamm)
+    public void onViewClicked() {
+
+        if (ClickDetailsHotel == false) {
+            assistantLabelCallDetailsHotel.setVisibility(View.VISIBLE);
+            assistantLabelMessageDetailsHotel.setVisibility(View.VISIBLE);
+            assistantLabelVoiceDetailsHotel.setVisibility(View.VISIBLE);
+            ClickDetailsHotel = true;
+
+        } else {
+            assistantLabelCallDetailsHotel.setVisibility(View.INVISIBLE);
+            assistantLabelMessageDetailsHotel.setVisibility(View.INVISIBLE);
+            assistantLabelVoiceDetailsHotel.setVisibility(View.INVISIBLE);
+            ClickDetailsHotel = false;
+
+        }
+
+    }
+
+
 }
 

@@ -2,16 +2,10 @@ package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,9 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,16 +22,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import com.Tamm.Hotels.wcf.ArrayOfInt;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.CountryList;
-import com.Tamm.Hotels.wcf.CountryListResponse;
 import com.Tamm.Hotels.wcf.DestinationCityListResponse;
-import com.Tamm.Hotels.wcf.GeoCodes;
 import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.Hotel_Result;
@@ -57,8 +46,6 @@ import org.joda.time.DateTime;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -94,6 +81,14 @@ public class FindHotels extends AppCompatActivity {
     @BindView(R.id.findHotels)
     Button findHotels;
     ArrayList<Integer> ratrHotel = new ArrayList<Integer>();
+
+    RelativeLayout relativeImgFindHotelTamm;
+    @BindView(R.id.assistant_label_voice_find_hotel)
+    TextView assistantLabelVoiceFindHotel;
+    @BindView(R.id.assistant_label_call_find_hotel)
+    TextView assistantLabelCallFindHotel;
+    @BindView(R.id.assistant_label_message_find_hotel)
+    TextView assistantLabelMessageFindHotel;
     private List<String> listName = new ArrayList<>();
     ArrayList<String> addressHotel = new ArrayList<>();
     private List<String> nameCity = new ArrayList<>();
@@ -111,7 +106,7 @@ public class FindHotels extends AppCompatActivity {
     private String hotelName;
     private String hotelPicture;
     private Spinner roomCount, adultCount, childCount;
-    private AutoCompleteTextView regions , areas;
+    private AutoCompleteTextView regions, areas;
     private List<String> listID = new ArrayList<>();
     private String nameCountry;
     private String name_city;
@@ -140,6 +135,7 @@ public class FindHotels extends AppCompatActivity {
     private HotelSearchResponse hotelSearchResponse;
     private CountryList countryList;
     ArrayList<String> listPrice = new ArrayList<>();
+    private boolean ClickFindHotel=false;
 //    private boolean saved ;
 
     @SuppressLint("StaticFieldLeak")
@@ -162,6 +158,68 @@ public class FindHotels extends AppCompatActivity {
         recycl_child_spiner = findViewById(R.id.rv_child);
 
 
+        relativeImgFindHotelTamm = findViewById(R.id.relative_img_find_hotel_tamm);
+
+
+
+        relativeImgFindHotelTamm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (ClickFindHotel == false) {
+                    assistantLabelCallFindHotel.setVisibility(View.VISIBLE);
+                    assistantLabelMessageFindHotel.setVisibility(View.VISIBLE);
+                    assistantLabelVoiceFindHotel.setVisibility(View.VISIBLE);
+                    ClickFindHotel = true;
+
+                } else {
+                    assistantLabelCallFindHotel.setVisibility(View.INVISIBLE);
+                    assistantLabelMessageFindHotel.setVisibility(View.INVISIBLE);
+                    assistantLabelVoiceFindHotel.setVisibility(View.INVISIBLE);
+                    ClickFindHotel = false;
+
+                }
+
+            }
+        });
+
+        assistantLabelCallFindHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(FindHotels.this, "Call", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        assistantLabelMessageFindHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(FindHotels.this, "Message", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        assistantLabelVoiceFindHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(FindHotels.this, "Voice", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -174,7 +232,6 @@ public class FindHotels extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         //   auth();
-
 
 
 //if (saved==true){
@@ -198,12 +255,11 @@ public class FindHotels extends AppCompatActivity {
 //
 //}else {
 
- //   getCountries();
+        //   getCountries();
 
 //}
 
         getCountries();
-
 
 
         recycl_child_spiner.setLayoutManager(new GridLayoutManager(this, 2));
@@ -427,8 +483,6 @@ public class FindHotels extends AppCompatActivity {
         regions.setAdapter(adapter2);
 
 
-
-
         regions.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
@@ -437,12 +491,6 @@ public class FindHotels extends AppCompatActivity {
                 return false;
             }
         });
-
-
-
-
-
-
 
 
         regions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -527,20 +575,20 @@ public class FindHotels extends AppCompatActivity {
                 areas.setAdapter(adapter2);
 
 
- areas.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-     @Override
-     public void onFocusChange(View view, boolean b) {
+                areas.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View view, boolean b) {
 
-         if (b){
+                        if (b) {
 
-             areas.getOnFocusChangeListener();
-         }else {
+                            areas.getOnFocusChangeListener();
+                        } else {
 
-             areas.getOnFocusChangeListener();
-         }
+                            areas.getOnFocusChangeListener();
+                        }
 
-     }
- });
+                    }
+                });
 
                 areas.setOnTouchListener(new View.OnTouchListener() {
 
@@ -550,8 +598,6 @@ public class FindHotels extends AppCompatActivity {
                         return false;
                     }
                 });
-
-
 
 
                 areas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -627,7 +673,6 @@ public class FindHotels extends AppCompatActivity {
                     10000, authenticationData);
 
 
-
 //            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
 //                    true, noRomes, "EG", roomguests, null, 100, null, null, false, authenticationData);
 
@@ -647,7 +692,7 @@ public class FindHotels extends AppCompatActivity {
                     MinHotelPrice minHotelPrice = hotelSearchResponse.HotelResultList.get(i).MinHotelPrice;
                     String currency = minHotelPrice.OriginalPrice.toString();
                     String currency1 = minHotelPrice.Currency;
-                    listPrice.add( currency1 +" "+currency);
+                    listPrice.add(currency1 + " " + currency);
                     HotelInfo hotelInfo = hotel_result.HotelInfo;
                     sessionId = hotelSearchResponse.SessionId;
                     hotelAddress = hotelInfo.HotelAddress;
@@ -792,7 +837,7 @@ public class FindHotels extends AppCompatActivity {
                 String date_d = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
 
 
-                if (days<0){
+                if (days < 0) {
                     Toast.makeText(FindHotels.this, "Choose Correct Date", Toast.LENGTH_SHORT).show();
 
 
@@ -801,7 +846,7 @@ public class FindHotels extends AppCompatActivity {
                     endDateYear.setText(date_d);
 
 
-                }else {
+                } else {
 
                     nights.setText(" " + days + " ");
                     SharedPreferencesManger.SaveData(FindHotels.this, "nights", days);
@@ -809,7 +854,7 @@ public class FindHotels extends AppCompatActivity {
                     SharedPreferencesManger.SaveData(FindHotels.this, "endDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "-" + days + "  nights");
                 }
 
-                }
+            }
         };
 
 

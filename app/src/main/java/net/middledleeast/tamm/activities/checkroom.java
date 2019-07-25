@@ -32,8 +32,8 @@ import butterknife.OnClick;
 public class checkroom extends AppCompatActivity {
     @BindView(R.id.tv_9)
     TextView deadLine_tv;
-    @BindView(R.id.check_room_close)
-    ImageView checkRoomClose;
+//    @BindView(R.id.check_room_close)
+//    ImageView checkRoomClose;
     private Button checkRoom, back;
     @BindView(R.id.tv_total_mount)
     TextView tvTotalMount;
@@ -153,11 +153,11 @@ public class checkroom extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.check_room_close)
-    public void onViewClicked() {
-
-        finish();
-    }
+//    @OnClick(R.id.check_room_close)
+//    public void onViewClicked() {
+//
+//        finish();
+//    }
 
     public static class transferClass {
 

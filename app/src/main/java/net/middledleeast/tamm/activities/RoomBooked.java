@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,10 +38,22 @@ import org.joda.time.format.DateTimeFormatter;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class RoomBooked extends AppCompatActivity {
 
 
     ArrayOfGuest arrayOfGuest;
+    @BindView(R.id.assistant_label_voice_booked_hotel)
+    TextView assistantLabelVoiceBookedHotel;
+    @BindView(R.id.assistant_label_call_booked_hotel)
+    TextView assistantLabelCallBookedHotel;
+    @BindView(R.id.assistant_label_message_booked_hotel)
+    TextView assistantLabelMessageBookedHotel;
+    @BindView(R.id.relative_img_hotel_booked_tamm)
+    RelativeLayout relativeImgHotelBookedTamm;
     private Hotel_Room hotel_room;
     private ArrayOfRequestedRooms arrayOfRooms;
     private DateTime date1;
@@ -59,17 +73,41 @@ public class RoomBooked extends AppCompatActivity {
 
 
     private Button button;
+    private boolean ClickBookedHotel=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.room_booked);
+        ButterKnife.bind(this);
 
-        backButton=findViewById(R.id.toolbar_back1);
+        backButton = findViewById(R.id.toolbar_back1);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(RoomBooked.this, ConfirmBookingRoom.class));
+            }
+        });
+
+
+        assistantLabelCallBookedHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(RoomBooked.this, "Call", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        assistantLabelVoiceBookedHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(RoomBooked.this, "Voice", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        assistantLabelMessageBookedHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(RoomBooked.this, "Message", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -217,5 +255,24 @@ public class RoomBooked extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @OnClick(R.id.relative_img_hotel_booked_tamm)
+    public void onViewClicked() {
+
+        if (ClickBookedHotel == false) {
+            assistantLabelCallBookedHotel.setVisibility(View.VISIBLE);
+            assistantLabelMessageBookedHotel.setVisibility(View.VISIBLE);
+            assistantLabelVoiceBookedHotel.setVisibility(View.VISIBLE);
+            ClickBookedHotel = true;
+
+        } else {
+            assistantLabelCallBookedHotel.setVisibility(View.INVISIBLE);
+            assistantLabelMessageBookedHotel.setVisibility(View.INVISIBLE);
+            assistantLabelVoiceBookedHotel.setVisibility(View.INVISIBLE);
+            ClickBookedHotel = false;
+
+        }
+
     }
 }

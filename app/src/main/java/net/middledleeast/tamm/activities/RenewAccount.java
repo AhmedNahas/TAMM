@@ -6,11 +6,12 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.view.Menu;
+import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,24 +20,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
-import com.Tamm.Hotels.wcf.ArrayOfHotel_Result;
 import com.Tamm.Hotels.wcf.AuthenticationData;
-import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.HotelCodesResponse;
-import com.Tamm.Hotels.wcf.HotelInfo;
-import com.Tamm.Hotels.wcf.HotelSearchResponse;
-import com.Tamm.Hotels.wcf.Hotel_Result;
 import com.Tamm.Hotels.wcf.ResponseStatus;
 import com.Tamm.Hotels.wcf.TopDestinationsResponse;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.adapters.BestHotelAdapter;
 import net.middledleeast.tamm.adapters.ViewPagerAdapter;
 import net.middledleeast.tamm.fragments.BestDeals;
 import net.middledleeast.tamm.fragments.BestFlights;
@@ -46,10 +40,22 @@ import net.middledleeast.tamm.model.ReserveRoom;
 
 import java.io.FileNotFoundException;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class RenewAccount extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    ImageView img1 , img2 , addPic , right , left;
+    ImageView img1, img2, addPic, right, left;
     TextView user_name_profile;
+    @BindView(R.id.assistant_label_voice_renew_hotel)
+    TextView assistantLabelVoiceRenewHotel;
+    @BindView(R.id.assistant_label_call_renew_hotel)
+    TextView assistantLabelCallRenewHotel;
+    @BindView(R.id.assistant_label_message_renew_hotel)
+    TextView assistantLabelMessageRenewHotel;
+    @BindView(R.id.relative_img_renew_hotel_tamm)
+    RelativeLayout relativeImgRenewHotelTamm;
     private String user;
     private HotelCodesResponse hotelSearchResponse;
     private String hotelCode;
@@ -61,6 +67,7 @@ public class RenewAccount extends AppCompatActivity
     TabLayout tabLayout;
     ViewPager viewPager;
     private ViewPagerAdapter adapter;
+    private boolean ClickRenewHotel=false;
 
 //    private AuthenticationData authenticandata;
 //    private BasicHttpBinding_IHotelService1 service;
@@ -74,22 +81,45 @@ public class RenewAccount extends AppCompatActivity
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.renew_account);
+        ButterKnife.bind(this);
         img2 = findViewById(R.id.imageView10);
         img1 = findViewById(R.id.imageView9);
-        tabLayout=findViewById(R.id.tap_layout);
-        viewPager=findViewById(R.id.view_pager_renew);
+        tabLayout = findViewById(R.id.tap_layout);
+        viewPager = findViewById(R.id.view_pager_renew);
 
-         adapter=new ViewPagerAdapter(getSupportFragmentManager());
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
 
-        adapter.AddFragment(new BestFlights(),"Best Flights");
-        adapter.AddFragment(new BestHotels(),"Best Hotels");
-        adapter.AddFragment(new BestDeals(),"Best Deals");
+        adapter.AddFragment(new BestFlights(), "Best Flights");
+        adapter.AddFragment(new BestHotels(), "Best Hotels");
+        adapter.AddFragment(new BestDeals(), "Best Deals");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        for(int i=0; i < tabLayout.getTabCount(); i++) {
+
+        assistantLabelVoiceRenewHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(RenewAccount.this, "Voice", Toast.LENGTH_SHORT).show();
+            }
+        });
+        assistantLabelCallRenewHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(RenewAccount.this, "Call", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        assistantLabelMessageRenewHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(RenewAccount.this, "Message", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
             View tab = ((ViewGroup) tabLayout.getChildAt(0)).getChildAt(i);
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) tab.getLayoutParams();
             p.setMargins(20, 40, 20, 0);
@@ -137,10 +167,9 @@ public class RenewAccount extends AppCompatActivity
         authenticationData.Password = ("Tam@18418756");
 
 
-
-try{
-    service.enableLogging = true;
-    TopDestinationsResponse topDestinationsResponse = service.TopDestinations(authenticationData);
+        try {
+            service.enableLogging = true;
+            TopDestinationsResponse topDestinationsResponse = service.TopDestinations(authenticationData);
 
 
 //        if (hotelSearchResponse.HotelResultList != null) {
@@ -158,9 +187,9 @@ try{
 //
 //        }
 
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,14 +202,14 @@ try{
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(RenewAccount.this,FlightTamm.class));
+                startActivity(new Intent(RenewAccount.this, FlightTamm.class));
             }
         });
 
         try {
             user = SharedPreferencesManger.LoadStringData(this, "user");
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
 
         }
@@ -190,21 +219,14 @@ try{
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
-       // NavigationView navigationView = findViewById(R.id.nav_view);
+        // NavigationView navigationView = findViewById(R.id.nav_view);
 
-        NavigationView navigationView =  findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
 
-        View hView =  navigationView.getHeaderView(0);
+        View hView = navigationView.getHeaderView(0);
 
         addPic = hView.findViewById(R.id.imageViewAddPic);
         user_name_profile = hView.findViewById(R.id.user_name_profile);
-
-
-
-
-
-
-
 
 
         try {
@@ -223,29 +245,26 @@ try{
             }
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
 
         }
-
-
-
 
 
         try {
             user_name_profile.setText(user);
 
 
-        addPic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 0);
+            addPic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_PICK,
+                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(intent, 0);
 
-            }
-        });
-        }catch (Exception e){
+                }
+            });
+        } catch (Exception e) {
 
 
         }
@@ -267,7 +286,6 @@ try{
     }
 
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -284,11 +302,11 @@ try{
 
         } else if (id == R.id.nav_contuctus) {
 
-        }else if (id == R.id.nav_setting) {
+        } else if (id == R.id.nav_setting) {
 
-        }else if (id == R.id.nav_terms) {
+        } else if (id == R.id.nav_terms) {
 
-        }else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_logout) {
 
         }
 
@@ -296,16 +314,17 @@ try{
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // TODO Auto-generated method stub
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK){
+        if (resultCode == RESULT_OK) {
             Uri targetUri = data.getData();
-            String textTargetUri=(targetUri.toString());
+            String textTargetUri = (targetUri.toString());
 
-         SharedPreferencesManger.SaveData(RenewAccount.this,"img",textTargetUri);
+            SharedPreferencesManger.SaveData(RenewAccount.this, "img", textTargetUri);
 
             Bitmap bitmap;
             try {
@@ -317,5 +336,26 @@ try{
                 e.printStackTrace();
             }
         }
+    }
+
+
+    @OnClick(R.id.relative_img_renew_hotel_tamm)
+    public void onViewClicked() {
+
+        if (ClickRenewHotel == false) {
+            assistantLabelCallRenewHotel.setVisibility(View.VISIBLE);
+            assistantLabelMessageRenewHotel.setVisibility(View.VISIBLE);
+            assistantLabelVoiceRenewHotel.setVisibility(View.VISIBLE);
+            ClickRenewHotel = true;
+
+        } else {
+            assistantLabelCallRenewHotel.setVisibility(View.INVISIBLE);
+            assistantLabelMessageRenewHotel.setVisibility(View.INVISIBLE);
+            assistantLabelVoiceRenewHotel.setVisibility(View.INVISIBLE);
+            ClickRenewHotel = false;
+
+        }
+
+
     }
 }
