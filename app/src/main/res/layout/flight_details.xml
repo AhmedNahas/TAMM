@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg">
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/relative_flights"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -15,37 +16,57 @@
             android:layout_height="25dp"
             android:background="@drawable/ic_back_arrow"
             android:layout_marginTop="15dp"
+            android:layout_centerVertical="true"
             />
         <ImageView
 
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_30sdp"
             android:src="@drawable/logo"
             android:layout_marginLeft="145dp"
 
             />
         <ImageView
-
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/ic_button"
             android:layout_marginLeft="100dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="12dp"
             />
-    </LinearLayout>
-    <LinearLayout
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/iv_line"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:src="@drawable/line1"
+        android:layout_below="@+id/relative_flights"
+        android:layout_centerInParent="true"
+        />
+
+
+    <RelativeLayout
+        android:id="@+id/relative_right_flights"
+        android:layout_below="@+id/relative_flights"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_centerInParent="true"
         >
 
         <ImageView
+            android:id="@+id/iv_right"
+
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@drawable/right"
 
             />
         <TextView
+            android:layout_toRightOf="@+id/iv_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SUCCESS !"
@@ -56,65 +77,76 @@
 
             />
 
-    </LinearLayout>
-    <LinearLayout
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relative_man_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_below="@+id/relative_right_flights"
         >
         <ImageView
+
             android:layout_width="wrap_content"
             android:layout_height="150dp"
             android:src="@drawable/mantext"
             />
-    </LinearLayout>
+    </RelativeLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+
         <Button
+            android:layout_centerInParent="true"
             android:id="@+id/get_code"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_below="@+id/relative_man_txt"
             android:text="FLIGHT DETAILS"
             android:background="@drawable/shape"
-            android:layout_gravity="center"
             android:textStyle="bold"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/_30sdp"
 
 
             />
 
         <ImageView
+            android:id="@+id/line_flights"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="89dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/line" />
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:src="@drawable/line1"
+            android:layout_below="@+id/get_code"
+            />
+
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_20sdp"
             android:text="BOOK HOTEL"
-            android:layout_gravity="center"
-            android:layout_marginTop="1dp"
-            android:background="@android:color/transparent"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:background="@drawable/border2"
             android:textColor="@color/app_color"
+            android:layout_below="@+id/line_flights"
+            android:layout_centerInParent="true"
 
 
             />
 
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+
+    >
+
+
+
 
         <ImageView
+            android:id="@+id/iv_man1_flights"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:src="@drawable/man1"
@@ -123,9 +155,8 @@
             />
 
 
-
-    </LinearLayout>
     <TextView
+        android:layout_below="@+id/iv_man1_flights"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tap me if you need MY ASSISTANCE "
@@ -133,9 +164,9 @@
         android:gravity="center"
 
         />
+</RelativeLayout>
 
-
-</LinearLayout>
+</RelativeLayout>
 
 
 

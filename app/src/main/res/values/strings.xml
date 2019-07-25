@@ -64,7 +64,7 @@
     <string name="first_name">FIRST NAME</string>
     <string name="last_name">LAST NAME</string>
     <string name="dob">DOB</string>
-    <string name="dd_mm_yyy">DD - MM - YYY</string>
+    <string name="dd_mm_yyy">DD      -      MM      -      YYYY</string>
     <string name="country">COUNTRY</string>
     <string name="city_province">CITY/PROVINCE</string>
     <string name="e_mail">E-MAIL</string>

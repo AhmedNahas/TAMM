@@ -37,8 +37,8 @@
         </RelativeLayout>
 
         <ImageView
-            android:layout_width="34dp"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_centerInParent="true"
             android:background="@drawable/logo"
             />
@@ -65,7 +65,7 @@
         android:id="@+id/imgli"
         android:layout_width="match_parent"
         android:layout_height="6dp"
-        android:src="@drawable/line"
+        android:src="@drawable/line1"
         android:layout_below="@+id/relative_1"/>
 
     <RatingBar
