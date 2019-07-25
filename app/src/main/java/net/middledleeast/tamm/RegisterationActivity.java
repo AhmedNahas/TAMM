@@ -239,7 +239,6 @@ public class RegisterationActivity extends Fragment {
 
 
         mrOrMissArray = new ArrayList<>();
-        mrOrMissArray.add("GENDER.");
         mrOrMissArray.add("Mr.");
         mrOrMissArray.add("Mrs.");
 
