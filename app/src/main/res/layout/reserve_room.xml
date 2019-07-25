@@ -102,6 +102,7 @@
         android:src="@drawable/line1"
         android:layout_below="@+id/txt_hotels"
         android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_10sdp"
         />
 
     <TextView
@@ -113,6 +114,7 @@
         android:textSize="20dp"
         android:layout_centerInParent="true"
         android:layout_below="@id/img_smallline"
+        android:layout_marginTop="@dimen/_10sdp"
         />
     <TextView
         android:id="@+id/txt_special"
@@ -160,20 +162,96 @@
         android:text="@string/reserve_room"
         android:textColor="#FFF"
         android:background="@drawable/border"
-        android:layout_below="@+id/relative_where_time"
+        android:layout_above="@+id/relative_img_hotel_tamm"
         android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/_15sdp"
 
         />
 
-    <ImageView
-        android:id="@+id/img_man"
-        android:layout_width="wrap_content"
+
+    <RelativeLayout
+        android:id="@+id/relative_img_hotel_tamm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_above="@+id/tv_tab_me_hotels"
+        android:background="@drawable/man1"
+        >
+
+        <TextView
+            android:id="@+id/assistant_label_voice_hotel"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_assistant_voice"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text="SEND VOICE NOTE TO AGENT"
+            android:textColor="@color/app_color"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+
+        <TextView
+            android:id="@+id/assistant_label_call_hotel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_assistant_call"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text="CALL AGENT"
+            android:textStyle="bold"
+            android:textColor="@color/app_color"
+            android:textSize="13sp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_below="@+id/assistant_label_voice_hotel"
+            />
+
+
+        <TextView
+            android:id="@+id/assistant_label_message_hotel"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="38"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_assistant_message"
+            android:fontFamily="sans-serif"
+            android:text="SEND MESSAGE TO AGENT"
+            android:textColor="@color/app_color"
+            android:textSize="13sp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_alignParentRight="true"/>
+
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_tab_me_hotels"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_reserve_user"
-        android:layout_marginTop="90dp"
-        android:src="@drawable/man1"
-        app:srcCompat="@drawable/manhelp" />
+        android:text="Tap me if you need MY ASSISTANCE "
+        android:textColor="#fff"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_5sdp"
+        />
+
 
 
 
