@@ -27,7 +27,6 @@ import com.wirecard.ecom.model.out.PaymentResponse;
 
 import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.fragments.TermsFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import org.json.JSONArray;
@@ -61,6 +60,8 @@ public class PaymentActivity extends AppCompatActivity {
     CheckBox checkBoxAgerr2;
     @BindView(R.id.terms_conditions_tv2)
     TextView termsConditionsTv2;
+    @BindView(R.id.sp_convert_to)
+    Spinner spConvertTo;
     private Button button;
     private AuthenticationData authenticandata;
     private BasicHttpBinding_IHotelService1 service;
@@ -70,6 +71,10 @@ public class PaymentActivity extends AppCompatActivity {
     private List<String> spinnerTitles = new ArrayList<>();
     private List<Integer> spinnerImages = new ArrayList<>();
     private boolean paymentChekd = false;
+    private int mId;
+    private String roomPrice;
+    private String currency;
+    private String msgbody;
 
 
     @Override
@@ -83,6 +88,13 @@ public class PaymentActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.welcome_toolbar);
         imageView = findViewById(R.id.back_pressed);
 
+
+        Intent intent = getIntent();
+        // test 2 id
+        mId = intent.getIntExtra("mId", 2);
+
+        roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
+        currency = SharedPreferencesManger.LoadStringData(this, "currency");
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,15 +103,40 @@ public class PaymentActivity extends AppCompatActivity {
         });
 
 
-        getmemberfees();
+        if (mId == 2) {
 
-        String last_name = SharedPreferencesManger.LoadStringData(this, "last_name");
-        String first_name = SharedPreferencesManger.LoadStringData(this, "first_name");
-        String mr = SharedPreferencesManger.LoadStringData(this, "mr");
-        tvMrMrs.setText(mr);
+            String last_name = SharedPreferencesManger.LoadStringData(this, "lastName");
+            String first_name = SharedPreferencesManger.LoadStringData(this, "firstName");
 
-        tvLastName.setText(last_name);
-        tvFirstName.setText(first_name);
+
+            tvLastName.setText(last_name);
+            tvFirstName.setText(first_name);
+
+            tvKd.setText(currency + " " + roomPrice);
+//            BigDecimal amount = new BigDecimal(roomPrice);
+//            PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
+//            BigDecimal finalAmount = amount;
+//            String finalCurrency = currency;
+//
+//            Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+//               client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+
+
+        } else {
+
+            getmemberfees();
+
+            String last_name = SharedPreferencesManger.LoadStringData(this, "last_name");
+            String first_name = SharedPreferencesManger.LoadStringData(this, "first_name");
+            String mr = SharedPreferencesManger.LoadStringData(this, "mr");
+            tvMrMrs.setText(mr);
+
+            tvLastName.setText(last_name);
+            tvFirstName.setText(first_name);
+
+        }
+
+
 
 
         spinnerTitles.add("PAYMENT METHOD");
@@ -140,6 +177,24 @@ public class PaymentActivity extends AppCompatActivity {
         });
 
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (mId == 1) {
+
+                    openbankRegisrat(msgbody, "KD");
+
+
+                } else {
+
+
+                    openBankRoom(roomPrice, currency);
+                }
+            }
+        });
+
+
 //        Gson gson = new Gson();
 //        Intent intent = getIntent();
         service = new BasicHttpBinding_IHotelService1();
@@ -149,6 +204,54 @@ public class PaymentActivity extends AppCompatActivity {
         authenticandata.Password = ("Tam@18418756");
 
 
+    }
+
+    private void openbankRegisrat(String mSgbody, String kd) {
+
+        try {
+//
+            BigDecimal amount = new BigDecimal(mSgbody);
+            PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
+            BigDecimal finalAmount = amount;
+            String finalCurrency = kd;
+
+            if (paymentChekd && checkBoxAgerr2.isChecked()) {
+                Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+
+            } else {
+
+                Toast.makeText(PaymentActivity.this, "Choose Payment Method and agree in Terms and conditions", Toast.LENGTH_SHORT).show();
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void openBankRoom(String roomPrice, String currency) {
+
+        try {
+//
+            BigDecimal amount = new BigDecimal(roomPrice);
+            PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
+            BigDecimal finalAmount = amount;
+            String finalCurrency = currency;
+
+            if (paymentChekd && checkBoxAgerr2.isChecked()) {
+                Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+
+            } else {
+
+                Toast.makeText(PaymentActivity.this, "Choose Payment Method and agree in Terms and conditions", Toast.LENGTH_SHORT).show();
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -163,7 +266,14 @@ public class PaymentActivity extends AppCompatActivity {
         }
         if (resultCode == RESULT_OK) {
             Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(PaymentActivity.this, PaymentActivityFragment.class));
+
+
+            if (mId == 2) {
+                startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
+            } else {
+                startActivity(new Intent(PaymentActivity.this, PaymentActivityFragment.class));
+            }
+
         }
     }
 
@@ -181,38 +291,8 @@ public class PaymentActivity extends AppCompatActivity {
                         JSONObject ob = array.getJSONObject(i);
 
 
-                        String msgbody = ob.getString("Msgbody");
+                        msgbody = ob.getString("Msgbody");
                         tvKd.setText("KD " + msgbody);
-
-                        BigDecimal amount = new BigDecimal(msgbody);
-
-                        String currency = "KD";
-
-                        try {
-                            PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
-                            BigDecimal finalAmount = amount;
-                            String finalCurrency = currency;
-
-                            button.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-
-                                    if (paymentChekd&&checkBoxAgerr2.isChecked()) {
-                                        Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-                                        client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
-
-                                    } else {
-
-                                        Toast.makeText(PaymentActivity.this, "Choose Payment Method and agree in Terms and conditions", Toast.LENGTH_SHORT).show();
-                                    }
-
-                                }
-                            });
-
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
 
 
                     }
@@ -234,10 +314,12 @@ public class PaymentActivity extends AppCompatActivity {
     @OnClick(R.id.terms_conditions_tv2)
     public void onViewClicked() {
 
-
-        Intent intent = new Intent(PaymentActivity.this, TermsFragment.class);
-        startActivity(intent);
+//
+//        Intent intent = new Intent(PaymentActivity.this, TermsFragment.class);
+//        startActivity(intent);
 
 
     }
+
+
 }

@@ -343,7 +343,7 @@
                             android:textSize="@dimen/_10ssp"
                             android:background="@drawable/shape_plack2"/>
 
-                            />
+                        />
                         <View
                             android:layout_width="@dimen/_110sdp"
                             android:layout_height="1dp"
