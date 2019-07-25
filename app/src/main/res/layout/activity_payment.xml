@@ -46,17 +46,25 @@
         />
 
 
-    <Spinner
+    <RelativeLayout
         android:layout_marginTop="@dimen/_4sdp"
         android:layout_marginStart="@dimen/_10sdp"
-        android:id="@+id/sp_convert_to"
-        android:backgroundTint="@color/app_color"
         android:layout_below="@+id/tv_please"
         android:layout_toEndOf="@+id/tv_kd"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="30dp">
+        android:background="@drawable/shape_plack2"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="wrap_content">
 
-    </Spinner>
+
+        <Spinner
+            android:id="@+id/sp_convert_to"
+            android:backgroundTint="@color/app_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </Spinner>
+
+    </RelativeLayout>
 
 
 

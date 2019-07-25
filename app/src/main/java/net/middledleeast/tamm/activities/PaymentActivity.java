@@ -1,9 +1,13 @@
 package net.middledleeast.tamm.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -11,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -27,6 +32,7 @@ import com.wirecard.ecom.model.out.PaymentResponse;
 
 import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.adapters.AutoCompleteAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import org.json.JSONArray;
@@ -35,6 +41,8 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,11 +80,12 @@ public class PaymentActivity extends AppCompatActivity {
     private List<Integer> spinnerImages = new ArrayList<>();
     private boolean paymentChekd = false;
     private int mId;
-    private String roomPrice;
+    private String roomPrice = "";
     private String currency;
-    private String msgbody;
+    private String msgbody = "";
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,11 +99,10 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        // test 2 id
-        mId = intent.getIntExtra("mId", 2);
+        // test 1 id
+        mId = intent.getIntExtra("mId", 1);
 
-        roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
-        currency = SharedPreferencesManger.LoadStringData(this, "currency");
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +112,8 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         if (mId == 2) {
-
+            roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
+            currency = SharedPreferencesManger.LoadStringData(this, "currency");
             String last_name = SharedPreferencesManger.LoadStringData(this, "lastName");
             String first_name = SharedPreferencesManger.LoadStringData(this, "firstName");
 
@@ -125,6 +134,7 @@ public class PaymentActivity extends AppCompatActivity {
         } else {
 
             getmemberfees();
+            tvKd.setText("USD " + msgbody);
 
             String last_name = SharedPreferencesManger.LoadStringData(this, "last_name");
             String first_name = SharedPreferencesManger.LoadStringData(this, "first_name");
@@ -135,8 +145,6 @@ public class PaymentActivity extends AppCompatActivity {
             tvFirstName.setText(first_name);
 
         }
-
-
 
 
         spinnerTitles.add("PAYMENT METHOD");
@@ -183,13 +191,23 @@ public class PaymentActivity extends AppCompatActivity {
 
                 if (mId == 1) {
 
-                    openbankRegisrat(msgbody, "KD");
+
+
+                    String[] s = tvKd.getText().toString().split(" ");
+                    String s1 = s[0];
+                    String s2 = s[1];
+
+
+                    openbankRegisrat(s2, s1);
 
 
                 } else {
 
 
-                    openBankRoom(roomPrice, currency);
+                    String[] s = tvKd.getText().toString().split(" ");
+                    String s2 = s[1];
+
+                    openBankRoom(s2, currency);
                 }
             }
         });
@@ -202,6 +220,131 @@ public class PaymentActivity extends AppCompatActivity {
         authenticandata = new AuthenticationData();
         authenticandata.UserName = ("Tammtest");
         authenticandata.Password = ("Tam@18418756");
+
+
+        List<String> listTypeMony = new ArrayList<>();
+
+
+        listTypeMony.add("CONVERT TO");
+        listTypeMony.add("EURO");
+        listTypeMony.add("EG POUND");
+        listTypeMony.add("KD");
+
+        ArrayAdapter adapter = new ArrayAdapter(PaymentActivity.this, R.layout.item_spener, listTypeMony);
+        adapter.setDropDownViewResource(R.layout.drop_dowen_convert);
+
+        spConvertTo.setAdapter(adapter);
+
+        spConvertTo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                DecimalFormat df = new DecimalFormat("###.###");
+
+                if (mId==2){
+
+
+                    if (roomPrice.equals("")){
+
+
+                    }else {
+
+                        final   double priceDouble = Double.parseDouble(roomPrice);
+
+                        if (i == 3) {
+
+                            double convirtKD = priceDouble * 0.30;
+
+                            tvKd.setText("KD " + convirtKD);
+                            currency = "KD";
+
+                        } else if (i == 2) {
+
+                            double convirtEG = priceDouble * 16.58;
+
+                            tvKd.setText("EG " + convirtEG);
+                            currency = "EG";
+                        } else if (i == 1) {
+
+                            double convirtEU = priceDouble * 0.90;
+
+                            tvKd.setText("EURO " + convirtEU);
+
+                            currency = "EURO";
+
+
+                        } else {
+
+
+
+                            tvKd.setText("USD " + roomPrice);
+                        }
+
+                    }
+
+
+                }else {
+
+
+                    if (!msgbody.equals("")){
+
+                        final   double priceDouble = Double.parseDouble(msgbody);
+
+
+                        if (i == 3) {
+
+                            double convirtKD = priceDouble * 0.30;
+
+                            tvKd.setText("KD " +convirtKD);
+                            currency = "KD";
+
+                        } else if (i == 2) {
+
+                            double convirtEG = priceDouble * 16.58;
+                            tvKd.setText("EG " +df.format(convirtEG));
+
+                            currency = "EG";
+                        } else if (i == 1) {
+
+                            double convirtEU = priceDouble * 0.90;
+
+                            tvKd.setText("EURO " + convirtEU);
+
+                            currency = "EURO";
+
+
+                        } else {
+
+
+                            tvKd.setText("USD " + msgbody);
+                        }
+
+
+
+                    }else {
+
+
+
+                    }
+
+
+
+                }
+
+
+
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
     }
@@ -292,7 +435,7 @@ public class PaymentActivity extends AppCompatActivity {
 
 
                         msgbody = ob.getString("Msgbody");
-                        tvKd.setText("KD " + msgbody);
+                        tvKd.setText("USD " + msgbody);
 
 
                     }
@@ -313,6 +456,9 @@ public class PaymentActivity extends AppCompatActivity {
 
     @OnClick(R.id.terms_conditions_tv2)
     public void onViewClicked() {
+
+
+
 
 //
 //        Intent intent = new Intent(PaymentActivity.this, TermsFragment.class);
