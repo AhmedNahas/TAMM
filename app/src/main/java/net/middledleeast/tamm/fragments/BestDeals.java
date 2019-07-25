@@ -11,6 +11,7 @@ import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
@@ -33,6 +34,8 @@ public class BestDeals extends Fragment {
     List<String> listNameHotel = new ArrayList<>();
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
+    ImageView right , left ;
+    private LinearLayoutManager linearLayoutManager;
 
     public BestDeals() {
         // Required empty public constructor
@@ -47,8 +50,40 @@ public class BestDeals extends Fragment {
 
         recyclerView=view.findViewById(R.id.recycler_view_deals);
 
+        right = view.findViewById(R.id.img_right_deals);
 
-        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        left = view.findViewById(R.id.img_left_deals);
+        right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if (linearLayoutManager.findLastCompletelyVisibleItemPosition() < (bestHotelAdapter.getItemCount() - 1)) {
+                    linearLayoutManager.scrollToPosition(linearLayoutManager.findLastCompletelyVisibleItemPosition() + 1);
+                }
+
+            }
+        });
+
+
+
+        left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (linearLayoutManager.findLastCompletelyVisibleItemPosition() < (bestHotelAdapter.getItemCount() + 1)) {
+                    linearLayoutManager.scrollToPosition(linearLayoutManager.findLastCompletelyVisibleItemPosition() - 1);
+                }
+
+
+            }
+        });
+
+
+
+
+
+         linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();

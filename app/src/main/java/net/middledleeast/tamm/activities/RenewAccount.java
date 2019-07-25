@@ -48,7 +48,7 @@ import java.io.FileNotFoundException;
 
 public class RenewAccount extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    ImageView img1 , img2 , addPic;
+    ImageView img1 , img2 , addPic , right , left;
     TextView user_name_profile;
     private String user;
     private HotelCodesResponse hotelSearchResponse;
@@ -60,6 +60,7 @@ public class RenewAccount extends AppCompatActivity
     private String category;
     TabLayout tabLayout;
     ViewPager viewPager;
+    private ViewPagerAdapter adapter;
 
 //    private AuthenticationData authenticandata;
 //    private BasicHttpBinding_IHotelService1 service;
@@ -78,7 +79,7 @@ public class RenewAccount extends AppCompatActivity
         tabLayout=findViewById(R.id.tap_layout);
         viewPager=findViewById(R.id.view_pager_renew);
 
-        ViewPagerAdapter adapter=new ViewPagerAdapter(getSupportFragmentManager());
+         adapter=new ViewPagerAdapter(getSupportFragmentManager());
 
 
         adapter.AddFragment(new BestFlights(),"Best Flights");
