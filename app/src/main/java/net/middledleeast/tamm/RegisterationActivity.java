@@ -89,7 +89,6 @@ public class RegisterationActivity extends Fragment {
 
     RequestQueue requestQueue;
     private String register_url_free = "http://egyptgoogle.com/freeusers/insertusers.php";
-    private String register_url_member = "http://egyptgoogle.com/paymentusers/insertstudents.php";
 
 
     private ArrayList<String> mrOrMissArray;
@@ -310,11 +309,24 @@ public class RegisterationActivity extends Fragment {
                     SharedPreferencesManger.SaveData(getContext(), "first_name", etFirstName.getText().toString());
                     SharedPreferencesManger.SaveData(getContext(), "last_name", etLastName.getText().toString());
 
-                    SharedPreferencesManger.SaveData(getActivity(), "username", etUserName.getText().toString());
                     connectdatabase();
                     if (user_id == 2) {
 
                         Intent intent = new Intent(getContext(), PaymentActivity.class);
+
+                        intent.putExtra("first_name",etFirstName.getText().toString());
+                        intent.putExtra("last_name",etLastName.getText().toString());
+                        intent.putExtra("day",day);
+                        intent.putExtra("month",month);
+                        intent.putExtra("year",year);
+                        intent.putExtra("country",country.getText().toString());
+                        intent.putExtra("city",city.getText().toString());
+                        intent.putExtra("mail",etEmail.getText().toString());
+                        intent.putExtra("phone",etPhone.getText().toString());
+                        intent.putExtra("ocupation",ocupation.getText().toString());
+                        intent.putExtra("username",etUserName.getText().toString());
+                        intent.putExtra("pass",etPassword.getText().toString());
+
                         intent.putExtra("mId",1);
                         startActivity(intent);
 
@@ -442,41 +454,7 @@ public class RegisterationActivity extends Fragment {
             requestQueue.add(request);
 
         } else if (user_id == 2) {
-            StringRequest request = new StringRequest(Request.Method.POST, register_url_member, new Response.Listener<String>() {
 
-                @Override
-
-                public void onResponse(String response) {
-
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-
-                }
-
-            }) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> parameters = new HashMap<String, String>();
-                    parameters.put("firstname", etFirstName.getText().toString());
-                    parameters.put("lastname", etLastName.getText().toString());
-                    parameters.put("username", etUserName.getText().toString());
-                    parameters.put("password", etPassword.getText().toString());
-                    parameters.put("day", day);
-                    parameters.put("month", month);
-                    parameters.put("year", year);
-                    parameters.put("location", country.getText().toString());
-                    parameters.put("occupation", ocupation.getText().toString());
-                    parameters.put("email", etEmail.getText().toString());
-                    parameters.put("phone", etPhone.getText().toString());
-                    parameters.put("city", city.getText().toString());
-                    parameters.put("visa", "");
-
-                    return parameters;
-                }
-            };
-            requestQueue.add(request);
 
         }
 
@@ -1270,4 +1248,8 @@ public class RegisterationActivity extends Fragment {
     @OnClick(R.id.terms_conditions_tv)
     public void onViewClicked() {
     }
+
+
+
+
 }

@@ -148,5 +148,10 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(ChooseHotelActivity.this, FindHotels.class));
 
+    }
 }

@@ -184,4 +184,12 @@ public class checkroom extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        startActivity(new Intent(checkroom.this, ChooseBookingDate.class));
+
+    }
 }

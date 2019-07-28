@@ -33,7 +33,6 @@ import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.Hotel_Result;
 import com.Tamm.Hotels.wcf.MinHotelPrice;
-import com.Tamm.Hotels.wcf.RoomDetails;
 import com.Tamm.Hotels.wcf.RoomGuest;
 import com.google.gson.Gson;
 
@@ -41,7 +40,6 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterChildCount;
 import net.middledleeast.tamm.adapters.AutoCompleteAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
-import net.middledleeast.tamm.model.ReserveRoom;
 
 import org.joda.time.DateTime;
 
@@ -206,15 +204,6 @@ public class FindHotels extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
-
-
 
 
 
@@ -948,5 +937,10 @@ public class FindHotels extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(FindHotels.this, ReserveRoom.class));
 
+    }
 }

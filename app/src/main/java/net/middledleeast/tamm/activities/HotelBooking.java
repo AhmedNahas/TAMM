@@ -70,4 +70,12 @@ public class HotelBooking extends AppCompatActivity {
         }
 
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(HotelBooking.this, RoomBooked.class));
+
+    }
 }

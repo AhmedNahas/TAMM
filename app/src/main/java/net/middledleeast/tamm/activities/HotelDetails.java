@@ -336,6 +336,11 @@ public class HotelDetails extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(HotelDetails.this, FindHotels.class));
 
+    }
 }
 

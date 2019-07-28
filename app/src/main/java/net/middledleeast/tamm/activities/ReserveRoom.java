@@ -1,4 +1,4 @@
-package net.middledleeast.tamm.model;
+package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,6 @@ import android.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.FindHotels;
-import net.middledleeast.tamm.activities.RenewAccount;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -116,5 +114,11 @@ public class ReserveRoom extends AppCompatActivity {
 
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(ReserveRoom.this, RenewAccount.class));
     }
 }

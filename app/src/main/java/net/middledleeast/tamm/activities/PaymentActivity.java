@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,8 +18,10 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.Tamm.Hotels.wcf.AmendmentResponse;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -32,7 +33,7 @@ import com.wirecard.ecom.model.out.PaymentResponse;
 
 import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.adapters.AutoCompleteAdapter;
+import net.middledleeast.tamm.adapters.AdapterPayment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import org.json.JSONArray;
@@ -42,9 +43,10 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -83,7 +85,11 @@ public class PaymentActivity extends AppCompatActivity {
     private String roomPrice = "";
     private String currency;
     private String msgbody = "";
+    String first_name1 , last_name1 ,date , country ,city,mail,phone,ocupation,username ,pass ;
 
+    private String register_url_member = "http://egyptgoogle.com/paymentusers/insertstudents.php";
+    RequestQueue requestQueue;
+    private String day , month , year ;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -106,8 +112,23 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
+                if (mId==2){
+
+                    startActivity(new Intent(PaymentActivity.this, ConfirmBookingRoom.class));
+
+
+                }else {
+
+
+                onBackPressed();
+
+                }
             }
         });
+
+        AmendmentResponse amendmentResponse = new AmendmentResponse();
+        Integer bookingId = amendmentResponse.BookingId;
 
 
         if (mId == 2) {
@@ -139,9 +160,24 @@ public class PaymentActivity extends AppCompatActivity {
             String first_name = SharedPreferencesManger.LoadStringData(this, "first_name");
             String mr = SharedPreferencesManger.LoadStringData(this, "mr");
             tvMrMrs.setText(mr);
-
             tvLastName.setText(last_name);
             tvFirstName.setText(first_name);
+
+             first_name1 = intent.getStringExtra("first_name");
+             last_name1 = intent.getStringExtra("last_name");
+             day = intent.getStringExtra("day");
+            month = intent.getStringExtra("month");
+            year = intent.getStringExtra("year");
+             country = intent.getStringExtra("country");
+             city = intent.getStringExtra("city");
+             mail = intent.getStringExtra("mail");
+             phone = intent.getStringExtra("phone");
+             ocupation = intent.getStringExtra("ocupation");
+             username = intent.getStringExtra("username");
+             pass = intent.getStringExtra("pass");
+
+
+
 
         }
 
@@ -413,10 +449,56 @@ public class PaymentActivity extends AppCompatActivity {
             if (mId == 2) {
                 startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
             } else {
+
+                sendDataToServer();
+
                 startActivity(new Intent(PaymentActivity.this, PaymentActivityFragment.class));
             }
 
         }
+    }
+
+    private void sendDataToServer() {
+
+
+        StringRequest request = new StringRequest(Request.Method.POST, register_url_member, new Response.Listener<String>() {
+
+            @Override
+
+            public void onResponse(String response) {
+                SharedPreferencesManger.SaveData(PaymentActivity.this, "username", username);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("firstname",first_name1);
+                parameters.put("lastname",last_name1);
+                parameters.put("username", username);
+                parameters.put("password", pass);
+                parameters.put("day", day);
+                parameters.put("month", month);
+                parameters.put("year", year);
+                parameters.put("location",country);
+                parameters.put("occupation", ocupation);
+                parameters.put("email", mail);
+                parameters.put("phone", phone);
+                parameters.put("city", city);
+                parameters.put("visa", "");
+                return parameters;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(PaymentActivity.this);
+        requestQueue.add(request);
+
     }
 
 
@@ -467,4 +549,19 @@ public class PaymentActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if (mId==2){
+
+            startActivity(new Intent(PaymentActivity.this, ConfirmBookingRoom.class));
+
+
+        }else {
+
+
+
+        }
+    }
 }

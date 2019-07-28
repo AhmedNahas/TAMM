@@ -322,4 +322,12 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 
 
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(ConfirmBookingRoom.this, checkroom.class));
+
+    }
 }

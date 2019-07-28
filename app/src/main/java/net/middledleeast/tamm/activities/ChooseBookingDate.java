@@ -300,4 +300,11 @@ public class ChooseBookingDate extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(ChooseBookingDate.this,FindHotels.class);
+        startActivity(intent);
+    }
 }

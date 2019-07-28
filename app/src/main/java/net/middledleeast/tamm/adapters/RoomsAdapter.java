@@ -1,6 +1,7 @@
 package net.middledleeast.tamm.adapters;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -235,7 +236,16 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 if (gustMode!=null){
 
 
-                    Toast.makeText(context, "You hav to Sign Up First", Toast.LENGTH_SHORT).show();
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                    alertDialogBuilder.setTitle("Exit Application?");
+                    alertDialogBuilder
+                            .setMessage("Are you sure to exit!")
+                            .setCancelable(true);
+                    alertDialogBuilder.show();
+
+
+                   // Toast.makeText(context, "You hav to Sign Up First", Toast.LENGTH_SHORT).show();
 
 
 

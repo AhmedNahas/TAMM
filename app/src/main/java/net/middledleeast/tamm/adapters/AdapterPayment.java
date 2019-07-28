@@ -1,4 +1,4 @@
-package net.middledleeast.tamm.activities;
+package net.middledleeast.tamm.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

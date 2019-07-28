@@ -1,5 +1,7 @@
 package net.middledleeast.tamm.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -36,7 +38,6 @@ import net.middledleeast.tamm.fragments.BestDeals;
 import net.middledleeast.tamm.fragments.BestFlights;
 import net.middledleeast.tamm.fragments.BestHotels;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
-import net.middledleeast.tamm.model.ReserveRoom;
 
 import java.io.FileNotFoundException;
 
@@ -281,7 +282,32 @@ public class RenewAccount extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setTitle("Exit Application?");
+            alertDialogBuilder
+                    .setMessage("Are you sure to exit!")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    moveTaskToBack(true);
+                                    android.os.Process.killProcess(android.os.Process.myPid());
+                                    System.exit(1);
+                                }
+                            })
+
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+          //  startActivity(new Intent(RenewAccount.this,WelcomeActivity.class));
         }
     }
 
@@ -358,4 +384,6 @@ public class RenewAccount extends AppCompatActivity
 
 
     }
+
+
 }
