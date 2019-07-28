@@ -310,7 +310,6 @@ public class RegisterationActivity extends Fragment {
                     SharedPreferencesManger.SaveData(getContext(), "first_name", etFirstName.getText().toString());
                     SharedPreferencesManger.SaveData(getContext(), "last_name", etLastName.getText().toString());
 
-
                     SharedPreferencesManger.SaveData(getActivity(), "username", etUserName.getText().toString());
                     connectdatabase();
                     if (user_id == 2) {
@@ -402,6 +401,7 @@ public class RegisterationActivity extends Fragment {
     }
 
 
+    // TODO: 25/07/2019  moving to the next page
     private void connectdatabase() {
         if (user_id == 1) {
             StringRequest request = new StringRequest(Request.Method.POST, register_url_free, new Response.Listener<String>() {

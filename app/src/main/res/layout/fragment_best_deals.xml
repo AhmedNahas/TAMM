@@ -11,6 +11,7 @@
         android:layout_marginBottom="@dimen/_4sdp"
         android:id="@+id/recycler_view_deals"
         android:layout_width="match_parent"
+        android:padding=".5dp"
         android:nestedScrollingEnabled="false"
         android:layout_marginEnd="@dimen/_30sdp"
         android:layout_marginStart="@dimen/_30sdp"

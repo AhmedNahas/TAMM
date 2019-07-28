@@ -110,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
         android:background="@drawable/border"
         android:text="@string/sign_in_as_a_guest"
         android:textColor="#FFF"

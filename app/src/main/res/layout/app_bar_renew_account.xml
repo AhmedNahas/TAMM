@@ -30,10 +30,11 @@
 
 
                 <ImageView
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/_70sdp"
                     android:id="@+id/imageView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_30sdp"
                     app:srcCompat="@drawable/logo"
 
                     />

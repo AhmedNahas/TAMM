@@ -329,12 +329,12 @@
 
     <LinearLayout
         android:id="@+id/layout_check_out"
-        android:layout_width="130dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/tv_check_out"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="@dimen/_29sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:layout_toEndOf="@id/nights_difference"
         android:orientation="horizontal">
 
@@ -346,13 +346,11 @@
 
 
             <TextView
-                android:layout_marginTop="@dimen/_2sdp"
-                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_gravity="center_vertical"
                 android:text="20"
                 android:id="@+id/endDate_day"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-thin"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
@@ -523,10 +521,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_child"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_70sdp"
         android:layout_below="@+id/spinner_child_layout"
-        android:layout_marginTop="12dp"
-        android:padding="12dp">
+        android:layout_marginTop="@dimen/_7sdp"
+        android:padding="@dimen/_7sdp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -536,9 +534,9 @@
         android:layout_width="140dp"
         android:layout_height="40dp"
         android:layout_below="@+id/rv_child"
-        android:layout_centerInParent="true"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_10sdp"
         android:background="@color/app_color"
         android:text="@string/find_hotels" />
 
@@ -547,8 +545,8 @@
     <RelativeLayout
         android:id="@+id/relative_img_find_hotel_tamm"
         android:layout_width="@dimen/_300sdp"
-        android:layout_height="@dimen/_90sdp"
-       android:layout_marginTop="@dimen/_30sdp"
+        android:layout_height="@dimen/_80sdp"
+       android:layout_marginTop="@dimen/_20sdp"
         android:background="@drawable/man1"
         android:layout_centerInParent="true"
         android:layout_below="@+id/findHotels"
@@ -576,7 +574,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/_7sdp"
             android:drawablePadding="8dp"
             android:drawableStart="@drawable/ic_assistant_call"
             android:fontFamily="sans-serif"
@@ -592,10 +590,11 @@
 
 
         <TextView
+
+            android:paddingStart="@dimen/_10sdp"
             android:id="@+id/assistant_label_message_find_hotel"
             android:layout_width="@dimen/_130sdp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_weight="38"
             android:drawablePadding="8dp"
             android:drawableStart="@drawable/ic_assistant_message"
@@ -610,8 +609,6 @@
 
 
     </RelativeLayout>
-
-
 
     <TextView
         android:id="@+id/tv_tab_me_find_hotels"

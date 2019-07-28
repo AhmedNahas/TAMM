@@ -14,14 +14,11 @@
         android:layout_width="@dimen/_300sdp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-
-
-
         app:tabBackground="@drawable/shep_selector"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@android:color/white"
-
         android:layout_marginTop="@dimen/_20sdp"
+        app:tabTextAppearance="@style/MyCustomTabText"
         >
 
 
@@ -110,8 +107,8 @@
     <RelativeLayout
         android:id="@+id/relative_img_renew_hotel_tamm"
         android:layout_width="@dimen/_300sdp"
-        android:layout_height="@dimen/_90sdp"
-        android:layout_marginTop="@dimen/_60sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_marginTop="@dimen/_30sdp"
         android:background="@drawable/man1"
         android:layout_centerInParent="true"
         android:layout_below="@+id/linearLayout2"
@@ -120,7 +117,7 @@
         <TextView
             android:id="@+id/assistant_label_voice_renew_hotel"
             android:layout_width="@dimen/_130sdp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_40sdp"
             android:layout_marginStart="8dp"
             android:drawablePadding="8dp"
             android:drawableStart="@drawable/ic_assistant_voice"
@@ -128,7 +125,7 @@
             android:gravity="center_vertical"
             android:text="SEND VOICE NOTE TO AGENT"
             android:textColor="@color/app_color"
-            android:textSize="13sp"
+            android:textSize="@dimen/_7ssp"
             android:textStyle="bold"
             android:visibility="gone"
             tools:visibility="visible"/>
@@ -136,10 +133,10 @@
 
         <TextView
             android:id="@+id/assistant_label_call_renew_hotel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_40sdp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="1dp"
             android:drawablePadding="8dp"
             android:drawableStart="@drawable/ic_assistant_call"
             android:fontFamily="sans-serif"
@@ -147,7 +144,7 @@
             android:text="CALL AGENT"
             android:textStyle="bold"
             android:textColor="@color/app_color"
-            android:textSize="13sp"
+            android:textSize="@dimen/_7ssp"
             android:visibility="gone"
             tools:visibility="visible"
             android:layout_below="@+id/assistant_label_voice_renew_hotel"
@@ -155,9 +152,10 @@
 
 
         <TextView
+            android:paddingStart="@dimen/_9ssp"
             android:id="@+id/assistant_label_message_renew_hotel"
             android:layout_width="@dimen/_130sdp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_40sdp"
             android:layout_marginStart="8dp"
             android:layout_weight="38"
             android:drawablePadding="8dp"
@@ -165,7 +163,8 @@
             android:fontFamily="sans-serif"
             android:text="SEND MESSAGE TO AGENT"
             android:textColor="@color/app_color"
-            android:textSize="13sp"
+            android:textSize="@dimen/_7ssp"
+            android:gravity="center"
             android:visibility="gone"
             tools:visibility="visible"
             android:layout_alignParentRight="true"/>
@@ -173,7 +172,6 @@
 
 
     </RelativeLayout>
-
 
 
     <TextView
@@ -184,7 +182,6 @@
         android:textColor="#fff"
         android:gravity="center"
         android:layout_below="@+id/relative_img_renew_hotel_tamm"
-        android:layout_marginBottom="@dimen/_5sdp"
         />
 
 </RelativeLayout>

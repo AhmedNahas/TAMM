@@ -86,8 +86,9 @@
                     android:textColor="#FFFFFF" />
 
                 <TextView
-                    android:paddingEnd="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
+
+                    android:paddingEnd="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
                     android:id="@+id/hotel_pric"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="20dp"
