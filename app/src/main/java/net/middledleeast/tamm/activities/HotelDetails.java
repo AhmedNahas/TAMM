@@ -27,6 +27,7 @@ import com.Tamm.Hotels.wcf.ImageUrlDetails;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.adapterPhotoHotels;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +95,7 @@ public class HotelDetails extends AppCompatActivity {
         sliderDotspanel = findViewById(R.id.SliderDots);
         ButterKnife.bind(this);
 
-        imageView = findViewById(R.id.toolbar_back_details);
+        imageView = findViewById(R.id.toolbar_back2);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,6 +145,8 @@ public class HotelDetails extends AppCompatActivity {
         try {
             service.enableLogging = true;
             HotelDetailsResponse hotelDetailsResponse = service.HotelDetails(resultIndex, sessionId, mHotelCode, "EN", authenticationData);
+
+
 
 
             ArrayOfImageUrlDetails imageUrls = hotelDetailsResponse.HotelDetails.ImageUrls;

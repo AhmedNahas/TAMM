@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -192,9 +193,13 @@ public class ChooseBookingDate extends AppCompatActivity {
             SharedPreferencesManger.SaveData(this, "roomAvailability", roomAvailability);
             rooms = response.HotelRooms;
 
+
+
 // TODO: 13/07/19 remove
 
             Hotel_Room hotel_room = rooms.get(0);
+
+
 //
             transferClass.setHotel_room(hotel_room);
 

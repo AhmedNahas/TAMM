@@ -33,6 +33,7 @@ import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.Hotel_Result;
 import com.Tamm.Hotels.wcf.MinHotelPrice;
+import com.Tamm.Hotels.wcf.RoomDetails;
 import com.Tamm.Hotels.wcf.RoomGuest;
 import com.google.gson.Gson;
 
@@ -676,6 +677,7 @@ public class FindHotels extends AppCompatActivity {
 //            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
 //                    true, noRomes, "EG", roomguests, null, 100, null, null, false, authenticationData);
 
+
             listPrice.clear();
             ratrHotel.clear();
             nameHotel.clear();
@@ -684,11 +686,12 @@ public class FindHotels extends AppCompatActivity {
             addressHotel.clear();
             arrayOfResultIndex.clear();
 
+
+
             if (hotelSearchResponse.HotelResultList != null) {
                 for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
 
                     Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
-
                     MinHotelPrice minHotelPrice = hotelSearchResponse.HotelResultList.get(i).MinHotelPrice;
                     String currency = minHotelPrice.OriginalPrice.toString();
                     String currency1 = minHotelPrice.Currency;
@@ -697,7 +700,7 @@ public class FindHotels extends AppCompatActivity {
                     sessionId = hotelSearchResponse.SessionId;
                     hotelAddress = hotelInfo.HotelAddress;
                     hotelName = hotelInfo.HotelName;
-                    hotelPicture = hotelInfo.HotelPicture;
+                    this.hotelPicture = hotelInfo.HotelPicture;
                     int code = hotelInfo.Rating.getCode();
                     arrayOfResultIndex.add(hotel_result.ResultIndex);
 
@@ -707,7 +710,7 @@ public class FindHotels extends AppCompatActivity {
 
                     nameHotel.add(hotelName);
                     ratrHotel.add(code);
-                    photoHotel.add(hotelPicture);
+                    photoHotel.add(this.hotelPicture);
                     addressHotel.add(hotelAddress);
 
                 }

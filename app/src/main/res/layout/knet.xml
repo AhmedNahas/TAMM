@@ -21,4 +21,6 @@
         android:gravity="center_horizontal"
         android:text="Sorry\nThe knet service is currently not available\nThe service will be back the first of august\nPlease contact Knet for further details\nSorry for the inconvenience"
         android:textStyle="bold" />
+
+
 </LinearLayout>

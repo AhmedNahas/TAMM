@@ -7,10 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
+import com.Tamm.Hotels.wcf.ArrayOfString2;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
@@ -18,6 +20,7 @@ import com.Tamm.Hotels.wcf.BookingOptions;
 import com.Tamm.Hotels.wcf.HotelCancellationPolicyResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.RoomCombination;
+import com.bumptech.glide.Glide;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
@@ -35,6 +38,8 @@ public class checkroom extends AppCompatActivity {
 
     @BindView(R.id.check_room_close)
     ImageView checkRoomClose;
+    @BindView(R.id.img_check_out)
+    ImageView imgCheckOut;
 
     private Button checkRoom, back;
     @BindView(R.id.tv_total_mount)
@@ -74,6 +79,8 @@ public class checkroom extends AppCompatActivity {
             }
         });
 
+
+
         tvTotalMount.setText("  Total Amount:             " + roomPrice);
 
         roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
@@ -91,6 +98,7 @@ public class checkroom extends AppCompatActivity {
         try {
 
             HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
+
 
 
             String autoCancellationText = cancelPolicies.CancelPolicies.AutoCancellationText;
@@ -158,7 +166,7 @@ public class checkroom extends AppCompatActivity {
     @OnClick(R.id.check_room_close)
     public void onViewClicked() {
 
-        startActivity(new Intent(checkroom.this,ChooseBookingDate.class));
+        startActivity(new Intent(checkroom.this, ChooseBookingDate.class));
     }
 
     public static class transferClass {
