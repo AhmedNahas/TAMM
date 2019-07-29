@@ -230,6 +230,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         });
 
 
+
+
         Spinner s1, s2, s3;
         ArrayAdapter mrOrMissAdapter;
         ArrayList<String> mrOrMissArray;
@@ -239,8 +241,9 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         mrOrMissArray.add("Mr.");
         mrOrMissArray.add("Mrs.");
         mrOrMissAdapter = new ArrayAdapter(this,
-                R.layout.mrormissspinnerlist
+                R.layout.item_spener
                 , mrOrMissArray);
+        mrOrMissAdapter.setDropDownViewResource(R.layout.drop_dowen);
         s1 = findViewById(R.id.mromiss1);
         s1.setSelection(1);
         s1.setAdapter(mrOrMissAdapter);

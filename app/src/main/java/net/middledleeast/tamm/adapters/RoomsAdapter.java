@@ -3,6 +3,7 @@ package net.middledleeast.tamm.adapters;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,8 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.RegisterationActivity;
+import net.middledleeast.tamm.activities.WelcomeActivity;
 import net.middledleeast.tamm.activities.checkroom;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
@@ -238,10 +241,21 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                    alertDialogBuilder.setTitle("Exit Application?");
+                    alertDialogBuilder.setTitle("You in gust Mode");
                     alertDialogBuilder
-                            .setMessage("Are you sure to exit!")
-                            .setCancelable(true);
+                            .setMessage("You hav to Sign Up First")
+                            .setCancelable(true).setPositiveButton("Sign up", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+
+                            // TODO: 7/28/2019  intent to Registration Fragment
+                            Intent intent1 = new Intent(activity, WelcomeActivity.class);
+
+                            context.startActivity(intent1);
+
+                        }
+                    });
                     alertDialogBuilder.show();
 
 

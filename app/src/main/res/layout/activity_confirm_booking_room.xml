@@ -104,9 +104,11 @@
         <Spinner
             android:backgroundTint="@color/app_color"
             android:id="@+id/mromiss1"
-            android:layout_width="72dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:gravity="end"
             />
 
                 <EditText
@@ -349,6 +351,7 @@
         android:layout_height="90dp"
         android:hint="@string/write_your_room_specification"
         android:textColorHint="#A1FFFFFF"
+        android:textColor="@color/white"
         android:textSize="15sp"
         android:gravity="start"
         android:layout_below="@+id/tv_request"/>

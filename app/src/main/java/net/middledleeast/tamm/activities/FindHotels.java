@@ -29,11 +29,14 @@ import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.CountryList;
 import com.Tamm.Hotels.wcf.DestinationCityListResponse;
+import com.Tamm.Hotels.wcf.Enums;
+import com.Tamm.Hotels.wcf.Filters;
 import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.Hotel_Result;
 import com.Tamm.Hotels.wcf.MinHotelPrice;
 import com.Tamm.Hotels.wcf.RoomGuest;
+import com.Tamm.Hotels.wcf.TagInfoResponse;
 import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
@@ -135,6 +138,7 @@ public class FindHotels extends AppCompatActivity {
     private CountryList countryList;
     ArrayList<String> listPrice = new ArrayList<>();
     private boolean ClickFindHotel=false;
+    private Filters filters;
 //    private boolean saved ;
 
     @SuppressLint("StaticFieldLeak")
@@ -654,17 +658,24 @@ public class FindHotels extends AppCompatActivity {
         roomguests.add(roomGuest);
 
 
+        filters = new Filters();
+        filters.StarRating = Enums.HotelRatingInput.All;
+
+
+
         try {
             //HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), Integer.parseInt(ctyId), 1, roomguests, "EG", authenticationData);
 
 
+
             hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
-                    true, noRomes, "EG", roomguests, null, 100, null, "true", null,
+                    true, noRomes, "EG", roomguests, null, 100,filters , "true", null,
                     10000, authenticationData);
 
 
 //            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
 //                    true, noRomes, "EG", roomguests, null, 100, null, null, false, authenticationData);
+
 
 
             listPrice.clear();
@@ -691,6 +702,8 @@ public class FindHotels extends AppCompatActivity {
                     hotelName = hotelInfo.HotelName;
                     this.hotelPicture = hotelInfo.HotelPicture;
                     int code = hotelInfo.Rating.getCode();
+
+
                     arrayOfResultIndex.add(hotel_result.ResultIndex);
 
                     String hotelCode = hotelInfo.HotelCode;

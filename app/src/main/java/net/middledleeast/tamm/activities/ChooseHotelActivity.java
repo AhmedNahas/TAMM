@@ -3,6 +3,7 @@ package net.middledleeast.tamm.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,12 +12,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Tamm.Hotels.wcf.AuthenticationData;
+import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
+import com.Tamm.Hotels.wcf.Enums;
+import com.Tamm.Hotels.wcf.Filters;
+import com.Tamm.Hotels.wcf.HotelSearchResponse;
+import com.Tamm.Hotels.wcf.HotelSearchWithRoomsFilters;
+import com.Tamm.Hotels.wcf.Rate;
+import com.Tamm.Hotels.wcf.TagInfos;
+
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterHotelInfo;
 import net.middledleeast.tamm.adapters.HotelsActivityAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -34,6 +46,8 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     TextView assistantLabelMessageChooseHotel;
     @BindView(R.id.relative_img_choose_hotel_tamm)
     RelativeLayout relativeImgChooseHotelTamm;
+    @BindView(R.id.rating_bar)
+    RatingBar ratingBar;
     private RecyclerView reInfoHotels;
     private ArrayList<String> hotelName;
     private ArrayList<String> hotelAddress;
@@ -56,6 +70,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     private boolean ClickChooseHotel = false;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +87,83 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
                 startActivity(new Intent(ChooseHotelActivity.this, FindHotels.class));
             }
         });
+
+
+
+
+  ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+      @Override
+      public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+
+
+
+        if (v==(int)1) {
+
+
+            Collections.sort(hotelrat, new Comparator<Integer>() {
+                @Override
+                public int compare(Integer integer, Integer t1) {
+
+
+                    return t1.compareTo((int) v);
+                }
+            });
+            adapterHotelInfo.notifyDataSetChanged();
+
+
+        }else if (v==(int)2){
+
+            Collections.sort(hotelrat, new Comparator<Integer>() {
+                @Override
+                public int compare(Integer integer, Integer t1) {
+
+
+                    return t1.compareTo((int) v);
+                }
+            });
+            adapterHotelInfo.notifyDataSetChanged();
+
+        }else if (v==(int)3){
+
+            Collections.sort(hotelrat, new Comparator<Integer>() {
+                @Override
+                public int compare(Integer integer, Integer t1) {
+
+
+                    return t1.compareTo((int) v);
+                }
+            });
+            adapterHotelInfo.notifyDataSetChanged();
+
+        }else if (v==(int)4){
+
+            Collections.sort(hotelrat, new Comparator<Integer>() {
+                @Override
+                public int compare(Integer integer, Integer t1) {
+
+
+                    return t1.compareTo((int) v);
+                }
+            });
+            adapterHotelInfo.notifyDataSetChanged();
+
+        }else if (v==(int)5){
+
+            Collections.sort(hotelrat, new Comparator<Integer>() {
+                @Override
+                public int compare(Integer integer, Integer t1) {
+
+
+                    return t1.compareTo((int) v);
+                }
+            });
+            adapterHotelInfo.notifyDataSetChanged();
+
+        }
+      }
+  });
+
+
 
 
         list_price = (ArrayList<String>) getIntent().getSerializableExtra("list_price");
@@ -127,7 +219,6 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     }
 
 
-
     @OnClick({R.id.assistant_label_voice_choose_hotel, R.id.assistant_label_call_choose_hotel, R.id.assistant_label_message_choose_hotel, R.id.relative_img_choose_hotel_tamm})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -154,4 +245,5 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
         startActivity(new Intent(ChooseHotelActivity.this, FindHotels.class));
 
     }
+
 }
