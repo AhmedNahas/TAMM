@@ -68,7 +68,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     private String session_id;
     private ArrayList<String> list_price;
     private boolean ClickChooseHotel = false;
-
+    private ArrayList<Integer> list;
 
 
     @Override
@@ -91,77 +91,71 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
 
 
 
-  ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-      @Override
-      public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-
-
-
-        if (v==(int)1) {
-
-
-            Collections.sort(hotelrat, new Comparator<Integer>() {
-                @Override
-                public int compare(Integer integer, Integer t1) {
-
-
-                    return t1.compareTo((int) v);
-                }
-            });
-            adapterHotelInfo.notifyDataSetChanged();
-
-
-        }else if (v==(int)2){
-
-            Collections.sort(hotelrat, new Comparator<Integer>() {
-                @Override
-                public int compare(Integer integer, Integer t1) {
-
-
-                    return t1.compareTo((int) v);
-                }
-            });
-            adapterHotelInfo.notifyDataSetChanged();
-
-        }else if (v==(int)3){
-
-            Collections.sort(hotelrat, new Comparator<Integer>() {
-                @Override
-                public int compare(Integer integer, Integer t1) {
-
-
-                    return t1.compareTo((int) v);
-                }
-            });
-            adapterHotelInfo.notifyDataSetChanged();
-
-        }else if (v==(int)4){
-
-            Collections.sort(hotelrat, new Comparator<Integer>() {
-                @Override
-                public int compare(Integer integer, Integer t1) {
-
-
-                    return t1.compareTo((int) v);
-                }
-            });
-            adapterHotelInfo.notifyDataSetChanged();
-
-        }else if (v==(int)5){
-
-            Collections.sort(hotelrat, new Comparator<Integer>() {
-                @Override
-                public int compare(Integer integer, Integer t1) {
-
-
-                    return t1.compareTo((int) v);
-                }
-            });
-            adapterHotelInfo.notifyDataSetChanged();
-
-        }
-      }
-  });
+//  ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+//      @Override
+//      public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+//
+//          list = new ArrayList<>();
+//          list.add((int) v);
+//
+//
+//        if (v==(int)1) {
+//
+//
+//            adapterHotelInfo.notifyDataSetChanged();
+//
+//
+//        }else if (v==(int)2){
+//
+//            Collections.sort(hotelrat, new Comparator<Integer>() {
+//                @Override
+//                public int compare(Integer integer, Integer t1) {
+//
+//
+//                    return t1.compareTo((int) v);
+//                }
+//            });
+//            adapterHotelInfo.notifyDataSetChanged();
+//
+//        }else if (v==(int)3){
+//
+//            Collections.sort(hotelrat, new Comparator<Integer>() {
+//                @Override
+//                public int compare(Integer integer, Integer t1) {
+//
+//
+//                    return t1.compareTo((int) v);
+//                }
+//            });
+//            adapterHotelInfo.notifyDataSetChanged();
+//
+//        }else if (v==(int)4){
+//
+//            Collections.sort(hotelrat, new Comparator<Integer>() {
+//                @Override
+//                public int compare(Integer integer, Integer t1) {
+//
+//
+//                    return t1.compareTo((int) v);
+//                }
+//            });
+//            adapterHotelInfo.notifyDataSetChanged();
+//
+//        }else if (v==(int)5){
+//
+//            Collections.sort(hotelrat, new Comparator<Integer>() {
+//                @Override
+//                public int compare(Integer integer, Integer t1) {
+//
+//
+//                    return t1.compareTo((int) v);
+//                }
+//            });
+//            adapterHotelInfo.notifyDataSetChanged();
+//
+//        }
+//      }
+//  });
 
 
 

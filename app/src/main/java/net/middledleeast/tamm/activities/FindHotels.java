@@ -36,7 +36,6 @@ import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.Hotel_Result;
 import com.Tamm.Hotels.wcf.MinHotelPrice;
 import com.Tamm.Hotels.wcf.RoomGuest;
-import com.Tamm.Hotels.wcf.TagInfoResponse;
 import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
@@ -91,6 +90,8 @@ public class FindHotels extends AppCompatActivity {
     TextView assistantLabelCallFindHotel;
     @BindView(R.id.assistant_label_message_find_hotel)
     TextView assistantLabelMessageFindHotel;
+    @BindView(R.id.choose_rate)
+    Spinner chooseRate;
     private List<String> listName = new ArrayList<>();
     ArrayList<String> addressHotel = new ArrayList<>();
     private List<String> nameCity = new ArrayList<>();
@@ -116,6 +117,7 @@ public class FindHotels extends AppCompatActivity {
     private String mendTime;
     private String mstartTime;
     private List<Integer> listOfRooms = new ArrayList<>();
+    private List<Integer> listOfRate = new ArrayList<>();
     private List<Integer> listOfAdult = new ArrayList<>();
     private int noRomes;
     private String sessionId;
@@ -137,7 +139,7 @@ public class FindHotels extends AppCompatActivity {
     private HotelSearchResponse hotelSearchResponse;
     private CountryList countryList;
     ArrayList<String> listPrice = new ArrayList<>();
-    private boolean ClickFindHotel=false;
+    private boolean ClickFindHotel = false;
     private Filters filters;
 //    private boolean saved ;
 
@@ -162,7 +164,6 @@ public class FindHotels extends AppCompatActivity {
 
 
         relativeImgFindHotelTamm = findViewById(R.id.relative_img_find_hotel_tamm);
-
 
 
         relativeImgFindHotelTamm.setOnClickListener(new View.OnClickListener() {
@@ -208,10 +209,6 @@ public class FindHotels extends AppCompatActivity {
 
             }
         });
-
-
-
-
 
 
         toolbar_back.setOnClickListener(new View.OnClickListener() {
@@ -288,9 +285,73 @@ public class FindHotels extends AppCompatActivity {
 
             listOfRooms.add(i);
         }
+        for (int r = 1; r < 6; r++) {
+
+            listOfRate.add(r);
+        }
 
 
-        ArrayAdapter adapterRoomCount = new ArrayAdapter(this, R.layout.item_spener, listOfRooms);
+        ArrayAdapter adapterRateCount = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfRate);
+
+        adapterRateCount.setDropDownViewResource(R.layout.drop_dowen);
+        chooseRate.setDropDownWidth(420);
+        chooseRate.setDropDownVerticalOffset(200);
+        chooseRate.setAdapter(adapterRateCount);
+        chooseRate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                int position = listOfRate.get(i);
+
+                switch (position) {
+
+                    case 0:
+                        filters = new Filters();
+                        filters.StarRating = Enums.HotelRatingInput.All;
+                        break;
+                    case 1:
+
+                        filters = new Filters();
+                        filters.StarRating = Enums.HotelRatingInput.OneStarOrLess;
+
+                        break;
+                    case 2:
+
+                        filters = new Filters();
+                        filters.StarRating = Enums.HotelRatingInput.TwoStarOrLess;
+
+                        break;
+                    case 3:
+
+                        filters = new Filters();
+                        filters.StarRating = Enums.HotelRatingInput.ThreeStarOrLess;
+
+                        break;
+                    case 4:
+
+                        filters = new Filters();
+                        filters.StarRating = Enums.HotelRatingInput.FourStarOrLess;
+
+                        break;
+                    case 5:
+
+                        filters = new Filters();
+                        filters.StarRating = Enums.HotelRatingInput.FiveStarOrMore;
+
+                    default:
+
+                        return;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+                ArrayAdapter adapterRoomCount = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfRooms);
 
         adapterRoomCount.setDropDownViewResource(R.layout.drop_dowen);
         roomCount.setDropDownWidth(420);
@@ -321,6 +382,7 @@ public class FindHotels extends AppCompatActivity {
 
                         return;
                 }
+
 
 
                 ArrayAdapter adapteradult = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfAdult);
@@ -354,6 +416,7 @@ public class FindHotels extends AppCompatActivity {
 
             }
         });
+
 
 
         ArrayAdapter adapterchild = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfChild);
@@ -658,8 +721,6 @@ public class FindHotels extends AppCompatActivity {
         roomguests.add(roomGuest);
 
 
-        filters = new Filters();
-        filters.StarRating = Enums.HotelRatingInput.All;
 
 
 
@@ -667,15 +728,13 @@ public class FindHotels extends AppCompatActivity {
             //HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), Integer.parseInt(ctyId), 1, roomguests, "EG", authenticationData);
 
 
-
             hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
-                    true, noRomes, "EG", roomguests, null, 100,filters , "true", null,
+                    true, noRomes, "EG", roomguests, null, 100, filters, "true", null,
                     10000, authenticationData);
 
 
 //            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
 //                    true, noRomes, "EG", roomguests, null, 100, null, null, false, authenticationData);
-
 
 
             listPrice.clear();
@@ -685,7 +744,6 @@ public class FindHotels extends AppCompatActivity {
             listcodeHotel.clear();
             addressHotel.clear();
             arrayOfResultIndex.clear();
-
 
 
             if (hotelSearchResponse.HotelResultList != null) {

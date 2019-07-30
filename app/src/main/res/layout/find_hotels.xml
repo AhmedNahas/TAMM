@@ -528,12 +528,40 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
+    <RelativeLayout
+        android:id="@+id/relative_spinner_choose_rate"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rv_child"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/transparent"
+        android:layout_centerInParent="true"
+        android:gravity="end">
+        <ImageView
+            android:id="@+id/icon18"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/fullstar"/>
 
+        <Spinner
+            android:id="@+id/choose_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/app_color" />
+
+        <View
+            android:id="@+id/line17"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/choose_rate"
+            android:background="@drawable/line1" />
+    </RelativeLayout>
     <Button
         android:id="@+id/findHotels"
         android:layout_width="140dp"
         android:layout_height="40dp"
-        android:layout_below="@+id/rv_child"
+        android:layout_below="@+id/relative_spinner_choose_rate"
         android:layout_gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/_10sdp"
