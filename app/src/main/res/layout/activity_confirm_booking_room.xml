@@ -92,241 +92,1201 @@
 
 
 
-
-
-
-    <RelativeLayout
-        android:id="@+id/relative_firstlast"
+    <ScrollView
+        android:layout_below="@+id/img_linee2"
+        android:id="@+id/names_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/img_linee2">
+        android:layout_height="@dimen/_100sdp">
 
-        <Spinner
-            android:backgroundTint="@color/app_color"
-            android:id="@+id/mromiss1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="@dimen/_4sdp"
-            android:gravity="end"
-            />
 
-                <EditText
-                    android:id="@+id/ed_first"
-                    android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/relative_names_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/relative_firstlast"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/first_name"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/app_color"
-                    android:layout_toRightOf="@+id/mromiss1" />
-
-        <EditText
-            android:id="@+id/lastName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_toRightOf="@+id/ed_first"
-            android:hint="@string/last_name"
-            android:textColor="@color/white"
-            android:textColorHint="@color/app_color" />
+                    >
 
 
-    </RelativeLayout>
-    <RelativeLayout
-        android:visibility="gone"
-        android:id="@+id/relative_firstlast2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/relative_firstlast">
-
-        <Spinner
-            android:backgroundTint="@color/app_color"
-
-            android:id="@+id/mromiss2"
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            />
-
-            <EditText
-                android:id="@+id/ed_first2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="FIRST NAME"
-                android:textColor="@color/white"
-                android:textColorHint="@color/app_color"
-                android:layout_toRightOf="@+id/mromiss2"
-
-                />
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="LAST NAME"
-                android:textColor="@color/white"
-                android:textColorHint="@color/app_color"
-                android:layout_toRightOf="@+id/ed_first2"
-                android:layout_marginLeft="40dp"
-                />
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:visibility="gone"
-        android:id="@+id/relative_firstlast3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/relative_firstlast2">
-        <Spinner
-            android:backgroundTint="@color/app_color"
-
-            android:id="@+id/mromiss3"
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            />
-
-            <EditText
-                android:id="@+id/ed_first3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="FIRST NAME"
-                android:textColor="@color/white"
-                android:textColorHint="@color/app_color"
-                android:layout_toRightOf="@+id/mromiss3"
-
-                />
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="LAST NAME"
-                android:textColor="@color/white"
-                android:textColorHint="@color/app_color"
-                android:layout_toRightOf="@+id/ed_first3"
-                android:layout_marginLeft="40dp"
-                />
+                    <TextView
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:text="Gust Names"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
 
-    </RelativeLayout>
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+                        android:id="@+id/mromiss1"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        />
+
+                    <EditText
+
+                        android:textSize="@dimen/_9ssp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:id="@+id/ed_first"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/first_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss1" />
+
+                    <EditText
 
 
 
-    <RelativeLayout
-        android:visibility="gone"
-        android:id="@+id/relative_firstlast4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/relative_firstlast3">
-        <Spinner
-            android:backgroundTint="@color/app_color"
-
-            android:id="@+id/mromiss4"
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            />
-
-        <EditText
-            android:id="@+id/ed_first4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="FIRST NAME"
-            android:textColor="@color/white"
-            android:textColorHint="@color/app_color"
-            android:layout_toRightOf="@+id/mromiss4"
-
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="LAST NAME"
-            android:textColor="@color/white"
-            android:textColorHint="@color/app_color"
-            android:layout_toRightOf="@+id/ed_first4"
-            android:layout_marginLeft="40dp"
-            />
+                        android:textSize="@dimen/_9ssp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:id="@+id/lastName"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_toRightOf="@+id/ed_first"
+                        android:hint="@string/last_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color" />
 
 
-    </RelativeLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/relative_firstlast2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast">
+
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+                        android:id="@+id/mromiss2"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first2"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="FIRST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss2"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="LAST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first2"
+                        android:layout_marginLeft="40dp"
+                        />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:visibility="gone"
+
+                    android:id="@+id/relative_firstlast3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast2">
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+
+                        android:id="@+id/mromiss3"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first3"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="FIRST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss3"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="LAST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first3"
+                        android:layout_marginLeft="40dp"
+                        />
+
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+
+                    android:visibility="gone"
+
+                    android:id="@+id/relative_firstlast4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast3">
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+
+                        android:id="@+id/mromiss4"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first4"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="FIRST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss4"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="LAST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first4"
+                        android:layout_marginLeft="40dp"
+                        />
+                </RelativeLayout>
 
 
 
 
-    <RelativeLayout
-        android:visibility="gone"
-        android:id="@+id/relative_firstlast5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/relative_firstlast4">
-        <Spinner
-            android:backgroundTint="@color/app_color"
+                <RelativeLayout
+                    android:visibility="gone"
 
-            android:id="@+id/mromiss5"
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            />
-
-        <EditText
-            android:id="@+id/ed_first5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/first_name"
-            android:textColor="@color/white"
-            android:textColorHint="@color/app_color"
-            android:layout_toRightOf="@+id/mromiss5"
-
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/last_name"
-            android:textColor="@color/white"
-            android:textColorHint="@color/app_color"
-            android:layout_toRightOf="@+id/ed_first5"
-            android:layout_marginLeft="40dp"
-            />
-
-
-    </RelativeLayout>
+                    android:id="@+id/relative_firstlast5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast4">
 
 
 
-    <RelativeLayout
-        android:visibility="gone"
-        android:id="@+id/relative_firstlast6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/relative_firstlast5">
-        <Spinner
-            android:backgroundTint="@color/app_color"
+                    <TextView
 
-            android:id="@+id/mromiss6"
-            android:layout_width="72dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            />
-
-        <EditText
-            android:id="@+id/ed_first6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/first_name"
-            android:textColor="@color/white"
-            android:textColorHint="@color/app_color"
-            android:layout_toRightOf="@+id/mromiss6"
-
-            />
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/last_name"
-            android:textColor="@color/white"
-            android:textColorHint="@color/app_color"
-            android:layout_toRightOf="@+id/ed_first6"
-            android:layout_marginLeft="40dp"
-            />
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:text="Children Names"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
 
-    </RelativeLayout>
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+                        android:id="@+id/mromiss5"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:id="@+id/ed_first5"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/first_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss5"
+
+                        />
+                    <EditText
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/last_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first5"
+                        android:layout_marginLeft="40dp"
+                        />
+
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:visibility="gone"
+
+                    android:id="@+id/relative_firstlast6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast5">
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+
+                        android:id="@+id/mromiss6"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first6"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/first_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss6"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/last_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first6"
+                        android:layout_marginLeft="40dp"
+                        />
+
+
+                </RelativeLayout>
+
+
+
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:visibility="gone"
+android:layout_below="@+id/relative_names_1"
+                android:id="@+id/relative_namesR_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/relative_firstlastR_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+
+                    <TextView
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:text="Gust Names 2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+                        android:id="@+id/mromiss1R_2"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        />
+
+                    <EditText
+
+                        android:textSize="@dimen/_9ssp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:id="@+id/ed_firstR_2"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/first_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss1R_2" />
+
+                    <EditText
+
+                        android:textSize="@dimen/_9ssp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:id="@+id/lastNameR_2"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_toRightOf="@+id/ed_firstR_2"
+                        android:hint="@string/last_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color" />
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/relative_firstlast2R_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlastR_2">
+
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+                        android:id="@+id/mromiss2R_2"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first2R_2"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="FIRST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss2R_2"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="LAST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first2R_2"
+                        android:layout_marginLeft="40dp"
+                        />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/relative_firstlast3R_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast2R_2">
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+
+                        android:id="@+id/mromiss3R_2"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first3R_2"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="FIRST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss3R_2"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="LAST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first3R_2"
+                        android:layout_marginLeft="40dp"
+                        />
+
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+
+                    android:visibility="gone"
+
+                    android:id="@+id/relative_firstlast4R_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast3R_2">
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+
+                        android:id="@+id/mromiss4R_2"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first4R_2"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="FIRST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss4R_2"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="LAST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first4R_2"
+                        android:layout_marginLeft="40dp"
+                        />
+                </RelativeLayout>
+
+
+
+
+                <RelativeLayout
+                    android:visibility="gone"
+
+                    android:id="@+id/relative_firstlast5R_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast4R_2">
+
+
+
+                    <TextView
+
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:text="Children Names"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+                        android:id="@+id/mromiss5R_2"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:id="@+id/ed_first5R_2"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/first_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss5R_2"
+
+                        />
+                    <EditText
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/last_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first5R_2"
+                        android:layout_marginLeft="40dp"
+                        />
+
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:visibility="gone"
+
+                    android:id="@+id/relative_firstlast6R_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast5R_2">
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+
+                        android:id="@+id/mromiss6R_2"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first6R_2"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/first_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss6R_2"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/last_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first6R_2"
+                        android:layout_marginLeft="40dp"
+                        />
+
+
+                </RelativeLayout>
+
+
+
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:visibility="gone"
+                android:layout_below="@+id/relative_namesR_2"
+                android:id="@+id/relative_namesR_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/relative_firstlastR_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+
+                    <TextView
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:text="Gust Names 3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+                        android:id="@+id/mromiss1R_3"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        />
+
+                    <EditText
+
+                        android:textSize="@dimen/_9ssp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:id="@+id/ed_firstR_3"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/first_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss1R_3" />
+
+                    <EditText
+
+
+
+                        android:textSize="@dimen/_9ssp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:id="@+id/lastNameR_3"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_toRightOf="@+id/ed_firstR_3"
+                        android:hint="@string/last_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color" />
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/relative_firstlast2R_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlastR_3">
+
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+                        android:id="@+id/mromiss2R_3"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first2R_3"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="FIRST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss2R_3"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="LAST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first2R_3"
+                        android:layout_marginLeft="40dp"
+                        />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/relative_firstlast3R_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast2R_3">
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+
+                        android:id="@+id/mromiss3R_3"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first3R_3"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="FIRST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss3R_3"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="LAST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first3R_3"
+                        android:layout_marginLeft="40dp"
+                        />
+
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+
+                    android:visibility="gone"
+
+                    android:id="@+id/relative_firstlast4R_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast3R_3">
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+
+                        android:id="@+id/mromiss4R_3"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first4R_3"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="FIRST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss4R_3"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="LAST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first4R_3"
+                        android:layout_marginLeft="40dp"
+                        />
+                </RelativeLayout>
+
+
+
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/relative_firstlast5R_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast4R_3">
+
+
+
+                    <TextView
+
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:text="Children Names"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+                        android:id="@+id/mromiss5R_3"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:id="@+id/ed_first5R_3"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/first_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss5R_3"
+
+                        />
+                    <EditText
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/last_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first5R_3"
+                        android:layout_marginLeft="40dp"
+                        />
+
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/relative_firstlast6R_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast5R_3">
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+
+                        android:id="@+id/mromiss6R_3"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first6R_3"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/first_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss6R_3"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/last_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first6R_3"
+                        android:layout_marginLeft="40dp"
+                        />
+
+
+                </RelativeLayout>
+
+
+
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:visibility="gone"
+                android:layout_below="@+id/relative_namesR_3"
+                android:id="@+id/relative_namesR_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/relative_firstlastR_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+
+                    <TextView
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:text="Gust Names 4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+                        android:id="@+id/mromiss1R_4"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        />
+
+                    <EditText
+
+                        android:textSize="@dimen/_9ssp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:id="@+id/ed_firstR_4"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/first_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss1R_4" />
+
+                    <EditText
+
+
+
+                        android:textSize="@dimen/_9ssp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:id="@+id/lastNameR_4"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="40dp"
+                        android:layout_toRightOf="@+id/ed_firstR_4"
+                        android:hint="@string/last_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color" />
+
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:id="@+id/relative_firstlast2R_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlastR_4">
+
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+                        android:id="@+id/mromiss2R_4"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first2R_4"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="FIRST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss2R_4"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="LAST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first2R_4"
+                        android:layout_marginLeft="40dp"
+                        />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:visibility="gone"
+
+                    android:id="@+id/relative_firstlast3R_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast2R_4">
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+
+                        android:id="@+id/mromiss3R_4"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first3R_4"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="FIRST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss3R_4"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="LAST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first3R_4"
+                        android:layout_marginLeft="40dp"
+                        />
+
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+
+                    android:visibility="gone"
+
+                    android:id="@+id/relative_firstlast4R_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast3R_4">
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+
+                        android:id="@+id/mromiss4R_4"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first4R_4"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="FIRST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss4R_4"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="LAST NAME"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first4R_4"
+                        android:layout_marginLeft="40dp"
+                        />
+                </RelativeLayout>
+
+
+
+
+                <RelativeLayout
+                    android:visibility="gone"
+
+                    android:id="@+id/relative_firstlast5R_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast4R_4">
+
+
+
+                    <TextView
+
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:text="Children Names"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+                        android:id="@+id/mromiss5R_4"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:id="@+id/ed_first5R_4"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/first_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss5R_4"
+
+                        />
+                    <EditText
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/last_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first5R_4"
+                        android:layout_marginLeft="40dp"
+                        />
+
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:visibility="gone"
+
+                    android:id="@+id/relative_firstlast6R_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_firstlast5R_4">
+                    <Spinner
+                        android:backgroundTint="@color/app_color"
+
+                        android:id="@+id/mromiss6R_4"
+                        android:layout_width="72dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        />
+
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:id="@+id/ed_first6R_4"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/first_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/mromiss6R_4"
+
+                        />
+                    <EditText
+                        android:textSize="@dimen/_9ssp"
+
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/last_name"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/app_color"
+                        android:layout_toRightOf="@+id/ed_first6R_4"
+                        android:layout_marginLeft="40dp"
+                        />
+
+
+                </RelativeLayout>
+
+
+
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
 
 
 
@@ -341,7 +1301,7 @@
 
         android:textColor="@color/app_color"
         android:textSize="20sp"
-        android:layout_below="@+id/relative_firstlast6"/>
+        android:layout_below="@+id/names_layout"/>
     <EditText
         android:padding="@dimen/_4sdp"
         android:layout_margin="@dimen/_4sdp"
