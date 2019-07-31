@@ -87,13 +87,13 @@ public class FindHotels extends AppCompatActivity {
     Button findHotels;
     ArrayList<Integer> ratrHotel = new ArrayList<Integer>();
 
-    RelativeLayout relativeImgFindHotelTamm;
-    @BindView(R.id.assistant_label_voice_find_hotel)
-    TextView assistantLabelVoiceFindHotel;
-    @BindView(R.id.assistant_label_call_find_hotel)
-    TextView assistantLabelCallFindHotel;
-    @BindView(R.id.assistant_label_message_find_hotel)
-    TextView assistantLabelMessageFindHotel;
+//    RelativeLayout relativeImgFindHotelTamm;
+//    @BindView(R.id.assistant_label_voice_find_hotel)
+//    TextView assistantLabelVoiceFindHotel;
+//    @BindView(R.id.assistant_label_call_find_hotel)
+//    TextView assistantLabelCallFindHotel;
+//    @BindView(R.id.assistant_label_message_find_hotel)
+//    TextView assistantLabelMessageFindHotel;
     @BindView(R.id.choose_rate)
     Spinner chooseRate;
     private List<String> listName = new ArrayList<>();
@@ -112,9 +112,9 @@ public class FindHotels extends AppCompatActivity {
     private String hotelAddress;
     private String hotelName;
     private String hotelPicture;
-    private Spinner roomCount, adultCount, childCount;
+    private Spinner adultCount, childCount;
     private AutoCompleteTextView regions, areas;
-    private Spinner regions, areas, room1Adult, childCountRoom1;
+    private Spinner  room1Adult, childCountRoom1;
     private List<String> listID = new ArrayList<>();
     private String nameCountry;
     private String name_city;
@@ -237,52 +237,52 @@ public class FindHotels extends AppCompatActivity {
         recycl_child_spiner = findViewById(R.id.rv_child);
         room2ChildAgeSpinner = room1View.findViewById(R.id.rv_child);
 
-        relativeImgFindHotelTamm = findViewById(R.id.relative_img_find_hotel_tamm);
+//        relativeImgFindHotelTamm = findViewById(R.id.relative_img_find_hotel_tamm);
 
 
-        relativeImgFindHotelTamm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        relativeImgFindHotelTamm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if (ClickFindHotel == false) {
+//                    assistantLabelCallFindHotel.setVisibility(View.VISIBLE);
+//                    assistantLabelMessageFindHotel.setVisibility(View.VISIBLE);
+//                    assistantLabelVoiceFindHotel.setVisibility(View.VISIBLE);
+//                    ClickFindHotel = true;
+//
+//                } else {
+//                    assistantLabelCallFindHotel.setVisibility(View.INVISIBLE);
+//                    assistantLabelMessageFindHotel.setVisibility(View.INVISIBLE);
+//                    assistantLabelVoiceFindHotel.setVisibility(View.INVISIBLE);
+//                    ClickFindHotel = false;
+//
+//                }
+//
+//            }
+//        });
 
-                if (ClickFindHotel == false) {
-                    assistantLabelCallFindHotel.setVisibility(View.VISIBLE);
-                    assistantLabelMessageFindHotel.setVisibility(View.VISIBLE);
-                    assistantLabelVoiceFindHotel.setVisibility(View.VISIBLE);
-                    ClickFindHotel = true;
+//        assistantLabelCallFindHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(FindHotels.this, "Call", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-                } else {
-                    assistantLabelCallFindHotel.setVisibility(View.INVISIBLE);
-                    assistantLabelMessageFindHotel.setVisibility(View.INVISIBLE);
-                    assistantLabelVoiceFindHotel.setVisibility(View.INVISIBLE);
-                    ClickFindHotel = false;
-
-                }
-
-            }
-        });
-
-        assistantLabelCallFindHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(FindHotels.this, "Call", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        assistantLabelMessageFindHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(FindHotels.this, "Message", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        assistantLabelVoiceFindHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(FindHotels.this, "Voice", Toast.LENGTH_SHORT).show();
-
-            }
-        });
+//        assistantLabelMessageFindHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(FindHotels.this, "Message", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//
+//        assistantLabelVoiceFindHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(FindHotels.this, "Voice", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
 
 
         toolbar_back.setOnClickListener(new View.OnClickListener() {
@@ -369,6 +369,12 @@ public class FindHotels extends AppCompatActivity {
         startDateMonth.setText(date_m);
         startDateYear.setText(date_d);
 
+        // FIXME: 7/31/2019  check
+
+        for (int r = 1; r < 6; r++) {
+
+            listOfRate.add(r);
+        }
 
         arrayOfResultIndex = new ArrayList<>();
         noRomes = 1;
@@ -380,16 +386,8 @@ public class FindHotels extends AppCompatActivity {
         for (int i = 0; i < 4; i++) {
             noOfROoms.add(i + 1);
         }
-        ArrayAdapter numberOfRoomsAdapter = new ArrayAdapter(this, R.layout.item_spener, noOfROoms);
-        numberOfRoomsAdapter.setDropDownViewResource(R.layout.drop_dowen);
-        chooseNumberOfRoomsSpinner.setDropDownWidth(420);
-        chooseNumberOfRoomsSpinner.setDropDownVerticalOffset(200);
-        chooseNumberOfRoomsSpinner.setAdapter(numberOfRoomsAdapter);
-        chooseNumberOfRoomsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-        for (int r = 1; r < 6; r++) {
 
-            listOfRate.add(r);
-        }
+
 
 
         ArrayAdapter adapterRateCount = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfRate);
@@ -454,11 +452,12 @@ public class FindHotels extends AppCompatActivity {
 
                 ArrayAdapter adapterRoomCount = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfRooms);
 
-        adapterRoomCount.setDropDownViewResource(R.layout.drop_dowen);
-        roomCount.setDropDownWidth(420);
-        roomCount.setDropDownVerticalOffset(200);
-        roomCount.setAdapter(adapterRoomCount);
-        roomCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ArrayAdapter numberOfRoomsAdapter = new ArrayAdapter(this, R.layout.item_spener, noOfROoms);
+        numberOfRoomsAdapter.setDropDownViewResource(R.layout.drop_dowen);
+        chooseNumberOfRoomsSpinner.setDropDownWidth(420);
+        chooseNumberOfRoomsSpinner.setDropDownVerticalOffset(200);
+        chooseNumberOfRoomsSpinner.setAdapter(numberOfRoomsAdapter);
+        chooseNumberOfRoomsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 

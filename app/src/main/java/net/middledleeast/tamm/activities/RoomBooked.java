@@ -126,18 +126,18 @@ public class RoomBooked extends AppCompatActivity {
         mHOtelCode = SharedPreferencesManger.LoadStringData(this, "mHotel_code");
 
 
+// FIXME: 7/31/2019 complete
+
+//        ArrayOfRoomGuest arrayOfRoomGuest = new Gson().fromJson(SharedPreferencesManger.LoadStringData(this,"roomGuests"));
 
 
+//        arrayOfGuest = new ArrayOfGuest();
+//        for (RoomGuest roomGuest : arrayOfRoomGuest) {
+//            Guest guest =new Guest();
+//            guest.FirstName = roomGuest
+//        }
 
-
-        ArrayOfRoomGuest arrayOfRoomGuest = new Gson().fromJson(SharedPreferencesManger.LoadStringData(this,"roomGuests"));
-
-
-        arrayOfGuest = new ArrayOfGuest();
-        for (RoomGuest roomGuest : arrayOfRoomGuest) {
-            Guest guest =new Guest();
-            guest.FirstName = roomGuest
-        }
+        // FIXME: 7/31/2019 end
 
 //        Guest guest = new Guest();
 //        guest.Title = "Mr";

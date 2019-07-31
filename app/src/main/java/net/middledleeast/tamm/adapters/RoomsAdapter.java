@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,7 +35,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.RegisterationActivity;
 import net.middledleeast.tamm.activities.WelcomeActivity;
 import net.middledleeast.tamm.activities.ChooseBookingDate;
 import net.middledleeast.tamm.activities.checkroom;
@@ -44,7 +42,6 @@ import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import org.joda.time.DateTime;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -185,184 +182,184 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
 
         holder.roomBooken.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                                                 @Override
+                                                 public void onClick(View v) {
 
-                if (possibleCombinations == null || possibleCombinations.size() == 0) {
-                    ArrayList<RoomCombination> optionsForBooking = response.OptionsForBooking.RoomCombination;
-                    possibleCombinations = new ArrayList();
-
-
-                    for (RoomCombination roomCombination : optionsForBooking) {
-                        for (int i : roomCombination.RoomIndex) {
-                            if (i == rooms.get(position).RoomIndex) {
-
-                                possibleCombinations.add(roomCombination);
-                                String test = roomCombination.TestElement;
-
-                            }
+                                                     if (possibleCombinations == null || possibleCombinations.size() == 0) {
+                                                         ArrayList<RoomCombination> optionsForBooking = response.OptionsForBooking.RoomCombination;
+                                                         possibleCombinations = new ArrayList();
 
 
-                        }
+                                                         for (RoomCombination roomCombination : optionsForBooking) {
+                                                             for (int i : roomCombination.RoomIndex) {
+                                                                 if (i == rooms.get(position).RoomIndex) {
 
-                    }
+                                                                     possibleCombinations.add(roomCombination);
+                                                                     String test = roomCombination.TestElement;
 
-                } else {
-
-                    // FIXME: 30/07/19 add logic
-
-                    // FIXME: 29/07/19 prevent duplicate room indices
-
-                    for (RoomCombination possibleCombination : possibleCombinations) {
-                        if (!possibleCombination.RoomIndex.contains(rooms.get(position).RoomIndex)) {
-                            possibleCombinations.remove(possibleCombination);
-                        }
-                    }
+                                                                 }
 
 
-                }
+                                                             }
+
+                                                         }
+
+                                                     } else {
+
+                                                         // FIXME: 30/07/19 add logic
+
+                                                         // FIXME: 29/07/19 prevent duplicate room indices
+
+                                                         for (RoomCombination possibleCombination : possibleCombinations) {
+                                                             if (!possibleCombination.RoomIndex.contains(rooms.get(position).RoomIndex)) {
+                                                                 possibleCombinations.remove(possibleCombination);
+                                                             }
+                                                         }
 
 
-                possiblerooms = new ArrayList<>();
-                possiblerooms.clear();
-                for (RoomCombination roomCombination : possibleCombinations) {
-
-                    possiblerooms.addAll(roomCombination.RoomIndex);
+                                                     }
 
 
-                }
+                                                     possiblerooms = new ArrayList<>();
+                                                     possiblerooms.clear();
+                                                     for (RoomCombination roomCombination : possibleCombinations) {
+
+                                                         possiblerooms.addAll(roomCombination.RoomIndex);
 
 
-                roomIndices.add(rooms.get(position).RoomIndex);
-
-                for (Integer roomIndex : roomIndices) {
-                    if (possiblerooms.contains(roomIndex)) {
-                        possiblerooms.remove(roomIndex);
-                    }
-                }
+                                                     }
 
 
-                // TODO: 28/07/19 open new activity using possiblerooms
-                int noOfRooms = SharedPreferencesManger.LoadIntegerData(context, "noOfRooms");
-                // FIXME: 29/07/19 more tha two rooms
-                noOfTimes = SharedPreferencesManger.LoadIntegerData(context, "noOfTimes");
-                if (noOfTimes == 0) {
-                    noOfTimes = 2;
-                }
-                if (noOfRooms > 1 && noOfTimes <= noOfRooms) {
+                                                     roomIndices.add(rooms.get(position).RoomIndex);
 
-                    String reqRoomString = SharedPreferencesManger.LoadStringData(context, "arrayOfroomsreq");
+                                                     for (Integer roomIndex : roomIndices) {
+                                                         if (possiblerooms.contains(roomIndex)) {
+                                                             possiblerooms.remove(roomIndex);
+                                                         }
+                                                     }
 
-                    arrayOfRooms = gson.fromJson(reqRoomString, ArrayOfRequestedRooms.class);
-                    if (arrayOfRooms == null) {
-                        arrayOfRooms = new ArrayOfRequestedRooms();
 
-                    }
-                    RequestedRooms requestedRooms = new RequestedRooms();
-                    requestedRooms.RatePlanCode = rooms.get(position).RatePlanCode;
-                    requestedRooms.RoomIndex = rooms.get(position).RoomIndex;
-                    requestedRooms.RoomRate = new Rate();
-                    if (rooms.get(position).Supplements != null) {
-                        requestedRooms.Supplements = new ArrayOfSuppInfo();
-                        for (Supplement supplement : rooms.get(position).Supplements) {
-                            SuppInfo suppInfo = new SuppInfo();
-                            suppInfo.SuppChargeType = Enums.SuppChargeType.valueOf(supplement.SuppChargeType.name());
-                            suppInfo.Price = supplement.Price;
-                            if (supplement.SuppIsMandatory) {
-                                suppInfo.SuppIsSelected = true;
+                                                     // TODO: 28/07/19 open new activity using possiblerooms
+                                                     int noOfRooms = SharedPreferencesManger.LoadIntegerData(context, "noOfRooms");
+                                                     // FIXME: 29/07/19 more tha two rooms
+                                                     noOfTimes = SharedPreferencesManger.LoadIntegerData(context, "noOfTimes");
+                                                     if (noOfTimes == 0) {
+                                                         noOfTimes = 2;
+                                                     }
+                                                     if (noOfRooms > 1 && noOfTimes <= noOfRooms) {
 
-                            }
-                            requestedRooms.Supplements.add(suppInfo);
-                        }
-                    }
-                    requestedRooms.RoomRate.RoomFare = rooms.get(position).RoomRate.RoomFare;
-                    requestedRooms.RoomRate.RoomTax = rooms.get(position).RoomRate.RoomTax;
-                    requestedRooms.RoomRate.TotalFare = rooms.get(position).RoomRate.TotalFare;
-                    requestedRooms.RoomTypeCode = rooms.get(position).RoomTypeCode;
-                    arrayOfRooms.add(requestedRooms);
+                                                         String reqRoomString = SharedPreferencesManger.LoadStringData(context, "arrayOfroomsreq");
 
-                    String requestedRoomsString = gson.toJson(arrayOfRooms);
-                    SharedPreferencesManger.SaveData((Activity) context, "arrayOfroomsreq", requestedRoomsString);
+                                                         arrayOfRooms = gson.fromJson(reqRoomString, ArrayOfRequestedRooms.class);
+                                                         if (arrayOfRooms == null) {
+                                                             arrayOfRooms = new ArrayOfRequestedRooms();
 
-                    AlertDialog.Builder alert = new AlertDialog.Builder(context);
-                    alert.setMessage("Please select next room");
-                    alert.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            ((Activity) context).finish();
-                            Intent intent = new Intent(context, ChooseBookingDate.class);
-                            intent.putExtra("roomcomb", new Gson().toJson(possiblerooms));
-                            context.startActivity(intent);
-                            noOfTimes++;
-                            SharedPreferencesManger.SaveData(context, "noOfTimes", noOfTimes);
-                            String roomIndexStr = gson.toJson(roomIndices);
-                            SharedPreferencesManger.SaveData(context, "roomIndexArray", roomIndexStr);
-                        }
-                    });
-                    alert.show();
-                } else {
+                                                         }
+                                                         RequestedRooms requestedRooms = new RequestedRooms();
+                                                         requestedRooms.RatePlanCode = rooms.get(position).RatePlanCode;
+                                                         requestedRooms.RoomIndex = rooms.get(position).RoomIndex;
+                                                         requestedRooms.RoomRate = new Rate();
+                                                         if (rooms.get(position).Supplements != null) {
+                                                             requestedRooms.Supplements = new ArrayOfSuppInfo();
+                                                             for (Supplement supplement : rooms.get(position).Supplements) {
+                                                                 SuppInfo suppInfo = new SuppInfo();
+                                                                 suppInfo.SuppChargeType = Enums.SuppChargeType.valueOf(supplement.SuppChargeType.name());
+                                                                 suppInfo.Price = supplement.Price;
+                                                                 if (supplement.SuppIsMandatory) {
+                                                                     suppInfo.SuppIsSelected = true;
 
-                    Intent intent = new Intent(context, checkroom.class);
+                                                                 }
+                                                                 requestedRooms.Supplements.add(suppInfo);
+                                                             }
+                                                         }
+                                                         requestedRooms.RoomRate.RoomFare = rooms.get(position).RoomRate.RoomFare;
+                                                         requestedRooms.RoomRate.RoomTax = rooms.get(position).RoomRate.RoomTax;
+                                                         requestedRooms.RoomRate.TotalFare = rooms.get(position).RoomRate.TotalFare;
+                                                         requestedRooms.RoomTypeCode = rooms.get(position).RoomTypeCode;
+                                                         arrayOfRooms.add(requestedRooms);
+
+                                                         String requestedRoomsString = gson.toJson(arrayOfRooms);
+                                                         SharedPreferencesManger.SaveData((Activity) context, "arrayOfroomsreq", requestedRoomsString);
+
+                                                         AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                                                         alert.setMessage("Please select next room");
+                                                         alert.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                                                             @Override
+                                                             public void onClick(DialogInterface dialog, int which) {
+                                                                 ((Activity) context).finish();
+                                                                 Intent intent = new Intent(context, ChooseBookingDate.class);
+                                                                 intent.putExtra("roomcomb", new Gson().toJson(possiblerooms));
+                                                                 context.startActivity(intent);
+                                                                 noOfTimes++;
+                                                                 SharedPreferencesManger.SaveData(context, "noOfTimes", noOfTimes);
+                                                                 String roomIndexStr = gson.toJson(roomIndices);
+                                                                 SharedPreferencesManger.SaveData(context, "roomIndexArray", roomIndexStr);
+                                                             }
+                                                         });
+                                                         alert.show();
+                                                     } else {
+
+                                                         Intent intent = new Intent(context, checkroom.class);
 //                intent.putExtra("arrayOfRooms", new Gson().toJson(arrayOfRooms));
 //                intent.putExtra("rooms", new Gson().toJson(rooms));
 //                intent.putExtra("hotel_room(xxhdpi)", new Gson().toJson(hotel_room(xxhdpi)));
-                    intent.putExtra("sessionId", sessionId);
-                    intent.putExtra("noOfRooms", noOfRooms);
-                    intent.putExtra("resultIndex", resultIndex);
-                    intent.putExtra("date1", date1);
-                    intent.putExtra("date2", date2);
-                    intent.putExtra("mHOtelCode", mHOtelCode);
+                                                         intent.putExtra("sessionId", sessionId);
+                                                         intent.putExtra("noOfRooms", noOfRooms);
+                                                         intent.putExtra("resultIndex", resultIndex);
+                                                         intent.putExtra("date1", date1);
+                                                         intent.putExtra("date2", date2);
+                                                         intent.putExtra("mHOtelCode", mHOtelCode);
 //                intent.putExtra("authenticandata", new Gson().toJson(authenticandata));
-                    intent.putExtra("roomIndex", position + 1);
-                    intent.putExtra("smok", roomInstructions);
-                    intent.putExtra("roomTybe", roomType);
-                    intent.putExtra("description", description);
-                    intent.putExtra("mealTybe", mealType);
-                    intent.putExtra("roomPrice", roomprice.toString());
-                    intent.putExtra("currency", currency);
-                    SharedPreferencesManger.SaveData(activity, "currency", currency);
-                    SharedPreferencesManger.SaveData(activity, "roomPrice", roomprice.toString());
-                    SharedPreferencesManger.SaveData(activity, "roomIndex", position);
-                    String roomIndexStr = gson.toJson(roomIndices);
-                    SharedPreferencesManger.SaveData(context, "roomIndexArray", roomIndexStr);
-                    try {
-                        SharedPreferencesManger.SaveData(activity, "deadLine", cancelPolicies.LastCancellationDeadline.toString());
+                                                         intent.putExtra("roomIndex", position + 1);
+                                                         intent.putExtra("smok", roomInstructions);
+                                                         intent.putExtra("roomTybe", roomType);
+                                                         intent.putExtra("description", description);
+                                                         intent.putExtra("mealTybe", mealType);
+                                                         intent.putExtra("roomPrice", roomprice.toString());
+                                                         intent.putExtra("currency", currency);
+                                                         SharedPreferencesManger.SaveData(activity, "currency", currency);
+                                                         SharedPreferencesManger.SaveData(activity, "roomPrice", roomprice.toString());
+                                                         SharedPreferencesManger.SaveData(activity, "roomIndex", position);
+                                                         String roomIndexStr = gson.toJson(roomIndices);
+                                                         SharedPreferencesManger.SaveData(context, "roomIndexArray", roomIndexStr);
+                                                         try {
+                                                             SharedPreferencesManger.SaveData(activity, "deadLine", cancelPolicies.LastCancellationDeadline.toString());
 
-                    } catch (Exception e) {
+                                                         } catch (Exception e) {
 
 
-                    }
+                                                         }
 
 // FIXME: 29/07/19 send right rooms
-                    String reqRoomString = SharedPreferencesManger.LoadStringData(context, "arrayOfroomsreq");
+                                                         String reqRoomString = SharedPreferencesManger.LoadStringData(context, "arrayOfroomsreq");
 
-                    arrayOfRooms = gson.fromJson(reqRoomString, ArrayOfRequestedRooms.class);
-                    if (arrayOfRooms == null) {
-                        arrayOfRooms = new ArrayOfRequestedRooms();
+                                                         arrayOfRooms = gson.fromJson(reqRoomString, ArrayOfRequestedRooms.class);
+                                                         if (arrayOfRooms == null) {
+                                                             arrayOfRooms = new ArrayOfRequestedRooms();
 
-                    }
-                    RequestedRooms requestedRooms = new RequestedRooms();
-                    requestedRooms.RatePlanCode = rooms.get(position).RatePlanCode;
-                    requestedRooms.RoomIndex = rooms.get(position).RoomIndex;
-                    requestedRooms.RoomRate = new Rate();
-                    if (rooms.get(position).Supplements != null) {
-                        requestedRooms.Supplements = new ArrayOfSuppInfo();
-                        for (Supplement supplement : rooms.get(position).Supplements) {
-                            SuppInfo suppInfo = new SuppInfo();
-                            suppInfo.SuppChargeType = Enums.SuppChargeType.valueOf(supplement.SuppChargeType.name());
-                            suppInfo.Price = supplement.Price;
-                            if (supplement.SuppIsMandatory) {
-                                suppInfo.SuppIsSelected = true;
+                                                         }
+                                                         RequestedRooms requestedRooms = new RequestedRooms();
+                                                         requestedRooms.RatePlanCode = rooms.get(position).RatePlanCode;
+                                                         requestedRooms.RoomIndex = rooms.get(position).RoomIndex;
+                                                         requestedRooms.RoomRate = new Rate();
+                                                         if (rooms.get(position).Supplements != null) {
+                                                             requestedRooms.Supplements = new ArrayOfSuppInfo();
+                                                             for (Supplement supplement : rooms.get(position).Supplements) {
+                                                                 SuppInfo suppInfo = new SuppInfo();
+                                                                 suppInfo.SuppChargeType = Enums.SuppChargeType.valueOf(supplement.SuppChargeType.name());
+                                                                 suppInfo.Price = supplement.Price;
+                                                                 if (supplement.SuppIsMandatory) {
+                                                                     suppInfo.SuppIsSelected = true;
 
-                            }
-                            requestedRooms.Supplements.add(suppInfo);
-                        }
-                    }
-                    requestedRooms.RoomRate.RoomFare = rooms.get(position).RoomRate.RoomFare;
-                    requestedRooms.RoomRate.RoomTax = rooms.get(position).RoomRate.RoomTax;
-                    requestedRooms.RoomRate.TotalFare = rooms.get(position).RoomRate.TotalFare;
-                    requestedRooms.RoomTypeCode = rooms.get(position).RoomTypeCode;
-                    arrayOfRooms.add(requestedRooms);
+                                                                 }
+                                                                 requestedRooms.Supplements.add(suppInfo);
+                                                             }
+                                                         }
+                                                         requestedRooms.RoomRate.RoomFare = rooms.get(position).RoomRate.RoomFare;
+                                                         requestedRooms.RoomRate.RoomTax = rooms.get(position).RoomRate.RoomTax;
+                                                         requestedRooms.RoomRate.TotalFare = rooms.get(position).RoomRate.TotalFare;
+                                                         requestedRooms.RoomTypeCode = rooms.get(position).RoomTypeCode;
+                                                         arrayOfRooms.add(requestedRooms);
 //                    RequestedRooms requestedRooms1 = new RequestedRooms();
 //                requestedRooms1.RatePlanCode = hotel_room1.RatePlanCode;
 //                // TODO: 22/07/19 temp fox
@@ -386,47 +383,46 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 //                requestedRooms1.RoomRate.TotalFare = hotel_room1.RoomRate.TotalFare;
 //                requestedRooms1.RoomTypeCode = hotel_room1.RoomTypeCode;
 //                arrayOfRooms.add(requestedRooms1);
-                    String requestedRoomsString = gson.toJson(arrayOfRooms);
-                    SharedPreferencesManger.SaveData((Activity) context, "arrayOfroomsreq", requestedRoomsString);
-                    SharedPreferencesManger.SaveData(context, "RoomComb", null);
+                                                         String requestedRoomsString = gson.toJson(arrayOfRooms);
+                                                         SharedPreferencesManger.SaveData((Activity) context, "arrayOfroomsreq", requestedRoomsString);
+                                                         SharedPreferencesManger.SaveData(context, "RoomComb", null);
 
-                    String gustMode = SharedPreferencesManger.LoadStringData(context, "gustMode");
-                    if (gustMode!=null){
-
-
-
-                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                        alertDialogBuilder.setTitle("You in gust Mode");
-                        alertDialogBuilder
-                                .setMessage("You hav to Sign Up First")
-                                .setCancelable(true).setPositiveButton("Sign up", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+                                                         String gustMode = SharedPreferencesManger.LoadStringData(context, "gustMode");
+                                                         if (gustMode != null) {
 
 
-                                // TODO: 7/28/2019  intent to Registration Fragment
-                                Intent intent1 = new Intent(activity, WelcomeActivity.class);
-
-                                context.startActivity(intent1);
-
-                            }
-                        });
-                        alertDialogBuilder.show();
-
-
-                        // Toast.makeText(context, "You hav to Sign Up First", Toast.LENGTH_SHORT).show();
+                                                             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                                                             alertDialogBuilder.setTitle("You in gust Mode");
+                                                             alertDialogBuilder
+                                                                     .setMessage("You hav to Sign Up First")
+                                                                     .setCancelable(true).setPositiveButton("Sign up", new DialogInterface.OnClickListener() {
+                                                                 @Override
+                                                                 public void onClick(DialogInterface dialogInterface, int i) {
 
 
+                                                                     // TODO: 7/28/2019  intent to Registration Fragment
+                                                                     Intent intent1 = new Intent(activity, WelcomeActivity.class);
 
-                    }else {
+                                                                     context.startActivity(intent1);
 
-                        context.startActivity(intent);
-                    }
+                                                                 }
+                                                             });
+                                                             alertDialogBuilder.show();
 
 
+                                                             // Toast.makeText(context, "You hav to Sign Up First", Toast.LENGTH_SHORT).show();
 
-                }
-            });
+
+                                                         } else {
+
+                                                             context.startActivity(intent);
+                                                         }
+
+
+                                                     }
+                                                 }
+                                             }
+            );
 
 
         }
