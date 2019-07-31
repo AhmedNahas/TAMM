@@ -1,5 +1,6 @@
 package net.middledleeast.tamm.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.Tamm.Hotels.wcf.AmendmentRequestType;
 import com.Tamm.Hotels.wcf.AmendmentResponse;
 import com.Tamm.Hotels.wcf.ArrayOfGuest;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
+import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.ArrayOfSupplement;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
@@ -22,6 +24,7 @@ import com.Tamm.Hotels.wcf.HotelBookResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.PaymentInfo;
 import com.Tamm.Hotels.wcf.RequestedRooms;
+import com.Tamm.Hotels.wcf.RoomGuest;
 import com.Tamm.Hotels.wcf.SuppInfo;
 import com.Tamm.Hotels.wcf.Supplement;
 import com.google.gson.Gson;
@@ -70,21 +73,33 @@ public class RoomBooked extends AppCompatActivity {
         authenticandata.Password = ("Tam@18418756");
         sessionId = SharedPreferencesManger.LoadStringData(this, "session_id");
         noOfRooms = SharedPreferencesManger.LoadIntegerData(this, "noOfRooms");
-        resultIndex = SharedPreferencesManger.LoadIntegerData(this, "resultIndex");
+        resultIndex = SharedPreferencesManger.LoadIntegerData(this, "resultindex");
         roomIndex = SharedPreferencesManger.LoadIntegerData(this, "roomIndex");
         mHOtelCode = SharedPreferencesManger.LoadStringData(this, "mHotel_code");
 
 
+
+
+
+
+        ArrayOfRoomGuest arrayOfRoomGuest = new Gson().fromJson(SharedPreferencesManger.LoadStringData(this,"roomGuests"));
+
+
         arrayOfGuest = new ArrayOfGuest();
-        Guest guest = new Guest();
-        guest.Title = "Mr";
-        guest.Age = 25;
-        guest.FirstName = SharedPreferencesManger.LoadStringData(this, "firstName");
-        guest.LeadGuest = true;
-        guest.GuestType = Enums.GuestType.Adult;
-        guest.LastName = SharedPreferencesManger.LoadStringData(this, "lastName");
-        guest.GuestInRoom = 1;
-        arrayOfGuest.add(guest);
+        for (RoomGuest roomGuest : arrayOfRoomGuest) {
+            Guest guest =new Guest();
+            guest.FirstName = roomGuest
+        }
+
+//        Guest guest = new Guest();
+//        guest.Title = "Mr";
+//        guest.Age = 25;
+//        guest.FirstName = SharedPreferencesManger.LoadStringData(this, "firstName");
+//        guest.LeadGuest = true;
+//        guest.GuestType = Enums.GuestType.Adult;
+//        guest.LastName = SharedPreferencesManger.LoadStringData(this, "lastName");
+//        guest.GuestInRoom = 1;
+//        arrayOfGuest.add(guest);
 //        Guest guest2 = new Guest();
 //        guest2.Title = "Mr";
 //        guest2.Age = 5;
@@ -184,6 +199,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
             }
+            SharedPreferencesManger.SaveData(this, "arrayOfroomsreq", null);
 
             String clientReferenceNo = dtStr + "#TAMM";
             HotelBookResponse hotelBookingResponse = service.HotelBook(start_time, end_time,

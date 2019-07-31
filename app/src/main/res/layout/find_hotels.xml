@@ -20,8 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="4dp"
-            android:background="@drawable/ic_back_arrow"
-             />
+            android:background="@drawable/ic_back_arrow" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -370,24 +369,66 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/layout_chooseroom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_check"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/transparent">
+
+        <TextView
+            android:id="@+id/texter"
+            android:layout_width="84dp"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/chooseroom"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="-84dp"
+            android:layout_marginBottom="-10dp"
+            android:text="Choose no. of rooms"
+            android:textColor="@color/app_color" />
+
+        <Spinner
+            android:id="@+id/chooseroom"
+            android:layout_width="500dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="124dp"
+            android:layout_toRightOf="@+id/texter"
+            android:backgroundTint="@color/app_color" />
+
+        <View
+            android:id="@+id/line7"
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_below="@+id/chooseroom"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/line1" />
+
+
+    </RelativeLayout>
+
 
     <RelativeLayout
         android:id="@+id/spinner_room_layout"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layout_check"
+        android:layout_below="@+id/layout_chooseroom"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@+id/icon3"
         android:background="@android:color/transparent"
         android:gravity="end">
 
 
-        <Spinner
+        <TextView
             android:id="@+id/no_of_rooms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="@color/app_color" />
+            android:backgroundTint="@color/app_color"
+            android:gravity="center_horizontal"
+            android:text="Room 1"
+            android:textColor="@color/app_color" />
 
         <View
             android:id="@+id/line4"
@@ -406,8 +447,8 @@
         android:layout_height="20dp"
         android:layout_below="@+id/layout_check"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="90dp"
         android:drawableStart="@drawable/ic_offer" />
 
 
@@ -415,7 +456,7 @@
         android:id="@+id/spinner_adult_layout"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layout_check"
+        android:layout_below="@id/layout_chooseroom"
         android:layout_centerInParent="true"
         android:layout_marginStart="2dp"
         android:layout_marginTop="20dp"
@@ -448,7 +489,7 @@
         android:layout_height="20dp"
         android:layout_below="@+id/layout_check"
         android:layout_marginLeft="14dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="90dp"
         android:layout_toRightOf="@+id/spinner_room_layout"
         android:drawableStart="@drawable/ic_man_adult_room" />
 
@@ -457,7 +498,7 @@
         android:id="@+id/spinner_child_layout"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layout_check_out"
+        android:layout_below="@id/layout_chooseroom"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
@@ -489,8 +530,8 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_below="@+id/layout_check_out"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="90dp"
         android:layout_toRightOf="@+id/spinner_adult_layout"
         android:drawableStart="@drawable/ic_smallman" />
 
@@ -498,28 +539,87 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_child"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_below="@+id/spinner_child_layout"
-        android:layout_marginTop="12dp"
         android:padding="12dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-
     <Button
         android:id="@+id/findHotels"
-        android:layout_width="140dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/rv_child"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_width="99dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center|center_horizontal"
+        android:layout_marginStart="133dp"
+        android:layout_marginEnd="137dp"
+        android:layout_marginBottom="11dp"
         android:background="@color/app_color"
         android:text="@string/find_hotels" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="293dp"
+        android:layout_above="@+id/findHotels"
+        android:layout_below="@id/rv_child"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="15dp"
+        android:clipToPadding="true"
+        android:fillViewport="true"
+        android:scrollbarStyle="outsideInset">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layoutMode="clipBounds"
+            android:orientation="vertical">
 
 
+            <FrameLayout
+                android:id="@+id/frame1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp">
 
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frame2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@id/frame1"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp">
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frame3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/findHotels"
+                android:layout_below="@id/frame2"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="-1dp"
+                android:layout_marginEnd="1dp">
+
+            </FrameLayout>
+        </LinearLayout>
+
+    </ScrollView>
 </RelativeLayout>
 
 

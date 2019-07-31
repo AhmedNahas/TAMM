@@ -2,6 +2,7 @@ package net.middledleeast.tamm.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
@@ -25,26 +27,32 @@ import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.Rate;
 import com.Tamm.Hotels.wcf.RequestedRooms;
+import com.Tamm.Hotels.wcf.RoomCombination;
 import com.Tamm.Hotels.wcf.RoomInformation;
 import com.Tamm.Hotels.wcf.SuppInfo;
 import com.Tamm.Hotels.wcf.Supplement;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.activities.ChooseBookingDate;
 import net.middledleeast.tamm.activities.checkroom;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import org.joda.time.DateTime;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> {
 
     private final Context context;
-    Activity activity ;
+    Activity activity;
     private Hotel_Room hotel_room;
     private final String date1;
     private final String date2;
@@ -60,9 +68,15 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     HotelRoomAvailabilityResponse response;
     BasicHttpBinding_IHotelService1 service;
     AuthenticationData authenticationData;
+    private int noOfTimes;
+    ArrayList<Integer> roomIndices;
+    ArrayList<Integer> possiblerooms;
+    Type fooType;
+    ArrayList<RoomCombination> possibleCombinations;
+    ArrayOfRequestedRooms arrayOfRooms;
 
 
-    public RoomsAdapter(Activity activity, AuthenticationData data, BasicHttpBinding_IHotelService1 service, HotelRoomAvailabilityResponse response, List<Hotel_Room> rooms, Hotel_Room hotel_room,
+    public RoomsAdapter(ArrayList<Integer> roomCombs, Activity activity, AuthenticationData data, BasicHttpBinding_IHotelService1 service, HotelRoomAvailabilityResponse response, List<Hotel_Room> rooms, Hotel_Room hotel_room,
                         String date1, String date2, int noOfRooms, int resultIndex, String mHotelCode, AuthenticationData authenticationData, String sessionId, Context context) {
         this.rooms = rooms;
         this.hotel_room = hotel_room;
@@ -80,6 +94,29 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         this.authenticationData = data;
         this.activity = activity;
         notifyDataSetChanged();
+        String roomIndexArrayStr = SharedPreferencesManger.LoadStringData(context, "roomIndexArray");
+        Gson gson = new Gson();
+        ArrayList<Double> tempRoomIndices = new ArrayList<>();
+        tempRoomIndices = gson.fromJson(roomIndexArrayStr, ArrayList.class);
+//        ArrayList<Integer> roomIndexArrayInt = new ArrayList<>();
+//        for (double aDouble : roomIndices) {
+//            roomIndexArrayInt.add((int)aDouble);
+//        }
+        roomIndices = new ArrayList<>();
+        if (tempRoomIndices != null) {
+            for (double tempRoomIndex : tempRoomIndices) {
+                roomIndices.add((int) tempRoomIndex);
+            }
+
+        }
+
+        fooType = new TypeToken<ArrayList<RoomCombination>>() {
+        }.getType();
+
+        String roomComb = SharedPreferencesManger.LoadStringData(context, "RoomComb");
+        possibleCombinations = (ArrayList<RoomCombination>) new Gson().fromJson(roomComb, fooType);
+
+        this.possiblerooms = roomCombs;
     }
 
     @NonNull
@@ -97,6 +134,10 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String roomType = rooms.get(position).RoomTypeName;
         hotel_room = rooms.get(position);
+
+
+        SharedPreferencesManger.SaveData(context, "RoomComb", new Gson().toJson(possibleCombinations, fooType));
+
 //        Hotel_Room hotel_room1 = rooms.get(1);
         String mealType = rooms.get(position).MealType;
         String instructions = rooms.get(position).RoomInstructions;
@@ -132,17 +173,10 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
             Glide.with(context).load(images).into(holder.img_photo_hotel);
             roomInstructions = rooms.get(position).MealType;
             description = rooms.get(position).RoomAdditionalInfo.Description;
-        }else {
-
-
-
-
+        } else {
 
 
             holder.img_photo_hotel.setImageResource(R.drawable.no_image_available);
-
-
-
 
 
         }
@@ -151,61 +185,183 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         holder.roomBooken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, checkroom.class);
+
+                if (possibleCombinations == null || possibleCombinations.size() == 0) {
+                    ArrayList<RoomCombination> optionsForBooking = response.OptionsForBooking.RoomCombination;
+                    possibleCombinations = new ArrayList();
+
+
+                    for (RoomCombination roomCombination : optionsForBooking) {
+                        for (int i : roomCombination.RoomIndex) {
+                            if (i == rooms.get(position).RoomIndex) {
+
+                                possibleCombinations.add(roomCombination);
+                                String test = roomCombination.TestElement;
+
+                            }
+
+
+                        }
+
+                    }
+
+                } else {
+
+                    // FIXME: 30/07/19 add logic
+
+                    // FIXME: 29/07/19 prevent duplicate room indices
+
+                    for (RoomCombination possibleCombination : possibleCombinations) {
+                        if (!possibleCombination.RoomIndex.contains(rooms.get(position).RoomIndex)) {
+                            possibleCombinations.remove(possibleCombination);
+                        }
+                    }
+
+
+                }
+
+
+                possiblerooms = new ArrayList<>();
+                possiblerooms.clear();
+                for (RoomCombination roomCombination : possibleCombinations) {
+
+                    possiblerooms.addAll(roomCombination.RoomIndex);
+
+
+                }
+
+
+                roomIndices.add(rooms.get(position).RoomIndex);
+
+                for (Integer roomIndex : roomIndices) {
+                    if (possiblerooms.contains(roomIndex)) {
+                        possiblerooms.remove(roomIndex);
+                    }
+                }
+
+
+                // TODO: 28/07/19 open new activity using possiblerooms
+                int noOfRooms = SharedPreferencesManger.LoadIntegerData(context, "noOfRooms");
+                // FIXME: 29/07/19 more tha two rooms
+                noOfTimes = SharedPreferencesManger.LoadIntegerData(context, "noOfTimes");
+                if (noOfTimes == 0) {
+                    noOfTimes = 2;
+                }
+                if (noOfRooms > 1 && noOfTimes <= noOfRooms) {
+
+                    String reqRoomString = SharedPreferencesManger.LoadStringData(context, "arrayOfroomsreq");
+
+                    arrayOfRooms = gson.fromJson(reqRoomString, ArrayOfRequestedRooms.class);
+                    if (arrayOfRooms == null) {
+                        arrayOfRooms = new ArrayOfRequestedRooms();
+
+                    }
+                    RequestedRooms requestedRooms = new RequestedRooms();
+                    requestedRooms.RatePlanCode = rooms.get(position).RatePlanCode;
+                    requestedRooms.RoomIndex = rooms.get(position).RoomIndex;
+                    requestedRooms.RoomRate = new Rate();
+                    if (rooms.get(position).Supplements != null) {
+                        requestedRooms.Supplements = new ArrayOfSuppInfo();
+                        for (Supplement supplement : rooms.get(position).Supplements) {
+                            SuppInfo suppInfo = new SuppInfo();
+                            suppInfo.SuppChargeType = Enums.SuppChargeType.valueOf(supplement.SuppChargeType.name());
+                            suppInfo.Price = supplement.Price;
+                            if (supplement.SuppIsMandatory) {
+                                suppInfo.SuppIsSelected = true;
+
+                            }
+                            requestedRooms.Supplements.add(suppInfo);
+                        }
+                    }
+                    requestedRooms.RoomRate.RoomFare = rooms.get(position).RoomRate.RoomFare;
+                    requestedRooms.RoomRate.RoomTax = rooms.get(position).RoomRate.RoomTax;
+                    requestedRooms.RoomRate.TotalFare = rooms.get(position).RoomRate.TotalFare;
+                    requestedRooms.RoomTypeCode = rooms.get(position).RoomTypeCode;
+                    arrayOfRooms.add(requestedRooms);
+
+                    String requestedRoomsString = gson.toJson(arrayOfRooms);
+                    SharedPreferencesManger.SaveData((Activity) context, "arrayOfroomsreq", requestedRoomsString);
+
+                    AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                    alert.setMessage("Please select next room");
+                    alert.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ((Activity) context).finish();
+                            Intent intent = new Intent(context, ChooseBookingDate.class);
+                            intent.putExtra("roomcomb", new Gson().toJson(possiblerooms));
+                            context.startActivity(intent);
+                            noOfTimes++;
+                            SharedPreferencesManger.SaveData(context, "noOfTimes", noOfTimes);
+                            String roomIndexStr = gson.toJson(roomIndices);
+                            SharedPreferencesManger.SaveData(context, "roomIndexArray", roomIndexStr);
+                        }
+                    });
+                    alert.show();
+                } else {
+
+                    Intent intent = new Intent(context, checkroom.class);
 //                intent.putExtra("arrayOfRooms", new Gson().toJson(arrayOfRooms));
 //                intent.putExtra("rooms", new Gson().toJson(rooms));
 //                intent.putExtra("hotel_room(xxhdpi)", new Gson().toJson(hotel_room(xxhdpi)));
-                intent.putExtra("sessionId", sessionId);
-                intent.putExtra("noOfRooms", noOfRooms);
-                intent.putExtra("resultIndex", resultIndex);
-                intent.putExtra("date1", date1);
-                intent.putExtra("date2", date2);
-                intent.putExtra("mHOtelCode", mHOtelCode);
+                    intent.putExtra("sessionId", sessionId);
+                    intent.putExtra("noOfRooms", noOfRooms);
+                    intent.putExtra("resultIndex", resultIndex);
+                    intent.putExtra("date1", date1);
+                    intent.putExtra("date2", date2);
+                    intent.putExtra("mHOtelCode", mHOtelCode);
 //                intent.putExtra("authenticandata", new Gson().toJson(authenticandata));
-                intent.putExtra("roomIndex", position + 1);
-                intent.putExtra("smok", roomInstructions);
-                intent.putExtra("roomTybe", roomType);
-                intent.putExtra("description", description);
-                intent.putExtra("mealTybe", mealType);
-                intent.putExtra("roomPrice", roomprice.toString());
-                intent.putExtra("currency", currency);
-                SharedPreferencesManger.SaveData(activity,"currency",currency);
-                SharedPreferencesManger.SaveData(activity,"roomPrice", roomprice.toString());
-                SharedPreferencesManger.SaveData(activity, "roomIndex", position);
+                    intent.putExtra("roomIndex", position + 1);
+                    intent.putExtra("smok", roomInstructions);
+                    intent.putExtra("roomTybe", roomType);
+                    intent.putExtra("description", description);
+                    intent.putExtra("mealTybe", mealType);
+                    intent.putExtra("roomPrice", roomprice.toString());
+                    intent.putExtra("currency", currency);
+                    SharedPreferencesManger.SaveData(activity, "currency", currency);
+                    SharedPreferencesManger.SaveData(activity, "roomPrice", roomprice.toString());
+                    SharedPreferencesManger.SaveData(activity, "roomIndex", position);
+                    String roomIndexStr = gson.toJson(roomIndices);
+                    SharedPreferencesManger.SaveData(context, "roomIndexArray", roomIndexStr);
+                    try {
+                        SharedPreferencesManger.SaveData(activity, "deadLine", cancelPolicies.LastCancellationDeadline.toString());
 
-                try {
-                    SharedPreferencesManger.SaveData(activity, "deadLine", cancelPolicies.LastCancellationDeadline.toString());
-
-                }catch (Exception e){
-
-
-                }
+                    } catch (Exception e) {
 
 
-                ArrayOfRequestedRooms arrayOfRooms = new ArrayOfRequestedRooms();
-                RequestedRooms requestedRooms = new RequestedRooms();
-                requestedRooms.RatePlanCode = hotel_room.RatePlanCode;
-                requestedRooms.RoomIndex = hotel_room.RoomIndex;
-                requestedRooms.RoomRate = new Rate();
-                if (hotel_room.Supplements != null) {
-                    requestedRooms.Supplements = new ArrayOfSuppInfo();
-                    for (Supplement supplement : hotel_room.Supplements) {
-                        SuppInfo suppInfo = new SuppInfo();
-                        suppInfo.SuppChargeType = Enums.SuppChargeType.valueOf(supplement.SuppChargeType.name());
-                        suppInfo.Price = supplement.Price;
-                        if (supplement.SuppIsMandatory) {
-                            suppInfo.SuppIsSelected = true;
-
-                        }
-                        requestedRooms.Supplements.add(suppInfo);
                     }
-                }
-                requestedRooms.RoomRate.RoomFare = hotel_room.RoomRate.RoomFare;
-                requestedRooms.RoomRate.RoomTax = hotel_room.RoomRate.RoomTax;
-                requestedRooms.RoomRate.TotalFare = hotel_room.RoomRate.TotalFare;
-                requestedRooms.RoomTypeCode = hotel_room.RoomTypeCode;
-                arrayOfRooms.add(requestedRooms);
-                RequestedRooms requestedRooms1 = new RequestedRooms();
+
+// FIXME: 29/07/19 send right rooms
+                    String reqRoomString = SharedPreferencesManger.LoadStringData(context, "arrayOfroomsreq");
+
+                    arrayOfRooms = gson.fromJson(reqRoomString, ArrayOfRequestedRooms.class);
+                    if (arrayOfRooms == null) {
+                        arrayOfRooms = new ArrayOfRequestedRooms();
+
+                    }
+                    RequestedRooms requestedRooms = new RequestedRooms();
+                    requestedRooms.RatePlanCode = rooms.get(position).RatePlanCode;
+                    requestedRooms.RoomIndex = rooms.get(position).RoomIndex;
+                    requestedRooms.RoomRate = new Rate();
+                    if (rooms.get(position).Supplements != null) {
+                        requestedRooms.Supplements = new ArrayOfSuppInfo();
+                        for (Supplement supplement : rooms.get(position).Supplements) {
+                            SuppInfo suppInfo = new SuppInfo();
+                            suppInfo.SuppChargeType = Enums.SuppChargeType.valueOf(supplement.SuppChargeType.name());
+                            suppInfo.Price = supplement.Price;
+                            if (supplement.SuppIsMandatory) {
+                                suppInfo.SuppIsSelected = true;
+
+                            }
+                            requestedRooms.Supplements.add(suppInfo);
+                        }
+                    }
+                    requestedRooms.RoomRate.RoomFare = rooms.get(position).RoomRate.RoomFare;
+                    requestedRooms.RoomRate.RoomTax = rooms.get(position).RoomRate.RoomTax;
+                    requestedRooms.RoomRate.TotalFare = rooms.get(position).RoomRate.TotalFare;
+                    requestedRooms.RoomTypeCode = rooms.get(position).RoomTypeCode;
+                    arrayOfRooms.add(requestedRooms);
+//                    RequestedRooms requestedRooms1 = new RequestedRooms();
 //                requestedRooms1.RatePlanCode = hotel_room1.RatePlanCode;
 //                // TODO: 22/07/19 temp fox
 //                requestedRooms1.RoomIndex = hotel_room1.RoomIndex;
@@ -228,12 +384,13 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 //                requestedRooms1.RoomRate.TotalFare = hotel_room1.RoomRate.TotalFare;
 //                requestedRooms1.RoomTypeCode = hotel_room1.RoomTypeCode;
 //                arrayOfRooms.add(requestedRooms1);
-                String requestedRoomsString = gson.toJson(arrayOfRooms);
-                SharedPreferencesManger.SaveData((Activity) context, "arrayOfroomsreq", requestedRoomsString);
+                    String requestedRoomsString = gson.toJson(arrayOfRooms);
+                    SharedPreferencesManger.SaveData((Activity) context, "arrayOfroomsreq", requestedRoomsString);
+                    SharedPreferencesManger.SaveData(context, "RoomComb", null);
 
 
-
-                context.startActivity(intent);
+                    context.startActivity(intent);
+                }
             }
         });
     }

@@ -2,24 +2,21 @@ package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,16 +24,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import com.Tamm.Hotels.wcf.ArrayOfInt;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.CountryList;
-import com.Tamm.Hotels.wcf.CountryListResponse;
 import com.Tamm.Hotels.wcf.DestinationCityListResponse;
-import com.Tamm.Hotels.wcf.GeoCodes;
 import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.Hotel_Result;
@@ -52,8 +46,6 @@ import org.joda.time.DateTime;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -105,7 +97,7 @@ public class FindHotels extends AppCompatActivity {
     private String hotelAddress;
     private String hotelName;
     private String hotelPicture;
-    private Spinner regions, areas, roomCount, adultCount, childCount;
+    private Spinner regions, areas, room1Adult, childCountRoom1;
     private List<String> listID = new ArrayList<>();
     private String nameCountry;
     private String name_city;
@@ -121,12 +113,17 @@ public class FindHotels extends AppCompatActivity {
     private Date time1;
     private Date time2;
     private RecyclerView recycl_child_spiner;
-    AdapterChildCount adapterChildCount;
+    AdapterChildCount room1ChildAgeSpinner;
     private List<Integer> listOfChild = new ArrayList<>();
     private List<Integer> listChildernCount = new ArrayList<>();
-    private int nom_adult;
-    private int mChildCount;
+    private List<Integer> listChildernCountRoom2 = new ArrayList<>();
+//    private int nom_adult;
+    private int mChildCountRoom1;
+    private int mChildCountRoom2;
+
     private List<Integer> listOfChildAge = new ArrayList<>();
+    private List<Integer> listOfChildAgeRoom2 = new ArrayList<>();
+
     boolean chicDateStart = false;
     boolean chicDateEnd = false;
     private ImageView toolbar_back;
@@ -134,6 +131,31 @@ public class FindHotels extends AppCompatActivity {
     private HotelSearchResponse hotelSearchResponse;
     private CountryList countryList;
     ArrayList<String> listPrice = new ArrayList<>();
+    Spinner chooseNumberOfRoomsSpinner;
+    private TextView roomCount;
+    RelativeLayout room1View;
+    RelativeLayout room2View;
+    RelativeLayout room3View;
+    private RecyclerView room2ChildAgeSpinner;
+    private AdapterChildCount adapterChildCountRoom2;
+    private AdapterChildCount adapterChildCountRoom3;
+    private AdapterChildCount adapterChildCountRoom4;
+    private Spinner room3Child;
+    private int nom_adultRoom1;
+    private int nom_adultRoom2;
+    private Spinner room3Adult;
+    private int nom_adultRoom3;
+    private Spinner room4Adult;
+    private int nom_adultRoom4;
+    private int mChildCountRoom3;
+    private List<Integer> listChildernCountRoom3 = new ArrayList<>();
+    private Spinner room4Child;
+    private int mChildCountRoom4;
+    private List<Integer> listChildernCountRoom4= new ArrayList<>();
+    private RecyclerView room3ChildAgeSpinner;
+    private RecyclerView room4ChildAgeSpinner;
+
+
 //    private boolean saved ;
 
     @SuppressLint("StaticFieldLeak")
@@ -144,17 +166,56 @@ public class FindHotels extends AppCompatActivity {
         ButterKnife.bind(this);
         auth();
 
+
+        FrameLayout frameLayout = findViewById(R.id.frame1);
+
+        LayoutInflater inflater = (LayoutInflater) FindHotels.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        room1View = (RelativeLayout) inflater.inflate(R.layout.spinnersfrag2, null);
+        frameLayout.addView(room1View);
+        TextView room2 = room1View.findViewById(R.id.no_of_rooms);
+        room2.setText("Room 2");
+        Spinner room2Adult = room1View.findViewById(R.id.adilt_count);
+        Spinner room2Child = room1View.findViewById(R.id.no_of_childs);
+
+        room1View.setVisibility(View.INVISIBLE);
+
+        FrameLayout frameLayout1 = findViewById(R.id.frame2);
+        LayoutInflater inflater1 = (LayoutInflater) this
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        room2View = (RelativeLayout) inflater1.inflate(R.layout.spinnersfrag2, null);
+        frameLayout1.addView(room2View);
+        TextView room3 = room2View.findViewById(R.id.no_of_rooms);
+        room3.setText("Room 3");
+        room3Adult = room2View.findViewById(R.id.adilt_count);
+        room3Child = room2View.findViewById(R.id.no_of_childs);
+        room3ChildAgeSpinner = room2View.findViewById(R.id.rv_child);
+
+        room3.setVisibility(View.INVISIBLE);
+
+        FrameLayout frameLayout2 = findViewById(R.id.frame3);
+        LayoutInflater inflater2 = (LayoutInflater) this
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        room3View = (RelativeLayout) inflater2.inflate(R.layout.spinnersfrag2, null);
+        frameLayout2.addView(room3View);
+        TextView room4 = room3View.findViewById(R.id.no_of_rooms);
+        room4.setText("Room 4");
+        room4Adult = room3View.findViewById(R.id.adilt_count);
+        room4Child = room3View.findViewById(R.id.no_of_childs);
+        room4.setVisibility(View.INVISIBLE);
+        room4ChildAgeSpinner = room3View.findViewById(R.id.rv_child);
+
         areas = findViewById(R.id.area_spinner);
         regions = findViewById(R.id.region_spinner);
         roomCount = findViewById(R.id.no_of_rooms);
-        adultCount = findViewById(R.id.adilt_count);
-        childCount = findViewById(R.id.no_of_childs);
+        room1Adult = findViewById(R.id.adilt_count);
+        childCountRoom1 = findViewById(R.id.no_of_childs);
+        chooseNumberOfRoomsSpinner = findViewById(R.id.chooseroom);
 //        startDate = findViewById(R.id.startDate);
 //        endDate = findViewById(R.id.endDate);
         nights = findViewById(R.id.nights);
         toolbar_back = findViewById(R.id.toolbar_back1);
         recycl_child_spiner = findViewById(R.id.rv_child);
-
+        room2ChildAgeSpinner = room1View.findViewById(R.id.rv_child);
 
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,7 +229,6 @@ public class FindHotels extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         //   auth();
-
 
 
 //if (saved==true){
@@ -192,27 +252,43 @@ public class FindHotels extends AppCompatActivity {
 //
 //}else {
 
- //   getCountries();
+        //   getCountries();
 
 //}
+
 
         getCountries();
 
 
-
         recycl_child_spiner.setLayoutManager(new GridLayoutManager(this, 2));
+        room2ChildAgeSpinner.setLayoutManager(new GridLayoutManager(this, 2));
+        room3ChildAgeSpinner.setLayoutManager(new GridLayoutManager(this, 2));
+        room4ChildAgeSpinner.setLayoutManager(new GridLayoutManager(this, 2));
 
         for (int i = 0; i < 18; i++) {
             listOfChildAge.add(i);
         }
-        adapterChildCount = new AdapterChildCount(this, listChildernCount, listOfChildAge, this);
+        for (int i = 0; i < 18; i++) {
+            listOfChildAgeRoom2.add(i);
+        }
+        room1ChildAgeSpinner = new AdapterChildCount(this, listChildernCount, listOfChildAge, this,1);
+        adapterChildCountRoom2 = new AdapterChildCount(this, listChildernCountRoom2, listOfChildAge, this,2);
+        adapterChildCountRoom3 = new AdapterChildCount(this, listChildernCountRoom3, listOfChildAge, this,3);
+        adapterChildCountRoom4 = new AdapterChildCount(this, listChildernCountRoom4, listOfChildAge, this,4);
 
-        recycl_child_spiner.setAdapter(adapterChildCount);
+        recycl_child_spiner.setAdapter(room1ChildAgeSpinner);
 
-        adapterChildCount.notifyDataSetChanged();
+        room1ChildAgeSpinner.notifyDataSetChanged();
+        room2ChildAgeSpinner.setAdapter(adapterChildCountRoom2);
+        adapterChildCountRoom2.notifyDataSetChanged();
+        room3ChildAgeSpinner.setAdapter(adapterChildCountRoom3);
+        adapterChildCountRoom3.notifyDataSetChanged();
+        room4ChildAgeSpinner.setAdapter(adapterChildCountRoom4);
+        adapterChildCountRoom4.notifyDataSetChanged();
 
-
-        listOfChild.add(0);
+//        listOfChild.add(0);
+        list1();
+        listOfChildCount();
 
         String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
         String date_m = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());
@@ -228,67 +304,151 @@ public class FindHotels extends AppCompatActivity {
 
         arrayOfResultIndex = new ArrayList<>();
         noRomes = 1;
-        for (int i = 1; i < 7; i++) {
+        for (int i = 1; i < 5; i++) {
 
             listOfRooms.add(i);
         }
-
-
-        ArrayAdapter adapterRoomCount = new ArrayAdapter(this, R.layout.item_spener, listOfRooms);
-
-        adapterRoomCount.setDropDownViewResource(R.layout.drop_dowen);
-        roomCount.setDropDownWidth(420);
-        roomCount.setDropDownVerticalOffset(200);
-        roomCount.setAdapter(adapterRoomCount);
-        roomCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ArrayList<Integer> noOfROoms = new ArrayList();
+        for (int i = 0; i < 4; i++) {
+            noOfROoms.add(i + 1);
+        }
+        ArrayAdapter numberOfRoomsAdapter = new ArrayAdapter(this, R.layout.item_spener, noOfROoms);
+        numberOfRoomsAdapter.setDropDownViewResource(R.layout.drop_dowen);
+        chooseNumberOfRoomsSpinner.setDropDownWidth(420);
+        chooseNumberOfRoomsSpinner.setDropDownVerticalOffset(200);
+        chooseNumberOfRoomsSpinner.setAdapter(numberOfRoomsAdapter);
+        chooseNumberOfRoomsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                int position = listOfRooms.get(i);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 switch (position) {
-                    case 1:
-                        listOfAdult.clear();
-                        listOfChild.clear();
-                        list1();
-                        listOfChildCount();
+                    case 0:
                         noRomes = 1;
+
+                        room1View.setVisibility(View.INVISIBLE);
+                        room2View.setVisibility(View.INVISIBLE);
+                        room3View.setVisibility(View.INVISIBLE);
+                        break;
+                    case 1:
+//                        listOfAdult.clear();
+//                        listOfChild.clear();
+//                        list1();
+//                        listOfChildCount();
+                        noRomes = 2;
+                        room1View.setVisibility(View.VISIBLE);
+                        room2View.setVisibility(View.INVISIBLE);
+                        room3View.setVisibility(View.INVISIBLE);
                         break;
                     case 2:
-                        listOfAdult.clear();
-                        noRomes = 2;
-                        listOfChild.clear();
-                        list2();
-                        listOfChildCount2();
+//                        listOfAdult.clear();
+                        noRomes = 3;
+//                        listOfChild.clear();
+//                        list2();
+//                        listOfChildCount2();
+                        room1View.setVisibility(View.VISIBLE);
+                        room2View.setVisibility(View.VISIBLE);
+                        room3View.setVisibility(View.INVISIBLE);
+                        room3.setVisibility(View.VISIBLE);
+
+                        break;
+                    case 3:
+                        room1View.setVisibility(View.VISIBLE);
+                        room2View.setVisibility(View.VISIBLE);
+                        room3View.setVisibility(View.VISIBLE);
+                        room3.setVisibility(View.VISIBLE);
+                        room4.setVisibility(View.VISIBLE);
+                        noRomes = 4;
+                        break;
 
 
                     default:
 
-                        return;
+
                 }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+                return;
+            }
+        });
+
+        ArrayAdapter adapteradult = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfAdult);
+
+        adapteradult.setDropDownViewResource(R.layout.drop_dowen);
+        room1Adult.setDropDownWidth(420);
+        room1Adult.setDropDownVerticalOffset(200);
+        room1Adult.setAdapter(adapteradult);
+        room1Adult.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-                ArrayAdapter adapteradult = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfAdult);
-
-                adapteradult.setDropDownViewResource(R.layout.drop_dowen);
-                adultCount.setDropDownWidth(420);
-                adultCount.setDropDownVerticalOffset(200);
-                adultCount.setAdapter(adapteradult);
-                adultCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                nom_adultRoom1 = listOfAdult.get(i);
+                SharedPreferencesManger.SaveData(FindHotels.this, "no_adultroom1", nom_adultRoom1);
 
 
-                        nom_adult = listOfAdult.get(i);
-                        SharedPreferencesManger.SaveData(FindHotels.this, "no_adult", nom_adult);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        //duplicate for room 2 test
+
+        room2Adult.setDropDownWidth(420);
+        room2Adult.setDropDownVerticalOffset(200);
+        room2Adult.setAdapter(adapteradult);
+        room2Adult.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+// TODO: 27/07/19 add for room 2
+                nom_adultRoom2 = listOfAdult.get(i);
+                SharedPreferencesManger.SaveData(FindHotels.this, "no_adultroom2", nom_adultRoom2);
 
 
-                    }
+            }
 
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
-                    }
-                });
+            }
+        });
+
+        room3Adult.setDropDownWidth(420);
+        room3Adult.setDropDownVerticalOffset(200);
+        room3Adult.setAdapter(adapteradult);
+        room3Adult.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+// TODO: 27/07/19 add for room 2
+                nom_adultRoom3 = listOfAdult.get(i);
+                SharedPreferencesManger.SaveData(FindHotels.this, "no_adultroom3", nom_adultRoom3);
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        room4Adult.setDropDownWidth(420);
+        room4Adult.setDropDownVerticalOffset(200);
+        room4Adult.setAdapter(adapteradult);
+        room4Adult.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+// TODO: 27/07/19 add for room 2
+                nom_adultRoom4 = listOfAdult.get(i);
+                SharedPreferencesManger.SaveData(FindHotels.this, "no_adultroom4", nom_adultRoom4);
 
 
             }
@@ -300,13 +460,22 @@ public class FindHotels extends AppCompatActivity {
         });
 
 
+//    }
+
+//    @Override
+//    public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//    }
+//});
+
+
         ArrayAdapter adapterchild = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfChild);
 
         adapterchild.setDropDownViewResource(R.layout.drop_dowen);
-        childCount.setDropDownWidth(420);
-        childCount.setDropDownVerticalOffset(200);
-        childCount.setAdapter(adapterchild);
-        childCount.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        childCountRoom1.setDropDownWidth(420);
+        childCountRoom1.setDropDownVerticalOffset(200);
+        childCountRoom1.setAdapter(adapterchild);
+        childCountRoom1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
@@ -315,46 +484,46 @@ public class FindHotels extends AppCompatActivity {
 
                     if (i == 1) {
 
-                        mChildCount = 1;
+                        mChildCountRoom1 = 1;
                         listChildernCount.clear();
                         for (int j = 1; j < 2; j++) {
                             listChildernCount.add(j);
-                            adapterChildCount.notifyDataSetChanged();
+                            room1ChildAgeSpinner.notifyDataSetChanged();
                         }
                     } else if (i == 2) {
-                        mChildCount = 2;
+                        mChildCountRoom1 = 2;
                         listChildernCount.clear();
                         for (int j = 1; j < 3; j++) {
                             listChildernCount.add(j);
-                            adapterChildCount.notifyDataSetChanged();
+                            room1ChildAgeSpinner.notifyDataSetChanged();
                         }
                     } else if (i == 3) {
-                        mChildCount = 3;
+                        mChildCountRoom1 = 3;
                         listChildernCount.clear();
                         for (int j = 1; j < 4; j++) {
                             listChildernCount.add(j);
-                            adapterChildCount.notifyDataSetChanged();
+                            room1ChildAgeSpinner.notifyDataSetChanged();
                         }
                     } else if (i == 4) {
-                        mChildCount = 4;
+                        mChildCountRoom1 = 4;
 
                         listChildernCount.clear();
                         for (int j = 1; j < 5; j++) {
 
                             listChildernCount.add(j);
-                            adapterChildCount.notifyDataSetChanged();
+                            room1ChildAgeSpinner.notifyDataSetChanged();
 
                         }
                     }
 
 
                 } else {
-                    mChildCount = 0;
+                    mChildCountRoom1 = 0;
                     listChildernCount.clear();
-                    adapterChildCount.notifyDataSetChanged();
+                    room1ChildAgeSpinner.notifyDataSetChanged();
                 }
 
-                SharedPreferencesManger.SaveData(FindHotels.this, "no_child", mChildCount);
+                SharedPreferencesManger.SaveData(FindHotels.this, "no_childroom1", mChildCountRoom1);
 
             }
 
@@ -364,6 +533,194 @@ public class FindHotels extends AppCompatActivity {
             }
         });
 
+
+        //duplicate for room 2 children
+
+        room2Child.setDropDownWidth(420);
+        room2Child.setDropDownVerticalOffset(200);
+        room2Child.setAdapter(adapterchild);
+        room2Child.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (i != 0) {
+
+
+                    if (i == 1) {
+
+                        // TODO: 27/07/19 change all
+                        mChildCountRoom2 = 1;
+                        listChildernCountRoom2.clear();
+                        for (int j = 1; j < 2; j++) {
+                            listChildernCountRoom2.add(j);
+                            adapterChildCountRoom2.notifyDataSetChanged();
+                        }
+                    } else if (i == 2) {
+                        mChildCountRoom2 = 2;
+                        listChildernCountRoom2.clear();
+                        for (int j = 1; j < 3; j++) {
+                            listChildernCountRoom2.add(j);
+                            adapterChildCountRoom2.notifyDataSetChanged();
+                        }
+                    } else if (i == 3) {
+                        mChildCountRoom2 = 3;
+                        listChildernCountRoom2.clear();
+                        for (int j = 1; j < 4; j++) {
+                            listChildernCountRoom2.add(j);
+                            adapterChildCountRoom2.notifyDataSetChanged();
+                        }
+                    } else if (i == 4) {
+                        mChildCountRoom2 = 4;
+
+                        listChildernCountRoom2.clear();
+                        for (int j = 1; j < 5; j++) {
+
+                            listChildernCountRoom2.add(j);
+                            adapterChildCountRoom2.notifyDataSetChanged();
+
+                        }
+                    }
+
+
+                } else {
+                    mChildCountRoom2 = 0;
+                    listChildernCountRoom2.clear();
+                    adapterChildCountRoom2.notifyDataSetChanged();
+                }
+
+                SharedPreferencesManger.SaveData(FindHotels.this, "no_childroom2", mChildCountRoom2);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        room3Child.setDropDownWidth(420);
+        room3Child.setDropDownVerticalOffset(200);
+        room3Child.setAdapter(adapterchild);
+        room3Child.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (i != 0) {
+
+
+                    if (i == 1) {
+
+                        // TODO: 27/07/19 change all
+                        mChildCountRoom3 = 1;
+                        listChildernCountRoom3.clear();
+                        for (int j = 1; j < 2; j++) {
+                            listChildernCountRoom3.add(j);
+                            adapterChildCountRoom3.notifyDataSetChanged();
+                        }
+                    } else if (i == 2) {
+                        mChildCountRoom3 = 2;
+                        listChildernCountRoom3.clear();
+                        for (int j = 1; j < 3; j++) {
+                            listChildernCountRoom3.add(j);
+                            adapterChildCountRoom3.notifyDataSetChanged();
+                        }
+                    } else if (i == 3) {
+                        mChildCountRoom3 = 3;
+                        listChildernCountRoom3.clear();
+                        for (int j = 1; j < 4; j++) {
+                            listChildernCountRoom3.add(j);
+                            adapterChildCountRoom3.notifyDataSetChanged();
+                        }
+                    } else if (i == 4) {
+                        mChildCountRoom3 = 4;
+
+                        listChildernCountRoom3.clear();
+                        for (int j = 1; j < 5; j++) {
+
+                            listChildernCountRoom3.add(j);
+                            adapterChildCountRoom3.notifyDataSetChanged();
+
+                        }
+                    }
+
+
+                } else {
+                    mChildCountRoom3 = 0;
+                    listChildernCountRoom3.clear();
+                    adapterChildCountRoom3.notifyDataSetChanged();
+                }
+
+                SharedPreferencesManger.SaveData(FindHotels.this, "no_childroom3", mChildCountRoom3);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        room4Child.setDropDownWidth(420);
+        room4Child.setDropDownVerticalOffset(200);
+        room4Child.setAdapter(adapterchild);
+        room4Child.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (i != 0) {
+
+
+                    if (i == 1) {
+
+                        // TODO: 27/07/19 change all
+                        mChildCountRoom4 = 1;
+                        listChildernCountRoom4.clear();
+                        for (int j = 1; j < 2; j++) {
+                            listChildernCountRoom4.add(j);
+                            adapterChildCountRoom4.notifyDataSetChanged();
+                        }
+                    } else if (i == 2) {
+                        mChildCountRoom4 = 2;
+                        listChildernCountRoom4.clear();
+                        for (int j = 1; j < 3; j++) {
+                            listChildernCountRoom4.add(j);
+                            adapterChildCountRoom4.notifyDataSetChanged();
+                        }
+                    } else if (i == 3) {
+                        mChildCountRoom4 = 3;
+                        listChildernCountRoom4.clear();
+                        for (int j = 1; j < 4; j++) {
+                            listChildernCountRoom4.add(j);
+                            adapterChildCountRoom4.notifyDataSetChanged();
+                        }
+                    } else if (i == 4) {
+                        mChildCountRoom4 = 4;
+
+                        listChildernCountRoom4.clear();
+                        for (int j = 1; j < 5; j++) {
+
+                            listChildernCountRoom4.add(j);
+                            adapterChildCountRoom4.notifyDataSetChanged();
+
+                        }
+                    }
+
+
+                } else {
+                    mChildCountRoom4 = 0;
+                    listChildernCountRoom4.clear();
+                    adapterChildCountRoom4.notifyDataSetChanged();
+                }
+
+                SharedPreferencesManger.SaveData(FindHotels.this, "no_childroom4", mChildCountRoom4);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         myCalendar = Calendar.getInstance();
 //        startDate.setOnClickListener(new View.OnClickListener() {
@@ -408,7 +765,6 @@ public class FindHotels extends AppCompatActivity {
         //list of cod country
 
 
-
         ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, listName);
         adapter.setDropDownViewResource(R.layout.drop_dowen);
         regions.setDropDownWidth(420);
@@ -444,7 +800,7 @@ public class FindHotels extends AppCompatActivity {
 
     private void listOfChildCount() {
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             listOfChild.add(i);
         }
 
@@ -454,7 +810,7 @@ public class FindHotels extends AppCompatActivity {
 
     private void listOfChildCount2() {
 
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 3; i++) {
             listOfChild.add(i);
         }
 
@@ -463,7 +819,7 @@ public class FindHotels extends AppCompatActivity {
 
     private void list1() {
 
-        for (int i = 1; i < 7; i++) {
+        for (int i = 1; i < 5; i++) {
 
 
             listOfAdult.add(i);
@@ -541,32 +897,56 @@ public class FindHotels extends AppCompatActivity {
 //        date1 = date1.plusDays(4);
 //        date2 = date2.plusDays(7);
 
-
-        service.enableLogging = true;
-        String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
-
-
-        RoomGuest roomGuest = new RoomGuest();
-        roomGuest.AdultCount = nom_adult;
-        roomGuest.ChildCount = mChildCount;
-        roomGuest.ChildAge = new ArrayOfInt();
         ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
 
-        if (mChildCount == 0) {
-            roomGuest.ChildAge = null;
-        } else {
-            StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
+        service.enableLogging = true;
+        ArrayList<String> childAgeStringArray = new ArrayList<>();
+        childAgeStringArray.add(SharedPreferencesManger.LoadStringData(this, "child_countroom1"));
+        childAgeStringArray.add(SharedPreferencesManger.LoadStringData(this, "child_countroom2"));
+        childAgeStringArray.add(SharedPreferencesManger.LoadStringData(this, "child_countroom3"));
+        childAgeStringArray.add(SharedPreferencesManger.LoadStringData(this, "child_countroom4"));
+
+        ArrayList<Integer> adultCountArray = new ArrayList<>();
+        adultCountArray.add(nom_adultRoom1);
+        adultCountArray.add(nom_adultRoom2);
+        adultCountArray.add(nom_adultRoom3);
+        adultCountArray.add(nom_adultRoom4);
+        ArrayList<Integer> childCountArray = new ArrayList<>();
+        childCountArray.add(mChildCountRoom1);
+        childCountArray.add(mChildCountRoom2);
+        childCountArray.add(mChildCountRoom3);
+        childCountArray.add(mChildCountRoom4);
+
+        for(int i=0;i<noRomes;i++)
+        {
+
+            RoomGuest roomGuest = new RoomGuest();
+            roomGuest.AdultCount = adultCountArray.get(i);
+            roomGuest.ChildCount = childCountArray.get(i);
+            roomGuest.ChildAge = new ArrayOfInt();
+            if (roomGuest.ChildCount == 0) {
+                roomGuest.ChildAge = null;
+            } else {
+                String child_count = childAgeStringArray.get(i);
+                StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
 
 
-            while (st.hasMoreTokens()) {
+                while (st.hasMoreTokens()) {
 
-                // child age count
-                String ageChildCount = st.nextToken().trim();
-                roomGuest.ChildAge.add(Integer.parseInt(ageChildCount));
+                    // child age count
+                    String ageChildCount = st.nextToken().trim();
+                    roomGuest.ChildAge.add(Integer.parseInt(ageChildCount));
 
+                }
             }
+            roomguests.add(roomGuest);
+
+            SharedPreferencesManger.SaveData(this,"roomGuests",new Gson().toJson(roomguests));
         }
-        roomguests.add(roomGuest);
+
+
+
+
 
 
         try {
@@ -576,7 +956,6 @@ public class FindHotels extends AppCompatActivity {
             hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
                     true, noRomes, "EG", roomguests, null, 100, null, "true", null,
                     10000, authenticationData);
-
 
 
 //            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
@@ -598,7 +977,7 @@ public class FindHotels extends AppCompatActivity {
                     MinHotelPrice minHotelPrice = hotelSearchResponse.HotelResultList.get(i).MinHotelPrice;
                     String currency = minHotelPrice.OriginalPrice.toString();
                     String currency1 = minHotelPrice.Currency;
-                    listPrice.add( currency1 +" "+currency);
+                    listPrice.add(currency1 + " " + currency);
                     HotelInfo hotelInfo = hotel_result.HotelInfo;
                     sessionId = hotelSearchResponse.SessionId;
                     hotelAddress = hotelInfo.HotelAddress;

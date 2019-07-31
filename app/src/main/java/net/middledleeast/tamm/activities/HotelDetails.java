@@ -26,6 +26,7 @@ import com.Tamm.Hotels.wcf.ImageUrlDetails;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.adapterPhotoHotels;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,6 +102,9 @@ public class HotelDetails extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         // imageView=findViewById(R.id.hotel_image_detail);
 
+        SharedPreferencesManger.SaveData(this, "noOfTimes", 0);
+        SharedPreferencesManger.SaveData(this, "RoomComb",null);
+        SharedPreferencesManger.SaveData(this, "arrayOfroomsreq", null);
 
         auth();
         getdataIntent();
@@ -220,6 +224,8 @@ public class HotelDetails extends AppCompatActivity {
                 intent.putExtra("noOfRooms", noOfRooms);
                 intent.putExtra("roomGuest", roomGuests);
                 intent.putExtra("resultIndex", resultIndex);
+                SharedPreferencesManger.SaveData(HotelDetails.this, "resultindex", resultIndex);
+                SharedPreferencesManger.SaveData(HotelDetails.this,"roomIndexArray",null);
                 intent.putExtra("hotel_name_s", hotelName);
                 startActivity(intent);
 
