@@ -93,14 +93,22 @@ public class checkroom extends AppCompatActivity {
 
         String roomIndexArrayStr = SharedPreferencesManger.LoadStringData(this, "roomIndexArray");
         Gson gson = new Gson();
-        roomIndexArray = gson.fromJson(roomIndexArrayStr,ArrayList.class);
-        ArrayList<Integer> roomIndexArrayInt = new ArrayList<>();
-        for (double aDouble : roomIndexArray) {
-            roomIndexArrayInt.add((int)aDouble);
-        }
 
-        Collections.sort(roomIndexArrayInt);
-        tvTotalMount.setText("  TOTAl AMOUNT :                          " + currency + " " + roomPrice);
+
+        try {
+
+
+            // TODO: 31/07/2019  error
+            roomIndexArray = gson.fromJson(roomIndexArrayStr,ArrayList.class);
+            ArrayList<Integer> roomIndexArrayInt = new ArrayList<>();
+            for (double aDouble : roomIndexArray) {
+                roomIndexArrayInt.add((int)aDouble);
+            }
+
+            Collections.sort(roomIndexArrayInt);
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + currency + " " + roomPrice);
+
+
 
 // FIXME: 29/07/19 booking options according to correct
 
@@ -133,7 +141,11 @@ public class checkroom extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        }catch (Exception e){
 
+
+
+        }
         checkRoom = findViewById(R.id.checkOutRoom);
         roomTyben = findViewById(R.id.room_Tybe);
         roomTyben.setText(roomTybe);
