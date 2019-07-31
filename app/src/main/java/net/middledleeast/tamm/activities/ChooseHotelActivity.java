@@ -91,18 +91,55 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
 
 
 
-//  ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-//      @Override
-//      public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-//
-//          list = new ArrayList<>();
-//          list.add((int) v);
-//
-//
-//        if (v==(int)1) {
-//
-//
-//            adapterHotelInfo.notifyDataSetChanged();
+
+
+  ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+      @Override
+      public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+
+          ArrayList<String> hotelNameTemp = new ArrayList<>();
+          ArrayList<Integer> hotelRateTemp = new ArrayList<>();
+          ArrayList<String> hotelPhotoTemp = new ArrayList<>();
+          ArrayList<String> hotelAddressTemp = new ArrayList<>();
+          ArrayList<String> hotelCodeTemp = new ArrayList<>();
+          ArrayList<Integer> resultIndexTemp = new ArrayList<>();
+          ArrayList<String> hotelPriceTemp = new ArrayList<>();
+
+
+          for (int i=0;i<hotelrat.size();i++) {
+              if (hotelrat.get(i) == (int) v) {
+                  hotelNameTemp.add(hotelName.get(i));
+                  hotelRateTemp.add(hotelrat.get(i));
+                  hotelPhotoTemp.add(hotelphoto.get(i));
+                  hotelAddressTemp.add(hotelAddress.get(i));
+                  hotelCodeTemp.add(hotelCode.get(i));
+                  resultIndexTemp.add(resultIndex.get(i));
+                  hotelPriceTemp.add(list_price.get(i));
+                  adapterHotelInfo = new AdapterHotelInfo(ChooseHotelActivity.this,
+                          hotelNameTemp,
+                          hotelRateTemp,
+                          hotelPhotoTemp,
+                          ChooseHotelActivity.this,
+                          onHotelListener,
+                          hotelAddressTemp,
+                          hotelCodeTemp,
+                          session_id,
+                          mstartTime,
+                          mendTime,
+                          countryName,
+                          cityName,
+                          cityId,
+                          noOfRooms,
+                          roomGuests,
+                          resultIndexTemp,
+                          hotelPriceTemp);
+                  reInfoHotels.setAdapter(adapterHotelInfo);
+                  adapterHotelInfo.notifyDataSetChanged();
+              }
+
+          }
+
+
 //
 //
 //        }else if (v==(int)2){
@@ -153,9 +190,9 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
 //            });
 //            adapterHotelInfo.notifyDataSetChanged();
 //
-//        }
-//      }
-//  });
+
+      }
+  });
 
 
 

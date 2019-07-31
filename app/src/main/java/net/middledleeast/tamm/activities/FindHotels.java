@@ -388,64 +388,64 @@ public class FindHotels extends AppCompatActivity {
         }
 
 
-        ArrayAdapter adapterRateCount = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfRate);
-
-        adapterRateCount.setDropDownViewResource(R.layout.drop_dowen);
-        chooseRate.setDropDownWidth(420);
-        chooseRate.setDropDownVerticalOffset(200);
-        chooseRate.setAdapter(adapterRateCount);
-        chooseRate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                int position = listOfRate.get(i);
-
-                switch (position) {
-
-                    case 0:
-                        filters = new Filters();
-                        filters.StarRating = Enums.HotelRatingInput.All;
-                        break;
-                    case 1:
-
-                        filters = new Filters();
-                        filters.StarRating = Enums.HotelRatingInput.OneStarOrLess;
-
-                        break;
-                    case 2:
-
-                        filters = new Filters();
-                        filters.StarRating = Enums.HotelRatingInput.TwoStarOrLess;
-
-                        break;
-                    case 3:
-
-                        filters = new Filters();
-                        filters.StarRating = Enums.HotelRatingInput.ThreeStarOrLess;
-
-                        break;
-                    case 4:
-
-                        filters = new Filters();
-                        filters.StarRating = Enums.HotelRatingInput.FourStarOrLess;
-
-                        break;
-                    case 5:
-
-                        filters = new Filters();
-                        filters.StarRating = Enums.HotelRatingInput.FiveStarOrMore;
-
-                    default:
-
-                        return;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+//        ArrayAdapter adapterRateCount = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfRate);
+//
+//        adapterRateCount.setDropDownViewResource(R.layout.drop_dowen);
+//        chooseRate.setDropDownWidth(420);
+//        chooseRate.setDropDownVerticalOffset(200);
+//        chooseRate.setAdapter(adapterRateCount);
+//        chooseRate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//
+//                int position = listOfRate.get(i);
+//
+//                switch (position) {
+//
+//                    case 0:
+//                        filters = new Filters();
+//                        filters.StarRating = Enums.HotelRatingInput.All;
+//                        break;
+//                    case 1:
+//
+//                        filters = new Filters();
+//                        filters.StarRating = Enums.HotelRatingInput.OneStarOrLess;
+//
+//                        break;
+//                    case 2:
+//
+//                        filters = new Filters();
+//                        filters.StarRating = Enums.HotelRatingInput.TwoStarOrLess;
+//
+//                        break;
+//                    case 3:
+//
+//                        filters = new Filters();
+//                        filters.StarRating = Enums.HotelRatingInput.ThreeStarOrLess;
+//
+//                        break;
+//                    case 4:
+//
+//                        filters = new Filters();
+//                        filters.StarRating = Enums.HotelRatingInput.FourStarOrLess;
+//
+//                        break;
+//                    case 5:
+//
+//                        filters = new Filters();
+//                        filters.StarRating = Enums.HotelRatingInput.FiveStarOrMore;
+//
+//                    default:
+//
+//                        return;
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//            }
+//        });
 
 
         ArrayAdapter adapterRoomCount = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfRooms);
