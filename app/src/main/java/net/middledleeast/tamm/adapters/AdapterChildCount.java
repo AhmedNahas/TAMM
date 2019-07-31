@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.common.api.Api;
+import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.FindHotels;
@@ -106,16 +107,23 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
 
                 switch (roomno) {
                     case 1:
-                        SharedPreferencesManger.SaveData(activity, "child_countroom1", str);
+                        String lAge = new Gson().toJson(list_age_save);
+                        SharedPreferencesManger.SaveData(activity, "child_countroom1", lAge);
                         break;
                     case 2:
-                        SharedPreferencesManger.SaveData(activity, "child_countroom2", str);
+                        String lAge2 = new Gson().toJson(list_age_save);
+
+                        SharedPreferencesManger.SaveData(activity, "child_countroom2", lAge2);
                         break;
                     case 3:
-                        SharedPreferencesManger.SaveData(activity, "child_countroom3", str);
+                        String lAge3 = new Gson().toJson(list_age_save);
+
+                        SharedPreferencesManger.SaveData(activity, "child_countroom3", lAge3);
                         break;
                     case 4:
-                        SharedPreferencesManger.SaveData(activity, "child_countroom4", str);
+                        String lAge4 = new Gson().toJson(list_age_save);
+
+                        SharedPreferencesManger.SaveData(activity, "child_countroom4", lAge4);
                         break;
                 }
 
