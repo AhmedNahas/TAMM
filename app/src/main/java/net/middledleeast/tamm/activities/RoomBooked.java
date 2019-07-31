@@ -39,6 +39,7 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -76,7 +77,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
     private Button button;
-    private boolean ClickBookedHotel=false;
+    private boolean ClickBookedHotel = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,18 +125,146 @@ public class RoomBooked extends AppCompatActivity {
         resultIndex = SharedPreferencesManger.LoadIntegerData(this, "resultindex");
         roomIndex = SharedPreferencesManger.LoadIntegerData(this, "roomIndex");
         mHOtelCode = SharedPreferencesManger.LoadStringData(this, "mHotel_code");
-
+        arrayOfGuest = new ArrayOfGuest();
 
 // FIXME: 7/31/2019 complete
+        int noOfAdultRoom1 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom1");
+        int noOfAdultRoom2 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom2");
+        int noOfAdultRoom3 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom3");
+        int noOfAdultRoom4 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom4");
+        int noOfChildRoom1 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom1");
+        int noOfChildRoom2 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom2");
+        int noOfChildRoom3 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom3");
+        int noOfChildRoom4 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom4");
+        String childAgeRoom1 = SharedPreferencesManger.LoadStringData(this, "child_countroom1");
+        ArrayList<Integer> childAgeRoom1Array = new Gson().fromJson(childAgeRoom1,ArrayList.class);
+        String childAgeRoom2 = SharedPreferencesManger.LoadStringData(this, "child_countroom2");
+        ArrayList<Integer> childAgeRoom1Array2 = new Gson().fromJson(childAgeRoom2,ArrayList.class);
 
-        ArrayOfRoomGuest arrayOfRoomGuest = new Gson().fromJson(SharedPreferencesManger.LoadStringData(this,"roomGuests"),ArrayOfRoomGuest.class);
+        String childAgeRoom3 = SharedPreferencesManger.LoadStringData(this, "child_countroom3");
+        ArrayList<Integer> childAgeRoom1Array3 = new Gson().fromJson(childAgeRoom3,ArrayList.class);
 
+        String childAgeRoom4 = SharedPreferencesManger.LoadStringData(this, "child_countroom4");
+        ArrayList<Integer> childAgeRoom1Array4 = new Gson().fromJson(childAgeRoom4,ArrayList.class);
 
-//        arrayOfGuest = new ArrayOfGuest();
-//        int adultCount = 0;
-//        for (RoomGuest roomGuest : arrayOfRoomGuest) {
-//            adultCount += roomGuest.AdultCount;
-//        }
+        ArrayOfRoomGuest arrayOfRoomGuest = new Gson().fromJson(SharedPreferencesManger.LoadStringData(this, "roomGuests"), ArrayOfRoomGuest.class);
+        int noOfRooms = SharedPreferencesManger.LoadIntegerData(this, "noOfRooms");
+        for (int i = 1; i <= noOfRooms; i++) {
+            switch (i) {
+                case 1:
+
+                    for (int i1 = 0; i1 < noOfAdultRoom1; i1++) {
+                        Guest guest = new Guest();
+                        guest.Title = "Mr";
+                        guest.FirstName = "Ahmed";
+                        guest.GuestType = Enums.GuestType.Adult;
+                        guest.LastName = "Ahmed";
+                        if (i1 == 0) {
+                            guest.LeadGuest = true;
+                        } else {
+                            guest.LeadGuest = false;
+
+                        }
+                        guest.GuestInRoom = 1;
+                        arrayOfGuest.add(guest);
+                    }
+                    for (int i1 = 0; i1 < noOfChildRoom1; i1++) {
+                        Guest guest = new Guest();
+                        guest.Title = "Mr";
+                        guest.FirstName = "Ahmed";
+                        guest.LastName = "Ahmed";
+                        guest.LeadGuest = false;
+                        guest.GuestType = Enums.GuestType.Child;
+                        guest.GuestInRoom = 1;
+                        guest.Age = (int)childAgeRoom1Array.get(i1);
+                        arrayOfGuest.add(guest);
+
+                    }
+
+                    break;
+                case 2:
+                    for (int i1 = 0; i1 < noOfAdultRoom2; i1++) {
+                        Guest guest = new Guest();
+                        guest.Title = "Mr";
+                        guest.FirstName = "Ahmed";
+                        guest.LastName = "Ahmed";
+                        guest.LeadGuest = false;
+                        guest.GuestType = Enums.GuestType.Adult;
+                        guest.GuestInRoom = 2;
+                        arrayOfGuest.add(guest);
+
+                    }
+
+                    for (int i1 = 0; i1 < noOfChildRoom2; i1++) {
+                        Guest guest = new Guest();
+                        guest.Title = "Mr";
+                        guest.FirstName = "Ahmed";
+                        guest.LastName = "Ahmed";
+                        guest.LeadGuest = false;
+                        guest.GuestType = Enums.GuestType.Child;
+                        guest.GuestInRoom = 2;
+                        guest.Age = (int) childAgeRoom1Array2.get(i1);
+                        arrayOfGuest.add(guest);
+
+                    }
+
+                    break;
+                case 3:
+                    for (int i1 = 0; i1 < noOfAdultRoom3; i1++) {
+                        Guest guest = new Guest();
+                        guest.Title = "Mr";
+                        guest.FirstName = "Ahmed";
+                        guest.LastName = "Ahmed";
+                        guest.LeadGuest = false;
+                        guest.GuestType = Enums.GuestType.Adult;
+                        guest.GuestInRoom = 3;
+                        arrayOfGuest.add(guest);
+
+                    }
+                    for (int i1 = 0; i1 < noOfChildRoom3; i1++) {
+                        Guest guest = new Guest();
+                        guest.Title = "Mr";
+                        guest.FirstName = "Ahmed";
+                        guest.LastName = "Ahmed";
+                        guest.LeadGuest = false;
+                        guest.GuestType = Enums.GuestType.Child;
+                        guest.GuestInRoom = 3;
+                        guest.Age =  (int)childAgeRoom1Array3.get(i1);
+                        arrayOfGuest.add(guest);
+
+                    }
+
+                    break;
+                case 4:
+                    for (int i1 = 0; i1 < noOfAdultRoom4; i1++) {
+                        Guest guest = new Guest();
+                        guest.Title = "Mr";
+                        guest.FirstName = "Ahmed";
+                        guest.LastName = "Ahmed";
+                        guest.LeadGuest = false;
+                        guest.GuestType = Enums.GuestType.Adult;
+                        guest.GuestInRoom = 4;
+                        arrayOfGuest.add(guest);
+
+                    }
+
+                    for (int i1 = 0; i1 < noOfChildRoom4; i1++) {
+                        Guest guest = new Guest();
+                        guest.Title = "Mr";
+                        guest.FirstName = "Ahmed";
+                        guest.LastName = "Ahmed";
+                        guest.LeadGuest = false;
+                        guest.GuestType = Enums.GuestType.Child;
+                        guest.GuestInRoom = 4;
+                        guest.Age =  (int)childAgeRoom1Array4.get(i1);
+                        arrayOfGuest.add(guest);
+
+                    }
+
+                    break;
+            }
+        }
+
 
 //        for (int i=0 i<) {
 //            Guest guest =new Guest();

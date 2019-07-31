@@ -1105,8 +1105,9 @@ public class FindHotels extends AppCompatActivity {
                 roomGuest.ChildAge = null;
             } else {
                 String child_count = childAgeStringArray.get(i);
+                child_count= child_count.replace("[", "");
+                child_count = child_count.replace("]", "");
                 StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
-
 
                 while (st.hasMoreTokens()) {
 
