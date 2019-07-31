@@ -87,7 +87,7 @@ public class FindHotels extends AppCompatActivity {
     Button findHotels;
     ArrayList<Integer> ratrHotel = new ArrayList<Integer>();
 
-//    RelativeLayout relativeImgFindHotelTamm;
+    //    RelativeLayout relativeImgFindHotelTamm;
 //    @BindView(R.id.assistant_label_voice_find_hotel)
 //    TextView assistantLabelVoiceFindHotel;
 //    @BindView(R.id.assistant_label_call_find_hotel)
@@ -114,7 +114,7 @@ public class FindHotels extends AppCompatActivity {
     private String hotelPicture;
     private Spinner adultCount, childCount;
     private AutoCompleteTextView regions, areas;
-    private Spinner  room1Adult, childCountRoom1;
+    private Spinner room1Adult, childCountRoom1;
     private List<String> listID = new ArrayList<>();
     private String nameCountry;
     private String name_city;
@@ -135,7 +135,7 @@ public class FindHotels extends AppCompatActivity {
     private List<Integer> listOfChild = new ArrayList<>();
     private List<Integer> listChildernCount = new ArrayList<>();
     private List<Integer> listChildernCountRoom2 = new ArrayList<>();
-//    private int nom_adult;
+    //    private int nom_adult;
     private int mChildCountRoom1;
     private int mChildCountRoom2;
 
@@ -169,7 +169,7 @@ public class FindHotels extends AppCompatActivity {
     private List<Integer> listChildernCountRoom3 = new ArrayList<>();
     private Spinner room4Child;
     private int mChildCountRoom4;
-    private List<Integer> listChildernCountRoom4= new ArrayList<>();
+    private List<Integer> listChildernCountRoom4 = new ArrayList<>();
     private RecyclerView room3ChildAgeSpinner;
     private RecyclerView room4ChildAgeSpinner;
 
@@ -339,10 +339,10 @@ public class FindHotels extends AppCompatActivity {
         for (int i = 0; i < 18; i++) {
             listOfChildAgeRoom2.add(i);
         }
-        room1ChildAgeSpinner = new AdapterChildCount(this, listChildernCount, listOfChildAge, this,1);
-        adapterChildCountRoom2 = new AdapterChildCount(this, listChildernCountRoom2, listOfChildAge, this,2);
-        adapterChildCountRoom3 = new AdapterChildCount(this, listChildernCountRoom3, listOfChildAge, this,3);
-        adapterChildCountRoom4 = new AdapterChildCount(this, listChildernCountRoom4, listOfChildAge, this,4);
+        room1ChildAgeSpinner = new AdapterChildCount(this, listChildernCount, listOfChildAge, this, 1);
+        adapterChildCountRoom2 = new AdapterChildCount(this, listChildernCountRoom2, listOfChildAge, this, 2);
+        adapterChildCountRoom3 = new AdapterChildCount(this, listChildernCountRoom3, listOfChildAge, this, 3);
+        adapterChildCountRoom4 = new AdapterChildCount(this, listChildernCountRoom4, listOfChildAge, this, 4);
 
         recycl_child_spiner.setAdapter(room1ChildAgeSpinner);
 
@@ -386,8 +386,6 @@ public class FindHotels extends AppCompatActivity {
         for (int i = 0; i < 4; i++) {
             noOfROoms.add(i + 1);
         }
-
-
 
 
         ArrayAdapter adapterRateCount = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfRate);
@@ -450,7 +448,7 @@ public class FindHotels extends AppCompatActivity {
         });
 
 
-                ArrayAdapter adapterRoomCount = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfRooms);
+        ArrayAdapter adapterRoomCount = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfRooms);
 
         ArrayAdapter numberOfRoomsAdapter = new ArrayAdapter(this, R.layout.item_spener, noOfROoms);
         numberOfRoomsAdapter.setDropDownViewResource(R.layout.drop_dowen);
@@ -607,7 +605,6 @@ public class FindHotels extends AppCompatActivity {
 //
 //    }
 //});
-
 
 
         ArrayAdapter adapterchild = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfChild);
@@ -1098,8 +1095,7 @@ public class FindHotels extends AppCompatActivity {
         childCountArray.add(mChildCountRoom3);
         childCountArray.add(mChildCountRoom4);
 
-        for(int i=0;i<noRomes;i++)
-        {
+        for (int i = 0; i < noRomes; i++) {
 
             RoomGuest roomGuest = new RoomGuest();
             roomGuest.AdultCount = adultCountArray.get(i);
@@ -1122,15 +1118,8 @@ public class FindHotels extends AppCompatActivity {
             }
             roomguests.add(roomGuest);
 
-            SharedPreferencesManger.SaveData(this,"roomGuests",new Gson().toJson(roomguests));
+            SharedPreferencesManger.SaveData(this, "roomGuests", new Gson().toJson(roomguests));
         }
-
-
-
-
-
-
-
 
 
         try {

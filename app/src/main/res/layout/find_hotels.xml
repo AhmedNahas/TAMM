@@ -402,6 +402,7 @@
         android:background="@android:color/transparent">
 
         <TextView
+            android:layout_marginStart="@dimen/_4sdp"
             android:id="@+id/texter"
             android:layout_width="84dp"
             android:layout_height="match_parent"

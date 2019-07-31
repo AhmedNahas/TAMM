@@ -128,13 +128,18 @@ public class RoomBooked extends AppCompatActivity {
 
 // FIXME: 7/31/2019 complete
 
-//        ArrayOfRoomGuest arrayOfRoomGuest = new Gson().fromJson(SharedPreferencesManger.LoadStringData(this,"roomGuests"));
+        ArrayOfRoomGuest arrayOfRoomGuest = new Gson().fromJson(SharedPreferencesManger.LoadStringData(this,"roomGuests"),ArrayOfRoomGuest.class);
 
 
 //        arrayOfGuest = new ArrayOfGuest();
+//        int adultCount = 0;
 //        for (RoomGuest roomGuest : arrayOfRoomGuest) {
+//            adultCount += roomGuest.AdultCount;
+//        }
+
+//        for (int i=0 i<) {
 //            Guest guest =new Guest();
-//            guest.FirstName = roomGuest
+//
 //        }
 
         // FIXME: 7/31/2019 end

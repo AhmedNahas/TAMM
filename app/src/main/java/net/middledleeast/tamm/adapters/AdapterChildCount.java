@@ -38,7 +38,7 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
 
 
     Activity activity;
-    Context context ;
+    Context context;
 
     // list of age 18 no
     private List<Integer> list_age;
@@ -46,9 +46,9 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
     // list to save the age of child
     private List<Integer> list_age_save = new ArrayList<>();
 
-public  static  boolean child_m ;
+    public static boolean child_m;
 
-    public AdapterChildCount(Activity activity, List<Integer> listCountCild, List<Integer> list_age , Context context ,int roomno) {
+    public AdapterChildCount(Activity activity, List<Integer> listCountCild, List<Integer> list_age, Context context, int roomno) {
         this.listCountCild = listCountCild;
         this.activity = activity;
         this.list_age = list_age;
@@ -88,41 +88,36 @@ public  static  boolean child_m ;
 //                StringBuilder str = new StringBuilder();
 //                for (int k=0;k<listCountCild.size();k++)
 //                {
-                if(list_age_save.size()==listCountCild.size()) {
-                    for (int k=0;k<listCountCild.size();k++) {
-                        list_age_save.set(position,list_age.get(i));
+                if (list_age_save.size() == listCountCild.size()) {
+                    for (int k = 0; k < listCountCild.size(); k++) {
+                        list_age_save.set(position, list_age.get(i));
 //                        str.append(list_age_save.get(position)).append(",");
                     }
-                }
-                else
-                {
+                } else {
                     list_age_save.add(list_age.get(i));
 //                    str.append(list_age_save.get(position)).append(",");
                 }
 
 //                }
-               String str = list_age_save.toString();
-              str=  str.replace("[", "");
-               str=  str.replace("]", "");
+                String str = list_age_save.toString();
+                str = str.replace("[", "");
+                str = str.replace("]", "");
                 // TODO: 28/07/19 complete
 
-                switch (roomno)
-                {
+                switch (roomno) {
                     case 1:
                         SharedPreferencesManger.SaveData(activity, "child_countroom1", str);
+                        break;
                     case 2:
                         SharedPreferencesManger.SaveData(activity, "child_countroom2", str);
+                        break;
                     case 3:
                         SharedPreferencesManger.SaveData(activity, "child_countroom3", str);
+                        break;
                     case 4:
                         SharedPreferencesManger.SaveData(activity, "child_countroom4", str);
-
+                        break;
                 }
-
-
-
-
-
 
 
 //
