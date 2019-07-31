@@ -37,7 +37,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.pedant.SweetAlert.SweetAlertDialog;
 import payments.PaymentObjectProvider;
 import payments.ResponseHelper;
 
@@ -51,17 +50,12 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     RelativeLayout relativeFirstlast3;
     @BindView(R.id.mromiss4)
     Spinner mromiss4;
-    @BindView(R.id.ed_first4)
-    EditText edFirst4;
     @BindView(R.id.relative_firstlast4)
     RelativeLayout relativeFirstlast4;
-    EditText edFirst5;
     @BindView(R.id.relative_firstlast5)
     RelativeLayout relativeFirstlast5;
     @BindView(R.id.mromiss6)
     Spinner mromiss6;
-    @BindView(R.id.ed_first6)
-    EditText edFirst6;
     @BindView(R.id.relative_firstlast6)
     RelativeLayout relativeFirstlast6;
     @BindView(R.id.specification)
@@ -92,18 +86,10 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     ImageView imgLinee2;
     @BindView(R.id.mromiss1)
     Spinner mromiss1;
-    @BindView(R.id.ed_first)
-    EditText edFirst;
-    @BindView(R.id.lastName)
-    EditText lastName;
     @BindView(R.id.mromiss2)
     Spinner mromiss2;
-    @BindView(R.id.ed_first2)
-    EditText edFirst2;
     @BindView(R.id.mromiss3)
     Spinner mromiss3;
-    @BindView(R.id.ed_first3)
-    EditText edFirst3;
     @BindView(R.id.mromiss5)
     Spinner mromiss5;
 
@@ -111,120 +97,85 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     RelativeLayout relativeNames1;
     @BindView(R.id.mromiss1R_2)
     Spinner mromiss1R2;
-    @BindView(R.id.ed_firstR_2)
-    EditText edFirstR2;
-    @BindView(R.id.lastNameR_2)
-    EditText lastNameR2;
     @BindView(R.id.relative_firstlastR_2)
     RelativeLayout relativeFirstlastR2;
     @BindView(R.id.mromiss2R_2)
     Spinner mromiss2R2;
-    @BindView(R.id.ed_first2R_2)
-    EditText edFirst2R2;
     @BindView(R.id.relative_firstlast2R_2)
     RelativeLayout relativeFirstlast2R2;
     @BindView(R.id.mromiss3R_2)
     Spinner mromiss3R2;
-    @BindView(R.id.ed_first3R_2)
-    EditText edFirst3R2;
     @BindView(R.id.relative_firstlast3R_2)
     RelativeLayout relativeFirstlast3R2;
     @BindView(R.id.mromiss4R_2)
     Spinner mromiss4R2;
-    @BindView(R.id.ed_first4R_2)
-    EditText edFirst4R2;
     @BindView(R.id.relative_firstlast4R_2)
     RelativeLayout relativeFirstlast4R2;
     @BindView(R.id.mromiss5R_2)
     Spinner mromiss5R2;
-    @BindView(R.id.ed_first5R_2)
-    EditText edFirst5R2;
+
     @BindView(R.id.relative_firstlast5R_2)
     RelativeLayout relativeFirstlast5R2;
     @BindView(R.id.mromiss6R_2)
     Spinner mromiss6R2;
-    @BindView(R.id.ed_first6R_2)
-    EditText edFirst6R2;
+
     @BindView(R.id.relative_firstlast6R_2)
     RelativeLayout relativeFirstlast6R2;
     @BindView(R.id.relative_namesR_2)
     RelativeLayout relativeNamesR2;
     @BindView(R.id.mromiss1R_3)
     Spinner mromiss1R3;
-    @BindView(R.id.ed_firstR_3)
-    EditText edFirstR3;
-    @BindView(R.id.lastNameR_3)
-    EditText lastNameR3;
     @BindView(R.id.relative_firstlastR_3)
     RelativeLayout relativeFirstlastR3;
     @BindView(R.id.mromiss2R_3)
     Spinner mromiss2R3;
-    @BindView(R.id.ed_first2R_3)
-    EditText edFirst2R3;
     @BindView(R.id.relative_firstlast2R_3)
     RelativeLayout relativeFirstlast2R3;
     @BindView(R.id.mromiss3R_3)
     Spinner mromiss3R3;
-    @BindView(R.id.ed_first3R_3)
-    EditText edFirst3R3;
     @BindView(R.id.relative_firstlast3R_3)
     RelativeLayout relativeFirstlast3R3;
     @BindView(R.id.mromiss4R_3)
     Spinner mromiss4R3;
-    @BindView(R.id.ed_first4R_3)
-    EditText edFirst4R3;
     @BindView(R.id.relative_firstlast4R_3)
     RelativeLayout relativeFirstlast4R3;
     @BindView(R.id.mromiss5R_3)
     Spinner mromiss5R3;
-    @BindView(R.id.ed_first5R_3)
-    EditText edFirst5R3;
+
     @BindView(R.id.relative_firstlast5R_3)
     RelativeLayout relativeFirstlast5R3;
     @BindView(R.id.mromiss6R_3)
     Spinner mromiss6R3;
-    @BindView(R.id.ed_first6R_3)
-    EditText edFirst6R3;
+
     @BindView(R.id.relative_firstlast6R_3)
     RelativeLayout relativeFirstlast6R3;
     @BindView(R.id.relative_namesR_3)
     RelativeLayout relativeNamesR3;
     @BindView(R.id.mromiss1R_4)
     Spinner mromiss1R4;
-    @BindView(R.id.ed_firstR_4)
-    EditText edFirstR4;
-    @BindView(R.id.lastNameR_4)
-    EditText lastNameR4;
     @BindView(R.id.relative_firstlastR_4)
     RelativeLayout relativeFirstlastR4;
     @BindView(R.id.mromiss2R_4)
     Spinner mromiss2R4;
-    @BindView(R.id.ed_first2R_4)
-    EditText edFirst2R4;
     @BindView(R.id.relative_firstlast2R_4)
     RelativeLayout relativeFirstlast2R4;
     @BindView(R.id.mromiss3R_4)
     Spinner mromiss3R4;
-    @BindView(R.id.ed_first3R_4)
-    EditText edFirst3R4;
     @BindView(R.id.relative_firstlast3R_4)
     RelativeLayout relativeFirstlast3R4;
     @BindView(R.id.mromiss4R_4)
     Spinner mromiss4R4;
-    @BindView(R.id.ed_first4R_4)
-    EditText edFirst4R4;
+
     @BindView(R.id.relative_firstlast4R_4)
     RelativeLayout relativeFirstlast4R4;
     @BindView(R.id.mromiss5R_4)
     Spinner mromiss5R4;
-    @BindView(R.id.ed_first5R_4)
-    EditText edFirst5R4;
+
     @BindView(R.id.relative_firstlast5R_4)
     RelativeLayout relativeFirstlast5R4;
     @BindView(R.id.mromiss6R_4)
     Spinner mromiss6R4;
-    @BindView(R.id.ed_first6R_4)
-    EditText edFirst6R4;
+
     @BindView(R.id.relative_firstlast6R_4)
     RelativeLayout relativeFirstlast6R4;
     @BindView(R.id.relative_namesR_4)
@@ -235,6 +186,102 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     TextView tvRequest;
     @BindView(R.id.tv_tab_me_confirm_hotels)
     TextView tvTabMeConfirmHotels;
+    @BindView(R.id.first_name_1_gust_one)
+    EditText firstName1GustOne;
+    @BindView(R.id.lastName_1_gust_one)
+    EditText lastName1GustOne;
+    @BindView(R.id.first_name_2_gust_one)
+    EditText firstName2GustOne;
+    @BindView(R.id.last_name_2_gust_one)
+    EditText lastName2GustOne;
+    @BindView(R.id.first_name_3_gust_one)
+    EditText firstName3GustOne;
+    @BindView(R.id.last_name_3_gust_one)
+    EditText lastName3GustOne;
+    @BindView(R.id.first_name_4_gust_one)
+    EditText firstName4GustOne;
+    @BindView(R.id.last_name_4_gust_one)
+    EditText lastName4GustOne;
+    @BindView(R.id.first_name_1_child_gust_one)
+    EditText firstName1ChildGustOne;
+    @BindView(R.id.last_name_1_child_gust_one)
+    EditText lastName1ChildGustOne;
+    @BindView(R.id.first_name_2_child_gust_one)
+    EditText firstName2ChildGustOne;
+    @BindView(R.id.last_name_2_child_gust_one)
+    EditText lastName2ChildGustOne;
+    @BindView(R.id.first_name_1_gust_2)
+    EditText firstName1Gust2;
+    @BindView(R.id.last_name_1_gust_2)
+    EditText lastName1Gust2;
+    @BindView(R.id.first_name_2_gust_2)
+    EditText firstName2Gust2;
+    @BindView(R.id.last_name_2_gust_2)
+    EditText lastName2Gust2;
+    @BindView(R.id.first_name_3_gust_2)
+    EditText firstName3Gust2;
+    @BindView(R.id.last_name_3_gust_2)
+    EditText lastName3Gust2;
+    @BindView(R.id.first_name_4_gust_2)
+    EditText firstName4Gust2;
+    @BindView(R.id.last_name_4_gust_2)
+    EditText lastName4Gust2;
+    @BindView(R.id.first_name_1_child_gust_2)
+    EditText firstName1ChildGust2;
+    @BindView(R.id.last_name_1_child_gust_2)
+    EditText lastName1ChildGust2;
+    @BindView(R.id.first_name_2_child_gust_2)
+    EditText firstName2ChildGust2;
+    @BindView(R.id.last_name_2_child_gust_2)
+    EditText lastName2ChildGust2;
+    @BindView(R.id.first_name_1_gust_3)
+    EditText firstName1Gust3;
+    @BindView(R.id.last_name_1_gust_3)
+    EditText lastName1Gust3;
+    @BindView(R.id.first_name_2_gust_3)
+    EditText firstName2Gust3;
+    @BindView(R.id.last_name_2_gust_3)
+    EditText lastName2Gust3;
+    @BindView(R.id.first_name_3_gust_3)
+    EditText firstName3Gust3;
+    @BindView(R.id.last_name_3_gust_3)
+    EditText lastName3Gust3;
+    @BindView(R.id.first_name_4_gust_3)
+    EditText firstName4Gust3;
+    @BindView(R.id.last_name_4_gust_3)
+    EditText lastName4Gust3;
+    @BindView(R.id.first_name_1_child_gust_3)
+    EditText firstName1ChildGust3;
+    @BindView(R.id.last_name_1_child_gust_3)
+    EditText lastName1ChildGust3;
+    @BindView(R.id.first_name_2_child_gust_3)
+    EditText firstName2ChildGust3;
+    @BindView(R.id.last_name_2_child_gust_3)
+    EditText lastName2ChildGust3;
+    @BindView(R.id.first_name_1_gust_4)
+    EditText firstName1Gust4;
+    @BindView(R.id.last_name_1_gust_4)
+    EditText lastName1Gust4;
+    @BindView(R.id.first_name_2_gust_4)
+    EditText firstName2Gust4;
+    @BindView(R.id.last_name_2_gust_4)
+    EditText lastName2Gust4;
+    @BindView(R.id.first_name_3_gust_4)
+    EditText firstName3Gust4;
+    @BindView(R.id.last_name_3_gust_4)
+    EditText lastName3Gust4;
+    @BindView(R.id.first_name_4_gust_4)
+    EditText firstName4Gust4;
+    @BindView(R.id.last_name_4_gust_4)
+    EditText lastName4Gust4;
+    @BindView(R.id.first_name_1_child_gust_4)
+    EditText firstName1ChildGust4;
+    @BindView(R.id.last_name_1_child_gust_4)
+    EditText lastName1ChildGust4;
+    @BindView(R.id.first_name_2_child_gust_4)
+    EditText firstName2ChildGust4;
+    @BindView(R.id.last_name_2_child_gust_4)
+    EditText lastName2ChildGust4;
     private Button confirmRoom;
     private RelativeLayout back;
     ArrayOfGuest arrayOfGuest;
@@ -255,7 +302,6 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     private String hotel_name;
     private String roomPrice;
     private String currency;
-    EditText firstName;
     private boolean ClickConfirmHotel = false;
     private int no_adultroom1, no_adultroom2, no_adultroom3, no_adultroom4;
     private int child_countroom4, child_countroom3, child_countroom2, child_countroom1;
@@ -266,8 +312,6 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_booking_room);
         ButterKnife.bind(this);
-        firstName = findViewById(R.id.ed_first);
-        lastName = findViewById(R.id.lastName);
         confirmRoom = findViewById(R.id.confirm_room_booking);
         Gson gson = new Gson();
 
@@ -299,22 +343,35 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 
         int noOfRooms = SharedPreferencesManger.LoadIntegerData(ConfirmBookingRoom.this, "noOfRooms");
 
+
+        // 1 room
         if (noOfRooms == 1) {
             no_adultroom1 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom1");
 
 
+
             if (no_adultroom1 == 1) {
 
+                String firstName1GustOne = this.firstName1GustOne.getText().toString();
+                String lastName1GustOne = this.lastName1GustOne.getText().toString();
+
+
             } else if (no_adultroom1 == 2) {
+
                 relativeFirstlast2.setVisibility(View.VISIBLE);
                 relativeFirstlastR4.setVisibility(View.GONE);
 
+
+                String firstName2GustOne = this.firstName2GustOne.getText().toString();
+                String lastName2GustOne = this.lastName2GustOne.getText().toString();
 
             } else if (no_adultroom1 == 3) {
                 relativeFirstlast2.setVisibility(View.VISIBLE);
                 relativeFirstlast3.setVisibility(View.VISIBLE);
-
                 relativeFirstlastR4.setVisibility(View.GONE);
+
+                String firstName3GustOne = this.firstName3GustOne.getText().toString();
+                String lastName3GustOne = this.lastName3GustOne.getText().toString();
 
 
             } else if (no_adultroom1 == 4) {
@@ -322,6 +379,9 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast3.setVisibility(View.VISIBLE);
                 relativeFirstlast4.setVisibility(View.VISIBLE);
 
+
+                String firstName4GustOne = this.firstName4GustOne.getText().toString();
+                String lastName4GustOne = this.lastName4GustOne.getText().toString();
             }
             child_countroom1 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom1");
 
@@ -329,15 +389,21 @@ public class ConfirmBookingRoom extends AppCompatActivity {
             if (child_countroom1 == 1) {
 
                 relativeFirstlast5.setVisibility(View.VISIBLE);
+
+                String firstName1ChildGustOne = this.firstName1ChildGustOne.getText().toString();
+                String lastName1ChildGustOne = this.lastName1ChildGustOne.getText().toString();
+
             } else if (child_countroom1 == 2) {
                 relativeFirstlast5.setVisibility(View.VISIBLE);
                 relativeFirstlast6.setVisibility(View.VISIBLE);
 
-
+                String firstName2ChildGustOne = this.firstName2ChildGustOne.getText().toString();
+                String lastName2ChildGustOne = this.lastName2ChildGustOne.getText().toString();
 
             }
 
 
+            // 2 rooms
         } else if (noOfRooms == 2) {
             no_adultroom2 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom2");
 
@@ -346,11 +412,17 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeNamesR2.setVisibility(View.VISIBLE);
                 relativeFirstlastR2.setVisibility(View.VISIBLE);
 
+                String firstName1Gust2 =this.firstName1Gust2.getText().toString();
+                String lastName1Gust2 = this.lastName1Gust2.getText().toString();
+
             } else if (no_adultroom2 == 2) {
                 relativeNamesR2.setVisibility(View.VISIBLE);
                 relativeFirstlast2.setVisibility(View.VISIBLE);
                 relativeFirstlast2R2.setVisibility(View.VISIBLE);
 
+
+                String firstName2Gust2 =this.firstName2Gust2.getText().toString();
+                String lastName2Gust2 = this.lastName2Gust2.getText().toString();
             } else if (no_adultroom2 == 3) {
 
                 relativeNamesR2.setVisibility(View.VISIBLE);
@@ -359,7 +431,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast2R2.setVisibility(View.VISIBLE);
                 relativeFirstlast3R2.setVisibility(View.VISIBLE);
 
-
+                String firstName3Gust2 =this.firstName3Gust2.getText().toString();
+                String lastName3Gust2 = this.lastName3Gust2.getText().toString();
             } else if (no_adultroom2 == 4) {
                 relativeNamesR2.setVisibility(View.VISIBLE);
 
@@ -370,6 +443,9 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast3R2.setVisibility(View.VISIBLE);
                 relativeFirstlast4R2.setVisibility(View.VISIBLE);
 
+
+                String firstName4Gust2 =this.firstName4Gust2.getText().toString();
+                String lastName4Gust2 = this.lastName4Gust2.getText().toString();
             }
 
 
@@ -380,6 +456,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast5.setVisibility(View.VISIBLE);
                 relativeFirstlast5R2.setVisibility(View.VISIBLE);
 
+                String firstName1ChildGust2 = this.firstName1ChildGust2.getText().toString();
+                String lastName1ChildGust2 = this.lastName1ChildGust2.getText().toString();
             } else if (child_countroom2 == 2) {
 
                 relativeNamesR2.setVisibility(View.VISIBLE);
@@ -387,9 +465,13 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast6.setVisibility(View.VISIBLE);
                 relativeFirstlast5R2.setVisibility(View.VISIBLE);
                 relativeFirstlast6R2.setVisibility(View.VISIBLE);
+
+                String firstName2ChildGust2 = this.firstName2ChildGust2.getText().toString();
+                String lastName2ChildGust2 = this.lastName2ChildGust2.getText().toString();
             }
 
 
+            // 3 rooms
         } else if (noOfRooms == 3) {
 
             no_adultroom3 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom3");
@@ -402,6 +484,10 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlastR3.setVisibility(View.VISIBLE);
 
 
+                String firstName1Gust3 =this.firstName1Gust3.getText().toString();
+                String lastName1Gust3 = this.lastName1Gust3.getText().toString();
+
+
             } else if (no_adultroom3 == 2) {
                 relativeNamesR3.setVisibility(View.VISIBLE);
                 relativeNamesR2.setVisibility(View.VISIBLE);
@@ -410,6 +496,11 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast3.setVisibility(View.VISIBLE);
                 relativeFirstlast2R3.setVisibility(View.VISIBLE);
                 relativeFirstlastR4.setVisibility(View.GONE);
+
+
+                String firstName2Gust3 =this.firstName2Gust3.getText().toString();
+                String lastName2Gust3 = this.lastName2Gust3.getText().toString();
+
 
             } else if (no_adultroom3 == 3) {
                 relativeFirstlastR4.setVisibility(View.GONE);
@@ -424,6 +515,10 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlastR3.setVisibility(View.VISIBLE);
                 relativeFirstlast2R3.setVisibility(View.VISIBLE);
                 relativeFirstlast3R3.setVisibility(View.VISIBLE);
+
+
+                String firstName3Gust3 =this.firstName3Gust3.getText().toString();
+                String lastName3Gust3 = this.lastName3Gust3.getText().toString();
 
             } else if (no_adultroom3 == 4) {
                 relativeFirstlastR4.setVisibility(View.GONE);
@@ -446,6 +541,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast3R3.setVisibility(View.VISIBLE);
                 relativeFirstlast4R3.setVisibility(View.VISIBLE);
 
+                String firstName4Gust3 =this.firstName4Gust3.getText().toString();
+                String lastName4Gust3 = this.lastName4Gust3.getText().toString();
 
             }
 
@@ -463,6 +560,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast5R2.setVisibility(View.VISIBLE);
                 relativeFirstlast5R3.setVisibility(View.VISIBLE);
 
+                String firstName1ChildGust3 = this.firstName1ChildGust3.getText().toString();
+                String lastName1ChildGust3 = this.lastName1ChildGust3.getText().toString();
 
             } else if (child_countroom3 == 2) {
 
@@ -477,101 +576,113 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast6R3.setVisibility(View.VISIBLE);
 
 
+                String firstName2ChildGust3 = this.firstName2ChildGust3.getText().toString();
+                String lastName2ChildGust3 = this.lastName2ChildGust3.getText().toString();
+
 
             }
 
-            } else if (noOfRooms == 4) {
+
+            // 4 rooms
+        } else if (noOfRooms == 4) {
 
 
-                //4
+            no_adultroom4 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom4");
 
 
-                no_adultroom4 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom4");
+            if (no_adultroom4 == 1) {
 
-                Toast.makeText(this, "" + no_adultroom4, Toast.LENGTH_SHORT).show();
-
-                if (no_adultroom4 == 1) {
-
-                    relativeFirstlastR2.setVisibility(View.VISIBLE);
-                    relativeNamesR3.setVisibility(View.VISIBLE);
-                    relativeNamesR2.setVisibility(View.VISIBLE);
-                    relativeNamesR4.setVisibility(View.VISIBLE);
-                    relativeFirstlastR3.setVisibility(View.VISIBLE);
-                    relativeFirstlastR4.setVisibility(View.VISIBLE);
+                relativeFirstlastR2.setVisibility(View.VISIBLE);
+                relativeNamesR3.setVisibility(View.VISIBLE);
+                relativeNamesR2.setVisibility(View.VISIBLE);
+                relativeNamesR4.setVisibility(View.VISIBLE);
+                relativeFirstlastR3.setVisibility(View.VISIBLE);
+                relativeFirstlastR4.setVisibility(View.VISIBLE);
 
 
-                } else if (no_adultroom4 == 2) {
-                    relativeNamesR3.setVisibility(View.VISIBLE);
-                    relativeNamesR2.setVisibility(View.VISIBLE);
-                    relativeNamesR4.setVisibility(View.VISIBLE);
+                String firstName1Gust4 = this.firstName1Gust4.getText().toString();
+                String lastName1Gust4 = this.lastName1Gust4.getText().toString();
 
-                    relativeFirstlast2.setVisibility(View.VISIBLE);
-                    relativeFirstlast2R2.setVisibility(View.VISIBLE);
-                    relativeFirstlast3.setVisibility(View.VISIBLE);
-                    relativeFirstlast2R3.setVisibility(View.VISIBLE);
-                    relativeFirstlast4R4.setVisibility(View.VISIBLE);
-                    relativeFirstlastR4.setVisibility(View.VISIBLE);
+            } else if (no_adultroom4 == 2) {
+                relativeNamesR3.setVisibility(View.VISIBLE);
+                relativeNamesR2.setVisibility(View.VISIBLE);
+                relativeNamesR4.setVisibility(View.VISIBLE);
 
+                relativeFirstlast2.setVisibility(View.VISIBLE);
+                relativeFirstlast2R2.setVisibility(View.VISIBLE);
+                relativeFirstlast3.setVisibility(View.VISIBLE);
+                relativeFirstlast2R3.setVisibility(View.VISIBLE);
+                relativeFirstlast4R4.setVisibility(View.VISIBLE);
+                relativeFirstlastR4.setVisibility(View.VISIBLE);
 
-                } else if (no_adultroom4 == 3) {
+                String firstName2Gust4 = this.firstName2Gust4.getText().toString();
+                String lastName2Gust4 = this.lastName2Gust4.getText().toString();
 
-
-                    relativeNamesR2.setVisibility(View.VISIBLE);
-                    relativeNamesR3.setVisibility(View.VISIBLE);
-                    relativeNamesR4.setVisibility(View.VISIBLE);
-
-
-                    relativeFirstlast2.setVisibility(View.VISIBLE);
-                    relativeFirstlast3.setVisibility(View.VISIBLE);
-                    relativeFirstlast4.setVisibility(View.VISIBLE);
+            } else if (no_adultroom4 == 3) {
 
 
-                    relativeFirstlast2R2.setVisibility(View.VISIBLE);
-                    relativeFirstlast3R2.setVisibility(View.VISIBLE);
-                    relativeFirstlast4R2.setVisibility(View.VISIBLE);
+                relativeNamesR2.setVisibility(View.VISIBLE);
+                relativeNamesR3.setVisibility(View.VISIBLE);
+                relativeNamesR4.setVisibility(View.VISIBLE);
 
 
-                    relativeFirstlastR3.setVisibility(View.VISIBLE);
-                    relativeFirstlast2R3.setVisibility(View.VISIBLE);
-                    relativeFirstlast3R3.setVisibility(View.VISIBLE);
-
-                    relativeFirstlastR4.setVisibility(View.VISIBLE);
-                    relativeFirstlast2R4.setVisibility(View.VISIBLE);
-                    relativeFirstlast3R4.setVisibility(View.VISIBLE);
+                relativeFirstlast2.setVisibility(View.VISIBLE);
+                relativeFirstlast3.setVisibility(View.VISIBLE);
+                relativeFirstlast4.setVisibility(View.VISIBLE);
 
 
-                } else if (no_adultroom4 == 4) {
+                relativeFirstlast2R2.setVisibility(View.VISIBLE);
+                relativeFirstlast3R2.setVisibility(View.VISIBLE);
+                relativeFirstlast4R2.setVisibility(View.VISIBLE);
 
 
-                    relativeNamesR2.setVisibility(View.VISIBLE);
-                    relativeNamesR3.setVisibility(View.VISIBLE);
-                    relativeNamesR4.setVisibility(View.VISIBLE);
+                relativeFirstlastR3.setVisibility(View.VISIBLE);
+                relativeFirstlast2R3.setVisibility(View.VISIBLE);
+                relativeFirstlast3R3.setVisibility(View.VISIBLE);
+
+                relativeFirstlastR4.setVisibility(View.VISIBLE);
+                relativeFirstlast2R4.setVisibility(View.VISIBLE);
+                relativeFirstlast3R4.setVisibility(View.VISIBLE);
 
 
-                    relativeFirstlast2.setVisibility(View.VISIBLE);
-                    relativeFirstlast3.setVisibility(View.VISIBLE);
-                    relativeFirstlast4.setVisibility(View.VISIBLE);
+                String firstName3Gust4 = this.firstName3Gust4.getText().toString();
+                String lastName3Gust4 = this.lastName3Gust4.getText().toString();
 
 
-                    relativeFirstlast2R2.setVisibility(View.VISIBLE);
-                    relativeFirstlast3R2.setVisibility(View.VISIBLE);
-                    relativeFirstlast4R2.setVisibility(View.VISIBLE);
+            } else if (no_adultroom4 == 4) {
 
 
-                    relativeFirstlastR3.setVisibility(View.VISIBLE);
-                    relativeFirstlast2R3.setVisibility(View.VISIBLE);
-                    relativeFirstlast3R3.setVisibility(View.VISIBLE);
-                    relativeFirstlast4R3.setVisibility(View.VISIBLE);
-
-                    relativeFirstlastR4.setVisibility(View.VISIBLE);
-                    relativeFirstlast2R4.setVisibility(View.VISIBLE);
-                    relativeFirstlast3R4.setVisibility(View.VISIBLE);
-                    relativeFirstlast4R4.setVisibility(View.VISIBLE);
+                relativeNamesR2.setVisibility(View.VISIBLE);
+                relativeNamesR3.setVisibility(View.VISIBLE);
+                relativeNamesR4.setVisibility(View.VISIBLE);
 
 
-                }
+                relativeFirstlast2.setVisibility(View.VISIBLE);
+                relativeFirstlast3.setVisibility(View.VISIBLE);
+                relativeFirstlast4.setVisibility(View.VISIBLE);
 
 
+                relativeFirstlast2R2.setVisibility(View.VISIBLE);
+                relativeFirstlast3R2.setVisibility(View.VISIBLE);
+                relativeFirstlast4R2.setVisibility(View.VISIBLE);
+
+
+                relativeFirstlastR3.setVisibility(View.VISIBLE);
+                relativeFirstlast2R3.setVisibility(View.VISIBLE);
+                relativeFirstlast3R3.setVisibility(View.VISIBLE);
+                relativeFirstlast4R3.setVisibility(View.VISIBLE);
+
+                relativeFirstlastR4.setVisibility(View.VISIBLE);
+                relativeFirstlast2R4.setVisibility(View.VISIBLE);
+                relativeFirstlast3R4.setVisibility(View.VISIBLE);
+                relativeFirstlast4R4.setVisibility(View.VISIBLE);
+
+
+                String firstName4Gust4 = this.firstName4Gust4.getText().toString();
+                String lastName4Gust4 = this.lastName4Gust4.getText().toString();
+
+
+            }
 
 
 // 4
@@ -592,6 +703,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast5R4.setVisibility(View.VISIBLE);
 
 
+                String firstName1ChildGust4 = this.firstName1ChildGust4.getText().toString();
+                String lastName1ChildGust4 = this.lastName1ChildGust4.getText().toString();
             } else if (child_countroom4 == 2) {
 
 
@@ -615,13 +728,13 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast6R4.setVisibility(View.VISIBLE);
 
 
+                String firstName2ChildGust4 = this.firstName2ChildGust4.getText().toString();
+                String lastName2ChildGust4 = this.lastName2ChildGust4.getText().toString();
+
             }
 
 
-
         }
-
-
 
 
         start_time = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "start_date");
@@ -667,15 +780,15 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         confirmRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (firstName.getText().toString().equals("") || lastName.getText().toString().equals("")) {
-                    SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(ConfirmBookingRoom.this);
-                    sweetAlertDialog.setConfirmButton("Ok", null);
-                    sweetAlertDialog.setContentText("Please add First guest's first and last name at least");
-                    sweetAlertDialog.show();
-                    return;
-                }
-                SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName", firstName.getText().toString());
-                SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName", lastName.getText().toString());
+//                if (firstName.getText().toString().equals("") || lastName.getText().toString().equals("")) {
+//                    SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(ConfirmBookingRoom.this);
+//                    sweetAlertDialog.setConfirmButton("Ok", null);
+//                    sweetAlertDialog.setContentText("Please add First guest's first and last name at least");
+//                    sweetAlertDialog.show();
+//                    return;
+//                }
+//                SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName", firstName.getText().toString());
+//                SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName", lastName.getText().toString());
 
 
 //                Client client = new Client(ConfirmBookingRoom.this, "https://api-test.wirecard.com");
@@ -696,9 +809,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         mrOrMissArray = new ArrayList<>();
         mrOrMissArray.add("Mr.");
         mrOrMissArray.add("Mrs.");
-        mrOrMissAdapter = new ArrayAdapter(this,
-                R.layout.item_spener
-                , mrOrMissArray);
+        mrOrMissAdapter = new ArrayAdapter(this, R.layout.item_spener, mrOrMissArray);
         mrOrMissAdapter.setDropDownViewResource(R.layout.drop_dowen);
         s1 = findViewById(R.id.mromiss1);
         s1.setSelection(1);

@@ -50,6 +50,7 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/ic_button"/>
     </RelativeLayout>
+
     <ImageView
         android:id="@+id/img_linee"
         android:layout_width="match_parent"
@@ -86,11 +87,6 @@
         android:src="@drawable/line1"
         android:layout_below="@+id/tv_adult"
         />
-
-
-
-
-
 
     <ScrollView
         android:layout_below="@+id/img_linee2"
@@ -133,10 +129,9 @@
                         />
 
                     <EditText
-
                         android:textSize="@dimen/_9ssp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:id="@+id/ed_first"
+                        android:id="@+id/first_name_1_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/first_name"
@@ -146,15 +141,13 @@
 
                     <EditText
 
-
-
                         android:textSize="@dimen/_9ssp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:id="@+id/lastName"
+                        android:id="@+id/lastName_1_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
-                        android:layout_toRightOf="@+id/ed_first"
+                        android:layout_toRightOf="@+id/first_name_1_gust_one"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color" />
@@ -179,7 +172,7 @@
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first2"
+                        android:id="@+id/first_name_2_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="FIRST NAME"
@@ -189,14 +182,14 @@
 
                         />
                     <EditText
+                        android:id="@+id/last_name_2_gust_one"
                         android:textSize="@dimen/_9ssp"
-
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first2"
+                        android:layout_toRightOf="@+id/first_name_2_gust_one"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -220,7 +213,7 @@
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first3"
+                        android:id="@+id/first_name_3_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="FIRST NAME"
@@ -231,13 +224,13 @@
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
-
+android:id="@+id/last_name_3_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first3"
+                        android:layout_toRightOf="@+id/first_name_3_gust_one"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -266,7 +259,7 @@
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first4"
+                        android:id="@+id/first_name_4_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="FIRST NAME"
@@ -277,13 +270,13 @@
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
-
+android:id="@+id/last_name_4_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first4"
+                        android:layout_toRightOf="@+id/first_name_4_gust_one"
                         android:layout_marginLeft="40dp"
                         />
                 </RelativeLayout>
@@ -322,7 +315,7 @@
                         android:textSize="@dimen/_9ssp"
 
                         android:layout_marginTop="@dimen/_13sdp"
-                        android:id="@+id/ed_first5"
+                        android:id="@+id/first_name_1_child_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/first_name"
@@ -334,13 +327,13 @@
                     <EditText
                         android:layout_marginTop="@dimen/_13sdp"
                         android:textSize="@dimen/_9ssp"
-
+android:id="@+id/last_name_1_child_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first5"
+                        android:layout_toRightOf="@+id/first_name_1_child_gust_one"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -368,7 +361,7 @@
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first6"
+                        android:id="@+id/first_name_2_child_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/first_name"
@@ -379,13 +372,14 @@
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
+                        android:id="@+id/last_name_2_child_gust_one"
 
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first6"
+                        android:layout_toRightOf="@+id/first_name_2_child_gust_one"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -397,6 +391,8 @@
 
 
             </RelativeLayout>
+
+
             <RelativeLayout
                 android:visibility="gone"
 android:layout_below="@+id/relative_names_1"
@@ -432,7 +428,7 @@ android:layout_below="@+id/relative_names_1"
 
                         android:textSize="@dimen/_9ssp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:id="@+id/ed_firstR_2"
+                        android:id="@+id/first_name_1_gust_2"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/first_name"
@@ -444,11 +440,11 @@ android:layout_below="@+id/relative_names_1"
 
                         android:textSize="@dimen/_9ssp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:id="@+id/lastNameR_2"
+                        android:id="@+id/last_name_1_gust_2"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
-                        android:layout_toRightOf="@+id/ed_firstR_2"
+                        android:layout_toRightOf="@+id/first_name_1_gust_2"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color" />
@@ -473,7 +469,7 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first2R_2"
+                        android:id="@+id/first_name_2_gust_2"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="FIRST NAME"
@@ -484,13 +480,13 @@ android:layout_below="@+id/relative_names_1"
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
-
+android:id="@+id/last_name_2_gust_2"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first2R_2"
+                        android:layout_toRightOf="@+id/first_name_2_gust_2"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -513,7 +509,7 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first3R_2"
+                        android:id="@+id/first_name_3_gust_2"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="FIRST NAME"
@@ -524,13 +520,14 @@ android:layout_below="@+id/relative_names_1"
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
+                        android:id="@+id/last_name_3_gust_2"
 
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first3R_2"
+                        android:layout_toRightOf="@+id/first_name_3_gust_2"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -559,7 +556,7 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first4R_2"
+                        android:id="@+id/first_name_4_gust_2"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="FIRST NAME"
@@ -570,13 +567,13 @@ android:layout_below="@+id/relative_names_1"
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
-
+android:id="@+id/last_name_4_gust_2"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first4R_2"
+                        android:layout_toRightOf="@+id/first_name_4_gust_2"
                         android:layout_marginLeft="40dp"
                         />
                 </RelativeLayout>
@@ -615,7 +612,7 @@ android:layout_below="@+id/relative_names_1"
                         android:textSize="@dimen/_9ssp"
 
                         android:layout_marginTop="@dimen/_13sdp"
-                        android:id="@+id/ed_first5R_2"
+                        android:id="@+id/first_name_1_child_gust_2"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/first_name"
@@ -627,13 +624,14 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:layout_marginTop="@dimen/_13sdp"
                         android:textSize="@dimen/_9ssp"
+                        android:id="@+id/last_name_1_child_gust_2"
 
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first5R_2"
+                        android:layout_toRightOf="@+id/first_name_1_child_gust_2"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -661,7 +659,7 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first6R_2"
+                        android:id="@+id/first_name_2_child_gust_2"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/first_name"
@@ -672,13 +670,14 @@ android:layout_below="@+id/relative_names_1"
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
+                        android:id="@+id/last_name_2_child_gust_2"
 
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first6R_2"
+                        android:layout_toRightOf="@+id/first_name_2_child_gust_2"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -690,6 +689,8 @@ android:layout_below="@+id/relative_names_1"
 
 
             </RelativeLayout>
+
+
             <RelativeLayout
                 android:visibility="gone"
                 android:layout_below="@+id/relative_namesR_2"
@@ -725,7 +726,7 @@ android:layout_below="@+id/relative_names_1"
 
                         android:textSize="@dimen/_9ssp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:id="@+id/ed_firstR_3"
+                        android:id="@+id/first_name_1_gust_3"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/first_name"
@@ -739,11 +740,11 @@ android:layout_below="@+id/relative_names_1"
 
                         android:textSize="@dimen/_9ssp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:id="@+id/lastNameR_3"
+                        android:id="@+id/last_name_1_gust_3"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
-                        android:layout_toRightOf="@+id/ed_firstR_3"
+                        android:layout_toRightOf="@+id/first_name_1_gust_3"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color" />
@@ -768,7 +769,7 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first2R_3"
+                        android:id="@+id/first_name_2_gust_3"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="FIRST NAME"
@@ -779,13 +780,13 @@ android:layout_below="@+id/relative_names_1"
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
-
+                        android:id="@+id/last_name_2_gust_3"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first2R_3"
+                        android:layout_toRightOf="@+id/first_name_2_gust_3"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -808,7 +809,7 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first3R_3"
+                        android:id="@+id/first_name_3_gust_3"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="FIRST NAME"
@@ -819,13 +820,14 @@ android:layout_below="@+id/relative_names_1"
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
+                        android:id="@+id/last_name_3_gust_3"
 
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first3R_3"
+                        android:layout_toRightOf="@+id/first_name_3_gust_3"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -854,7 +856,7 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first4R_3"
+                        android:id="@+id/first_name_4_gust_3"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="FIRST NAME"
@@ -865,13 +867,14 @@ android:layout_below="@+id/relative_names_1"
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
+                        android:id="@+id/last_name_4_gust_3"
 
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first4R_3"
+                        android:layout_toRightOf="@+id/first_name_4_gust_3"
                         android:layout_marginLeft="40dp"
                         />
                 </RelativeLayout>
@@ -909,7 +912,7 @@ android:layout_below="@+id/relative_names_1"
                         android:textSize="@dimen/_9ssp"
 
                         android:layout_marginTop="@dimen/_13sdp"
-                        android:id="@+id/ed_first5R_3"
+                        android:id="@+id/first_name_1_child_gust_3"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/first_name"
@@ -921,13 +924,14 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:layout_marginTop="@dimen/_13sdp"
                         android:textSize="@dimen/_9ssp"
+                        android:id="@+id/last_name_1_child_gust_3"
 
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first5R_3"
+                        android:layout_toRightOf="@+id/first_name_1_child_gust_3"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -954,7 +958,7 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first6R_3"
+                        android:id="@+id/first_name_2_child_gust_3"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/first_name"
@@ -965,13 +969,14 @@ android:layout_below="@+id/relative_names_1"
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
+                        android:id="@+id/last_name_2_child_gust_3"
 
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first6R_3"
+                        android:layout_toRightOf="@+id/first_name_2_child_gust_3"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -983,6 +988,8 @@ android:layout_below="@+id/relative_names_1"
 
 
             </RelativeLayout>
+
+
             <RelativeLayout
                 android:visibility="gone"
                 android:layout_below="@+id/relative_namesR_3"
@@ -1019,7 +1026,7 @@ android:layout_below="@+id/relative_names_1"
 
                         android:textSize="@dimen/_9ssp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:id="@+id/ed_firstR_4"
+                        android:id="@+id/first_name_1_gust_4"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/first_name"
@@ -1033,11 +1040,11 @@ android:layout_below="@+id/relative_names_1"
 
                         android:textSize="@dimen/_9ssp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:id="@+id/lastNameR_4"
+                        android:id="@+id/last_name_1_gust_4"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
-                        android:layout_toRightOf="@+id/ed_firstR_4"
+                        android:layout_toRightOf="@+id/first_name_1_gust_4"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color" />
@@ -1062,7 +1069,7 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first2R_4"
+                        android:id="@+id/first_name_2_gust_4"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="FIRST NAME"
@@ -1073,13 +1080,14 @@ android:layout_below="@+id/relative_names_1"
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
+                        android:id="@+id/last_name_2_gust_4"
 
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first2R_4"
+                        android:layout_toRightOf="@+id/first_name_2_gust_4"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -1103,7 +1111,7 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first3R_4"
+                        android:id="@+id/first_name_3_gust_4"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="FIRST NAME"
@@ -1114,13 +1122,14 @@ android:layout_below="@+id/relative_names_1"
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
+                        android:id="@+id/last_name_3_gust_4"
 
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first3R_4"
+                        android:layout_toRightOf="@+id/first_name_3_gust_4"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -1149,7 +1158,7 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first4R_4"
+                        android:id="@+id/first_name_4_gust_4"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="FIRST NAME"
@@ -1160,13 +1169,14 @@ android:layout_below="@+id/relative_names_1"
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
+                        android:id="@+id/last_name_4_gust_4"
 
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first4R_4"
+                        android:layout_toRightOf="@+id/first_name_4_gust_4"
                         android:layout_marginLeft="40dp"
                         />
                 </RelativeLayout>
@@ -1205,7 +1215,7 @@ android:layout_below="@+id/relative_names_1"
                         android:textSize="@dimen/_9ssp"
 
                         android:layout_marginTop="@dimen/_13sdp"
-                        android:id="@+id/ed_first5R_4"
+                        android:id="@+id/first_name_1_child_gust_4"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/first_name"
@@ -1217,13 +1227,14 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:layout_marginTop="@dimen/_13sdp"
                         android:textSize="@dimen/_9ssp"
+                        android:id="@+id/last_name_1_child_gust_4"
 
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first5R_4"
+                        android:layout_toRightOf="@+id/first_name_1_child_gust_4"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -1251,7 +1262,7 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
                         android:textSize="@dimen/_9ssp"
 
-                        android:id="@+id/ed_first6R_4"
+                        android:id="@+id/first_name_2_child_gust_4"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/first_name"
@@ -1262,13 +1273,14 @@ android:layout_below="@+id/relative_names_1"
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
+                        android:id="@+id/last_name_2_child_gust_4"
 
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/ed_first6R_4"
+                        android:layout_toRightOf="@+id/first_name_2_child_gust_4"
                         android:layout_marginLeft="40dp"
                         />
 
@@ -1285,12 +1297,6 @@ android:layout_below="@+id/relative_names_1"
 
     </ScrollView>
 
-
-
-
-
-
-
     <TextView
         android:paddingStart="@dimen/_4sdp"
         android:layout_margin="@dimen/_4sdp"
@@ -1302,6 +1308,7 @@ android:layout_below="@+id/relative_names_1"
         android:textColor="@color/app_color"
         android:textSize="20sp"
         android:layout_below="@+id/names_layout"/>
+
     <EditText
         android:padding="@dimen/_4sdp"
         android:layout_margin="@dimen/_4sdp"
@@ -1315,6 +1322,7 @@ android:layout_below="@+id/relative_names_1"
         android:textSize="15sp"
         android:gravity="start"
         android:layout_below="@+id/tv_request"/>
+
     <Button
         android:id="@+id/confirm_room_booking"
         android:layout_width="150dp"
@@ -1324,9 +1332,6 @@ android:layout_below="@+id/relative_names_1"
         android:layout_below="@+id/specification"
         android:layout_centerInParent="true"
         />
-
-
-
 
     <RelativeLayout
         android:id="@+id/relative_img_confirm_hotel_tamm"
@@ -1395,8 +1400,6 @@ android:layout_below="@+id/relative_names_1"
 
     </RelativeLayout>
 
-
-
     <TextView
         android:id="@+id/tv_tab_me_confirm_hotels"
         android:layout_width="match_parent"
@@ -1407,10 +1410,5 @@ android:layout_below="@+id/relative_names_1"
         android:layout_below="@+id/relative_img_confirm_hotel_tamm"
         android:layout_marginBottom="@dimen/_5sdp"
         />
-
-
-
-
-
 
 </RelativeLayout>
