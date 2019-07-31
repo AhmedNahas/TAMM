@@ -94,7 +94,6 @@ public class FindHotels extends AppCompatActivity {
 //    TextView assistantLabelCallFindHotel;
 //    @BindView(R.id.assistant_label_message_find_hotel)
 //    TextView assistantLabelMessageFindHotel;
-    @BindView(R.id.choose_rate)
     Spinner chooseRate;
     private List<String> listName = new ArrayList<>();
     ArrayList<String> addressHotel = new ArrayList<>();
