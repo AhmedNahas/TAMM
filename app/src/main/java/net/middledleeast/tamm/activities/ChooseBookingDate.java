@@ -35,13 +35,14 @@ import net.middledleeast.tamm.adapters.RoomsAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
 public class ChooseBookingDate extends AppCompatActivity {
 
 
-    private TextView startDate, endDate  , nights , no_room ,no_child , adult_tv;
+    private TextView startDate, endDate, nights, no_room, no_child, adult_tv;
     private String mendTime;
     private String mstartTime;
     private BasicHttpBinding_IHotelService1 service;
@@ -58,7 +59,7 @@ public class ChooseBookingDate extends AppCompatActivity {
     private int resultIndex;
     private RecyclerView roomRecyclerView;
     private RoomsAdapter roomAdapter;
-    private List<Hotel_Room> rooms  = new ArrayList<>();
+    private List<Hotel_Room> rooms = new ArrayList<>();
     private String end_time;
     private String start_time;
     List<Integer> list_count_child = new ArrayList<>();
@@ -78,7 +79,7 @@ public class ChooseBookingDate extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         roomRecyclerView = findViewById(R.id.rv_hotel);
         nights = findViewById(R.id.nights_booking);
-        startDate= findViewById(R.id.startDate2);
+        startDate = findViewById(R.id.startDate2);
         endDate = findViewById(R.id.endDate2);
         no_room = findViewById(R.id.no_room);
         no_child = findViewById(R.id.no_child2);
@@ -86,7 +87,7 @@ public class ChooseBookingDate extends AppCompatActivity {
 
 //        tv_name_hotel = findViewById(R.id.tv_name_hotel);
 //        tv_date_hotels = findViewById(R.id.tv_date_hotels);
-      tv_name_hotel = findViewById(R.id.tv_name_hotel);
+        tv_name_hotel = findViewById(R.id.tv_name_hotel);
         tv_date_hotels = findViewById(R.id.tv_date_hotels);
         tv_word = findViewById(R.id.tv_word);
         back_chose_booking = findViewById(R.id.toolbar_back1);
@@ -121,21 +122,24 @@ public class ChooseBookingDate extends AppCompatActivity {
                 backIntent();
             }
         });
-        String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
+
+        // TODO: 28/07/19 what is the purpose
+//        String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
+//
+//
+//        if (child_count == null) {
+//
+//        } else {
+//            StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
+//            while (st.hasMoreTokens()) {
+//                list_count_child.add(Integer.parseInt(st.nextToken().trim()));
+//            }
+        //Toast.makeText(this, ""+list_count_child.get(0), Toast.LENGTH_SHORT).show();
+//    }
 
 
-        if (child_count == null) {
-
-        } else {
-            StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
-            while (st.hasMoreTokens()) {
-                list_count_child.add(Integer.parseInt(st.nextToken().trim()));
-            }
-            //Toast.makeText(this, ""+list_count_child.get(0), Toast.LENGTH_SHORT).show();
-
-        }
-      //  Toast.makeText(this, ""+child_count, Toast.LENGTH_SHORT).show();
-      //  SharedPreferencesManger.remove(this,"child_count");
+        //  Toast.makeText(this, ""+child_count, Toast.LENGTH_SHORT).show();
+        //  SharedPreferencesManger.remove(this,"child_count");
 
         //SharedPreferencesManger.clean(this);
 
@@ -143,51 +147,50 @@ public class ChooseBookingDate extends AppCompatActivity {
         start_time = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "start_date");
         end_time = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "end_date");
         int no_roomS = SharedPreferencesManger.LoadIntegerData(this, "no_room");
-        int no_adult = SharedPreferencesManger.LoadIntegerData(this, "no_adult");
-        int no_childS = SharedPreferencesManger.LoadIntegerData(this, "no_child");
+        // TODO: 28/07/19 fix implement all rooms
+        int no_adult = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom1");
+        int no_childS = SharedPreferencesManger.LoadIntegerData(this, "no_childroom1");
 
-        no_child.setText(no_childS+"Children");
+        no_child.setText(no_childS + "Children");
 
-        no_room.setText(""+no_roomS+" room");
-        adult_tv.setText(no_adult+"Adult");
+        no_room.setText("" + no_roomS + " room");
+        adult_tv.setText(no_adult + "Adult");
 
 
         startDate.setText(start_time);
         endDate.setText(end_time);
 
-        nights.setText(nightsDeff+" Nights");
+        nights.setText(nightsDeff + " Nights");
         LinearLayoutManager manager = new LinearLayoutManager(this);
-       roomRecyclerView.setLayoutManager(manager);
+        roomRecyclerView.setLayoutManager(manager);
         auth();
-         hotel_name_s = getIntent().getStringExtra("hotel_name_s");
+        hotel_name_s = getIntent().getStringExtra("hotel_name_s");
         mstartTime = getIntent().getStringExtra("checkInDate");
         mendTime = getIntent().getStringExtra("checkOutDate");
-        sessionId =SharedPreferencesManger.LoadStringData(ChooseBookingDate.this,"session_id");
-        mHotelCode = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this,"mHotel_code");
+        sessionId = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "session_id");
+        mHotelCode = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "mHotel_code");
         countryName = getIntent().getStringExtra("countryName");
         cityName = getIntent().getStringExtra("cityName");
         cityId = getIntent().getStringExtra("cityId");
         noOfRooms = getIntent().getIntExtra("noOfRooms", 1);
         //roomGuests =getIntent().getStringArrayListExtra("roomGuest");
-        resultIndex = getIntent().getIntExtra("resultIndex", 1);
+        resultIndex = SharedPreferencesManger.LoadIntegerData(this, "resultindex");
 
         String startDateS = SharedPreferencesManger.LoadStringData(this, "startDateS");
         String endDateS = SharedPreferencesManger.LoadStringData(this, "endDateS");
 
 
-        tv_name_hotel.setText(hotel_name_s+" - "+countryName);
+        tv_name_hotel.setText(hotel_name_s + " - " + countryName);
 
-        tv_word.setText(hotel_name_s+" - "+countryName);
+        tv_word.setText(hotel_name_s + " - " + countryName);
 
-        tv_date_hotels.setText(startDateS+endDateS);
-
-
+        tv_date_hotels.setText(startDateS + endDateS);
 
 
         try {
 
             service.enableLogging = true;
-            HotelRoomAvailabilityResponse response = service.AvailableHotelRooms(sessionId, resultIndex, mHotelCode, 6000, false, authenticationData);
+            HotelRoomAvailabilityResponse response = service.AvailableHotelRooms(sessionId, resultIndex, mHotelCode, 10000, false, authenticationData);
             Gson gson = new Gson();
             String roomAvailability = gson.toJson(response);
             SharedPreferencesManger.SaveData(this, "roomAvailability", roomAvailability);
@@ -222,23 +225,76 @@ public class ChooseBookingDate extends AppCompatActivity {
 
 //            HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
 
-            SharedPreferencesManger.SaveData(this, "resultIndex", resultIndex);
+//            SharedPreferencesManger.SaveData(this, "resultIndex", resultIndex);
 
-            roomAdapter = new RoomsAdapter(ChooseBookingDate.this, authenticationData,
-                    service, response, rooms, hotel_room, start_time, end_time, noOfRooms, resultIndex,
-                    mHotelCode, authenticationData, sessionId, ChooseBookingDate.this);
+            Bundle extras = getIntent().getExtras();
+            ArrayList<Double> roomCombs = new ArrayList<>();
+            if (extras != null) {
+
+                String roomCombStr = extras.getString("roomcomb");
+                roomCombs = gson.fromJson(roomCombStr, ArrayList.class);
+//                if (roomCombs != null) {
+//                    for (double comb : roomCombs) {
+//                        roomCOmbsInt.add((int) comb);
+//                    }
+
+
+                if (roomCombs != null) {
+                    List<Hotel_Room> tempRooms = new ArrayList<>();
+//                for (Hotel_Room room : rooms) {
+//
+//                }
+
+// FIXME: 29/07/19 refine arraylist
+                    for (double roomComb : roomCombs) {
+                        for (Hotel_Room room : rooms) {
+                            if (room.RoomIndex == (int) roomComb) {
+                                tempRooms.add(room);
+                            }
+                        }
+
+                    }
+
+                    rooms.clear();
+                    rooms = new ArrayList<>(tempRooms);
+
+
+                    ArrayList<Integer> roomCombsInt = new ArrayList<>();
+                    for (double roomComb : roomCombs) {
+                        roomCombsInt.add((int) roomComb);
+                    }
+                    Collections.sort(roomCombsInt);
+
+                        roomAdapter = new RoomsAdapter(roomCombsInt, ChooseBookingDate.this, authenticationData,
+                                service, response, rooms, hotel_room, start_time, end_time, noOfRooms, resultIndex,
+                                mHotelCode, authenticationData, sessionId, ChooseBookingDate.this);
+
+
+                }
+                else
+                {
+                    roomAdapter = new RoomsAdapter(null,ChooseBookingDate.this, authenticationData,
+                            service, response, rooms, hotel_room, start_time, end_time, noOfRooms, resultIndex,
+                            mHotelCode, authenticationData, sessionId, ChooseBookingDate.this);
+                }
+            }
+            else
+            {
+                roomAdapter = new RoomsAdapter(null,ChooseBookingDate.this, authenticationData,
+                        service, response, rooms, hotel_room, start_time, end_time, noOfRooms, resultIndex,
+                        mHotelCode, authenticationData, sessionId, ChooseBookingDate.this);
+            }
+
+
 
 
             roomRecyclerView.setAdapter(roomAdapter);
             roomAdapter.notifyDataSetChanged();
 
 
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
 
 //
@@ -260,7 +316,7 @@ public class ChooseBookingDate extends AppCompatActivity {
 
     private void backIntent() {
 
-        Intent intent = new Intent(ChooseBookingDate.this,FindHotels.class);
+        Intent intent = new Intent(ChooseBookingDate.this, FindHotels.class);
         startActivity(intent);
 
 

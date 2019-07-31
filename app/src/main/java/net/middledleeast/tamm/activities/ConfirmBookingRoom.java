@@ -132,7 +132,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         sessionId = intent.getStringExtra("sessionId");
 //        SharedPreferencesManger.SaveData(this, "sessionId", sessionId);
         noOfRooms = intent.getIntExtra("noOfRooms", 1);
-        SharedPreferencesManger.SaveData(this, "noOfRooms", noOfRooms);
+//        SharedPreferencesManger.SaveData(this, "noOfRooms", noOfRooms);
         resultIndex = intent.getIntExtra("resultIndex", 1);
 //        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
 

@@ -21,11 +21,15 @@ import com.Tamm.Hotels.wcf.HotelCancellationPolicyResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.RoomCombination;
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -56,7 +60,7 @@ public class checkroom extends AppCompatActivity {
     private String roomTybe;
     private String description;
     private String mealTybe;
-    private int roomIndex;
+    private ArrayList<Double> roomIndexArray;
     private String roomPrice;
     private String currency;
 
@@ -69,6 +73,7 @@ public class checkroom extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
+        SharedPreferencesManger.SaveData(this, "noOfTimes", 0);
         auth();
         getIntentInfo();
         back = findViewById(R.id.btn_baack);
@@ -86,15 +91,27 @@ public class checkroom extends AppCompatActivity {
         roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
         currency = SharedPreferencesManger.LoadStringData(this, "currency");
 
+        String roomIndexArrayStr = SharedPreferencesManger.LoadStringData(this, "roomIndexArray");
+        Gson gson = new Gson();
+        roomIndexArray = gson.fromJson(roomIndexArrayStr,ArrayList.class);
+        ArrayList<Integer> roomIndexArrayInt = new ArrayList<>();
+        for (double aDouble : roomIndexArray) {
+            roomIndexArrayInt.add((int)aDouble);
+        }
 
+        Collections.sort(roomIndexArrayInt);
         tvTotalMount.setText("  TOTAl AMOUNT :                          " + currency + " " + roomPrice);
+
+// FIXME: 29/07/19 booking options according to correct
+
 
         BookingOptions bookingOptions = new BookingOptions();
         bookingOptions.RoomCombination = new ArrayList<>();
         RoomCombination roomCombination = new RoomCombination();
         roomCombination.RoomIndex = new ArrayList<>();
-        roomCombination.RoomIndex.add(roomIndex);
+        roomCombination.RoomIndex = new ArrayList<>(roomIndexArrayInt);
         bookingOptions.RoomCombination.add(roomCombination);
+        SharedPreferencesManger.SaveData(this,"roomIndexArray",null);
         try {
 
             HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
@@ -150,7 +167,7 @@ public class checkroom extends AppCompatActivity {
         mHotelCode = getIntent().getStringExtra("hotelCode");
         resultIndex = getIntent().getIntExtra("resultIndex", 0);
         mealTybe = getIntent().getStringExtra("mealTybe");
-        roomIndex = getIntent().getIntExtra("roomIndex", 1);
+//        roomIndex = getIntent().getIntExtra("roomIndex", 1);
     }
 
     private void auth() {

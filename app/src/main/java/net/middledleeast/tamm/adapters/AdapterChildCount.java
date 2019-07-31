@@ -32,6 +32,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.SingleView> {
 
 
+    private final int roomno;
     // list count of spinner children
     List<Integer> listCountCild;
 
@@ -47,12 +48,12 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
 
 public  static  boolean child_m ;
 
-    public AdapterChildCount(Activity activity, List<Integer> listCountCild, List<Integer> list_age , Context context ) {
+    public AdapterChildCount(Activity activity, List<Integer> listCountCild, List<Integer> list_age , Context context ,int roomno) {
         this.listCountCild = listCountCild;
         this.activity = activity;
         this.list_age = list_age;
         this.context = context;
-
+        this.roomno = roomno;
     }
 
     @NonNull
@@ -103,7 +104,22 @@ public  static  boolean child_m ;
                String str = list_age_save.toString();
               str=  str.replace("[", "");
                str=  str.replace("]", "");
-                        SharedPreferencesManger.SaveData(activity, "child_count", str);
+                // TODO: 28/07/19 complete
+
+                switch (roomno)
+                {
+                    case 1:
+                        SharedPreferencesManger.SaveData(activity, "child_countroom1", str);
+                    case 2:
+                        SharedPreferencesManger.SaveData(activity, "child_countroom2", str);
+                    case 3:
+                        SharedPreferencesManger.SaveData(activity, "child_countroom3", str);
+                    case 4:
+                        SharedPreferencesManger.SaveData(activity, "child_countroom4", str);
+
+                }
+
+
 
 
 
