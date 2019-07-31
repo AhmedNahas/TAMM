@@ -570,62 +570,33 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <RelativeLayout
-        android:id="@+id/relative_spinner_choose_rate"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/roomsscroll"
-        android:layout_centerInParent="true"
-        android:background="@android:color/transparent"
-        android:gravity="end">
-
-        <ImageView
-            android:id="@+id/icon18"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/fullstar" />
-
-        <Spinner
-            android:id="@+id/choose_rate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/app_color" />
-
-        <View
-            android:id="@+id/line17"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/choose_rate"
-            android:layout_marginTop="-58dp"
-            android:background="@drawable/line1" />
-    </RelativeLayout>
 
     <Button
         android:id="@+id/findHotels"
-        android:layout_width="101dp"
-        android:layout_height="48dp"
-        android:layout_below="@+id/relative_spinner_choose_rate"
+        android:layout_width="99dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="false"
         android:layout_alignParentEnd="false"
-        android:layout_alignParentBottom="false"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="bottom|center_horizontal"
         android:layout_marginStart="133dp"
         android:layout_marginEnd="137dp"
-        android:layout_marginBottom="87dp"
+        android:layout_marginBottom="24dp"
         android:background="@color/app_color"
         android:text="@string/find_hotels" />
 
     <ScrollView
         android:id="@+id/roomsscroll"
         android:layout_width="match_parent"
-        android:layout_height="169dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/findHotels"
         android:layout_below="@id/rv_child"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="20dp"
         android:clipToPadding="true"
         android:fillViewport="true"
         android:scrollbarStyle="outsideInset">
