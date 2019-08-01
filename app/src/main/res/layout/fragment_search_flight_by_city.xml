@@ -10,6 +10,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <EditText
+        android:textColor="@color/white"
         android:id="@+id/search_flight_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -21,37 +22,10 @@
         android:layout_below="@+id/search_flight_city"
         android:background="@drawable/line1" />
 
-    <TextView
-        android:id="@+id/txtdubai"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/search_flight_city"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:text="Dubai"
-        android:textColor="@color/white" />
-
-    <TextView
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/search_flight_city"
-        android:layout_marginLeft="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_toRightOf="@+id/txtdubai"
-        android:text="DUB"
-        android:textColor="@color/white" />
-
-    <TextView
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/search_flight_city"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:text="UAE"
-        android:textColor="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_airport_country"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/search_flight_city">

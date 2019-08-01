@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.ArrayOfInt;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
+import com.Tamm.Hotels.wcf.ArrayOfString;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.CountryList;
@@ -49,6 +50,10 @@ import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import org.joda.time.DateTime;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.sql.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -173,6 +178,7 @@ public class FindHotels extends AppCompatActivity {
     private RecyclerView room4ChildAgeSpinner;
 
 
+
     private boolean ClickFindHotel = false;
     private Filters filters;
 //    private boolean saved ;
@@ -184,6 +190,10 @@ public class FindHotels extends AppCompatActivity {
         setContentView(R.layout.find_hotels);
         ButterKnife.bind(this);
         auth();
+
+
+
+
 
 
         FrameLayout frameLayout = findViewById(R.id.frame1);
@@ -883,6 +893,8 @@ public class FindHotels extends AppCompatActivity {
 
 
     }
+
+
 
     @SuppressLint("ClickableViewAccessibility")
     private void getCountries() {

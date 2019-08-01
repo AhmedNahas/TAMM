@@ -32,13 +32,9 @@
             android:name=".ActivityToFragment.PaymentActivityFragment"
             android:screenOrientation="portrait" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
         <activity
-            android:name=".activities.Proceedbeybey"
+            android:name=".activities.FindHotels"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.PassengerDeparture"
@@ -93,8 +89,16 @@
             android:name=".LanguageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.FindHotels"
-            android:screenOrientation="portrait"></activity>
+            android:name=".activities.Proceedbeybey"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".activities.ConfirmBookingRoom"
             android:screenOrientation="portrait" />

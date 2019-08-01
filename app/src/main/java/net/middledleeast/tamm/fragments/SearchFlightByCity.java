@@ -2,22 +2,43 @@ package net.middledleeast.tamm.fragments;
 
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.activities.ChooseHotelActivity;
+import net.middledleeast.tamm.adapters.AdapterAirportCuntry;
+import net.middledleeast.tamm.adapters.AdapterHotelInfo;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SearchFlightByCity extends Fragment {
 
-    TextView textView;
-
+    EditText search_flight_city ;
+    RecyclerView rv_country;
+    AdapterAirportCuntry adapterAirportCuntry;
+    String[] ids;
+    InputStream inputStream;
+    List<String> airportCode = new ArrayList<>();
+    List<String> airportName = new ArrayList<>();
+    List<String> cityCode = new ArrayList<>();
 
     public SearchFlightByCity() {
         // Required empty public constructor
@@ -29,13 +50,120 @@ public class SearchFlightByCity extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search_flight_by_city, container, false);
-        textView = view.findViewById(R.id.txtdubai);
-        textView.setOnClickListener(new View.OnClickListener() {
+
+        rv_country = view.findViewById(R.id.rv_airport_country);
+
+        search_flight_city = view.findViewById(R.id.search_flight_city);
+
+        inputStream = getResources().openRawResource(R.raw.airports);
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+        try {
+
+            String data;
+
+            while ((data = reader.readLine()) != null) {
+
+                ids = data.split(",");
+
+
+                try {
+
+
+                    String airportCode = ids[0];
+                    this.airportCode.add(airportCode);
+
+                    String airportName = ids[1];
+                    this.airportName.add(airportName);
+
+                    String cityCode = ids[2];
+                    this.cityCode.add(cityCode);
+
+                } catch (Exception e) {
+
+
+                }
+
+            }
+
+
+        } catch (Exception e) {
+
+
+        }
+
+        rv_country.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        adapterAirportCuntry = new AdapterAirportCuntry(cityCode,airportName,airportCode);
+        rv_country.setAdapter(adapterAirportCuntry);
+        adapterAirportCuntry.notifyDataSetChanged();
+
+
+
+        search_flight_city.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().remove(SearchFlightByCity.this).commit();
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+
+
+
+
+
+                ArrayList<String> nameTemp = new ArrayList<>();
+                ArrayList<String> codecityTemp = new ArrayList<>();
+                ArrayList<String> codeAirportTemp = new ArrayList<>();
+
+
+                for (int y = 0; y < airportName.size(); y++) {
+                    if (airportName.get(y).contains(search_flight_city.getText().toString())) {
+
+                        nameTemp.add(airportName.get(y));
+                        codeAirportTemp.add(airportCode.get(y));
+                        codecityTemp.add(cityCode.get(y));
+
+                        //  rv_country.setLayoutManager(new LinearLayoutManager(getContext()));
+
+                        adapterAirportCuntry = new AdapterAirportCuntry(codecityTemp, nameTemp, codeAirportTemp);
+                        rv_country.setAdapter(adapterAirportCuntry);
+                        adapterAirportCuntry.notifyDataSetChanged();
+
+                    }else {
+
+
+                    }
+
+
+                }
+
+
+
+
+
+
             }
         });
+
         return view;
     }
 
