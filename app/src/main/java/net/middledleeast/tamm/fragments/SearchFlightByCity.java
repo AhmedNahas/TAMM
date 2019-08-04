@@ -39,6 +39,7 @@ public class SearchFlightByCity extends Fragment {
     List<String> airportCode = new ArrayList<>();
     List<String> airportName = new ArrayList<>();
     List<String> cityCode = new ArrayList<>();
+    private int id_t;
 
     public SearchFlightByCity() {
         // Required empty public constructor
@@ -50,6 +51,12 @@ public class SearchFlightByCity extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search_flight_by_city, container, false);
+
+
+       try {
+           Bundle arguments = getArguments();
+            id_t = arguments.getInt("id_t");
+       }catch (Exception e){}
 
         rv_country = view.findViewById(R.id.rv_airport_country);
 
@@ -67,9 +74,7 @@ public class SearchFlightByCity extends Fragment {
 
                 ids = data.split(",");
 
-
                 try {
-
 
                     String airportCode = ids[0];
                     this.airportCode.add(airportCode);
@@ -95,7 +100,7 @@ public class SearchFlightByCity extends Fragment {
 
         rv_country.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        adapterAirportCuntry = new AdapterAirportCuntry(cityCode,airportName,airportCode);
+        adapterAirportCuntry = new AdapterAirportCuntry(cityCode,airportName,airportCode , getActivity(),getContext() ,id_t);
         rv_country.setAdapter(adapterAirportCuntry);
         adapterAirportCuntry.notifyDataSetChanged();
 
@@ -125,11 +130,6 @@ public class SearchFlightByCity extends Fragment {
             @Override
             public void afterTextChanged(Editable editable) {
 
-
-
-
-
-
                 ArrayList<String> nameTemp = new ArrayList<>();
                 ArrayList<String> codecityTemp = new ArrayList<>();
                 ArrayList<String> codeAirportTemp = new ArrayList<>();
@@ -144,7 +144,7 @@ public class SearchFlightByCity extends Fragment {
 
                         //  rv_country.setLayoutManager(new LinearLayoutManager(getContext()));
 
-                        adapterAirportCuntry = new AdapterAirportCuntry(codecityTemp, nameTemp, codeAirportTemp);
+                        adapterAirportCuntry = new AdapterAirportCuntry(codecityTemp, nameTemp, codeAirportTemp,getActivity(),getContext(),id_t);
                         rv_country.setAdapter(adapterAirportCuntry);
                         adapterAirportCuntry.notifyDataSetChanged();
 

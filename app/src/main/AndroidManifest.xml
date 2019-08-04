@@ -97,6 +97,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.FlightSearch"
+            android:screenOrientation="portrait">
+
 
         </activity>
         <activity
@@ -117,5 +123,10 @@
             android:name=".sevice.MyService"
             android:enabled="true" />
     </application>
+
+
+
+
+
 
 </manifest>

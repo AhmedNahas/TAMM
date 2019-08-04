@@ -83,22 +83,24 @@
 
         <TextView
             android:id="@+id/country_selected_from_spinner"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_80sdp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/country_from_textview"
-            android:layout_marginLeft="@dimen/_40sdp"
+            android:layout_marginLeft="@dimen/_25sdp"
             android:text="BEIRUT"
+            android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/_15ssp" />
 
         <TextView
             android:id="@+id/to_country_name"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_80sdp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/country_from_textview"
-            android:layout_marginLeft="@dimen/_130sdp"
+            android:layout_marginLeft="@dimen/_100sdp"
             android:layout_toRightOf="@+id/country_selected_from_spinner"
             android:text="DUBAI"
+            android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/_15ssp" />
 
