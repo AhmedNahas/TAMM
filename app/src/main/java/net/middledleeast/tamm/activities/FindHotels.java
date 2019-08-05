@@ -36,6 +36,7 @@ import com.Tamm.Hotels.wcf.CountryList;
 import com.Tamm.Hotels.wcf.DestinationCityListResponse;
 import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.Filters;
+import com.Tamm.Hotels.wcf.HotelBookResponse;
 import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.Hotel_Result;
@@ -481,6 +482,8 @@ public class FindHotels extends AppCompatActivity {
 //                        listOfChild.clear();
 //                        list1();
 //                        listOfChildCount();
+
+
                         noRomes = 2;
                         room1View.setVisibility(View.VISIBLE);
                         room2View.setVisibility(View.INVISIBLE);
@@ -1141,6 +1144,8 @@ public class FindHotels extends AppCompatActivity {
             hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
                     true, noRomes, "EG", roomguests, null, 100, filters, "true", null,
                     10000, authenticationData);
+
+
 
 
 //            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),

@@ -2,6 +2,7 @@ package net.middledleeast.tamm.activities;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,8 +35,8 @@ public class FlightSearch extends AppCompatActivity {
     public static final String BASE_URL = "https://xmloutapi.tboair.com/api/v1/";
     private static final String TAG = MainActivity.class.getSimpleName();
     private static Retrofit retrofit = null;
-    public FlightAuthentication flightAuthentication;
     String password;
+    public FlightAuthentication flightAuthentication;
     private RecyclerView recyclerView = null;
 
     @Override
@@ -49,6 +50,11 @@ public class FlightSearch extends AppCompatActivity {
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+
+
+
+
 
         OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).connectTimeout(100, TimeUnit.SECONDS)
                 .readTimeout(100, TimeUnit.SECONDS).build();
@@ -84,12 +90,14 @@ public class FlightSearch extends AppCompatActivity {
                 SearchFlights.Segment segment = new SearchFlights.Segment();
                 segment.setDestination("DEL");
                 segment.setOrigin("DXB");
-                segment.setPreferredDepartureTime("2019-7-7T00:00:00");
-                segment.setPreferredArrivalTime("2019-7-8T00:00:00");
+                //wtf
+
                 List<String> airlines = new ArrayList<>();
                 airlines.add("EK");
                 airlines.add("AI");
-                segment.setPreferredAirlines(airlines);
+                segment.setPreferredAirlines(airlines);segment.setPreferredDepartureTime("2019-8-7T00:00:00");
+                segment.setPreferredArrivalTime("2019-8-8T00:00:00");
+//
                 segments.add(segment);
                 searchFlights[0].setSegment(segments);
                 Call<SearchFlights> searchCall = flightApiService.getFlightSearch("application/json", searchFlights[0]);
@@ -97,8 +105,19 @@ public class FlightSearch extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call<SearchFlights> call, Response<SearchFlights> response) {
-                        searchFlights[0] = response.body();
-                        System.out.println("How: " + searchFlights[0].searchFlightsResponse.getResults());
+
+                        boolean successful = response.isSuccessful();
+                        if (successful){
+                            searchFlights[0] = response.body();
+                            System.out.println("How: " + searchFlights[0].searchFlightsResponse.getResults());
+
+
+                        }else {
+                            String s = response.raw().body().toString();
+
+                            System.out.println("How: " + s);
+                        }
+
                     }
 
                     @Override
