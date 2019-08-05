@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.Tamm.Hotels.wcf.ArrayOfGuest;
@@ -349,7 +350,6 @@ public class ConfirmBookingRoom extends AppCompatActivity {
             no_adultroom1 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom1");
 
 
-
             if (no_adultroom1 == 1) {
 
                 String firstName1GustOne = this.firstName1GustOne.getText().toString();
@@ -412,7 +412,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeNamesR2.setVisibility(View.VISIBLE);
                 relativeFirstlastR2.setVisibility(View.VISIBLE);
 
-                String firstName1Gust2 =this.firstName1Gust2.getText().toString();
+                String firstName1Gust2 = this.firstName1Gust2.getText().toString();
                 String lastName1Gust2 = this.lastName1Gust2.getText().toString();
 
             } else if (no_adultroom2 == 2) {
@@ -421,7 +421,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast2R2.setVisibility(View.VISIBLE);
 
 
-                String firstName2Gust2 =this.firstName2Gust2.getText().toString();
+                String firstName2Gust2 = this.firstName2Gust2.getText().toString();
                 String lastName2Gust2 = this.lastName2Gust2.getText().toString();
             } else if (no_adultroom2 == 3) {
 
@@ -431,7 +431,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast2R2.setVisibility(View.VISIBLE);
                 relativeFirstlast3R2.setVisibility(View.VISIBLE);
 
-                String firstName3Gust2 =this.firstName3Gust2.getText().toString();
+                String firstName3Gust2 = this.firstName3Gust2.getText().toString();
                 String lastName3Gust2 = this.lastName3Gust2.getText().toString();
             } else if (no_adultroom2 == 4) {
                 relativeNamesR2.setVisibility(View.VISIBLE);
@@ -444,7 +444,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast4R2.setVisibility(View.VISIBLE);
 
 
-                String firstName4Gust2 =this.firstName4Gust2.getText().toString();
+                String firstName4Gust2 = this.firstName4Gust2.getText().toString();
                 String lastName4Gust2 = this.lastName4Gust2.getText().toString();
             }
 
@@ -484,7 +484,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlastR3.setVisibility(View.VISIBLE);
 
 
-                String firstName1Gust3 =this.firstName1Gust3.getText().toString();
+                String firstName1Gust3 = this.firstName1Gust3.getText().toString();
                 String lastName1Gust3 = this.lastName1Gust3.getText().toString();
 
 
@@ -498,7 +498,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlastR4.setVisibility(View.GONE);
 
 
-                String firstName2Gust3 =this.firstName2Gust3.getText().toString();
+                String firstName2Gust3 = this.firstName2Gust3.getText().toString();
                 String lastName2Gust3 = this.lastName2Gust3.getText().toString();
 
 
@@ -517,7 +517,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast3R3.setVisibility(View.VISIBLE);
 
 
-                String firstName3Gust3 =this.firstName3Gust3.getText().toString();
+                String firstName3Gust3 = this.firstName3Gust3.getText().toString();
                 String lastName3Gust3 = this.lastName3Gust3.getText().toString();
 
             } else if (no_adultroom3 == 4) {
@@ -541,7 +541,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 relativeFirstlast3R3.setVisibility(View.VISIBLE);
                 relativeFirstlast4R3.setVisibility(View.VISIBLE);
 
-                String firstName4Gust3 =this.firstName4Gust3.getText().toString();
+                String firstName4Gust3 = this.firstName4Gust3.getText().toString();
                 String lastName4Gust3 = this.lastName4Gust3.getText().toString();
 
             }
@@ -780,6 +780,460 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         confirmRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (firstName1GustOne.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName1GustOne", firstName1GustOne.getText().toString());
+                    if (firstName1GustOne.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+                if (lastName1GustOne.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName1GustOne", lastName1GustOne.getText().toString());
+                    if (lastName1GustOne.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName2GustOne.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName2GustOne", firstName2GustOne.getText().toString());
+                    if (firstName2GustOne.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName2GustOne.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName2GustOne", lastName2GustOne.getText().toString());
+                    if (lastName2GustOne.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName3GustOne.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName3GustOne", firstName3GustOne.getText().toString());
+                    if (firstName3GustOne.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName3GustOne.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName3GustOne", lastName3GustOne.getText().toString());
+                    if (lastName3GustOne.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName4GustOne.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName4GustOne", firstName4GustOne.getText().toString());
+                    if (firstName4GustOne.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName4GustOne.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName4GustOne", lastName4GustOne.getText().toString());
+                    if (lastName4GustOne.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName1ChildGustOne.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName1ChildGustOne", firstName1ChildGustOne.getText().toString());
+                    if (firstName1ChildGustOne.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName1ChildGustOne.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName1ChildGustOne", lastName1ChildGustOne.getText().toString());
+                    if (lastName1ChildGustOne.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName2ChildGustOne.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName2ChildGustOne", firstName2ChildGustOne.getText().toString());
+                    if (firstName2ChildGustOne.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName2ChildGustOne.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName2ChildGustOne", lastName2ChildGustOne.getText().toString());
+                    if (lastName2ChildGustOne.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName1Gust2.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName1Gust2", firstName1Gust2.getText().toString());
+                    if (firstName1Gust2.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName1Gust2.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName1Gust2", lastName1Gust2.getText().toString());
+                    if (lastName1Gust2.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName2Gust2.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName2Gust2", firstName2Gust2.getText().toString());
+                    if (firstName2Gust2.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName2Gust2.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName2Gust2", lastName2Gust2.getText().toString());
+                    if (lastName2Gust2.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName3Gust2.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName3Gust2", firstName3Gust2.getText().toString());
+                    if (firstName3Gust2.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName3Gust2.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName3Gust2", lastName3Gust2.getText().toString());
+                    if (lastName3Gust2.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+
+                if (firstName4Gust2.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName4Gust2", firstName4Gust2.getText().toString());
+                    if (firstName4Gust2.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName4Gust2.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName4Gust2", lastName4Gust2.getText().toString());
+                    if (lastName4Gust2.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName1ChildGust2.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName1ChildGust2", firstName1ChildGust2.getText().toString());
+                    if (firstName1ChildGust2.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName1ChildGust2.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName1ChildGust2", lastName1ChildGust2.getText().toString());
+                    if (lastName1ChildGust2.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName2ChildGust2.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName2ChildGust2", firstName2ChildGust2.getText().toString());
+                    if (firstName2ChildGust2.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+
+                if (lastName2ChildGust2.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName2ChildGust2", lastName2ChildGust2.getText().toString());
+                    if (lastName2ChildGust2.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName1Gust3.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName1Gust3", firstName1Gust3.getText().toString());
+                    if (firstName1Gust3.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName1Gust3.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName1Gust3", lastName1Gust3.getText().toString());
+                    if (lastName1Gust3.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName2Gust3.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName2Gust3", firstName2Gust3.getText().toString());
+                    if (firstName2Gust3.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName2Gust3.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName2Gust3", lastName2Gust3.getText().toString());
+                    if (lastName2Gust3.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+
+                if (firstName3Gust3.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName3Gust3", firstName3Gust3.getText().toString());
+                    if (firstName3Gust3.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName3Gust3.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName3Gust3", lastName3Gust3.getText().toString());
+                    if (lastName3Gust3.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName4Gust3.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName4Gust3", firstName4Gust3.getText().toString());
+                    if (firstName4Gust3.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName4Gust3.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName4Gust3", lastName4Gust3.getText().toString());
+                    if (lastName4Gust3.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+
+                if (firstName1ChildGust3.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName1ChildGust3", firstName1ChildGust3.getText().toString());
+                    if (firstName1ChildGust3.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName1ChildGust3.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName1ChildGust3", lastName1ChildGust3.getText().toString());
+                    if (lastName1ChildGust3.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+
+                if (firstName2ChildGust3.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName2ChildGust3", firstName2ChildGust3.getText().toString());
+                    if (firstName2ChildGust3.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+
+                if (lastName2ChildGust3.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName2ChildGust3", lastName2ChildGust3.getText().toString());
+                    if (lastName2ChildGust3.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName1Gust4.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName1Gust4", firstName1Gust4.getText().toString());
+                    if (firstName1Gust4.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName1Gust4.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName1Gust4", lastName1Gust4.getText().toString());
+                    if (lastName1Gust4.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+
+                if (firstName2Gust4.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName2Gust4", firstName2Gust4.getText().toString());
+                    if (firstName2Gust4.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName2Gust4.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName2Gust4", lastName2Gust4.getText().toString());
+                    if (lastName2Gust4.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName3Gust4.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName3Gust4", firstName3Gust4.getText().toString());
+                    if (firstName3Gust4.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName3Gust4.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName3Gust4", lastName3Gust4.getText().toString());
+                    if (lastName3Gust4.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName4Gust4.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName4Gust4", firstName4Gust4.getText().toString());
+                    if (firstName4Gust4.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName4Gust4.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName4Gust4", lastName4Gust4.getText().toString());
+                    if (lastName4Gust4.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName1ChildGust4.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName1ChildGust4", firstName1ChildGust4.getText().toString());
+                    if (firstName1ChildGust4.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName1ChildGust4.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName1ChildGust4", lastName1ChildGust4.getText().toString());
+                    if (lastName1ChildGust4.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (firstName2ChildGust4.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName2ChildGust4", firstName2ChildGust4.getText().toString());
+                    if (firstName2ChildGust4.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+                if (lastName2ChildGust4.getVisibility() == View.VISIBLE) {
+
+                    SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName2ChildGust4", lastName2ChildGust4.getText().toString());
+                    if (lastName2ChildGust4.getText().toString().equals("")) {
+                        notifynoData();
+                        return;
+                    }
+                }
+
+
+//                int noOfStrings = no_adultroom1 + no_adultroom2 + no_adultroom3 + no_adultroom4 + child_countroom1 +
+//                        child_countroom2 + child_countroom3 + child_countroom4;
+//                for (int i = 0; i < noOfStrings; i++) {
+//
+//
+//                }
+//                ArrayList<String> texts = new ArrayList<>();
+//                for (String str : texts) {
+//                    if (str.equals("")) {
+//
+//                    }
+//                }
+
+
 //                if (firstName.getText().toString().equals("") || lastName.getText().toString().equals("")) {
 //                    SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(ConfirmBookingRoom.this);
 //                    sweetAlertDialog.setConfirmButton("Ok", null);
@@ -796,6 +1250,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 Intent intent1 = new Intent(ConfirmBookingRoom.this, PaymentActivity.class);
 
                 intent1.putExtra("mId", 2);
+                // FIXME: 03/08/2019 change to startactivityforresult
                 startActivity(intent1);
             }
         });
@@ -828,6 +1283,13 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         setSpecification(mSpecification);
 
 
+    }
+
+    private void notifynoData() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(ConfirmBookingRoom.this);
+        alert.setNeutralButton("Ok", null);
+        alert.setMessage("Please fill out all forms");
+        alert.show();
     }
 
     private void setSpecification(String mSpecification) {

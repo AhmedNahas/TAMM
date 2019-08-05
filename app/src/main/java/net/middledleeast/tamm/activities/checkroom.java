@@ -7,12 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
-import com.Tamm.Hotels.wcf.ArrayOfString2;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
@@ -20,16 +18,13 @@ import com.Tamm.Hotels.wcf.BookingOptions;
 import com.Tamm.Hotels.wcf.HotelCancellationPolicyResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.RoomCombination;
-import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -150,6 +145,53 @@ public class checkroom extends AppCompatActivity {
         roomTyben = findViewById(R.id.room_Tybe);
         roomTyben.setText(roomTybe);
 
+        SharedPreferencesManger.SaveData(this, "firstName1GustOne", "");
+        SharedPreferencesManger.SaveData(this, "lastName1GustOne", "");
+        SharedPreferencesManger.SaveData(this, "firstName2GustOne", "");
+        SharedPreferencesManger.SaveData(this, "lastName2GustOne", "");
+        SharedPreferencesManger.SaveData(this, "firstName3GustOne", "");
+        SharedPreferencesManger.SaveData(this, "lastName3GustOne", "");
+        SharedPreferencesManger.SaveData(this, "firstName4GustOne", "");
+        SharedPreferencesManger.SaveData(this, "firstName1ChildGustOne", "");
+        SharedPreferencesManger.SaveData(this, "lastName1ChildGustOne", "");
+        SharedPreferencesManger.SaveData(this, "firstName2ChildGustOne", "");
+        SharedPreferencesManger.SaveData(this, "lastName2ChildGustOne", "");
+        SharedPreferencesManger.SaveData(this, "firstName1Gust2", "");
+        SharedPreferencesManger.SaveData(this, "lastName1Gust2", "");
+        SharedPreferencesManger.SaveData(this, "firstName2Gust2", "");
+        SharedPreferencesManger.SaveData(this, "lastName2Gust2", "");
+        SharedPreferencesManger.SaveData(this, "firstName3Gust2", "");
+        SharedPreferencesManger.SaveData(this, "lastName3Gust2", "");
+        SharedPreferencesManger.SaveData(this, "firstName4Gust2", "");
+        SharedPreferencesManger.SaveData(this, "lastName4Gust2", "");
+        SharedPreferencesManger.SaveData(this, "firstName1ChildGust2", "");
+        SharedPreferencesManger.SaveData(this, "lastName1ChildGust2", "");
+        SharedPreferencesManger.SaveData(this, "firstName2ChildGust2", "");
+        SharedPreferencesManger.SaveData(this, "lastName2ChildGust2", "");
+        SharedPreferencesManger.SaveData(this, "firstName1Gust3", "");
+        SharedPreferencesManger.SaveData(this, "lastName1Gust3", "");
+        SharedPreferencesManger.SaveData(this, "firstName2Gust3", "");
+        SharedPreferencesManger.SaveData(this, "lastName2Gust3", "");
+        SharedPreferencesManger.SaveData(this, "firstName3Gust3", "");
+        SharedPreferencesManger.SaveData(this, "lastName3Gust3", "");
+        SharedPreferencesManger.SaveData(this, "firstName4Gust3", "");
+        SharedPreferencesManger.SaveData(this, "lastName4Gust3", "");
+        SharedPreferencesManger.SaveData(this, "firstName1ChildGust3", "");
+        SharedPreferencesManger.SaveData(this, "lastName1ChildGust3", "");
+        SharedPreferencesManger.SaveData(this, "firstName2ChildGust3", "");
+        SharedPreferencesManger.SaveData(this, "lastName2ChildGust3", "");
+        SharedPreferencesManger.SaveData(this, "firstName1Gust4", "");
+        SharedPreferencesManger.SaveData(this, "lastName1Gust4", "");
+        SharedPreferencesManger.SaveData(this, "firstName2Gust4", "");
+        SharedPreferencesManger.SaveData(this, "lastName2Gust4", "");
+        SharedPreferencesManger.SaveData(this, "firstName3Gust4", "");
+        SharedPreferencesManger.SaveData(this, "lastName3Gust4", "");
+        SharedPreferencesManger.SaveData(this, "firstName4Gust4", "");
+        SharedPreferencesManger.SaveData(this, "lastName4Gust4", "");
+        SharedPreferencesManger.SaveData(this, "firstName1ChildGust4", "");
+        SharedPreferencesManger.SaveData(this, "lastName1ChildGust4", "");
+        SharedPreferencesManger.SaveData(this, "firstName2ChildGust4", "");
+        SharedPreferencesManger.SaveData(this, "lastName2ChildGust4", "");
 
         checkRoom.setOnClickListener(new View.OnClickListener() {
             @Override

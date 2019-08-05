@@ -1,6 +1,5 @@
 package net.middledleeast.tamm.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +26,6 @@ import com.Tamm.Hotels.wcf.HotelBookResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.PaymentInfo;
 import com.Tamm.Hotels.wcf.RequestedRooms;
-import com.Tamm.Hotels.wcf.RoomGuest;
 import com.Tamm.Hotels.wcf.SuppInfo;
 import com.Tamm.Hotels.wcf.Supplement;
 import com.google.gson.Gson;
@@ -159,12 +157,7 @@ public class RoomBooked extends AppCompatActivity {
                         guest.FirstName = "Ahmed";
                         guest.GuestType = Enums.GuestType.Adult;
                         guest.LastName = "Ahmed";
-                        if (i1 == 0) {
-                            guest.LeadGuest = true;
-                        } else {
-                            guest.LeadGuest = false;
-
-                        }
+                        guest.LeadGuest = i1 == 0;
                         guest.GuestInRoom = 1;
                         arrayOfGuest.add(guest);
                     }
@@ -176,7 +169,7 @@ public class RoomBooked extends AppCompatActivity {
                         guest.LeadGuest = false;
                         guest.GuestType = Enums.GuestType.Child;
                         guest.GuestInRoom = 1;
-                        guest.Age = (int)childAgeRoom1Array.get(i1);
+                        guest.Age = childAgeRoom1Array.get(i1);
                         arrayOfGuest.add(guest);
 
                     }
@@ -203,7 +196,7 @@ public class RoomBooked extends AppCompatActivity {
                         guest.LeadGuest = false;
                         guest.GuestType = Enums.GuestType.Child;
                         guest.GuestInRoom = 2;
-                        guest.Age = (int) childAgeRoom1Array2.get(i1);
+                        guest.Age = childAgeRoom1Array2.get(i1);
                         arrayOfGuest.add(guest);
 
                     }
@@ -229,7 +222,7 @@ public class RoomBooked extends AppCompatActivity {
                         guest.LeadGuest = false;
                         guest.GuestType = Enums.GuestType.Child;
                         guest.GuestInRoom = 3;
-                        guest.Age =  (int)childAgeRoom1Array3.get(i1);
+                        guest.Age = childAgeRoom1Array3.get(i1);
                         arrayOfGuest.add(guest);
 
                     }
@@ -256,7 +249,7 @@ public class RoomBooked extends AppCompatActivity {
                         guest.LeadGuest = false;
                         guest.GuestType = Enums.GuestType.Child;
                         guest.GuestInRoom = 4;
-                        guest.Age =  (int)childAgeRoom1Array4.get(i1);
+                        guest.Age = childAgeRoom1Array4.get(i1);
                         arrayOfGuest.add(guest);
 
                     }
