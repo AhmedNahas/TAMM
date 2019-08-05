@@ -94,6 +94,13 @@ public class RoomBooked extends AppCompatActivity {
         });
 
 
+        try {
+
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1GustOne");
+            Toast.makeText(this, "name is "+firstName1GustOne, Toast.LENGTH_SHORT).show();
+        }catch (Exception e){}
+
         assistantLabelCallBookedHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,6 +162,7 @@ public class RoomBooked extends AppCompatActivity {
 
                     for (int i1 = 0; i1 < noOfAdultRoom1; i1++) {
                         Guest guest = new Guest();
+                        guest.LeadGuest = true;
                         guest.Title = "Mr";
                         guest.FirstName = "Ahmed";
                         guest.GuestType = Enums.GuestType.Adult;

@@ -129,6 +129,7 @@
                         />
 
                     <EditText
+                        android:drawableStart="@drawable/ic_stars_black_24dp"
                         android:textSize="@dimen/_9ssp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:id="@+id/first_name_1_gust_one"
@@ -140,6 +141,7 @@
                         android:layout_toRightOf="@+id/mromiss1" />
 
                     <EditText
+                        android:drawableStart="@drawable/ic_stars_black_24dp"
 
                         android:textSize="@dimen/_9ssp"
                         android:layout_marginTop="@dimen/_10sdp"
