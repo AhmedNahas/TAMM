@@ -444,11 +444,11 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                         break;
 
                     case 4 :
-                    noOfAdult_1();
-                    noOfAdult_2();
-                    noOfAdult_3();
-                    noOfAdult_4();
-                    break;
+                        noOfAdult_1();
+                        noOfAdult_2();
+                        noOfAdult_3();
+                        noOfAdult_4();
+                        break;
 
                 }
 //                SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName", firstName.getText().toString());

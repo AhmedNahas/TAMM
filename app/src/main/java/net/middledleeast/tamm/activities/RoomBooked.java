@@ -27,6 +27,7 @@ import com.Tamm.Hotels.wcf.HotelBookResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.PaymentInfo;
 import com.Tamm.Hotels.wcf.RequestedRooms;
+import com.Tamm.Hotels.wcf.ResponseStatus;
 import com.Tamm.Hotels.wcf.RoomGuest;
 import com.Tamm.Hotels.wcf.SuppInfo;
 import com.Tamm.Hotels.wcf.Supplement;
@@ -94,13 +95,6 @@ public class RoomBooked extends AppCompatActivity {
         });
 
 
-        try {
-
-
-            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1GustOne");
-            Toast.makeText(this, "name is "+firstName1GustOne, Toast.LENGTH_SHORT).show();
-        }catch (Exception e){}
-
         assistantLabelCallBookedHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,189 +137,59 @@ public class RoomBooked extends AppCompatActivity {
         int noOfChildRoom2 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom2");
         int noOfChildRoom3 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom3");
         int noOfChildRoom4 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom4");
+
+
         String childAgeRoom1 = SharedPreferencesManger.LoadStringData(this, "child_countroom1");
-        ArrayList<Integer> childAgeRoom1Array = new Gson().fromJson(childAgeRoom1,ArrayList.class);
+        ArrayList<Integer> childAgeRoom1Array = new Gson().fromJson(childAgeRoom1, ArrayList.class);
         String childAgeRoom2 = SharedPreferencesManger.LoadStringData(this, "child_countroom2");
-        ArrayList<Integer> childAgeRoom1Array2 = new Gson().fromJson(childAgeRoom2,ArrayList.class);
+        ArrayList<Integer> childAgeRoom1Array2 = new Gson().fromJson(childAgeRoom2, ArrayList.class);
 
         String childAgeRoom3 = SharedPreferencesManger.LoadStringData(this, "child_countroom3");
-        ArrayList<Integer> childAgeRoom1Array3 = new Gson().fromJson(childAgeRoom3,ArrayList.class);
+        ArrayList<Integer> childAgeRoom1Array3 = new Gson().fromJson(childAgeRoom3, ArrayList.class);
 
         String childAgeRoom4 = SharedPreferencesManger.LoadStringData(this, "child_countroom4");
-        ArrayList<Integer> childAgeRoom1Array4 = new Gson().fromJson(childAgeRoom4,ArrayList.class);
+        ArrayList<Integer> childAgeRoom1Array4 = new Gson().fromJson(childAgeRoom4, ArrayList.class);
 
         ArrayOfRoomGuest arrayOfRoomGuest = new Gson().fromJson(SharedPreferencesManger.LoadStringData(this, "roomGuests"), ArrayOfRoomGuest.class);
         int noOfRooms = SharedPreferencesManger.LoadIntegerData(this, "noOfRooms");
-        for (int i = 1; i <= noOfRooms; i++) {
-            switch (i) {
-                case 1:
 
-                    for (int i1 = 0; i1 < noOfAdultRoom1; i1++) {
-                        Guest guest = new Guest();
-                        guest.LeadGuest = true;
-                        guest.Title = "Mr";
-                        guest.FirstName = "Ahmed";
-                        guest.GuestType = Enums.GuestType.Adult;
-                        guest.LastName = "Ahmed";
-                        if (i1 == 0) {
-                            guest.LeadGuest = true;
-                        } else {
-                            guest.LeadGuest = false;
+        switch (noOfRooms) {
+            case 1:
 
-                        }
-                        guest.GuestInRoom = 1;
-                        arrayOfGuest.add(guest);
-                    }
-                    for (int i1 = 0; i1 < noOfChildRoom1; i1++) {
-                        Guest guest = new Guest();
-                        guest.Title = "Mr";
-                        guest.FirstName = "Ahmed";
-                        guest.LastName = "Ahmed";
-                        guest.LeadGuest = false;
-                        guest.GuestType = Enums.GuestType.Child;
-                        guest.GuestInRoom = 1;
-                        guest.Age = (int)childAgeRoom1Array.get(i1);
-                        arrayOfGuest.add(guest);
-
-                    }
-
-                    break;
-                case 2:
-                    for (int i1 = 0; i1 < noOfAdultRoom2; i1++) {
-                        Guest guest = new Guest();
-                        guest.Title = "Mr";
-                        guest.FirstName = "Ahmed";
-                        guest.LastName = "Ahmed";
-                        guest.LeadGuest = false;
-                        guest.GuestType = Enums.GuestType.Adult;
-                        guest.GuestInRoom = 2;
-                        arrayOfGuest.add(guest);
-
-                    }
-
-                    for (int i1 = 0; i1 < noOfChildRoom2; i1++) {
-                        Guest guest = new Guest();
-                        guest.Title = "Mr";
-                        guest.FirstName = "Ahmed";
-                        guest.LastName = "Ahmed";
-                        guest.LeadGuest = false;
-                        guest.GuestType = Enums.GuestType.Child;
-                        guest.GuestInRoom = 2;
-                        guest.Age = (int) childAgeRoom1Array2.get(i1);
-                        arrayOfGuest.add(guest);
-
-                    }
-
-                    break;
-                case 3:
-                    for (int i1 = 0; i1 < noOfAdultRoom3; i1++) {
-                        Guest guest = new Guest();
-                        guest.Title = "Mr";
-                        guest.FirstName = "Ahmed";
-                        guest.LastName = "Ahmed";
-                        guest.LeadGuest = false;
-                        guest.GuestType = Enums.GuestType.Adult;
-                        guest.GuestInRoom = 3;
-                        arrayOfGuest.add(guest);
-
-                    }
-                    for (int i1 = 0; i1 < noOfChildRoom3; i1++) {
-                        Guest guest = new Guest();
-                        guest.Title = "Mr";
-                        guest.FirstName = "Ahmed";
-                        guest.LastName = "Ahmed";
-                        guest.LeadGuest = false;
-                        guest.GuestType = Enums.GuestType.Child;
-                        guest.GuestInRoom = 3;
-                        guest.Age =  (int)childAgeRoom1Array3.get(i1);
-                        arrayOfGuest.add(guest);
-
-                    }
-
-                    break;
-                case 4:
-                    for (int i1 = 0; i1 < noOfAdultRoom4; i1++) {
-                        Guest guest = new Guest();
-                        guest.Title = "Mr";
-                        guest.FirstName = "Ahmed";
-                        guest.LastName = "Ahmed";
-                        guest.LeadGuest = false;
-                        guest.GuestType = Enums.GuestType.Adult;
-                        guest.GuestInRoom = 4;
-                        arrayOfGuest.add(guest);
-
-                    }
-
-                    for (int i1 = 0; i1 < noOfChildRoom4; i1++) {
-                        Guest guest = new Guest();
-                        guest.Title = "Mr";
-                        guest.FirstName = "Ahmed";
-                        guest.LastName = "Ahmed";
-                        guest.LeadGuest = false;
-                        guest.GuestType = Enums.GuestType.Child;
-                        guest.GuestInRoom = 4;
-                        guest.Age =  (int)childAgeRoom1Array4.get(i1);
-                        arrayOfGuest.add(guest);
-
-                    }
-
-                    break;
-            }
-        }
+                adult_1_Room1(noOfAdultRoom1, noOfChildRoom1);
 
 
-//        for (int i=0 i<) {
-//            Guest guest =new Guest();
-//
-//        }
+                break;
+
+            case 2:
+
+                adult_1_Room1(noOfAdultRoom1, noOfChildRoom1);
+                adult_2_Room2(noOfAdultRoom2, noOfChildRoom2);
+
+                break;
+
+
+            case 3:
+
+                adult_1_Room1(noOfAdultRoom1, noOfChildRoom1);
+                adult_2_Room2(noOfAdultRoom2, noOfChildRoom2);
+                adult_3_Room3(noOfAdultRoom3, noOfChildRoom3);
+
+                break;
+
+            case 4:
+                adult_1_Room1(noOfAdultRoom1, noOfChildRoom1);
+                adult_2_Room2(noOfAdultRoom2, noOfChildRoom2);
+                adult_3_Room3(noOfAdultRoom3, noOfChildRoom3);
+                adult_4_Room4(noOfAdultRoom4, noOfChildRoom4);
+                break;
+
+
+
+    }
+
 
         // FIXME: 7/31/2019 end
-
-//        Guest guest = new Guest();
-//        guest.Title = "Mr";
-//        guest.Age = 25;
-//        guest.FirstName = SharedPreferencesManger.LoadStringData(this, "firstName");
-//        guest.LeadGuest = true;
-//        guest.GuestType = Enums.GuestType.Adult;
-//        guest.LastName = SharedPreferencesManger.LoadStringData(this, "lastName");
-//        guest.GuestInRoom = 1;
-//        arrayOfGuest.add(guest);
-//        Guest guest2 = new Guest();
-//        guest2.Title = "Mr";
-//        guest2.Age = 5;
-//        guest2.FirstName = "CC";
-//        guest2.LeadGuest = false;
-//        guest2.GuestType = Enums.GuestType.Child;
-//        guest2.LastName = "DD";
-//        guest2.GuestInRoom = 1;
-//        arrayOfGuest.add(guest2);
-//        Guest guest1 = new Guest();
-//        guest1.Title = "Mr";
-//        guest1.Age = 35;
-//        guest1.FirstName = "Farid";
-//        guest1.LeadGuest = false;
-//        guest1.GuestType = Enums.GuestType.Adult;
-//        guest1.LastName = "Fady";
-//        guest1.GuestInRoom = 2;
-//        arrayOfGuest.add(guest1);
-//        Guest guest3 = new Guest();
-//        guest3.Title = "Mr";
-//        guest3.Age = 2;
-//        guest3.FirstName = "aa";
-//        guest3.LeadGuest = false;
-//        guest3.GuestType = Enums.GuestType.Child;
-//        guest3.LastName = "BB";
-//        guest3.GuestInRoom = 1;
-//        arrayOfGuest.add(guest3);
-//        Guest guest4 = new Guest();
-//        guest4.Title = "Mr";
-//        guest4.Age = 35;
-//        guest4.FirstName = "Sherif";
-//        guest4.LeadGuest = false;
-//        guest4.GuestType = Enums.GuestType.Adult;
-//        guest4.LastName = "Anwar";
-//        guest4.GuestInRoom = 2;
-//        arrayOfGuest.add(guest4);
         PaymentInfo paymentInfo = new PaymentInfo();
         paymentInfo.VoucherBooking = true;
         paymentInfo.PaymentModeType = Enums.PaymentModeType.Limit;
@@ -347,6 +211,666 @@ public class RoomBooked extends AppCompatActivity {
                 startActivity(new Intent(RoomBooked.this, HotelBooking.class));
             }
         });
+    }
+
+    private void adult_4_Room4(int noOfAdultRoom4, int noOfChildRoom4) {
+
+
+
+        if (noOfAdultRoom4 == 1) {
+
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust4");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust4");
+            Guest guest = new Guest();
+            guest.Title = "Mr";
+            guest.FirstName = firstName1GustOne;
+            guest.GuestType = Enums.GuestType.Adult;
+            guest.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest);
+
+
+        } else if (noOfAdultRoom4 == 2) {
+
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust4");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust4");
+            Guest guest = new Guest();
+            guest.Title = "Mr";
+            guest.FirstName = firstName1GustOne;
+            guest.GuestType = Enums.GuestType.Adult;
+            guest.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest);
+
+
+            String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust4");
+            String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust4");
+            Guest guest2 = new Guest();
+            guest2.Title = "Mr";
+            guest2.FirstName = firstName2GustOne;
+            guest2.GuestType = Enums.GuestType.Adult;
+            guest2.LastName = lastName2GustOne;
+            arrayOfGuest.add(guest2);
+
+
+        } else if (noOfAdultRoom4 == 3) {
+
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust4");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust4");
+            Guest guest = new Guest();
+            guest.Title = "Mr";
+            guest.FirstName = firstName1GustOne;
+            guest.GuestType = Enums.GuestType.Adult;
+            guest.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest);
+
+
+            String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust4");
+            String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust4");
+            Guest guest2 = new Guest();
+            guest2.Title = "Mr";
+            guest2.FirstName = firstName2GustOne;
+            guest2.GuestType = Enums.GuestType.Adult;
+            guest2.LastName = lastName2GustOne;
+            arrayOfGuest.add(guest2);
+
+
+            String firstName3GustOne = SharedPreferencesManger.LoadStringData(this, "firstName3Gust4");
+            String lastName3GustOne = SharedPreferencesManger.LoadStringData(this, "lastName3Gust4");
+            Guest guest3 = new Guest();
+            guest3.Title = "Mr";
+            guest3.FirstName = firstName3GustOne;
+            guest3.GuestType = Enums.GuestType.Adult;
+            guest3.LastName = lastName3GustOne;
+            arrayOfGuest.add(guest3);
+
+        } else if (noOfAdultRoom4 == 4) {
+
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust4");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust4");
+            Guest guest = new Guest();
+            guest.Title = "Mr";
+            guest.FirstName = firstName1GustOne;
+            guest.GuestType = Enums.GuestType.Adult;
+            guest.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest);
+
+
+            String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust4");
+            String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust4");
+            Guest guest2 = new Guest();
+            guest2.Title = "Mr";
+            guest2.FirstName = firstName2GustOne;
+            guest2.GuestType = Enums.GuestType.Adult;
+            guest2.LastName = lastName2GustOne;
+            arrayOfGuest.add(guest2);
+
+
+            String firstName3GustOne = SharedPreferencesManger.LoadStringData(this, "firstName3Gust4");
+            String lastName3GustOne = SharedPreferencesManger.LoadStringData(this, "lastName3Gust4");
+            Guest guest3 = new Guest();
+            guest3.Title = "Mr";
+            guest3.FirstName = firstName3GustOne;
+            guest3.GuestType = Enums.GuestType.Adult;
+            guest3.LastName = lastName3GustOne;
+            arrayOfGuest.add(guest3);
+
+            String firstName4Gust2 = SharedPreferencesManger.LoadStringData(this, "firstName4Gust4");
+            String lastName4Gust2 = SharedPreferencesManger.LoadStringData(this, "lastName4Gust4");
+            Guest guest4 = new Guest();
+            guest4.Title = "Mr";
+            guest4.FirstName = firstName4Gust2;
+            guest4.GuestType = Enums.GuestType.Adult;
+            guest4.LastName = lastName4Gust2;
+            arrayOfGuest.add(guest4);
+
+
+        }
+
+        if (noOfChildRoom4 == 1) {
+            String firstName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "firstName1ChildGust4");
+            String lastName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName1ChildGust4");
+
+
+            Guest child1 = new Guest();
+            child1.Title = "Mr";
+            child1.FirstName = firstName1ChildGustOne;
+            child1.GuestType = Enums.GuestType.Child;
+            child1.LastName = lastName1ChildGustOne;
+            arrayOfGuest.add(child1);
+
+
+        } else if (noOfChildRoom4 == 2) {
+
+            String firstName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "firstName1ChildGust4");
+            String lastName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName1ChildGust4");
+
+
+            Guest child1 = new Guest();
+            child1.Title = "Mr";
+            child1.FirstName = firstName1ChildGustOne;
+            child1.GuestType = Enums.GuestType.Child;
+            child1.LastName = lastName1ChildGustOne;
+            arrayOfGuest.add(child1);
+
+
+            String firstName2ChildGustOne = SharedPreferencesManger.LoadStringData(this, "firstName2ChildGust4");
+            String lastName2ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName2ChildGust4");
+
+            Guest child2 = new Guest();
+            child2.Title = "Mr";
+            child2.FirstName = firstName2ChildGustOne;
+            child2.GuestType = Enums.GuestType.Child;
+            child2.LastName = lastName2ChildGustOne;
+            arrayOfGuest.add(child2);
+
+
+        }
+
+
+
+    }
+
+    private void adult_3_Room3(int noOfAdultRoom3, int noOfChildRoom3) {
+
+
+
+
+
+        if (noOfAdultRoom3 == 1) {
+
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust3");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust3");
+            Guest guest = new Guest();
+            guest.Title = "Mr";
+            guest.FirstName = firstName1GustOne;
+            guest.GuestType = Enums.GuestType.Adult;
+            guest.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest);
+
+
+        } else if (noOfAdultRoom3 == 2) {
+
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust3");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust3");
+            Guest guest = new Guest();
+            guest.Title = "Mr";
+            guest.FirstName = firstName1GustOne;
+            guest.GuestType = Enums.GuestType.Adult;
+            guest.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest);
+
+
+            String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust3");
+            String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust3");
+            Guest guest2 = new Guest();
+            guest2.Title = "Mr";
+            guest2.FirstName = firstName2GustOne;
+            guest2.GuestType = Enums.GuestType.Adult;
+            guest2.LastName = lastName2GustOne;
+            arrayOfGuest.add(guest2);
+
+
+        } else if (noOfAdultRoom3 == 3) {
+
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust3");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust3");
+            Guest guest = new Guest();
+            guest.Title = "Mr";
+            guest.FirstName = firstName1GustOne;
+            guest.GuestType = Enums.GuestType.Adult;
+            guest.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest);
+
+
+            String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust3");
+            String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust3");
+            Guest guest2 = new Guest();
+            guest2.Title = "Mr";
+            guest2.FirstName = firstName2GustOne;
+            guest2.GuestType = Enums.GuestType.Adult;
+            guest2.LastName = lastName2GustOne;
+            arrayOfGuest.add(guest2);
+
+
+            String firstName3GustOne = SharedPreferencesManger.LoadStringData(this, "firstName3Gust3");
+            String lastName3GustOne = SharedPreferencesManger.LoadStringData(this, "lastName3Gust3");
+            Guest guest3 = new Guest();
+            guest3.Title = "Mr";
+            guest3.FirstName = firstName3GustOne;
+            guest3.GuestType = Enums.GuestType.Adult;
+            guest3.LastName = lastName3GustOne;
+            arrayOfGuest.add(guest3);
+
+        } else if (noOfAdultRoom3 == 4) {
+
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust3");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust3");
+            Guest guest = new Guest();
+            guest.Title = "Mr";
+            guest.FirstName = firstName1GustOne;
+            guest.GuestType = Enums.GuestType.Adult;
+            guest.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest);
+
+
+            String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust3");
+            String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust3");
+            Guest guest2 = new Guest();
+            guest2.Title = "Mr";
+            guest2.FirstName = firstName2GustOne;
+            guest2.GuestType = Enums.GuestType.Adult;
+            guest2.LastName = lastName2GustOne;
+            arrayOfGuest.add(guest2);
+
+
+            String firstName3GustOne = SharedPreferencesManger.LoadStringData(this, "firstName3Gust3");
+            String lastName3GustOne = SharedPreferencesManger.LoadStringData(this, "lastName3Gust3");
+            Guest guest3 = new Guest();
+            guest3.Title = "Mr";
+            guest3.FirstName = firstName3GustOne;
+            guest3.GuestType = Enums.GuestType.Adult;
+            guest3.LastName = lastName3GustOne;
+            arrayOfGuest.add(guest3);
+
+            String firstName4Gust2 = SharedPreferencesManger.LoadStringData(this, "firstName4Gust3");
+            String lastName4Gust2 = SharedPreferencesManger.LoadStringData(this, "lastName4Gust3");
+            Guest guest4 = new Guest();
+            guest4.Title = "Mr";
+            guest4.FirstName = firstName4Gust2;
+            guest4.GuestType = Enums.GuestType.Adult;
+            guest4.LastName = lastName4Gust2;
+            arrayOfGuest.add(guest4);
+
+
+        }
+
+        if (noOfChildRoom3 == 1) {
+            String firstName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "firstName1ChildGust3");
+            String lastName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName1ChildGust3");
+
+
+            Guest child1 = new Guest();
+            child1.Title = "Mr";
+            child1.FirstName = firstName1ChildGustOne;
+            child1.GuestType = Enums.GuestType.Child;
+            child1.LastName = lastName1ChildGustOne;
+            arrayOfGuest.add(child1);
+
+
+        } else if (noOfChildRoom3 == 2) {
+
+            String firstName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "firstName1ChildGust3");
+            String lastName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName1ChildGust3");
+
+
+            Guest child1 = new Guest();
+            child1.Title = "Mr";
+            child1.FirstName = firstName1ChildGustOne;
+            child1.GuestType = Enums.GuestType.Child;
+            child1.LastName = lastName1ChildGustOne;
+            arrayOfGuest.add(child1);
+
+
+            String firstName2ChildGustOne = SharedPreferencesManger.LoadStringData(this, "firstName2ChildGust3");
+            String lastName2ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName2ChildGust3");
+
+            Guest child2 = new Guest();
+            child2.Title = "Mr";
+            child2.FirstName = firstName2ChildGustOne;
+            child2.GuestType = Enums.GuestType.Child;
+            child2.LastName = lastName2ChildGustOne;
+            arrayOfGuest.add(child2);
+
+
+        }
+
+
+
+    }
+
+    private void adult_2_Room2(int noOfAdultRoom2, int noOfChildRoom2) {
+
+        if (noOfAdultRoom2 == 1) {
+
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust2");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust2");
+            Guest guest = new Guest();
+            guest.Title = "Mr";
+            guest.FirstName = firstName1GustOne;
+            guest.GuestType = Enums.GuestType.Adult;
+            guest.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest);
+
+
+        } else if (noOfAdultRoom2 == 2) {
+
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust2");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust2");
+            Guest guest = new Guest();
+            guest.Title = "Mr";
+            guest.FirstName = firstName1GustOne;
+            guest.GuestType = Enums.GuestType.Adult;
+            guest.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest);
+
+
+            String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust2");
+            String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust2");
+            Guest guest2 = new Guest();
+            guest2.Title = "Mr";
+            guest2.FirstName = firstName2GustOne;
+            guest2.GuestType = Enums.GuestType.Adult;
+            guest2.LastName = lastName2GustOne;
+            arrayOfGuest.add(guest2);
+
+
+        } else if (noOfAdultRoom2 == 3) {
+
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust2");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust2");
+            Guest guest = new Guest();
+            guest.Title = "Mr";
+            guest.FirstName = firstName1GustOne;
+            guest.GuestType = Enums.GuestType.Adult;
+            guest.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest);
+
+
+            String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust2");
+            String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust2");
+            Guest guest2 = new Guest();
+            guest2.Title = "Mr";
+            guest2.FirstName = firstName2GustOne;
+            guest2.GuestType = Enums.GuestType.Adult;
+            guest2.LastName = lastName2GustOne;
+            arrayOfGuest.add(guest2);
+
+
+            String firstName3GustOne = SharedPreferencesManger.LoadStringData(this, "firstName3Gust2");
+            String lastName3GustOne = SharedPreferencesManger.LoadStringData(this, "lastName3Gust2");
+            Guest guest3 = new Guest();
+            guest3.Title = "Mr";
+            guest3.FirstName = firstName3GustOne;
+            guest3.GuestType = Enums.GuestType.Adult;
+            guest3.LastName = lastName3GustOne;
+            arrayOfGuest.add(guest3);
+
+        } else if (noOfAdultRoom2 == 4) {
+
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust2");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust2");
+            Guest guest = new Guest();
+            guest.Title = "Mr";
+            guest.FirstName = firstName1GustOne;
+            guest.GuestType = Enums.GuestType.Adult;
+            guest.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest);
+
+
+            String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust2");
+            String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust2");
+            Guest guest2 = new Guest();
+            guest2.Title = "Mr";
+            guest2.FirstName = firstName2GustOne;
+            guest2.GuestType = Enums.GuestType.Adult;
+            guest2.LastName = lastName2GustOne;
+            arrayOfGuest.add(guest2);
+
+
+            String firstName3GustOne = SharedPreferencesManger.LoadStringData(this, "firstName3Gust2");
+            String lastName3GustOne = SharedPreferencesManger.LoadStringData(this, "lastName3Gust2");
+            Guest guest3 = new Guest();
+            guest3.Title = "Mr";
+            guest3.FirstName = firstName3GustOne;
+            guest3.GuestType = Enums.GuestType.Adult;
+            guest3.LastName = lastName3GustOne;
+            arrayOfGuest.add(guest3);
+
+            String firstName4Gust2 = SharedPreferencesManger.LoadStringData(this, "firstName4Gust2");
+            String lastName4Gust2 = SharedPreferencesManger.LoadStringData(this, "lastName4Gust2");
+            Guest guest4 = new Guest();
+            guest4.Title = "Mr";
+            guest4.FirstName = firstName4Gust2;
+            guest4.GuestType = Enums.GuestType.Adult;
+            guest4.LastName = lastName4Gust2;
+            arrayOfGuest.add(guest4);
+
+
+        }
+
+        if (noOfChildRoom2 == 1) {
+            String firstName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "firstName1ChildGust2");
+            String lastName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName1ChildGust2");
+
+
+            Guest child1 = new Guest();
+            child1.Title = "Mr";
+            child1.FirstName = firstName1ChildGustOne;
+            child1.GuestType = Enums.GuestType.Child;
+            child1.LastName = lastName1ChildGustOne;
+            arrayOfGuest.add(child1);
+
+
+        } else if (noOfChildRoom2 == 2) {
+
+            String firstName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "firstName1ChildGust2");
+            String lastName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName1ChildGust2");
+
+
+            Guest child1 = new Guest();
+            child1.Title = "Mr";
+            child1.FirstName = firstName1ChildGustOne;
+            child1.GuestType = Enums.GuestType.Child;
+            child1.LastName = lastName1ChildGustOne;
+            arrayOfGuest.add(child1);
+
+
+            String firstName2ChildGustOne = SharedPreferencesManger.LoadStringData(this, "firstName2ChildGust2");
+            String lastName2ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName2ChildGust2");
+
+            Guest child2 = new Guest();
+            child2.Title = "Mr";
+            child2.FirstName = firstName2ChildGustOne;
+            child2.GuestType = Enums.GuestType.Child;
+            child2.LastName = lastName2ChildGustOne;
+            arrayOfGuest.add(child2);
+
+
+        }
+
+
+    }
+
+    private void adult_1_Room1(int noOfAdultRoom1, int noOfChildRoom1) {
+
+
+        if (noOfAdultRoom1 == 1) {
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1GustOne");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1GustOne");
+
+            Guest guest = new Guest();
+            guest.LeadGuest = true;
+            guest.LeadGuest = true;
+            guest.Title = "Mr";
+            guest.FirstName = firstName1GustOne;
+            guest.GuestType = Enums.GuestType.Adult;
+            guest.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest);
+
+
+        } else if (noOfAdultRoom1 == 2) {
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1GustOne");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1GustOne");
+
+            String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2GustOne");
+            String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2GustOne");
+            Guest guest1 = new Guest();
+            guest1.LeadGuest = true;
+            guest1.LeadGuest = true;
+            guest1.Title = "Mr";
+            guest1.FirstName = firstName1GustOne;
+            guest1.GuestType = Enums.GuestType.Adult;
+            guest1.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest1);
+
+            Guest guest2 = new Guest();
+            guest2.Title = "Mr";
+            guest2.FirstName = firstName2GustOne;
+            guest2.GuestType = Enums.GuestType.Adult;
+            guest2.LastName = lastName2GustOne;
+
+            arrayOfGuest.add(guest2);
+
+
+        } else if (noOfAdultRoom1 == 3) {
+
+
+            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1GustOne");
+            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1GustOne");
+
+            String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2GustOne");
+            String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2GustOne");
+
+            String firstName3GustOne = SharedPreferencesManger.LoadStringData(this, "firstName3GustOne");
+            String lastName3GustOne = SharedPreferencesManger.LoadStringData(this, "lastName3GustOne");
+            Guest guest1 = new Guest();
+            guest1.LeadGuest = true;
+            guest1.LeadGuest = true;
+            guest1.Title = "Mr";
+            guest1.FirstName = firstName1GustOne;
+            guest1.GuestType = Enums.GuestType.Adult;
+            guest1.LastName = lastName1GustOne;
+            arrayOfGuest.add(guest1);
+
+            Guest guest2 = new Guest();
+            guest2.Title = "Mr";
+            guest2.FirstName = firstName2GustOne;
+            guest2.GuestType = Enums.GuestType.Adult;
+            guest2.LastName = lastName2GustOne;
+
+            arrayOfGuest.add(guest2);
+
+
+            Guest guest3 = new Guest();
+            guest3.Title = "Mr";
+            guest3.FirstName = firstName3GustOne;
+            guest3.GuestType = Enums.GuestType.Adult;
+            guest3.LastName = lastName3GustOne;
+
+            arrayOfGuest.add(guest3);
+
+
+        } else if (noOfAdultRoom1 == 4) {
+
+            adult_4_Room1();
+        }
+
+        if (noOfChildRoom1 == 1) {
+            String firstName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "firstName1ChildGustOne");
+            String lastName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName1ChildGustOne");
+
+
+            Guest child1 = new Guest();
+            child1.Title = "Mr";
+            child1.FirstName = firstName1ChildGustOne;
+            child1.GuestType = Enums.GuestType.Child;
+            child1.LastName = lastName1ChildGustOne;
+            arrayOfGuest.add(child1);
+
+
+        } else if (noOfChildRoom1 == 2) {
+
+            String firstName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "firstName1ChildGustOne");
+            String lastName1ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName1ChildGustOne");
+
+
+            Guest child1 = new Guest();
+            child1.Title = "Mr";
+            child1.FirstName = firstName1ChildGustOne;
+            child1.GuestType = Enums.GuestType.Child;
+            child1.LastName = lastName1ChildGustOne;
+            arrayOfGuest.add(child1);
+
+
+            String firstName2ChildGustOne = SharedPreferencesManger.LoadStringData(this, "firstName2ChildGustOne");
+            String lastName2ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName2ChildGustOne");
+
+            Guest child2 = new Guest();
+            child2.Title = "Mr";
+            child2.FirstName = firstName2ChildGustOne;
+            child2.GuestType = Enums.GuestType.Child;
+            child2.LastName = lastName2ChildGustOne;
+            arrayOfGuest.add(child2);
+
+
+        }
+
+
+    }
+
+    private void adult_4_Room1() {
+
+
+        String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1GustOne");
+        String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1GustOne");
+
+        String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2GustOne");
+        String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2GustOne");
+
+        String firstName3GustOne = SharedPreferencesManger.LoadStringData(this, "firstName3GustOne");
+        String lastName3GustOne = SharedPreferencesManger.LoadStringData(this, "lastName3GustOne");
+
+
+        String firstName4GustOne = SharedPreferencesManger.LoadStringData(this, "firstName4GustOne");
+        String lastName4GustOne = SharedPreferencesManger.LoadStringData(this, "lastName4GustOne");
+
+
+        Guest guest1 = new Guest();
+        guest1.LeadGuest = true;
+        guest1.LeadGuest = true;
+        guest1.Title = "Mr";
+        guest1.FirstName = firstName1GustOne;
+        guest1.GuestType = Enums.GuestType.Adult;
+        guest1.LastName = lastName1GustOne;
+        arrayOfGuest.add(guest1);
+
+        Guest guest2 = new Guest();
+        guest2.Title = "Mr";
+        guest2.FirstName = firstName2GustOne;
+        guest2.GuestType = Enums.GuestType.Adult;
+        guest2.LastName = lastName2GustOne;
+
+        arrayOfGuest.add(guest2);
+
+
+        Guest guest3 = new Guest();
+        guest3.Title = "Mr";
+        guest3.FirstName = firstName3GustOne;
+        guest3.GuestType = Enums.GuestType.Adult;
+        guest3.LastName = lastName3GustOne;
+
+        arrayOfGuest.add(guest3);
+
+
+        Guest guest4 = new Guest();
+        guest4.Title = "Mr";
+        guest4.FirstName = firstName4GustOne;
+        guest4.GuestType = Enums.GuestType.Adult;
+        guest4.LastName = lastName4GustOne;
+        arrayOfGuest.add(guest4);
+
     }
 
     private void bookingresponse(PaymentInfo paymentInfo) {
@@ -377,6 +901,7 @@ public class RoomBooked extends AppCompatActivity {
                     }
                 }
 
+
                 if (atProperty) {
 
                     RequestedRooms requestedRooms = arrayOfRooms.get(0);
@@ -389,24 +914,32 @@ public class RoomBooked extends AppCompatActivity {
 
 
             }
-            SharedPreferencesManger.SaveData(this, "arrayOfroomsreq", null);
+         //   SharedPreferencesManger.SaveData(this, "arrayOfroomsreq", null);
 
             String clientReferenceNo = dtStr + "#TAMM";
             HotelBookResponse hotelBookingResponse = service.HotelBook(start_time, end_time,
                     clientReferenceNo, "EG", arrayOfGuest, null, paymentInfo
                     , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
                     null, false, authenticandata);
-            SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
-            SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
-            SharedPreferencesManger.SaveData(this, "ConfirmationNo", hotelBookingResponse.ConfirmationNo);
 
-            AmendmentRequestType amendmentRequestType = new AmendmentRequestType();
-            amendmentRequestType.Type = Enums.AmendmentType.OfflineAmendment;
-            AmendInformation amendInformation = new AmendInformation();
-            amendInformation.CheckIn = new CheckInReq();
-            amendInformation.CheckIn.Date = new DateTime(start_time);
-            AmendmentResponse amendmentResponse = service.Amendment(amendmentRequestType, hotelBookingResponse.BookingId, amendInformation, hotelBookingResponse.ConfirmationNo, authenticandata);
-//this is to cancel request
+
+            ResponseStatus status = hotelBookingResponse.Status;
+            int bookingId = hotelBookingResponse.BookingId;
+
+            Toast.makeText(this, ""+status, Toast.LENGTH_SHORT).show();
+
+
+//            SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
+//            SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
+//            SharedPreferencesManger.SaveData(this, "ConfirmationNo", hotelBookingResponse.ConfirmationNo);
+//
+//            AmendmentRequestType amendmentRequestType = new AmendmentRequestType();
+//            amendmentRequestType.Type = Enums.AmendmentType.OfflineAmendment;
+//            AmendInformation amendInformation = new AmendInformation();
+//            amendInformation.CheckIn = new CheckInReq();
+//            amendInformation.CheckIn.Date = new DateTime(start_time);
+//            AmendmentResponse amendmentResponse = service.Amendment(amendmentRequestType, hotelBookingResponse.BookingId, amendInformation, hotelBookingResponse.ConfirmationNo, authenticandata);
+////this is to cancel request
 
             //HotelCancelResponse hotelCancelResponse = service.HotelCancel(hotelBookingResponse.BookingId, Enums.CancelRequestType.HotelCancel, "Test", hotelBookingResponse.ConfirmationNo, authenticandata);
 

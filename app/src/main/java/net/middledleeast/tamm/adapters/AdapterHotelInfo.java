@@ -93,8 +93,8 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         rat = listrat.get(position);
         holder.name.setText(name);
         holder.rat.setText(rat+"");
-        String price = listprice.get(position);
-        holder.hotelPrice.setText(price);
+     //   String price = listprice.get(position);
+     //   holder.hotelPrice.setText(price);
         Glide.with(context).load(photos).into(holder.photoHotel);
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override

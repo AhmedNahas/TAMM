@@ -32,15 +32,11 @@
             android:name=".ActivityToFragment.PaymentActivityFragment"
             android:screenOrientation="portrait" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
         <activity
-            android:name=".activities.FindHotels"
+            android:name=".activities.Proceedbeybey"
             android:screenOrientation="portrait">
 
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
@@ -64,6 +60,12 @@
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
@@ -98,14 +100,10 @@
             android:name=".LanguageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.Proceedbeybey"
+            android:name=".activities.FindHotels"
             android:screenOrientation="portrait">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -125,7 +123,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.RenewAccount"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
         <activity android:name=".activities.PaymentTemp"></activity>
 
         <service
