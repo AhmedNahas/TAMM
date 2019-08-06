@@ -50,6 +50,7 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterChildCount;
 import net.middledleeast.tamm.adapters.AutoCompleteAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.helper.helperMethod;
 
 import org.joda.time.DateTime;
 
@@ -71,6 +72,7 @@ import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static java.util.Calendar.YEAR;
+import static net.middledleeast.tamm.helper.helperMethod.isInternetAvailable;
 
 public class FindHotels extends AppCompatActivity {
 
@@ -195,8 +197,7 @@ public class FindHotels extends AppCompatActivity {
         auth();
 
 
-
-  simpleProgressBar=(ProgressBar) findViewById(R.id.simpleProgressBar);
+        simpleProgressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
         simpleProgressBar.setVisibility(View.INVISIBLE);
         FrameLayout frameLayout = findViewById(R.id.frame1);
 
@@ -247,6 +248,31 @@ public class FindHotels extends AppCompatActivity {
         toolbar_back = findViewById(R.id.toolbar_back1);
         recycl_child_spiner = findViewById(R.id.rv_child);
         room2ChildAgeSpinner = room1View.findViewById(R.id.rv_child);
+
+
+
+        if (isInternetAvailable()){
+
+
+
+        }else {
+
+            new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("Please Check Your Internet first ")
+                    .setConfirmText("Ok")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+
+                            sDialog.dismissWithAnimation();
+                        }
+                    })
+                    .show();
+
+
+        }
+
+
 
 //        relativeImgFindHotelTamm = findViewById(R.id.relative_img_find_hotel_tamm);
 
@@ -899,7 +925,6 @@ public class FindHotels extends AppCompatActivity {
     }
 
 
-
     @SuppressLint("ClickableViewAccessibility")
     private void getCountries() {
 
@@ -926,8 +951,6 @@ public class FindHotels extends AppCompatActivity {
 //        regions.setAdapter(adapter);
 //        adapter.notifyDataSetChanged();
 //
-
-
 
 
 //        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.item_spener, listName);
@@ -1228,7 +1251,7 @@ public class FindHotels extends AppCompatActivity {
         DoSomeTask task = new DoSomeTask();
         task.execute();
 
-   }
+    }
 
     private void auth() {
 
@@ -1388,52 +1411,60 @@ public class FindHotels extends AppCompatActivity {
     public void onViewClicked() {
 
 
-                //    simpleProgressBar.setVisibility(View.VISIBLE);
+        //    simpleProgressBar.setVisibility(View.VISIBLE);
+
+        if (isInternetAvailable()){
+
+            if (chicDateStart && chicDateEnd) {
+
+                SharedPreferencesManger.SaveData(FindHotels.this, "start_date", mstartTime);
+
+                SharedPreferencesManger.SaveData(FindHotels.this, "no_room", noRomes);
+
+                SharedPreferencesManger.SaveData(FindHotels.this, "end_date", mendTime);
+                gethotelsInfo(ctyId);
+
+            } else if (chicDateStart) {
+
+                new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Select Check Out Dat First")
+                        .setConfirmText("open")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                dialogendTime();
+                                sDialog.dismissWithAnimation();
+                            }
+                        })
+                        .show();
+
+
+            } else {
+
+                new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Select Check In Dat First")
+                        .setConfirmText("open")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                dilogstart();
+                                sDialog.dismissWithAnimation();
+                            }
+                        })
+                        .show();
+
+
+            }
 
 
 
+        }else {
 
 
-        if (chicDateStart && chicDateEnd) {
-
-            SharedPreferencesManger.SaveData(FindHotels.this, "start_date", mstartTime);
-
-            SharedPreferencesManger.SaveData(FindHotels.this, "no_room", noRomes);
-
-            SharedPreferencesManger.SaveData(FindHotels.this, "end_date", mendTime);
-            gethotelsInfo(ctyId);
-
-        } else if (chicDateStart) {
-
-            new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                    .setTitleText("Select Check Out Dat First")
-                    .setConfirmText("open")
-                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            dialogendTime();
-                            sDialog.dismissWithAnimation();
-                        }
-                    })
-                    .show();
-
-
-        } else {
-
-            new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                    .setTitleText("Select Check In Dat First")
-                    .setConfirmText("open")
-                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            dilogstart();
-                            sDialog.dismissWithAnimation();
-                        }
-                    })
-                    .show();
-
-
+            Toast.makeText(this, "no internet", Toast.LENGTH_SHORT).show();
         }
+
+
 
 
     }
@@ -1447,9 +1478,12 @@ public class FindHotels extends AppCompatActivity {
     }
 
 
-    public class DoSomeTask extends AsyncTask<Void,Integer,HotelSearchResponse> {
+    public class DoSomeTask extends AsyncTask<Void, Integer, HotelSearchResponse> {
 
-
+        @Override
+        protected void onPreExecute() {
+            simpleProgressBar.setVisibility(View.VISIBLE);
+        }
 
         @Override
         protected HotelSearchResponse doInBackground(Void... voids) {
@@ -1490,7 +1524,7 @@ public class FindHotels extends AppCompatActivity {
                     roomGuest.ChildAge = null;
                 } else {
                     String child_count = childAgeStringArray.get(i);
-                    child_count= child_count.replace("[", "");
+                    child_count = child_count.replace("[", "");
                     child_count = child_count.replace("]", "");
                     StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
 
@@ -1517,25 +1551,13 @@ public class FindHotels extends AppCompatActivity {
                         10000, authenticationData);
 
 
-
-
 //            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
 //                    true, noRomes, "EG", roomguests, null, 100, null, null, false, authenticationData);
-
-
-
-
 
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
-
-
-
-
 
 
             return hotelSearchResponse;
@@ -1544,6 +1566,7 @@ public class FindHotels extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             //Update the progress of current task
+
         }
 
 
@@ -1559,73 +1582,86 @@ public class FindHotels extends AppCompatActivity {
             addressHotel.clear();
             arrayOfResultIndex.clear();
 
-            if (hotelSearchResponse.HotelResultList != null) {
-                for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
 
-                    Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
-                    MinHotelPrice minHotelPrice = hotelSearchResponse.HotelResultList.get(i).MinHotelPrice;
-                    String currency = minHotelPrice.OriginalPrice.toString();
-                    String currency1 = minHotelPrice.Currency;
-                    listPrice.add(currency1 + " " + currency);
-                    HotelInfo hotelInfo = hotel_result.HotelInfo;
-                    sessionId = hotelSearchResponse.SessionId;
-                    hotelAddress = hotelInfo.HotelAddress;
-                    hotelName = hotelInfo.HotelName;
-                    hotelPicture = hotelInfo.HotelPicture;
-                    int code = hotelInfo.Rating.getCode();
+            try {
+                if (hotelSearchResponse.HotelResultList != null) {
+                    for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
 
-
-
-
-
-                    arrayOfResultIndex.add(hotel_result.ResultIndex);
-
-                    String hotelCode = hotelInfo.HotelCode;
-
-                    listcodeHotel.add(hotelCode);
-
-                    nameHotel.add(hotelName);
-                    ratrHotel.add(code);
-                    photoHotel.add(hotelPicture);
-                    addressHotel.add(hotelAddress);
+                        Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
+                        MinHotelPrice minHotelPrice = hotelSearchResponse.HotelResultList.get(i).MinHotelPrice;
+                        String currency = minHotelPrice.OriginalPrice.toString();
+                        String currency1 = minHotelPrice.Currency;
+                        listPrice.add(currency1 + " " + currency);
+                        HotelInfo hotelInfo = hotel_result.HotelInfo;
+                        sessionId = hotelSearchResponse.SessionId;
+                        hotelAddress = hotelInfo.HotelAddress;
+                        hotelName = hotelInfo.HotelName;
+                        hotelPicture = hotelInfo.HotelPicture;
+                        int code = hotelInfo.Rating.getCode();
 
 
+                        arrayOfResultIndex.add(hotel_result.ResultIndex);
+
+                        String hotelCode = hotelInfo.HotelCode;
+
+                        listcodeHotel.add(hotelCode);
+
+                        nameHotel.add(hotelName);
+                        ratrHotel.add(code);
+                        photoHotel.add(hotelPicture);
+                        addressHotel.add(hotelAddress);
 
 
+                        Intent intent = new Intent(FindHotels.this, ChooseHotelActivity.class);
+                        intent.putExtra("hotelName", nameHotel);
+                        intent.putExtra("hotelrat", ratrHotel);
+                        intent.putExtra("hotelPhoto", photoHotel);
+                        intent.putExtra("hotelCode", listcodeHotel);
+                        intent.putExtra("hotelAddress", addressHotel);
+                        intent.putExtra("checkInDate", mstartTime);
+                        intent.putExtra("checkOutDate", mendTime);
+                        intent.putExtra("countryName", nameCountry);
+                        intent.putExtra("cityName", name_city);
+                        intent.putExtra("cityId", ctyId);
+                        intent.putExtra("noOfRooms", noRomes);
+                        intent.putExtra("list_price", listPrice);
+                        SharedPreferencesManger.SaveData(FindHotels.this, "noOfRooms", noRomes);
+                        intent.putExtra("resultIndex", arrayOfResultIndex);
 
-                    Intent intent = new Intent(FindHotels.this, ChooseHotelActivity.class);
-                    intent.putExtra("hotelName", nameHotel);
-                    intent.putExtra("hotelrat", ratrHotel);
-                    intent.putExtra("hotelPhoto", photoHotel);
-                    intent.putExtra("hotelCode", listcodeHotel);
-                    intent.putExtra("hotelAddress", addressHotel);
-                    intent.putExtra("checkInDate", mstartTime);
-                    intent.putExtra("checkOutDate", mendTime);
-                    intent.putExtra("countryName", nameCountry);
-                    intent.putExtra("cityName", name_city);
-                    intent.putExtra("cityId", ctyId);
-                    intent.putExtra("noOfRooms", noRomes);
-                    intent.putExtra("list_price", listPrice);
-                    SharedPreferencesManger.SaveData(FindHotels.this, "noOfRooms", noRomes);
-                    intent.putExtra("resultIndex", arrayOfResultIndex);
+                        SharedPreferencesManger.SaveData(FindHotels.this, "session_id", sessionId);
 
-                    SharedPreferencesManger.SaveData(FindHotels.this, "session_id", sessionId);
-
-                    // intent.putExtra("roomGuest",roomguests);
-                    startActivity(intent);
-
+                        // intent.putExtra("roomGuest",roomguests);
+                        startActivity(intent);
 
 
+                        simpleProgressBar.setVisibility(View.GONE);
 
 
+                    }
+                } else {
 
 
                 }
+
+            } catch (Exception e) {
+
+                simpleProgressBar.setVisibility(View.GONE);
+
+                new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("No Result Found")
+                        .setConfirmText("Search Again")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+
+                                sDialog.dismissWithAnimation();
+                            }
+                        })
+                        .show();
             }
-
         }
+
+
     }
-
-
-
 }
+

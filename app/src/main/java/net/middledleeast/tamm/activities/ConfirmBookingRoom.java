@@ -41,6 +41,8 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import payments.PaymentObjectProvider;
 import payments.ResponseHelper;
 
+import static net.middledleeast.tamm.helper.helperMethod.isInternetAvailable;
+
 public class ConfirmBookingRoom extends AppCompatActivity {
 
     @BindView(R.id.relative_firstlast)
@@ -457,11 +459,34 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 
 //                Client client = new Client(ConfirmBookingRoom.this, "https://api-test.wirecard.com");
 //                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
-                Intent intent1 = new Intent(ConfirmBookingRoom.this, PaymentActivity.class);
 
-                intent1.putExtra("mId", 2);
-                startActivity(intent1);
-            }
+
+                if (isInternetAvailable()){
+
+                    Intent intent1 = new Intent(ConfirmBookingRoom.this, PaymentActivity.class);
+
+                    intent1.putExtra("mId", 2);
+                    startActivity(intent1);
+                }else {
+
+
+                    new SweetAlertDialog(ConfirmBookingRoom.this, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Please Check Your Internet first ")
+                            .setConfirmText("Ok")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+
+                                    sDialog.dismissWithAnimation();
+                                }
+                            })
+                            .show();
+
+                }
+
+                }
+
+
         });
 
 
