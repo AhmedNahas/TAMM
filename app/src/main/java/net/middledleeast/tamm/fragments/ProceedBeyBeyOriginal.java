@@ -126,7 +126,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
         fromTextView = view.findViewById(R.id.country_from_textview);
         toTextView = view.findViewById(R.id.country_to_textview);
         country_selected_from_spinner = view.findViewById(R.id.country_selected_from_spinner);
-       animatedCircleLoadingView = (AnimatedCircleLoadingView) view.findViewById(R.id.circle_loading_view_flight);
+        animatedCircleLoadingView = (AnimatedCircleLoadingView) view.findViewById(R.id.circle_loading_view_flight);
 
 
         proccedBtn = view.findViewById(R.id.procced_btn);
@@ -332,40 +332,40 @@ public class ProceedBeyBeyOriginal extends Fragment {
         listOfAdults.add("5 Adults");
 
 
-            ArrayAdapter adapteradult = new ArrayAdapter(getActivity(), R.layout.item_spener, listOfAdults);
+        ArrayAdapter adapteradult = new ArrayAdapter(getActivity(), R.layout.item_spener, listOfAdults);
 
-            adapteradult.setDropDownViewResource(R.layout.drop_dowen);
-            passengerAdult.setDropDownWidth(420);
-            passengerAdult.setDropDownVerticalOffset(200);
-            passengerAdult.setAdapter(adapteradult);
-            passengerAdult.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-                    if (i != 0) {
-                        notFailed = true;
-
-                        adult = i;
+        adapteradult.setDropDownViewResource(R.layout.drop_dowen);
+        passengerAdult.setDropDownWidth(420);
+        passengerAdult.setDropDownVerticalOffset(200);
+        passengerAdult.setAdapter(adapteradult);
+        passengerAdult.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-                    } else {
-                        notFailed = false;
+                if (i != 0) {
+                    notFailed = true;
 
-                    }
+                    adult = i;
 
-                    //SharedPreferencesManger.SaveData(getActivity(), "no_adultroom1", nom_adultRoom1);
 
+                } else {
+                    notFailed = false;
 
                 }
 
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
+                //SharedPreferencesManger.SaveData(getActivity(), "no_adultroom1", nom_adultRoom1);
 
-                }
-            });
 
-       ArrayList<String> listOfChilds  = new ArrayList<>();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        ArrayList<String> listOfChilds  = new ArrayList<>();
         listOfChilds.add("Childs");
         listOfChilds.add("1 Child");
         listOfChilds.add("2 Child");
@@ -529,7 +529,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                         List<List<SearchFlightsResponse.Result>> results = response.body().getResults();
                         if (successful&&results.size()!=0) {
 
-                           animatedCircleLoadingView.setVisibility(View.GONE);
+                            animatedCircleLoadingView.setVisibility(View.GONE);
 
 
 
@@ -537,82 +537,82 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
 
 
-                                List<SearchFlightsResponse.Result> results1 = results.get(0);
+                            List<SearchFlightsResponse.Result> results1 = results.get(0);
 
-                                for (int j = 0; j < results1.size(); j++) {
+                            for (int j = 0; j < results1.size(); j++) {
 
-                                    String airlineRemark = results1.get(j).getAirlineRemark();
-                                    String destination = results1.get(j).getDestination();
-                                    String lastTicketDate = results1.get(j).getLastTicketDate();
-                                    String origin = results1.get(j).getOrigin();
-                                    String ticketAdvisory = results1.get(j).getTicketAdvisory();
-                                    String validatingAirline = results1.get(j).getValidatingAirline();
+                                String airlineRemark = results1.get(j).getAirlineRemark();
+                                String destination = results1.get(j).getDestination();
+                                String lastTicketDate = results1.get(j).getLastTicketDate();
+                                String origin = results1.get(j).getOrigin();
+                                String ticketAdvisory = results1.get(j).getTicketAdvisory();
+                                String validatingAirline = results1.get(j).getValidatingAirline();
 
-                                    double totalFare = results1.get(j).getFare().getTotalFare();
+                                double totalFare = results1.get(j).getFare().getTotalFare();
 
-                                    String fareType = results1.get(j).getFare().getAgentPreferredCurrency();
+                                String fareType = results1.get(j).getFare().getAgentPreferredCurrency();
 
-                                    listTypeFare.add(fareType);
-                                    listTotalFare.add(totalFare);
-
-
-                                    List<SearchFlightsResponse.Segment> segments2 = results1.get(j).getSegments().get(0);
+                                listTypeFare.add(fareType);
+                                listTotalFare.add(totalFare);
 
 
-                                    for (int t = 0; t < segments2.size(); t++) {
+                                List<SearchFlightsResponse.Segment> segments2 = results1.get(j).getSegments().get(0);
 
 
-                                        String airlineName = segments2.get(t).getAirlineName();
-                                        String arrivalTime = segments2.get(t).getArrivalTime();
-                                        String departureTime = segments2.get(t).getDepartureTime();
-
-                                        String countryNameDestination = segments2.get(t).getDestination().getCountryName();
-                                        String countryNameOrigin = segments2.get(t).getOrigin().getCountryName();
-
-                                        String includedBaggage = segments2.get(t).getIncludedBaggage();
-
-                                        String cabinBaggage = (String) segments2.get(t).getCabinBaggage();
-
-                                        String duration = segments2.get(t).getDuration();
+                                for (int t = 0; t < segments2.size(); t++) {
 
 
-                                        ListnameLine.add(airlineName);
-                                        Listduration.add(duration);
-                                        ListArriveTime.add(arrivalTime);
-                                        ListdeparuerTime.add(departureTime);
-                                        countryNameDestinationList.add(countryNameDestination);
-                                        countryNameOriginList.add(countryNameOrigin);
-                                        listCabinBaggage.add(cabinBaggage);
-                                        listIncludedBaggage.add(includedBaggage);
+                                    String airlineName = segments2.get(t).getAirlineName();
+                                    String arrivalTime = segments2.get(t).getArrivalTime();
+                                    String departureTime = segments2.get(t).getDepartureTime();
 
-                                    }
+                                    String countryNameDestination = segments2.get(t).getDestination().getCountryName();
+                                    String countryNameOrigin = segments2.get(t).getOrigin().getCountryName();
+
+                                    String includedBaggage = segments2.get(t).getIncludedBaggage();
+
+                                    String cabinBaggage = (String) segments2.get(t).getCabinBaggage();
+
+                                    String duration = segments2.get(t).getDuration();
 
 
+                                    ListnameLine.add(airlineName);
+                                    Listduration.add(duration);
+                                    ListArriveTime.add(arrivalTime);
+                                    ListdeparuerTime.add(departureTime);
+                                    countryNameDestinationList.add(countryNameDestination);
+                                    countryNameOriginList.add(countryNameOrigin);
+                                    listCabinBaggage.add(cabinBaggage);
+                                    listIncludedBaggage.add(includedBaggage);
 
                                 }
 
 
 
+                            }
+
+
+
                             Intent intent = new Intent(getContext(), RecommendedOneWay.class);
 
-                                intent.putExtra("airlineName", ListnameLine);
-                                intent.putExtra("Listduration", Listduration);
+                            intent.putExtra("airlineName", ListnameLine);
+                            intent.putExtra("Listduration", Listduration);
 
-                                intent.putExtra("arrivalTime", ListArriveTime);
-                                intent.putExtra("departureTime", ListdeparuerTime);
+                            intent.putExtra("arrivalTime", ListArriveTime);
+                            intent.putExtra("departureTime", ListdeparuerTime);
 
-                                intent.putExtra("countryNameDestinationList", countryNameDestinationList);
-                                intent.putExtra("countryNameOriginList", countryNameOriginList);
+                            intent.putExtra("countryNameDestinationList", countryNameDestinationList);
+                            intent.putExtra("countryNameOriginList", countryNameOriginList);
 
-                                intent.putExtra("listCabinBaggage", listCabinBaggage);
-                                intent.putExtra("listIncludedBaggage", listIncludedBaggage);
+                            intent.putExtra("listCabinBaggage", listCabinBaggage);
+                            intent.putExtra("listIncludedBaggage", listIncludedBaggage);
 
-                                intent.putExtra("listTotalFare", listTotalFare);
+                            intent.putExtra("listTotalFare", listTotalFare);
                             intent.putExtra("listTypeFare", listTypeFare);
 
 
 
-                                getContext().startActivity(intent);
+                            getContext().startActivity(intent);
 
                         } else {
                             String s = response.raw().body().toString();
@@ -627,7 +627,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                     @Override
                     public void onFailure(Call<SearchFlightsResponse> call, Throwable throwable) {
                         Toast.makeText(getContext(), "onFailure" + response.message(), Toast.LENGTH_SHORT).show();
-                       animatedCircleLoadingView.setVisibility(View.GONE);
+                        animatedCircleLoadingView.setVisibility(View.GONE);
 
                     }
                 });
@@ -637,7 +637,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
             @Override
             public void onFailure(Call<FlightAuthentication> call, Throwable throwable) {
                 Toast.makeText(getContext(), "onFailure" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-               animatedCircleLoadingView.setVisibility(View.GONE);
+                animatedCircleLoadingView.setVisibility(View.GONE);
 
             }
         });
@@ -707,7 +707,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
                 String myFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"; //In which you need put here
                 SimpleDateFormat start = new SimpleDateFormat(myFormat, Locale.US);
-              time1 = myCalendar.getTime();
+                time1 = myCalendar.getTime();
                 mstartTime = start.format(myCalendar.getTime());
                 //  startDate.setText(mstartTime);
 
@@ -734,7 +734,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
     }
 
 
-    }
+}
 
 
 
