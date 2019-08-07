@@ -161,13 +161,25 @@
                 android:layout_below="@+id/tv_country"
                 android:drawableStart="@drawable/planesmallnew" />
 
-            <Spinner
+            <TextView
+                android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
                 android:id="@+id/departure_spinner"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:gravity="center"
                 android:layout_toRightOf="@+id/icon"
                 android:backgroundTint="@color/app_color"
                 android:spinnerMode="dropdown" />
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/departure_spinner"
+                android:background="@drawable/line1"
+                android:layout_toRightOf="@+id/icon"
+                />
 
             <TextView
 
@@ -179,13 +191,24 @@
                 android:layout_toRightOf="@+id/departure_spinner"
                 android:drawableStart="@drawable/ic_date_range_black_24dp" />
 
-            <Spinner
+            <TextView
                 android:id="@+id/return_spinner"
+                android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:layout_toRightOf="@+id/icon2"
+                android:textColor="#555454"
                 android:backgroundTint="@color/app_color"
                 android:spinnerMode="dropdown" />
+            <View
+                android:id="@+id/line3"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/return_spinner"
+                android:background="@drawable/line1"
+                android:layout_toRightOf="@+id/icon2"
+                />
 
         </RelativeLayout>
 
@@ -231,7 +254,17 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/icon8"
                 android:backgroundTint="@color/app_color"
-                android:spinnerMode="dropdown" />
+                android:spinnerMode="dropdown"
+                />
+
+            <View
+                android:id="@+id/line4"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/adult_spinner"
+                android:background="@drawable/line1"
+                android:layout_toRightOf="@+id/icon8"
+                />
 
             <TextView
 
@@ -249,6 +282,14 @@
                 android:layout_toRightOf="@+id/icon9"
                 android:backgroundTint="@color/app_color"
                 android:spinnerMode="dropdown" />
+            <View
+                android:id="@+id/line5"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/child_spinner"
+                android:background="@drawable/line1"
+                android:layout_toRightOf="@+id/icon9"
+                />
 
         </RelativeLayout>
 
@@ -275,6 +316,15 @@
                 android:layout_toRightOf="@+id/icon10"
                 android:backgroundTint="@color/app_color"
                 android:spinnerMode="dropdown" />
+
+            <View
+                android:id="@+id/line6"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/infant_spinner"
+                android:background="@drawable/line1"
+                android:layout_toRightOf="@+id/icon10"
+                />
 
         </RelativeLayout>
 
@@ -314,7 +364,7 @@
                 android:background="@drawable/shapepassenger"
                 android:padding="@dimen/_5sdp"
                 android:text="Royal"
-                android:textColor="@color/white"
+                android:textColor="@color/app_color"
                 android:textIsSelectable="true" />
 
             <CheckedTextView
@@ -353,16 +403,24 @@
                 android:textColor="@color/app_color"
                 android:textIsSelectable="true" />
 
+
         </RelativeLayout>
     </RelativeLayout>
 
-
+    <com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/circle_loading_view_flight"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_centerInParent="true"
+        android:background="@color/float_transparent"
+        />
     <Button
         android:id="@+id/procced_btn"
         android:layout_width="160dp"
         android:layout_height="30dp"
-        android:layout_below="@+id/parent_relative"
-        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/_15sdp"
         android:background="@drawable/shape"
         android:text="PROCEED"
