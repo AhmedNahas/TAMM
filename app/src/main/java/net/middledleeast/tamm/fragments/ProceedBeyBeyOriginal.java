@@ -192,7 +192,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
             @Override
             public void onClick(View view) {
 
-//                  getContext().startActivity(new Intent(getContext(), RecommendedOneWay.class));
+                  getContext().startActivity(new Intent(getContext(), RecommendedOneWay.class));
             //    animatedCircleLoadingView.startDeterminate();
                 searchFlight();
 
@@ -468,8 +468,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
                 String to = toTextView.getText().toString();
                 String from = fromTextView.getText().toString();
-                segment.setDestination(to);
-                segment.setOrigin(from);
+                segment.setDestination("DEL");
+                segment.setOrigin("DXB");
                 //wtf
 
                 List<String> airlines = new ArrayList<>();
@@ -477,7 +477,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 airlines.add("AI");
                 segment.setPreferredAirlines(airlines);
 
-                segment.setPreferredDepartureTime("2020-01-20T00:00:00");
+                segment.setPreferredDepartureTime("2019-09-20T00:00:00");
 
 
                 segments.add(segment);

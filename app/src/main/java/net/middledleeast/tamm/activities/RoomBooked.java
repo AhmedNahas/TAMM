@@ -924,9 +924,9 @@ public class RoomBooked extends AppCompatActivity {
 
 
             ResponseStatus status = hotelBookingResponse.Status;
-            int bookingId = hotelBookingResponse.BookingId;
+          //  int bookingId = hotelBookingResponse.BookingId;
 
-            Toast.makeText(this, ""+status, Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, ""+bookingId, Toast.LENGTH_SHORT).show();
 
 
 //            SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
