@@ -88,10 +88,21 @@ public class ProceedBeyBeyOriginal extends Fragment {
     private boolean notFailed ;
     private long adult , child , infant;
     long oneWay = 1;
-   // private AnimatedCircleLoadingView animatedCircleLoadingView;
+    private AnimatedCircleLoadingView animatedCircleLoadingView;
 
     long flightCabinClass = 1;
     private String departureTimeConfirmed;
+
+    ArrayList<String> ListnameLine = new ArrayList<>();
+    ArrayList<String> Listduration = new ArrayList<>();
+    ArrayList<String> ListArriveTime = new ArrayList<>();
+    ArrayList<String> ListdeparuerTime = new ArrayList<>();
+    ArrayList<String> countryNameDestinationList = new ArrayList<>();
+    ArrayList<String> countryNameOriginList = new ArrayList<>();
+    ArrayList<String> listIncludedBaggage = new ArrayList<>();
+    ArrayList<String> listCabinBaggage = new ArrayList<>();
+    ArrayList<Double> listTotalFare = new ArrayList<>();
+    ArrayList<String> listTypeFare = new ArrayList<>();
 
 
     public ProceedBeyBeyOriginal() {
@@ -115,7 +126,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
         fromTextView = view.findViewById(R.id.country_from_textview);
         toTextView = view.findViewById(R.id.country_to_textview);
         country_selected_from_spinner = view.findViewById(R.id.country_selected_from_spinner);
-     //   animatedCircleLoadingView = (AnimatedCircleLoadingView) view.findViewById(R.id.circle_loading_view_flight);
+       animatedCircleLoadingView = (AnimatedCircleLoadingView) view.findViewById(R.id.circle_loading_view_flight);
 
 
         proccedBtn = view.findViewById(R.id.procced_btn);
@@ -192,9 +203,22 @@ public class ProceedBeyBeyOriginal extends Fragment {
             @Override
             public void onClick(View view) {
 
-//                  getContext().startActivity(new Intent(getContext(), RecommendedOneWay.class));
-            //    animatedCircleLoadingView.startDeterminate();
-                searchFlight();
+
+
+                if (adult==0){
+
+
+
+                }else {
+
+
+                    searchFlight();
+
+
+
+                }
+
+
 
 
 
@@ -426,6 +450,17 @@ public class ProceedBeyBeyOriginal extends Fragment {
     }
 
     private void searchFlight() {
+        animatedCircleLoadingView.startDeterminate();
+        ListnameLine.clear();
+        Listduration.clear();
+        ListdeparuerTime.clear();
+        ListArriveTime.clear();
+        listTypeFare.clear();
+        countryNameDestinationList.clear();
+        countryNameOriginList.clear();
+        listCabinBaggage.clear();
+        listIncludedBaggage.clear();
+        listTotalFare.clear();
         password = "App02072019";
 
         Gson gson = new GsonBuilder()
@@ -477,7 +512,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 airlines.add("AI");
                 segment.setPreferredAirlines(airlines);
 
-                segment.setPreferredDepartureTime("2020-01-20T00:00:00");
+                segment.setPreferredDepartureTime("2019-09-20 T00:00:00");
 
 
                 segments.add(segment);
@@ -494,47 +529,95 @@ public class ProceedBeyBeyOriginal extends Fragment {
                         List<List<SearchFlightsResponse.Result>> results = response.body().getResults();
                         if (successful&&results.size()!=0) {
 
-                      //      animatedCircleLoadingView.setVisibility(View.GONE);
+                           animatedCircleLoadingView.setVisibility(View.GONE);
 
 
 
 
-                            for (int i = 0; i < results.size(); i++) {
-
-                                List<SearchFlightsResponse.Result> results1 = results.get(i);
-
-                                String airline = results1.get(i).getFareRules().get(i).getAirline();
-                                String origin = results1.get(i).getOrigin();
-                                String destination = results1.get(i).getDestination();
-                                String resultId = results1.get(i).getResultId();
-                                boolean nonRefundable = results1.get(i).isNonRefundable();
-                                boolean isLcc = results1.get(i).isIsLcc();
-                                String airlineRemark = results1.get(i).getAirlineRemark();
-                                String lastTicketDate = results1.get(i).getLastTicketDate();
-                                String accumulatedDuration = results1.get(i).getSegments().get(i).get(i).getAccumulatedDuration();
-                                String craft = results1.get(i).getSegments().get(i).get(i).getAirlineDetails().getCraft();
-                                String airlineName = results1.get(i).getSegments().get(i).get(i).getAirlineDetails().getAirlineName();
-                                double baseFare = results1.get(i).getFare().getBaseFare();
-                                double tax = results1.get(i).getFare().getTax();
-                                double totalFare = results1.get(i).getFare().getTotalFare();
-                                long agentMarkup = results1.get(i).getFare().getAgentMarkup();
-                                long otherCharges = results1.get(i).getFare().getOtherCharges();
-                                long serviceFee = results1.get(i).getFare().getServiceFee();
 
 
-                                Toast.makeText(getContext(), "" + airlineName, Toast.LENGTH_SHORT).show();
 
-                                ArrayList<String> serviceFeeList = new ArrayList<>();
-                                serviceFeeList.add(String.valueOf(serviceFee));
-                                SharedPreferencesManger.SaveData(getContext(), "serviceFee",airlineName);
+                                List<SearchFlightsResponse.Result> results1 = results.get(0);
+
+                                for (int j = 0; j < results1.size(); j++) {
+
+                                    String airlineRemark = results1.get(j).getAirlineRemark();
+                                    String destination = results1.get(j).getDestination();
+                                    String lastTicketDate = results1.get(j).getLastTicketDate();
+                                    String origin = results1.get(j).getOrigin();
+                                    String ticketAdvisory = results1.get(j).getTicketAdvisory();
+                                    String validatingAirline = results1.get(j).getValidatingAirline();
+
+                                    double totalFare = results1.get(j).getFare().getTotalFare();
+
+                                    String fareType = results1.get(j).getFare().getAgentPreferredCurrency();
+
+                                    listTypeFare.add(fareType);
+                                    listTotalFare.add(totalFare);
 
 
-                            }
+                                    List<SearchFlightsResponse.Segment> segments2 = results1.get(j).getSegments().get(0);
+
+
+                                    for (int t = 0; t < segments2.size(); t++) {
+
+
+                                        String airlineName = segments2.get(t).getAirlineName();
+                                        String arrivalTime = segments2.get(t).getArrivalTime();
+                                        String departureTime = segments2.get(t).getDepartureTime();
+
+                                        String countryNameDestination = segments2.get(t).getDestination().getCountryName();
+                                        String countryNameOrigin = segments2.get(t).getOrigin().getCountryName();
+
+                                        String includedBaggage = segments2.get(t).getIncludedBaggage();
+
+                                        String cabinBaggage = (String) segments2.get(t).getCabinBaggage();
+
+                                        String duration = segments2.get(t).getDuration();
+
+
+                                        ListnameLine.add(airlineName);
+                                        Listduration.add(duration);
+                                        ListArriveTime.add(arrivalTime);
+                                        ListdeparuerTime.add(departureTime);
+                                        countryNameDestinationList.add(countryNameDestination);
+                                        countryNameOriginList.add(countryNameOrigin);
+                                        listCabinBaggage.add(cabinBaggage);
+                                        listIncludedBaggage.add(includedBaggage);
+
+                                    }
+
+
+
+                                }
+
+
+
+                            Intent intent = new Intent(getContext(), RecommendedOneWay.class);
+
+                                intent.putExtra("airlineName", ListnameLine);
+                                intent.putExtra("Listduration", Listduration);
+
+                                intent.putExtra("arrivalTime", ListArriveTime);
+                                intent.putExtra("departureTime", ListdeparuerTime);
+
+                                intent.putExtra("countryNameDestinationList", countryNameDestinationList);
+                                intent.putExtra("countryNameOriginList", countryNameOriginList);
+
+                                intent.putExtra("listCabinBaggage", listCabinBaggage);
+                                intent.putExtra("listIncludedBaggage", listIncludedBaggage);
+
+                                intent.putExtra("listTotalFare", listTotalFare);
+                            intent.putExtra("listTypeFare", listTypeFare);
+
+
+
+                                getContext().startActivity(intent);
 
                         } else {
                             String s = response.raw().body().toString();
                             Toast.makeText(getContext(), "no Result" + response.message(), Toast.LENGTH_SHORT).show();
-                         //   animatedCircleLoadingView.setVisibility(View.GONE);
+                            animatedCircleLoadingView.setVisibility(View.GONE);
 
                             System.out.println("How: " + s);
                         }
@@ -544,7 +627,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                     @Override
                     public void onFailure(Call<SearchFlightsResponse> call, Throwable throwable) {
                         Toast.makeText(getContext(), "onFailure" + response.message(), Toast.LENGTH_SHORT).show();
-                       // animatedCircleLoadingView.setVisibility(View.GONE);
+                       animatedCircleLoadingView.setVisibility(View.GONE);
 
                     }
                 });
@@ -554,7 +637,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
             @Override
             public void onFailure(Call<FlightAuthentication> call, Throwable throwable) {
                 Toast.makeText(getContext(), "onFailure" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-               // animatedCircleLoadingView.setVisibility(View.GONE);
+               animatedCircleLoadingView.setVisibility(View.GONE);
 
             }
         });

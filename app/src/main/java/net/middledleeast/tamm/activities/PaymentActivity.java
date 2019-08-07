@@ -84,6 +84,7 @@ public class PaymentActivity extends AppCompatActivity {
     private int mId;
     private String roomPrice = "";
     private String currency;
+    private  String flightCurrency;
     private String msgbody = "";
     String first_name1 , last_name1 ,date , country ,city,mail,phone,ocupation,username ,pass ;
 
@@ -151,7 +152,7 @@ public class PaymentActivity extends AppCompatActivity {
 //               client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
 
 
-        } else {
+        } else if (mId==1){
 
             getmemberfees();
             tvKd.setText("USD " + msgbody);
@@ -178,6 +179,17 @@ public class PaymentActivity extends AppCompatActivity {
 
 
 
+
+        }else if (mId==3){
+
+            String TotalFare = SharedPreferencesManger.LoadStringData(this, "TotalFare");
+            flightCurrency = SharedPreferencesManger.LoadStringData(this, "typeFare");
+
+
+            tvMrMrs.setText("MR");
+            tvLastName.setText("");
+            tvFirstName.setText("");
+            tvKd.setText(flightCurrency+" "+ TotalFare);
 
         }
 
@@ -236,13 +248,21 @@ public class PaymentActivity extends AppCompatActivity {
                     openbankRegisrat(s2, s1);
 
 
-                } else {
+                } else if (mId==2){
 
 
                     String[] s = tvKd.getText().toString().split(" ");
                     String s2 = s[1];
 
                     openBankRoom(s2, currency);
+                }else if(mId==3){
+
+
+                    String[] s = tvKd.getText().toString().split(" ");
+                    String s2 = s[1];
+                    openbankFlight(s2);
+
+
                 }
             }
         });
@@ -320,7 +340,7 @@ public class PaymentActivity extends AppCompatActivity {
                     }
 
 
-                }else {
+                }else if (mId==1){
 
 
                     if (!msgbody.equals("")){
@@ -380,6 +400,34 @@ public class PaymentActivity extends AppCompatActivity {
 
             }
         });
+
+
+    }
+
+    private void openbankFlight(String Price) {
+
+
+
+        try {
+//
+            BigDecimal amount = new BigDecimal(Price);
+            PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
+            BigDecimal finalAmount = amount;
+            String finalCurrency = flightCurrency;
+
+            if (paymentChekd && checkBoxAgerr2.isChecked()) {
+                Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+
+            } else {
+
+                Toast.makeText(PaymentActivity.this, "Choose Payment Method and agree in Terms and conditions", Toast.LENGTH_SHORT).show();
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -448,11 +496,16 @@ public class PaymentActivity extends AppCompatActivity {
 
             if (mId == 2) {
                 startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
-            } else {
+            } else if (mId==1){
 
                 sendDataToServer();
 
                 startActivity(new Intent(PaymentActivity.this, PaymentActivityFragment.class));
+            }else if (mId==3){
+
+                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(PaymentActivity.this,FlightDetails.class));
             }
 
         }

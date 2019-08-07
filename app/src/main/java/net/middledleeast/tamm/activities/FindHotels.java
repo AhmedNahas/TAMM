@@ -73,6 +73,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static java.util.Calendar.YEAR;
 import static net.middledleeast.tamm.helper.helperMethod.isInternetAvailable;
+import static net.middledleeast.tamm.helper.helperMethod.isNetworkConnected;
 
 public class FindHotels extends AppCompatActivity {
 
@@ -251,11 +252,9 @@ public class FindHotels extends AppCompatActivity {
 
 
 
-        if (isInternetAvailable()){
+        if (!isNetworkConnected(this)){
 
 
-
-        }else {
 
             new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
                     .setTitleText("Please Check Your Internet first ")
