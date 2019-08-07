@@ -100,31 +100,31 @@ public class FlightSearch extends AppCompatActivity {
 //
                 segments.add(segment);
                 searchFlights[0].setSegment(segments);
-                Call<SearchFlights> searchCall = flightApiService.getFlightSearch("application/json", searchFlights[0]);
-                searchCall.enqueue(new Callback<SearchFlights>() {
-
-                    @Override
-                    public void onResponse(Call<SearchFlights> call, Response<SearchFlights> response) {
-
-                        boolean successful = response.isSuccessful();
-                        if (successful){
-                            searchFlights[0] = response.body();
-                            System.out.println("How: " + searchFlights[0].searchFlightsResponse.getResults());
-
-
-                        }else {
-                            String s = response.raw().body().toString();
-
-                            System.out.println("How: " + s);
-                        }
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<SearchFlights> call, Throwable throwable) {
-                        Log.e(TAG, throwable.toString());
-                    }
-                });
+//                Call<SearchFlights> searchCall = flightApiService.getFlightSearch("application/json", searchFlights[0]);
+//                searchCall.enqueue(new Callback<SearchFlights>() {
+//
+//                    @Override
+//                    public void onResponse(Call<SearchFlights> call, Response<SearchFlights> response) {
+//
+//                        boolean successful = response.isSuccessful();
+//                        if (successful){
+//                            searchFlights[0] = response.body();
+//                            System.out.println("How: " + searchFlights[0].searchFlightsResponse.getResults());
+//
+//
+//                        }else {
+//                            String s = response.raw().body().toString();
+//
+//                            System.out.println("How: " + s);
+//                        }
+//
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<SearchFlights> call, Throwable throwable) {
+//                        Log.e(TAG, throwable.toString());
+//                    }
+//                });
 
             }
 
@@ -155,20 +155,20 @@ public class FlightSearch extends AppCompatActivity {
             segment.setPreferredAirlines(airlines);
             segments.add(segment);
             searchFlights[0].setSegment(segments);
-            Call<SearchFlights> searchCall = flightApiService.getFlightSearch("application/json", searchFlights[0]);
-            searchCall.enqueue(new Callback<SearchFlights>() {
-
-                @Override
-                public void onResponse(Call<SearchFlights> call, Response<SearchFlights> response) {
-                    searchFlights[0] = response.body();
-                    System.out.println("How: " + searchFlights[0].searchFlightsResponse.getResults());
-                }
-
-                @Override
-                public void onFailure(Call<SearchFlights> call, Throwable throwable) {
-                    Log.e(TAG, throwable.toString());
-                }
-            });
+//            Call<SearchFlights> searchCall = flightApiService.getFlightSearch("application/json", searchFlights[0]);
+//            searchCall.enqueue(new Callback<SearchFlights>() {
+//
+//                @Override
+//                public void onResponse(Call<SearchFlights> call, Response<SearchFlights> response) {
+//                    searchFlights[0] = response.body();
+//                    System.out.println("How: " + searchFlights[0].searchFlightsResponse.getResults());
+//                }
+//
+//                @Override
+//                public void onFailure(Call<SearchFlights> call, Throwable throwable) {
+//                    Log.e(TAG, throwable.toString());
+//                }
+//            });
         }
     }
 

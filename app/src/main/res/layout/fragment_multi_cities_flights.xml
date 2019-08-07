@@ -279,7 +279,7 @@
                 android:background="@drawable/shapepassenger"
                 android:padding="@dimen/_5sdp"
                 android:text="Royal"
-                android:textColor="@color/white"
+                android:textColor="@color/app_color"
                 android:textIsSelectable="true" />
 
             <CheckedTextView

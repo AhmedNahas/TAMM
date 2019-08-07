@@ -16,6 +16,6 @@ public interface FlightApiService {
 
     @Headers("Content-Type: application/json")
     @POST("Search/Search")
-    Call<SearchFlights> getFlightSearch(@Header("Content-Type") String content_type,
+    Call<SearchFlightsResponse> getFlightSearch(@Header("Content-Type") String content_type,
                                         @Body SearchFlights body);
 }
