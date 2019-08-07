@@ -37,8 +37,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import payments.PaymentObjectProvider;
 import payments.ResponseHelper;
+
+import static net.middledleeast.tamm.helper.helperMethod.isInternetAvailable;
 
 public class ConfirmBookingRoom extends AppCompatActivity {
 
@@ -346,392 +349,30 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 
         // 1 room
         if (noOfRooms == 1) {
-            no_adultroom1 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom1");
-
-
-
-            if (no_adultroom1 == 1) {
-
-                String firstName1GustOne = this.firstName1GustOne.getText().toString();
-                String lastName1GustOne = this.lastName1GustOne.getText().toString();
-
-
-            } else if (no_adultroom1 == 2) {
-
-                relativeFirstlast2.setVisibility(View.VISIBLE);
-                relativeFirstlastR4.setVisibility(View.GONE);
-
-
-                String firstName2GustOne = this.firstName2GustOne.getText().toString();
-                String lastName2GustOne = this.lastName2GustOne.getText().toString();
-
-            } else if (no_adultroom1 == 3) {
-                relativeFirstlast2.setVisibility(View.VISIBLE);
-                relativeFirstlast3.setVisibility(View.VISIBLE);
-                relativeFirstlastR4.setVisibility(View.GONE);
-
-                String firstName3GustOne = this.firstName3GustOne.getText().toString();
-                String lastName3GustOne = this.lastName3GustOne.getText().toString();
-
-
-            } else if (no_adultroom1 == 4) {
-                relativeFirstlast2.setVisibility(View.VISIBLE);
-                relativeFirstlast3.setVisibility(View.VISIBLE);
-                relativeFirstlast4.setVisibility(View.VISIBLE);
-
-
-                String firstName4GustOne = this.firstName4GustOne.getText().toString();
-                String lastName4GustOne = this.lastName4GustOne.getText().toString();
-            }
-            child_countroom1 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom1");
-
-
-            if (child_countroom1 == 1) {
-
-                relativeFirstlast5.setVisibility(View.VISIBLE);
-
-                String firstName1ChildGustOne = this.firstName1ChildGustOne.getText().toString();
-                String lastName1ChildGustOne = this.lastName1ChildGustOne.getText().toString();
-
-            } else if (child_countroom1 == 2) {
-                relativeFirstlast5.setVisibility(View.VISIBLE);
-                relativeFirstlast6.setVisibility(View.VISIBLE);
-
-                String firstName2ChildGustOne = this.firstName2ChildGustOne.getText().toString();
-                String lastName2ChildGustOne = this.lastName2ChildGustOne.getText().toString();
-
-            }
-
+            noOfAdult_1();
 
             // 2 rooms
         } else if (noOfRooms == 2) {
-            no_adultroom2 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom2");
 
-
-            if (no_adultroom2 == 1) {
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeFirstlastR2.setVisibility(View.VISIBLE);
-
-                String firstName1Gust2 =this.firstName1Gust2.getText().toString();
-                String lastName1Gust2 = this.lastName1Gust2.getText().toString();
-
-            } else if (no_adultroom2 == 2) {
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeFirstlast2.setVisibility(View.VISIBLE);
-                relativeFirstlast2R2.setVisibility(View.VISIBLE);
-
-
-                String firstName2Gust2 =this.firstName2Gust2.getText().toString();
-                String lastName2Gust2 = this.lastName2Gust2.getText().toString();
-            } else if (no_adultroom2 == 3) {
-
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeFirstlast2.setVisibility(View.VISIBLE);
-                relativeFirstlast3.setVisibility(View.VISIBLE);
-                relativeFirstlast2R2.setVisibility(View.VISIBLE);
-                relativeFirstlast3R2.setVisibility(View.VISIBLE);
-
-                String firstName3Gust2 =this.firstName3Gust2.getText().toString();
-                String lastName3Gust2 = this.lastName3Gust2.getText().toString();
-            } else if (no_adultroom2 == 4) {
-                relativeNamesR2.setVisibility(View.VISIBLE);
-
-                relativeFirstlast2.setVisibility(View.VISIBLE);
-                relativeFirstlast3.setVisibility(View.VISIBLE);
-                relativeFirstlast4.setVisibility(View.VISIBLE);
-                relativeFirstlast2R2.setVisibility(View.VISIBLE);
-                relativeFirstlast3R2.setVisibility(View.VISIBLE);
-                relativeFirstlast4R2.setVisibility(View.VISIBLE);
-
-
-                String firstName4Gust2 =this.firstName4Gust2.getText().toString();
-                String lastName4Gust2 = this.lastName4Gust2.getText().toString();
-            }
-
-
-            child_countroom2 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom2");
-
-            if (child_countroom2 == 1) {
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeFirstlast5.setVisibility(View.VISIBLE);
-                relativeFirstlast5R2.setVisibility(View.VISIBLE);
-
-                String firstName1ChildGust2 = this.firstName1ChildGust2.getText().toString();
-                String lastName1ChildGust2 = this.lastName1ChildGust2.getText().toString();
-            } else if (child_countroom2 == 2) {
-
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeFirstlast5.setVisibility(View.VISIBLE);
-                relativeFirstlast6.setVisibility(View.VISIBLE);
-                relativeFirstlast5R2.setVisibility(View.VISIBLE);
-                relativeFirstlast6R2.setVisibility(View.VISIBLE);
-
-                String firstName2ChildGust2 = this.firstName2ChildGust2.getText().toString();
-                String lastName2ChildGust2 = this.lastName2ChildGust2.getText().toString();
-            }
+            noOfAdult_1();
+            noOfAdult_2();
 
 
             // 3 rooms
         } else if (noOfRooms == 3) {
 
-            no_adultroom3 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom3");
-
-
-            if (no_adultroom3 == 1) {
-                relativeFirstlastR2.setVisibility(View.VISIBLE);
-                relativeNamesR3.setVisibility(View.VISIBLE);
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeFirstlastR3.setVisibility(View.VISIBLE);
-
-
-                String firstName1Gust3 =this.firstName1Gust3.getText().toString();
-                String lastName1Gust3 = this.lastName1Gust3.getText().toString();
-
-
-            } else if (no_adultroom3 == 2) {
-                relativeNamesR3.setVisibility(View.VISIBLE);
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeFirstlast2.setVisibility(View.VISIBLE);
-                relativeFirstlast2R2.setVisibility(View.VISIBLE);
-                relativeFirstlast3.setVisibility(View.VISIBLE);
-                relativeFirstlast2R3.setVisibility(View.VISIBLE);
-                relativeFirstlastR4.setVisibility(View.GONE);
-
-
-                String firstName2Gust3 =this.firstName2Gust3.getText().toString();
-                String lastName2Gust3 = this.lastName2Gust3.getText().toString();
-
-
-            } else if (no_adultroom3 == 3) {
-                relativeFirstlastR4.setVisibility(View.GONE);
-
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeNamesR3.setVisibility(View.VISIBLE);
-
-                relativeFirstlast2.setVisibility(View.VISIBLE);
-                relativeFirstlast3.setVisibility(View.VISIBLE);
-                relativeFirstlast2R2.setVisibility(View.VISIBLE);
-                relativeFirstlast3R2.setVisibility(View.VISIBLE);
-                relativeFirstlastR3.setVisibility(View.VISIBLE);
-                relativeFirstlast2R3.setVisibility(View.VISIBLE);
-                relativeFirstlast3R3.setVisibility(View.VISIBLE);
-
-
-                String firstName3Gust3 =this.firstName3Gust3.getText().toString();
-                String lastName3Gust3 = this.lastName3Gust3.getText().toString();
-
-            } else if (no_adultroom3 == 4) {
-                relativeFirstlastR4.setVisibility(View.GONE);
-
-
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeNamesR3.setVisibility(View.VISIBLE);
-
-                relativeFirstlast2.setVisibility(View.VISIBLE);
-                relativeFirstlast3.setVisibility(View.VISIBLE);
-                relativeFirstlast4.setVisibility(View.VISIBLE);
-                relativeFirstlastR2.setVisibility(View.VISIBLE);
-                relativeFirstlast2R2.setVisibility(View.VISIBLE);
-                relativeFirstlast3R2.setVisibility(View.VISIBLE);
-                relativeFirstlast4R2.setVisibility(View.VISIBLE);
-
-                relativeFirstlastR3.setVisibility(View.VISIBLE);
-
-                relativeFirstlast2R3.setVisibility(View.VISIBLE);
-                relativeFirstlast3R3.setVisibility(View.VISIBLE);
-                relativeFirstlast4R3.setVisibility(View.VISIBLE);
-
-                String firstName4Gust3 =this.firstName4Gust3.getText().toString();
-                String lastName4Gust3 = this.lastName4Gust3.getText().toString();
-
-            }
-
-
-            child_countroom3 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom3");
-
-
-            if (child_countroom3 == 1) {
-
-
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeNamesR3.setVisibility(View.VISIBLE);
-
-                relativeFirstlast5.setVisibility(View.VISIBLE);
-                relativeFirstlast5R2.setVisibility(View.VISIBLE);
-                relativeFirstlast5R3.setVisibility(View.VISIBLE);
-
-                String firstName1ChildGust3 = this.firstName1ChildGust3.getText().toString();
-                String lastName1ChildGust3 = this.lastName1ChildGust3.getText().toString();
-
-            } else if (child_countroom3 == 2) {
-
-
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeNamesR3.setVisibility(View.VISIBLE);
-                relativeFirstlast5.setVisibility(View.VISIBLE);
-                relativeFirstlast6.setVisibility(View.VISIBLE);
-                relativeFirstlast5R2.setVisibility(View.VISIBLE);
-                relativeFirstlast6R2.setVisibility(View.VISIBLE);
-                relativeFirstlast5R3.setVisibility(View.VISIBLE);
-                relativeFirstlast6R3.setVisibility(View.VISIBLE);
-
-
-                String firstName2ChildGust3 = this.firstName2ChildGust3.getText().toString();
-                String lastName2ChildGust3 = this.lastName2ChildGust3.getText().toString();
-
-
-            }
+            noOfAdult_1();
+            noOfAdult_2();
+            noOfAdult_3();
 
 
             // 4 rooms
         } else if (noOfRooms == 4) {
 
-
-            no_adultroom4 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom4");
-
-
-            if (no_adultroom4 == 1) {
-
-                relativeFirstlastR2.setVisibility(View.VISIBLE);
-                relativeNamesR3.setVisibility(View.VISIBLE);
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeNamesR4.setVisibility(View.VISIBLE);
-                relativeFirstlastR3.setVisibility(View.VISIBLE);
-                relativeFirstlastR4.setVisibility(View.VISIBLE);
-
-
-                String firstName1Gust4 = this.firstName1Gust4.getText().toString();
-                String lastName1Gust4 = this.lastName1Gust4.getText().toString();
-
-            } else if (no_adultroom4 == 2) {
-                relativeNamesR3.setVisibility(View.VISIBLE);
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeNamesR4.setVisibility(View.VISIBLE);
-
-                relativeFirstlast2.setVisibility(View.VISIBLE);
-                relativeFirstlast2R2.setVisibility(View.VISIBLE);
-                relativeFirstlast3.setVisibility(View.VISIBLE);
-                relativeFirstlast2R3.setVisibility(View.VISIBLE);
-                relativeFirstlast4R4.setVisibility(View.VISIBLE);
-                relativeFirstlastR4.setVisibility(View.VISIBLE);
-
-                String firstName2Gust4 = this.firstName2Gust4.getText().toString();
-                String lastName2Gust4 = this.lastName2Gust4.getText().toString();
-
-            } else if (no_adultroom4 == 3) {
-
-
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeNamesR3.setVisibility(View.VISIBLE);
-                relativeNamesR4.setVisibility(View.VISIBLE);
-
-
-                relativeFirstlast2.setVisibility(View.VISIBLE);
-                relativeFirstlast3.setVisibility(View.VISIBLE);
-                relativeFirstlast4.setVisibility(View.VISIBLE);
-
-
-                relativeFirstlast2R2.setVisibility(View.VISIBLE);
-                relativeFirstlast3R2.setVisibility(View.VISIBLE);
-                relativeFirstlast4R2.setVisibility(View.VISIBLE);
-
-
-                relativeFirstlastR3.setVisibility(View.VISIBLE);
-                relativeFirstlast2R3.setVisibility(View.VISIBLE);
-                relativeFirstlast3R3.setVisibility(View.VISIBLE);
-
-                relativeFirstlastR4.setVisibility(View.VISIBLE);
-                relativeFirstlast2R4.setVisibility(View.VISIBLE);
-                relativeFirstlast3R4.setVisibility(View.VISIBLE);
-
-
-                String firstName3Gust4 = this.firstName3Gust4.getText().toString();
-                String lastName3Gust4 = this.lastName3Gust4.getText().toString();
-
-
-            } else if (no_adultroom4 == 4) {
-
-
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeNamesR3.setVisibility(View.VISIBLE);
-                relativeNamesR4.setVisibility(View.VISIBLE);
-
-
-                relativeFirstlast2.setVisibility(View.VISIBLE);
-                relativeFirstlast3.setVisibility(View.VISIBLE);
-                relativeFirstlast4.setVisibility(View.VISIBLE);
-
-
-                relativeFirstlast2R2.setVisibility(View.VISIBLE);
-                relativeFirstlast3R2.setVisibility(View.VISIBLE);
-                relativeFirstlast4R2.setVisibility(View.VISIBLE);
-
-
-                relativeFirstlastR3.setVisibility(View.VISIBLE);
-                relativeFirstlast2R3.setVisibility(View.VISIBLE);
-                relativeFirstlast3R3.setVisibility(View.VISIBLE);
-                relativeFirstlast4R3.setVisibility(View.VISIBLE);
-
-                relativeFirstlastR4.setVisibility(View.VISIBLE);
-                relativeFirstlast2R4.setVisibility(View.VISIBLE);
-                relativeFirstlast3R4.setVisibility(View.VISIBLE);
-                relativeFirstlast4R4.setVisibility(View.VISIBLE);
-
-
-                String firstName4Gust4 = this.firstName4Gust4.getText().toString();
-                String lastName4Gust4 = this.lastName4Gust4.getText().toString();
-
-
-            }
-
-
-// 4
-            child_countroom4 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom4");
-
-
-            if (child_countroom4 == 1) {
-
-
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeNamesR3.setVisibility(View.VISIBLE);
-                relativeNamesR4.setVisibility(View.VISIBLE);
-
-
-                relativeFirstlast5.setVisibility(View.VISIBLE);
-                relativeFirstlast5R2.setVisibility(View.VISIBLE);
-                relativeFirstlast5R3.setVisibility(View.VISIBLE);
-                relativeFirstlast5R4.setVisibility(View.VISIBLE);
-
-
-                String firstName1ChildGust4 = this.firstName1ChildGust4.getText().toString();
-                String lastName1ChildGust4 = this.lastName1ChildGust4.getText().toString();
-            } else if (child_countroom4 == 2) {
-
-
-                relativeNamesR2.setVisibility(View.VISIBLE);
-                relativeNamesR3.setVisibility(View.VISIBLE);
-                relativeNamesR4.setVisibility(View.VISIBLE);
-
-
-                relativeFirstlast5.setVisibility(View.VISIBLE);
-                relativeFirstlast6.setVisibility(View.VISIBLE);
-
-
-                relativeFirstlast5R2.setVisibility(View.VISIBLE);
-                relativeFirstlast6R2.setVisibility(View.VISIBLE);
-
-                relativeFirstlast5R3.setVisibility(View.VISIBLE);
-                relativeFirstlast6R3.setVisibility(View.VISIBLE);
-
-
-                relativeFirstlast5R4.setVisibility(View.VISIBLE);
-                relativeFirstlast6R4.setVisibility(View.VISIBLE);
-
-
-                String firstName2ChildGust4 = this.firstName2ChildGust4.getText().toString();
-                String lastName2ChildGust4 = this.lastName2ChildGust4.getText().toString();
-
-            }
+            noOfAdult_1();
+            noOfAdult_2();
+            noOfAdult_3();
+            noOfAdult_4();
 
 
         }
@@ -780,24 +421,72 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         confirmRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if (firstName.getText().toString().equals("") || lastName.getText().toString().equals("")) {
-//                    SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(ConfirmBookingRoom.this);
-//                    sweetAlertDialog.setConfirmButton("Ok", null);
-//                    sweetAlertDialog.setContentText("Please add First guest's first and last name at least");
-//                    sweetAlertDialog.show();
-//                    return;
-//                }
+                if (firstName1GustOne.getText().toString().equals("") || lastName1GustOne.getText().toString().equals("")) {
+                    SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(ConfirmBookingRoom.this);
+                    sweetAlertDialog.setConfirmButton("Ok", null);
+                    sweetAlertDialog.setContentText("Please add First guest's first and last name at least");
+                    sweetAlertDialog.show();
+                    return;
+                }
+
+
+                switch (noOfRooms){
+
+                    case 1:
+                        noOfAdult_1();
+                        break;
+                    case 2:
+                        noOfAdult_1();
+                        noOfAdult_2();
+                        break;
+                    case 3:
+                        noOfAdult_1();
+                        noOfAdult_2();
+                        noOfAdult_3();
+                        break;
+
+                    case 4 :
+                        noOfAdult_1();
+                        noOfAdult_2();
+                        noOfAdult_3();
+                        noOfAdult_4();
+                        break;
+
+                }
 //                SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "firstName", firstName.getText().toString());
 //                SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "lastName", lastName.getText().toString());
 
 
 //                Client client = new Client(ConfirmBookingRoom.this, "https://api-test.wirecard.com");
 //                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
-                Intent intent1 = new Intent(ConfirmBookingRoom.this, PaymentActivity.class);
 
-                intent1.putExtra("mId", 2);
-                startActivity(intent1);
-            }
+
+                if (isInternetAvailable()){
+
+                    Intent intent1 = new Intent(ConfirmBookingRoom.this, PaymentActivity.class);
+
+                    intent1.putExtra("mId", 2);
+                    startActivity(intent1);
+                }else {
+
+
+                    new SweetAlertDialog(ConfirmBookingRoom.this, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Please Check Your Internet first ")
+                            .setConfirmText("Ok")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+
+                                    sDialog.dismissWithAnimation();
+                                }
+                            })
+                            .show();
+
+                }
+
+                }
+
+
         });
 
 
@@ -829,6 +518,711 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 
 
     }
+    private void noOfAdult_1() {
+
+        no_adultroom1 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom1");
+
+
+        if (no_adultroom1 == 1) {
+
+            String firstName1GustOne = this.firstName1GustOne.getText().toString();
+            String lastName1GustOne = this.lastName1GustOne.getText().toString();
+
+            SharedPreferencesManger.SaveData(this, "firstName1GustOne", firstName1GustOne);
+            SharedPreferencesManger.SaveData(this, "lastName1GustOne", lastName1GustOne);
+
+
+        } else if (no_adultroom1 == 2) {
+
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlastR4.setVisibility(View.GONE);
+
+            String firstName1GustOne = this.firstName1GustOne.getText().toString();
+            String lastName1GustOne = this.lastName1GustOne.getText().toString();
+
+            String firstName2GustOne = this.firstName2GustOne.getText().toString();
+            String lastName2GustOne = this.lastName2GustOne.getText().toString();
+
+            SharedPreferencesManger.SaveData(this, "firstName1GustOne", firstName1GustOne);
+            SharedPreferencesManger.SaveData(this, "lastName1GustOne", lastName1GustOne);
+            SharedPreferencesManger.SaveData(this, "firstName2GustOne", firstName2GustOne);
+            SharedPreferencesManger.SaveData(this, "lastName2GustOne", lastName2GustOne);
+        } else if (no_adultroom1 == 3) {
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast3.setVisibility(View.VISIBLE);
+            relativeFirstlastR4.setVisibility(View.GONE);
+
+
+            String firstName1GustOne = this.firstName1GustOne.getText().toString();
+            String lastName1GustOne = this.lastName1GustOne.getText().toString();
+
+            String firstName2GustOne = this.firstName2GustOne.getText().toString();
+            String lastName2GustOne = this.lastName2GustOne.getText().toString();
+
+            String firstName3GustOne = this.firstName3GustOne.getText().toString();
+            String lastName3GustOne = this.lastName3GustOne.getText().toString();
+
+
+            SharedPreferencesManger.SaveData(this, "firstName1GustOne", firstName1GustOne);
+            SharedPreferencesManger.SaveData(this, "lastName1GustOne", lastName1GustOne);
+
+            SharedPreferencesManger.SaveData(this, "firstName2GustOne", firstName2GustOne);
+            SharedPreferencesManger.SaveData(this, "lastName2GustOne", lastName2GustOne);
+
+            SharedPreferencesManger.SaveData(this, "firstName3GustOne", firstName3GustOne);
+            SharedPreferencesManger.SaveData(this, "lastName3GustOne", lastName3GustOne);
+
+
+
+        } else if (no_adultroom1 == 4) {
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast3.setVisibility(View.VISIBLE);
+            relativeFirstlast4.setVisibility(View.VISIBLE);
+
+            String firstName1GustOne = this.firstName1GustOne.getText().toString();
+            String lastName1GustOne = this.lastName1GustOne.getText().toString();
+
+            String firstName2GustOne = this.firstName2GustOne.getText().toString();
+            String lastName2GustOne = this.lastName2GustOne.getText().toString();
+
+            String firstName3GustOne = this.firstName3GustOne.getText().toString();
+            String lastName3GustOne = this.lastName3GustOne.getText().toString();
+
+
+            String firstName4GustOne = this.firstName4GustOne.getText().toString();
+            String lastName4GustOne = this.lastName4GustOne.getText().toString();
+
+            SharedPreferencesManger.SaveData(this, "firstName1GustOne", firstName1GustOne);
+            SharedPreferencesManger.SaveData(this, "lastName1GustOne", lastName1GustOne);
+
+            SharedPreferencesManger.SaveData(this, "firstName2GustOne", firstName2GustOne);
+            SharedPreferencesManger.SaveData(this, "lastName2GustOne", lastName2GustOne);
+
+            SharedPreferencesManger.SaveData(this, "firstName3GustOne", firstName3GustOne);
+            SharedPreferencesManger.SaveData(this, "lastName3GustOne", lastName3GustOne);
+
+            SharedPreferencesManger.SaveData(this, "firstName4GustOne", firstName4GustOne);
+            SharedPreferencesManger.SaveData(this, "lastName4GustOne", lastName4GustOne);
+
+
+
+        }
+
+
+
+
+
+        child_countroom1 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom1");
+
+
+        if (child_countroom1 == 1) {
+
+            relativeFirstlast5.setVisibility(View.VISIBLE);
+
+            String firstName1ChildGustOne = this.firstName1ChildGustOne.getText().toString();
+            String lastName1ChildGustOne = this.lastName1ChildGustOne.getText().toString();
+
+            SharedPreferencesManger.SaveData(this, "firstName1ChildGustOne", firstName1ChildGustOne);
+            SharedPreferencesManger.SaveData(this, "lastName1ChildGustOne", lastName1ChildGustOne);
+
+
+        } else if (child_countroom1 == 2) {
+            relativeFirstlast5.setVisibility(View.VISIBLE);
+            relativeFirstlast6.setVisibility(View.VISIBLE);
+
+            String firstName1ChildGustOne = this.firstName1ChildGustOne.getText().toString();
+            String lastName1ChildGustOne = this.lastName1ChildGustOne.getText().toString();
+
+
+            String firstName2ChildGustOne = this.firstName2ChildGustOne.getText().toString();
+            String lastName2ChildGustOne = this.lastName2ChildGustOne.getText().toString();
+
+
+            SharedPreferencesManger.SaveData(this, "firstName1ChildGustOne", firstName1ChildGustOne);
+            SharedPreferencesManger.SaveData(this, "lastName1ChildGustOne", lastName1ChildGustOne);
+
+
+            SharedPreferencesManger.SaveData(this, "firstName2ChildGustOne", firstName2ChildGustOne);
+            SharedPreferencesManger.SaveData(this, "lastName2ChildGustOne", lastName2ChildGustOne);
+
+
+        }
+
+
+    }
+
+
+    private void noOfAdult_2() {
+
+
+        no_adultroom2 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom2");
+
+
+        if (no_adultroom2 == 1) {
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeFirstlastR2.setVisibility(View.VISIBLE);
+
+            String firstName1Gust2 = this.firstName1Gust2.getText().toString();
+            String lastName1Gust2 = this.lastName1Gust2.getText().toString();
+
+            SharedPreferencesManger.SaveData(this, "firstName1Gust2", firstName1Gust2);
+            SharedPreferencesManger.SaveData(this, "lastName1Gust2", lastName1Gust2);
+
+
+        } else if (no_adultroom2 == 2) {
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast2R2.setVisibility(View.VISIBLE);
+
+            String firstName1Gust2 = this.firstName1Gust2.getText().toString();
+            String lastName1Gust2 = this.lastName1Gust2.getText().toString();
+
+
+            String firstName2Gust2 = this.firstName2Gust2.getText().toString();
+            String lastName2Gust2 = this.lastName2Gust2.getText().toString();
+
+
+
+            SharedPreferencesManger.SaveData(this, "firstName1Gust2", firstName1Gust2);
+            SharedPreferencesManger.SaveData(this, "lastName1Gust2", lastName1Gust2);
+
+
+            SharedPreferencesManger.SaveData(this, "firstName2Gust2", firstName2Gust2);
+            SharedPreferencesManger.SaveData(this, "lastName2Gust2", lastName2Gust2);
+
+        } else if (no_adultroom2 == 3) {
+
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast3.setVisibility(View.VISIBLE);
+            relativeFirstlast2R2.setVisibility(View.VISIBLE);
+            relativeFirstlast3R2.setVisibility(View.VISIBLE);
+
+            String firstName1Gust2 = this.firstName1Gust2.getText().toString();
+            String lastName1Gust2 = this.lastName1Gust2.getText().toString();
+
+
+            String firstName2Gust2 = this.firstName2Gust2.getText().toString();
+            String lastName2Gust2 = this.lastName2Gust2.getText().toString();
+
+
+            String firstName3Gust2 = this.firstName3Gust2.getText().toString();
+            String lastName3Gust2 = this.lastName3Gust2.getText().toString();
+
+
+            SharedPreferencesManger.SaveData(this, "firstName1Gust2", firstName1Gust2);
+            SharedPreferencesManger.SaveData(this, "lastName1Gust2", lastName1Gust2);
+
+
+            SharedPreferencesManger.SaveData(this, "firstName2Gust2", firstName2Gust2);
+            SharedPreferencesManger.SaveData(this, "lastName2Gust2", lastName2Gust2);
+
+            SharedPreferencesManger.SaveData(this, "firstName3Gust2", firstName3Gust2);
+            SharedPreferencesManger.SaveData(this, "lastName3Gust2", lastName3Gust2);
+
+
+
+
+
+
+
+        } else if (no_adultroom2 == 4) {
+            relativeNamesR2.setVisibility(View.VISIBLE);
+
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast3.setVisibility(View.VISIBLE);
+            relativeFirstlast4.setVisibility(View.VISIBLE);
+            relativeFirstlast2R2.setVisibility(View.VISIBLE);
+            relativeFirstlast3R2.setVisibility(View.VISIBLE);
+            relativeFirstlast4R2.setVisibility(View.VISIBLE);
+
+
+            String firstName1Gust2 = this.firstName1Gust2.getText().toString();
+            String lastName1Gust2 = this.lastName1Gust2.getText().toString();
+
+
+            String firstName2Gust2 = this.firstName2Gust2.getText().toString();
+            String lastName2Gust2 = this.lastName2Gust2.getText().toString();
+
+
+            String firstName3Gust2 = this.firstName3Gust2.getText().toString();
+            String lastName3Gust2 = this.lastName3Gust2.getText().toString();
+
+            String firstName4Gust2 = this.firstName4Gust2.getText().toString();
+            String lastName4Gust2 = this.lastName4Gust2.getText().toString();
+
+
+
+            SharedPreferencesManger.SaveData(this, "firstName1Gust2", firstName1Gust2);
+            SharedPreferencesManger.SaveData(this, "lastName1Gust2", lastName1Gust2);
+
+
+            SharedPreferencesManger.SaveData(this, "firstName2Gust2", firstName2Gust2);
+            SharedPreferencesManger.SaveData(this, "lastName2Gust2", lastName2Gust2);
+
+            SharedPreferencesManger.SaveData(this, "firstName3Gust2", firstName3Gust2);
+            SharedPreferencesManger.SaveData(this, "lastName3Gust2", lastName3Gust2);
+
+            SharedPreferencesManger.SaveData(this, "firstName4Gust2", firstName4Gust2);
+            SharedPreferencesManger.SaveData(this, "lastName4Gust2", lastName4Gust2);
+
+
+        }
+
+
+        child_countroom2 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom2");
+
+        if (child_countroom2 == 1) {
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeFirstlast5.setVisibility(View.VISIBLE);
+            relativeFirstlast5R2.setVisibility(View.VISIBLE);
+
+            String firstName1ChildGust2 = this.firstName1ChildGust2.getText().toString();
+            String lastName1ChildGust2 = this.lastName1ChildGust2.getText().toString();
+
+
+            SharedPreferencesManger.SaveData(this, "firstName1ChildGust2", firstName1ChildGust2);
+            SharedPreferencesManger.SaveData(this, "lastName1ChildGust2", lastName1ChildGust2);
+
+        } else if (child_countroom2 == 2) {
+
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeFirstlast5.setVisibility(View.VISIBLE);
+            relativeFirstlast6.setVisibility(View.VISIBLE);
+            relativeFirstlast5R2.setVisibility(View.VISIBLE);
+            relativeFirstlast6R2.setVisibility(View.VISIBLE);
+
+
+            String firstName1ChildGust2 = this.firstName1ChildGust2.getText().toString();
+            String lastName1ChildGust2 = this.lastName1ChildGust2.getText().toString();
+
+            String firstName2ChildGust2 = this.firstName2ChildGust2.getText().toString();
+            String lastName2ChildGust2 = this.lastName2ChildGust2.getText().toString();
+
+            SharedPreferencesManger.SaveData(this, "firstName1ChildGust2", firstName1ChildGust2);
+            SharedPreferencesManger.SaveData(this, "lastName1ChildGust2", lastName1ChildGust2);
+
+            SharedPreferencesManger.SaveData(this, "firstName2ChildGust2", firstName2ChildGust2);
+            SharedPreferencesManger.SaveData(this, "lastName2ChildGust2", lastName2ChildGust2);
+        }
+
+    }
+
+    private void noOfAdult_3() {
+
+
+        no_adultroom3 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom3");
+
+        // get no of adult 1 and 2 and 3
+
+
+        if (no_adultroom3 == 1) {
+            relativeFirstlastR2.setVisibility(View.VISIBLE);
+            relativeNamesR3.setVisibility(View.VISIBLE);
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeFirstlastR3.setVisibility(View.VISIBLE);
+
+            String firstName1Gust3 = this.firstName1Gust3.getText().toString();
+            String lastName1Gust3 = this.lastName1Gust3.getText().toString();
+
+            SharedPreferencesManger.SaveData(this,"firstName1Gust3",firstName1Gust3);
+            SharedPreferencesManger.SaveData(this,"lastName1Gust3",lastName1Gust3);
+
+
+
+        } else if (no_adultroom3 == 2) {
+            relativeNamesR3.setVisibility(View.VISIBLE);
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast2R2.setVisibility(View.VISIBLE);
+            relativeFirstlast3.setVisibility(View.VISIBLE);
+            relativeFirstlast2R3.setVisibility(View.VISIBLE);
+            relativeFirstlastR4.setVisibility(View.GONE);
+            String firstName1Gust3 = this.firstName1Gust3.getText().toString();
+            String lastName1Gust3 = this.lastName1Gust3.getText().toString();
+
+            String firstName2Gust3 = this.firstName2Gust3.getText().toString();
+            String lastName2Gust3 = this.lastName2Gust3.getText().toString();
+
+
+
+            SharedPreferencesManger.SaveData(this,"firstName1Gust3",firstName1Gust3);
+            SharedPreferencesManger.SaveData(this,"lastName1Gust3",lastName1Gust3);
+
+            SharedPreferencesManger.SaveData(this,"firstName2Gust3",firstName2Gust3);
+            SharedPreferencesManger.SaveData(this,"lastName2Gust3",lastName2Gust3);
+
+
+        } else if (no_adultroom3 == 3) {
+            relativeFirstlastR4.setVisibility(View.GONE);
+
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeNamesR3.setVisibility(View.VISIBLE);
+
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast3.setVisibility(View.VISIBLE);
+            relativeFirstlast2R2.setVisibility(View.VISIBLE);
+            relativeFirstlast3R2.setVisibility(View.VISIBLE);
+            relativeFirstlastR3.setVisibility(View.VISIBLE);
+            relativeFirstlast2R3.setVisibility(View.VISIBLE);
+            relativeFirstlast3R3.setVisibility(View.VISIBLE);
+
+            String firstName1Gust3 = this.firstName1Gust3.getText().toString();
+            String lastName1Gust3 = this.lastName1Gust3.getText().toString();
+
+            String firstName2Gust3 = this.firstName2Gust3.getText().toString();
+            String lastName2Gust3 = this.lastName2Gust3.getText().toString();
+
+
+            String firstName3Gust3 = this.firstName3Gust3.getText().toString();
+            String lastName3Gust3 = this.lastName3Gust3.getText().toString();
+
+
+            SharedPreferencesManger.SaveData(this,"firstName1Gust3",firstName1Gust3);
+            SharedPreferencesManger.SaveData(this,"lastName1Gust3",lastName1Gust3);
+
+            SharedPreferencesManger.SaveData(this,"firstName2Gust3",firstName2Gust3);
+            SharedPreferencesManger.SaveData(this,"lastName2Gust3",lastName2Gust3);
+
+
+            SharedPreferencesManger.SaveData(this,"firstName3Gust3",firstName3Gust3);
+            SharedPreferencesManger.SaveData(this,"lastName3Gust3",lastName3Gust3);
+
+
+        } else if (no_adultroom3 == 4) {
+            relativeFirstlastR4.setVisibility(View.GONE);
+
+
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeNamesR3.setVisibility(View.VISIBLE);
+
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast3.setVisibility(View.VISIBLE);
+            relativeFirstlast4.setVisibility(View.VISIBLE);
+            relativeFirstlastR2.setVisibility(View.VISIBLE);
+            relativeFirstlast2R2.setVisibility(View.VISIBLE);
+            relativeFirstlast3R2.setVisibility(View.VISIBLE);
+            relativeFirstlast4R2.setVisibility(View.VISIBLE);
+
+            relativeFirstlastR3.setVisibility(View.VISIBLE);
+
+            relativeFirstlast2R3.setVisibility(View.VISIBLE);
+            relativeFirstlast3R3.setVisibility(View.VISIBLE);
+            relativeFirstlast4R3.setVisibility(View.VISIBLE);
+
+            String firstName1Gust3 = this.firstName1Gust3.getText().toString();
+            String lastName1Gust3 = this.lastName1Gust3.getText().toString();
+
+            String firstName2Gust3 = this.firstName2Gust3.getText().toString();
+            String lastName2Gust3 = this.lastName2Gust3.getText().toString();
+
+
+            String firstName3Gust3 = this.firstName3Gust3.getText().toString();
+            String lastName3Gust3 = this.lastName3Gust3.getText().toString();
+
+            String firstName4Gust3 = this.firstName4Gust3.getText().toString();
+            String lastName4Gust3 = this.lastName4Gust3.getText().toString();
+
+
+            SharedPreferencesManger.SaveData(this,"firstName1Gust3",firstName1Gust3);
+            SharedPreferencesManger.SaveData(this,"lastName1Gust3",lastName1Gust3);
+
+            SharedPreferencesManger.SaveData(this,"firstName2Gust3",firstName2Gust3);
+            SharedPreferencesManger.SaveData(this,"lastName2Gust3",lastName2Gust3);
+
+
+            SharedPreferencesManger.SaveData(this,"firstName3Gust3",firstName3Gust3);
+            SharedPreferencesManger.SaveData(this,"lastName3Gust3",lastName3Gust3);
+
+
+
+            SharedPreferencesManger.SaveData(this,"firstName4Gust3",firstName4Gust3);
+            SharedPreferencesManger.SaveData(this,"lastName4Gust3",lastName4Gust3);
+
+
+        }
+
+
+        child_countroom3 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom3");
+
+
+        if (child_countroom3 == 1) {
+
+
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeNamesR3.setVisibility(View.VISIBLE);
+
+            relativeFirstlast5.setVisibility(View.VISIBLE);
+            relativeFirstlast5R2.setVisibility(View.VISIBLE);
+            relativeFirstlast5R3.setVisibility(View.VISIBLE);
+
+            String firstName1ChildGust3 = this.firstName1ChildGust3.getText().toString();
+            String lastName1ChildGust3 = this.lastName1ChildGust3.getText().toString();
+
+
+            SharedPreferencesManger.SaveData(this,"firstName1ChildGust3",firstName1ChildGust3);
+            SharedPreferencesManger.SaveData(this,"lastName1ChildGust3",lastName1ChildGust3);
+
+        } else if (child_countroom3 == 2) {
+
+
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeNamesR3.setVisibility(View.VISIBLE);
+            relativeFirstlast5.setVisibility(View.VISIBLE);
+            relativeFirstlast6.setVisibility(View.VISIBLE);
+            relativeFirstlast5R2.setVisibility(View.VISIBLE);
+            relativeFirstlast6R2.setVisibility(View.VISIBLE);
+            relativeFirstlast5R3.setVisibility(View.VISIBLE);
+            relativeFirstlast6R3.setVisibility(View.VISIBLE);
+
+            String firstName1ChildGust3 = this.firstName1ChildGust3.getText().toString();
+            String lastName1ChildGust3 = this.lastName1ChildGust3.getText().toString();
+
+            String firstName2ChildGust3 = this.firstName2ChildGust3.getText().toString();
+            String lastName2ChildGust3 = this.lastName2ChildGust3.getText().toString();
+
+
+            SharedPreferencesManger.SaveData(this,"firstName1ChildGust3",firstName1ChildGust3);
+            SharedPreferencesManger.SaveData(this,"lastName1ChildGust3",lastName1ChildGust3);
+
+
+            SharedPreferencesManger.SaveData(this,"firstName2ChildGust3",firstName2ChildGust3);
+            SharedPreferencesManger.SaveData(this,"lastName2ChildGust3",lastName2ChildGust3);
+
+        }
+
+    }
+
+    private void noOfAdult_4() {
+
+
+        no_adultroom4 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom4");
+
+
+        if (no_adultroom4 == 1) {
+
+            relativeFirstlastR2.setVisibility(View.VISIBLE);
+            relativeNamesR3.setVisibility(View.VISIBLE);
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeNamesR4.setVisibility(View.VISIBLE);
+            relativeFirstlastR3.setVisibility(View.VISIBLE);
+            relativeFirstlastR4.setVisibility(View.VISIBLE);
+
+
+            String firstName1Gust4 = this.firstName1Gust4.getText().toString();
+            String lastName1Gust4 = this.lastName1Gust4.getText().toString();
+
+            SharedPreferencesManger.SaveData(this,"firstName1Gust4",firstName1Gust4);
+            SharedPreferencesManger.SaveData(this,"lastName1Gust4",lastName1Gust4);
+
+
+
+        } else if (no_adultroom4 == 2) {
+            relativeNamesR3.setVisibility(View.VISIBLE);
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeNamesR4.setVisibility(View.VISIBLE);
+
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast2R2.setVisibility(View.VISIBLE);
+            relativeFirstlast3.setVisibility(View.VISIBLE);
+            relativeFirstlast2R3.setVisibility(View.VISIBLE);
+            relativeFirstlast4R4.setVisibility(View.VISIBLE);
+            relativeFirstlastR4.setVisibility(View.VISIBLE);
+
+            String firstName1Gust4 = this.firstName1Gust4.getText().toString();
+            String lastName1Gust4 = this.lastName1Gust4.getText().toString();
+
+            String firstName2Gust4 = this.firstName2Gust4.getText().toString();
+            String lastName2Gust4 = this.lastName2Gust4.getText().toString();
+
+            SharedPreferencesManger.SaveData(this,"firstName1Gust4",firstName1Gust4);
+            SharedPreferencesManger.SaveData(this,"lastName1Gust4",lastName1Gust4);
+
+            SharedPreferencesManger.SaveData(this,"firstName2Gust4",firstName2Gust4);
+            SharedPreferencesManger.SaveData(this,"lastName2Gust4",lastName2Gust4);
+
+        } else if (no_adultroom4 == 3) {
+
+
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeNamesR3.setVisibility(View.VISIBLE);
+            relativeNamesR4.setVisibility(View.VISIBLE);
+
+
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast3.setVisibility(View.VISIBLE);
+            relativeFirstlast4.setVisibility(View.VISIBLE);
+
+
+            relativeFirstlast2R2.setVisibility(View.VISIBLE);
+            relativeFirstlast3R2.setVisibility(View.VISIBLE);
+            relativeFirstlast4R2.setVisibility(View.VISIBLE);
+
+
+            relativeFirstlastR3.setVisibility(View.VISIBLE);
+            relativeFirstlast2R3.setVisibility(View.VISIBLE);
+            relativeFirstlast3R3.setVisibility(View.VISIBLE);
+
+            relativeFirstlastR4.setVisibility(View.VISIBLE);
+            relativeFirstlast2R4.setVisibility(View.VISIBLE);
+            relativeFirstlast3R4.setVisibility(View.VISIBLE);
+
+            String firstName1Gust4 = this.firstName1Gust4.getText().toString();
+            String lastName1Gust4 = this.lastName1Gust4.getText().toString();
+
+            String firstName2Gust4 = this.firstName2Gust4.getText().toString();
+            String lastName2Gust4 = this.lastName2Gust4.getText().toString();
+
+
+            String firstName3Gust4 = this.firstName3Gust4.getText().toString();
+            String lastName3Gust4 = this.lastName3Gust4.getText().toString();
+
+
+
+            SharedPreferencesManger.SaveData(this,"firstName1Gust4",firstName1Gust4);
+            SharedPreferencesManger.SaveData(this,"lastName1Gust4",lastName1Gust4);
+
+            SharedPreferencesManger.SaveData(this,"firstName2Gust4",firstName2Gust4);
+            SharedPreferencesManger.SaveData(this,"lastName2Gust4",lastName2Gust4);
+
+
+            SharedPreferencesManger.SaveData(this,"firstName3Gust4",firstName3Gust4);
+            SharedPreferencesManger.SaveData(this,"lastName3Gust4",lastName3Gust4);
+
+
+
+        } else if (no_adultroom4 == 4) {
+
+
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeNamesR3.setVisibility(View.VISIBLE);
+            relativeNamesR4.setVisibility(View.VISIBLE);
+
+
+            relativeFirstlast2.setVisibility(View.VISIBLE);
+            relativeFirstlast3.setVisibility(View.VISIBLE);
+            relativeFirstlast4.setVisibility(View.VISIBLE);
+
+
+            relativeFirstlast2R2.setVisibility(View.VISIBLE);
+            relativeFirstlast3R2.setVisibility(View.VISIBLE);
+            relativeFirstlast4R2.setVisibility(View.VISIBLE);
+
+
+            relativeFirstlastR3.setVisibility(View.VISIBLE);
+            relativeFirstlast2R3.setVisibility(View.VISIBLE);
+            relativeFirstlast3R3.setVisibility(View.VISIBLE);
+            relativeFirstlast4R3.setVisibility(View.VISIBLE);
+
+            relativeFirstlastR4.setVisibility(View.VISIBLE);
+            relativeFirstlast2R4.setVisibility(View.VISIBLE);
+            relativeFirstlast3R4.setVisibility(View.VISIBLE);
+            relativeFirstlast4R4.setVisibility(View.VISIBLE);
+
+            String firstName1Gust4 = this.firstName1Gust4.getText().toString();
+            String lastName1Gust4 = this.lastName1Gust4.getText().toString();
+
+            String firstName2Gust4 = this.firstName2Gust4.getText().toString();
+            String lastName2Gust4 = this.lastName2Gust4.getText().toString();
+
+
+            String firstName3Gust4 = this.firstName3Gust4.getText().toString();
+            String lastName3Gust4 = this.lastName3Gust4.getText().toString();
+
+
+            String firstName4Gust4 = this.firstName4Gust4.getText().toString();
+            String lastName4Gust4 = this.lastName4Gust4.getText().toString();
+
+
+
+            SharedPreferencesManger.SaveData(this,"firstName1Gust4",firstName1Gust4);
+            SharedPreferencesManger.SaveData(this,"lastName1Gust4",lastName1Gust4);
+
+            SharedPreferencesManger.SaveData(this,"firstName2Gust4",firstName2Gust4);
+            SharedPreferencesManger.SaveData(this,"lastName2Gust4",lastName2Gust4);
+
+
+            SharedPreferencesManger.SaveData(this,"firstName3Gust4",firstName3Gust4);
+            SharedPreferencesManger.SaveData(this,"lastName3Gust4",lastName3Gust4);
+
+
+            SharedPreferencesManger.SaveData(this,"firstName4Gust4",firstName4Gust4);
+            SharedPreferencesManger.SaveData(this,"lastName4Gust4",lastName4Gust4);
+
+
+        }
+
+
+// 4
+        child_countroom4 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom4");
+
+
+        if (child_countroom4 == 1) {
+
+
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeNamesR3.setVisibility(View.VISIBLE);
+            relativeNamesR4.setVisibility(View.VISIBLE);
+
+
+            relativeFirstlast5.setVisibility(View.VISIBLE);
+            relativeFirstlast5R2.setVisibility(View.VISIBLE);
+            relativeFirstlast5R3.setVisibility(View.VISIBLE);
+            relativeFirstlast5R4.setVisibility(View.VISIBLE);
+
+
+            String firstName1ChildGust4 = this.firstName1ChildGust4.getText().toString();
+            String lastName1ChildGust4 = this.lastName1ChildGust4.getText().toString();
+
+
+
+            SharedPreferencesManger.SaveData(this,"firstName1ChildGust4",firstName1ChildGust4);
+            SharedPreferencesManger.SaveData(this,"lastName1ChildGust4",lastName1ChildGust4);
+
+        } else if (child_countroom4 == 2) {
+
+
+            relativeNamesR2.setVisibility(View.VISIBLE);
+            relativeNamesR3.setVisibility(View.VISIBLE);
+            relativeNamesR4.setVisibility(View.VISIBLE);
+
+
+            relativeFirstlast5.setVisibility(View.VISIBLE);
+            relativeFirstlast6.setVisibility(View.VISIBLE);
+
+
+            relativeFirstlast5R2.setVisibility(View.VISIBLE);
+            relativeFirstlast6R2.setVisibility(View.VISIBLE);
+
+            relativeFirstlast5R3.setVisibility(View.VISIBLE);
+            relativeFirstlast6R3.setVisibility(View.VISIBLE);
+
+
+            relativeFirstlast5R4.setVisibility(View.VISIBLE);
+            relativeFirstlast6R4.setVisibility(View.VISIBLE);
+
+
+            String firstName1ChildGust4 = this.firstName1ChildGust4.getText().toString();
+            String lastName1ChildGust4 = this.lastName1ChildGust4.getText().toString();
+
+            String firstName2ChildGust4 = this.firstName2ChildGust4.getText().toString();
+            String lastName2ChildGust4 = this.lastName2ChildGust4.getText().toString();
+
+
+            SharedPreferencesManger.SaveData(this,"firstName1ChildGust4",firstName1ChildGust4);
+            SharedPreferencesManger.SaveData(this,"lastName1ChildGust4",lastName1ChildGust4);
+
+
+            SharedPreferencesManger.SaveData(this,"firstName2ChildGust4",firstName2ChildGust4);
+            SharedPreferencesManger.SaveData(this,"lastName2ChildGust4",lastName2ChildGust4);
+
+
+        }
+
+    }
+
+
+
 
     private void setSpecification(String mSpecification) {
 
