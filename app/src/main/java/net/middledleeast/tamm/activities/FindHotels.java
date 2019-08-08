@@ -1387,7 +1387,7 @@ public class FindHotels extends AppCompatActivity {
 
                 if (!chicDateStart) {
                     new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                            .setTitleText("Select Check in Dat First")
+                            .setTitleText("Select Check in Date First")
                             .setConfirmText("open")
                             .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
@@ -1426,7 +1426,7 @@ public class FindHotels extends AppCompatActivity {
             } else if (chicDateStart) {
 
                 new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("Select Check Out Dat First")
+                        .setTitleText("Select Check Out Date First")
                         .setConfirmText("open")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
@@ -1441,7 +1441,7 @@ public class FindHotels extends AppCompatActivity {
             } else {
 
                 new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("Select Check In Dat First")
+                        .setTitleText("Select Check In Date First")
                         .setConfirmText("open")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override

@@ -75,24 +75,29 @@
         android:layout_below="@+id/imgli"
         android:layout_centerInParent="true"
         android:numStars="5"
-        android:stepSize="1"
-        android:rating="5.0"
-        android:backgroundTint="@color/app_color"
+        android:rating="5"
         />
 
-
-
-
-
-
-
-
+    <EditText
+        android:id="@+id/search_hotel_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textCapSentences"
+        android:background="@color/black"
+        android:layout_margin="@dimen/_8sdp"
+        android:layout_below="@+id/rating_bar"
+        android:hint="Write Hotel Name"
+        android:padding="@dimen/_4sdp"
+        android:textColorHint="@color/white"
+        android:textStyle="italic"
+        android:fontFamily="sans-serif-thin"
+        android:textColor="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/hotels_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rating_bar" >
+        android:layout_below="@+id/search_hotel_name" >
 
     </androidx.recyclerview.widget.RecyclerView>
 

@@ -1,8 +1,15 @@
 package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -12,23 +19,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.Tamm.Hotels.wcf.AuthenticationData;
-import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
-import com.Tamm.Hotels.wcf.Enums;
-import com.Tamm.Hotels.wcf.Filters;
-import com.Tamm.Hotels.wcf.HotelSearchResponse;
-import com.Tamm.Hotels.wcf.HotelSearchWithRoomsFilters;
-import com.Tamm.Hotels.wcf.Rate;
-import com.Tamm.Hotels.wcf.TagInfos;
-
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.adapters.AdapterAirportCuntry;
 import net.middledleeast.tamm.adapters.AdapterHotelInfo;
 import net.middledleeast.tamm.adapters.HotelsActivityAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -48,11 +45,14 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     RelativeLayout relativeImgChooseHotelTamm;
     @BindView(R.id.rating_bar)
     RatingBar ratingBar;
+    @BindView(R.id.search_hotel_name)
+    EditText searchHotelName;
     private RecyclerView reInfoHotels;
     private ArrayList<String> hotelName;
     private ArrayList<String> hotelAddress;
     private ArrayList<Integer> hotelrat;
     private ArrayList<String> hotelphoto;
+    ArrayList<String> nameTemp;
     private AdapterHotelInfo.onHotelListener onHotelListener;
     private ArrayList<String> hotelCode;
     private String mendTime;
@@ -80,6 +80,11 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
         reInfoHotels = findViewById(R.id.hotels_rv);
         resultIndex = new ArrayList<>();
 
+        LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(0xFFBE973B, PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(0).setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
+
+
         imageView = findViewById(R.id.toolbar_back1);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,55 +93,96 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
             }
         });
 
+        searchHotelName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                if (charSequence.toString().contains("")){
+                    adapterHotelInfo.notifyDataSetChanged();
+                }else{
+                    searchItem(charSequence.toString());
+                }
+
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                nameTemp = new ArrayList<>();
 
 
 
+                for (int y = 0; y < hotelName.size(); y++) {
+                    if (hotelName.get(y).contains(searchHotelName.getText().toString())) {
 
-  ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-      @Override
-      public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                        nameTemp.add(hotelName.get(y));
 
-          ArrayList<String> hotelNameTemp = new ArrayList<>();
-          ArrayList<Integer> hotelRateTemp = new ArrayList<>();
-          ArrayList<String> hotelPhotoTemp = new ArrayList<>();
-          ArrayList<String> hotelAddressTemp = new ArrayList<>();
-          ArrayList<String> hotelCodeTemp = new ArrayList<>();
-          ArrayList<Integer> resultIndexTemp = new ArrayList<>();
-          ArrayList<String> hotelPriceTemp = new ArrayList<>();
+                        adapterHotelInfo = new AdapterHotelInfo(ChooseHotelActivity.this, nameTemp, hotelrat, hotelphoto, ChooseHotelActivity.this, onHotelListener, hotelAddress, hotelCode, session_id,
+                                mstartTime, mendTime, countryName, cityName, cityId, noOfRooms, roomGuests, resultIndex, list_price);
+                        reInfoHotels.setAdapter(adapterHotelInfo);
+                        adapterHotelInfo.notifyDataSetChanged();
+
+                    }else {
 
 
-          for (int i=0;i<hotelrat.size();i++) {
-              if (hotelrat.get(i) == (int) v) {
-                  hotelNameTemp.add(hotelName.get(i));
-                  hotelRateTemp.add(hotelrat.get(i));
-                  hotelPhotoTemp.add(hotelphoto.get(i));
-                  hotelAddressTemp.add(hotelAddress.get(i));
-                  hotelCodeTemp.add(hotelCode.get(i));
-                  resultIndexTemp.add(resultIndex.get(i));
-                  hotelPriceTemp.add(list_price.get(i));
-                  adapterHotelInfo = new AdapterHotelInfo(ChooseHotelActivity.this,
-                          hotelNameTemp,
-                          hotelRateTemp,
-                          hotelPhotoTemp,
-                          ChooseHotelActivity.this,
-                          onHotelListener,
-                          hotelAddressTemp,
-                          hotelCodeTemp,
-                          session_id,
-                          mstartTime,
-                          mendTime,
-                          countryName,
-                          cityName,
-                          cityId,
-                          noOfRooms,
-                          roomGuests,
-                          resultIndexTemp,
-                          hotelPriceTemp);
-                  reInfoHotels.setAdapter(adapterHotelInfo);
-                  adapterHotelInfo.notifyDataSetChanged();
-              }
+                    }
 
-          }
+
+                }
+
+            }
+        });
+
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+
+                ArrayList<String> hotelNameTemp = new ArrayList<>();
+                ArrayList<Integer> hotelRateTemp = new ArrayList<>();
+                ArrayList<String> hotelPhotoTemp = new ArrayList<>();
+                ArrayList<String> hotelAddressTemp = new ArrayList<>();
+                ArrayList<String> hotelCodeTemp = new ArrayList<>();
+                ArrayList<Integer> resultIndexTemp = new ArrayList<>();
+                ArrayList<String> hotelPriceTemp = new ArrayList<>();
+
+
+                for (int i = 0; i < hotelrat.size(); i++) {
+                    if (hotelrat.get(i) == (int) v) {
+                        hotelNameTemp.add(hotelName.get(i));
+                        hotelRateTemp.add(hotelrat.get(i));
+                        hotelPhotoTemp.add(hotelphoto.get(i));
+                        hotelAddressTemp.add(hotelAddress.get(i));
+                        hotelCodeTemp.add(hotelCode.get(i));
+                        resultIndexTemp.add(resultIndex.get(i));
+                        hotelPriceTemp.add(list_price.get(i));
+                        adapterHotelInfo = new AdapterHotelInfo(ChooseHotelActivity.this,
+                                hotelNameTemp,
+                                hotelRateTemp,
+                                hotelPhotoTemp,
+                                ChooseHotelActivity.this,
+                                onHotelListener,
+                                hotelAddressTemp,
+                                hotelCodeTemp,
+                                session_id,
+                                mstartTime,
+                                mendTime,
+                                countryName,
+                                cityName,
+                                cityId,
+                                noOfRooms,
+                                roomGuests,
+                                resultIndexTemp,
+                                hotelPriceTemp);
+                        reInfoHotels.setAdapter(adapterHotelInfo);
+                        adapterHotelInfo.notifyDataSetChanged();
+                    }
+
+                }
 
 
 //
@@ -190,10 +236,8 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
 //            adapterHotelInfo.notifyDataSetChanged();
 //
 
-      }
-  });
-
-
+            }
+        });
 
 
         list_price = (ArrayList<String>) getIntent().getSerializableExtra("list_price");
@@ -220,6 +264,18 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
         adapterHotelInfo.notifyDataSetChanged();
 
 
+    }
+
+    private void searchItem(String toString) {
+
+        for (String item : hotelName){
+            if (!item.contains(toString)){
+                nameTemp.remove(item);
+
+            }
+        }
+
+        adapterHotelInfo.notifyDataSetChanged();
     }
 
 

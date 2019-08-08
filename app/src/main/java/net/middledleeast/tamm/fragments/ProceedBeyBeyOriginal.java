@@ -45,11 +45,15 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import javax.xml.transform.Source;
+
 import FlightApi.FlightApiService;
 import FlightApi.FlightAuthentication;
 import FlightApi.FlightConstants;
 import FlightApi.SearchFlights;
 import FlightApi.SearchFlightsResponse;
+import FlightApi.TicketResponse;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import okhttp3.internal.Util;
@@ -61,6 +65,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static java.util.Calendar.YEAR;
+import static net.middledleeast.tamm.helper.helperMethod.isInternetAvailable;
+import static net.middledleeast.tamm.helper.helperMethod.isNetworkConnected;
 
 
 /**
@@ -85,8 +91,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
     private Date time2;
     private String mendTime;
     private int nom_adultRoom1;
-    private boolean notFailed ;
-    private long adult , child , infant;
+    private boolean notFailed;
+    private long adult, child, infant;
     long oneWay = 1;
     private AnimatedCircleLoadingView animatedCircleLoadingView;
 
@@ -146,6 +152,24 @@ public class ProceedBeyBeyOriginal extends Fragment {
         departure.setText(date_d + " , " + date_n + "  " + date_m + " ");
         returnFrom.setText(date_d + " , " + date_n + "  " + date_m + " ");
 
+        if (!isNetworkConnected(getActivity())) {
+
+
+            new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
+                    .setTitleText("Please Check Your Internet first ")
+                    .setConfirmText("Ok")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+
+                            sDialog.dismissWithAnimation();
+                        }
+                    })
+                    .show();
+
+
+        }
+
 
         departure.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,22 +228,27 @@ public class ProceedBeyBeyOriginal extends Fragment {
             public void onClick(View view) {
 
 
+                if (adult == 0) {
 
-                if (adult==0){
+                    new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Select At Least 1 Passenger")
+                            .setConfirmText("ok")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
 
+                                    sDialog.dismissWithAnimation();
+                                }
+                            })
+                            .show();
 
-
-                }else {
+                } else {
 
 
                     searchFlight();
 
 
-
                 }
-
-
-
 
 
             }
@@ -365,7 +394,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
             }
         });
 
-        ArrayList<String> listOfChilds  = new ArrayList<>();
+        ArrayList<String> listOfChilds = new ArrayList<>();
         listOfChilds.add("Childs");
         listOfChilds.add("1 Child");
         listOfChilds.add("2 Child");
@@ -423,13 +452,12 @@ public class ProceedBeyBeyOriginal extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-
-                if (i != 0){
-                    notFailed=true;
+                if (i != 0) {
+                    notFailed = true;
                     infant = i;
 
-                }else {
-                    notFailed=false;
+                } else {
+                    notFailed = false;
                 }
                 //SharedPreferencesManger.SaveData(getActivity(), "no_adultroom1", nom_adultRoom1);
 
@@ -443,13 +471,12 @@ public class ProceedBeyBeyOriginal extends Fragment {
         });
 
 
-
-
-
         return view;
     }
 
     private void searchFlight() {
+
+
         animatedCircleLoadingView.startDeterminate();
         ListnameLine.clear();
         Listduration.clear();
@@ -527,14 +554,9 @@ public class ProceedBeyBeyOriginal extends Fragment {
                         String trackingId = response.body().getTrackingId();
 
                         List<List<SearchFlightsResponse.Result>> results = response.body().getResults();
-                        if (successful&&results.size()!=0) {
+                        if (successful && results.size() != 0) {
 
                             animatedCircleLoadingView.setVisibility(View.GONE);
-
-
-
-
-
 
 
                             List<SearchFlightsResponse.Result> results1 = results.get(0);
@@ -574,6 +596,10 @@ public class ProceedBeyBeyOriginal extends Fragment {
                                     String cabinBaggage = (String) segments2.get(t).getCabinBaggage();
 
                                     String duration = segments2.get(t).getDuration();
+                                    long operatingCarrier = segments2.get(t).getSegmentIndicator();
+
+
+                                    Toast.makeText(getContext(), "fff  : " + String.valueOf(operatingCarrier), Toast.LENGTH_SHORT).show();
 
 
                                     ListnameLine.add(airlineName);
@@ -588,9 +614,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                                 }
 
 
-
                             }
-
 
 
                             Intent intent = new Intent(getContext(), RecommendedOneWay.class);
@@ -611,10 +635,25 @@ public class ProceedBeyBeyOriginal extends Fragment {
                             intent.putExtra("listTypeFare", listTypeFare);
 
 
-
                             getContext().startActivity(intent);
 
                         } else {
+
+                            animatedCircleLoadingView.setVisibility(View.GONE);
+
+                            new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
+                                    .setTitleText("No Result Found")
+                                    .setConfirmText("Search Again")
+                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                        @Override
+                                        public void onClick(SweetAlertDialog sDialog) {
+
+                                            sDialog.dismissWithAnimation();
+                                        }
+                                    })
+                                    .show();
+
+
                             String s = response.raw().body().toString();
                             Toast.makeText(getContext(), "no Result" + response.message(), Toast.LENGTH_SHORT).show();
                             animatedCircleLoadingView.setVisibility(View.GONE);
@@ -641,46 +680,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
             }
         });
-//        if (flightAuthentication[0].getTokenId() != null) {
-//            final SearchFlights[] searchFlights = {new SearchFlights()};
-//            searchFlights[0].setTokenId(flightAuthentication[0].getTokenId());
-//            String test = flightAuthentication[0].getTokenId();
-//            searchFlights[0].setAdultCount(1);
-//            searchFlights[0].setChildCount(1);
-//            searchFlights[0].setFlightCabinClass(1);
-//            searchFlights[0].setInfantCount(1);
-//            searchFlights[0].setJourneyType(1);
-//            searchFlights[0].setIPAddress("192.168.4.238");
-//            List<SearchFlights.Segment> segments = new ArrayList<>();
-//            SearchFlights.Segment segment = new SearchFlights.Segment();
-//            segment.setDestination("DEL");
-//            segment.setOrigin("DXB");
-//            segment.setPreferredArrivalTime("2018-12-29T00:00:00");
-//            segment.setPreferredDepartureTime("2018-12-29T00:00:00");
-//            List<String> airlines = new ArrayList<>();
-//            airlines.add("EK");
-//            airlines.add("AI");
-//            segment.setPreferredAirlines(airlines);
-//            segments.add(segment);
-//            searchFlights[0].setSegment(segments);
-//            Call<SearchFlights> searchCall = flightApiService.getFlightSearch("application/json", searchFlights[0]);
-//            searchCall.enqueue(new Callback<SearchFlights>() {
-//
-//                @Override
-//                public void onResponse(Call<SearchFlights> call, Response<SearchFlights> response) {
-//                    searchFlights[0] = response.body();
-//                    Toast.makeText(getContext(), "searchFlights"+response.message(), Toast.LENGTH_SHORT).show();
-//
-//                    System.out.println("How: " + searchFlights[0].searchFlightsResponse.getResults());
-//                }
-//
-//                @Override
-//                public void onFailure(Call<SearchFlights> call, Throwable throwable) {
-//                    Toast.makeText(getContext(), "onFailure"+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-//
-//                }
-//            });
-//        }
+
     }
 
     public Retrofit connectAndGetApiData(Gson gson, OkHttpClient client) {
@@ -718,11 +718,10 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
 
-
                 SharedPreferencesManger.SaveData(getActivity(), "startDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "till ");
 
 
-                departure.setText(dayOfTheWeek+","+day+" "+monthString);
+                departure.setText(dayOfTheWeek + "," + day + " " + monthString);
 
             }
         };
@@ -730,13 +729,6 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
         new DatePickerDialog(getActivity(), date, myCalendar.get(YEAR),
                 myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-
     }
 
-
 }
-
-
-
-
-

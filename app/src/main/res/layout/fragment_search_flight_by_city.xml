@@ -10,10 +10,11 @@
     <!-- TODO: Update blank fragment layout -->
 
     <EditText
-        android:textColor="@color/white"
         android:id="@+id/search_flight_city"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="textCapSentences"
+        android:textColor="@color/white" />
 
     <View
         android:id="@+id/line2"

@@ -39,6 +39,7 @@ public class SearchFlightByCity extends Fragment {
     List<String> airportCode = new ArrayList<>();
     List<String> airportName = new ArrayList<>();
     List<String> cityCode = new ArrayList<>();
+    ArrayList<String> nameTemp;
     private int id_t;
 
     public SearchFlightByCity() {
@@ -117,7 +118,11 @@ public class SearchFlightByCity extends Fragment {
 
 
 
-
+                if (charSequence.toString().contains("")){
+                    adapterAirportCuntry.notifyDataSetChanged();
+                }else{
+                    searchItem(charSequence.toString());
+                }
 
 
 
@@ -130,7 +135,7 @@ public class SearchFlightByCity extends Fragment {
             @Override
             public void afterTextChanged(Editable editable) {
 
-                ArrayList<String> nameTemp = new ArrayList<>();
+                nameTemp = new ArrayList<>();
                 ArrayList<String> codecityTemp = new ArrayList<>();
                 ArrayList<String> codeAirportTemp = new ArrayList<>();
 
@@ -156,15 +161,23 @@ public class SearchFlightByCity extends Fragment {
 
                 }
 
-
-
-
-
-
             }
         });
 
         return view;
+    }
+
+    private void searchItem(String toString) {
+
+
+        for (String item : airportName){
+            if (!item.contains(toString)){
+                nameTemp.remove(item);
+
+            }
+        }
+
+        adapterAirportCuntry.notifyDataSetChanged();
     }
 
 }
