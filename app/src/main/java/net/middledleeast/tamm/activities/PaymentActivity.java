@@ -30,6 +30,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.wirecard.ecom.Client;
 import com.wirecard.ecom.model.out.PaymentResponse;
+import com.wirecard.ecom.ui.WebViewActivity;
 
 import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.R;
@@ -442,6 +443,10 @@ public class PaymentActivity extends AppCompatActivity {
             String finalCurrency = kd;
 
             if (paymentChekd && checkBoxAgerr2.isChecked()) {
+
+
+
+
                 Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
                 client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
 
