@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/plans_background1"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/relative_free_congrats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+
+        >
+
+
+
+        <ImageView
+            android:id="@+id/iv_ok1"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:src="@drawable/ok1"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_congrats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/congratulations"
+            android:textSize="@dimen/_30sdp"
+            android:textColor="@color/app_color"
+            android:layout_below="@+id/iv_ok1"
+            android:layout_centerInParent="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/now_you_are_a_free_account_of"
+            android:textSize="15dp"
+            android:textColor="#fff"
+            android:layout_below="@+id/tv_congrats"
+            android:layout_centerInParent="true"
+            />
+        <TextView
+            android:id="@+id/tv_community"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tamm_community"
+            android:textColor="@color/app_color"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_below="@+id/tv_now"
+            android:layout_centerInParent="true"
+            />
+
+
+
+
+        <ImageView
+            android:id="@+id/iv_theman2"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_150sdp"
+            android:src="@drawable/manok"
+            android:layout_below="@+id/tv_community"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_alignBottom="@+id/iv_theman2"
+            android:layout_marginStart="@dimen/_160sdp"
+            android:layout_marginTop="@dimen/_34sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:layout_marginBottom="@dimen/_40sdp"
+            android:gravity="center"
+            android:text="@string/enjoy_your_stay_amp_n_wait_for_the_deals_n_that_are_being_n_crafted_just_n_for_you"
+            android:textColor="#FFF"
+            android:textSize="@dimen/_13ssp" />
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_alignBottom="@+id/iv_theman2"
+            android:layout_marginStart="@dimen/_140sdp"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_150sdp"
+            android:layout_marginBottom="@dimen/_90sdp"
+            android:src="@drawable/ic_quotation_mark" />
+
+
+        <Button
+            android:id="@+id/continueTo"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:text="@string/continue_"
+            android:textColor="#FFF"
+            tools:ignore="MissingConstraints"
+            android:layout_below="@+id/iv_theman2"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

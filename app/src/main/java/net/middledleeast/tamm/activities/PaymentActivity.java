@@ -35,6 +35,7 @@ import com.wirecard.ecom.ui.WebViewActivity;
 import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterPayment;
+import net.middledleeast.tamm.fragments.FREEcONGRATS;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import org.json.JSONArray;
@@ -505,7 +506,9 @@ public class PaymentActivity extends AppCompatActivity {
 
                 sendDataToServer();
 
-                startActivity(new Intent(PaymentActivity.this, PaymentActivityFragment.class));
+          startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
+
+
             }else if (mId==3){
 
                 Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();

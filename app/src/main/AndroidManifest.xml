@@ -21,11 +21,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".activities.KnetActivity"  >
-            <!--android:theme="@android:style/Theme.NoTitleBar"-->
+        <activity android:name=".activities.MemberCongratsActivity"></activity>
+        <activity android:name=".activities.FreeCongratsActivity" />
+        <activity android:name=".activities.KnetActivity">
 
-
-
+            <!-- android:theme="@android:style/Theme.NoTitleBar" -->
 
         </activity>
         <activity
@@ -42,16 +42,10 @@
             android:screenOrientation="portrait" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
         <activity
             android:name=".activities.Proceedbeybey"
-            android:screenOrientation="portrait">
-
-
-
-
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.PassengerDeparture"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities.Passenger_inform"
             android:screenOrientation="portrait" />
@@ -70,8 +64,6 @@
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -111,13 +103,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.FindHotels"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.FlightSearch"
-            android:screenOrientation="portrait">
-
-
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ConfirmBookingRoom"
             android:screenOrientation="portrait" />
@@ -129,23 +118,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.RenewAccount"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".activities.PaymentTemp" />
 
         <service
             android:name=".sevice.MyService"
             android:enabled="true" />
-
     </application>
-
-
-
-
-
-
-
-
-
-
 
 </manifest>
