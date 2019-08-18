@@ -1,6 +1,7 @@
 package net.middledleeast.tamm.activities;
 
 import android.app.AlertDialog;
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -69,6 +70,7 @@ public class RenewAccount extends AppCompatActivity
     ViewPager viewPager;
     private ViewPagerAdapter adapter;
     private boolean ClickRenewHotel=false;
+
 
 //    private AuthenticationData authenticandata;
 //    private BasicHttpBinding_IHotelService1 service;
@@ -331,6 +333,8 @@ public class RenewAccount extends AppCompatActivity
         } else if (id == R.id.nav_setting) {
 
         } else if (id == R.id.nav_terms) {
+
+            startActivity(new Intent(RenewAccount.this, TermsActivity.class));
 
         } else if (id == R.id.nav_logout) {
 

@@ -67,6 +67,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
+import FlightApi.BookResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -188,6 +189,7 @@ public class FindHotels extends AppCompatActivity {
     ProgressBar simpleProgressBar;
     private boolean ClickFindHotel = false;
     private Filters filters;
+    private boolean counttryCheked = false;
 
 //    private boolean saved ;
 
@@ -274,6 +276,16 @@ public class FindHotels extends AppCompatActivity {
         }
 
 
+
+        if (regions.getText().equals("")&&regions.getText().equals("COUNTRY")){
+
+            counttryCheked =false;
+
+
+        }else {
+
+            counttryCheked =true;
+        }
 
 //        relativeImgFindHotelTamm = findViewById(R.id.relative_img_find_hotel_tamm);
 
@@ -1416,7 +1428,7 @@ public class FindHotels extends AppCompatActivity {
 
         if (isInternetAvailable()){
 
-            if (chicDateStart && chicDateEnd) {
+            if (chicDateStart && chicDateEnd && counttryCheked) {
 
                 SharedPreferencesManger.SaveData(FindHotels.this, "start_date", mstartTime);
 
@@ -1428,7 +1440,7 @@ public class FindHotels extends AppCompatActivity {
             } else if (chicDateStart) {
 
                 new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("Select Check Out Date First")
+                        .setTitleText("Please Enter All Data First")
                         .setConfirmText("open")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
@@ -1649,7 +1661,7 @@ public class FindHotels extends AppCompatActivity {
                 simpleProgressBar.setVisibility(View.GONE);
 
                 new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("No Result Found")
+                        .setTitleText("Please Enter All Data First")
                         .setConfirmText("Search Again")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override

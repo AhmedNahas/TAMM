@@ -11,13 +11,41 @@
         android:id="@+id/welcome_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/relative_back"
+    >
+
+
+
+
+
+
 
         <ImageView
             android:id="@+id/back_pressed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_back_arrow"
-            android:layout_marginTop="15dp"/>
+           />
+
+
+        <TextView
+            android:id="@+id/back_payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_toRightOf="@id/back_pressed"
+
+
+            />
+
+
+</RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
 
