@@ -1,13 +1,14 @@
 package net.middledleeast.tamm.fragments;
 
-
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.ChooseHotelActivity;
 import net.middledleeast.tamm.adapters.AdapterAirportCuntry;
 import net.middledleeast.tamm.adapters.AdapterHotelInfo;
+import net.middledleeast.tamm.model.modelflightSearsh;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -31,7 +33,7 @@ import java.util.List;
  */
 public class SearchFlightByCity extends Fragment {
 
-    EditText search_flight_city ;
+    SearchView search_flight_city ;
     RecyclerView rv_country;
     AdapterAirportCuntry adapterAirportCuntry;
     String[] ids;
@@ -41,6 +43,7 @@ public class SearchFlightByCity extends Fragment {
     List<String> cityCode = new ArrayList<>();
     ArrayList<String> nameTemp;
     private int id_t;
+    private List<modelflightSearsh> list_searsh = new ArrayList<>();
 
     public SearchFlightByCity() {
         // Required empty public constructor
@@ -54,10 +57,10 @@ public class SearchFlightByCity extends Fragment {
         View view = inflater.inflate(R.layout.fragment_search_flight_by_city, container, false);
 
 
-       try {
-           Bundle arguments = getArguments();
+        try {
+            Bundle arguments = getArguments();
             id_t = arguments.getInt("id_t");
-       }catch (Exception e){}
+        }catch (Exception e){}
 
         rv_country = view.findViewById(R.id.rv_airport_country);
 
@@ -99,70 +102,91 @@ public class SearchFlightByCity extends Fragment {
 
         }
 
+        modelflightSearsh searsh = null;
+        for (int i = 0; i < airportName.size(); i++) {
+
+
+            searsh = new modelflightSearsh(airportName.get(i),airportCode.get(i),cityCode.get(i));
+            list_searsh.add(searsh);
+
+        }
+
+
+
         rv_country.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        adapterAirportCuntry = new AdapterAirportCuntry(cityCode,airportName,airportCode , getActivity(),getContext() ,id_t);
+        adapterAirportCuntry = new AdapterAirportCuntry(list_searsh  ,id_t , getContext());
         rv_country.setAdapter(adapterAirportCuntry);
         adapterAirportCuntry.notifyDataSetChanged();
-
-
-
-        search_flight_city.addTextChangedListener(new TextWatcher() {
+        search_flight_city.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        search_flight_city.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+            public boolean onQueryTextSubmit(String query) {
+                return false;
             }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-
-
-                if (charSequence.toString().contains("")){
-                    adapterAirportCuntry.notifyDataSetChanged();
-                }else{
-                    searchItem(charSequence.toString());
-                }
-
-
-
-
-
-
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-                nameTemp = new ArrayList<>();
-                ArrayList<String> codecityTemp = new ArrayList<>();
-                ArrayList<String> codeAirportTemp = new ArrayList<>();
-
-
-                for (int y = 0; y < airportName.size(); y++) {
-                    if (airportName.get(y).contains(search_flight_city.getText().toString())) {
-
-                        nameTemp.add(airportName.get(y));
-                        codeAirportTemp.add(airportCode.get(y));
-                        codecityTemp.add(cityCode.get(y));
-
-                        //  rv_country.setLayoutManager(new LinearLayoutManager(getContext()));
-
-                        adapterAirportCuntry = new AdapterAirportCuntry(codecityTemp, nameTemp, codeAirportTemp,getActivity(),getContext(),id_t);
-                        rv_country.setAdapter(adapterAirportCuntry);
-                        adapterAirportCuntry.notifyDataSetChanged();
-
-                    }else {
-
-
-                    }
-
-
-                }
-
+            public boolean onQueryTextChange(String newText) {
+                adapterAirportCuntry.getFilter().filter(newText);
+                return false;
             }
         });
+
+
+
+
+//        search_flight_city.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//
+//
+//                if (charSequence.toString().contains("")){
+//                    adapterAirportCuntry.notifyDataSetChanged();
+//                }else{
+//                    searchItem(charSequence.toString());
+//                }
+//
+//
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//                nameTemp = new ArrayList<>();
+//                ArrayList<String> codecityTemp = new ArrayList<>();
+//                ArrayList<String> codeAirportTemp = new ArrayList<>();
+//
+//
+//                for (int y = 0; y < airportName.size(); y++) {
+//                    if (airportName.get(y).contains(search_flight_city.getText().toString())) {
+//
+//                        nameTemp.add(airportName.get(y));
+//                        codeAirportTemp.add(airportCode.get(y));
+//                        codecityTemp.add(cityCode.get(y));
+//
+//                        //  rv_country.setLayoutManager(new LinearLayoutManager(getContext()));
+//
+//                        adapterAirportCuntry = new AdapterAirportCuntry(codecityTemp, nameTemp, codeAirportTemp,getActivity(),getContext(),id_t);
+//                        rv_country.setAdapter(adapterAirportCuntry);
+//                        adapterAirportCuntry.notifyDataSetChanged();
+//
+//                    }else {
+//
+//
+//                    }
+//
+//
+//                }
+//
+//            }
+//        });
 
         return view;
     }
