@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -187,6 +188,7 @@ public class FindHotels extends AppCompatActivity {
     ProgressBar simpleProgressBar;
     private boolean ClickFindHotel = false;
     private Filters filters;
+
 //    private boolean saved ;
 
     @SuppressLint("StaticFieldLeak")
@@ -1661,6 +1663,9 @@ public class FindHotels extends AppCompatActivity {
         }
 
 
+
     }
+
+
 }
 

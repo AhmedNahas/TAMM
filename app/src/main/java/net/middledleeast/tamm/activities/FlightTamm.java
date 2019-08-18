@@ -27,6 +27,7 @@ public class FlightTamm extends AppCompatActivity {
     @BindView(R.id.fragment_assistant_label_message)
     TextView fragmentAssistantLabelMessage;
     private Button button;
+    private RelativeLayout toolbar_back;
 
     boolean Click = false;
 
@@ -35,6 +36,15 @@ public class FlightTamm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flight_tamm);
         ButterKnife.bind(this);
+
+        toolbar_back= findViewById(R.id.toolbar_back1);
+
+        toolbar_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FlightTamm.this, RenewAccount.class));
+            }
+        });
 
         button = findViewById(R.id.btn_reserve_user);
         button.setOnClickListener(new View.OnClickListener() {

@@ -12,22 +12,31 @@
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
-        <ImageView
-            android:id="@+id/back_img"
+        <RelativeLayout
+            android:id="@+id/toolbar_back1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/ic_back_arrow"
-            android:backgroundTint="#FFEB3B"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:layout_toRightOf="@+id/back_img"
-            android:layout_marginLeft="5dp"
-            android:text="BACK"
-            android:textColor="#ffff" />
+            android:layout_marginTop="@dimen/_12sdp">
+            <ImageView
+                android:id="@+id/toolbar_back_image_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_back_arrow"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_toEndOf="@+id/toolbar_back_image_back"
+                android:text="@string/back"
+                android:textColor="#ffff"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
 
         <ImageView
             android:layout_width="@dimen/_20sdp"

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ReserveRoom"
+    tools:context=".activities.FlightTamm"
     android:orientation="vertical"
     android:background="@drawable/plans_background"
 
@@ -17,12 +17,31 @@
         android:layout_height="50dp"
 
         >
-        <ImageView
+        <RelativeLayout
+            android:id="@+id/toolbar_back1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/ic_back_arrow"
-            />
+            android:layout_marginTop="@dimen/_15sdp">
+            <ImageView
+                android:id="@+id/toolbar_back_image_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_back_arrow"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_toEndOf="@+id/toolbar_back_image_back"
+                android:text="@string/back"
+                android:textColor="#ffff"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
         <ImageView
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_30sdp"
@@ -121,7 +140,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_special"
         android:layout_centerInParent="true"
-        >
+        android:layout_marginBottom="@dimen/_8sdp">
         <TextView
             android:id="@+id/txt_anywhere"
             android:layout_width="wrap_content"

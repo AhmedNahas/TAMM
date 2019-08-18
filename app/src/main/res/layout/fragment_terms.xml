@@ -6,7 +6,37 @@
     android:layout_margin="@dimen/_30ssp"
     android:background="@drawable/shape_termes"
     tools:context=".fragments.TermsFragment">
+    <RelativeLayout
+        android:id="@+id/toolbar_back1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp">
+        <ImageView
+            android:id="@+id/toolbar_back_image_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_back_arrow"
+            />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_toEndOf="@+id/toolbar_back_image_back"
+            android:text="@string/back"
+            android:textColor="#ffff"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/toolbar_back1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp">
 
     <TextView
         android:id="@+id/termes_s"
@@ -39,6 +69,7 @@
 
 
 </ScrollView>
+    </RelativeLayout>
 
 
 </RelativeLayout>
