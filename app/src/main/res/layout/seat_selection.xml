@@ -67,8 +67,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/line1"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:text="Seat Selection"
         android:textColor="#fff"
         android:textSize="@dimen/_15ssp"
@@ -82,7 +82,7 @@
         android:layout_width="@dimen/_300sdp"
         android:layout_height="2dp"
         android:layout_below="@+id/tv_seat_selection"
-        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
         android:background="@drawable/line1" />
 
     <TextView
@@ -90,7 +90,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/line2"
-        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
         android:text="Choosing your seats will be charged for extra fees"
         android:textColor="#fff"
 
@@ -115,7 +115,7 @@
             android:id="@+id/btn_cancel"
             android:layout_width="@dimen/_70sdp"
             android:layout_height="@dimen/_25sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
             android:layout_toRightOf="@+id/btn_accept"
             android:background="@drawable/shape"
             android:text="CANCEL" />

@@ -32,7 +32,7 @@
                 android:text="BACK"
                 android:textColor="@color/white"
                 android:layout_marginTop="15dp"
-                android:layout_marginStart="@dimen/_10sdp"/>
+                android:layout_marginStart="@dimen/_15sdp"/>
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -81,7 +81,7 @@
         <ImageView
             android:id="@+id/iv_logo_black"
             android:layout_width="@dimen/_50sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:layout_height="@dimen/_50sdp"
             android:layout_below="@+id/imageView2"
             android:layout_centerHorizontal="true"

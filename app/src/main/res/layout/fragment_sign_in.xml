@@ -28,7 +28,7 @@
                 android:text="BACK"
                 android:textColor="@color/white"
                 android:layout_marginTop="15dp"
-                android:layout_marginStart="@dimen/_10sdp"/>
+                android:layout_marginStart="@dimen/_15sdp"/>
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 

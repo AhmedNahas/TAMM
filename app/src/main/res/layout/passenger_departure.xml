@@ -145,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_toRightOf="@+id/tv_adult"
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
                 >
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -600,7 +600,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_toRightOf="@+id/tv_adult2"
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
                 >
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -718,7 +718,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_toRightOf="@+id/tv_child2"
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
                 >
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -827,7 +827,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_toRightOf="@+id/tv_infant2"
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
                 >
                 <RadioButton
                     android:layout_width="wrap_content"

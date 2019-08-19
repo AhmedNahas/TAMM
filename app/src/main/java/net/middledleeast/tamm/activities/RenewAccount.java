@@ -104,12 +104,17 @@ public class RenewAccount extends AppCompatActivity
         assistantLabelVoiceRenewHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(RenewAccount.this, AssistantActivity.class);
+                startActivity(intent);
                 Toast.makeText(RenewAccount.this, "Voice", Toast.LENGTH_SHORT).show();
             }
         });
         assistantLabelCallRenewHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(RenewAccount.this, AssistantActivity.class);
+                startActivity(intent);
+
                 Toast.makeText(RenewAccount.this, "Call", Toast.LENGTH_SHORT).show();
             }
         });
@@ -117,6 +122,9 @@ public class RenewAccount extends AppCompatActivity
         assistantLabelMessageRenewHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(RenewAccount.this, AssistantActivity.class);
+                startActivity(intent);
+
                 Toast.makeText(RenewAccount.this, "Message", Toast.LENGTH_SHORT).show();
             }
         });

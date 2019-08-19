@@ -76,7 +76,7 @@
 
     <RelativeLayout
         android:layout_marginTop="@dimen/_4sdp"
-        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_15sdp"
         android:layout_below="@+id/tv_please"
         android:layout_toEndOf="@+id/tv_kd"
         android:background="@drawable/shape_plack2"
@@ -101,7 +101,7 @@
 
     <RelativeLayout
         android:background="@drawable/shape_plack"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_margin="@dimen/_15sdp"
         android:id="@+id/relative_mr_mrs2"
         android:layout_marginTop="@dimen/_8sdp"
         android:layout_below="@+id/tv_kd"

@@ -26,8 +26,8 @@
     </com.google.android.material.tabs.TabLayout>
     
     <RelativeLayout
-        android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_15sdp"
         android:id="@+id/view_pager"
         android:layout_width="@dimen/_300sdp"
         android:layout_height="@dimen/_130sdp"

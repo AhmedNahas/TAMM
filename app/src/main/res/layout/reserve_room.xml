@@ -34,7 +34,7 @@
                 android:text="BACK"
                 android:textColor="@color/white"
                 android:layout_marginTop="15dp"
-                android:layout_marginStart="@dimen/_10sdp"/>
+                android:layout_marginStart="@dimen/_15sdp"/>
         </LinearLayout>
         <ImageView
             android:layout_width="@dimen/_20sdp"
@@ -102,7 +102,7 @@
         android:src="@drawable/line1"
         android:layout_below="@+id/txt_hotels"
         android:layout_centerInParent="true"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         />
 
     <TextView
@@ -114,7 +114,7 @@
         android:textSize="20dp"
         android:layout_centerInParent="true"
         android:layout_below="@id/img_smallline"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         />
     <TextView
         android:id="@+id/txt_special"

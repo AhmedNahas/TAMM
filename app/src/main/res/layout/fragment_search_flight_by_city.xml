@@ -26,7 +26,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_airport_country"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/search_flight_city">
