@@ -128,6 +128,7 @@
 
     </LinearLayout>
     <LinearLayout
+android:layout_marginStart="@dimen/_4sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -160,6 +161,8 @@
 
     </LinearLayout>
     <LinearLayout
+        android:layout_marginStart="@dimen/_4sdp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -183,6 +186,8 @@
 
     </LinearLayout>
     <LinearLayout
+        android:layout_marginStart="@dimen/_4sdp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -281,6 +286,8 @@
 
     </LinearLayout>
     <LinearLayout
+        android:layout_marginStart="@dimen/_4sdp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -313,6 +320,8 @@
 
     </LinearLayout>
     <LinearLayout
+        android:layout_marginStart="@dimen/_4sdp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -337,6 +346,8 @@
 
     </LinearLayout>
     <LinearLayout
+        android:layout_marginStart="@dimen/_4sdp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -434,6 +445,8 @@
 
     </LinearLayout>
     <LinearLayout
+        android:layout_marginStart="@dimen/_4sdp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -466,6 +479,8 @@
 
     </LinearLayout>
     <LinearLayout
+        android:layout_marginStart="@dimen/_4sdp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -489,6 +504,8 @@
 
     </LinearLayout>
     <LinearLayout
+        android:layout_marginStart="@dimen/_4sdp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -533,6 +550,7 @@
             />
     </LinearLayout>
     <Button
+        android:layout_marginTop="@dimen/_15sdp"
         android:id="@+id/confirm_flight"
         android:layout_width="150dp"
         android:layout_height="wrap_content"

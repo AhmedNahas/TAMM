@@ -559,7 +559,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 myCalendar.set(Calendar.MONTH, month);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                String myFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"; //In which you need put here
+                String myFormat = "yyyy-MM-dd' T'00:00:00"; //In which you need put here
                 SimpleDateFormat start = new SimpleDateFormat(myFormat, Locale.US);
                 time2 = myCalendar.getTime();
                 mReturnTime = start.format(myCalendar.getTime());
@@ -673,6 +673,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 segment.setPreferredDepartureTime(daDepartureTimeyO);
                 //  11.4
 
+                segment.setPreferredArrivalTime(mReturnTime);
                 // add segments
                 segments.add(segment);
                 searchFlights[0].setSegment(segments);
@@ -687,7 +688,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                         String trackingId = response.body().getTrackingId();
 
                         List<List<SearchFlightsResponse.Result>> results = response.body().getResults();
-                        if (successful && results.size() != 0 && results != null) {
+                        if (successful && results != null && results.size() >0) {
 
                             progressFlight.setVisibility(View.INVISIBLE);
 
