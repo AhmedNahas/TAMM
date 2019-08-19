@@ -26,6 +26,7 @@ import net.middledleeast.tamm.adapters.HotelsActivityAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -178,6 +179,8 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
                                 roomGuests,
                                 resultIndexTemp,
                                 hotelPriceTemp);
+
+
                         reInfoHotels.setAdapter(adapterHotelInfo);
                         adapterHotelInfo.notifyDataSetChanged();
                     }
