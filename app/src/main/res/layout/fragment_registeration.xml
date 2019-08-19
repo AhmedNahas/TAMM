@@ -540,6 +540,13 @@
         </ScrollView>
 
     </ViewFlipper>
+    <FrameLayout
+        android:id="@+id/terms_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+    </FrameLayout>
 
 
 </RelativeLayout>

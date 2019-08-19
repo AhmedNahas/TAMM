@@ -31,7 +31,7 @@
 
                 <ImageView
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/_70sdp"
+                    android:layout_marginStart="@dimen/_90sdp"
                     android:id="@+id/imageView8"
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_30sdp"

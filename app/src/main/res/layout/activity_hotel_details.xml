@@ -62,23 +62,34 @@
     <!--android:src="@drawable/line"-->
     <!--android:layout_below="@+id/relative_hotel_detail"-->
     <!--/>-->
-
+    <RelativeLayout
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:id="@+id/view_pager_details"
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_below="@+id/img_linee"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/border2"
+        >
 
     <androidx.viewpager.widget.ViewPager
 
-        android:layout_below="@+id/relative_hotel_detail"
+
         android:layout_width="match_parent"
         android:id="@+id/hotel_image_detail"
-        android:layout_height="140dp"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/_4sdp"
+        />
 
-        android:layout_centerInParent="true"/>
-
+    </RelativeLayout>
 
     <LinearLayout
 
         android:id="@+id/SliderDots"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/hotel_image_detail"
+        android:layout_below="@+id/view_pager_details"
         android:gravity="center"
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
@@ -196,7 +207,7 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:background="@drawable/man1"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/relative_map_next"
+        android:layout_above="@+id/tv_tab_me_details_hotels"
         >
 
         <TextView
@@ -265,7 +276,6 @@
         android:text="Tap me if you need MY ASSISTANCE "
         android:textColor="#fff"
         android:gravity="center"
-        android:layout_below="@+id/relative_img_hotel_details_tamm"
-        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_alignParentBottom="true"
         />
 </RelativeLayout>

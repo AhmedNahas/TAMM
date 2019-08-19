@@ -14,7 +14,9 @@ import androidx.fragment.app.Fragment;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.RegisterationActivity;
 import net.middledleeast.tamm.activities.FindHotels;
+import net.middledleeast.tamm.activities.PaymentActivity;
 import net.middledleeast.tamm.activities.ReserveRoom;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import butterknife.BindView;
 
@@ -45,11 +47,20 @@ public class TermsFragment extends Fragment {
         toolbar_back1=view.findViewById(R.id.toolbar_back1);
         terms.setText(TERMS);
 
+        int paymentActivityId = SharedPreferencesManger.LoadIntegerData(getContext(), "paymentActivityId");
+
+
+
+
         toolbar_back1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), RegisterationActivity.class));
 
+                if (paymentActivityId == 5) {
+                    startActivity(new Intent(getContext(), PaymentActivity.class));
+                } else {
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.terms_container, new RegisterationActivity()).commit();
+                }
             }
         });
         return view;

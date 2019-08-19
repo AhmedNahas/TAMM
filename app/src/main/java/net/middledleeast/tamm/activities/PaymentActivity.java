@@ -37,6 +37,7 @@ import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterPayment;
 import net.middledleeast.tamm.fragments.FREEcONGRATS;
+import net.middledleeast.tamm.fragments.TermsFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import org.json.JSONArray;
@@ -618,8 +619,13 @@ public class PaymentActivity extends AppCompatActivity {
     @OnClick(R.id.terms_conditions_tv2)
     public void onViewClicked() {
 
+        int paymentActivityId = 5;
+        SharedPreferencesManger.SaveData(this,"paymentActivityId",paymentActivityId);
 
 
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.payment_terms_container, new TermsFragment())
+                .addToBackStack("RegisterationActivity").commit();
 
 //
 //        Intent intent = new Intent(PaymentActivity.this, TermsFragment.class);

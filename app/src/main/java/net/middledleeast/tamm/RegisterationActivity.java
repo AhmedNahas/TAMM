@@ -195,7 +195,7 @@ public class RegisterationActivity extends Fragment {
 
 
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.welcome_container, new TermsFragment())
+                        .replace(R.id.terms_container, new TermsFragment())
                         .addToBackStack("RegisterationActivity").commit();
 
             }
