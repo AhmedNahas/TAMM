@@ -12,6 +12,7 @@ import android.os.StrictMode;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -44,7 +46,10 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
 import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
+import net.middledleeast.tamm.activities.FreeCongratsActivity;
 import net.middledleeast.tamm.activities.PaymentActivity;
+import net.middledleeast.tamm.adapters.AutoCompleteAdapter;
+import net.middledleeast.tamm.fragments.MemberCongrats;
 import net.middledleeast.tamm.fragments.PlansFragment;
 import net.middledleeast.tamm.fragments.TermsFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
@@ -131,6 +136,7 @@ public class RegisterationActivity extends Fragment {
     private String phonevalidation;
     private String usernamevalidation;
     private String emailvalidation;
+    private String nameCountry;
 
 
     @SuppressLint("StaticFieldLeak")
@@ -157,6 +163,22 @@ public class RegisterationActivity extends Fragment {
         agree = view.findViewById(R.id.check_box_agerr);
         toolbar = view.findViewById(R.id.welcome_toolbar);
         imageView = view.findViewById(R.id.back_pressed);
+
+       special.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               switch (view.getId()){
+                   case R.id.special:
+                       if (special.isSelected()){
+                           special.setChecked(false);
+                           special.setSelected(false);
+                       }else{
+                           special.setChecked(true);
+                           special.setSelected(true);
+                       }
+               }
+           }
+       });
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -173,7 +195,7 @@ public class RegisterationActivity extends Fragment {
 
 
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.welcome_container, new TermsFragment())
+                        .replace(R.id.terms_container, new TermsFragment())
                         .addToBackStack("RegisterationActivity").commit();
 
             }
@@ -206,10 +228,10 @@ public class RegisterationActivity extends Fragment {
         getCountries();
 
         getOcupation();
-        ArrayAdapter adapter = new ArrayAdapter<String>(getContext(), R.layout.item_spener_reg, list_country);
+
+//        ArrayAdapter  = new ArrayAdapter<String>(getContext(), R.layout.item_spener_reg, list_country);
 
 
-        country.setAdapter(adapter);
 
 
         Bundle arguments = getArguments();
@@ -332,7 +354,8 @@ public class RegisterationActivity extends Fragment {
 
                     } else if (user_id == 1) {
 
-                        Intent intent = new Intent(getContext(), PaymentActivityFragment.class);
+                        Intent intent = new Intent(getContext(), FreeCongratsActivity.class);
+                        intent.putExtra("username",etUserName.getText().toString());
                         startActivity(intent);
                     }
 
@@ -346,7 +369,6 @@ public class RegisterationActivity extends Fragment {
         mrOrMissAdapter = new ArrayAdapter(getContext(), R.layout.item_spener, mrOrMissArray);
         mrormissSpinner = view.findViewById(R.id.mromiss);
         mrOrMissAdapter.setDropDownViewResource(R.layout.drop_dowen);
-        mrormissSpinner.setDropDownWidth(420);
         mrormissSpinner.setSelection(0);
         mrormissSpinner.setAdapter(mrOrMissAdapter);
 
@@ -477,14 +499,34 @@ public class RegisterationActivity extends Fragment {
         listID = gson2.fromJson(code_country, ArrayList.class);
 
 
-        for (int i = 0; i < list_country.size(); i++) {
-
-            idCountry = listID.get(i);
-
-            //  getCities(idCountry);
+        AutoCompleteAdapter adapter2 = new AutoCompleteAdapter(getContext(), R.layout.drop_dowen, android.R.id.text1,list_country );
 
 
-        }
+        country.setAdapter(adapter2);
+        country.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
+
+                nameCountry = list_country.get(adapter2.getPosition(adapter2.getItem(position)));
+                idCountry = listID.get(adapter2.getPosition(adapter2.getItem(position)));
+
+                getCities(idCountry);
+
+            }
+
+
+        });
+
+
+//
+//        for (int i = 0; i < list_country.size(); i++) {
+//
+//            idCountry = listID.get(i);
+//
+//
+//        }
 
 
         // String test = hotelSearchResponse.Status.Description;
@@ -505,7 +547,7 @@ public class RegisterationActivity extends Fragment {
 
     private void getCities(String idCountry) {
 
-
+        list_city.clear();
         try {
             DestinationCityListResponse cities = service.DestinationCityList(idCountry, "true", authenticationData);
             for (int j = 0; j < cities.CityList.size(); j++) {
@@ -514,21 +556,64 @@ public class RegisterationActivity extends Fragment {
                 String cityName = cities.CityList.get(j).CityName;
                 list_city.add(cityName);
 
-
-                // Toast.makeText(getContext(), "list size is  :"+list_city.size(), Toast.LENGTH_SHORT).show();
-
-
-                ArrayAdapter adapter2 = new ArrayAdapter<String>(getContext(), R.layout.item_spener_reg, list_city);
+                AutoCompleteAdapter adapter2 = new AutoCompleteAdapter(getActivity(), R.layout.drop_dowen, android.R.id.text1, list_city);
                 city.setAdapter(adapter2);
+
+
+
+//                city.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//                    @Override
+//                    public void onFocusChange(View view, boolean b) {
+//
+//                        if (b) {
+//
+//                            city.getOnFocusChangeListener();
+//                        } else {
+//
+//                            city.getOnFocusChangeListener();
+//                        }
+//
+//                    }
+//                });
+//
+//
+//                city.setOnTouchListener(new View.OnTouchListener() {
+//
+//                    @Override
+//                    public boolean onTouch(View v, MotionEvent event) {
+//                        city.showDropDown();
+//                        return false;
+//                    }
+//                });
+//
+//                city.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+//
+//
+//                        String name_city = list_city.get(adapter2.getPosition(adapter2.getItem(position)));
+//                        String ctyId = cities.CityList.get(adapter2.getPosition(adapter2.getItem(position))).CityCode;
+//
+//
+//                    }
+//
+//                });
 
             }
 
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
+            city.setText("");
 
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }//
 
     }
+
+
+
+
+
 
 
     private void getOcupation() {

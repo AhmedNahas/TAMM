@@ -262,9 +262,11 @@ public class HotelDetails extends AppCompatActivity {
                 intent.putExtra("noOfRooms", noOfRooms);
                 intent.putExtra("roomGuest", roomGuests);
                 intent.putExtra("resultIndex", resultIndex);
+                SharedPreferencesManger.SaveData(HotelDetails.this, "hotel_name_s", hotelName);
+                SharedPreferencesManger.SaveData(HotelDetails.this, "country_name_s", countryName);
+
                 SharedPreferencesManger.SaveData(HotelDetails.this, "resultindex", resultIndex);
                 SharedPreferencesManger.SaveData(HotelDetails.this,"roomIndexArray",null);
-                intent.putExtra("hotel_name_s", hotelName);
                 startActivity(intent);
 
 

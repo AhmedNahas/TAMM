@@ -332,7 +332,7 @@
         android:layout_below="@+id/tv_check_out"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
         android:layout_toEndOf="@id/nights_difference"
         android:orientation="horizontal">
 
@@ -572,16 +572,14 @@
     <Button
         android:id="@+id/findHotels"
         android:layout_width="99dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentBottom="true"
+        android:layout_height="@dimen/_25sdp"
         android:layout_centerHorizontal="true"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginStart="133dp"
         android:layout_marginEnd="137dp"
         android:layout_marginBottom="24dp"
         android:background="@color/app_color"
+        android:layout_below="@+id/rv_child"
         android:text="@string/find_hotels" />
 
     <ScrollView
@@ -600,9 +598,9 @@
         android:scrollbarStyle="outsideInset">
 
         <LinearLayout
+            android:id="@+id/linearLayout_frame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layoutMode="clipBounds"
             android:orientation="vertical">
 
@@ -648,12 +646,13 @@
     </ScrollView>
 
 
-   <ProgressBar
-       android:id="@+id/simpleProgressBar"
-android:layout_centerInParent="true"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       />
+   <!--<ProgressBar-->
+       <!--android:id="@+id/simpleProgressBar"-->
+<!--android:layout_centerInParent="true"-->
+       <!--android:layout_width="wrap_content"-->
+       <!--android:layout_height="wrap_content"-->
+       <!--style="@style/WdEcomTheme.Transparent"-->
+       <!--/>-->
 </RelativeLayout>
 
 

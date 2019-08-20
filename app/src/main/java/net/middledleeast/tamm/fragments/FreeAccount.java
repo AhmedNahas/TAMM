@@ -44,7 +44,7 @@ public class FreeAccount extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.freeaccount, container, false);
 
-termes =view.findViewById(R.id.termes_tv);
+        termes =view.findViewById(R.id.termes_tv);
         toolbar = view.findViewById(R.id.welcome_toolbar);
         imageView = view.findViewById(R.id.back_pressed);
         imageView.setOnClickListener(new View.OnClickListener() {

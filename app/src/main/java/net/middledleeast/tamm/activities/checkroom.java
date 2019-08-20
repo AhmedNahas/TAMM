@@ -81,7 +81,7 @@ public class checkroom extends AppCompatActivity {
 
 
 
-        tvTotalMount.setText("  Total Amount:             " + roomPrice);
+
 
         roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
         currency = SharedPreferencesManger.LoadStringData(this, "currency");
@@ -92,6 +92,7 @@ public class checkroom extends AppCompatActivity {
 
         try {
 
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + currency + " " + roomPrice);
 
             // TODO: 31/07/2019  error
             roomIndexArray = gson.fromJson(roomIndexArrayStr,ArrayList.class);
@@ -101,7 +102,6 @@ public class checkroom extends AppCompatActivity {
             }
 
             Collections.sort(roomIndexArrayInt);
-            tvTotalMount.setText("  TOTAl AMOUNT :                          " + currency + " " + roomPrice);
 
 
 

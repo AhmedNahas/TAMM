@@ -287,6 +287,7 @@ public class MemberShip extends Fragment {
             "End Of Terms And Conditions";
 
     //private static final String urlmember ="http://egyptgoogle.com/backend/membership/membership.php";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

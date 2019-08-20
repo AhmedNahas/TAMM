@@ -21,6 +21,7 @@ import net.middledleeast.tamm.activities.HotelDetails;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.SingleView>{
 
@@ -91,8 +92,12 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         name = listnameHotel.get(position);
         photos = listPhotoHotel.get(position);
         rat = listrat.get(position);
+
         holder.name.setText(name);
         holder.rat.setText(rat+"");
+
+        Collections.sort(listrat);
+        Collections.reverse(listrat);
        String price = listprice.get(position);
        holder.hotelPrice.setText(price);
         Glide.with(context).load(photos).into(holder.photoHotel);

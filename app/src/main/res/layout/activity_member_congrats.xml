@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MemberCongrats"
     android:background="@drawable/plans_background1"
     android:orientation="vertical">
     <RelativeLayout
@@ -29,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/congratulations"
-            android:textSize="@dimen/_30sdp"
+            android:textSize="35dp"
             android:textColor="@color/app_color"
             android:layout_below="@+id/iv_ok1"
             android:layout_centerInParent="true"
@@ -39,7 +38,7 @@
             android:id="@+id/tv_now"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/now_you_are_a_free_account_of"
+            android:text="@string/now_you_are_a_membership_of"
             android:textSize="15dp"
             android:textColor="#fff"
             android:layout_below="@+id/tv_congrats"
@@ -56,6 +55,7 @@
             android:layout_below="@+id/tv_now"
             android:layout_centerInParent="true"
             />
+
 
 
 
@@ -92,7 +92,6 @@
             android:layout_marginBottom="@dimen/_90sdp"
             android:src="@drawable/ic_quotation_mark" />
 
-
         <Button
             android:id="@+id/continueTo"
             android:layout_width="150dp"
@@ -103,7 +102,6 @@
             tools:ignore="MissingConstraints"
             android:layout_below="@+id/iv_theman2"
             android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/_15sdp"
             />
 
 

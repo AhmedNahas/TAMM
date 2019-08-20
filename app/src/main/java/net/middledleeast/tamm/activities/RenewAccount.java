@@ -1,6 +1,7 @@
 package net.middledleeast.tamm.activities;
 
 import android.app.AlertDialog;
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -70,6 +71,7 @@ public class RenewAccount extends AppCompatActivity
     private ViewPagerAdapter adapter;
     private boolean ClickRenewHotel=false;
 
+
 //    private AuthenticationData authenticandata;
 //    private BasicHttpBinding_IHotelService1 service;
 //    private String hotelPromotion;
@@ -102,12 +104,17 @@ public class RenewAccount extends AppCompatActivity
         assistantLabelVoiceRenewHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(RenewAccount.this, AssistantActivity.class);
+                startActivity(intent);
                 Toast.makeText(RenewAccount.this, "Voice", Toast.LENGTH_SHORT).show();
             }
         });
         assistantLabelCallRenewHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(RenewAccount.this, AssistantActivity.class);
+                startActivity(intent);
+
                 Toast.makeText(RenewAccount.this, "Call", Toast.LENGTH_SHORT).show();
             }
         });
@@ -115,6 +122,9 @@ public class RenewAccount extends AppCompatActivity
         assistantLabelMessageRenewHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(RenewAccount.this, AssistantActivity.class);
+                startActivity(intent);
+
                 Toast.makeText(RenewAccount.this, "Message", Toast.LENGTH_SHORT).show();
             }
         });
@@ -331,6 +341,8 @@ public class RenewAccount extends AppCompatActivity
         } else if (id == R.id.nav_setting) {
 
         } else if (id == R.id.nav_terms) {
+
+            startActivity(new Intent(RenewAccount.this, TermsActivity.class));
 
         } else if (id == R.id.nav_logout) {
 

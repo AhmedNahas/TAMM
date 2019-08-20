@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +36,8 @@ import com.wirecard.ecom.ui.WebViewActivity;
 import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterPayment;
+import net.middledleeast.tamm.fragments.FREEcONGRATS;
+import net.middledleeast.tamm.fragments.TermsFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import org.json.JSONArray;
@@ -74,6 +77,7 @@ public class PaymentActivity extends AppCompatActivity {
     @BindView(R.id.sp_convert_to)
     Spinner spConvertTo;
     private Button button;
+    private RelativeLayout relativeLayout;
     private AuthenticationData authenticandata;
     private BasicHttpBinding_IHotelService1 service;
     private static final String urlmemberfees = "http://egyptgoogle.com/backend/memberfees/memberfees.php";
@@ -92,6 +96,9 @@ public class PaymentActivity extends AppCompatActivity {
     private String register_url_member = "http://egyptgoogle.com/paymentusers/insertstudents.php";
     RequestQueue requestQueue;
     private String day , month , year ;
+    private int RIGISTRATHION = 1;
+    private int BOOKING_ROOM = 2 ;
+    private int FLIGHT =3;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -100,6 +107,7 @@ public class PaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
         ButterKnife.bind(this);
 
+        relativeLayout = findViewById(R.id.relative_back);
         button = findViewById(R.id.proceed_check_out_hotels);
 
         toolbar = findViewById(R.id.welcome_toolbar);
@@ -110,12 +118,23 @@ public class PaymentActivity extends AppCompatActivity {
         mId = intent.getIntExtra("mId", 0);
 
 
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+
+
+
+        }
+        });
+
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                if (mId==2){
+                if (mId==BOOKING_ROOM){
 
                     startActivity(new Intent(PaymentActivity.this, ConfirmBookingRoom.class));
 
@@ -133,7 +152,7 @@ public class PaymentActivity extends AppCompatActivity {
         Integer bookingId = amendmentResponse.BookingId;
 
 
-        if (mId == 2) {
+        if (mId == BOOKING_ROOM) {
             roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
             currency = SharedPreferencesManger.LoadStringData(this, "currency");
             String last_name = SharedPreferencesManger.LoadStringData(this, "lastName");
@@ -153,7 +172,7 @@ public class PaymentActivity extends AppCompatActivity {
 //               client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
 
 
-        } else if (mId==1){
+        } else if (mId==RIGISTRATHION){
 
             getmemberfees();
             tvKd.setText("USD " + msgbody);
@@ -181,7 +200,7 @@ public class PaymentActivity extends AppCompatActivity {
 
 
 
-        }else if (mId==3){
+        }else if (mId==FLIGHT){
 
             String TotalFare = SharedPreferencesManger.LoadStringData(this, "TotalFare");
             flightCurrency = SharedPreferencesManger.LoadStringData(this, "typeFare");
@@ -254,8 +273,10 @@ public class PaymentActivity extends AppCompatActivity {
 
                     String[] s = tvKd.getText().toString().split(" ");
                     String s2 = s[1];
-
                     openBankRoom(s2, currency);
+
+
+
                 }else if(mId==3){
 
 
@@ -505,7 +526,9 @@ public class PaymentActivity extends AppCompatActivity {
 
                 sendDataToServer();
 
-                startActivity(new Intent(PaymentActivity.this, PaymentActivityFragment.class));
+          startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
+
+
             }else if (mId==3){
 
                 Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
@@ -596,8 +619,13 @@ public class PaymentActivity extends AppCompatActivity {
     @OnClick(R.id.terms_conditions_tv2)
     public void onViewClicked() {
 
+        int paymentActivityId = 5;
+        SharedPreferencesManger.SaveData(this,"paymentActivityId",paymentActivityId);
 
 
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.payment_terms_container, new TermsFragment())
+                .addToBackStack("RegisterationActivity").commit();
 
 //
 //        Intent intent = new Intent(PaymentActivity.this, TermsFragment.class);
@@ -611,7 +639,7 @@ public class PaymentActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        if (mId==2){
+        if (mId==BOOKING_ROOM){
 
             startActivity(new Intent(PaymentActivity.this, ConfirmBookingRoom.class));
 

@@ -129,9 +129,10 @@
                         />
 
                     <EditText
+                        android:inputType="textCapSentences"
                         android:drawableStart="@drawable/ic_stars_black_24dp"
                         android:textSize="@dimen/_9ssp"
-                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
                         android:id="@+id/first_name_1_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
@@ -141,10 +142,10 @@
                         android:layout_toRightOf="@+id/mromiss1" />
 
                     <EditText
+                        android:inputType="textPersonName"
                         android:drawableStart="@drawable/ic_stars_black_24dp"
-
                         android:textSize="@dimen/_9ssp"
-                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
                         android:id="@+id/lastName_1_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
@@ -429,7 +430,7 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
 
                         android:textSize="@dimen/_9ssp"
-                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
                         android:id="@+id/first_name_1_gust_2"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
@@ -441,7 +442,7 @@ android:layout_below="@+id/relative_names_1"
                     <EditText
 
                         android:textSize="@dimen/_9ssp"
-                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
                         android:id="@+id/last_name_1_gust_2"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
@@ -1339,7 +1340,7 @@ android:id="@+id/last_name_4_gust_2"
         android:id="@+id/relative_img_confirm_hotel_tamm"
         android:layout_width="@dimen/_300sdp"
         android:layout_height="@dimen/_90sdp"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_50sdp"
         android:background="@drawable/man1"
         android:layout_centerInParent="true"
         android:layout_below="@+id/confirm_room_booking"

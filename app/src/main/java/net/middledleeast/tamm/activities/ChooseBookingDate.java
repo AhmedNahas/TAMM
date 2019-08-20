@@ -164,17 +164,18 @@ public class ChooseBookingDate extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         roomRecyclerView.setLayoutManager(manager);
         auth();
-        hotel_name_s = getIntent().getStringExtra("hotel_name_s");
+        hotel_name_s = SharedPreferencesManger.LoadStringData(this,"hotel_name_s");
         mstartTime = getIntent().getStringExtra("checkInDate");
         mendTime = getIntent().getStringExtra("checkOutDate");
         sessionId = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "session_id");
         mHotelCode = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "mHotel_code");
-        countryName = getIntent().getStringExtra("countryName");
+        countryName = SharedPreferencesManger.LoadStringData(this,"country_name_s");
         cityName = getIntent().getStringExtra("cityName");
         cityId = getIntent().getStringExtra("cityId");
         noOfRooms = getIntent().getIntExtra("noOfRooms", 1);
         //roomGuests =getIntent().getStringArrayListExtra("roomGuest");
         resultIndex = SharedPreferencesManger.LoadIntegerData(this, "resultindex");
+
 
         String startDateS = SharedPreferencesManger.LoadStringData(this, "startDateS");
         String endDateS = SharedPreferencesManger.LoadStringData(this, "endDateS");

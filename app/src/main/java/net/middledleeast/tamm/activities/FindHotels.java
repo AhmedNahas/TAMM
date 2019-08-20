@@ -6,11 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -66,6 +68,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
 
+import FlightApi.BookResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -187,6 +190,8 @@ public class FindHotels extends AppCompatActivity {
     ProgressBar simpleProgressBar;
     private boolean ClickFindHotel = false;
     private Filters filters;
+    private boolean counttryCheked = false;
+
 //    private boolean saved ;
 
     @SuppressLint("StaticFieldLeak")
@@ -197,9 +202,9 @@ public class FindHotels extends AppCompatActivity {
         ButterKnife.bind(this);
         auth();
 
-
-        simpleProgressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
-        simpleProgressBar.setVisibility(View.INVISIBLE);
+//
+//        simpleProgressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
+//        simpleProgressBar.setVisibility(View.INVISIBLE);
         FrameLayout frameLayout = findViewById(R.id.frame1);
 
         LayoutInflater inflater = (LayoutInflater) FindHotels.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -272,6 +277,16 @@ public class FindHotels extends AppCompatActivity {
         }
 
 
+
+        if (regions.getText().equals("")&&regions.getText().equals("COUNTRY")){
+
+            counttryCheked =false;
+
+
+        }else {
+
+            counttryCheked =true;
+        }
 
 //        relativeImgFindHotelTamm = findViewById(R.id.relative_img_find_hotel_tamm);
 
@@ -1281,9 +1296,11 @@ public class FindHotels extends AppCompatActivity {
 
                 long time = time1.getTime();
 
+
                 String dayOfTheWeek = (String) DateFormat.format("EEEE", time); // Thursday
                 String day = (String) DateFormat.format("dd", time); // Thursday
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
+                String day2 = (String) DateFormat.format("dd", time+86400000); // Thursday
 
 
                 SharedPreferencesManger.SaveData(FindHotels.this, "startDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "till ");
@@ -1292,7 +1309,9 @@ public class FindHotels extends AppCompatActivity {
 
                 startDateYear.setText(dayOfTheWeek);
 
-                endDateDay.setText(day);
+
+
+                endDateDay.setText(day2);
                 endDateMonth.setText(monthString);
                 endDateYear.setText(dayOfTheWeek);
 
@@ -1414,7 +1433,7 @@ public class FindHotels extends AppCompatActivity {
 
         if (isInternetAvailable()){
 
-            if (chicDateStart && chicDateEnd) {
+            if (chicDateStart && chicDateEnd && counttryCheked) {
 
                 SharedPreferencesManger.SaveData(FindHotels.this, "start_date", mstartTime);
 
@@ -1426,7 +1445,7 @@ public class FindHotels extends AppCompatActivity {
             } else if (chicDateStart) {
 
                 new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("Select Check Out Date First")
+                        .setTitleText("Please Enter All Data First")
                         .setConfirmText("open")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
@@ -1461,6 +1480,7 @@ public class FindHotels extends AppCompatActivity {
 
 
             Toast.makeText(this, "no internet", Toast.LENGTH_SHORT).show();
+            hideProgressingView();
         }
 
 
@@ -1481,7 +1501,8 @@ public class FindHotels extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            simpleProgressBar.setVisibility(View.VISIBLE);
+//            simpleProgressBar.setVisibility(View.VISIBLE);
+            showProgressingView();
         }
 
         @Override
@@ -1556,6 +1577,7 @@ public class FindHotels extends AppCompatActivity {
 
             } catch (Exception e) {
                 e.printStackTrace();
+
             }
 
 
@@ -1633,27 +1655,31 @@ public class FindHotels extends AppCompatActivity {
                         startActivity(intent);
 
 
-                        simpleProgressBar.setVisibility(View.GONE);
+//                        simpleProgressBar.setVisibility(View.GONE);
+                        hideProgressingView();
 
 
                     }
                 } else {
 
-
+hideProgressingView();
+                    Toast.makeText(FindHotels.this, "no result found", Toast.LENGTH_SHORT).show();
                 }
 
             } catch (Exception e) {
 
-                simpleProgressBar.setVisibility(View.GONE);
+//                simpleProgressBar.setVisibility(View.GONE);
+                hideProgressingView();
 
                 new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("No Result Found")
+                        .setTitleText("Please Enter All Data First")
                         .setConfirmText("Search Again")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sDialog) {
 
                                 sDialog.dismissWithAnimation();
+
                             }
                         })
                         .show();
@@ -1661,6 +1687,29 @@ public class FindHotels extends AppCompatActivity {
         }
 
 
+
     }
+    ViewGroup progressView;
+    protected boolean isProgressShowing = false;
+
+    public void showProgressingView() {
+
+        if (!isProgressShowing) {
+            isProgressShowing = true;
+            progressView = (ViewGroup) getLayoutInflater().inflate(R.layout.progressbar_layout, null);
+            View v = this.findViewById(android.R.id.content).getRootView();
+            ViewGroup viewGroup = (ViewGroup) v;
+            viewGroup.addView(progressView);
+        }
+    }
+
+    public void hideProgressingView() {
+        View v = this.findViewById(android.R.id.content).getRootView();
+        ViewGroup viewGroup = (ViewGroup) v;
+        viewGroup.removeView(progressView);
+        isProgressShowing = false;
+    }
+
+
 }
 

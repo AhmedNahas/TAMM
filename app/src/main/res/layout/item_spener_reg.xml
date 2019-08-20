@@ -7,10 +7,11 @@
     android:id="@android:id/text1"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_30sdp"
-    android:paddingLeft="20dp"
+
     android:singleLine="true"
 
-    android:gravity="start"
+    android:gravity="center"
     android:background="@drawable/back_sherch_hotel"
     android:textColor="@color/white"
+    android:textSize="@dimen/_10ssp"
     />
