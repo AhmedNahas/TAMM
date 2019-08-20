@@ -43,8 +43,42 @@
                 android:layout_centerHorizontal="true"
                 app:civ_circle_background_color="@color/app_color" />
 
+            <Button
+                android:visibility="gone"
+                android:id="@+id/renew_sign_in"
+                android:layout_below="@+id/imageViewAddPic"
+                android:layout_centerHorizontal="true"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:text="SIGN IN"
+                android:textColor="#ff000000"
+                android:background="@drawable/shape"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_30sdp"
+                />
+
+            <Button
+                android:visibility="gone"
+                android:id="@+id/renew_register"
+                android:layout_below="@+id/renew_sign_in"
+                android:layout_centerHorizontal="true"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:text="REGISTER"
+                android:textColor="#ff000000"
+                android:background="@drawable/shape"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_5sdp"
+
+                />
+
+
+
+
+
 
             <TextView
+
                 android:layout_below="@+id/imageViewAddPic"
                 android:id="@+id/user_name_profile"
                 android:layout_width="match_parent"
@@ -57,9 +91,11 @@
                 android:text="Mahmoud Al Dikhed" />
 
             <TextView
+
+
                 android:layout_below="@+id/user_name_profile"
                 android:layout_centerHorizontal="true"
-                android:id="@+id/textView"
+                android:id="@+id/textView_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
@@ -70,21 +106,55 @@
                 android:textStyle="italic"/>
 
 
+            <RelativeLayout
+
+
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/textView_account"
+                android:id="@+id/relative_expire"
+                >
+
 
             <TextView
-                android:layout_below="@+id/textView"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/_4sdp"
-                android:id="@+id/textView2"
+                android:id="@+id/textView_ex"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_20sdp"
-                android:text="Expires in : 6 Months"
+                android:text="Expires in : "
                 android:layout_gravity="center"
                 android:textColor="@color/app_color"/>
 
 
+            <TextView
+
+
+                android:layout_marginTop="@dimen/_4sdp"
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_20sdp"
+                android:text=" 6 Months"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/textView_ex"
+                android:textColor="@color/app_color"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textView2"
+                android:text=" , 2 Days"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:textColor="@color/app_color"
+                />
+
+            </RelativeLayout>
+
+
             <Button
-                android:layout_below="@+id/textView2"
+                android:id="@+id/btn_renew_account"
+                android:layout_below="@+id/relative_expire"
                 android:layout_centerHorizontal="true"
                 android:layout_width="150dp"
                 android:layout_height="35dp"

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ContactUs"
+    android:background="@drawable/plans_background1">
+
+    <RelativeLayout
+        android:id="@+id/toolbar_back_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp">
+        <ImageView
+            android:id="@+id/toolbar_back_image_back_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_back_arrow"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_toEndOf="@+id/toolbar_back_image_back_contact"
+            android:text="@string/back"
+            android:textColor="#ffff"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+<RelativeLayout
+    android:id="@+id/relative_contact_us"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/toolbar_back_contact"
+    android:layout_marginEnd="@dimen/_15sdp"
+    android:layout_marginStart="@dimen/_17sdp"
+    >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_120sdp"
+        android:src="@drawable/contact_us_human"
+
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PLEASE TAKE A MINUTE TO"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:id="@+id/tv_please_take"
+
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONTACT US"
+        android:textColor="@color/app_color"
+        android:textSize="@dimen/_15ssp"
+        android:fontFamily="sans-serif-light"
+        android:layout_below="@+id/tv_please_take"
+        android:layout_marginStart="@dimen/_5sdp"
+        />
+
+
+</RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/relative_subject"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_230sdp"
+        android:layout_below="@+id/relative_contact_us"
+        android:background="@drawable/shape_plack"
+        android:layout_margin="@dimen/_10sdp"
+        >
+
+
+        <EditText
+            android:id="@+id/et_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="SUBJECT"
+            android:textColorHint="@color/app_color5"
+            android:fontFamily="sans-serif-light"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="@dimen/_22sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            />
+
+
+        <ImageView
+            android:id="@+id/img_line_subject"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="12dp"
+            android:src="@drawable/line1"
+            android:layout_below="@+id/et_subject"
+            android:layout_marginStart="@dimen/_22sdp"
+            />
+
+
+        <EditText
+            android:layout_width="@dimen/_270sdp"
+            android:layout_height="@dimen/_160sdp"
+            android:layout_below="@+id/img_line_subject"
+            android:layout_centerInParent="true"
+            android:background="@drawable/shapecontact"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_if"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="If you have more detailed feedback to share,drop on email to "
+        android:layout_below="@+id/relative_subject"
+        android:textColor="@color/app_color"
+        android:layout_marginStart="@dimen/_22sdp"
+        android:textSize="@dimen/_10ssp"
+        android:fontFamily="sans-serif-light"
+
+
+        />
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="info@apptamm.com"
+        android:layout_below="@+id/tv_if"
+        android:textColor="@color/app_color"
+        android:layout_marginStart="@dimen/_22sdp"
+        android:textSize="@dimen/_10ssp"
+
+        android:textStyle="bold"
+
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_25sdp"
+        android:text="SEND"
+        android:layout_below="@+id/tv_info"
+        android:layout_centerInParent="true"
+        android:background="@drawable/border"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/_15sdp"
+
+
+        />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
