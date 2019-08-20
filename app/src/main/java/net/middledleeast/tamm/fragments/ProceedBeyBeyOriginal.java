@@ -47,6 +47,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
 import javax.xml.transform.Source;
@@ -156,6 +157,32 @@ public class ProceedBeyBeyOriginal extends Fragment {
         return_passe = view.findViewById(R.id.return_passe);
         multi_cities = view.findViewById(R.id.multi_cities);
         progressFlight = view.findViewById(R.id.circle_loading_view_flight);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         progressFlight.setVisibility(View.INVISIBLE);
 

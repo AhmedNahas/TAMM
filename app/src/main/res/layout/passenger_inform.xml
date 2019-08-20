@@ -99,28 +99,37 @@
         android:layout_marginLeft="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_4sdp">
 
-        <AutoCompleteTextView
-            android:id="@+id/mromiss"
 
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_20sdp"
+
+        <RelativeLayout
+            android:background="@drawable/shape_plack2"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="@dimen/_4sdp"
-            android:background="@drawable/shape_plack2"
-            android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
-            android:gravity="center"
-            android:hint="MS"
-            android:textColor="@color/white"
+            android:id="@+id/mromiss_layout"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_20sdp">
 
-            android:textColorHint="#FFFFFF"
+            <Spinner
+                android:id="@+id/mromiss"
+android:backgroundTint="@color/app_color"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
 
-            android:textSize="@dimen/_10ssp" />
+                android:gravity="center"
+                android:textColor="@color/white"
+
+                android:textColorHint="#FFFFFF"
+
+                android:textSize="@dimen/_10ssp" />
+        </RelativeLayout>
+
+
 
 
         <View
-            android:layout_width="@dimen/_50sdp"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="1dp"
-            android:layout_below="@+id/mromiss"
+            android:layout_below="@+id/mromiss_layout"
             android:layout_marginTop="3dp"
             android:background="@drawable/line1" />
 
@@ -128,7 +137,7 @@
             android:id="@+id/ed_first_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/mromiss"
+            android:layout_toRightOf="@+id/mromiss_layout"
             android:backgroundTint="@android:color/transparent"
             android:fontFamily="sans-serif-light"
             android:hint="@string/first_name"
@@ -145,7 +154,7 @@
             android:layout_width="@dimen/_120sdp"
             android:layout_height="1dp"
             android:layout_below="@+id/ed_first_name"
-            android:layout_toRightOf="@+id/mromiss"
+            android:layout_toRightOf="@+id/mromiss_layout"
             android:background="@drawable/line1" />
 
         <EditText
@@ -286,28 +295,39 @@
         android:layout_below="@+id/line_child"
         android:layout_marginLeft="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_4sdp">
-        <AutoCompleteTextView
-            android:id="@+id/mromiss_child"
 
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_20sdp"
+        <RelativeLayout
+
             android:layout_marginTop="10dp"
             android:layout_marginEnd="@dimen/_4sdp"
             android:background="@drawable/shape_plack2"
-            android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
-            android:gravity="center"
-            android:hint="MS"
-            android:textColor="@color/white"
 
-            android:textColorHint="#FFFFFF"
+            android:id="@+id/mromiss_child_layout"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_20sdp">
 
-            android:textSize="@dimen/_10ssp" />
+            <Spinner
+                android:id="@+id/mromiss_child"
+
+                android:backgroundTint="@color/app_color"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:gravity="center"
+                android:textColor="@color/white"
+
+                android:textColorHint="#FFFFFF"
+
+                android:textSize="@dimen/_10ssp" />
+
+        </RelativeLayout>
+
 
 
         <View
-            android:layout_width="@dimen/_50sdp"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="1dp"
-            android:layout_below="@+id/mromiss_child"
+            android:layout_below="@+id/mromiss_child_layout"
             android:layout_marginTop="3dp"
             android:background="@drawable/line1" />
 
@@ -315,7 +335,7 @@
             android:id="@+id/ed_first_name_child"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/mromiss_child"
+            android:layout_toRightOf="@+id/mromiss_child_layout"
             android:backgroundTint="@android:color/transparent"
             android:fontFamily="sans-serif-light"
             android:hint="@string/first_name"
@@ -332,7 +352,7 @@
             android:layout_width="@dimen/_120sdp"
             android:layout_height="1dp"
             android:layout_below="@+id/ed_first_name_child"
-            android:layout_toRightOf="@+id/mromiss_child"
+            android:layout_toRightOf="@+id/mromiss_child_layout"
             android:background="@drawable/line1" />
 
         <EditText
@@ -466,10 +486,6 @@
         android:background="@drawable/line1" />
 
 
-
-
-
-
     <RelativeLayout
         android:id="@+id/relative_first_last_infant"
         android:layout_width="match_parent"
@@ -478,28 +494,34 @@
         android:layout_marginLeft="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_4sdp">
 
-        <AutoCompleteTextView
-            android:id="@+id/mromiss_infant"
-
-            android:layout_width="@dimen/_50sdp"
+        <RelativeLayout
+            android:id="@+id/mromiss_infant_layout"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="@dimen/_20sdp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="@dimen/_4sdp"
-            android:background="@drawable/shape_plack2"
-            android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
-            android:gravity="center"
-            android:hint="MS"
-            android:textColor="@color/white"
+            android:background="@drawable/shape_plack2">
 
-            android:textColorHint="#FFFFFF"
+            <Spinner
+                android:id="@+id/mromiss_infant"
 
-            android:textSize="@dimen/_10ssp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:backgroundTint="@color/app_color"
+                android:gravity="center"
+                android:textColor="@color/white"
+
+                android:textColorHint="#FFFFFF"
+
+                android:textSize="@dimen/_10ssp" />
+        </RelativeLayout>
 
 
         <View
-            android:layout_width="@dimen/_50sdp"
+            android:layout_width="@dimen/_70sdp"
             android:layout_height="1dp"
-            android:layout_below="@+id/mromiss_infant"
+            android:layout_below="@+id/mromiss_infant_layout"
             android:layout_marginTop="3dp"
             android:background="@drawable/line1" />
 
@@ -507,7 +529,7 @@
             android:id="@+id/ed_first_name_infant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/mromiss_infant"
+            android:layout_toRightOf="@+id/mromiss_infant_layout"
             android:backgroundTint="@android:color/transparent"
             android:fontFamily="sans-serif-light"
             android:hint="@string/first_name"
@@ -524,7 +546,7 @@
             android:layout_width="@dimen/_120sdp"
             android:layout_height="1dp"
             android:layout_below="@+id/ed_first_name_infant"
-            android:layout_toRightOf="@+id/mromiss_infant"
+            android:layout_toRightOf="@+id/mromiss_infant_layout"
             android:background="@drawable/line1" />
 
         <EditText
@@ -551,15 +573,6 @@
             android:background="@drawable/line1" />
 
     </RelativeLayout>
-
-
-
-
-
-
-
-
-
 
 
     <RelativeLayout
@@ -642,23 +655,17 @@
     </RelativeLayout>
 
 
-
-
-
-
-
     <Button
-        android:layout_centerHorizontal="true"
+        android:id="@+id/passenger_btn_info"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/relative_date_infant"
-    android:layout_marginTop="@dimen/_15sdp"
-    android:id="@+id/passenger_btn_info"
-    android:layout_width="150dp"
-    android:layout_height="wrap_content"
-    android:text="CONFIRM"
-    android:background="@drawable/shape"
-    android:layout_gravity="center"
-    android:textStyle="bold"
-    />
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_60sdp"
+        android:background="@drawable/shape"
+        android:text="CONFIRM"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
