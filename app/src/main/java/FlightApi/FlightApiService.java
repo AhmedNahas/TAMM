@@ -21,4 +21,10 @@ public interface FlightApiService {
 
 
 
+
+    @Headers("Content-Type: application/json")
+    @POST("Booking/Book")
+    Call<BookResponse> getFlightBook(@Header("Content-Type") String content_type,
+                                                @Body FlightBook body);
+
 }

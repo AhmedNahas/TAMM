@@ -86,23 +86,23 @@
 
 
 
-   <RelativeLayout
+    <RelativeLayout
         android:id="@+id/relative_adult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_pass_information"
-    >
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Adult"
-        android:fontFamily="sans-serif-light"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:textColor="#fff"
-        android:drawableLeft="@drawable/ic_human_image"
-        android:drawablePadding="@dimen/_5sdp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Adult"
+            android:fontFamily="sans-serif-light"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:textColor="#fff"
+            android:drawableLeft="@drawable/ic_human_image"
+            android:drawablePadding="@dimen/_5sdp"
 
-        />
+            />
     </RelativeLayout>
 
     <ImageView
@@ -124,14 +124,14 @@
         >
 
         <Spinner
-        android:id="@+id/mrormiss_adult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginEnd="@dimen/_4sdp"
-        android:backgroundTint="@color/app_color"
-        android:drawableBottom="@drawable/line1"
-        android:gravity="center"
+            android:id="@+id/mrormiss_adult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:backgroundTint="@color/app_color"
+            android:drawableBottom="@drawable/line1"
+            android:gravity="center"
             />
 
         <View
@@ -393,7 +393,7 @@
 
 
 
-<!--child-->
+    <!--child-->
 
     <RelativeLayout
         android:id="@+id/relative_child"

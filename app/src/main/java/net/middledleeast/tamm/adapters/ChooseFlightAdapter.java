@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.activities.PassengerInformation;
+import net.middledleeast.tamm.activities.Passenger_inform;
 import net.middledleeast.tamm.activities.PaymentActivity;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
@@ -111,13 +113,20 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
         holder.selectFlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, PaymentActivity.class);
-                intent.putExtra("mId", 3);
 
-                SharedPreferencesManger.SaveData(context, "TotalFare", df.format(totlalPrice));
-                SharedPreferencesManger.SaveData(context, "typeFare", typeFare);
+
+                Intent intent = new Intent(context, Passenger_inform.class);
+
 
                 context.startActivity(intent);
+
+//                Intent intent = new Intent(context, PaymentActivity.class);
+//                intent.putExtra("mId", 3);
+//
+//                SharedPreferencesManger.SaveData(context, "TotalFare", df.format(totlalPrice));
+//                SharedPreferencesManger.SaveData(context, "typeFare", typeFare);
+//
+//                context.startActivity(intent);
 
             }
         });
