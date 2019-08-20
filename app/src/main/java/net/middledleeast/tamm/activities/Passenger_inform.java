@@ -120,7 +120,6 @@ public class Passenger_inform extends AppCompatActivity {
                 }else if (nationality_child.getText().toString().equals("")){
                     nationality_child.setError("Invalid Nationality");
 
-
                 }else if (nationality_adult_infant.getText().toString().equals("")){
                     nationality_adult_infant.setError("Invalid Nationality");
 
@@ -142,18 +141,16 @@ public class Passenger_inform extends AppCompatActivity {
                     SharedPreferencesManger.SaveData(Passenger_inform.this,"LastNameChild",edLastNameChild.getText().toString());
                     SharedPreferencesManger.SaveData(Passenger_inform.this,"LastNameInfant",edLastNameInfant.getText().toString());
 
+
                     //date
                     SharedPreferencesManger.SaveData(Passenger_inform.this,"datebirthadult",datebirthadult.getText().toString());
                     SharedPreferencesManger.SaveData(Passenger_inform.this,"datebirthchild",datebirthchild.getText().toString());
                     SharedPreferencesManger.SaveData(Passenger_inform.this,"datebirthinfant",datebirthinfant.getText().toString());
 
-
                     // nationality
                     SharedPreferencesManger.SaveData(Passenger_inform.this,"nationality_adult",nationality_adult.getText().toString());
                     SharedPreferencesManger.SaveData(Passenger_inform.this,"nationality_child",nationality_child.getText().toString());
                     SharedPreferencesManger.SaveData(Passenger_inform.this,"nationality_infant",nationality_adult_infant.getText().toString());
-
-
 
 
                     startActivity(new Intent(Passenger_inform.this, PassengerInformation.class));
