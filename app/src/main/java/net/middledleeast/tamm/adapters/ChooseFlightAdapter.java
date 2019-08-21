@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.activities.FlightsSummary;
 import net.middledleeast.tamm.activities.PassengerInformation;
 import net.middledleeast.tamm.activities.Passenger_inform;
 import net.middledleeast.tamm.activities.PaymentActivity;
@@ -41,11 +42,14 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
     List<String> listCabinBaggage;
     List<Double> listTotalFare;
     List<String> listTypeFare;
+    List<String> ListflightNumber;
 
 
+    List<String> ListairportCode_Distnation , ListairportCode_Origin ;
     public ChooseFlightAdapter(Context context, List<String> airLineName, List<String> Listduration, List<String> arriveTime, List<String> depuruerTime,
                                List<String> countryNameDestinationList, List<String> countryNameOriginList, List<String> listIncludedBaggage,
-                               List<String> listCabinBaggage, List<Double> listTotalFare, List<String> listTypeFare
+                               List<String> listCabinBaggage, List<Double> listTotalFare, List<String> listTypeFare , List<String> ListairportCode_Distnation
+            ,List<String> ListairportCode_Origin , List<String> ListflightNumber
     ) {
         this.context = context;
         this.airLineName = airLineName;
@@ -58,6 +62,9 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
         this.listCabinBaggage = listCabinBaggage;
         this.listTotalFare = listTotalFare;
         this.listTypeFare = listTypeFare;
+        this.ListairportCode_Distnation = ListairportCode_Distnation;
+        this.ListairportCode_Origin = ListairportCode_Origin;
+        this.ListflightNumber =ListflightNumber;
     }
 
 
@@ -73,7 +80,16 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
     @Override
     public void onBindViewHolder(@NonNull ChooseFlightViewHolder holder, int position) {
 
-        String fees = airLineName.get(position);
+        String airlin_name = airLineName.get(position);
+
+
+        if (airlin_name ==null){
+            holder.tvAirline.setText("Not Available right now");
+        }else {
+
+            holder.tvAirline.setText(airlin_name);
+
+        }
         String duration = Listduration.get(position);
         holder.tvTime.setText(duration);
 
@@ -109,17 +125,48 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
         holder.tvTimeOne.setText(t + " ");
         holder.tvTimeTwo.setText(" " + s);
 
-        holder.tvAirline.setText(fees);
+
+        String Distnation = ListairportCode_Distnation.get(position);
+
+        String Origin = ListairportCode_Origin.get(position);
+
+
+        String flightNumber = ListflightNumber.get(position);
+
         holder.selectFlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
-                Intent intent = new Intent(context, Passenger_inform.class);
+                Intent intent = new Intent(context, FlightsSummary.class);
 
+                SharedPreferencesManger.SaveData(context, "Distnation",Distnation);
+                SharedPreferencesManger.SaveData(context, "Origin", Origin);
+
+
+                SharedPreferencesManger.SaveData(context, "A_TotalFare", df.format(totlalPrice));
+                SharedPreferencesManger.SaveData(context, "A_typeFare", typeFare);
+
+                SharedPreferencesManger.SaveData(context, "A_airlin_name", airlin_name);
+                SharedPreferencesManger.SaveData(context, "A_duration", duration);
+
+                //
+                SharedPreferencesManger.SaveData(context, "A_CabinBaggage",CabinBaggage);
+                SharedPreferencesManger.SaveData(context, "A_IncludedBaggage", IncludedBaggage);
+
+                SharedPreferencesManger.SaveData(context, "A_deTime", deTime);
+                SharedPreferencesManger.SaveData(context, "A_arrTime", arrTime);
+
+                SharedPreferencesManger.SaveData(context, "A_destination",destination);
+                SharedPreferencesManger.SaveData(context, "A_origin", origin);
+
+                SharedPreferencesManger.SaveData(context, "flightNumber", flightNumber);
 
                 context.startActivity(intent);
 
+
+
+                // intent to payment use it later
 //                Intent intent = new Intent(context, PaymentActivity.class);
 //                intent.putExtra("mId", 3);
 //

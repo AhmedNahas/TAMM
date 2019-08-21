@@ -336,7 +336,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 //        arrayOfRooms = (ArrayOfRequestedRooms) intent.getSerializableExtra("arrayOfRooms");
 //        rooms = (List<Hotel_Room>) gson.fromJson(intent.getStringExtra("rooms"), List.class);
 //        hotel_room(xxhdpi) = gson.fromJson(intent.getStringExtra("hotel_room(xxhdpi)"), Hotel_Room.class);
-        sessionId = intent.getStringExtra("sessionId");
+         sessionId = SharedPreferencesManger.LoadStringData(this, "session_id");
 //        SharedPreferencesManger.SaveData(this, "sessionId", sessionId);
         noOfRooms = intent.getIntExtra("noOfRooms", 1);
 //        SharedPreferencesManger.SaveData(this, "noOfRooms", noOfRooms);

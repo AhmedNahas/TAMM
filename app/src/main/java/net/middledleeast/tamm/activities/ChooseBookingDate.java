@@ -191,7 +191,8 @@ public class ChooseBookingDate extends AppCompatActivity {
         try {
 
             service.enableLogging = true;
-            HotelRoomAvailabilityResponse response = service.AvailableHotelRooms(sessionId, resultIndex, mHotelCode, 10000, false, authenticationData);
+            HotelRoomAvailabilityResponse response = service.AvailableHotelRooms(sessionId, resultIndex, mHotelCode, 0,
+                    false, authenticationData);
             Gson gson = new Gson();
             String roomAvailability = gson.toJson(response);
             SharedPreferencesManger.SaveData(this, "roomAvailability", roomAvailability);

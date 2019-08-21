@@ -217,7 +217,7 @@ public class checkroom extends AppCompatActivity {
         intent = getIntent().getStringExtra("smok");
         roomTybe = getIntent().getStringExtra("roomTybe");
         description = getIntent().getStringExtra("description");
-        sessionId = getIntent().getStringExtra("sessionId");
+        sessionId = SharedPreferencesManger.LoadStringData(this, "session_id");
         mHotelCode = getIntent().getStringExtra("hotelCode");
         resultIndex = getIntent().getIntExtra("resultIndex", 0);
         mealTybe = getIntent().getStringExtra("mealTybe");
