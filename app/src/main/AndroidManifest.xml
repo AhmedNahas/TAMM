@@ -21,7 +21,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".activities.AboutUs"></activity>
+        <activity android:name=".activities.SettingActivity"></activity>
+        <activity android:name=".activities.AboutUs" />
         <activity android:name=".activities.ContactUs" />
         <activity android:name=".activities.AssistantActivity" />
         <activity android:name=".activities.MemberCongratsActivity" />
