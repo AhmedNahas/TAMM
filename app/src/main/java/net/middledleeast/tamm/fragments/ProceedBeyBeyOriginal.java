@@ -900,7 +900,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
                  daDepartureTimeyO = (String) DateFormat.format(myFormat, time); // 019-09-20 T00:00:00
-                SharedPreferencesManger.SaveData(getActivity(), "startDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "till ");
+                SharedPreferencesManger.SaveData(getActivity(), "A_startDateS", dayOfTheWeek + " " + day + " " + monthString );
 
 // 2019-09-20 T00:00:00
                 departure.setText(dayOfTheWeek + "," + day + " " + monthString);

@@ -143,6 +143,10 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
                 SharedPreferencesManger.SaveData(context, "Distnation",Distnation);
                 SharedPreferencesManger.SaveData(context, "Origin", Origin);
 
+                SharedPreferencesManger.SaveData(context, "depuruerTime",t);
+                SharedPreferencesManger.SaveData(context, "arriveTime", s);
+
+
 
                 SharedPreferencesManger.SaveData(context, "A_TotalFare", df.format(totlalPrice));
                 SharedPreferencesManger.SaveData(context, "A_typeFare", typeFare);

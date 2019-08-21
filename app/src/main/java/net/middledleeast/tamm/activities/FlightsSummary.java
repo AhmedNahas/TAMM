@@ -155,6 +155,17 @@ public class FlightsSummary extends AppCompatActivity {
 
 
         String flightNumber = SharedPreferencesManger.LoadStringData(this, "flightNumber");
+        String a_startDateS = SharedPreferencesManger.LoadStringData(this, "A_startDateS");
+
+
+        String depuruerTime = SharedPreferencesManger.LoadStringData(this, "depuruerTime");
+        String arriveTime = SharedPreferencesManger.LoadStringData(this, "arriveTime");
+        tvDateDeparture.setText(depuruerTime);
+        tvArrival.setText(arriveTime);
+
+
+        dateArrival.setText(a_startDateS);
+        tvDateDeparture.setText(a_startDateS);
 
 
         if (a_airlin_name ==null){
