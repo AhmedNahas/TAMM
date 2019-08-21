@@ -1,25 +1,18 @@
 package net.middledleeast.tamm.fragments;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
 import android.widget.SearchView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.ChooseHotelActivity;
 import net.middledleeast.tamm.adapters.AdapterAirportCuntry;
-import net.middledleeast.tamm.adapters.AdapterHotelInfo;
 import net.middledleeast.tamm.model.modelflightSearsh;
 
 import java.io.BufferedReader;
