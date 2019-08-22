@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import net.middledleeast.tamm.R;
 
 public class SettingActivity extends AppCompatActivity {
+//    private String mLanguageCodeArabic = "ar";
+//    private String mLanguageCodeEnglish = "en";
 
     private Button english,arabic,on,off;
 
@@ -26,6 +28,29 @@ public class SettingActivity extends AppCompatActivity {
 
         on=findViewById(R.id.btn_ON);
         off=findViewById(R.id.btn_off);
+
+
+//        arabic.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                LocaleHelper.setLocale(SettingActivity.this, mLanguageCodeArabic);
+//                //It is required to recreate the activity to reflect the change in UI.
+//                recreate();
+//            }
+//        });
+//
+//
+//        english.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                LocaleHelper.setLocale(SettingActivity.this, mLanguageCodeEnglish);
+//
+//                //It is required to recreate the activity to reflect the change in UI.
+//                recreate();
+//            }
+//        });
+
+
 
 
 

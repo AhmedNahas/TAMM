@@ -227,7 +227,7 @@
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
-android:id="@+id/last_name_3_gust_one"
+                        android:id="@+id/last_name_3_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
@@ -273,7 +273,7 @@ android:id="@+id/last_name_3_gust_one"
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
-android:id="@+id/last_name_4_gust_one"
+                        android:id="@+id/last_name_4_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
