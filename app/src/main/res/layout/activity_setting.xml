@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SettingActivity"
+    android:background="@drawable/plans_background">
+
+
+    <RelativeLayout
+        android:id="@+id/toolbar_back_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+       >
+
+        <RelativeLayout
+            android:id="@+id/toolbar_back1_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/toolbar_back_image_back_assist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/ic_back_arrow"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="7dp"
+                android:layout_toEndOf="@+id/toolbar_back_image_back_assist"
+                android:text="@string/back"
+                android:textColor="#ffff"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/relative_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_below="@+id/toolbar_back_setting"
+        android:layout_centerInParent="true"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/_300sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:src="@drawable/authintication_image"
+
+
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SETTINGS"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/_20ssp"
+            android:fontFamily="sans-serif-light"
+            android:layout_marginTop="@dimen/_100sdp"
+            android:layout_marginStart="@dimen/_50sdp"
+
+
+            />
+
+    </RelativeLayout>
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/relative_setting"
+    android:layout_centerInParent="true"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:background="@drawable/shapecontact"
+    android:layout_margin="@dimen/_10sdp"
+    >
+
+    <TextView
+        android:id="@+id/tv_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Languages"
+        android:textColor="@color/app_color"
+        android:textSize="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textStyle="italic"
+
+        />
+
+    <RelativeLayout
+        android:id="@+id/relative_language"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_below="@+id/tv_language"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        >
+
+        <Button
+            android:id="@+id/tv_english"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="ENGLISH"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/app_color"
+            android:fontFamily="sans-serif-light"
+            android:background="@drawable/shapecontact"
+            android:layout_marginStart="@dimen/_10sdp"
+
+
+            />
+        <!--<View-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_height="@dimen/_30sdp"-->
+            <!--android:layout_toRightOf="@+id/tv_english"-->
+            <!--android:background="@color/app_color"-->
+            <!--android:layout_marginStart="@dimen/_9sdp"-->
+
+
+            <!--/>-->
+
+        <Button
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="ARABIC"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/app_color"
+            android:fontFamily="sans-serif-light"
+            android:background="@drawable/shapecontact"
+            android:layout_toRightOf="@+id/tv_english"
+
+            />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_language"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:fontFamily="sans-serif-light"
+        android:text="Notifications"
+        android:textColor="@color/app_color"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="italic"
+        />
+
+
+    <RelativeLayout
+        android:id="@+id/relative_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_below="@+id/tv_notification"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        >
+
+        <Button
+            android:id="@+id/tv_ON"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="ON"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/app_color"
+            android:fontFamily="sans-serif-light"
+            android:background="@drawable/shapecontact"
+            android:layout_marginStart="@dimen/_10sdp"
+
+
+            />
+        <!--<View-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="@dimen/_30sdp"-->
+        <!--android:layout_toRightOf="@+id/tv_english"-->
+        <!--android:background="@color/app_color"-->
+        <!--android:layout_marginStart="@dimen/_9sdp"-->
+
+
+        <!--/>-->
+
+        <Button
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="OFF"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/app_color"
+            android:fontFamily="sans-serif-light"
+            android:background="@drawable/shapecontact"
+            android:layout_toRightOf="@+id/tv_ON"
+
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_change_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_notification"
+        android:layout_marginStart="@dimen/_50sdp"
+        android:fontFamily="sans-serif-light"
+        android:text="Change Password"
+        android:textColor="@color/app_color"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="italic"
+        />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_change_pass"
+        android:layout_marginStart="@dimen/_40sdp"
+
+        >
+
+        <EditText
+            android:id="@+id/et_old_pass"
+            android:layout_width="@dimen/_220sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:fontFamily="sans-serif-light"
+            android:text="Old Password"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:background="@drawable/shapecontact"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:paddingStart="@dimen/_15sdp"
+
+            />
+        <EditText
+            android:id="@+id/et_new_pass"
+            android:layout_width="@dimen/_220sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:fontFamily="sans-serif-light"
+            android:text="New Password"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:background="@drawable/shapecontact"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:paddingStart="@dimen/_15sdp"
+            android:layout_below="@+id/et_old_pass"
+
+            />
+        <EditText
+            android:id="@+id/et_retype_pass"
+            android:layout_width="@dimen/_220sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:fontFamily="sans-serif-light"
+            android:text="Re-type Password"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_15sdp"
+            android:background="@drawable/shapecontact"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:paddingStart="@dimen/_15sdp"
+            android:layout_below="@+id/et_new_pass"
+            />
+
+    </RelativeLayout>
+
+
+    <Button
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="wrap_content"
+        android:text="CONFIRM"
+        android:textColor="@color/white"
+        android:background="@drawable/border"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_15sdp"
+
+        />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

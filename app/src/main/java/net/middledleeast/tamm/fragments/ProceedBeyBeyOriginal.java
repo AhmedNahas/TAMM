@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.DatePicker;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,12 +38,16 @@ import net.middledleeast.tamm.activities.MainActivity;
 import net.middledleeast.tamm.activities.RecommendedOneWay;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
 import javax.xml.transform.Source;
@@ -73,7 +78,7 @@ import static net.middledleeast.tamm.helper.helperMethod.isNetworkConnected;
  * A simple {@link Fragment} subclass.
  */
 public class ProceedBeyBeyOriginal extends Fragment {
-
+    private CheckedTextView passenger, jet, one_way, return_passe, multi_cities;
     private CheckedTextView royalClass, firstClass, businessClass, economyClass;
     private TextView fromTextView, toTextView, departure, returnFrom;
     private RecyclerView fromToRecycler;
@@ -82,24 +87,28 @@ public class ProceedBeyBeyOriginal extends Fragment {
     public static final String BASE_URL = "https://xmloutapi.tboair.com/api/v1/";
     private static Retrofit retrofit = null;
     String password;
-    private TextView country_selected_from_spinner, to_country_name;
+    private TextView country_selected_from_spinner, to_country_name, return_date, icon2;
     private boolean chicDateStart;
     private Calendar myCalendar;
-    private Date time1;
+    private Date time1, time2;
     private String mstartTime;
     private boolean chicDateEnd;
-    private Date time2;
-    private String mendTime;
     private int nom_adultRoom1;
     private boolean notFailed;
     private long adult, child, infant;
-    long oneWay = 1;
-    private AnimatedCircleLoadingView animatedCircleLoadingView;
 
+    ProgressBar progressFlight;
+    View line3;
     long flightCabinClass = 1;
     private String departureTimeConfirmed;
 
     ArrayList<String> ListnameLine = new ArrayList<>();
+    ArrayList<String> ListairportCode_Origin = new ArrayList<>();
+
+    ArrayList<String> ListairportCode_Distnation = new ArrayList<>();
+
+
+
     ArrayList<String> Listduration = new ArrayList<>();
     ArrayList<String> ListArriveTime = new ArrayList<>();
     ArrayList<String> ListdeparuerTime = new ArrayList<>();
@@ -109,6 +118,13 @@ public class ProceedBeyBeyOriginal extends Fragment {
     ArrayList<String> listCabinBaggage = new ArrayList<>();
     ArrayList<Double> listTotalFare = new ArrayList<>();
     ArrayList<String> listTypeFare = new ArrayList<>();
+    ArrayList<String> ListflightNumber = new ArrayList<>();
+
+
+    private InputStream inputStream;
+    private long JourneyType = 1;
+    private String mReturnTime;
+    private String daDepartureTimeyO;
 
 
     public ProceedBeyBeyOriginal() {
@@ -132,9 +148,10 @@ public class ProceedBeyBeyOriginal extends Fragment {
         fromTextView = view.findViewById(R.id.country_from_textview);
         toTextView = view.findViewById(R.id.country_to_textview);
         country_selected_from_spinner = view.findViewById(R.id.country_selected_from_spinner);
-        animatedCircleLoadingView = (AnimatedCircleLoadingView) view.findViewById(R.id.circle_loading_view_flight);
+        return_date = view.findViewById(R.id.return_date);
 
-
+        line3 = view.findViewById(R.id.line3_);
+        icon2 = view.findViewById(R.id.icon2_);
         proccedBtn = view.findViewById(R.id.procced_btn);
         departure = view.findViewById(R.id.departure_spinner);
         returnFrom = view.findViewById(R.id.return_spinner);
@@ -142,6 +159,56 @@ public class ProceedBeyBeyOriginal extends Fragment {
         passengerChild = view.findViewById(R.id.child_spinner);
         passengerInfant = view.findViewById(R.id.infant_spinner);
         to_country_name = view.findViewById(R.id.to_country_name);
+
+        passenger = view.findViewById(R.id.passen_air);
+        jet = view.findViewById(R.id.private_jet);
+        one_way = view.findViewById(R.id.one_way);
+        return_passe = view.findViewById(R.id.return_passe);
+        multi_cities = view.findViewById(R.id.multi_cities);
+        progressFlight = view.findViewById(R.id.circle_loading_view_flight);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        progressFlight.setVisibility(View.INVISIBLE);
+
+        if (JourneyType == 1) {
+
+
+            returnFrom.setVisibility(View.GONE);
+            return_date.setVisibility(View.GONE);
+            line3.setVisibility(View.GONE);
+            icon2.setVisibility(View.GONE);
+        } else {
+            return_date.setVisibility(View.VISIBLE);
+            returnFrom.setVisibility(View.VISIBLE);
+            line3.setVisibility(View.VISIBLE);
+            icon2.setVisibility(View.VISIBLE);
+
+        }
 
 
         myCalendar = Calendar.getInstance();
@@ -170,11 +237,54 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
         }
 
+        one_way.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    one_way.setTextColor(0xFFFFFFFF);
+                    return_passe.setTextColor(0xFFBE973B);
+                    multi_cities.setTextColor(0xFFBE973B);
+                    JourneyType = 1;
+
+                    returnFrom.setVisibility(View.GONE);
+                    return_date.setVisibility(View.GONE);
+                    line3.setVisibility(View.GONE);
+                    icon2.setVisibility(View.GONE);
+
+                }
+                return false;
+            }
+        });
+
+
+        return_passe.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    return_passe.setTextColor(0xFFFFFFFF);
+                    one_way.setTextColor(0xFFBE973B);
+                    multi_cities.setTextColor(0xFFBE973B);
+                    JourneyType = 2;
+                    returnFrom.setVisibility(View.VISIBLE);
+                    return_date.setVisibility(View.VISIBLE);
+                    line3.setVisibility(View.VISIBLE);
+                    icon2.setVisibility(View.VISIBLE);
+
+                }
+                return false;
+            }
+        });
 
         departure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dilogstart();
+            }
+        });
+        returnFrom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dilogreturn();
             }
         });
 
@@ -474,10 +584,48 @@ public class ProceedBeyBeyOriginal extends Fragment {
         return view;
     }
 
+    private void dilogreturn() {
+
+
+        chicDateStart = true;
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                myCalendar.set(YEAR, year);
+                myCalendar.set(Calendar.MONTH, month);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                String myFormat = "yyyy-MM-dd' T'00:00:00"; //In which you need put here
+                SimpleDateFormat start = new SimpleDateFormat(myFormat, Locale.US);
+                time2 = myCalendar.getTime();
+                mReturnTime = start.format(myCalendar.getTime());
+                //  startDate.setText(mstartTime);
+
+                long time = time2.getTime();
+
+                String dayOfTheWeek = (String) DateFormat.format("EEE", time); // Thursday
+                String day = (String) DateFormat.format("dd", time); // Thursday
+                String monthString = (String) DateFormat.format("MMM", time); // Thursday
+
+
+                SharedPreferencesManger.SaveData(getActivity(), "returnDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "till ");
+
+
+                returnFrom.setText(dayOfTheWeek + "," + day + " " + monthString);
+
+            }
+        };
+
+
+        new DatePickerDialog(getActivity(), date, myCalendar.get(YEAR),
+                myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+    }
+
+
     private void searchFlight() {
 
+        progressFlight.setVisibility(View.VISIBLE);
 
-        animatedCircleLoadingView.startDeterminate();
         ListnameLine.clear();
         Listduration.clear();
         ListdeparuerTime.clear();
@@ -488,7 +636,9 @@ public class ProceedBeyBeyOriginal extends Fragment {
         listCabinBaggage.clear();
         listIncludedBaggage.clear();
         listTotalFare.clear();
-        password = "App02072019";
+        ListairportCode_Origin.clear();
+        ListairportCode_Distnation.clear();
+        ListflightNumber.clear();
 
         Gson gson = new GsonBuilder()
                 .create();
@@ -515,35 +665,58 @@ public class ProceedBeyBeyOriginal extends Fragment {
             @Override
             public void onResponse(Call<FlightAuthentication> call, Response<FlightAuthentication> response) {
                 flightAuthentication[0] = response.body();
-                System.out.println("Helper: " + flightAuthentication[0].getTokenId());
+
                 final SearchFlights[] searchFlights = {new SearchFlights()};
-                searchFlights[0].setTokenId(flightAuthentication[0].getTokenId());
-                String test = flightAuthentication[0].getTokenId();
-                searchFlights[0].setAdultCount(adult);
-                searchFlights[0].setChildCount(child);
-                searchFlights[0].setFlightCabinClass(flightCabinClass);
-                searchFlights[0].setInfantCount(infant);
-                searchFlights[0].setJourneyType(oneWay);
+                //1
                 searchFlights[0].setIPAddress("192.168.4.238");
+
+                //2
+                // searchFlights[0].setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
+                String to = toTextView.getText().toString();
+                String from = fromTextView.getText().toString();
+                //3 test
+                searchFlights[0].setPointOfSale(to);
+
+                //4 test
+                searchFlights[0].setRequestOrigin("United Arab Emirates");
+                //5
+                searchFlights[0].setTokenId(flightAuthentication[0].getTokenId());
+                //6
+                searchFlights[0].setJourneyType(JourneyType);
+
+                //7
+                searchFlights[0].setAdultCount(adult);
+
+                //8
+                searchFlights[0].setChildCount(child);
+
+                //9
+                searchFlights[0].setInfantCount(infant);
+
+                //10
+                searchFlights[0].setFlightCabinClass(flightCabinClass);
+
+
+                //11
                 List<SearchFlights.Segment> segments = new ArrayList<>();
                 SearchFlights.Segment segment = new SearchFlights.Segment();
 
-                String to = toTextView.getText().toString();
-                String from = fromTextView.getText().toString();
+
+                //11.1
                 segment.setDestination(to);
+                //11.2
                 segment.setOrigin(from);
-                //wtf
 
-                List<String> airlines = new ArrayList<>();
-                airlines.add("EK");
-                airlines.add("AI");
-                segment.setPreferredAirlines(airlines);
+                // List<String> airlines = new ArrayList<>();
+                //11.3    // "2019-09-20 T00:00:00" 2019-09-20 T18:56:17
+                segment.setPreferredDepartureTime(daDepartureTimeyO);
+                //  11.4
 
-                segment.setPreferredDepartureTime("2019-09-20 T00:00:00");
-
-
+                segment.setPreferredArrivalTime(mReturnTime);
+                // add segments
                 segments.add(segment);
                 searchFlights[0].setSegment(segments);
+
                 Call<SearchFlightsResponse> searchCall = flightApiService.getFlightSearch("application/json", searchFlights[0]);
                 searchCall.enqueue(new Callback<SearchFlightsResponse>() {
 
@@ -554,9 +727,9 @@ public class ProceedBeyBeyOriginal extends Fragment {
                         String trackingId = response.body().getTrackingId();
 
                         List<List<SearchFlightsResponse.Result>> results = response.body().getResults();
-                        if (successful && results.size() != 0) {
+                        if (successful && results != null && results.size() >0) {
 
-                            animatedCircleLoadingView.setVisibility(View.GONE);
+                            progressFlight.setVisibility(View.INVISIBLE);
 
 
                             List<SearchFlightsResponse.Result> results1 = results.get(0);
@@ -591,17 +764,21 @@ public class ProceedBeyBeyOriginal extends Fragment {
                                     String countryNameDestination = segments2.get(t).getDestination().getCountryName();
                                     String countryNameOrigin = segments2.get(t).getOrigin().getCountryName();
 
+
+                                    String airportCode_Origin = segments2.get(t).getOrigin().getAirportCode();
+
+                                    String airportCode_Destination = segments2.get(t).getDestination().getAirportCode();
                                     String includedBaggage = segments2.get(t).getIncludedBaggage();
 
                                     String cabinBaggage = (String) segments2.get(t).getCabinBaggage();
 
                                     String duration = segments2.get(t).getDuration();
-                                    long operatingCarrier = segments2.get(t).getSegmentIndicator();
 
+                                    String flightNumber = segments2.get(t).getFlightNumber();
+                                    ListflightNumber.add(flightNumber);
 
-                                    Toast.makeText(getContext(), "fff  : " + String.valueOf(operatingCarrier), Toast.LENGTH_SHORT).show();
-
-
+                                    ListairportCode_Distnation.add(airportCode_Destination);
+                                    ListairportCode_Origin.add(airportCode_Origin);
                                     ListnameLine.add(airlineName);
                                     Listduration.add(duration);
                                     ListArriveTime.add(arrivalTime);
@@ -635,11 +812,18 @@ public class ProceedBeyBeyOriginal extends Fragment {
                             intent.putExtra("listTypeFare", listTypeFare);
 
 
+                            intent.putExtra("ListairportCode_Distnation", ListairportCode_Distnation);
+                            intent.putExtra("ListairportCode_Origin", ListairportCode_Origin);
+
+                            intent.putExtra("ListflightNumber", ListflightNumber);
+
+
+
                             getContext().startActivity(intent);
 
                         } else {
 
-                            animatedCircleLoadingView.setVisibility(View.GONE);
+                            progressFlight.setVisibility(View.INVISIBLE);
 
                             new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
                                     .setTitleText("No Result Found")
@@ -655,8 +839,6 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
 
                             String s = response.raw().body().toString();
-                            Toast.makeText(getContext(), "no Result" + response.message(), Toast.LENGTH_SHORT).show();
-                            animatedCircleLoadingView.setVisibility(View.GONE);
 
                             System.out.println("How: " + s);
                         }
@@ -666,7 +848,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                     @Override
                     public void onFailure(Call<SearchFlightsResponse> call, Throwable throwable) {
                         Toast.makeText(getContext(), "onFailure" + response.message(), Toast.LENGTH_SHORT).show();
-                        animatedCircleLoadingView.setVisibility(View.GONE);
+                        progressFlight.setVisibility(View.INVISIBLE);
 
                     }
                 });
@@ -676,7 +858,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
             @Override
             public void onFailure(Call<FlightAuthentication> call, Throwable throwable) {
                 Toast.makeText(getContext(), "onFailure" + throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                animatedCircleLoadingView.setVisibility(View.GONE);
+                progressFlight.setVisibility(View.INVISIBLE);
 
             }
         });
@@ -705,11 +887,11 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 myCalendar.set(Calendar.MONTH, month);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                String myFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"; //In which you need put here
-                SimpleDateFormat start = new SimpleDateFormat(myFormat, Locale.US);
-                time1 = myCalendar.getTime();
-                mstartTime = start.format(myCalendar.getTime());
+                String myFormat ="yyyy-MM-dd' T'00:00:00"; //In which you need put here
+//                SimpleDateFormat start = new SimpleDateFormat(myFormat, Locale.US);
+              //  mstartTime = start.format(myCalendar.getTime());
                 //  startDate.setText(mstartTime);
+                time1 = myCalendar.getTime();
 
                 long time = time1.getTime();
 
@@ -717,10 +899,10 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 String day = (String) DateFormat.format("dd", time); // Thursday
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
+                 daDepartureTimeyO = (String) DateFormat.format(myFormat, time); // 019-09-20 T00:00:00
+                SharedPreferencesManger.SaveData(getActivity(), "A_startDateS", dayOfTheWeek + " " + day + " " + monthString );
 
-                SharedPreferencesManger.SaveData(getActivity(), "startDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "till ");
-
-
+// 2019-09-20 T00:00:00
                 departure.setText(dayOfTheWeek + "," + day + " " + monthString);
 
             }

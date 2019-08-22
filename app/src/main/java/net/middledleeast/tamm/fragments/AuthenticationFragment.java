@@ -64,9 +64,15 @@ public class AuthenticationFragment extends Fragment {
             public void onClick(View view) {
 
                 Intent intent = new Intent(getContext(), RenewAccount.class);
+                intent.putExtra("renew",12);
 
                 SharedPreferencesManger.SaveData(getContext(),"gustMode","gustMode");
                 startActivity(intent);
+
+
+
+
+
 
             }
         });

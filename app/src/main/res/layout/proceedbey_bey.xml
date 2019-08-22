@@ -52,106 +52,6 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="@dimen/_10sdp"
             android:background="@drawable/ic_button"/>
-    </RelativeLayout>
-    <ImageView
-        android:id="@+id/img_linee"
-        android:layout_width="match_parent"
-        android:layout_height="12dp"
-        android:src="@drawable/line1"
-        android:layout_below="@+id/relative_booking"
-        android:layout_centerInParent="true" />
-
-    <RelativeLayout
-        android:layout_marginTop="@dimen/_10sdp"
-        android:id="@+id/rel_checked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/img_linee"
-        android:layout_centerInParent="true"
-        android:background="@drawable/shapepassenger">
-
-        <CheckedTextView
-            android:id="@+id/passen_air"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Passenger Airplane"
-            android:textColor="@color/white"
-            android:textIsSelectable="true"
-            android:layout_marginLeft="@dimen/_10sdp"
-            />
-        <View
-            android:id="@+id/view_blo"
-            android:layout_width="1dp"
-            android:layout_height="@dimen/_10sdp"
-            android:layout_toRightOf="@+id/passen_air"
-            android:background="@color/app_color"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"/>
-        <CheckedTextView
-            android:id="@+id/private_jet"
-            android:layout_toRightOf="@+id/view_blo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Private Jet"
-            android:textColor="@color/app_color"
-            android:textIsSelectable="true"
-            android:layout_marginRight="@dimen/_10sdp"/>
-
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_marginTop="@dimen/_10sdp"
-        android:id="@+id/rel2_checked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rel_checked"
-        android:layout_centerInParent="true"
-        android:background="@drawable/shapepassenger">
-
-        <CheckedTextView
-            android:id="@+id/one_way"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="One Way"
-            android:textColor="@color/white"
-            android:textIsSelectable="true"
-            android:layout_marginLeft="@dimen/_10sdp"
-            />
-        <View
-            android:id="@+id/view_blo2"
-            android:layout_width="1dp"
-            android:layout_height="@dimen/_10sdp"
-            android:layout_toRightOf="@+id/one_way"
-            android:background="@color/app_color"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"/>
-        <CheckedTextView
-            android:id="@+id/return_passe"
-            android:layout_toRightOf="@+id/view_blo2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Return"
-            android:textColor="@color/app_color"
-            android:textIsSelectable="true" />
-        <View
-            android:id="@+id/view_blo3"
-            android:layout_width="1dp"
-            android:layout_height="@dimen/_10sdp"
-            android:layout_toRightOf="@+id/return_passe"
-            android:background="@color/app_color"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"/>
-        <CheckedTextView
-            android:id="@+id/multi_cities"
-            android:layout_toRightOf="@+id/view_blo3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MultiCities"
-            android:textColor="@color/app_color"
-            android:textIsSelectable="true"
-            android:layout_marginRight="@dimen/_10sdp"/>
 
     </RelativeLayout>
 
@@ -160,7 +60,7 @@
         android:id="@+id/flights_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rel2_checked" />
+        android:layout_below="@+id/relative_booking" />
 
     <FrameLayout
         android:id="@+id/search_container"

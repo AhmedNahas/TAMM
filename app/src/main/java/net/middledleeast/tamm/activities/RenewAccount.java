@@ -1,7 +1,6 @@
 package net.middledleeast.tamm.activities;
 
 import android.app.AlertDialog;
-import android.content.ClipData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,6 +12,7 @@ import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -46,10 +46,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class RenewAccount extends AppCompatActivity
+public class  RenewAccount extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ImageView img1, img2, addPic, right, left;
-    TextView user_name_profile;
+    TextView user_name_profile, textView_account;
     @BindView(R.id.assistant_label_voice_renew_hotel)
     TextView assistantLabelVoiceRenewHotel;
     @BindView(R.id.assistant_label_call_renew_hotel)
@@ -58,6 +58,7 @@ public class RenewAccount extends AppCompatActivity
     TextView assistantLabelMessageRenewHotel;
     @BindView(R.id.relative_img_renew_hotel_tamm)
     RelativeLayout relativeImgRenewHotelTamm;
+    RelativeLayout relative_expire;
     private String user;
     private HotelCodesResponse hotelSearchResponse;
     private String hotelCode;
@@ -69,12 +70,10 @@ public class RenewAccount extends AppCompatActivity
     TabLayout tabLayout;
     ViewPager viewPager;
     private ViewPagerAdapter adapter;
-    private boolean ClickRenewHotel=false;
-    private TextView validTill;
-    private TextView accountType;
-    private long validTillValue;
-    private int freeuser;
-    private int membership;
+    private boolean ClickRenewHotel = false;
+
+    Button btn_renew_account, renew_sign_in, renew_register;
+    private int renew = 1;
 
 
 //    private AuthenticationData authenticandata;
@@ -95,23 +94,24 @@ public class RenewAccount extends AppCompatActivity
         tabLayout = findViewById(R.id.tap_layout);
         viewPager = findViewById(R.id.view_pager_renew);
 
+
+
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        try {
 
-            validTill.setVisibility(View.INVISIBLE);
-            validTillValue = SharedPreferencesManger.LoadLongData(this, "validTill");
-            freeuser = SharedPreferencesManger.LoadIntegerData(this, "freeuser");
-            membership = SharedPreferencesManger.LoadIntegerData(this, "membership");
-
-
-        }catch (Exception e){}
         adapter.AddFragment(new BestFlights(), "Best Flights");
         adapter.AddFragment(new BestHotels(), "Best Hotels");
         adapter.AddFragment(new BestDeals(), "Best Deals");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+
+
+
+
+
+
+
 
 
         assistantLabelVoiceRenewHotel.setOnClickListener(new View.OnClickListener() {
@@ -251,8 +251,15 @@ public class RenewAccount extends AppCompatActivity
 
         addPic = hView.findViewById(R.id.imageViewAddPic);
         user_name_profile = hView.findViewById(R.id.user_name_profile);
-        this.validTill = hView.findViewById(R.id.valid_till);
-        accountType = hView.findViewById(R.id.account_type);
+
+        relative_expire = hView.findViewById(R.id.relative_expire);
+        textView_account = hView.findViewById(R.id.textView_account);
+        btn_renew_account =hView.findViewById(R.id.btn_renew_account);
+
+        renew_sign_in = hView.findViewById(R.id.renew_sign_in);
+        renew_register = hView.findViewById(R.id.renew_register);
+
+
 
 
         try {
@@ -279,16 +286,6 @@ public class RenewAccount extends AppCompatActivity
 
         try {
             user_name_profile.setText(user);
-            if (membership == 2){
-
-                validTill.setVisibility(View.VISIBLE);
-                validTill.setText(("Expires in : " + validTillValue + " days"));
-                accountType.setText("MemberShip Account");
-            }else if (freeuser == 1){
-                validTill.setVisibility(View.INVISIBLE);
-                accountType.setText("FreeUser Account");
-
-            }
 
 
             addPic.setOnClickListener(new View.OnClickListener() {
@@ -304,11 +301,37 @@ public class RenewAccount extends AppCompatActivity
 
 
         }
+
+
+
+
+
+
+        try {
+
+            renew = getIntent().getIntExtra("renew", 0);
+            if (renew == 12) {
+                user_name_profile.setVisibility(View.GONE);
+                relative_expire.setVisibility(View.GONE);
+                textView_account.setVisibility(View.GONE);
+                btn_renew_account.setVisibility(View.GONE);
+
+                renew_sign_in.setVisibility(View.VISIBLE);
+                renew_register.setVisibility(View.VISIBLE);
+
+
+            }
+
+        } catch (Exception e) {
+
+        }
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -342,7 +365,7 @@ public class RenewAccount extends AppCompatActivity
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
 
-          //  startActivity(new Intent(RenewAccount.this,WelcomeActivity.class));
+            //  startActivity(new Intent(RenewAccount.this,WelcomeActivity.class));
         }
     }
 
@@ -361,16 +384,25 @@ public class RenewAccount extends AppCompatActivity
 
         } else if (id == R.id.nav_aboutus) {
 
+            startActivity(new Intent(RenewAccount.this, AboutUs.class));
+
+
         } else if (id == R.id.nav_contuctus) {
 
+            startActivity(new Intent(RenewAccount.this, ContactUs.class));
+
         } else if (id == R.id.nav_setting) {
+
+
+            startActivity(new Intent(RenewAccount.this, SettingActivity.class));
+
 
         } else if (id == R.id.nav_terms) {
 
             startActivity(new Intent(RenewAccount.this, TermsActivity.class));
 
         } else if (id == R.id.nav_logout) {
-
+                finish();
 
         }
 
@@ -423,5 +455,82 @@ public class RenewAccount extends AppCompatActivity
 
     }
 
+//    @Override
+//    public boolean onPrepareOptionsMenu(Menu menu) {
+//        MenuItem register1 = menu.findItem(R.id.nav_offer);
+//        MenuItem register2 = menu.findItem(R.id.nav_logout);
+//        MenuItem register3 = menu.findItem(R.id.nav_aboutus);
+//        MenuItem register4 = menu.findItem(R.id.nav_contuctus);
+//        MenuItem register5 = menu.findItem(R.id.nav_favorites);
+//        MenuItem register6 = menu.findItem(R.id.nav_conversation);
+//        MenuItem register7 = menu.findItem(R.id.nav_setting);
+//        MenuItem register8 = menu.findItem(R.id.nav_terms);
+//
+//        if (renew == 12) {
+//
+//            MenuItem register = menu.findItem(R.id.nav_offer);
+//            register.setVisible(false);  //userRegistered is boolean, pointing if the user has registered or not.
+//            return true;
+////            register1.setVisible(false);
+////            register2.setVisible(false);
+////            register3.setVisible(false);
+////            register4.setVisible(false);
+////            register5.setVisible(false);
+////            register6.setVisible(false);
+////            register7.setVisible(false);
+////            register8.setVisible(false);
+//
+//        } else {
+////            register1.setVisible(true);
+////            register2.setVisible(true);
+////            register3.setVisible(true);
+////            register4.setVisible(true);
+////            register5.setVisible(true);
+////            register6.setVisible(true);
+////            register7.setVisible(true);
+////            register8.setVisible(true);
+//
+//        return true;
+//
 
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        if (renew == 12) {
+//
+//            MenuItem register = menu.findItem(R.id.nav_offer);
+//            register.setVisible(false);  //userRegistered is boolean, pointing if the user has registered or not.
+//
+//
+//        }
+//
+//        return  true;
+//    }
+
+
+//    @Override
+//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+//        super.onCreateContextMenu(menu, v, menuInfo);
+//
+//        MenuInflater inflater = getMenuInflater();
+//
+//        inflater.inflate(R.menu.renew_account_drawer,menu);
+//
+//
+//        AdapterView.AdapterContextMenuInfo info =
+//                (AdapterView.AdapterContextMenuInfo) menuInfo;
+//
+//        int pos = info.position;
+//
+//        MenuItem MenuItem =menu.findItem(R.id.nav_offer);
+//        if (renew==12){
+//            MenuItem.setVisible(true);
+//
+//        }else {
+//            MenuItem.setVisible(false);
+//        }
+//
+//
+//
+//    }
 }

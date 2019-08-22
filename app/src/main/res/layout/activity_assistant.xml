@@ -65,9 +65,9 @@
     <View
         android:id="@+id/line1_assistant"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="@dimen/_15sdp"
         android:layout_below="@+id/toolbar_back_assistant"
-        android:background="@drawable/line1" />
+        android:background="@drawable/line_ight2" />
 
     <TextView
         android:id="@+id/tv_agent_assist"
@@ -109,7 +109,7 @@
 
     <ImageView
         android:id="@+id/img_flight"
-        android:layout_width="@dimen/_60sdp"
+        android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"
         android:src="@drawable/ic_flight_3x"
         android:background="@drawable/shape3"
@@ -125,9 +125,9 @@
     <View
         android:id="@+id/line_flight_assistant"
         android:layout_width="@dimen/_280sdp"
-        android:layout_height="2dp"
+        android:layout_height="@dimen/_15sdp"
         android:layout_below="@+id/relative_flight_assist"
-        android:background="@drawable/line1"
+        android:background="@drawable/line_ight2"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginStart="@dimen/_10sdp"
         />
@@ -177,9 +177,9 @@
     <View
     android:id="@+id/line_hotel_assistant"
     android:layout_width="@dimen/_280sdp"
-    android:layout_height="2dp"
+    android:layout_height="@dimen/_15sdp"
     android:layout_below="@+id/relative_hotel_assist"
-    android:background="@drawable/line1"
+    android:background="@drawable/line_ight2"
     android:layout_marginTop="@dimen/_10sdp"
     android:layout_marginStart="@dimen/_10sdp"
     />
