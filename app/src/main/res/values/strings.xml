@@ -119,6 +119,9 @@
     <string name="for_further_information">For further information</string>
     <string name="please_check_your_e_mail">Please check your E-mail.</string>
     <string name="back_to_home_page">BACK TO HOME PAGE</string>
+    <string name="years"> %d years</string>
+    <string name="months"> %d months</string>
+    <string name="days"> %d days</string>
 
 
     <string-array name="CountryCodes">

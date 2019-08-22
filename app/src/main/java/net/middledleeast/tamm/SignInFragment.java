@@ -20,6 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import static net.middledleeast.tamm.helper.helperMethod.isInternetAvailable;
+import static net.middledleeast.tamm.helper.helperMethod.isNetworkConnected;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -145,54 +147,56 @@ public class SignInFragment extends Fragment {
             public void onClick(View view) {
 
 
-                SharedPreferencesManger.remove(getContext(),"gustMode");
-
-                String mUsrename = userName.getText().toString();
-
-                SharedPreferencesManger.SaveData(getActivity(), "user", mUsrename);
 
 
-                dialog.show();
+                    SharedPreferencesManger.remove(getContext(), "gustMode");
+
+                    String mUsrename = userName.getText().toString();
+
+                    SharedPreferencesManger.SaveData(getActivity(), "user", mUsrename);
 
 
-                String user_Name = userName.getText().toString();
-                String password = pass.getText().toString();
+                    dialog.show();
 
 
-                if (TextUtils.isEmpty(user_Name)) {
-                    userName.setError("Name Is Required");
-                    dialog.cancel();
-                } else if (TextUtils.isEmpty(password)) {
-                    pass.setError("Conf. Password Is Required");
-                    dialog.cancel();
-                }
+                    String user_Name = userName.getText().toString();
+                    String password = pass.getText().toString();
 
 
-                if (listUserPass.contains(pass.getText().toString()) && listUserName.contains(userName.getText().toString())) {
-                    dialog.cancel();
-                    Intent intent = new Intent(getContext(), RenewAccount.class);
-                    startActivity(intent);
-
-                } else if (listUserNamemember.contains(userName.getText().toString()) && listUserPassmember.contains(pass.getText().toString())) {
-                    dialog.cancel();
-                    Intent intent = new Intent(getContext(), RenewAccount.class);
-                    startActivity(intent);
+                    if (TextUtils.isEmpty(user_Name)) {
+                        userName.setError("Name Is Required");
+                        dialog.cancel();
+                    } else if (TextUtils.isEmpty(password)) {
+                        pass.setError("Conf. Password Is Required");
+                        dialog.cancel();
+                    }
 
 
-                } else {
-                    Toast.makeText(getContext(), "wrong user name or password", Toast.LENGTH_SHORT).show();
-                    dialog.cancel();
+                    if (listUserPass.contains(pass.getText().toString()) && listUserName.contains(userName.getText().toString())) {
+                        dialog.cancel();
+                        Intent intent = new Intent(getContext(), RenewAccount.class);
+                        startActivity(intent);
+
+                    } else if (listUserNamemember.contains(userName.getText().toString()) && listUserPassmember.contains(pass.getText().toString())) {
+                        dialog.cancel();
+                        Intent intent = new Intent(getContext(), RenewAccount.class);
+                        startActivity(intent);
 
 
-                }
+                    } else {
+                        Toast.makeText(getContext(), "wrong user name or password", Toast.LENGTH_SHORT).show();
+                        dialog.cancel();
 
 
-                if (userName.getText().toString().equals("tamm") && pass.getText().toString().equals("0123456")) {
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.welcome_container, new Buttons())
-                            .commit();
-                    dialog.cancel();
-                }
+                    }
+
+
+                    if (userName.getText().toString().equals("tamm") && pass.getText().toString().equals("0123456")) {
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.welcome_container, new Buttons())
+                                .commit();
+                        dialog.cancel();
+                    }
 
 
             }

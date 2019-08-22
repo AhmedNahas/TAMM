@@ -70,6 +70,11 @@ public class RenewAccount extends AppCompatActivity
     ViewPager viewPager;
     private ViewPagerAdapter adapter;
     private boolean ClickRenewHotel=false;
+    private TextView validTill;
+    private TextView accountType;
+    private long validTillValue;
+    private int freeuser;
+    private int membership;
 
 
 //    private AuthenticationData authenticandata;
@@ -92,7 +97,15 @@ public class RenewAccount extends AppCompatActivity
 
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
+        try {
 
+            validTill.setVisibility(View.INVISIBLE);
+            validTillValue = SharedPreferencesManger.LoadLongData(this, "validTill");
+            freeuser = SharedPreferencesManger.LoadIntegerData(this, "freeuser");
+            membership = SharedPreferencesManger.LoadIntegerData(this, "membership");
+
+
+        }catch (Exception e){}
         adapter.AddFragment(new BestFlights(), "Best Flights");
         adapter.AddFragment(new BestHotels(), "Best Hotels");
         adapter.AddFragment(new BestDeals(), "Best Deals");
@@ -238,6 +251,8 @@ public class RenewAccount extends AppCompatActivity
 
         addPic = hView.findViewById(R.id.imageViewAddPic);
         user_name_profile = hView.findViewById(R.id.user_name_profile);
+        this.validTill = hView.findViewById(R.id.valid_till);
+        accountType = hView.findViewById(R.id.account_type);
 
 
         try {
@@ -264,6 +279,16 @@ public class RenewAccount extends AppCompatActivity
 
         try {
             user_name_profile.setText(user);
+            if (membership == 2){
+
+                validTill.setVisibility(View.VISIBLE);
+                validTill.setText(("Expires in : " + validTillValue + " days"));
+                accountType.setText("MemberShip Account");
+            }else if (freeuser == 1){
+                validTill.setVisibility(View.INVISIBLE);
+                accountType.setText("FreeUser Account");
+
+            }
 
 
             addPic.setOnClickListener(new View.OnClickListener() {
