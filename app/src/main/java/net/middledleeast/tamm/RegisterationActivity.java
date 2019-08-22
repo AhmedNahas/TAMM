@@ -351,7 +351,7 @@ public class RegisterationActivity extends Fragment {
                         intent.putExtra("pass",etPassword.getText().toString());
 
                         intent.putExtra("mId",1);
-                        SharedPreferencesManger.SaveData(getContext(),"membership",2);
+//                        SharedPreferencesManger.SaveData(getContext(),"membership",2);
 
                         SharedPreferencesManger.SaveData(getContext(),"username",etUserName.getText().toString());
                         startActivity(intent);
@@ -360,7 +360,7 @@ public class RegisterationActivity extends Fragment {
 
                         Intent intent = new Intent(getContext(), FreeCongratsActivity.class);
                         intent.putExtra("username",etUserName.getText().toString());
-                        SharedPreferencesManger.SaveData(getContext(),"freeuser",1);
+//                        SharedPreferencesManger.SaveData(getContext(),"freeuser",1);
                         startActivity(intent);
                     }
 
