@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -41,6 +42,8 @@ import net.middledleeast.tamm.fragments.BestHotels;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.io.FileNotFoundException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,7 +52,7 @@ import butterknife.OnClick;
 public class  RenewAccount extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ImageView img1, img2, addPic, right, left;
-    TextView user_name_profile, textView_account;
+    TextView user_name_profile, textView_account , valid_till_months;
     @BindView(R.id.assistant_label_voice_renew_hotel)
     TextView assistantLabelVoiceRenewHotel;
     @BindView(R.id.assistant_label_call_renew_hotel)
@@ -71,6 +74,8 @@ public class  RenewAccount extends AppCompatActivity
     ViewPager viewPager;
     private ViewPagerAdapter adapter;
     private boolean ClickRenewHotel = false;
+    private long validTillValue;
+    private int accountType;
 
     Button btn_renew_account, renew_sign_in, renew_register;
     private int renew = 1;
@@ -95,16 +100,25 @@ public class  RenewAccount extends AppCompatActivity
         viewPager = findViewById(R.id.view_pager_renew);
 
 
-
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
+        try {
 
+
+            validTillValue = SharedPreferencesManger.LoadLongData(this, "validTill");
+            accountType = SharedPreferencesManger.LoadIntegerData(this, "accountType");
+
+
+        }catch (Exception e){}
         adapter.AddFragment(new BestFlights(), "Best Flights");
         adapter.AddFragment(new BestHotels(), "Best Hotels");
         adapter.AddFragment(new BestDeals(), "Best Deals");
 
+
         viewPager.setAdapter(adapter);
+
         tabLayout.setupWithViewPager(viewPager);
+
 
 
 
@@ -151,34 +165,6 @@ public class  RenewAccount extends AppCompatActivity
         }
 
 
-//        service = new BasicHttpBinding_IHotelService1();
-//        service.enableLogging = true;
-//        authenticandata = new AuthenticationData();
-//        authenticandata.UserName = ("Tammtest");
-//        authenticandata.Password = ("Tam@18418756");
-
-
-//
-//        HotelSearchResponse hotelSearchResponse  =new HotelSearchResponse() ;
-//
-//        final ArrayOfHotel_Result hotelResultList = hotelSearchResponse.HotelResultList;
-//
-//        for (int i = 0; i < hotelResultList.size() ; i++) {
-//
-//            Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
-//            HotelInfo hotelInfo = hotel_result.HotelInfo;
-//            sessionId = hotelSearchResponse.SessionId;
-//            hotelAddress = hotelInfo.HotelAddress;
-//            hotelName = hotelInfo.HotelName;
-//            hotelPicture = hotelInfo.HotelPicture;
-//            hotelPromotion = hotelInfo.HotelPromotion;
-//            int code = hotelInfo.Rating.getCode();
-//
-//            Toast.makeText(this, ""+hotelPromotion, Toast.LENGTH_SHORT).show();
-//            String hotelCode = hotelInfo.HotelCode;
-//
-//
-//        }
 
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -196,20 +182,6 @@ public class  RenewAccount extends AppCompatActivity
             TopDestinationsResponse topDestinationsResponse = service.TopDestinations(authenticationData);
 
 
-//        if (hotelSearchResponse.HotelResultList != null) {
-//            for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
-//
-//                Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
-//                HotelInfo hotelInfo = hotel_result.HotelInfo;
-//
-//
-//
-//                 hotelCode = hotelInfo.HotelPromotion;
-//
-//
-//            }
-//
-//        }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -243,7 +215,6 @@ public class  RenewAccount extends AppCompatActivity
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
-        // NavigationView navigationView = findViewById(R.id.nav_view);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -258,6 +229,10 @@ public class  RenewAccount extends AppCompatActivity
 
         renew_sign_in = hView.findViewById(R.id.renew_sign_in);
         renew_register = hView.findViewById(R.id.renew_register);
+        valid_till_months = hView.findViewById(R.id.valid_till_months);
+
+
+
 
 
 
@@ -286,7 +261,18 @@ public class  RenewAccount extends AppCompatActivity
 
         try {
             user_name_profile.setText(user);
+            if (accountType == 1){
 
+
+                relative_expire.setVisibility(View.GONE);
+
+                textView_account.setText("FreeUser Account");
+            }else if (accountType == 2){
+                relative_expire.setVisibility(View.VISIBLE);
+                valid_till_months.setText((validTillValue + " days"));
+                textView_account.setText("MemberShip Account");
+
+            }
 
             addPic.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -301,10 +287,6 @@ public class  RenewAccount extends AppCompatActivity
 
 
         }
-
-
-
-
 
 
         try {
@@ -365,7 +347,6 @@ public class  RenewAccount extends AppCompatActivity
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
 
-            //  startActivity(new Intent(RenewAccount.this,WelcomeActivity.class));
         }
     }
 
@@ -533,4 +514,5 @@ public class  RenewAccount extends AppCompatActivity
 //
 //
 //    }
+
 }

@@ -136,6 +136,9 @@
             android:name=".activities.RenewAccount"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".activities.PaymentTemp" />
+        <activity android:name=".activities.AboutUs" />
+        <activity android:name=".activities.ContactUs" />
+        <activity android:name=".activities.SettingActivity" />
 
         <service
             android:name=".sevice.MyService"
