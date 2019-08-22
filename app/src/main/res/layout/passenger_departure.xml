@@ -47,6 +47,7 @@
         android:layout_below="@+id/relative_passenger"
         />
     <TextView
+        android:layout_marginStart="@dimen/_5sdp"
         android:id="@+id/tv_passenger"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,6 +58,9 @@
 
         />
     <TextView
+        android:layout_marginStart="@dimen/_5sdp"
+
+        android:layout_marginTop="@dimen/_5sdp"
         android:id="@+id/tv_depature"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -80,7 +84,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/walchair"
-            android:layout_marginLeft="@dimen/_50sdp"
+            android:layout_marginLeft="@dimen/_60sdp"
 
 
             />
@@ -139,7 +143,7 @@
                 android:id="@+id/tv_adult"
 
                 />
-            <RadioGroup
+            <RelativeLayout
                 android:id="@+id/rd_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -147,7 +151,8 @@
                 android:layout_toRightOf="@+id/tv_adult"
                 android:layout_marginLeft="@dimen/_15sdp"
                 >
-                <RadioButton
+                <CheckBox
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
@@ -155,8 +160,11 @@
                     android:buttonTint="#fff"
 
                     android:id="@+id/rd_wal_chair"
-                    />
-                <RadioButton
+
+                />
+                <CheckBox
+                    android:layout_marginStart="@dimen/_50sdp"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
@@ -166,7 +174,7 @@
                     android:id="@+id/rd_passenger"
                     />
 
-            </RadioGroup>
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relative_decrease_increase"
@@ -189,10 +197,10 @@
                     />
 
                 <TextView
-                    android:id="@+id/txtview_adult"
+                    android:id="@+id/tv_adult_bg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="40kg"
+                    android:text="0kg"
                     android:textStyle="bold"
                     android:textSize="15sp"
                     android:textColor="#fff"
@@ -204,7 +212,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/add"
-                    android:layout_toRightOf="@+id/txtview_adult"
+                    android:layout_toRightOf="@+id/tv_adult_bg"
 
                     />
 
@@ -212,7 +220,7 @@
 
 
             <TextView
-                android:id="@+id/tv_kd"
+                android:id="@+id/tv_price_adult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="150KD"
@@ -261,32 +269,36 @@
 
 
                 />
-            <RadioGroup
+            <RelativeLayout
                 android:id="@+id/rd_group1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_toRightOf="@+id/tv_child"
-                android:layout_marginLeft="@dimen/_12sdp"
+                android:layout_marginLeft="@dimen/_18sdp"
                 >
-                <RadioButton
+                <CheckBox
+
+
+                    android:id="@+id/rd_wal_chair_child"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
-                    android:checked="true"
                     android:buttonTint="#fff"
 
                     />
-                <RadioButton
+                <CheckBox
+                    android:layout_marginStart="@dimen/_50sdp"
+
+                    android:id="@+id/rd_passenger_Child"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
-                    android:checked="true"
                     android:buttonTint="#fff"
                     android:layout_marginLeft="39dp"
                     />
 
-            </RadioGroup>
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relative_decrease_increase2"
@@ -297,36 +309,37 @@
                 >
 
                 <ImageView
-                    android:id="@+id/iv_decrease"
+                    android:id="@+id/decrease_child"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/minusicon"
                     />
 
                 <TextView
-                    android:id="@+id/tv_kg"
+                    android:id="@+id/tv_child_bg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="40kg"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="0dp"
+                    android:layout_toRightOf="@+id/decrease_child"
+                    android:text="0kg"
                     android:textColor="#fff"
-                    android:layout_toRightOf="@+id/iv_decrease"
 
-                    />
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
                 <ImageView
-                    android:id="@+id/iv_increase"
+                    android:id="@+id/increase_child"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/add"
-                    android:layout_toRightOf="@+id/tv_kg"
+                    android:layout_toRightOf="@+id/tv_child_bg"
                     />
 
             </RelativeLayout>
 
 
             <TextView
-                android:id="@+id/tv_kd1"
+                android:id="@+id/tv_price_child"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -372,15 +385,16 @@
 
                 />
 
-            <RadioGroup
+            <RelativeLayout
                 android:id="@+id/rd_group2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_toRightOf="@+id/tv_infant"
-                android:layout_marginLeft="@dimen/_9sdp"
+                android:layout_marginLeft="@dimen/_15sdp"
                 >
-                <RadioButton
+                <CheckBox
+                    android:id="@+id/rd_wal_chair_infant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
@@ -388,7 +402,10 @@
                     android:buttonTint="#fff"
 
                     />
-                <RadioButton
+                <CheckBox
+                    android:layout_marginStart="@dimen/_50sdp"
+
+                    android:id="@+id/rd_passenger_infant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
@@ -397,7 +414,7 @@
                     android:layout_marginLeft="40dp"
                     />
 
-            </RadioGroup>
+            </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/relative_decrease_increase3"
                 android:layout_width="wrap_content"
@@ -407,35 +424,35 @@
                 >
 
                 <ImageView
-                    android:id="@+id/iv_decrease1"
+                    android:id="@+id/decrease_infant"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/minusicon"
                     />
 
                 <TextView
-                    android:id="@+id/tv_kg1"
+                    android:id="@+id/tv_infant_bg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="60kg"
+                    android:text="0kg"
                     android:textStyle="bold"
                     android:textSize="15sp"
                     android:textColor="#fff"
-                    android:layout_toRightOf="@id/iv_decrease1"
+                    android:layout_toRightOf="@id/decrease_infant"
 
                     />
 
                 <ImageView
-                    android:id="@+id/iv_increase1"
+                    android:id="@+id/increase_infant"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/add"
-                    android:layout_toRightOf="@+id/tv_kg1"/>
+                    android:layout_toRightOf="@+id/tv_infant_bg"/>
 
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/tv_kd2"
+                android:id="@+id/tv_price_infant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="175KD"
@@ -468,7 +485,7 @@
 
             >
             <TextView
-                android:id="@+id/tv_total-taxes"
+                android:id="@+id/tv_totaltaxes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total Taxes"
@@ -477,7 +494,7 @@
                 android:textStyle="bold"
                 />
             <TextView
-                android:id="@+id/tv_kd3"
+                android:id="@+id/tv_total_taxes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="150KD"
@@ -500,7 +517,7 @@
 
 
         <TextView
-            android:id="@+id/tv_kd4"
+            android:id="@+id/tv_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="600KD"
@@ -515,6 +532,7 @@
     </RelativeLayout>
 
     <TextView
+        android:layout_marginStart="@dimen/_5sdp"
         android:id="@+id/tv_return"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -539,7 +557,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:src="@drawable/walchair"
-            android:layout_marginLeft="@dimen/_50sdp"
+            android:layout_marginLeft="@dimen/_60sdp"
 
 
             />
@@ -594,7 +612,7 @@
                 android:id="@+id/tv_adult2"
 
                 />
-            <RadioGroup
+            <RelativeLayout
                 android:id="@+id/rd_group3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -602,7 +620,7 @@
                 android:layout_toRightOf="@+id/tv_adult2"
                 android:layout_marginLeft="@dimen/_15sdp"
                 >
-                <RadioButton
+                <CheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
@@ -610,7 +628,9 @@
                     android:buttonTint="#fff"
                     android:id="@+id/rd_wal_chair2"
                     />
-                <RadioButton
+                <CheckBox
+                    android:layout_marginStart="@dimen/_50sdp"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
@@ -620,7 +640,7 @@
                     android:id="@+id/rd_passenger2"
                     />
 
-            </RadioGroup>
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/relative_decrease_increase4"
@@ -634,7 +654,7 @@
 
 
                 <ImageView
-                    android:id="@+id/decrease_adult1"
+                    android:id="@+id/decrease_adult2"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/minusicon"
@@ -643,22 +663,22 @@
                     />
 
                 <TextView
-                    android:id="@+id/txtview_adult1"
+                    android:id="@+id/tv_adult_bg2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="40kg"
+                    android:text="0kg"
                     android:textStyle="bold"
                     android:textSize="15sp"
                     android:textColor="#fff"
-                    android:layout_toRightOf="@id/decrease_adult1"
+                    android:layout_toRightOf="@id/decrease_adult2"
 
                     />
                 <ImageView
-                    android:id="@+id/increase_adult1"
+                    android:id="@+id/increase_adult2"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/add"
-                    android:layout_toRightOf="@+id/txtview_adult1"
+                    android:layout_toRightOf="@+id/tv_adult_bg2"
 
                     />
 
@@ -666,7 +686,7 @@
 
 
             <TextView
-                android:id="@+id/tv_kd5"
+                android:id="@+id/tv_price_adult2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="150KD"
@@ -712,32 +732,37 @@
 
 
                 />
-            <RadioGroup
+            <RelativeLayout
                 android:id="@+id/rd_group4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_toRightOf="@+id/tv_child2"
-                android:layout_marginLeft="@dimen/_15sdp"
-                >
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#fff"
-                    android:checked="true"
-                    android:buttonTint="#fff"
 
-                    />
-                <RadioButton
+
+                android:layout_toRightOf="@+id/tv_child2"
+                android:layout_marginLeft="@dimen/_18sdp"
+                >
+
+                <CheckBox
+                    android:id="@+id/rd_wal_chair_child2"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:buttonTint="#fff"
+                    android:textColor="#fff" />
+                <CheckBox
+                    android:id="@+id/rd_passenger_Child2"
+                    android:layout_marginStart="@dimen/_50sdp"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
-                    android:checked="true"
                     android:buttonTint="#fff"
                     android:layout_marginLeft="39dp"
                     />
 
-            </RadioGroup>
+            </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/relative_decrease_increase5"
                 android:layout_width="wrap_content"
@@ -746,31 +771,30 @@
                 android:layout_marginLeft="@dimen/_30sdp"
                 >
 
-            <ImageView
-                android:id="@+id/iv_decrease2"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/minusicon"
-               />
+                <ImageView
+                    android:id="@+id/decrease_child2"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/minusicon" />
 
             <TextView
-                android:id="@+id/tv_kg3"
+                android:id="@+id/tv_child_bg2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="40kg"
+                android:text="0kg"
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:textColor="#fff"
-                android:layout_toRightOf="@+id/iv_decrease2"
+                android:layout_toRightOf="@+id/decrease_child2"
 
                 />
 
             <ImageView
-                android:id="@+id/iv_increase2"
+                android:id="@+id/increase_child2"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/add"
-                android:layout_toRightOf="@+id/tv_kg3"
+                android:layout_toRightOf="@+id/tv_child_bg2"
                 />
             </RelativeLayout>
 
@@ -778,7 +802,7 @@
 
 
             <TextView
-                android:id="@+id/tv_kd6"
+                android:id="@+id/tv_price_child2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -821,7 +845,7 @@
                 android:textColor="#fff"
 
                 />
-            <RadioGroup
+            <RelativeLayout
                 android:id="@+id/rd_group5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -829,7 +853,9 @@
                 android:layout_toRightOf="@+id/tv_infant2"
                 android:layout_marginLeft="@dimen/_15sdp"
                 >
-                <RadioButton
+                <CheckBox
+                    android:id="@+id/rd_wal_chair_infant2"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
@@ -837,7 +863,10 @@
                     android:buttonTint="#fff"
 
                     />
-                <RadioButton
+                <CheckBox
+                    android:id="@+id/rd_passenger_infant2"
+                    android:layout_marginStart="@dimen/_50sdp"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
@@ -846,7 +875,7 @@
                     android:layout_marginLeft="40dp"
                     />
 
-            </RadioGroup>
+            </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/relative_decrease_increase6"
                 android:layout_width="wrap_content"
@@ -857,34 +886,34 @@
 
 
             <ImageView
-                android:id="@+id/iv_decrease3"
+                android:id="@+id/decrease_infant2"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/minusicon"
                 />
 
             <TextView
-                android:id="@+id/tv_kg4"
+                android:id="@+id/tv_infant_bg2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="60kg"
+                android:text="0kg"
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:textColor="#fff"
-                android:layout_toRightOf="@id/iv_decrease3"
+                android:layout_toRightOf="@id/decrease_infant2"
 
                 />
 
             <ImageView
-                android:id="@+id/iv_increase3"
+                android:id="@+id/increase_infant2"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/add"
-                android:layout_toRightOf="@+id/tv_kg4"/>
+                android:layout_toRightOf="@+id/tv_infant_bg2"/>
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/tv_kd7"
+                android:id="@+id/tv_price_infant2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="175KD"
@@ -915,7 +944,7 @@
             android:layout_height="25dp"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/tv_total-taxes2"
+                android:id="@+id/tv_totaltaxes2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Total Taxes"
@@ -924,7 +953,7 @@
                 android:textStyle="bold"
                 />
             <TextView
-                android:id="@+id/tv_kd9"
+                android:id="@+id/tv_total_taxes_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="150KD"
@@ -947,7 +976,7 @@
 
 
         <TextView
-            android:id="@+id/tv_kd10"
+            android:id="@+id/tv_total2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="600KD"
@@ -966,12 +995,13 @@
 
     <Button
         android:id="@+id/priceFinal"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_25sdp"
         android:background="@drawable/border"
         android:text="Price : 1200KD"
         android:textColor="#FFF"
-        android:layout_alignParentRight="true"
+android:textSize="@dimen/_11ssp"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/relative_many2"
         android:layout_margin="@dimen/_5sdp"
         />
