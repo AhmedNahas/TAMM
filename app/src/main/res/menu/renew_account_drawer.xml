@@ -6,6 +6,8 @@
 
     <group android:checkableBehavior="single">
 
+
+
         <item
             android:id="@+id/nav_offer"
             android:icon="@drawable/offer"

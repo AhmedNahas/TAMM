@@ -49,7 +49,7 @@
     <RelativeLayout
         android:id="@+id/relative_setting"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_130sdp"
+        android:layout_height="@dimen/_110sdp"
         android:layout_below="@+id/toolbar_back_setting"
         android:layout_centerInParent="true"
         >
@@ -70,8 +70,8 @@
             android:textColor="@color/app_color"
             android:textSize="@dimen/_20ssp"
             android:fontFamily="sans-serif-light"
-            android:layout_marginTop="@dimen/_100sdp"
-            android:layout_marginStart="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_80sdp"
+            android:layout_marginStart="@dimen/_70sdp"
 
 
             />
@@ -106,18 +106,18 @@
     <RelativeLayout
         android:id="@+id/relative_language"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_40sdp"
+        android:layout_height="@dimen/_25sdp"
         android:layout_below="@+id/tv_language"
         android:layout_marginStart="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_5sdp"
         >
 
         <Button
-            android:id="@+id/tv_english"
+            android:id="@+id/btn_english"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:text="ENGLISH"
-            android:textSize="@dimen/_20sdp"
+            android:textSize="@dimen/_15sdp"
             android:textColor="@color/app_color"
             android:fontFamily="sans-serif-light"
             android:background="@drawable/shapecontact"
@@ -136,14 +136,15 @@
             <!--/>-->
 
         <Button
+            android:id="@+id/btn_arabic"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:text="ARABIC"
-            android:textSize="@dimen/_20sdp"
+            android:textSize="@dimen/_15sdp"
             android:textColor="@color/app_color"
             android:fontFamily="sans-serif-light"
             android:background="@drawable/shapecontact"
-            android:layout_toRightOf="@+id/tv_english"
+            android:layout_toRightOf="@+id/btn_english"
 
             />
 
@@ -168,18 +169,18 @@
     <RelativeLayout
         android:id="@+id/relative_notification"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_40sdp"
+        android:layout_height="@dimen/_25sdp"
         android:layout_below="@+id/tv_notification"
         android:layout_marginStart="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_5sdp"
         >
 
         <Button
-            android:id="@+id/tv_ON"
+            android:id="@+id/btn_ON"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:text="ON"
-            android:textSize="@dimen/_20sdp"
+            android:textSize="@dimen/_15sdp"
             android:textColor="@color/app_color"
             android:fontFamily="sans-serif-light"
             android:background="@drawable/shapecontact"
@@ -198,14 +199,15 @@
         <!--/>-->
 
         <Button
+            android:id="@+id/btn_off"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:text="OFF"
-            android:textSize="@dimen/_20sdp"
+            android:textSize="@dimen/_15sdp"
             android:textColor="@color/app_color"
             android:fontFamily="sans-serif-light"
             android:background="@drawable/shapecontact"
-            android:layout_toRightOf="@+id/tv_ON"
+            android:layout_toRightOf="@+id/btn_ON"
 
             />
 
@@ -227,6 +229,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/relative_pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_change_pass"
@@ -239,8 +242,8 @@
             android:layout_width="@dimen/_220sdp"
             android:layout_height="@dimen/_30sdp"
             android:fontFamily="sans-serif-light"
-            android:text="Old Password"
-            android:textColor="@color/white"
+            android:hint="Old Password"
+            android:textColorHint="@color/white"
             android:layout_marginTop="@dimen/_10sdp"
             android:textSize="@dimen/_15sdp"
             android:background="@drawable/shapecontact"
@@ -253,8 +256,8 @@
             android:layout_width="@dimen/_220sdp"
             android:layout_height="@dimen/_30sdp"
             android:fontFamily="sans-serif-light"
-            android:text="New Password"
-            android:textColor="@color/white"
+            android:hint="New Password"
+            android:textColorHint="@color/white"
             android:layout_marginTop="@dimen/_10sdp"
             android:textSize="@dimen/_15sdp"
             android:background="@drawable/shapecontact"
@@ -284,12 +287,12 @@
     <Button
         android:layout_width="@dimen/_150sdp"
         android:layout_height="wrap_content"
-        android:text="CONFIRM"
-        android:textColor="@color/white"
+        android:hint="CONFIRM"
+        android:textColorHint="@color/white"
         android:background="@drawable/border"
         android:layout_centerInParent="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_15sdp"
+       android:layout_below="@+id/relative_pass"
+        android:layout_marginTop="@dimen/_15sdp"
 
         />
 

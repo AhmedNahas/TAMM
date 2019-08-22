@@ -67,6 +67,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.StringTokenizer;
+import java.util.TimeZone;
 
 import FlightApi.BookResponse;
 import butterknife.BindView;
@@ -1295,6 +1296,7 @@ public class FindHotels extends AppCompatActivity {
                 //  startDate.setText(mstartTime);
 
                 long time = time1.getTime();
+                long timedev = formatTimeForEvent(time);
 
 
                 String dayOfTheWeek = (String) DateFormat.format("EEEE", time); // Thursday
@@ -1431,7 +1433,7 @@ public class FindHotels extends AppCompatActivity {
 
         //    simpleProgressBar.setVisibility(View.VISIBLE);
 
-        if (isInternetAvailable()){
+                   if (isInternetAvailable()){
 
             if (chicDateStart && chicDateEnd && counttryCheked) {
 
@@ -1710,7 +1712,10 @@ hideProgressingView();
         viewGroup.removeView(progressView);
         isProgressShowing = false;
     }
-
+    public static long formatTimeForEvent(long pacificTime) {
+        return (pacificTime + TimeZone.getTimeZone("America/Los_Angeles").getOffset(pacificTime))
+                - TimeZone.getDefault().getOffset(pacificTime);
+    }
 
 }
 
