@@ -383,7 +383,8 @@ public class  RenewAccount extends AppCompatActivity
             startActivity(new Intent(RenewAccount.this, TermsActivity.class));
 
         } else if (id == R.id.nav_logout) {
-                finish();
+
+            finish();
 
         }
 
