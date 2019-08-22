@@ -696,7 +696,6 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 //10
                 searchFlights[0].setFlightCabinClass(flightCabinClass);
 
-
                 //11
                 List<SearchFlights.Segment> segments = new ArrayList<>();
                 SearchFlights.Segment segment = new SearchFlights.Segment();
@@ -711,6 +710,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 //11.3    // "2019-09-20 T00:00:00" 2019-09-20 T18:56:17
                 segment.setPreferredDepartureTime(daDepartureTimeyO);
                 //  11.4
+
+
 
                 segment.setPreferredArrivalTime(mReturnTime);
                 // add segments
@@ -743,7 +744,11 @@ public class ProceedBeyBeyOriginal extends Fragment {
                                 String ticketAdvisory = results1.get(j).getTicketAdvisory();
                                 String validatingAirline = results1.get(j).getValidatingAirline();
 
+                                long journeyType = results1.get(j).getJourneyType();
                                 double totalFare = results1.get(j).getFare().getTotalFare();
+                                SearchFlightsResponse.Fare fare = results1.get(j).getFare();
+
+
 
                                 String fareType = results1.get(j).getFare().getAgentPreferredCurrency();
 
@@ -765,6 +770,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
                                     String countryNameOrigin = segments2.get(t).getOrigin().getCountryName();
 
 
+
+
                                     String airportCode_Origin = segments2.get(t).getOrigin().getAirportCode();
 
                                     String airportCode_Destination = segments2.get(t).getDestination().getAirportCode();
@@ -773,6 +780,9 @@ public class ProceedBeyBeyOriginal extends Fragment {
                                     String cabinBaggage = (String) segments2.get(t).getCabinBaggage();
 
                                     String duration = segments2.get(t).getDuration();
+
+
+
 
                                     String flightNumber = segments2.get(t).getFlightNumber();
                                     ListflightNumber.add(flightNumber);
@@ -816,6 +826,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
                             intent.putExtra("ListairportCode_Origin", ListairportCode_Origin);
 
                             intent.putExtra("ListflightNumber", ListflightNumber);
+
+                            SharedPreferencesManger.SaveData(getContext(),"flightCabinClass",flightCabinClass);
 
 
 

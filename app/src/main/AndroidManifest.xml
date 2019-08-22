@@ -21,16 +21,16 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".activities.AssistantActivity"></activity>
+        <activity android:name=".activities.SettingActivity"></activity>
+        <activity android:name=".activities.AboutUs" />
+        <activity android:name=".activities.ContactUs" />
+        <activity android:name=".activities.AssistantActivity" />
         <activity android:name=".activities.MemberCongratsActivity" />
         <activity android:name=".activities.FreeCongratsActivity" />
-        <activity android:name=".activities.TermsActivity"></activity>
+        <activity android:name=".activities.TermsActivity" />
         <activity android:name=".activities.KnetActivity">
 
             <!-- android:theme="@android:style/Theme.NoTitleBar" -->
-
-
-
 
         </activity>
         <activity
@@ -49,13 +49,20 @@
             android:name=".activities.Proceedbeybey"
             android:screenOrientation="portrait">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity
             android:name=".activities.PassengerDeparture"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+
+
+        </activity>
+
 
         <activity
             android:name=".activities.Passenger_inform"
@@ -77,11 +84,6 @@
             android:screenOrientation="portrait">
 
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.FlightTamm"

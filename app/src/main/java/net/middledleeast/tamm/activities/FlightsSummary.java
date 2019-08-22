@@ -117,6 +117,9 @@ public class FlightsSummary extends AppCompatActivity {
     RelativeLayout relativeAll;
     @BindView(R.id.iv_man_hand)
     ImageView ivManHand;
+    @BindView(R.id.tv_cambainBages)
+    TextView tvCambainBages;
+    private long flightCabinClass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,10 +143,16 @@ public class FlightsSummary extends AppCompatActivity {
         String a_airlin_name = SharedPreferencesManger.LoadStringData(this, "A_airlin_name");
         String a_duration = SharedPreferencesManger.LoadStringData(this, "A_duration");
 
+        tvTime.setText(a_duration);
         //
         String a_cabinBaggage = SharedPreferencesManger.LoadStringData(this, "A_CabinBaggage");
+
+        tvCambainBages.setText(a_cabinBaggage);
         String a_includedBaggage = SharedPreferencesManger.LoadStringData(this, "A_IncludedBaggage");
 
+        tvKg.setText(a_includedBaggage);
+
+        // the all time without split  15-09-2019T10-20-55
         String a_deTime = SharedPreferencesManger.LoadStringData(this, "A_deTime");
         String a_arrTime = SharedPreferencesManger.LoadStringData(this, "A_arrTime");
 
@@ -155,39 +164,75 @@ public class FlightsSummary extends AppCompatActivity {
 
 
         String flightNumber = SharedPreferencesManger.LoadStringData(this, "flightNumber");
+
         String a_startDateS = SharedPreferencesManger.LoadStringData(this, "A_startDateS");
 
 
         String depuruerTime = SharedPreferencesManger.LoadStringData(this, "depuruerTime");
         String arriveTime = SharedPreferencesManger.LoadStringData(this, "arriveTime");
-        tvDateDeparture.setText(depuruerTime);
-        tvArrival.setText(arriveTime);
+        tvDeparture.setText("Departure: " + depuruerTime);
+        tvArrival.setText("Arrival :" + arriveTime);
 
 
-        dateArrival.setText(a_startDateS);
-        tvDateDeparture.setText(a_startDateS);
+        dateArrival.setText("Date: " + a_startDateS);
+        tvDateDeparture.setText("Date: " + a_startDateS);
 
 
-        if (a_airlin_name ==null){
+        if (a_airlin_name == null) {
             tvAirline.setText("Not Available right now");
 
 
-        }else {
+        } else {
 
             tvAirline.setText(a_airlin_name);
         }
 
 
-
-
-        tvFlight.setText("Flight Nb :"+flightNumber);
+        tvFlight.setText("Flight Nb :" + flightNumber);
         // name
-        tvCcountry.setText(a_origin);
-        tvCountry.setText(a_destination);
+        tvCountry.setText(a_origin);
+        tvCcountry.setText(a_destination);
 
         // code
         tvBey.setText(origin);
         tvDxb.setText(distnation);
+
+
+
+        flightCabinClass =  SharedPreferencesManger.LoadLongData(this,"flightCabinClass");
+        switch ((int) flightCabinClass){
+
+            case 1 :
+//                All
+
+                tvCabinClass.setText("Cabin Class : All");
+                break;
+            case 2 :
+                tvCabinClass.setText("Cabin Class : Economy");
+//
+                break;
+            case 3 :
+                break;
+            case 4 :
+
+                tvCabinClass.setText("Cabin Class : Business");
+
+//
+                break;
+
+            case 5 :
+                tvCabinClass.setText("Cabin Class : Royal");
+
+//
+                break;
+            case 6 :
+                tvCabinClass.setText("Cabin Class : First");
+
+//
+
+                break;
+        }
+
 
 
     }

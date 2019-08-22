@@ -138,7 +138,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
             public void onClick(View view) {
 
 
-                Intent intent = new Intent(context, FlightsSummary.class);
+                Intent intent = new Intent(context, Passenger_inform.class);
 
                 SharedPreferencesManger.SaveData(context, "Distnation",Distnation);
                 SharedPreferencesManger.SaveData(context, "Origin", Origin);
