@@ -103,6 +103,12 @@ public class ProceedBeyBeyOriginal extends Fragment {
     private String departureTimeConfirmed;
 
     ArrayList<String> ListnameLine = new ArrayList<>();
+    ArrayList<String> ListairportCode_Origin = new ArrayList<>();
+
+    ArrayList<String> ListairportCode_Distnation = new ArrayList<>();
+
+
+
     ArrayList<String> Listduration = new ArrayList<>();
     ArrayList<String> ListArriveTime = new ArrayList<>();
     ArrayList<String> ListdeparuerTime = new ArrayList<>();
@@ -112,6 +118,9 @@ public class ProceedBeyBeyOriginal extends Fragment {
     ArrayList<String> listCabinBaggage = new ArrayList<>();
     ArrayList<Double> listTotalFare = new ArrayList<>();
     ArrayList<String> listTypeFare = new ArrayList<>();
+    ArrayList<String> ListflightNumber = new ArrayList<>();
+
+
     private InputStream inputStream;
     private long JourneyType = 1;
     private String mReturnTime;
@@ -627,6 +636,9 @@ public class ProceedBeyBeyOriginal extends Fragment {
         listCabinBaggage.clear();
         listIncludedBaggage.clear();
         listTotalFare.clear();
+        ListairportCode_Origin.clear();
+        ListairportCode_Distnation.clear();
+        ListflightNumber.clear();
 
         Gson gson = new GsonBuilder()
                 .create();
@@ -752,13 +764,21 @@ public class ProceedBeyBeyOriginal extends Fragment {
                                     String countryNameDestination = segments2.get(t).getDestination().getCountryName();
                                     String countryNameOrigin = segments2.get(t).getOrigin().getCountryName();
 
+
+                                    String airportCode_Origin = segments2.get(t).getOrigin().getAirportCode();
+
+                                    String airportCode_Destination = segments2.get(t).getDestination().getAirportCode();
                                     String includedBaggage = segments2.get(t).getIncludedBaggage();
 
                                     String cabinBaggage = (String) segments2.get(t).getCabinBaggage();
 
                                     String duration = segments2.get(t).getDuration();
 
+                                    String flightNumber = segments2.get(t).getFlightNumber();
+                                    ListflightNumber.add(flightNumber);
 
+                                    ListairportCode_Distnation.add(airportCode_Destination);
+                                    ListairportCode_Origin.add(airportCode_Origin);
                                     ListnameLine.add(airlineName);
                                     Listduration.add(duration);
                                     ListArriveTime.add(arrivalTime);
@@ -790,6 +810,13 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
                             intent.putExtra("listTotalFare", listTotalFare);
                             intent.putExtra("listTypeFare", listTypeFare);
+
+
+                            intent.putExtra("ListairportCode_Distnation", ListairportCode_Distnation);
+                            intent.putExtra("ListairportCode_Origin", ListairportCode_Origin);
+
+                            intent.putExtra("ListflightNumber", ListflightNumber);
+
 
 
                             getContext().startActivity(intent);
@@ -873,7 +900,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
                  daDepartureTimeyO = (String) DateFormat.format(myFormat, time); // 019-09-20 T00:00:00
-                SharedPreferencesManger.SaveData(getActivity(), "startDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "till ");
+                SharedPreferencesManger.SaveData(getActivity(), "A_startDateS", dayOfTheWeek + " " + day + " " + monthString );
 
 // 2019-09-20 T00:00:00
                 departure.setText(dayOfTheWeek + "," + day + " " + monthString);
