@@ -89,7 +89,8 @@
             android:id="@+id/sp_convert_to"
             android:backgroundTint="@color/app_color"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_10sdp">
 
         </Spinner>
 
@@ -254,11 +255,11 @@ android:layout_marginBottom="@dimen/_25sdp"
     </RelativeLayout>
 
 
-<FrameLayout
-    android:id="@+id/payment_terms_container"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerInParent="true"></FrameLayout>
+    <FrameLayout
+        android:id="@+id/payment_terms_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
 
 
 

@@ -88,6 +88,13 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
     @Override
     public void onBindViewHolder(@NonNull AdapterHotelInfo.SingleView holder, int position) {
 
+        if (position == 0){
+            holder.recommended.setVisibility(View.VISIBLE);
+        }else{
+            holder.recommended.setVisibility(View.GONE);
+
+        }
+
         mHotelCode = listCodeHotels.get(position);
         name = listnameHotel.get(position);
         photos = listPhotoHotel.get(position);
@@ -95,6 +102,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
 
         holder.name.setText(name);
         holder.rat.setText(rat+"");
+
 
         Collections.sort(listrat);
         Collections.reverse(listrat);
@@ -117,6 +125,9 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
                 intent.putExtra("checkInDate", mstartTime);
                 intent.putExtra("checkOutDate", mendTime);
                 intent.putExtra("countryName", countryName);
+//                SharedPreferencesManger.SaveData(activity,"cityName",cityName);
+
+
                 intent.putExtra("cityName", cityName);
                 intent.putExtra("cityId", cityId);
                 intent.putExtra("noOfRooms", noOfRooms);
@@ -145,7 +156,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
 
     public class SingleView extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView name, rat ,    hotelPrice ;
+        TextView name, rat ,    hotelPrice,recommended ;
         ImageView photoHotel ;
         onHotelListener onHotelListener;
         RelativeLayout parentLayout;
@@ -157,6 +168,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
             photoHotel = itemView.findViewById(R.id.hotel_image);
             parentLayout = itemView.findViewById(R.id.linear);
             hotelPrice = itemView.findViewById(R.id.hotel_pric);
+            recommended = itemView.findViewById(R.id.recommended);
             this.onHotelListener = onHotelListener;
             itemView.setOnClickListener(this);
         }

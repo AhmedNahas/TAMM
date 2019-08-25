@@ -302,7 +302,7 @@ public class PaymentActivity extends AppCompatActivity {
         List<String> listTypeMony = new ArrayList<>();
 
 
-        listTypeMony.add("CONVERT TO");
+        listTypeMony.add("U.S.D");
         listTypeMony.add("EURO");
         listTypeMony.add("EG POUND");
         listTypeMony.add("KD");
@@ -357,6 +357,8 @@ public class PaymentActivity extends AppCompatActivity {
 
 
                             tvKd.setText("USD " + roomPrice);
+                            currency = "USD";
+
                         }
 
                     }
@@ -396,6 +398,8 @@ public class PaymentActivity extends AppCompatActivity {
 
 
                             tvKd.setText("USD " + msgbody);
+                            currency = "USD";
+
                         }
 
 
@@ -520,7 +524,7 @@ public class PaymentActivity extends AppCompatActivity {
             Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
 
 
-            if (mId == 2) {
+            if (mId == BOOKING_ROOM) {
                 startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
             } else if (mId==1){
 
@@ -536,7 +540,10 @@ public class PaymentActivity extends AppCompatActivity {
                 startActivity(new Intent(PaymentActivity.this,FlightDetails.class));
             }
 
-        }
+        }else {
+
+            Toast.makeText(this, "wtf", Toast.LENGTH_SHORT).show();
+                    }
     }
 
     private void sendDataToServer() {

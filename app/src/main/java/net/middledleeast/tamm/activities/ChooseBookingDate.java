@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,18 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
-import com.Tamm.Hotels.wcf.ArrayOfSuppInfo;
 import com.Tamm.Hotels.wcf.AuthenticationData;
-import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.BookingOptions;
-import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.HotelRoomAvailabilityResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
-import com.Tamm.Hotels.wcf.Rate;
-import com.Tamm.Hotels.wcf.RequestedRooms;
-import com.Tamm.Hotels.wcf.SuppInfo;
-import com.Tamm.Hotels.wcf.Supplement;
 import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
@@ -37,7 +28,6 @@ import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.StringTokenizer;
 
 public class ChooseBookingDate extends AppCompatActivity {
 
@@ -94,6 +84,10 @@ public class ChooseBookingDate extends AppCompatActivity {
 
 
         btn_search_change = findViewById(R.id.btn_search_change);
+
+
+
+
 //
 //        String child_count = SharedPreferencesManger.LoadStringData(this, "child_count");
 //
@@ -109,6 +103,7 @@ public class ChooseBookingDate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
                 backIntent();
 
             }
@@ -116,6 +111,8 @@ public class ChooseBookingDate extends AppCompatActivity {
 
 
         btn_search_change.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
 
@@ -165,12 +162,18 @@ public class ChooseBookingDate extends AppCompatActivity {
         roomRecyclerView.setLayoutManager(manager);
         auth();
         hotel_name_s = SharedPreferencesManger.LoadStringData(this,"hotel_name_s");
+
         mstartTime = getIntent().getStringExtra("checkInDate");
         mendTime = getIntent().getStringExtra("checkOutDate");
         sessionId = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "session_id");
         mHotelCode = SharedPreferencesManger.LoadStringData(ChooseBookingDate.this, "mHotel_code");
+
         countryName = SharedPreferencesManger.LoadStringData(this,"country_name_s");
+
+
         cityName = getIntent().getStringExtra("cityName");
+
+
         cityId = getIntent().getStringExtra("cityId");
         noOfRooms = getIntent().getIntExtra("noOfRooms", 1);
         //roomGuests =getIntent().getStringArrayListExtra("roomGuest");
@@ -317,6 +320,8 @@ public class ChooseBookingDate extends AppCompatActivity {
     }
 
     private void backIntent() {
+
+
 
         Intent intent = new Intent(ChooseBookingDate.this, FindHotels.class);
         startActivity(intent);
