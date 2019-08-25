@@ -1255,7 +1255,6 @@ public class FindHotels extends AppCompatActivity {
 //        SharedPreferencesManger.SaveData(this, "noOfRooms", noRomes);
 //        intent.putExtra("resultIndex", arrayOfResultIndex);
 //
-//        SharedPreferencesManger.SaveData(FindHotels.this, "session_id", sessionId);
 //
 //        // intent.putExtra("roomGuest",roomguests);
 //        startActivity(intent);

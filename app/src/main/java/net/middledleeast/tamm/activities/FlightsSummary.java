@@ -1,20 +1,47 @@
 package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import FlightApi.BookResponse;
+import FlightApi.FlightApiService;
+import FlightApi.FlightAuthentication;
+import FlightApi.FlightBook;
+import FlightApi.FlightConstants;
+import FlightApi.SearchFlights;
+import FlightApi.SearchFlightsResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static net.middledleeast.tamm.activities.FlightSearch.BASE_URL;
 
 public class FlightsSummary extends AppCompatActivity {
 
@@ -120,19 +147,25 @@ public class FlightsSummary extends AppCompatActivity {
     @BindView(R.id.tv_cambainBages)
     TextView tvCambainBages;
     private long flightCabinClass;
+    private Retrofit retrofit;
+    private String password;
+    public static final String BASE_URL = "https://xmloutapi.tboair.com/api/v1/";
+    private String a_deTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flights_summary);
         ButterKnife.bind(this);
+        password = "App02072019";
 
         proccedBtn = findViewById(R.id.procced_btn);
 
         proccedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FlightsSummary.this, PassengerDeparture.class));
+
+                BookingFlight();
             }
         });
 
@@ -153,7 +186,7 @@ public class FlightsSummary extends AppCompatActivity {
         tvKg.setText(a_includedBaggage);
 
         // the all time without split  15-09-2019T10-20-55
-        String a_deTime = SharedPreferencesManger.LoadStringData(this, "A_deTime");
+         a_deTime = SharedPreferencesManger.LoadStringData(this, "A_deTime");
         String a_arrTime = SharedPreferencesManger.LoadStringData(this, "A_arrTime");
 
         String a_destination = SharedPreferencesManger.LoadStringData(this, "A_destination");
@@ -198,34 +231,33 @@ public class FlightsSummary extends AppCompatActivity {
         tvDxb.setText(distnation);
 
 
+        flightCabinClass = SharedPreferencesManger.LoadLongData(this, "flightCabinClass");
+        switch ((int) flightCabinClass) {
 
-        flightCabinClass =  SharedPreferencesManger.LoadLongData(this,"flightCabinClass");
-        switch ((int) flightCabinClass){
-
-            case 1 :
+            case 1:
 //                All
 
                 tvCabinClass.setText("Cabin Class : All");
                 break;
-            case 2 :
+            case 2:
                 tvCabinClass.setText("Cabin Class : Economy");
 //
                 break;
-            case 3 :
+            case 3:
                 break;
-            case 4 :
+            case 4:
 
                 tvCabinClass.setText("Cabin Class : Business");
 
 //
                 break;
 
-            case 5 :
+            case 5:
                 tvCabinClass.setText("Cabin Class : Royal");
 
 //
                 break;
-            case 6 :
+            case 6:
                 tvCabinClass.setText("Cabin Class : First");
 
 //
@@ -234,6 +266,152 @@ public class FlightsSummary extends AppCompatActivity {
         }
 
 
+    }
+
+    private void BookingFlight() {
+
+        Gson gson = new GsonBuilder()
+                .create();
+
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+
+        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).connectTimeout(100, TimeUnit.SECONDS)
+                .readTimeout(100, TimeUnit.SECONDS).build();
+
+        connectAndGetApiData(gson, client);
+        FlightApiService flightApiService = retrofit.create(FlightApiService.class);
+
+        final FlightAuthentication[] flightAuthentication = {new FlightAuthentication()};
+        flightAuthentication[0].setUserName(FlightConstants.API_USER_NAME);
+        flightAuthentication[0].setPassword(password);
+        flightAuthentication[0].setBookingMode("API");
+        flightAuthentication[0].setIPAddress("192.168.4.238");
+
+        Call<FlightAuthentication> call = flightApiService.getAuthentication("application/json", flightAuthentication[0]);
+        call.enqueue(new Callback<FlightAuthentication>() {
+            @Override
+            public void onResponse(Call<FlightAuthentication> call, Response<FlightAuthentication> response) {
+                flightAuthentication[0] = response.body();
+
+
+                boolean successful = response.isSuccessful();
+
+                String tokenId = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "tokenId");
+                String trackingId = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "trackingId");
+
+
+                String resultId1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "resultId1");
+                String PointOfSale = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "PointOfSale");
+
+
+                final FlightBook[] bookingFlights = {new FlightBook()};
+
+                bookingFlights[0].setIPAddress("192.168.4.238");
+
+                //Origin Country code
+                bookingFlights[0].setPointOfSale(PointOfSale);
+
+                bookingFlights[0].setTokenId(tokenId);
+                bookingFlights[0].setTrackingId(trackingId);
+
+                bookingFlights[0].setResultId((resultId1));
+
+                bookingFlights[0].setUserData("ahmed");
+
+
+
+
+
+                FlightBook.Itinerary itinerary = new FlightBook.Itinerary();
+
+                FlightBook.City city = new FlightBook.City();
+                FlightBook.Nationality nationality = new FlightBook.Nationality();
+                nationality.setCountryCode("EG");
+                nationality.setCountryName("CAI");
+
+                FlightBook.Country country = new FlightBook.Country();
+                country.setCountryCode("EG");
+                country.setCountryName("CAI");
+
+                city.setCityName("Ciro");
+                List<FlightBook.Passenger> passengerList = new ArrayList<>();
+
+
+
+                FlightBook.Fare fare = new FlightBook.Fare();
+
+                fare.setBaseFare(1230);
+                fare.setTax(30);
+                fare.setTotalFare(1260);
+                fare.setServiceFee(500);
+
+
+
+                FlightBook.Passenger passenger = new FlightBook.Passenger();
+                passenger.setNationality(nationality);
+                passenger.setFirstName("ahmed");
+                passenger.setTitle("Adult");
+                passenger.setLastName("ahmed");
+                passenger.setGender(1);
+                passenger.setCity(city);
+                passenger.setCountry(country);
+               // passenger.setMobile1("00112545645");
+
+passenger.setAddressLine1("");
+                passengerList.add(passenger);
+                itinerary.setPassenger(passengerList);
+
+
+                passenger.setFare(fare);
+                itinerary.setTravelDate(a_deTime);
+
+               bookingFlights[0].setItinerary(itinerary);
+
+
+
+                Call<BookResponse> flightBook = flightApiService.getFlightBook("application/json", bookingFlights[0]);
+                flightBook.enqueue(new Callback<BookResponse>() {
+                    @Override
+                    public void onResponse(Call<BookResponse> call, Response<BookResponse> response) {
+
+
+                        String ssrMessage = response.body().getTokenId();
+                        Toast.makeText(FlightsSummary.this, ""+ssrMessage, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<BookResponse> call, Throwable t) {
+
+                        Toast.makeText(FlightsSummary.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+//
+
+            }
+
+            @Override
+            public void onFailure(Call<FlightAuthentication> call, Throwable t) {
+
+
+                Toast.makeText(FlightsSummary.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
     }
+
+
+    public Retrofit connectAndGetApiData(Gson gson, OkHttpClient client) {
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .client(client)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .build();
+        }
+        return retrofit;
+    }
+
 }

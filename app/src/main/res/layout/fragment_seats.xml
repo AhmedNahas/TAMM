@@ -144,6 +144,7 @@
 
 
     <RelativeLayout
+        android:layout_marginStart="@dimen/_5sdp"
         android:id="@+id/relative_alpha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -198,7 +199,7 @@
             android:src="@drawable/chairtwo" />
 
         <ImageView
-            android:id="@+id/iv_2"
+            android:id="@+id/iv_B1"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_below="@+id/iv_1"
@@ -207,17 +208,17 @@
             android:src="@drawable/chairtwo" />
 
         <ImageView
-            android:id="@+id/iv_3"
+            android:id="@+id/iv_C1"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
-            android:layout_below="@+id/iv_2"
+            android:layout_below="@+id/iv_B1"
             android:layout_marginLeft="@dimen/_22sdp"
             android:layout_marginTop="@dimen/_15sdp"
             android:src="@drawable/chairtwo" />
 
 
         <ImageView
-            android:id="@+id/iv_4"
+            android:id="@+id/iv_2"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_marginLeft="@dimen/_13sdp"
@@ -225,23 +226,23 @@
             android:src="@drawable/chairtwo" />
 
         <ImageView
-            android:id="@+id/iv_5"
+            android:id="@+id/iv_B2"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
-            android:layout_below="@+id/iv_4"
+            android:layout_below="@+id/iv_2"
             android:layout_marginLeft="@dimen/_13sdp"
             android:layout_marginTop="@dimen/_15sdp"
-            android:layout_toRightOf="@+id/iv_2"
+            android:layout_toRightOf="@+id/iv_B1"
             android:src="@drawable/chairtwo" />
 
         <ImageView
-            android:id="@+id/iv_6"
+            android:id="@+id/iv_C2"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
-            android:layout_below="@+id/iv_5"
+            android:layout_below="@+id/iv_B2"
             android:layout_marginLeft="@dimen/_13sdp"
             android:layout_marginTop="@dimen/_15sdp"
-            android:layout_toRightOf="@+id/iv_3"
+            android:layout_toRightOf="@+id/iv_C1"
             android:src="@drawable/chairtwo" />
 
     </RelativeLayout>
@@ -256,57 +257,57 @@
         android:layout_toRightOf="@id/relative_chair_img1">
 
         <ImageView
-            android:id="@+id/iv_7"
+            android:id="@+id/iv_3"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_marginLeft="@dimen/_22sdp"
             android:src="@drawable/chairtwo" />
 
         <ImageView
-            android:id="@+id/iv_8"
+            android:id="@+id/iv_B3"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
-            android:layout_below="@+id/iv_7"
+            android:layout_below="@+id/iv_3"
             android:layout_marginLeft="@dimen/_22sdp"
             android:layout_marginTop="@dimen/_15sdp"
             android:src="@drawable/chairtwo" />
 
         <ImageView
-            android:id="@+id/iv_9"
+            android:id="@+id/iv_C3"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
-            android:layout_below="@+id/iv_8"
+            android:layout_below="@+id/iv_B3"
             android:layout_marginLeft="@dimen/_22sdp"
             android:layout_marginTop="@dimen/_15sdp"
             android:src="@drawable/chairtwo" />
 
 
         <ImageView
-            android:id="@+id/iv_10"
+            android:id="@+id/iv_4"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_marginLeft="@dimen/_13sdp"
-            android:layout_toRightOf="@+id/iv_9"
+            android:layout_toRightOf="@+id/iv_C3"
             android:src="@drawable/chairtwo" />
 
         <ImageView
-            android:id="@+id/iv_11"
+            android:id="@+id/iv_B4"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
-            android:layout_below="@+id/iv_10"
+            android:layout_below="@+id/iv_4"
             android:layout_marginLeft="@dimen/_13sdp"
             android:layout_marginTop="@dimen/_15sdp"
-            android:layout_toRightOf="@+id/iv_8"
+            android:layout_toRightOf="@+id/iv_B3"
             android:src="@drawable/chairtwo" />
 
         <ImageView
-            android:id="@+id/iv_12"
+            android:id="@+id/iv_C4"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
-            android:layout_below="@+id/iv_11"
+            android:layout_below="@+id/iv_B4"
             android:layout_marginLeft="@dimen/_13sdp"
             android:layout_marginTop="@dimen/_15sdp"
-            android:layout_toRightOf="@+id/iv_9"
+            android:layout_toRightOf="@+id/iv_C3"
             android:src="@drawable/chairtwo" />
     </RelativeLayout>
 
@@ -319,57 +320,57 @@
         android:layout_toRightOf="@+id/relative_chair_img2">
 
         <ImageView
-            android:id="@+id/iv_13"
+            android:id="@+id/iv_5"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_marginLeft="@dimen/_22sdp"
             android:src="@drawable/chairtwo" />
 
         <ImageView
-            android:id="@+id/iv_14"
+            android:id="@+id/iv_B5"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
-            android:layout_below="@+id/iv_13"
+            android:layout_below="@+id/iv_5"
             android:layout_marginLeft="@dimen/_22sdp"
             android:layout_marginTop="@dimen/_15sdp"
             android:src="@drawable/chairtwo" />
 
         <ImageView
-            android:id="@+id/iv_15"
+            android:id="@+id/iv_C5"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
-            android:layout_below="@+id/iv_14"
+            android:layout_below="@+id/iv_B5"
             android:layout_marginLeft="@dimen/_22sdp"
             android:layout_marginTop="@dimen/_15sdp"
             android:src="@drawable/chairtwo" />
 
 
         <ImageView
-            android:id="@+id/iv_16"
+            android:id="@+id/iv_6"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
             android:layout_marginLeft="@dimen/_13sdp"
-            android:layout_toRightOf="@+id/iv_13"
+            android:layout_toRightOf="@+id/iv_5"
             android:src="@drawable/chairtwo" />
 
         <ImageView
-            android:id="@+id/iv_17"
+            android:id="@+id/iv_B6"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
-            android:layout_below="@+id/iv_16"
+            android:layout_below="@+id/iv_6"
             android:layout_marginLeft="@dimen/_13sdp"
             android:layout_marginTop="@dimen/_15sdp"
-            android:layout_toRightOf="@+id/iv_14"
+            android:layout_toRightOf="@+id/iv_B5"
             android:src="@drawable/chairtwo" />
 
         <ImageView
-            android:id="@+id/iv_18"
+            android:id="@+id/iv_C6"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_35sdp"
-            android:layout_below="@+id/iv_17"
+            android:layout_below="@+id/iv_B6"
             android:layout_marginLeft="@dimen/_13sdp"
             android:layout_marginTop="@dimen/_15sdp"
-            android:layout_toRightOf="@+id/iv_15"
+            android:layout_toRightOf="@+id/iv_C5"
             android:src="@drawable/chairtwo" />
 
     </RelativeLayout>

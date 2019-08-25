@@ -33,9 +33,8 @@ private RecyclerView recyclerView;
     private ArrayList<String> ListairportCode_Origin = new ArrayList<>();
     private ArrayList<String> ListairportCode_Distnation = new ArrayList<>();
     private ArrayList<String> ListflightNumber = new ArrayList<>();
-
-
-
+    private ArrayList<String> ListMealType = new ArrayList<>();
+    private ArrayList<Long> ListnoOfSeatAvailable = new ArrayList<>();
 
 
     @Override
@@ -70,13 +69,15 @@ private RecyclerView recyclerView;
         ListairportCode_Distnation = (ArrayList<String>) getIntent().getSerializableExtra("ListairportCode_Distnation");
 
         ListairportCode_Origin = (ArrayList<String>) getIntent().getSerializableExtra("ListairportCode_Origin");
+       ListMealType = (ArrayList<String>) getIntent().getSerializableExtra("ListMealType");
 
+        ListnoOfSeatAvailable = (ArrayList<Long>) getIntent().getSerializableExtra("ListnoOfSeatAvailable");
 
 
 
         ChooseFlightAdapter chooseFlightAdapter = new ChooseFlightAdapter(this,airlineNameList ,Listduration ,ListArriveTime,ListdeparuerTime
                 , countryNameDestinationList , countryNameOriginList,listIncludedBaggage,listCabinBaggage , listTotalFare, listTypeFare ,ListairportCode_Distnation , ListairportCode_Origin
-        , ListflightNumber);
+        , ListflightNumber , ListMealType , ListnoOfSeatAvailable);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(chooseFlightAdapter);
         chooseFlightAdapter.notifyDataSetChanged();

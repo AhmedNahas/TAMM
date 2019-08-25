@@ -121,7 +121,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
                 intent.putExtra("cityId", cityId);
                 intent.putExtra("noOfRooms", noOfRooms);
                 intent.putExtra("roomGuest", roomGuests);
-                intent.putExtra("sessionId", sessionId);
+               // intent.putExtra("sessionId", sessionId);
                 intent.putExtra("resultIndex", resultINdex.get(position));
 
                 context.startActivity(intent);

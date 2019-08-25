@@ -65,7 +65,7 @@ public class HotelDetails extends AppCompatActivity {
     private adapterPhotoHotels adapter;
     private String mHotelCode;
     private BasicHttpBinding_IHotelService1 service;
-    private String sessionId;
+   // private String sessionId;
     private List<String> listOfPhoto = new ArrayList<>();
     private String address;
     private String hotelName;
@@ -144,6 +144,9 @@ public class HotelDetails extends AppCompatActivity {
 
         auth();
         getdataIntent();
+
+
+        String sessionId = SharedPreferencesManger.LoadStringData(this, "session_id");
 
         try {
             service.enableLogging = true;
@@ -254,7 +257,7 @@ public class HotelDetails extends AppCompatActivity {
                 Intent intent = new Intent(HotelDetails.this, ChooseBookingDate.class);
                 intent.putExtra("checkInDate", mstartTime);
                 intent.putExtra("checkOutDate", mendTime);
-                intent.putExtra("sessionId", sessionId);
+              //  intent.putExtra("sessionId", sessionId);
                 intent.putExtra("hotelCode", mHotelCode);
                 intent.putExtra("countryName", countryName);
                 intent.putExtra("cityName", cityName);
@@ -278,7 +281,6 @@ public class HotelDetails extends AppCompatActivity {
 
     private void getdataIntent() {
 
-        sessionId = getIntent().getStringExtra("sessionId");
         mHotelCode = getIntent().getStringExtra("hotelCode");
         mstartTime = getIntent().getStringExtra("checkInDate");
         mendTime = getIntent().getStringExtra("checkOutDate");
