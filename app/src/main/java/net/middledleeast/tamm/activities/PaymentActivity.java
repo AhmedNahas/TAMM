@@ -39,6 +39,7 @@ import net.middledleeast.tamm.adapters.AdapterPayment;
 import net.middledleeast.tamm.fragments.FREEcONGRATS;
 import net.middledleeast.tamm.fragments.TermsFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.Freeuser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -86,7 +87,8 @@ public class PaymentActivity extends AppCompatActivity {
     private List<String> spinnerTitles = new ArrayList<>();
     private List<Integer> spinnerImages = new ArrayList<>();
     private boolean paymentChekd = false;
-    private int mId;
+
+    private int mId ;
     private String roomPrice = "";
     private String currency;
     private  String flightCurrency;
@@ -99,6 +101,8 @@ public class PaymentActivity extends AppCompatActivity {
     private int RIGISTRATHION = 1;
     private int BOOKING_ROOM = 2 ;
     private int FLIGHT =3;
+    private boolean knet = false;
+    private String urlAmount = "http://egyptgoogle.com/k/knetjson.php";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -115,9 +119,11 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        mId = intent.getIntExtra("mId", 0);
+    //    mId = intent.getIntExtra("mId", 0);
 
 
+        // just for test
+        mId=BOOKING_ROOM;
         relativeLayout.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -218,6 +224,7 @@ public class PaymentActivity extends AppCompatActivity {
         spinnerTitles.add("VISA");
         spinnerTitles.add("MASTER CARD");
         spinnerTitles.add("KNET");
+
         spinnerImages.add(0);
 
         spinnerImages.add(R.drawable.wd_ecom_visa);
@@ -239,6 +246,14 @@ public class PaymentActivity extends AppCompatActivity {
                     paymentChekd = false;
                 } else {
 
+
+                    String s = spinnerTitles.get(i);
+                    if (s.equals("KNET")){
+
+
+                        knet = true ;
+
+                    }
                     paymentChekd = true;
                 }
 
@@ -442,8 +457,17 @@ public class PaymentActivity extends AppCompatActivity {
             String finalCurrency = flightCurrency;
 
             if (paymentChekd && checkBoxAgerr2.isChecked()) {
-                Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+
+                if (knet){
+
+                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
+
+                }else {
+
+                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+                }
+
 
             } else {
 
@@ -469,11 +493,21 @@ public class PaymentActivity extends AppCompatActivity {
 
             if (paymentChekd && checkBoxAgerr2.isChecked()) {
 
+                if (knet){
 
 
 
-                Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+
+                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
+                }else {
+
+                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+
+                }
+
+
+
 
             } else {
 
@@ -491,13 +525,28 @@ public class PaymentActivity extends AppCompatActivity {
         try {
 //
             BigDecimal amount = new BigDecimal(roomPrice);
+
+
             PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
             BigDecimal finalAmount = amount;
             String finalCurrency = currency;
 
             if (paymentChekd && checkBoxAgerr2.isChecked()) {
-                Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-                client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+
+
+
+                 if (knet){
+
+                     sendamount(roomPrice);
+
+
+                 }else {
+
+                     Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                     client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+                 }
+
+
 
             } else {
 
@@ -508,6 +557,41 @@ public class PaymentActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void sendamount(String roomPrice) {
+
+
+
+
+        StringRequest request = new StringRequest(Request.Method.POST, urlAmount, new Response.Listener<String>() {
+
+            @Override
+
+            public void onResponse(String response) {
+
+
+                startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("qty", "100");
+
+
+                return parameters;
+            }
+        };
+        requestQueue.add(request);
+
     }
 
 
@@ -542,7 +626,6 @@ public class PaymentActivity extends AppCompatActivity {
 
         }else {
 
-            Toast.makeText(this, "wtf", Toast.LENGTH_SHORT).show();
                     }
     }
 

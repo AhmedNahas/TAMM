@@ -43,7 +43,7 @@ public class KnetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_knet);
+        setContentView(R.layout.knet);
         ButterKnife.bind(this);
 
         txtDay=findViewById(R.id.day);
