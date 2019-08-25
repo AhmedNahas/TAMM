@@ -22,9 +22,22 @@ import com.Tamm.Hotels.wcf.CityWiseNotificationResponse;
 import com.Tamm.Hotels.wcf.GiataHotelCodesResponse;
 import com.Tamm.Hotels.wcf.HotelCodesResponse;
 import com.Tamm.Hotels.wcf.HotelDetailsResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.BestHotelAdapter;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.Best.BestHotel;
+import net.middledleeast.tamm.model.validation.Validtionmember;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +51,13 @@ public class BestHotels extends Fragment {
     List<String> listName = new ArrayList<>();
     List<String> listImage = new ArrayList<>();
     List<String> listNameHotel = new ArrayList<>();
-    private BasicHttpBinding_IHotelService1 service;
-    private AuthenticationData authenticationData;
+    private List<BestHotel> theBest = new ArrayList<>();
+
+    //    private BasicHttpBinding_IHotelService1 service;
+//    private AuthenticationData authenticationData;
+private String best_hotels = "http://egyptgoogle.com/backend/hotels/bestdeals.php";
+    RequestQueue requestQueue;
+
 
     ImageView right , left ;
     private LinearLayoutManager linearLayoutManager;
@@ -69,6 +87,12 @@ public class BestHotels extends Fragment {
 
             }
         });
+
+
+
+        Context context = getActivity();
+        requestQueue = Volley.newRequestQueue(context);
+        getBestHotels();
 
 
 
@@ -113,12 +137,13 @@ public class BestHotels extends Fragment {
 
         StrictMode.setThreadPolicy(policy);
 
-        auth();
 
-        listName.clear();
-        listImage.clear();
-        listNameHotel.clear();
-        getHotel("1000002");
+
+//        listName.clear();
+//        listImage.clear();
+//        listNameHotel.clear();
+//        auth();
+//        getHotel("1000002");
 
 
          linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
@@ -133,39 +158,95 @@ public class BestHotels extends Fragment {
 
     }
 
-    private void getHotel(String hotelCode) {
+
+    private void getBestHotels() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, best_hotels, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray array = jsonObject.getJSONArray("best hotels");
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject ob = array.getJSONObject(i);
 
 
-        try {
-            HotelDetailsResponse detailsResponse = service.HotelDetails(100, null, hotelCode, "EN", authenticationData);
+
+                        BestHotel listData = new BestHotel(ob.getString("offername"),ob.getString("country"),ob.getString("hotelname"),ob.getString("image"));
 
 
+                        theBest.add(listData);
 
-            for (int i = 0; i < detailsResponse.HotelDetails.ImageUrls.size(); i++) {
-                String imges = detailsResponse.HotelDetails.ImageUrls.get(i).value;
-                String cityName = detailsResponse.HotelDetails.CityName;
-                String hotelName = detailsResponse.HotelDetails.HotelName;
-                listNameHotel.add(hotelName);
-                listName.add(cityName);
-                listImage.add(imges);
+                        String offerName_ = theBest.get(i).getOffername();
+                        String country_ = theBest.get(i).getCountry();
+                        String hotelName_ = theBest.get(i).getHotelname();
+                        String image = theBest.get(i).getImage();
+
+                        listNameHotel.add(hotelName_);
+                        listName.add(country_);
+                        listImage.add(image);
+
+                    }
+                    bestHotelAdapter.notifyDataSetChanged();
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+
+                }
+
+
             }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                //dialog.cancel();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
 
 
-            bestHotelAdapter.notifyDataSetChanged();
-
-        } catch (Exception e) {
-
-
-        }
     }
 
-    private void auth() {
 
-        service = new BasicHttpBinding_IHotelService1();
-        service.enableLogging = true;
-        authenticationData = new AuthenticationData();
-        authenticationData.UserName = ("Tammtest");
-        authenticationData.Password = ("Tam@18418756");
 
-    }
+//    private void getHotel(String hotelCode) {
+//
+//
+//        try {
+//            HotelDetailsResponse detailsResponse = service.HotelDetails(100, null, hotelCode, "EN", authenticationData);
+//
+//
+//
+//            for (int i = 0; i < detailsResponse.HotelDetails.ImageUrls.size(); i++) {
+//                String imges = detailsResponse.HotelDetails.ImageUrls.get(i).value;
+//                String cityName = detailsResponse.HotelDetails.CityName;
+//                String hotelName = detailsResponse.HotelDetails.HotelName;
+//                listNameHotel.add(hotelName);
+//                listName.add(cityName);
+//                listImage.add(imges);
+//            }
+//
+//
+//            bestHotelAdapter.notifyDataSetChanged();
+//
+//        } catch (Exception e) {
+//
+//
+//        }
+//    }
+//
+//    private void auth() {
+//
+//        service = new BasicHttpBinding_IHotelService1();
+//        service.enableLogging = true;
+//        authenticationData = new AuthenticationData();
+//        authenticationData.UserName = ("Tammtest");
+//        authenticationData.Password = ("Tam@18418756");
+//
+//    }
+
 }

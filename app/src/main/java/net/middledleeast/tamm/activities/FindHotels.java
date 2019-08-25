@@ -203,6 +203,8 @@ public class FindHotels extends AppCompatActivity {
         ButterKnife.bind(this);
         auth();
 
+
+
 //
 //        simpleProgressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
 //        simpleProgressBar.setVisibility(View.INVISIBLE);

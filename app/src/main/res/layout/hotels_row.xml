@@ -2,17 +2,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linear"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="150dp"
     android:background="@drawable/all_shapes"
+
     android:layout_margin="5dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
 
 
     <com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:scaleType="fitXY"
         app:corner_radius="28dp">
+
 
 
         <ImageView
@@ -35,7 +43,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="@dimen/_20ssp"
                 android:layout_marginEnd="15dp"
                 android:layout_width="match_parent"
@@ -105,6 +113,23 @@
 
 
     </com.jcminarro.roundkornerlayout.RoundKornerRelativeLayout>
+
+        <TextView
+            android:id="@+id/recommended"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shape"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+
+            android:layout_marginLeft="-45dp"
+            android:rotation="-90"
+            android:text="  Recommended  " />
+    </RelativeLayout>
 
 
 </RelativeLayout>
