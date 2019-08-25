@@ -60,6 +60,7 @@ public class BestHotelAdapter extends RecyclerView.Adapter<BestHotelAdapter.Best
         }
 
         String name = listName.get(position);
+
         String images = listImg.get(position);
 
         String hotelName  = getListNameHotel.get(position);
@@ -73,6 +74,7 @@ public class BestHotelAdapter extends RecyclerView.Adapter<BestHotelAdapter.Best
 
     @Override
     public int getItemCount() {
+
         return listName != null ? listName.size() : 0;
     }
 

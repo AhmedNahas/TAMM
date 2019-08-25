@@ -146,7 +146,7 @@ private String best_hotels = "http://egyptgoogle.com/backend/hotels/bestdeals.ph
 //        getHotel("1000002");
 
 
-         linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
         bestHotelAdapter = new BestHotelAdapter(getContext(),getActivity(),listName,listImage ,listNameHotel ,1);

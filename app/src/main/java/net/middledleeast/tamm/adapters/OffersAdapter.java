@@ -1,5 +1,6 @@
 package net.middledleeast.tamm.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,16 +11,32 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import net.middledleeast.tamm.R;
+
+import java.util.List;
 
 public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewholder> {
     Context context;
-int id ;
+    int id ;
+    Activity activity ;
 
-    public OffersAdapter(Context context,int id) {
+    public OffersAdapter(Context context, Activity activity, List<String> listName , List<String> listImg , List<String> getListNameHotel, int id) {
         this.context = context;
         this.id=id;
+        this.activity = activity;
+        this.listName = listName;
+        this.listImg = listImg;
+        this.getListNameHotel = getListNameHotel;
+
+
+
     }
+
+    List<String> listName ;
+    List<String>listImg ;
+    List<String> getListNameHotel;
 
     @NonNull
     @Override
@@ -35,9 +52,17 @@ int id ;
 
         if (id==1){
 
-                 holder.txtview1.setText("Huwai Pharmacy");
-                 holder.txtview2.setText("gjsafdjsafdaskliyuyrfhshjf");
-                 holder.txtview3.setText("+95684712356");
+            String name = listName.get(position);
+            String images = listImg.get(position);
+
+            String hotelName  = getListNameHotel.get(position);
+            holder.txtview1.setText(hotelName);
+
+            holder.txtview2.setText(name);
+
+            Glide.with(context).load(images).into(holder.imageView2);
+
+
 
         }else {
 
