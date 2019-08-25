@@ -87,6 +87,7 @@ public class SignInFragment extends Fragment {
     LinearLayout imageView;
     private String HI_ = "http://egyptgoogle.com/backend/freeamountformember/freememberfees.php";
     private String HI2_ = "http://egyptgoogle.com/backend/amountformember/amountformember.php";
+    private int accountType = 0;
 
 
     public SignInFragment() {
@@ -174,12 +175,23 @@ public class SignInFragment extends Fragment {
 
                     if (listUserPass.contains(pass.getText().toString()) && listUserName.contains(userName.getText().toString())) {
                         dialog.cancel();
+
+                        accountType = 1;
+                        SharedPreferencesManger.SaveData(getActivity(), "accountType", accountType);
                         Intent intent = new Intent(getContext(), RenewAccount.class);
+
+
                         startActivity(intent);
 
                     } else if (listUserNamemember.contains(userName.getText().toString()) && listUserPassmember.contains(pass.getText().toString())) {
                         dialog.cancel();
+
+                        accountType = 2;
+                        SharedPreferencesManger.SaveData(getActivity(), "accountType", accountType);
+
+
                         Intent intent = new Intent(getContext(), RenewAccount.class);
+
                         startActivity(intent);
 
 

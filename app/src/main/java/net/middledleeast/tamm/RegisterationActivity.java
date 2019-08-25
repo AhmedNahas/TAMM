@@ -13,7 +13,6 @@ import android.os.StrictMode;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -21,10 +20,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -46,11 +43,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
-import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.activities.FreeCongratsActivity;
 import net.middledleeast.tamm.activities.PaymentActivity;
 import net.middledleeast.tamm.adapters.AutoCompleteAdapter;
-import net.middledleeast.tamm.fragments.MemberCongrats;
 import net.middledleeast.tamm.fragments.PlansFragment;
 import net.middledleeast.tamm.fragments.TermsFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
@@ -69,7 +64,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 
@@ -98,7 +92,7 @@ public class RegisterationActivity extends Fragment {
 
     RequestQueue requestQueue;
     private String register_url_free = "http://egyptgoogle.com/freeusers/insertusers.php";
-
+    private String register_url_member = "http://egyptgoogle.com/paymentusers/insertstudents.php";
 
     private ArrayList<String> mrOrMissArray;
     private ArrayAdapter mrOrMissAdapter;
@@ -357,7 +351,7 @@ public class RegisterationActivity extends Fragment {
                         intent.putExtra("pass",etPassword.getText().toString());
 
                         intent.putExtra("mId",1);
-                        SharedPreferencesManger.SaveData(getContext(),"membership",2);
+//                        SharedPreferencesManger.SaveData(getContext(),"membership",2);
 
                         SharedPreferencesManger.SaveData(getContext(),"username",etUserName.getText().toString());
                         startActivity(intent);
@@ -366,7 +360,7 @@ public class RegisterationActivity extends Fragment {
 
                         Intent intent = new Intent(getContext(), FreeCongratsActivity.class);
                         intent.putExtra("username",etUserName.getText().toString());
-                        SharedPreferencesManger.SaveData(getContext(),"freeuser",1);
+//                        SharedPreferencesManger.SaveData(getContext(),"freeuser",1);
                         startActivity(intent);
                     }
 
@@ -487,6 +481,41 @@ public class RegisterationActivity extends Fragment {
             requestQueue.add(request);
 
         } else if (user_id == 2) {
+
+            StringRequest request = new StringRequest(Request.Method.POST, register_url_member, new Response.Listener<String>() {
+
+                @Override
+
+                public void onResponse(String response) {
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> parameters = new HashMap<String, String>();
+                    parameters.put("firstname", etFirstName.getText().toString());
+                    parameters.put("lastname", etLastName.getText().toString());
+                    parameters.put("username", etUserName.getText().toString());
+                    parameters.put("password", etPassword.getText().toString());
+                    parameters.put("day", day);
+                    parameters.put("month", month);
+                    parameters.put("year", year);
+                    parameters.put("location", country.getText().toString());
+                    parameters.put("occupation", ocupation.getText().toString());
+                    parameters.put("email", etEmail.getText().toString());
+                    parameters.put("phone", etPhone.getText().toString());
+                    parameters.put("city", city.getText().toString());
+
+                    return parameters;
+                }
+            };
+            requestQueue.add(request);
 
 
         }

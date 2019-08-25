@@ -75,6 +75,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/relative_spinner_select_currency"
         android:layout_marginTop="@dimen/_4sdp"
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_below="@+id/tv_please"
@@ -104,19 +105,45 @@
         android:layout_margin="@dimen/_15sdp"
         android:id="@+id/relative_mr_mrs2"
         android:layout_marginTop="@dimen/_8sdp"
-        android:layout_below="@+id/tv_kd"
+        android:layout_below="@+id/relative_spinner_select_currency"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
 
 
+
+
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:id="@+id/relative_vmk"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            >
+
+            <Spinner
+                android:layoutDirection="ltr"
+                android:id="@+id/ed_visa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/app_color"
+                android:textColor="#fff"
+                android:textColorHint="#FFFFFF"
+                android:textSize="@dimen/_10ssp" />
+
+
+        </RelativeLayout>
+
         <RelativeLayout
             android:layout_marginStart="@dimen/_8sdp"
             android:id="@+id/relative_mr_mrs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:layout_below="@+id/relative_vmk"
             >
 
             <TextView
@@ -150,45 +177,20 @@
 
 
                 />
+
             <TextView
-                android:layout_marginTop="@dimen/_8sdp"
-android:id="@+id/tv_last_name"
-                android:fontFamily="sans-serif-thin"
+                android:id="@+id/tv_last_name"
                 android:layout_width="@dimen/_70sdp"
-                android:drawableBottom="@drawable/line1"
-                android:backgroundTint="@color/app_color"
                 android:layout_height="wrap_content"
-                android:hint="@string/last_name"
-                android:textColorHint="#FFFFFF"
-                android:layout_toRightOf="@+id/tv_firstName"
                 android:layout_marginLeft="45dp"
-                android:textColor="@color/white"
-                />
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:id="@+id/relative_vmk"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_150sdp"
-            android:layout_below="@+id/relative_mr_mrs"
-            >
-
-            <Spinner
-                android:layoutDirection="ltr"
-                android:id="@+id/ed_visa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_toRightOf="@+id/tv_firstName"
                 android:backgroundTint="@color/app_color"
-                android:textColor="#fff"
-                android:textColorHint="#FFFFFF"
-                android:textSize="@dimen/_10ssp" />
-
+                android:drawableBottom="@drawable/line1"
+                android:fontFamily="sans-serif-thin"
+                android:hint="@string/last_name"
+                android:textColor="@color/white"
+                android:textColorHint="#FFFFFF" />
 
         </RelativeLayout>
 

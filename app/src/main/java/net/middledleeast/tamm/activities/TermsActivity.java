@@ -1,15 +1,14 @@
 package net.middledleeast.tamm.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.RegisterationActivity;
 
 import static net.middledleeast.tamm.fragments.MemberShip.TERMS;
 
@@ -32,6 +31,8 @@ public class TermsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(TermsActivity.this, RenewAccount.class));
+
+
 
             }
         });

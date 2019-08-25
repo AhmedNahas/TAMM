@@ -1,6 +1,7 @@
 package net.middledleeast.tamm.fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.StrictMode;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -67,6 +69,32 @@ public class BestHotels extends Fragment {
 
             }
         });
+
+
+
+
+        class RecyclerViewDisabler implements RecyclerView.OnItemTouchListener {
+
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                return true;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        }
+
+        RecyclerView.OnItemTouchListener disabler = new RecyclerViewDisabler();
+
+        recyclerView.addOnItemTouchListener(disabler);
+
 
 
 
