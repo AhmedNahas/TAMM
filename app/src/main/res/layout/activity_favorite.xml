@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.FavoriteActivity"
+    android:background="@drawable/manlap">
+
+
+    <RelativeLayout
+        android:id="@+id/toolbar_back_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center">
+
+        <RelativeLayout
+            android:id="@+id/toolbar_back1_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/toolbar_back_image_back_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/ic_back_arrow"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="7dp"
+                android:layout_toEndOf="@+id/toolbar_back_image_back_favorite"
+                android:text="@string/back"
+                android:textColor="#ffff"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+
+
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100dp"
+            android:background="@drawable/logo" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/ic_button" />
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/line1_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/toolbar_back_favorite"
+        android:background="@drawable/line1" />
+
+
+
+
+    <TextView
+        android:id="@+id/tv_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FAVORITE"
+        android:drawableLeft="@drawable/ic_nav_favorites"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-light"
+        android:layout_below="@+id/line1_favorite"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:drawablePadding="@dimen/_10sdp"
+        />
+
+    <RelativeLayout
+        android:id="@+id/relative_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_favorite"
+        android:layout_marginTop="@dimen/_15sdp"
+
+        >
+
+        <AutoCompleteTextView
+            android:id="@+id/act_country_favorite"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_37sdp"
+            android:background="@drawable/shapecontact"
+            android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:hint="Country"
+            android:paddingStart="@dimen/_5sdp"
+            />
+
+        <AutoCompleteTextView
+            android:id="@+id/act_city_favorite"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_37sdp"
+            android:background="@drawable/shapecontact"
+            android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+            android:layout_toRightOf="@+id/act_country_favorite"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:hint="City"
+            android:paddingStart="@dimen/_5sdp"
+
+            />
+
+        <SearchView
+            android:id="@+id/sv_search_favorite"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shapecontact"
+            android:layout_toRightOf="@+id/act_city_favorite"
+            android:layout_marginStart="@dimen/_5sdp"
+
+            />
+
+
+    </RelativeLayout>
+
+
+
+
+    <ImageView
+        android:id="@+id/line_favorite"
+        android:layout_width="@dimen/_350sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/line1"
+        android:layout_below="@+id/relative_favorite"
+        android:layout_marginTop="@dimen/_25sdp"
+
+        />
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_220sdp"
+        android:layout_below="@+id/line_favorite"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_margin="@dimen/_20sdp"
+        android:background="@color/wd_ecom_color_transparent"
+        >
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</RelativeLayout>

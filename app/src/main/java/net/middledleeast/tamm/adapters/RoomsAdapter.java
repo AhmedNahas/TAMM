@@ -313,6 +313,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                          intent.putExtra("roomIndex", position + 1);
                                                          intent.putExtra("smok", roomInstructions);
                                                          intent.putExtra("roomTybe", roomType);
+
+
+
                                                          intent.putExtra("description", description);
                                                          intent.putExtra("mealTybe", mealType);
                                                          intent.putExtra("roomPrice", roomprice.toString());
