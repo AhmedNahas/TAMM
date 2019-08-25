@@ -872,7 +872,7 @@ public class RoomBooked extends AppCompatActivity {
         guest4.LastName = lastName4GustOne;
         arrayOfGuest.add(guest4);
 
-    }
+}
 
     private void bookingresponse(PaymentInfo paymentInfo) {
         try {
