@@ -125,6 +125,9 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
                 intent.putExtra("checkInDate", mstartTime);
                 intent.putExtra("checkOutDate", mendTime);
                 intent.putExtra("countryName", countryName);
+//                SharedPreferencesManger.SaveData(activity,"cityName",cityName);
+
+
                 intent.putExtra("cityName", cityName);
                 intent.putExtra("cityId", cityId);
                 intent.putExtra("noOfRooms", noOfRooms);

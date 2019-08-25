@@ -14,6 +14,7 @@ import android.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,6 +43,15 @@ public class ReserveRoom extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reserve_room);
         ButterKnife.bind(this);
+
+
+        SharedPreferencesManger.remove(this,"startDateSyear");
+        SharedPreferencesManger.remove(this,"startDateSday");
+        SharedPreferencesManger.remove(this,"startDateSmonth");
+
+        SharedPreferencesManger.remove(this,"endDateSyear");
+        SharedPreferencesManger.remove(this,"endDateSday");
+        SharedPreferencesManger.remove(this,"endDateSmonth");
 
 
         imageView = findViewById(R.id.back_pressed);

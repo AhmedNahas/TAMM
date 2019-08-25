@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -42,8 +41,6 @@ import net.middledleeast.tamm.fragments.BestHotels;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.io.FileNotFoundException;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -358,10 +355,14 @@ public class  RenewAccount extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.nav_offer) {
 
+            startActivity(new Intent(RenewAccount.this, OffersActivity.class));
+
 
         } else if (id == R.id.nav_conversation) {
 
         } else if (id == R.id.nav_favorites) {
+
+            startActivity(new Intent(RenewAccount.this, FavoriteActivity.class));
 
         } else if (id == R.id.nav_aboutus) {
 
@@ -399,6 +400,7 @@ public class  RenewAccount extends AppCompatActivity
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
+
             Uri targetUri = data.getData();
             String textTargetUri = (targetUri.toString());
 

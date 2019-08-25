@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.os.StrictMode;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -19,7 +18,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -33,14 +31,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.ArrayOfInt;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
-import com.Tamm.Hotels.wcf.ArrayOfString;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.CountryList;
 import com.Tamm.Hotels.wcf.DestinationCityListResponse;
-import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.Filters;
-import com.Tamm.Hotels.wcf.HotelBookResponse;
 import com.Tamm.Hotels.wcf.HotelInfo;
 import com.Tamm.Hotels.wcf.HotelSearchResponse;
 import com.Tamm.Hotels.wcf.Hotel_Result;
@@ -52,14 +47,9 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterChildCount;
 import net.middledleeast.tamm.adapters.AutoCompleteAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
-import net.middledleeast.tamm.helper.helperMethod;
 
 import org.joda.time.DateTime;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.sql.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -69,7 +59,6 @@ import java.util.Locale;
 import java.util.StringTokenizer;
 import java.util.TimeZone;
 
-import FlightApi.BookResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -193,6 +182,7 @@ public class FindHotels extends AppCompatActivity {
     private Filters filters;
     private boolean counttryCheked = false;
 
+
 //    private boolean saved ;
 
     @SuppressLint("StaticFieldLeak")
@@ -206,6 +196,65 @@ public class FindHotels extends AppCompatActivity {
 
 
 //
+        areas = findViewById(R.id.area_spinner);
+        regions = findViewById(R.id.region_spinner);
+
+
+
+
+            String dayOfTheWeek = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSyear");
+        if (dayOfTheWeek!=null){
+
+            startDateYear.setText(dayOfTheWeek);
+
+            String day = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSday");
+            startDateDay.setText(day);
+
+            String monthString = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSmonth");
+            startDateMonth.setText(monthString);
+
+            String enddayOfTheWeek = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSyear");
+            endDateYear.setText(enddayOfTheWeek);
+
+            String endday = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSday");
+            endDateDay.setText(endday);
+
+            String endmonthString = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSmonth");
+            endDateMonth.setText(endmonthString);
+
+
+
+            String nameCountry =SharedPreferencesManger.LoadStringData(FindHotels.this, "nameCountry_");
+            regions.setText(nameCountry);
+
+            String nameCity=SharedPreferencesManger.LoadStringData(FindHotels.this,"name_city_");
+            areas.setText(nameCity);
+
+
+
+
+
+
+
+
+        }else {
+
+
+            String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
+            String date_m = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());
+            String date_d = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
+
+
+        endDateDay.setText(date_n);
+        endDateMonth.setText(date_m);
+        endDateYear.setText(date_d);
+        startDateDay.setText(date_n);
+        startDateMonth.setText(date_m);
+        startDateYear.setText(date_d);
+
+
+        }
+
 //        simpleProgressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
 //        simpleProgressBar.setVisibility(View.INVISIBLE);
         FrameLayout frameLayout = findViewById(R.id.frame1);
@@ -245,8 +294,7 @@ public class FindHotels extends AppCompatActivity {
         room4.setVisibility(View.INVISIBLE);
         room4ChildAgeSpinner = room3View.findViewById(R.id.rv_child);
 
-        areas = findViewById(R.id.area_spinner);
-        regions = findViewById(R.id.region_spinner);
+
         roomCount = findViewById(R.id.no_of_rooms);
         room1Adult = findViewById(R.id.adilt_count);
         childCountRoom1 = findViewById(R.id.no_of_childs);
@@ -257,6 +305,7 @@ public class FindHotels extends AppCompatActivity {
         toolbar_back = findViewById(R.id.toolbar_back1);
         recycl_child_spiner = findViewById(R.id.rv_child);
         room2ChildAgeSpinner = room1View.findViewById(R.id.rv_child);
+
 
 
 
@@ -412,16 +461,6 @@ public class FindHotels extends AppCompatActivity {
         list1();
         listOfChildCount();
 
-        String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
-        String date_m = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());
-        String date_d = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
-
-        endDateDay.setText(date_n);
-        endDateMonth.setText(date_m);
-        endDateYear.setText(date_d);
-        startDateDay.setText(date_n);
-        startDateMonth.setText(date_m);
-        startDateYear.setText(date_d);
 
         // FIXME: 7/31/2019  check
 
@@ -997,6 +1036,7 @@ public class FindHotels extends AppCompatActivity {
 
 
                 nameCountry = listName.get(adapter2.getPosition(adapter2.getItem(position)));
+                SharedPreferencesManger.SaveData(FindHotels.this,"nameCountry_",nameCountry);
                 idCountry = listID.get(adapter2.getPosition(adapter2.getItem(position)));
 
                 getCities(idCountry);
@@ -1104,6 +1144,7 @@ public class FindHotels extends AppCompatActivity {
 
 
                         name_city = nameCity.get(adapter2.getPosition(adapter2.getItem(position)));
+                        SharedPreferencesManger.SaveData(FindHotels.this,"name_city_",name_city);
                         ctyId = cities.CityList.get(adapter2.getPosition(adapter2.getItem(position))).CityCode;
 
 
@@ -1308,9 +1349,13 @@ public class FindHotels extends AppCompatActivity {
 
 
                 SharedPreferencesManger.SaveData(FindHotels.this, "startDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "till ");
+
+                SharedPreferencesManger.SaveData(FindHotels.this, "startDateSyear", dayOfTheWeek );
+                SharedPreferencesManger.SaveData(FindHotels.this, "startDateSday",  day );
+                SharedPreferencesManger.SaveData(FindHotels.this, "startDateSmonth",  monthString);
+
                 startDateDay.setText(day);
                 startDateMonth.setText(monthString);
-
                 startDateYear.setText(dayOfTheWeek);
 
 
@@ -1385,6 +1430,12 @@ public class FindHotels extends AppCompatActivity {
                     SharedPreferencesManger.SaveData(FindHotels.this, "nights", days);
 
                     SharedPreferencesManger.SaveData(FindHotels.this, "endDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "-" + days + "  nights");
+
+                    SharedPreferencesManger.SaveData(FindHotels.this, "endDateSyear", dayOfTheWeek );
+                    SharedPreferencesManger.SaveData(FindHotels.this, "endDateSday",  day );
+                    SharedPreferencesManger.SaveData(FindHotels.this, "endDateSmonth",  monthString );
+                    SharedPreferencesManger.SaveData(FindHotels.this, "endDateSnights",  days + "  nights");
+
                 }
 
             }
