@@ -4,12 +4,9 @@ package net.middledleeast.tamm.fragments;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,40 +25,29 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.FindHotels;
-import net.middledleeast.tamm.activities.MainActivity;
 import net.middledleeast.tamm.activities.RecommendedOneWay;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
-
-import javax.xml.transform.Source;
 
 import FlightApi.FlightApiService;
 import FlightApi.FlightAuthentication;
 import FlightApi.FlightConstants;
 import FlightApi.SearchFlights;
 import FlightApi.SearchFlightsResponse;
-import FlightApi.TicketResponse;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.OkHttpClient;
-import okhttp3.ResponseBody;
-import okhttp3.internal.Util;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -70,7 +56,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static java.util.Calendar.YEAR;
-import static net.middledleeast.tamm.helper.helperMethod.isInternetAvailable;
 import static net.middledleeast.tamm.helper.helperMethod.isNetworkConnected;
 
 
@@ -119,6 +104,9 @@ public class ProceedBeyBeyOriginal extends Fragment {
     ArrayList<Double> listTotalFare = new ArrayList<>();
     ArrayList<String> listTypeFare = new ArrayList<>();
     ArrayList<String> ListflightNumber = new ArrayList<>();
+    ArrayList<String> ListMealType = new ArrayList<>();
+    ArrayList<Long> ListnoOfSeatAvailable = new ArrayList<>();
+
 
 
     private InputStream inputStream;
@@ -166,29 +154,6 @@ public class ProceedBeyBeyOriginal extends Fragment {
         return_passe = view.findViewById(R.id.return_passe);
         multi_cities = view.findViewById(R.id.multi_cities);
         progressFlight = view.findViewById(R.id.circle_loading_view_flight);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -639,6 +604,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
         ListairportCode_Origin.clear();
         ListairportCode_Distnation.clear();
         ListflightNumber.clear();
+        ListMealType.clear();
+        ListnoOfSeatAvailable.clear();
 
         Gson gson = new GsonBuilder()
                 .create();
@@ -673,6 +640,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 //2
                 // searchFlights[0].setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
                 String to = toTextView.getText().toString();
+
+
                 String from = fromTextView.getText().toString();
                 //3 test
                 searchFlights[0].setPointOfSale(to);
@@ -726,8 +695,23 @@ public class ProceedBeyBeyOriginal extends Fragment {
                     public void onResponse(Call<SearchFlightsResponse> call, Response<SearchFlightsResponse> response) {
                         boolean successful = response.isSuccessful();
                         String trackingId = response.body().getTrackingId();
-
                         List<List<SearchFlightsResponse.Result>> results = response.body().getResults();
+                        String resultId1 = results.get(0).get(0).getResultId();
+
+                        String tokenId = response.body().getTokenId();
+
+
+
+                        SharedPreferencesManger.SaveData(getContext(),"tokenId",tokenId);
+                        SharedPreferencesManger.SaveData(getContext(),"trackingId",trackingId);
+
+
+
+
+                        SharedPreferencesManger.SaveData(getContext(),"resultId1",resultId1);
+                        SharedPreferencesManger.SaveData(getContext(),"PointOfSale",to);
+
+
                         if (successful && results != null && results.size() >0) {
 
                             progressFlight.setVisibility(View.INVISIBLE);
@@ -737,6 +721,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
                             for (int j = 0; j < results1.size(); j++) {
 
+                                String resultId = results1.get(0).getResultId();
                                 String airlineRemark = results1.get(j).getAirlineRemark();
                                 String destination = results1.get(j).getDestination();
                                 String lastTicketDate = results1.get(j).getLastTicketDate();
@@ -770,7 +755,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                                     String countryNameOrigin = segments2.get(t).getOrigin().getCountryName();
 
 
-
+                                    String airline = segments2.get(t).getAirline();
 
                                     String airportCode_Origin = segments2.get(t).getOrigin().getAirportCode();
 
@@ -780,9 +765,13 @@ public class ProceedBeyBeyOriginal extends Fragment {
                                     String cabinBaggage = (String) segments2.get(t).getCabinBaggage();
 
                                     String duration = segments2.get(t).getDuration();
+                                    String mealType = (String) segments2.get(t).getMealType();
+                                    long noOfSeatAvailable = segments2.get(t).getNoOfSeatAvailable();
 
 
+                                    ListnoOfSeatAvailable.add(noOfSeatAvailable);
 
+                                    ListMealType.add(mealType);
 
                                     String flightNumber = segments2.get(t).getFlightNumber();
                                     ListflightNumber.add(flightNumber);
@@ -829,6 +818,9 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
                             SharedPreferencesManger.SaveData(getContext(),"flightCabinClass",flightCabinClass);
 
+                            intent.putExtra("ListMealType", ListMealType);
+
+                            intent.putExtra("ListnoOfSeatAvailable", ListnoOfSeatAvailable);
 
 
                             getContext().startActivity(intent);

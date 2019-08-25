@@ -153,7 +153,7 @@ public class Passenger_inform extends AppCompatActivity {
                     SharedPreferencesManger.SaveData(Passenger_inform.this,"nationality_infant",nationality_adult_infant.getText().toString());
 
 
-                    startActivity(new Intent(Passenger_inform.this, PassengerInformation.class));
+                    startActivity(new Intent(Passenger_inform.this, FlightsSummary.class));
 
                 }
                     //

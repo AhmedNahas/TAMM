@@ -230,6 +230,7 @@ public class RoomBooked extends AppCompatActivity {
             arrayOfGuest.add(guest);
 
 
+
         } else if (noOfAdultRoom4 == 2) {
 
 
@@ -871,7 +872,7 @@ public class RoomBooked extends AppCompatActivity {
         guest4.LastName = lastName4GustOne;
         arrayOfGuest.add(guest4);
 
-    }
+}
 
     private void bookingresponse(PaymentInfo paymentInfo) {
         try {
@@ -907,6 +908,9 @@ public class RoomBooked extends AppCompatActivity {
                     RequestedRooms requestedRooms = arrayOfRooms.get(0);
                     if (requestedRooms.Supplements != null) {
                         for (SuppInfo suppInfo : requestedRooms.Supplements) {
+
+                            // get room type name
+                            requestedRooms.RoomTypeName = "  ";
                             suppInfo.SuppChargeType = Enums.SuppChargeType.AtProperty;
                         }
                     }
@@ -929,10 +933,10 @@ public class RoomBooked extends AppCompatActivity {
            // Toast.makeText(this, ""+bookingId, Toast.LENGTH_SHORT).show();
 
 
-//            SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
-//            SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
-//            SharedPreferencesManger.SaveData(this, "ConfirmationNo", hotelBookingResponse.ConfirmationNo);
-//
+            SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
+            SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
+            SharedPreferencesManger.SaveData(this, "ConfirmationNo", hotelBookingResponse.ConfirmationNo);
+
 //            AmendmentRequestType amendmentRequestType = new AmendmentRequestType();
 //            amendmentRequestType.Type = Enums.AmendmentType.OfflineAmendment;
 //            AmendInformation amendInformation = new AmendInformation();

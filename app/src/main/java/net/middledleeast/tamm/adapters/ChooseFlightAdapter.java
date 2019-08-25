@@ -18,9 +18,11 @@ import net.middledleeast.tamm.activities.FlightsSummary;
 import net.middledleeast.tamm.activities.PassengerInformation;
 import net.middledleeast.tamm.activities.Passenger_inform;
 import net.middledleeast.tamm.activities.PaymentActivity;
+import net.middledleeast.tamm.activities.SeatSelection;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -43,13 +45,13 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
     List<Double> listTotalFare;
     List<String> listTypeFare;
     List<String> ListflightNumber;
-
-
+    List<String> ListMealType ;
+    List<Long> listnoSetAv ;
     List<String> ListairportCode_Distnation , ListairportCode_Origin ;
     public ChooseFlightAdapter(Context context, List<String> airLineName, List<String> Listduration, List<String> arriveTime, List<String> depuruerTime,
                                List<String> countryNameDestinationList, List<String> countryNameOriginList, List<String> listIncludedBaggage,
                                List<String> listCabinBaggage, List<Double> listTotalFare, List<String> listTypeFare , List<String> ListairportCode_Distnation
-            ,List<String> ListairportCode_Origin , List<String> ListflightNumber
+            ,List<String> ListairportCode_Origin , List<String> ListflightNumber ,  List<String> ListMealType , List<Long> listnoSetAv
     ) {
         this.context = context;
         this.airLineName = airLineName;
@@ -65,6 +67,8 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
         this.ListairportCode_Distnation = ListairportCode_Distnation;
         this.ListairportCode_Origin = ListairportCode_Origin;
         this.ListflightNumber =ListflightNumber;
+        this.ListMealType = ListMealType ;
+        this.listnoSetAv = listnoSetAv;
     }
 
 
@@ -133,12 +137,21 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
 
         String flightNumber = ListflightNumber.get(position);
 
+
+        String mealType = ListMealType.get(position);
+
+
+        long noOfSetAvaliable = listnoSetAv.get(position);
         holder.selectFlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
-                Intent intent = new Intent(context, Passenger_inform.class);
+                Intent intent = new Intent(context, FlightsSummary.class);
+                SharedPreferencesManger.SaveData(context, "deTime", deTime);
+
+
+                SharedPreferencesManger.SaveData(context, "mealType", mealType);
 
                 SharedPreferencesManger.SaveData(context, "Distnation",Distnation);
                 SharedPreferencesManger.SaveData(context, "Origin", Origin);
@@ -165,6 +178,8 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
                 SharedPreferencesManger.SaveData(context, "A_origin", origin);
 
                 SharedPreferencesManger.SaveData(context, "flightNumber", flightNumber);
+                SharedPreferencesManger.SaveData(context, "noOfSetAvaliable", noOfSetAvaliable);
+
 
                 context.startActivity(intent);
 

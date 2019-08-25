@@ -404,7 +404,7 @@ public class BookResponse implements Serializable {
 
     }
 
-    public class City implements Serializable {
+    public static class City implements Serializable {
 
         private final static long serialVersionUID = 4939641513612929703L;
         @SerializedName("CountryCode")

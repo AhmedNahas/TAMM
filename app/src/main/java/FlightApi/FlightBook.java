@@ -298,7 +298,7 @@ public class FlightBook implements Serializable {
     }
 
 
-    public class City implements Serializable {
+    public static class City implements Serializable {
 
         private final static long serialVersionUID = 4939641513612929703L;
         @SerializedName("CountryCode")
@@ -371,7 +371,7 @@ public class FlightBook implements Serializable {
     }
 
 
-    public class Country implements Serializable {
+    public static class Country implements Serializable {
 
         private final static long serialVersionUID = 8538250341924655244L;
         @SerializedName("CountryCode")
@@ -571,7 +571,7 @@ public class FlightBook implements Serializable {
     }
 
 
-    public class Fare implements Serializable {
+    public static class Fare implements Serializable {
 
         private final static long serialVersionUID = 7964126857077636792L;
         @SerializedName("TotalFare")
@@ -752,7 +752,7 @@ public class FlightBook implements Serializable {
     }
 
 
-    public class FareRule implements Serializable {
+    public static class FareRule implements Serializable {
 
         private final static long serialVersionUID = -5247747483190960054L;
         @SerializedName("Origin")
@@ -915,7 +915,7 @@ public class FlightBook implements Serializable {
     }
 
 
-    public class Itinerary implements Serializable {
+    public static class Itinerary implements Serializable {
 
         private final static long serialVersionUID = -1217973092788233504L;
         @SerializedName("Segments")
@@ -1366,7 +1366,7 @@ public class FlightBook implements Serializable {
     }
 
 
-    public class Nationality implements Serializable {
+    public static class Nationality implements Serializable {
 
         private final static long serialVersionUID = 2417065935106098470L;
         @SerializedName("CountryCode")
@@ -1566,7 +1566,7 @@ public class FlightBook implements Serializable {
     }
 
 
-    public class Passenger implements Serializable {
+    public static class Passenger implements Serializable {
 
         private final static long serialVersionUID = -7809079246178873997L;
         @SerializedName("PassportIssueCountryCode")
