@@ -119,8 +119,8 @@ public class RoomBooked extends AppCompatActivity {
         service = new BasicHttpBinding_IHotelService1();
         service.enableLogging = true;
         authenticandata = new AuthenticationData();
-        authenticandata.UserName = ("Tammtest");
-        authenticandata.Password = ("Tam@18418756");
+        authenticandata.UserName = (getString(R.string.user_name_tamm));
+        authenticandata.Password = (getString(R.string.passowrd_tamm));
         sessionId = SharedPreferencesManger.LoadStringData(this, "session_id");
         noOfRooms = SharedPreferencesManger.LoadIntegerData(this, "noOfRooms");
         resultIndex = SharedPreferencesManger.LoadIntegerData(this, "resultindex");
@@ -186,7 +186,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
 
-    }
+        }
 
 
         // FIXME: 7/31/2019 end
@@ -237,7 +237,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust4");
             String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust4");
             Guest guest = new Guest();
-            guest.Title = "Mr";
+            guest.Title = getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
@@ -247,7 +247,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust4");
             String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust4");
             Guest guest2 = new Guest();
-            guest2.Title = "Mr";
+            guest2.Title = getString(R.string.mr);
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
@@ -260,7 +260,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust4");
             String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust4");
             Guest guest = new Guest();
-            guest.Title = "Mr";
+            guest.Title =  getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
@@ -270,7 +270,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust4");
             String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust4");
             Guest guest2 = new Guest();
-            guest2.Title = "Mr";
+            guest2.Title =  getString(R.string.mr);
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
@@ -280,7 +280,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName3GustOne = SharedPreferencesManger.LoadStringData(this, "firstName3Gust4");
             String lastName3GustOne = SharedPreferencesManger.LoadStringData(this, "lastName3Gust4");
             Guest guest3 = new Guest();
-            guest3.Title = "Mr";
+            guest3.Title =  getString(R.string.mr);
             guest3.FirstName = firstName3GustOne;
             guest3.GuestType = Enums.GuestType.Adult;
             guest3.LastName = lastName3GustOne;
@@ -292,7 +292,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust4");
             String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust4");
             Guest guest = new Guest();
-            guest.Title = "Mr";
+            guest.Title =  getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
@@ -302,7 +302,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust4");
             String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust4");
             Guest guest2 = new Guest();
-            guest2.Title = "Mr";
+            guest2.Title = getString(R.string.mr);
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
@@ -312,7 +312,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName3GustOne = SharedPreferencesManger.LoadStringData(this, "firstName3Gust4");
             String lastName3GustOne = SharedPreferencesManger.LoadStringData(this, "lastName3Gust4");
             Guest guest3 = new Guest();
-            guest3.Title = "Mr";
+            guest3.Title =  getString(R.string.mr);
             guest3.FirstName = firstName3GustOne;
             guest3.GuestType = Enums.GuestType.Adult;
             guest3.LastName = lastName3GustOne;
@@ -321,7 +321,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName4Gust2 = SharedPreferencesManger.LoadStringData(this, "firstName4Gust4");
             String lastName4Gust2 = SharedPreferencesManger.LoadStringData(this, "lastName4Gust4");
             Guest guest4 = new Guest();
-            guest4.Title = "Mr";
+            guest4.Title = getString(R.string.mr);
             guest4.FirstName = firstName4Gust2;
             guest4.GuestType = Enums.GuestType.Adult;
             guest4.LastName = lastName4Gust2;
@@ -336,7 +336,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
             Guest child1 = new Guest();
-            child1.Title = "Mr";
+            child1.Title =  getString(R.string.mr);
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
@@ -350,7 +350,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
             Guest child1 = new Guest();
-            child1.Title = "Mr";
+            child1.Title =  getString(R.string.mr);
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
@@ -361,7 +361,7 @@ public class RoomBooked extends AppCompatActivity {
             String lastName2ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName2ChildGust4");
 
             Guest child2 = new Guest();
-            child2.Title = "Mr";
+            child2.Title =  getString(R.string.mr);
             child2.FirstName = firstName2ChildGustOne;
             child2.GuestType = Enums.GuestType.Child;
             child2.LastName = lastName2ChildGustOne;
@@ -386,7 +386,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust3");
             String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust3");
             Guest guest = new Guest();
-            guest.Title = "Mr";
+            guest.Title =  getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
@@ -399,7 +399,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust3");
             String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust3");
             Guest guest = new Guest();
-            guest.Title = "Mr";
+            guest.Title =  getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
@@ -409,7 +409,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust3");
             String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust3");
             Guest guest2 = new Guest();
-            guest2.Title = "Mr";
+            guest2.Title =  getString(R.string.mr);
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
@@ -422,7 +422,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust3");
             String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust3");
             Guest guest = new Guest();
-            guest.Title = "Mr";
+            guest.Title =  getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
@@ -432,7 +432,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust3");
             String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust3");
             Guest guest2 = new Guest();
-            guest2.Title = "Mr";
+            guest2.Title = getString(R.string.mr);
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
@@ -442,7 +442,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName3GustOne = SharedPreferencesManger.LoadStringData(this, "firstName3Gust3");
             String lastName3GustOne = SharedPreferencesManger.LoadStringData(this, "lastName3Gust3");
             Guest guest3 = new Guest();
-            guest3.Title = "Mr";
+            guest3.Title =  getString(R.string.mr);
             guest3.FirstName = firstName3GustOne;
             guest3.GuestType = Enums.GuestType.Adult;
             guest3.LastName = lastName3GustOne;
@@ -454,7 +454,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust3");
             String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust3");
             Guest guest = new Guest();
-            guest.Title = "Mr";
+            guest.Title =  getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
@@ -464,7 +464,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust3");
             String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust3");
             Guest guest2 = new Guest();
-            guest2.Title = "Mr";
+            guest2.Title =  getString(R.string.mr);
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
@@ -474,7 +474,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName3GustOne = SharedPreferencesManger.LoadStringData(this, "firstName3Gust3");
             String lastName3GustOne = SharedPreferencesManger.LoadStringData(this, "lastName3Gust3");
             Guest guest3 = new Guest();
-            guest3.Title = "Mr";
+            guest3.Title =  getString(R.string.mr);
             guest3.FirstName = firstName3GustOne;
             guest3.GuestType = Enums.GuestType.Adult;
             guest3.LastName = lastName3GustOne;
@@ -483,7 +483,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName4Gust2 = SharedPreferencesManger.LoadStringData(this, "firstName4Gust3");
             String lastName4Gust2 = SharedPreferencesManger.LoadStringData(this, "lastName4Gust3");
             Guest guest4 = new Guest();
-            guest4.Title = "Mr";
+            guest4.Title = getString(R.string.mr);
             guest4.FirstName = firstName4Gust2;
             guest4.GuestType = Enums.GuestType.Adult;
             guest4.LastName = lastName4Gust2;
@@ -498,7 +498,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
             Guest child1 = new Guest();
-            child1.Title = "Mr";
+            child1.Title =  getString(R.string.mr);
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
@@ -512,7 +512,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
             Guest child1 = new Guest();
-            child1.Title = "Mr";
+            child1.Title =  getString(R.string.mr);
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
@@ -523,7 +523,7 @@ public class RoomBooked extends AppCompatActivity {
             String lastName2ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName2ChildGust3");
 
             Guest child2 = new Guest();
-            child2.Title = "Mr";
+            child2.Title =  getString(R.string.mr);
             child2.FirstName = firstName2ChildGustOne;
             child2.GuestType = Enums.GuestType.Child;
             child2.LastName = lastName2ChildGustOne;
@@ -544,7 +544,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust2");
             String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust2");
             Guest guest = new Guest();
-            guest.Title = "Mr";
+            guest.Title =  getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
@@ -557,7 +557,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust2");
             String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust2");
             Guest guest = new Guest();
-            guest.Title = "Mr";
+            guest.Title =  getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
@@ -567,7 +567,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust2");
             String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust2");
             Guest guest2 = new Guest();
-            guest2.Title = "Mr";
+            guest2.Title =  getString(R.string.mr);
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
@@ -580,7 +580,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust2");
             String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust2");
             Guest guest = new Guest();
-            guest.Title = "Mr";
+            guest.Title =  getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
@@ -590,7 +590,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust2");
             String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust2");
             Guest guest2 = new Guest();
-            guest2.Title = "Mr";
+            guest2.Title =  getString(R.string.mr);
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
@@ -600,7 +600,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName3GustOne = SharedPreferencesManger.LoadStringData(this, "firstName3Gust2");
             String lastName3GustOne = SharedPreferencesManger.LoadStringData(this, "lastName3Gust2");
             Guest guest3 = new Guest();
-            guest3.Title = "Mr";
+            guest3.Title =  getString(R.string.mr);
             guest3.FirstName = firstName3GustOne;
             guest3.GuestType = Enums.GuestType.Adult;
             guest3.LastName = lastName3GustOne;
@@ -612,7 +612,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust2");
             String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust2");
             Guest guest = new Guest();
-            guest.Title = "Mr";
+            guest.Title =  getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
@@ -622,7 +622,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName2GustOne = SharedPreferencesManger.LoadStringData(this, "firstName2Gust2");
             String lastName2GustOne = SharedPreferencesManger.LoadStringData(this, "lastName2Gust2");
             Guest guest2 = new Guest();
-            guest2.Title = "Mr";
+            guest2.Title =  getString(R.string.mr);
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
@@ -632,7 +632,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName3GustOne = SharedPreferencesManger.LoadStringData(this, "firstName3Gust2");
             String lastName3GustOne = SharedPreferencesManger.LoadStringData(this, "lastName3Gust2");
             Guest guest3 = new Guest();
-            guest3.Title = "Mr";
+            guest3.Title =  getString(R.string.mr);
             guest3.FirstName = firstName3GustOne;
             guest3.GuestType = Enums.GuestType.Adult;
             guest3.LastName = lastName3GustOne;
@@ -641,7 +641,7 @@ public class RoomBooked extends AppCompatActivity {
             String firstName4Gust2 = SharedPreferencesManger.LoadStringData(this, "firstName4Gust2");
             String lastName4Gust2 = SharedPreferencesManger.LoadStringData(this, "lastName4Gust2");
             Guest guest4 = new Guest();
-            guest4.Title = "Mr";
+            guest4.Title =  getString(R.string.mr);
             guest4.FirstName = firstName4Gust2;
             guest4.GuestType = Enums.GuestType.Adult;
             guest4.LastName = lastName4Gust2;
@@ -656,7 +656,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
             Guest child1 = new Guest();
-            child1.Title = "Mr";
+            child1.Title =  getString(R.string.mr);
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
@@ -670,7 +670,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
             Guest child1 = new Guest();
-            child1.Title = "Mr";
+            child1.Title =  getString(R.string.mr);
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
@@ -681,7 +681,7 @@ public class RoomBooked extends AppCompatActivity {
             String lastName2ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName2ChildGust2");
 
             Guest child2 = new Guest();
-            child2.Title = "Mr";
+            child2.Title =  getString(R.string.mr);
             child2.FirstName = firstName2ChildGustOne;
             child2.GuestType = Enums.GuestType.Child;
             child2.LastName = lastName2ChildGustOne;
@@ -704,7 +704,7 @@ public class RoomBooked extends AppCompatActivity {
             Guest guest = new Guest();
             guest.LeadGuest = true;
             guest.LeadGuest = true;
-            guest.Title = "Mr";
+            guest.Title =  getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
@@ -720,14 +720,14 @@ public class RoomBooked extends AppCompatActivity {
             Guest guest1 = new Guest();
             guest1.LeadGuest = true;
             guest1.LeadGuest = true;
-            guest1.Title = "Mr";
+            guest1.Title =  getString(R.string.mr);
             guest1.FirstName = firstName1GustOne;
             guest1.GuestType = Enums.GuestType.Adult;
             guest1.LastName = lastName1GustOne;
             arrayOfGuest.add(guest1);
 
             Guest guest2 = new Guest();
-            guest2.Title = "Mr";
+            guest2.Title =  getString(R.string.mr);
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
@@ -749,14 +749,14 @@ public class RoomBooked extends AppCompatActivity {
             Guest guest1 = new Guest();
             guest1.LeadGuest = true;
             guest1.LeadGuest = true;
-            guest1.Title = "Mr";
+            guest1.Title =  getString(R.string.mr);
             guest1.FirstName = firstName1GustOne;
             guest1.GuestType = Enums.GuestType.Adult;
             guest1.LastName = lastName1GustOne;
             arrayOfGuest.add(guest1);
 
             Guest guest2 = new Guest();
-            guest2.Title = "Mr";
+            guest2.Title =  getString(R.string.mr);
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
@@ -765,7 +765,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
             Guest guest3 = new Guest();
-            guest3.Title = "Mr";
+            guest3.Title =  getString(R.string.mr);
             guest3.FirstName = firstName3GustOne;
             guest3.GuestType = Enums.GuestType.Adult;
             guest3.LastName = lastName3GustOne;
@@ -784,7 +784,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
             Guest child1 = new Guest();
-            child1.Title = "Mr";
+            child1.Title =  getString(R.string.mr);
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
@@ -798,7 +798,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
             Guest child1 = new Guest();
-            child1.Title = "Mr";
+            child1.Title = getString(R.string.mr);
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
@@ -809,7 +809,7 @@ public class RoomBooked extends AppCompatActivity {
             String lastName2ChildGustOne = SharedPreferencesManger.LoadStringData(this, "lastName2ChildGustOne");
 
             Guest child2 = new Guest();
-            child2.Title = "Mr";
+            child2.Title =  getString(R.string.mr);
             child2.FirstName = firstName2ChildGustOne;
             child2.GuestType = Enums.GuestType.Child;
             child2.LastName = lastName2ChildGustOne;
@@ -841,14 +841,14 @@ public class RoomBooked extends AppCompatActivity {
         Guest guest1 = new Guest();
         guest1.LeadGuest = true;
         guest1.LeadGuest = true;
-        guest1.Title = "Mr";
+        guest1.Title =  getString(R.string.mr);
         guest1.FirstName = firstName1GustOne;
         guest1.GuestType = Enums.GuestType.Adult;
         guest1.LastName = lastName1GustOne;
         arrayOfGuest.add(guest1);
 
         Guest guest2 = new Guest();
-        guest2.Title = "Mr";
+        guest2.Title =  getString(R.string.mr);
         guest2.FirstName = firstName2GustOne;
         guest2.GuestType = Enums.GuestType.Adult;
         guest2.LastName = lastName2GustOne;
@@ -857,7 +857,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
         Guest guest3 = new Guest();
-        guest3.Title = "Mr";
+        guest3.Title = getString(R.string.mr);
         guest3.FirstName = firstName3GustOne;
         guest3.GuestType = Enums.GuestType.Adult;
         guest3.LastName = lastName3GustOne;
@@ -866,13 +866,13 @@ public class RoomBooked extends AppCompatActivity {
 
 
         Guest guest4 = new Guest();
-        guest4.Title = "Mr";
+        guest4.Title =  getString(R.string.mr);
         guest4.FirstName = firstName4GustOne;
         guest4.GuestType = Enums.GuestType.Adult;
         guest4.LastName = lastName4GustOne;
         arrayOfGuest.add(guest4);
 
-}
+    }
 
     private void bookingresponse(PaymentInfo paymentInfo) {
         try {
@@ -918,19 +918,19 @@ public class RoomBooked extends AppCompatActivity {
 
 
             }
-         //   SharedPreferencesManger.SaveData(this, "arrayOfroomsreq", null);
+            //   SharedPreferencesManger.SaveData(this, "arrayOfroomsreq", null);
 
             String clientReferenceNo = dtStr + "#TAMM";
             HotelBookResponse hotelBookingResponse = service.HotelBook(start_time, end_time,
                     clientReferenceNo, "EG", arrayOfGuest, null, paymentInfo
                     , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
-                    null, false, authenticandata);
+                    null, true, authenticandata);
 
 
             ResponseStatus status = hotelBookingResponse.Status;
-          //  int bookingId = hotelBookingResponse.BookingId;
+            int bookingId = hotelBookingResponse.BookingId;
 
-           // Toast.makeText(this, ""+bookingId, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, ""+bookingId + status.Description, Toast.LENGTH_SHORT).show();
 
 
             SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);

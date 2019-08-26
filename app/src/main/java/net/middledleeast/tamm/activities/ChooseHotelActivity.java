@@ -257,7 +257,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
         cityId = getIntent().getStringExtra("cityId");
         noOfRooms = getIntent().getIntExtra("noOfRooms", 1);
         roomGuests = getIntent().getStringArrayListExtra("roomGuest");
-        String sessionId = getIntent().getStringExtra("sessionId");
+       // String sessionId = getIntent().getStringExtra("sessionId");
         resultIndex = (ArrayList<Integer>) getIntent().getSerializableExtra("resultIndex");
         session_id = SharedPreferencesManger.LoadStringData(this, "session_id");
         reInfoHotels.setLayoutManager(new LinearLayoutManager(this));

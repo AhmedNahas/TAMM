@@ -43,7 +43,7 @@ public class FlightSearch extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flight_search);
-        password = "App02072019";
+        password = getString(R.string.passowrd_flight);
 
         Gson gson = new GsonBuilder()
                 .create();

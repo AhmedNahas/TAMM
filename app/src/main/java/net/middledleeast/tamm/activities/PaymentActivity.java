@@ -212,7 +212,7 @@ public class PaymentActivity extends AppCompatActivity {
             flightCurrency = SharedPreferencesManger.LoadStringData(this, "typeFare");
 
 
-            tvMrMrs.setText("MR");
+            tvMrMrs.setText(getString(R.string.mr));
             tvLastName.setText("");
             tvFirstName.setText("");
             tvKd.setText(flightCurrency+" "+ TotalFare);
@@ -220,10 +220,10 @@ public class PaymentActivity extends AppCompatActivity {
         }
 
 
-        spinnerTitles.add("PAYMENT METHOD");
-        spinnerTitles.add("VISA");
-        spinnerTitles.add("MASTER CARD");
-        spinnerTitles.add("KNET");
+        spinnerTitles.add(getString(R.string.payment_method));
+        spinnerTitles.add(getString(R.string.visa_));
+        spinnerTitles.add(getString(R.string.master));
+        spinnerTitles.add(getString(R.string.knet));
 
         spinnerImages.add(0);
 
@@ -248,7 +248,7 @@ public class PaymentActivity extends AppCompatActivity {
 
 
                     String s = spinnerTitles.get(i);
-                    if (s.equals("KNET")){
+                    if (s.equals(getString(R.string.knet))){
 
 
                         knet = true ;
@@ -310,17 +310,17 @@ public class PaymentActivity extends AppCompatActivity {
         service = new BasicHttpBinding_IHotelService1();
         service.enableLogging = true;
         authenticandata = new AuthenticationData();
-        authenticandata.UserName = ("Tammtest");
-        authenticandata.Password = ("Tam@18418756");
+        authenticandata.UserName = (getString(R.string.user_name_tamm));
+        authenticandata.Password = (getString(R.string.passowrd_tamm));
 
 
         List<String> listTypeMony = new ArrayList<>();
 
 
-        listTypeMony.add("U.S.D");
-        listTypeMony.add("EURO");
-        listTypeMony.add("EG POUND");
-        listTypeMony.add("KD");
+        listTypeMony.add(getString(R.string.usd));
+        listTypeMony.add(getString(R.string.euro));
+        listTypeMony.add(getString(R.string.eg_pound));
+        listTypeMony.add(getString(R.string.kd));
 
         ArrayAdapter adapter = new ArrayAdapter(PaymentActivity.this, R.layout.item_spener, listTypeMony);
         adapter.setDropDownViewResource(R.layout.drop_dowen_convert);

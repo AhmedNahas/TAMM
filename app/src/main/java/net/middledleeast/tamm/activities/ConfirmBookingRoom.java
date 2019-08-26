@@ -331,8 +331,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         service = new BasicHttpBinding_IHotelService1();
         service.enableLogging = true;
         authenticandata = new AuthenticationData();
-        authenticandata.UserName = ("Tammtest");
-        authenticandata.Password = ("Tam@18418756");
+        authenticandata.UserName = (getString(R.string.user_name_tamm));
+        authenticandata.Password = (getString(R.string.passowrd_tamm));
 //        arrayOfRooms = (ArrayOfRequestedRooms) intent.getSerializableExtra("arrayOfRooms");
 //        rooms = (List<Hotel_Room>) gson.fromJson(intent.getStringExtra("rooms"), List.class);
 //        hotel_room(xxhdpi) = gson.fromJson(intent.getStringExtra("hotel_room(xxhdpi)"), Hotel_Room.class);
@@ -463,10 +463,21 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 
                 if (isInternetAvailable()){
 
-                    Intent intent1 = new Intent(ConfirmBookingRoom.this, PaymentActivity.class);
+                    if(firstName(firstName1GustOne.getText().toString())==true){
+                        Intent intent1 = new Intent(ConfirmBookingRoom.this, PaymentActivity.class);
+                        intent1.putExtra("mId", 2);
+                        startActivity(intent1);
 
-                    intent1.putExtra("mId", 2);
-                    startActivity(intent1);
+
+                    }else {
+
+
+                    }
+
+
+
+
+
                 }else {
 
 
@@ -496,8 +507,9 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 
 
         mrOrMissArray = new ArrayList<>();
-        mrOrMissArray.add("Mr.");
-        mrOrMissArray.add("Mrs.");
+        mrOrMissArray.add(getString(R.string.mr));
+        mrOrMissArray.add(getString(R.string.mrs));
+
         mrOrMissAdapter = new ArrayAdapter(this, R.layout.item_spener, mrOrMissArray);
         mrOrMissAdapter.setDropDownViewResource(R.layout.drop_dowen);
         s1 = findViewById(R.id.mromiss1);
@@ -518,6 +530,20 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 
 
     }
+
+
+
+
+    // validate first name
+    public static boolean firstName( String firstName ) {
+        return firstName.matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$");
+    }
+    // validate last name
+    public static boolean lastName( String lastName ) {
+        return lastName.matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$");
+    }
+
+
     private void noOfAdult_1() {
 
         no_adultroom1 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom1");
@@ -547,6 +573,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
             SharedPreferencesManger.SaveData(this, "lastName1GustOne", lastName1GustOne);
             SharedPreferencesManger.SaveData(this, "firstName2GustOne", firstName2GustOne);
             SharedPreferencesManger.SaveData(this, "lastName2GustOne", lastName2GustOne);
+
+
         } else if (no_adultroom1 == 3) {
             relativeFirstlast2.setVisibility(View.VISIBLE);
             relativeFirstlast3.setVisibility(View.VISIBLE);

@@ -50,8 +50,8 @@ public class HotelBooking extends AppCompatActivity {
         service = new BasicHttpBinding_IHotelService1();
         service.enableLogging = true;
         authenticandata = new AuthenticationData();
-        authenticandata.UserName = ("Tammtest");
-        authenticandata.Password = ("Tam@18418756");
+        authenticandata.UserName = (getString(R.string.user_name_tamm));
+        authenticandata.Password = (getString(R.string.passowrd_tamm));
         int BookingId = SharedPreferencesManger.LoadIntegerData(this, "BookingID");
         String clientReferenceNo = SharedPreferencesManger.LoadStringData(this, "ClientRef");
         String confirmationNo = SharedPreferencesManger.LoadStringData(this, "ConfirmationNo");
@@ -59,7 +59,7 @@ public class HotelBooking extends AppCompatActivity {
             Enums.CancelRequestType cancelRequestType = Enums.CancelRequestType.HotelCancel;
 //            HotelCancelResponse hotelCancelResponse = service.HotelCancel(BookingId,cancelRequestType , "Testing", confirmationNo, authenticandata);
 
-            HotelBookingDetailResponse hotelBookingDetailResponse = service.HotelBookingDetail(BookingId, confirmationNo, clientReferenceNo, authenticandata);
+            HotelBookingDetailResponse hotelBookingDetailResponse = service.HotelBookingDetail(BookingId, null, clientReferenceNo, authenticandata);
             ResponseStatus status = hotelBookingDetailResponse.Status;
             String statuscODE = status.StatusCode;
 

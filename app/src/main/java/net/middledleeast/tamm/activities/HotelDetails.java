@@ -297,8 +297,8 @@ public class HotelDetails extends AppCompatActivity {
 
         service = new BasicHttpBinding_IHotelService1();
         authenticationData = new AuthenticationData();
-        authenticationData.UserName = ("Tammtest");
-        authenticationData.Password = ("Tam@18418756");
+        authenticationData.UserName = (getString(R.string.user_name_tamm));
+        authenticationData.Password = (getString(R.string.passowrd_tamm));
 
     }
 

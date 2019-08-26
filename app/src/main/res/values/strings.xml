@@ -333,8 +333,23 @@
         <item>263,ZW</item>
     </string-array>
 
-
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="user_name_tamm" translatable="false">Tammtest</string>
+    <string name="passowrd_tamm" translatable="false">Tam@18418756</string>
+    <string name="mr" translatable="true">Mr.</string>
+    <string name="mrs">Mrs.</string>
+    <string name="male">Male.</string>
+    <string name="female">Female</string>
+    <string name="children">Children</string>
+    <string name="room">room</string>
+    <string name="passowrd_flight" translatable="false">App02072019</string>
+    <string name="visa_">VISA</string>
+    <string name="master">MASTER CARD</string>
+    <string name="usd">USD</string>
+    <string name="euro">EURO</string>
+    <string name="eg_pound">EG POUND</string>
+    <string name="kd" translatable="false">KD</string>
+
 
 </resources>

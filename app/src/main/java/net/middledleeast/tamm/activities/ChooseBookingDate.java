@@ -148,16 +148,16 @@ public class ChooseBookingDate extends AppCompatActivity {
         int no_adult = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom1");
         int no_childS = SharedPreferencesManger.LoadIntegerData(this, "no_childroom1");
 
-        no_child.setText(no_childS + "Children");
+        no_child.setText(no_childS + getString(R.string.children));
 
-        no_room.setText("" + no_roomS + " room");
-        adult_tv.setText(no_adult + "Adult");
+        no_room.setText("" + no_roomS + getString(R.string.room));
+        adult_tv.setText(no_adult + getString(R.string.adult));
 
 
         startDate.setText(start_time);
         endDate.setText(end_time);
 
-        nights.setText(nightsDeff + " Nights");
+        nights.setText(nightsDeff + getString(R.string.nights));
         LinearLayoutManager manager = new LinearLayoutManager(this);
         roomRecyclerView.setLayoutManager(manager);
         auth();
@@ -334,8 +334,8 @@ public class ChooseBookingDate extends AppCompatActivity {
         service = new BasicHttpBinding_IHotelService1();
         authenticationData = new AuthenticationData();
         service.enableLogging = true;
-        authenticationData.UserName = ("Tammtest");
-        authenticationData.Password = ("Tam@18418756");
+        authenticationData.UserName = (getString(R.string.user_name_tamm));
+        authenticationData.Password = (getString(R.string.passowrd_tamm));
 
     }
 
