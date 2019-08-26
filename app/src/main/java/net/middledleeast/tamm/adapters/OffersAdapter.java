@@ -10,16 +10,31 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import net.middledleeast.tamm.R;
+
+import java.util.List;
 
 public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewholder> {
     Context context;
-int id ;
+    int id ;
+    List<String> listName;
+    List<String>listImg;
+    List<String> getListNameHotel;
 
-    public OffersAdapter(Context context,int id) {
+    public OffersAdapter(Context context,  List<String> listName , List<String> listImg , List<String> getListNameHotel, int id) {
         this.context = context;
         this.id=id;
+        this.listName = listName;
+        this.listImg = listImg;
+        this.getListNameHotel = getListNameHotel;
+
+
+
     }
+
+
 
     @NonNull
     @Override
@@ -31,13 +46,24 @@ int id ;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Offerviewholder holder, int position) {
+    public void onBindViewHolder(@NonNull Offerviewholder holder, int a) {
+
+
+
 
         if (id==1){
 
-                 holder.txtview1.setText("Huwai Pharmacy");
-                 holder.txtview2.setText("gjsafdjsafdaskliyuyrfhshjf");
-                 holder.txtview3.setText("+95684712356");
+            String country = listName.get(a);
+            String images = listImg.get(a);
+            String hotelName  = getListNameHotel.get(a);
+
+            holder.txtview1.setText(hotelName);
+
+            holder.txtview2.setText(country);
+
+            Glide.with(context).load(images).into(holder.imageView2);
+
+
 
         }else {
 
@@ -55,7 +81,7 @@ int id ;
 
     @Override
     public int getItemCount() {
-        return 3;
+        return listName != null ? listName.size() : 0;
     }
 
     public class Offerviewholder extends RecyclerView.ViewHolder {

@@ -22,7 +22,7 @@ public class FavoriteActivity extends AppCompatActivity {
 
         recyclerView=findViewById(R.id.recycler_view_favorite);
 
-        offersAdapter = new OffersAdapter(this,2);
+//        offersAdapter = new OffersAdapter(this,2);
         recyclerView.setLayoutManager(new LinearLayoutManager(FavoriteActivity.this));
         recyclerView.setAdapter(offersAdapter);
 

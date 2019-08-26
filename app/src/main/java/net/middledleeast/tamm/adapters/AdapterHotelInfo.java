@@ -156,7 +156,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
 
     public class SingleView extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView name, rat ,    hotelPrice,recommended ;
+        TextView name, rat , hotelPrice,recommended ;
         ImageView photoHotel ;
         onHotelListener onHotelListener;
         RelativeLayout parentLayout;
