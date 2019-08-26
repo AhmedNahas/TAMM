@@ -73,7 +73,7 @@ public class FlightSearch extends AppCompatActivity {
         call.enqueue(new Callback<FlightAuthentication>() {
             @Override
             public void onResponse(Call<FlightAuthentication> call, Response<FlightAuthentication> response) {
-                flightAuthentication[0] = response.body();
+              flightAuthentication[0] = response.body();
 
 
                 System.out.println("Helper: " + flightAuthentication[0].getTokenId());

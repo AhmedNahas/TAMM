@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,10 +24,13 @@ import com.Tamm.Hotels.wcf.AmendmentResponse;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.wirecard.ecom.Client;
@@ -46,6 +50,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -96,13 +101,12 @@ public class PaymentActivity extends AppCompatActivity {
     String first_name1 , last_name1 ,date , country ,city,mail,phone,ocupation,username ,pass ;
 
     private String register_url_member = "http://egyptgoogle.com/paymentusers/insertstudents.php";
-    RequestQueue requestQueue;
     private String day , month , year ;
     private int RIGISTRATHION = 1;
     private int BOOKING_ROOM = 2 ;
     private int FLIGHT =3;
     private boolean knet = false;
-    private String urlAmount = "http://egyptgoogle.com/k/knetjson.php";
+    private String urlAmount = "http://egyptgoogle.com/k/jsoninsert.php";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -559,7 +563,61 @@ public class PaymentActivity extends AppCompatActivity {
         }
     }
 
-    private void sendamount(String roomPrice) {
+    private void sendamount(String roomPrice_) {
+
+
+//        try {
+//            RequestQueue requestQueue = Volley.newRequestQueue(this);
+//            String URL = ;
+//            JSONObject jsonBody = new JSONObject();
+//            jsonBody.put("roomprice", roomPrice);
+//            final String requestBody = jsonBody.toString();
+//
+//            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+//                @Override
+//                public void onResponse(String response) {
+//                    Log.i("VOLLEY", response);
+//                }
+//            }, new Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(VolleyError error) {
+//                    Log.e("VOLLEY", error.toString());
+//                }
+//            }) {
+//                @Override
+//                public String getBodyContentType() {
+//                    return "application/json; charset=utf-8";
+//                }
+//
+//                @Override
+//                public byte[] getBody() throws AuthFailureError {
+//                    try {
+//                        return requestBody == null ? null : requestBody.getBytes("utf-8");
+//                    } catch (UnsupportedEncodingException uee) {
+//                        VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
+//                        return null;
+//                    }
+//                }
+//
+//                @Override
+//                protected Response<String> parseNetworkResponse(NetworkResponse response) {
+//                    String responseString = "";
+//                    if (response != null) {
+//                        responseString = String.valueOf(response.statusCode);
+//                        // can get more details such as response.headers
+//                    }
+//                    return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+//                }
+//            };
+//
+//            requestQueue.add(stringRequest);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//
+//
 
 
 
@@ -567,9 +625,9 @@ public class PaymentActivity extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, urlAmount, new Response.Listener<String>() {
 
             @Override
-
             public void onResponse(String response) {
 
+                Toast.makeText(PaymentActivity.this, ""+response, Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
 
@@ -578,18 +636,24 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
+                Toast.makeText(PaymentActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
 
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("qty", "100");
+                parameters.put("roomprice",roomPrice_);
 
 
                 return parameters;
             }
         };
+
+
+        RequestQueue requestQueue = Volley.newRequestQueue(PaymentActivity.this);
+
         requestQueue.add(request);
 
     }

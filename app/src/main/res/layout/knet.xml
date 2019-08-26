@@ -12,8 +12,8 @@
         android:layout_marginTop="20dp"
         app:srcCompat="@drawable/ic_knet" />
 
-    <TextView
-        android:id="@+id/textView5"
+    <WebView
+        android:id="@+id/webview_knet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
