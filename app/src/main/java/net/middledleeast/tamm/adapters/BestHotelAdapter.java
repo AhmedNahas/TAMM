@@ -2,6 +2,7 @@ package net.middledleeast.tamm.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.activities.OffersDetailsActivity;
 
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class BestHotelAdapter extends RecyclerView.Adapter<BestHotelAdapter.Best
     Activity activity ;
     int id ;
 
-    public BestHotelAdapter(Context context, Activity activity, List<String> listName , List<String> listImg , List<String> getListNameHotel, int id ) {
+    public BestHotelAdapter(Context context, Activity activity, List<String> listName , List<String> listImg , List<String> getListNameHotel,int id ) {
         this.context = context;
         this.activity = activity;
         this.listName = listName;
@@ -37,6 +39,7 @@ public class BestHotelAdapter extends RecyclerView.Adapter<BestHotelAdapter.Best
     List<String> listName ;
     List<String>listImg ;
     List<String> getListNameHotel;
+
 
 
     @NonNull
@@ -52,22 +55,51 @@ public class BestHotelAdapter extends RecyclerView.Adapter<BestHotelAdapter.Best
     public void onBindViewHolder(@NonNull BestHotelViewHolder holder, int position) {
 
 
+
         if (id == 2){
 
             holder.tv_best_hotel.setText("Best Deals");
 
 
+        }else {
+
+            String name = listName.get(position);
+
+            String images = listImg.get(position);
+
+            String hotelName  = getListNameHotel.get(position);
+            holder.tv_price_hotel.setText(hotelName);
+
+            holder.tv_country_hotel.setText(name);
+            Glide.with(context).load(images).into(holder.img_hotel);
+
+
+
+
+
+
+
+
+
+            holder.img_hotel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+
+                    Intent intent = new Intent(context , OffersDetailsActivity.class);
+                    context.startActivity(intent);
+
+                }
+            });
+
         }
 
-        String name = listName.get(position);
 
-        String images = listImg.get(position);
 
-        String hotelName  = getListNameHotel.get(position);
-        holder.tv_price_hotel.setText(hotelName);
 
-        holder.tv_country_hotel.setText(name);
-        Glide.with(context).load(images).into(holder.img_hotel);
+
+
+
 
     }
 
@@ -93,5 +125,7 @@ public class BestHotelAdapter extends RecyclerView.Adapter<BestHotelAdapter.Best
             tv_best_hotel=itemView.findViewById(R.id.tv_best_hotel);
         }
     }
+
+
 
 }

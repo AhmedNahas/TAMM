@@ -3,25 +3,17 @@ package net.middledleeast.tamm.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.Tamm.Hotels.wcf.AuthenticationData;
-import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
-import com.Tamm.Hotels.wcf.CityWiseNotificationResponse;
-import com.Tamm.Hotels.wcf.GiataHotelCodesResponse;
-import com.Tamm.Hotels.wcf.HotelCodesResponse;
-import com.Tamm.Hotels.wcf.HotelDetailsResponse;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -33,7 +25,6 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.BestHotelAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.Best.BestHotel;
-import net.middledleeast.tamm.model.validation.Validtionmember;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +42,10 @@ public class BestHotels extends Fragment {
     List<String> listName = new ArrayList<>();
     List<String> listImage = new ArrayList<>();
     List<String> listNameHotel = new ArrayList<>();
+
+
+
+
     private List<BestHotel> theBest = new ArrayList<>();
 
     //    private BasicHttpBinding_IHotelService1 service;
@@ -63,6 +58,7 @@ private String best_hotels = "http://egyptgoogle.com/backend/hotels/bestdeals.ph
     private LinearLayoutManager linearLayoutManager;
     public BestHotels() {
         // Required empty public constructor
+
     }
 
 
@@ -74,6 +70,10 @@ private String best_hotels = "http://egyptgoogle.com/backend/hotels/bestdeals.ph
         View view =inflater.inflate(R.layout.best_hotels, container, false);
         recyclerView=view.findViewById(R.id.recycler_view_hotels);
         right = view.findViewById(R.id.img_right);
+
+
+
+
 
         left = view.findViewById(R.id.img_left);
         right.setOnClickListener(new View.OnClickListener() {
@@ -171,16 +171,47 @@ private String best_hotels = "http://egyptgoogle.com/backend/hotels/bestdeals.ph
                         JSONObject ob = array.getJSONObject(i);
 
 
+                        BestHotel listData = new BestHotel(ob.getString("id"),ob.getString("offername"),ob.getString("country"),ob.getString("hotelname"),ob.getString("breakfast"),ob.getString("dinner"),ob.getString("lunch"),ob.getString("fromairport"),ob.getString("fromhotel"),ob.getString("day"),ob.getString("month"),ob.getString("year"),ob.getString("dd"),ob.getString("mm"),ob.getString("yy"),ob.getString("offerdesc"),ob.getString("image"),ob.getString("price"));
 
-                        BestHotel listData = new BestHotel(ob.getString("offername"),ob.getString("country"),ob.getString("hotelname"),ob.getString("image"));
+
 
 
                         theBest.add(listData);
 
                         String offerName_ = theBest.get(i).getOffername();
+                        SharedPreferencesManger.SaveData(getContext(),"offerName_",offerName_);
                         String country_ = theBest.get(i).getCountry();
+                        SharedPreferencesManger.SaveData(getContext(),"country_",country_);
                         String hotelName_ = theBest.get(i).getHotelname();
+                        SharedPreferencesManger.SaveData(getContext(),"hotelName_",hotelName_);
+                        final String breakfast = theBest.get(i).getBreakfast();
+                        SharedPreferencesManger.SaveData(getContext(),"breakfast",breakfast);
+                        final String dinner = theBest.get(i).getDinner();
+                        SharedPreferencesManger.SaveData(getContext(),"dinner",dinner);
+                        final String lunch = theBest.get(i).getLunch();
+                        SharedPreferencesManger.SaveData(getContext(),"lunch",lunch);
+                        final String fromairport = theBest.get(i).getFromairport();
+                        SharedPreferencesManger.SaveData(getContext(),"fromairport",fromairport);
+                        final String fromhotel = theBest.get(i).getFromhotel();
+                        SharedPreferencesManger.SaveData(getContext(),"fromhotel",fromhotel);
+                        final String day = theBest.get(i).getDay();
+                        SharedPreferencesManger.SaveData(getContext(),"day",day);
+                        final String month = theBest.get(i).getMonth();
+                        SharedPreferencesManger.SaveData(getContext(),"month",month);
+                        final String year = theBest.get(i).getYear();
+                        SharedPreferencesManger.SaveData(getContext(),"year",year);
+                        final String dd = theBest.get(i).getDd();
+                        SharedPreferencesManger.SaveData(getContext(),"dd",dd);
+                        final String mm = theBest.get(i).getMm();
+                        SharedPreferencesManger.SaveData(getContext(),"mm",mm);
+                        final String yy = theBest.get(i).getYy();
+                        SharedPreferencesManger.SaveData(getContext(),"yy",yy);
+                        final String offerdesc = theBest.get(i).getOfferdesc();
+                        SharedPreferencesManger.SaveData(getContext(),"offerdesc",offerdesc);
                         String image = theBest.get(i).getImage();
+                        SharedPreferencesManger.SaveData(getContext(),"image",image);
+                        final String price = theBest.get(i).getPrice();
+                        SharedPreferencesManger.SaveData(getContext(),"price",price);
 
                         listNameHotel.add(hotelName_);
                         listName.add(country_);

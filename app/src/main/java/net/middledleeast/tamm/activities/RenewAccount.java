@@ -359,7 +359,6 @@ public class  RenewAccount extends AppCompatActivity
 
 
         } else if (id == R.id.nav_conversation) {
-
         } else if (id == R.id.nav_favorites) {
 
             startActivity(new Intent(RenewAccount.this, FavoriteActivity.class));

@@ -1,6 +1,5 @@
 package net.middledleeast.tamm.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,12 +19,13 @@ import java.util.List;
 public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewholder> {
     Context context;
     int id ;
-    Activity activity ;
+    List<String> listName;
+    List<String>listImg;
+    List<String> getListNameHotel;
 
-    public OffersAdapter(Context context, Activity activity, List<String> listName , List<String> listImg , List<String> getListNameHotel, int id) {
+    public OffersAdapter(Context context,  List<String> listName , List<String> listImg , List<String> getListNameHotel, int id) {
         this.context = context;
         this.id=id;
-        this.activity = activity;
         this.listName = listName;
         this.listImg = listImg;
         this.getListNameHotel = getListNameHotel;
@@ -34,9 +34,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
 
     }
 
-    List<String> listName ;
-    List<String>listImg ;
-    List<String> getListNameHotel;
+
 
     @NonNull
     @Override
@@ -48,17 +46,20 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Offerviewholder holder, int position) {
+    public void onBindViewHolder(@NonNull Offerviewholder holder, int a) {
+
+
+
 
         if (id==1){
 
-            String name = listName.get(position);
-            String images = listImg.get(position);
+            String country = listName.get(a);
+            String images = listImg.get(a);
+            String hotelName  = getListNameHotel.get(a);
 
-            String hotelName  = getListNameHotel.get(position);
             holder.txtview1.setText(hotelName);
 
-            holder.txtview2.setText(name);
+            holder.txtview2.setText(country);
 
             Glide.with(context).load(images).into(holder.imageView2);
 
@@ -80,7 +81,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
 
     @Override
     public int getItemCount() {
-        return 3;
+        return listName != null ? listName.size() : 0;
     }
 
     public class Offerviewholder extends RecyclerView.ViewHolder {

@@ -1,7 +1,6 @@
 package net.middledleeast.tamm.activities;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,7 +35,7 @@ public class OffersActivity extends AppCompatActivity {
     List<String> listNameHotel = new ArrayList<>();
     private List<BestHotel> theBest = new ArrayList<>();
 
-    RequestQueue requestQueue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +44,13 @@ public class OffersActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_view_offer);
 
-
-        offersAdapter = new OffersAdapter(this,OffersActivity.this,listName,listImage ,listNameHotel ,1);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(OffersActivity.this));
-        recyclerView.setAdapter(offersAdapter);
-
         getOffers();
+
+
+
+
+
+
 
 
     }
@@ -70,7 +69,7 @@ public class OffersActivity extends AppCompatActivity {
 
 
 
-                        BestHotel listData = new BestHotel(ob.getString("offername"),ob.getString("country"),ob.getString("hotelname"),ob.getString("image"));
+                        BestHotel listData = new BestHotel(ob.getString("id"),ob.getString("offername"),ob.getString("country"),ob.getString("hotelname"),ob.getString("breakfast"),ob.getString("dinner"),ob.getString("lunch"),ob.getString("fromairport"),ob.getString("fromhotel"),ob.getString("day"),ob.getString("month"),ob.getString("year"),ob.getString("dd"),ob.getString("mm"),ob.getString("yy"),ob.getString("offerdesc"),ob.getString("image"),ob.getString("price"));
 
 
                         theBest.add(listData);
@@ -84,9 +83,13 @@ public class OffersActivity extends AppCompatActivity {
                         listNameHotel.add(hotelName_);
                         listName.add(country_);
                         listImage.add(image);
+                        offersAdapter = new OffersAdapter(OffersActivity.this,listName,listImage ,listNameHotel ,1);
 
+                        recyclerView.setLayoutManager(new LinearLayoutManager(OffersActivity.this));
+                        recyclerView.setAdapter(offersAdapter);
 
                     }
+
 
 
 
@@ -105,11 +108,13 @@ public class OffersActivity extends AppCompatActivity {
                 //dialog.cancel();
             }
         });
+
         RequestQueue requestQueue = Volley.newRequestQueue(OffersActivity.this);
         requestQueue.add(stringRequest);
 
 
 
     }
+
 }
 

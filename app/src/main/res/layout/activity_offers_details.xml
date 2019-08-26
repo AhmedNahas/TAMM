@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/manhand"
+    tools:context=".activities.OffersDetailsActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/relative_offer_detail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <RelativeLayout
+            android:id="@+id/toolbar_back1_offer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+            <ImageView
+                android:id="@+id/toolbar_back2_offer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_back_arrow"
+                />
+            <TextView
+                android:id="@+id/back_pressed_txt_offer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BACK"
+                android:textColor="@color/white"
+                android:layout_marginStart="@dimen/_25sdp"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/logo" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/ic_button" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_linee_offer"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:src="@drawable/line1"
+        android:layout_below="@+id/relative_offer_detail"
+        android:layout_centerInParent="true" />
+    <!--<ImageView-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:id="@+id/img_li"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="12dp"-->
+    <!--android:src="@drawable/line"-->
+    <!--android:layout_below="@+id/relative_hotel_detail"-->
+    <!--/>-->
+    <RelativeLayout
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:id="@+id/view_pager_details_offer"
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_130sdp"
+        android:layout_below="@+id/img_linee_offer"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/border2"
+        >
+
+        <androidx.viewpager.widget.ViewPager
+
+
+            android:layout_width="match_parent"
+            android:id="@+id/hotel_image_detail_offer"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/_4sdp"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+
+        android:id="@+id/SliderDots_offer"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_pager_details_offer"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <TextView
+        android:fontFamily="sans-serif-thin"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="@dimen/_12ssp"
+        android:text="fdgfdgfhhhhhhhhhhhhhhhhhhhhhhhhhfg"
+        android:id="@+id/hotel_name_detail_offer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SliderDots_offer"
+        android:layout_centerInParent="true"
+        android:textColor="#ffff"/>
+
+
+    <TextView
+        android:fontFamily="sans-serif-thin"
+        android:textStyle="normal"
+        android:lineHeight="@dimen/_20sdp"
+        android:gravity="center"
+        android:text="fgdfdgfdgdfjgjfdjgdfjkgffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        android:layout_below="@+id/hotel_name_detail_offer"
+        android:id="@+id/hotel_desc_detail_offer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="#ffff"
+        android:layout_margin="20dp"
+        tools:targetApi="p" />
+
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:id="@+id/layout_rat_offer"
+        android:layout_below="@+id/hotel_desc_detail_offer"
+        android:layout_marginEnd="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_margin="@dimen/_12sdp"
+            android:id="@+id/hotel_detils_rat_offer"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/shape3"
+            android:gravity="center"
+            android:text="5"
+            android:textColor="#FFFFFF" />
+
+
+        <TextView
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:id="@+id/hotel_rat_offer"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="of 5 Guest Rating"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/_20ssp"
+        android:id="@+id/relative_map_next_offer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_rat_offer"
+        android:layout_centerInParent="true">
+        <Button
+            android:gravity="center"
+            android:id="@+id/btn_map_offer"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:textAllCaps="false"
+            android:text="Map"
+            android:background="#BE973B"
+            />
+
+        <Button
+            android:gravity="center"
+            android:id="@+id/btn_next_offer"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:textAllCaps="false"
+            android:text="Next"
+            android:layout_toRightOf="@+id/btn_map_offer"
+            android:background="#BE973B"
+            android:layout_marginLeft="@dimen/_15sdp"
+            />
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/relative_img_offer_details_tamm_offer"
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_90sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/man1"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/tv_tab_me_details_offer"
+        >
+
+        <TextView
+            android:id="@+id/assistant_label_voice_details_offer"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_assistant_voice"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text="SEND VOICE NOTE TO AGENT"
+            android:textColor="@color/app_color"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+
+        <TextView
+            android:id="@+id/assistant_label_call_details_offer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_assistant_call"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text="CALL AGENT"
+            android:textStyle="bold"
+            android:textColor="@color/app_color"
+            android:textSize="13sp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_below="@+id/assistant_label_voice_details_offer"
+            />
+
+
+        <TextView
+            android:id="@+id/assistant_label_message_details_offer"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="38"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_assistant_message"
+            android:fontFamily="sans-serif"
+            android:text="SEND MESSAGE TO AGENT"
+            android:textColor="@color/app_color"
+            android:textSize="13sp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_alignParentRight="true"/>
+
+
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/tv_tab_me_details_offer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tap me if you need MY ASSISTANCE "
+        android:textColor="#fff"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>
