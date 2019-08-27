@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -58,6 +59,7 @@ public class checkroom extends AppCompatActivity {
     private ArrayList<Double> roomIndexArray;
     private String roomPrice;
     private String currency;
+    private ArrayOfRequestedRooms arrayOfRooms = new ArrayOfRequestedRooms();
 
 
     @Override
@@ -79,6 +81,19 @@ public class checkroom extends AppCompatActivity {
             }
         });
 
+        Gson gson1 = new Gson();
+        String reqRoomString = SharedPreferencesManger.LoadStringData(this, "arrayOfroomsreq");
+
+        arrayOfRooms = gson1.fromJson(reqRoomString, ArrayOfRequestedRooms.class);
+
+
+        for (int i = 0; i < arrayOfRooms.size(); i++) {
+
+
+            String roomTypeName = arrayOfRooms.get(i).RoomTypeName;
+            BigDecimal totalFare = arrayOfRooms.get(i).RoomRate.TotalFare;
+            String s = totalFare.toString();
+        }
 
 
 
@@ -131,6 +146,10 @@ public class checkroom extends AppCompatActivity {
             String[] arrOfStr = deadline.split("T");
 
             deadLine_tv.setText("Until : " + arrOfStr[0]);
+
+            String untile = deadLine_tv.getText().toString();
+            SharedPreferencesManger.SaveData(this, "Until", untile);
+
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -36,7 +36,10 @@
         </activity>
         <activity
             android:name=".activities.SeatSelection"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+
+        </activity>
         <activity
             android:name=".activities.RecommendedTwoWay"
             android:screenOrientation="portrait" />
@@ -50,17 +53,12 @@
             android:name=".activities.Proceedbeybey"
             android:screenOrientation="portrait">
 
-
-
         </activity>
         <activity
             android:name=".activities.PassengerDeparture"
-            android:screenOrientation="portrait" >
-
+            android:screenOrientation="portrait">
 
         </activity>
-
-
         <activity
             android:name=".activities.Passenger_inform"
             android:screenOrientation="portrait" />
@@ -87,16 +85,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.PaymentActivity"
-            android:screenOrientation="portrait" >
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.HotelBooking"
             android:screenOrientation="portrait" />
@@ -124,10 +113,20 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.FindHotels"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+        </activity>
         <activity
             android:name=".activities.FlightSearch"
             android:screenOrientation="portrait">
+
 
 
         </activity>
@@ -142,23 +141,20 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.RenewAccount"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".activities.PaymentTemp" />
+        <activity android:name=".activities.OffersActivity" />
+
+        <activity android:name=".activities.MyBookActivity"
+
+
+            android:screenOrientation="portrait"/>
+
+
 
         <service
             android:name=".sevice.MyService"
             android:enabled="true" />
-
     </application>
-
-
-
-
-
-
-
-
-
-
 
 </manifest>
