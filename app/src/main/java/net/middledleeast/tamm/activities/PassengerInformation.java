@@ -33,16 +33,16 @@ public class PassengerInformation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.passenger_information);
         mrormiss1array = new ArrayList<>();
-        mrormiss1array.add("Mr.");
-        mrormiss1array.add("Mrs.");
+        mrormiss1array.add(getString(R.string.mr));
+        mrormiss1array.add(getString(R.string.mrs));
 
         mrormiss2array = new ArrayList<>();
-        mrormiss2array.add("Mr.");
-        mrormiss2array.add("Mrs.");
+        mrormiss2array.add(getString(R.string.mr));
+        mrormiss2array.add(getString(R.string.mrs));
 
         mrormiss3array = new ArrayList<>();
-        mrormiss3array.add("Mr.");
-        mrormiss3array.add("Mrs.");
+        mrormiss3array.add(getString(R.string.mr));
+        mrormiss3array.add(getString(R.string.mrs));
 
         dobadult= findViewById(R.id.date_of_birth_adult);
         dobchild=findViewById(R.id.date_of_birth_child);

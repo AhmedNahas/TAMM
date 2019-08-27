@@ -448,10 +448,10 @@ public class FindHotels extends AppCompatActivity {
         room3ChildAgeSpinner.setLayoutManager(new GridLayoutManager(this, 2));
         room4ChildAgeSpinner.setLayoutManager(new GridLayoutManager(this, 2));
 
-        for (int i = 0; i < 18; i++) {
+        for (int i = 0; i < 19; i++) {
             listOfChildAge.add(i);
         }
-        for (int i = 0; i < 18; i++) {
+        for (int i = 0; i < 19; i++) {
             listOfChildAgeRoom2.add(i);
         }
         room1ChildAgeSpinner = new AdapterChildCount(this, listChildernCount, listOfChildAge, this, 1);
@@ -1327,8 +1327,8 @@ public class FindHotels extends AppCompatActivity {
         service = new BasicHttpBinding_IHotelService1();
         service.enableLogging = true;
         authenticationData = new AuthenticationData();
-        authenticationData.UserName = ("Tammtest");
-        authenticationData.Password = ("Tam@18418756");
+        authenticationData.UserName = (getString(R.string.user_name_tamm));
+        authenticationData.Password = (getString(R.string.passowrd_tamm));
 
     }
 
@@ -1672,6 +1672,11 @@ public class FindHotels extends AppCompatActivity {
 
             try {
                 if (hotelSearchResponse.HotelResultList != null) {
+
+
+                    sessionId = hotelSearchResponse.SessionId;
+
+
                     for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
 
                         Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
@@ -1681,7 +1686,6 @@ public class FindHotels extends AppCompatActivity {
                         listPrice.add(currency1 + " " + currency);
                         HotelInfo hotelInfo = hotel_result.HotelInfo;
                         // todo
-                        sessionId = hotelSearchResponse.SessionId;
                         hotelAddress = hotelInfo.HotelAddress;
                         hotelName = hotelInfo.HotelName;
                         hotelPicture = hotelInfo.HotelPicture;

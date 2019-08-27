@@ -43,7 +43,7 @@ public class FlightSearch extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flight_search);
-        password = "App02072019";
+        password = getString(R.string.passowrd_flight);
 
         Gson gson = new GsonBuilder()
                 .create();
@@ -73,7 +73,7 @@ public class FlightSearch extends AppCompatActivity {
         call.enqueue(new Callback<FlightAuthentication>() {
             @Override
             public void onResponse(Call<FlightAuthentication> call, Response<FlightAuthentication> response) {
-                flightAuthentication[0] = response.body();
+              flightAuthentication[0] = response.body();
 
 
                 System.out.println("Helper: " + flightAuthentication[0].getTokenId());

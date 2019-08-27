@@ -157,7 +157,7 @@ public class FlightsSummary extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flights_summary);
         ButterKnife.bind(this);
-        password = "App02072019";
+        password = getString(R.string.passowrd_flight);
 
         proccedBtn = findViewById(R.id.procced_btn);
 
@@ -352,7 +352,7 @@ public class FlightsSummary extends AppCompatActivity {
                 FlightBook.Passenger passenger = new FlightBook.Passenger();
                 passenger.setNationality(nationality);
                 passenger.setFirstName("ahmed");
-                passenger.setTitle("Adult");
+                passenger.setTitle(getString(R.string.adult));
                 passenger.setLastName("ahmed");
                 passenger.setGender(1);
                 passenger.setCity(city);

@@ -250,16 +250,16 @@ public class Passenger_inform extends AppCompatActivity {
 
 
         mrmiss1array = new ArrayList<>();
-        mrmiss1array.add("Mr.");
-        mrmiss1array.add("Mrs.");
+        mrmiss1array.add(getString(R.string.mr));
+        mrmiss1array.add(getString(R.string.mrs));
 
         mrmiss2array = new ArrayList<>();
-        mrmiss2array.add("Male.");
-        mrmiss2array.add("Female");
+        mrmiss2array.add(getString(R.string.male));
+        mrmiss2array.add(getString(R.string.female));
 
         mrmiss3array = new ArrayList<>();
-        mrmiss3array.add("Male.");
-        mrmiss3array.add("Female.");
+        mrmiss3array.add(getString(R.string.male));
+        mrmiss3array.add(getString(R.string.female));
 
 
         ArrayAdapter adapteradult = new ArrayAdapter(this, R.layout.item_spener, mrmiss1array);

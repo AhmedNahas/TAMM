@@ -21,8 +21,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".activities.MyBookActivity"></activity>
-        <activity android:name=".activities.OffersDetailsActivity" />
+        <activity android:name=".activities.OffersDetailsActivity"></activity>
         <activity android:name=".activities.SettingActivity" />
         <activity android:name=".activities.AboutUs" />
         <activity android:name=".activities.ContactUs" />
@@ -37,7 +36,7 @@
         </activity>
         <activity
             android:name=".activities.SeatSelection"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.RecommendedTwoWay"
             android:screenOrientation="portrait" />
@@ -49,10 +48,10 @@
             android:screenOrientation="portrait" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
         <activity
             android:name=".activities.Proceedbeybey"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.PassengerDeparture"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.Passenger_inform"
             android:screenOrientation="portrait" />
@@ -118,7 +117,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.FlightSearch"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.ConfirmBookingRoom"
             android:screenOrientation="portrait" />
@@ -133,7 +132,6 @@
             android:screenOrientation="portrait" />
         <activity android:name=".activities.PaymentTemp" />
         <activity android:name=".activities.OffersActivity" />
-        <activity android:name=".activities.FavoriteActivity" />
 
         <service
             android:name=".sevice.MyService"
