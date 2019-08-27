@@ -194,6 +194,7 @@ public class RoomBooked extends AppCompatActivity {
         paymentInfo.VoucherBooking = true;
         paymentInfo.PaymentModeType = Enums.PaymentModeType.Limit;
 
+
 //        paymentInfo.CvvNumber="500";
 
         start_time = SharedPreferencesManger.LoadStringData(RoomBooked.this, "start_date");
@@ -548,6 +549,7 @@ public class RoomBooked extends AppCompatActivity {
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
+            guest.GuestInRoom = 2;
             arrayOfGuest.add(guest);
 
 
@@ -558,6 +560,8 @@ public class RoomBooked extends AppCompatActivity {
             String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust2");
             Guest guest = new Guest();
             guest.Title =  getString(R.string.mr);
+            guest.GuestInRoom = 2;
+
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
@@ -571,6 +575,8 @@ public class RoomBooked extends AppCompatActivity {
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
+            guest2.GuestInRoom = 2;
+
             arrayOfGuest.add(guest2);
 
 
@@ -584,6 +590,8 @@ public class RoomBooked extends AppCompatActivity {
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
+            guest.GuestInRoom = 2;
+
             arrayOfGuest.add(guest);
 
 
@@ -593,6 +601,8 @@ public class RoomBooked extends AppCompatActivity {
             guest2.Title =  getString(R.string.mr);
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
+            guest2.GuestInRoom = 2;
+
             guest2.LastName = lastName2GustOne;
             arrayOfGuest.add(guest2);
 
@@ -604,6 +614,8 @@ public class RoomBooked extends AppCompatActivity {
             guest3.FirstName = firstName3GustOne;
             guest3.GuestType = Enums.GuestType.Adult;
             guest3.LastName = lastName3GustOne;
+            guest3.GuestInRoom = 2;
+
             arrayOfGuest.add(guest3);
 
         } else if (noOfAdultRoom2 == 4) {
@@ -616,6 +628,8 @@ public class RoomBooked extends AppCompatActivity {
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
+            guest.GuestInRoom = 2;
+
             arrayOfGuest.add(guest);
 
 
@@ -626,6 +640,8 @@ public class RoomBooked extends AppCompatActivity {
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
+            guest2.GuestInRoom = 2;
+
             arrayOfGuest.add(guest2);
 
 
@@ -636,6 +652,8 @@ public class RoomBooked extends AppCompatActivity {
             guest3.FirstName = firstName3GustOne;
             guest3.GuestType = Enums.GuestType.Adult;
             guest3.LastName = lastName3GustOne;
+            guest3.GuestInRoom = 2;
+
             arrayOfGuest.add(guest3);
 
             String firstName4Gust2 = SharedPreferencesManger.LoadStringData(this, "firstName4Gust2");
@@ -645,6 +663,8 @@ public class RoomBooked extends AppCompatActivity {
             guest4.FirstName = firstName4Gust2;
             guest4.GuestType = Enums.GuestType.Adult;
             guest4.LastName = lastName4Gust2;
+            guest4.GuestInRoom = 2;
+
             arrayOfGuest.add(guest4);
 
 
@@ -660,6 +680,8 @@ public class RoomBooked extends AppCompatActivity {
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
+            child1.GuestInRoom = 2;
+
             arrayOfGuest.add(child1);
 
 
@@ -674,6 +696,8 @@ public class RoomBooked extends AppCompatActivity {
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
+            child1.GuestInRoom = 2;
+
             arrayOfGuest.add(child1);
 
 
@@ -685,6 +709,8 @@ public class RoomBooked extends AppCompatActivity {
             child2.FirstName = firstName2ChildGustOne;
             child2.GuestType = Enums.GuestType.Child;
             child2.LastName = lastName2ChildGustOne;
+            child2.GuestInRoom = 2;
+
             arrayOfGuest.add(child2);
 
 
@@ -707,6 +733,7 @@ public class RoomBooked extends AppCompatActivity {
             guest.Title =  getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
+            guest.GuestInRoom = 1;
             guest.LastName = lastName1GustOne;
             arrayOfGuest.add(guest);
 
@@ -721,6 +748,8 @@ public class RoomBooked extends AppCompatActivity {
             guest1.LeadGuest = true;
             guest1.LeadGuest = true;
             guest1.Title =  getString(R.string.mr);
+            guest1.GuestInRoom = 1;
+
             guest1.FirstName = firstName1GustOne;
             guest1.GuestType = Enums.GuestType.Adult;
             guest1.LastName = lastName1GustOne;
@@ -731,6 +760,7 @@ public class RoomBooked extends AppCompatActivity {
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
+            guest2.GuestInRoom = 1;
 
             arrayOfGuest.add(guest2);
 
@@ -753,6 +783,8 @@ public class RoomBooked extends AppCompatActivity {
             guest1.FirstName = firstName1GustOne;
             guest1.GuestType = Enums.GuestType.Adult;
             guest1.LastName = lastName1GustOne;
+            guest1.GuestInRoom = 1;
+
             arrayOfGuest.add(guest1);
 
             Guest guest2 = new Guest();
@@ -760,6 +792,7 @@ public class RoomBooked extends AppCompatActivity {
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
+            guest2.GuestInRoom = 1;
 
             arrayOfGuest.add(guest2);
 
@@ -769,6 +802,7 @@ public class RoomBooked extends AppCompatActivity {
             guest3.FirstName = firstName3GustOne;
             guest3.GuestType = Enums.GuestType.Adult;
             guest3.LastName = lastName3GustOne;
+            guest3.GuestInRoom = 1;
 
             arrayOfGuest.add(guest3);
 
@@ -788,6 +822,8 @@ public class RoomBooked extends AppCompatActivity {
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
+            child1.GuestInRoom = 1;
+
             arrayOfGuest.add(child1);
 
 
@@ -802,6 +838,7 @@ public class RoomBooked extends AppCompatActivity {
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
+            child1.GuestInRoom = 1;
             arrayOfGuest.add(child1);
 
 
@@ -813,6 +850,8 @@ public class RoomBooked extends AppCompatActivity {
             child2.FirstName = firstName2ChildGustOne;
             child2.GuestType = Enums.GuestType.Child;
             child2.LastName = lastName2ChildGustOne;
+            child2.GuestInRoom = 1;
+
             arrayOfGuest.add(child2);
 
 
@@ -845,6 +884,10 @@ public class RoomBooked extends AppCompatActivity {
         guest1.FirstName = firstName1GustOne;
         guest1.GuestType = Enums.GuestType.Adult;
         guest1.LastName = lastName1GustOne;
+        guest1.GuestInRoom = 1;
+
+        guest1.GuestInRoom = 1;
+
         arrayOfGuest.add(guest1);
 
         Guest guest2 = new Guest();
@@ -852,6 +895,7 @@ public class RoomBooked extends AppCompatActivity {
         guest2.FirstName = firstName2GustOne;
         guest2.GuestType = Enums.GuestType.Adult;
         guest2.LastName = lastName2GustOne;
+        guest2.GuestInRoom = 1;
 
         arrayOfGuest.add(guest2);
 
@@ -861,6 +905,7 @@ public class RoomBooked extends AppCompatActivity {
         guest3.FirstName = firstName3GustOne;
         guest3.GuestType = Enums.GuestType.Adult;
         guest3.LastName = lastName3GustOne;
+        guest3.GuestInRoom = 1;
 
         arrayOfGuest.add(guest3);
 
@@ -870,6 +915,8 @@ public class RoomBooked extends AppCompatActivity {
         guest4.FirstName = firstName4GustOne;
         guest4.GuestType = Enums.GuestType.Adult;
         guest4.LastName = lastName4GustOne;
+        guest4.GuestInRoom = 1;
+
         arrayOfGuest.add(guest4);
 
     }
@@ -925,6 +972,9 @@ public class RoomBooked extends AppCompatActivity {
                     clientReferenceNo, "EG", arrayOfGuest, null, paymentInfo
                     , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
                     null, true, authenticandata);
+
+
+
 
 
             ResponseStatus status = hotelBookingResponse.Status;

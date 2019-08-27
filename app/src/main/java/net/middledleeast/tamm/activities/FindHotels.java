@@ -202,7 +202,7 @@ public class FindHotels extends AppCompatActivity {
 
 
 
-            String dayOfTheWeek = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSyear");
+        String dayOfTheWeek = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSyear");
         if (dayOfTheWeek!=null){
 
             startDateYear.setText(dayOfTheWeek);
@@ -245,12 +245,12 @@ public class FindHotels extends AppCompatActivity {
             String date_d = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
 
 
-        endDateDay.setText(date_n);
-        endDateMonth.setText(date_m);
-        endDateYear.setText(date_d);
-        startDateDay.setText(date_n);
-        startDateMonth.setText(date_m);
-        startDateYear.setText(date_d);
+            endDateDay.setText(date_n);
+            endDateMonth.setText(date_m);
+            endDateYear.setText(date_d);
+            startDateDay.setText(date_n);
+            startDateMonth.setText(date_m);
+            startDateYear.setText(date_d);
 
 
         }
@@ -481,67 +481,8 @@ public class FindHotels extends AppCompatActivity {
         }
 
 
-//        ArrayAdapter adapterRateCount = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfRate);
-//
-//        adapterRateCount.setDropDownViewResource(R.layout.drop_dowen);
-//        chooseRate.setDropDownWidth(420);
-//        chooseRate.setDropDownVerticalOffset(200);
-//        chooseRate.setAdapter(adapterRateCount);
-//        chooseRate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                int position = listOfRate.get(i);
-//
-//                switch (position) {
-//
-//                    case 0:
-//                        filters = new Filters();
-//                        filters.StarRating = Enums.HotelRatingInput.All;
-//                        break;
-//                    case 1:
-//
-//                        filters = new Filters();
-//                        filters.StarRating = Enums.HotelRatingInput.OneStarOrLess;
-//
-//                        break;
-//                    case 2:
-//
-//                        filters = new Filters();
-//                        filters.StarRating = Enums.HotelRatingInput.TwoStarOrLess;
-//
-//                        break;
-//                    case 3:
-//
-//                        filters = new Filters();
-//                        filters.StarRating = Enums.HotelRatingInput.ThreeStarOrLess;
-//
-//                        break;
-//                    case 4:
-//
-//                        filters = new Filters();
-//                        filters.StarRating = Enums.HotelRatingInput.FourStarOrLess;
-//
-//                        break;
-//                    case 5:
-//
-//                        filters = new Filters();
-//                        filters.StarRating = Enums.HotelRatingInput.FiveStarOrMore;
-//
-//                    default:
-//
-//                        return;
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
 
-
-        ArrayAdapter adapterRoomCount = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfRooms);
+        // ArrayAdapter adapterRoomCount = new ArrayAdapter(FindHotels.this, R.layout.item_spener, noO);
 
         ArrayAdapter numberOfRoomsAdapter = new ArrayAdapter(this, R.layout.item_spener, noOfROoms);
         numberOfRoomsAdapter.setDropDownViewResource(R.layout.drop_dowen);
@@ -561,10 +502,10 @@ public class FindHotels extends AppCompatActivity {
                         room3View.setVisibility(View.INVISIBLE);
                         break;
                     case 1:
-//                        listOfAdult.clear();
-//                        listOfChild.clear();
-//                        list1();
-//                        listOfChildCount();
+                        listOfAdult.clear();
+                        listOfChild.clear();
+                        list1();
+                        listOfChildCount();
 
 
                         noRomes = 2;
@@ -574,7 +515,7 @@ public class FindHotels extends AppCompatActivity {
                         break;
                     case 2:
 //                        listOfAdult.clear();
-                        noRomes = 3;
+//                        noRomes = 3;
 //                        listOfChild.clear();
 //                        list2();
 //                        listOfChildCount2();
@@ -1402,40 +1343,48 @@ public class FindHotels extends AppCompatActivity {
                 endDateMonth.setText(monthString);
                 endDateYear.setText(dayOfTheWeek);
 
-                long diff = time2.getTime() - time1.getTime();
-
-                long seconds = diff / 1000;
-                long minutes = seconds / 60;
-                long hours = minutes / 60;
-                long days = hours / 24;
-
-                String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
-                String date_m = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());
-                String date_d = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
+                try {
+                    long diff = time2.getTime() - time1.getTime();
 
 
-                if (days < 0) {
-                    Toast.makeText(FindHotels.this, "Choose Correct Date", Toast.LENGTH_SHORT).show();
+                    long seconds = diff / 1000;
+                    long minutes = seconds / 60;
+                    long hours = minutes / 60;
+                    long days = hours / 24;
+                    String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
+                    String date_m = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());
+                    String date_d = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
+
+                    if (days < 0) {
+                        Toast.makeText(FindHotels.this, "Choose Correct Date", Toast.LENGTH_SHORT).show();
 
 
-                    endDateDay.setText(date_n);
-                    endDateMonth.setText(date_m);
-                    endDateYear.setText(date_d);
+                        endDateDay.setText(date_n);
+                        endDateMonth.setText(date_m);
+                        endDateYear.setText(date_d);
 
 
-                } else {
+                    } else {
 
-                    nights.setText(" " + days + " ");
-                    SharedPreferencesManger.SaveData(FindHotels.this, "nights", days);
+                        nights.setText(" " + days + " ");
+                        SharedPreferencesManger.SaveData(FindHotels.this, "nights", days);
 
-                    SharedPreferencesManger.SaveData(FindHotels.this, "endDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "-" + days + "  nights");
+                        SharedPreferencesManger.SaveData(FindHotels.this, "endDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "-" + days + "  nights");
 
-                    SharedPreferencesManger.SaveData(FindHotels.this, "endDateSyear", dayOfTheWeek );
-                    SharedPreferencesManger.SaveData(FindHotels.this, "endDateSday",  day );
-                    SharedPreferencesManger.SaveData(FindHotels.this, "endDateSmonth",  monthString );
-                    SharedPreferencesManger.SaveData(FindHotels.this, "endDateSnights",  days + "  nights");
+                        SharedPreferencesManger.SaveData(FindHotels.this, "endDateSyear", dayOfTheWeek );
+                        SharedPreferencesManger.SaveData(FindHotels.this, "endDateSday",  day );
+                        SharedPreferencesManger.SaveData(FindHotels.this, "endDateSmonth",  monthString );
+                        SharedPreferencesManger.SaveData(FindHotels.this, "endDateSnights",  days + "  nights");
 
-                }
+                    }
+
+
+                }catch (Exception e){}
+
+
+
+
+
 
             }
         };
@@ -1485,7 +1434,7 @@ public class FindHotels extends AppCompatActivity {
 
         //    simpleProgressBar.setVisibility(View.VISIBLE);
 
-                   if (isInternetAvailable()){
+        if (isInternetAvailable()){
 
             if (chicDateStart && chicDateEnd && counttryCheked) {
 
@@ -1563,60 +1512,63 @@ public class FindHotels extends AppCompatActivity {
         protected HotelSearchResponse doInBackground(Void... voids) {
 
 
-            DateTime date1 = DateTime.parse(mstartTime);
-            DateTime date2 = DateTime.parse(mendTime);
+
+            try {
+
+
+                DateTime date1 = DateTime.parse(mstartTime);
+                DateTime date2 = DateTime.parse(mendTime);
 //        date1 = date1.plusDays(4);
 //        date2 = date2.plusDays(7);
 
-            ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
+                ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
 
-            service.enableLogging = true;
-            ArrayList<String> childAgeStringArray = new ArrayList<>();
-            childAgeStringArray.add(SharedPreferencesManger.LoadStringData(FindHotels.this, "child_countroom1"));
-            childAgeStringArray.add(SharedPreferencesManger.LoadStringData(FindHotels.this, "child_countroom2"));
-            childAgeStringArray.add(SharedPreferencesManger.LoadStringData(FindHotels.this, "child_countroom3"));
-            childAgeStringArray.add(SharedPreferencesManger.LoadStringData(FindHotels.this, "child_countroom4"));
+                service.enableLogging = true;
+                ArrayList<String> childAgeStringArray = new ArrayList<>();
+                childAgeStringArray.add(SharedPreferencesManger.LoadStringData(FindHotels.this, "child_countroom1"));
+                childAgeStringArray.add(SharedPreferencesManger.LoadStringData(FindHotels.this, "child_countroom2"));
+                childAgeStringArray.add(SharedPreferencesManger.LoadStringData(FindHotels.this, "child_countroom3"));
+                childAgeStringArray.add(SharedPreferencesManger.LoadStringData(FindHotels.this, "child_countroom4"));
 
-            ArrayList<Integer> adultCountArray = new ArrayList<>();
-            adultCountArray.add(nom_adultRoom1);
-            adultCountArray.add(nom_adultRoom2);
-            adultCountArray.add(nom_adultRoom3);
-            adultCountArray.add(nom_adultRoom4);
-            ArrayList<Integer> childCountArray = new ArrayList<>();
-            childCountArray.add(mChildCountRoom1);
-            childCountArray.add(mChildCountRoom2);
-            childCountArray.add(mChildCountRoom3);
-            childCountArray.add(mChildCountRoom4);
+                ArrayList<Integer> adultCountArray = new ArrayList<>();
+                adultCountArray.add(nom_adultRoom1);
+                adultCountArray.add(nom_adultRoom2);
+                adultCountArray.add(nom_adultRoom3);
+                adultCountArray.add(nom_adultRoom4);
+                ArrayList<Integer> childCountArray = new ArrayList<>();
+                childCountArray.add(mChildCountRoom1);
+                childCountArray.add(mChildCountRoom2);
+                childCountArray.add(mChildCountRoom3);
+                childCountArray.add(mChildCountRoom4);
 
-            for (int i = 0; i < noRomes; i++) {
+                for (int i = 0; i < noRomes; i++) {
 
-                RoomGuest roomGuest = new RoomGuest();
-                roomGuest.AdultCount = adultCountArray.get(i);
-                roomGuest.ChildCount = childCountArray.get(i);
-                roomGuest.ChildAge = new ArrayOfInt();
-                if (roomGuest.ChildCount == 0) {
-                    roomGuest.ChildAge = null;
-                } else {
-                    String child_count = childAgeStringArray.get(i);
-                    child_count = child_count.replace("[", "");
-                    child_count = child_count.replace("]", "");
-                    StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
+                    RoomGuest roomGuest = new RoomGuest();
+                    roomGuest.AdultCount = adultCountArray.get(i);
+                    roomGuest.ChildCount = childCountArray.get(i);
+                    roomGuest.ChildAge = new ArrayOfInt();
+                    if (roomGuest.ChildCount == 0) {
+                        roomGuest.ChildAge = null;
+                    } else {
+                        String child_count = childAgeStringArray.get(i);
+                        child_count = child_count.replace("[", "");
+                        child_count = child_count.replace("]", "");
+                        StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
 
-                    while (st.hasMoreTokens()) {
+                        while (st.hasMoreTokens()) {
 
-                        // child age count
-                        String ageChildCount = st.nextToken().trim();
-                        roomGuest.ChildAge.add(Integer.parseInt(ageChildCount));
+                            // child age count
+                            String ageChildCount = st.nextToken().trim();
+                            roomGuest.ChildAge.add(Integer.parseInt(ageChildCount));
 
+                        }
                     }
+                    roomguests.add(roomGuest);
+
+                    SharedPreferencesManger.SaveData(FindHotels.this, "roomGuests", new Gson().toJson(roomguests));
                 }
-                roomguests.add(roomGuest);
-
-                SharedPreferencesManger.SaveData(FindHotels.this, "roomGuests", new Gson().toJson(roomguests));
-            }
 
 
-            try {
                 //HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), Integer.parseInt(ctyId), 1, roomguests, "EG", authenticationData);
 
 
@@ -1721,7 +1673,7 @@ public class FindHotels extends AppCompatActivity {
                     }
                 } else {
 
-hideProgressingView();
+                    hideProgressingView();
                     Toast.makeText(FindHotels.this, "no result found", Toast.LENGTH_SHORT).show();
                 }
 

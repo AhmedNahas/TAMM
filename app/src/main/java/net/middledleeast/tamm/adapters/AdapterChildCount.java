@@ -33,7 +33,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.SingleView> {
 
 
-    private final int roomno;
+   private final int roomno;
     // list count of spinner children
     List<Integer> listCountCild;
 
@@ -49,7 +49,7 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
 
     public static boolean child_m;
 
-    public AdapterChildCount(Activity activity, List<Integer> listCountCild, List<Integer> list_age, Context context, int roomno) {
+    public AdapterChildCount(Activity activity, List<Integer> listCountCild, List<Integer> list_age, Context context , int roomno) {
         this.listCountCild = listCountCild;
         this.activity = activity;
         this.list_age = list_age;
