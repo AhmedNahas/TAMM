@@ -9,28 +9,15 @@ import androidx.room.PrimaryKey;
 public class RoomCartModel {
 
 
-    public RoomCartModel( String name, String image, String namehotel) {
-        this.Name = name;
+    public RoomCartModel( String country, String image, String namehotel, String price, String city) {
+
+        this.Country = country;
         this.Image = image;
-        this. Namehotel = namehotel;
+        this.Namehotel = namehotel;
+        this.Price = price;
+        this.City = city;
     }
 
-    public RoomCartModel() {
-    }
-
-    @PrimaryKey
-    private int id;
-
-
-    @ColumnInfo
-    private String Name;
-
-    @ColumnInfo
-    private String Image;
-
-
-    @ColumnInfo
-    private String Namehotel;
 
     public int getId() {
         return id;
@@ -40,12 +27,32 @@ public class RoomCartModel {
         this.id = id;
     }
 
-    public String getName() {
-        return Name;
+    @PrimaryKey
+    private int id;
+
+
+    @ColumnInfo
+    private String Country;
+
+    @ColumnInfo
+    private String Image;
+
+
+    @ColumnInfo
+    private String Namehotel;
+
+    @ColumnInfo
+    private String Price;
+
+    public RoomCartModel() {
     }
 
-    public void setName(String name) {
-        Name = name;
+    public String getCountry() {
+        return Country;
+    }
+
+    public void setCountry(String country) {
+        Country = country;
     }
 
     public String getImage() {
@@ -63,4 +70,25 @@ public class RoomCartModel {
     public void setNamehotel(String namehotel) {
         Namehotel = namehotel;
     }
+
+    public String getPrice() {
+        return Price;
+    }
+
+    public void setPrice(String price) {
+        Price = price;
+    }
+
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String city) {
+        City = city;
+    }
+
+    @ColumnInfo
+    private String City;
+
+
 }

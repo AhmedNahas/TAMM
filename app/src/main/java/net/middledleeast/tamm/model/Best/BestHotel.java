@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class BestHotel {
 
-    public BestHotel() {
+    public BestHotel(String id, String picture, String name, String country, String city, String price) {
 
 
     }
