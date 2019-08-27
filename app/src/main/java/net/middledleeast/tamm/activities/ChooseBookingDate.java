@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -58,6 +59,8 @@ public class ChooseBookingDate extends AppCompatActivity {
     private Button btn_search_change  ;
     private RelativeLayout back_chose_booking;
     private TextView tv_word;
+    ImageView iv_booked_temp;
+
 
 
     @Override
@@ -86,6 +89,14 @@ public class ChooseBookingDate extends AppCompatActivity {
         btn_search_change = findViewById(R.id.btn_search_change);
 
 
+        iv_booked_temp=findViewById(R.id.iv_booked_temp);
+        iv_booked_temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ChooseBookingDate.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 //

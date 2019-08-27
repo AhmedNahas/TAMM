@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/relative_booked"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/float_transparent"
+
+        >
+
+        <ImageView
+            android:id="@+id/iv_image_booked"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height= "@dimen/_90sdp"
+
+
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_name_hotel_booked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name Hotel"
+            android:textColor="@color/app_color"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/_70sdp"
+            android:layout_toRightOf="@+id/iv_image_booked"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_checkin_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Check In :"
+            android:textColor="@color/app_color"
+            android:layout_below="@+id/tv_name_hotel_booked"
+            android:layout_toRightOf="@+id/iv_image_booked"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            />
+
+        <TextView
+            android:id="@+id/tv_checkin_booked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date In"
+            android:textColor="@color/white"
+            android:layout_below="@+id/tv_name_hotel_booked"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/tv_checkin_txt"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_checkout_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Check Out :"
+            android:textColor="@color/app_color"
+            android:layout_below="@+id/tv_name_hotel_booked"
+            android:layout_toRightOf="@+id/tv_checkin_booked"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_checkout_booked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date Out"
+            android:textColor="@color/white"
+            android:layout_below="@+id/tv_name_hotel_booked"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/tv_checkout_txt"
+            android:layout_marginTop="@dimen/_10sdp"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_cancellation_policy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancellation Policy :"
+            android:textColor="@color/app_color"
+            android:layout_below="@+id/tv_checkout_booked"
+            android:layout_toRightOf="@+id/iv_image_booked"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_cancellation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel Date"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_below="@+id/tv_checkin_booked"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_toRightOf="@+id/tv_cancellation_policy"
+            android:layout_marginStart="@dimen/_5sdp"
+
+            />
+
+        <Button
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:text="Edit"
+            android:background="@drawable/shape"
+            android:layout_below="@+id/tv_cancellation"
+            android:layout_toRightOf="@+id/iv_image_booked"
+            android:layout_marginStart="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+
+
+
+            />
+
+        <Button
+            android:id="@+id/btn_cancel_booked"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_20sdp"
+            android:text="Cancel"
+            android:background="@drawable/shape"
+            android:layout_below="@+id/tv_cancellation"
+            android:layout_toRightOf="@+id/btn_edit"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+
+
+            />
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="@dimen/_280sdp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_booked"
+        android:background="@drawable/line1"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        />
+
+
+
+
+</RelativeLayout>

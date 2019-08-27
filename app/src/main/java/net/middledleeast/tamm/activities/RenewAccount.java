@@ -48,7 +48,7 @@ import butterknife.OnClick;
 
 public class  RenewAccount extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    ImageView img1, img2, addPic, right, left;
+    ImageView img1, img2, addPic, right, left,imageView7;
     TextView user_name_profile, textView_account , valid_till_months;
     @BindView(R.id.assistant_label_voice_renew_hotel)
     TextView assistantLabelVoiceRenewHotel;
@@ -70,7 +70,9 @@ public class  RenewAccount extends AppCompatActivity
     TabLayout tabLayout;
     ViewPager viewPager;
     private ViewPagerAdapter adapter;
+
     private boolean ClickRenewHotel = false;
+
     private long validTillValue;
     private int accountType;
 
@@ -86,6 +88,7 @@ public class  RenewAccount extends AppCompatActivity
 //    private String hotelName;
 //    private String hotelPicture;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +98,18 @@ public class  RenewAccount extends AppCompatActivity
         img1 = findViewById(R.id.imageView9);
         tabLayout = findViewById(R.id.tap_layout);
         viewPager = findViewById(R.id.view_pager_renew);
+        imageView7=findViewById(R.id.imageView7);
 
+
+        imageView7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(RenewAccount.this, MyBookActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
@@ -418,6 +432,7 @@ public class  RenewAccount extends AppCompatActivity
     }
 
 
+
     @OnClick(R.id.relative_img_renew_hotel_tamm)
     public void onViewClicked() {
 
@@ -437,6 +452,7 @@ public class  RenewAccount extends AppCompatActivity
 
 
     }
+
 
 //    @Override
 //    public boolean onPrepareOptionsMenu(Menu menu) {

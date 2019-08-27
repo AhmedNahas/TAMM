@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,13 +20,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.adapters.AdapterAirportCuntry;
 import net.middledleeast.tamm.adapters.AdapterHotelInfo;
 import net.middledleeast.tamm.adapters.HotelsActivityAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -70,6 +68,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     private ArrayList<String> list_price;
     private boolean ClickChooseHotel = false;
     private ArrayList<Integer> list;
+    ImageView iv_booked_choose_hotel;
 
 
     @Override
@@ -80,11 +79,21 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
 
         reInfoHotels = findViewById(R.id.hotels_rv);
         resultIndex = new ArrayList<>();
+        iv_booked_choose_hotel=findViewById(R.id.iv_booked_choose_hotel);
 
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
         stars.getDrawable(2).setColorFilter(0xFFBE973B, PorterDuff.Mode.SRC_ATOP);
         stars.getDrawable(0).setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
 
+
+
+        iv_booked_choose_hotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ChooseHotelActivity.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
 
         imageView = findViewById(R.id.toolbar_back1);
         imageView.setOnClickListener(new View.OnClickListener() {

@@ -82,7 +82,7 @@ public class HotelDetails extends AppCompatActivity {
     private String part2;
     private String map;
 
-    ImageView imageView;
+    ImageView imageView,iv_booked_hotel_details;
     private boolean ClickDetailsHotel=false;
 
 
@@ -94,6 +94,15 @@ public class HotelDetails extends AppCompatActivity {
         ViewPager viewPager = findViewById(R.id.hotel_image_detail);
         sliderDotspanel = findViewById(R.id.SliderDots);
         ButterKnife.bind(this);
+
+        iv_booked_hotel_details=findViewById(R.id.iv_booked_hotel_details);
+        iv_booked_hotel_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HotelDetails.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
 
         imageView = findViewById(R.id.toolbar_back2);
 
