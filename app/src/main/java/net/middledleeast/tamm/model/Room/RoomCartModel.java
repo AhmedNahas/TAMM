@@ -11,10 +11,13 @@ import com.Tamm.Hotels.wcf.AmendmentRequestType;
 public class RoomCartModel {
 
 
-    public RoomCartModel( String name, String image, String namehotel) {
-        this.Name = name;
+    public RoomCartModel( String country, String image, String namehotel, String price, String city) {
+
+        this.Country = country;
         this.Image = image;
-        this. Namehotel = namehotel;
+        this.Namehotel = namehotel;
+        this.Price = price;
+        this.City = city;
     }
 
 
@@ -159,7 +162,7 @@ public class RoomCartModel {
 
 
     @ColumnInfo
-    private String Name;
+    private String Country;
 
     @ColumnInfo
     private String Image;
@@ -168,20 +171,16 @@ public class RoomCartModel {
     @ColumnInfo
     private String Namehotel;
 
-    public int getId() {
-        return id;
+    @ColumnInfo
+    private String Price;
+
+
+    public String getCountry() {
+        return Country;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
+    public void setCountry(String country) {
+        Country = country;
     }
 
     public String getImage() {
@@ -199,4 +198,25 @@ public class RoomCartModel {
     public void setNamehotel(String namehotel) {
         Namehotel = namehotel;
     }
+
+    public String getPrice() {
+        return Price;
+    }
+
+    public void setPrice(String price) {
+        Price = price;
+    }
+
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String city) {
+        City = city;
+    }
+
+    @ColumnInfo
+    private String City;
+
+
 }

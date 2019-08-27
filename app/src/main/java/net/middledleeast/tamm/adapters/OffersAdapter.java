@@ -31,16 +31,18 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
     List<String> listName;
     List<String>listImg;
     List<String> getListNameHotel;
+    List<String> listprice;
+    List<String> listcity;
 
-    public OffersAdapter(Context context,  List<String> listName , List<String> listImg , List<String> getListNameHotel, int id) {
+
+    public OffersAdapter(Context context, int id, List<String> listName, List<String> listImg, List<String> getListNameHotel, List<String> listprice, List<String> listcity) {
         this.context = context;
-        this.id=id;
+        this.id = id;
         this.listName = listName;
         this.listImg = listImg;
         this.getListNameHotel = getListNameHotel;
-
-
-
+        this.listprice = listprice;
+        this.listcity = listcity;
     }
 
 
@@ -64,10 +66,19 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
             String country = listName.get(a);
             String images = listImg.get(a);
             String hotelName  = getListNameHotel.get(a);
+            String price=listprice.get(a);
+            String city=listcity.get(a);
 
-            holder.txtview1.setText(hotelName);
-            holder.txtview2.setText(country);
-            Glide.with(context).load(images).into(holder.imageView2);
+
+            holder.tv_city_offer1.setText(city);
+            holder.tv_country_offer1.setText(country);
+            holder.tv_hotel_offers1.setText(hotelName);
+            holder.tv_price1.setText(price);
+
+
+            Glide.with(context).load(images).into(holder.iv_image_offer);
+
+
 
             appDatabase= Room.databaseBuilder(context, AppDatabase.class,"offerdp").fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
@@ -82,8 +93,10 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
                         String country = listName.get(a);
                         String images = listImg.get(a);
                         String hotelName  = getListNameHotel.get(a);
+                        String price=listprice.get(a);
+                        String city=listcity.get(a);
 
-                        RoomCartModel roomCartModel=new RoomCartModel(country,images,hotelName);
+                        RoomCartModel roomCartModel=new RoomCartModel(country,images,hotelName,price,city);
 
                         appDatabase.cartDao().addoffer(roomCartModel);
                         Toast.makeText(context, "Hotel Add To Favorite", Toast.LENGTH_SHORT).show();
@@ -95,15 +108,10 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
                         holder.iv_star_offer.setImageResource(R.drawable.ic_favorite_false);
                         Offer =false;
 
-
                     }
-
-
-
 
                 }
             });
-
 
 
         }else {
@@ -111,12 +119,6 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
 
 
         }
-
-
-
-
-
-
 
 
 
@@ -129,19 +131,20 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
 
     public class Offerviewholder extends RecyclerView.ViewHolder {
 
-        ImageView imageView1,imageView2,iv_star_offer;
-
-        TextView txtview1,txtview2,txtview3;
+        ImageView iv_image_offer,iv_star_offer;
+        TextView tv_hotel_offers1,tv_country_offer1,tv_city_offer1,tv_price1;
 
         public Offerviewholder(@NonNull View itemView) {
             super(itemView);
-            imageView1=itemView.findViewById(R.id.iv_star_offer);
-            imageView2=itemView.findViewById(R.id.iv_image_offer);
+
+            iv_image_offer=itemView.findViewById(R.id.iv_image_offer);
+
             iv_star_offer=itemView.findViewById(R.id.iv_star_offer);
 
-            txtview1=itemView.findViewById(R.id.tv_one_offers);
-            txtview2=itemView.findViewById(R.id.tv_address);
-            txtview3=itemView.findViewById(R.id.tv_phone_offer);
+            tv_price1=itemView.findViewById(R.id.tv_price);
+            tv_hotel_offers1=itemView.findViewById(R.id.tv_hotel_offers);
+            tv_country_offer1=itemView.findViewById(R.id.tv_country_offer);
+            tv_city_offer1=itemView.findViewById(R.id.tv_city_offer);
 
 
         }

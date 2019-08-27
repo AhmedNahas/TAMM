@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,7 +20,7 @@ import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.OffersAdapter;
-import net.middledleeast.tamm.model.Best.BestHotel;
+import net.middledleeast.tamm.model.Bestofferhotel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,14 +34,17 @@ public class OffersActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     OffersAdapter offersAdapter;
     ImageView iv_booked_offers;
+    RelativeLayout toolbar_back1_offer;
 
+    private String best_offer_hotels = "http://egyptgoogle.com/backend/hotels/bestdeals.php";
 
-    private String best_hotels = "http://egyptgoogle.com/backend/hotels/bestdeals.php";
-
-    List<String> listName = new ArrayList<>();
-    List<String> listImage = new ArrayList<>();
+    List<String> listCountry = new ArrayList<>();
+    List<String> listPicture = new ArrayList<>();
     List<String> listNameHotel = new ArrayList<>();
-    private List<BestHotel> theBest = new ArrayList<>();
+    List<String> listprice = new ArrayList<>();
+    List<String> listcity =new ArrayList<>();
+
+    private List<Bestofferhotel> bestofferhotels = new ArrayList<>();
 
 
 
@@ -53,12 +58,24 @@ public class OffersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_offers);
 
         iv_booked_offers =findViewById(R.id.iv_booked_offers);
+
         iv_booked_offers.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(OffersActivity.this,MyBookActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        toolbar_back1_offer=findViewById(R.id.toolbar_back1_offer);
+        toolbar_back1_offer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent =new Intent(OffersActivity.this,RenewAccount.class);
+                startActivity(intent);
+
             }
         });
 
@@ -70,33 +87,58 @@ public class OffersActivity extends AppCompatActivity {
 
     private void getOffers() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, best_hotels, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, best_offer_hotels, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    JSONArray array = jsonObject.getJSONArray("best hotels");
+                    JSONArray array = jsonObject.getJSONArray("bestofferhotels");
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject ob = array.getJSONObject(i);
 
 
 
-                        BestHotel listData = new BestHotel(ob.getString("id"),ob.getString("offername"),ob.getString("country"),ob.getString("hotelname"),ob.getString("breakfast"),ob.getString("dinner"),ob.getString("lunch"),ob.getString("fromairport"),ob.getString("fromhotel"),ob.getString("day"),ob.getString("month"),ob.getString("year"),ob.getString("dd"),ob.getString("mm"),ob.getString("yy"),ob.getString("offerdesc"),ob.getString("image"),ob.getString("price"));
+
+Bestofferhotel listData=new Bestofferhotel(ob.getString("id"),ob.getString("picture"),ob.getString("name"),ob.getString("country"),ob.getString("city"),ob.getString("price"));
+//
 
 
-                        theBest.add(listData);
+//                        final String id = (String) ob.get("id");
+//                        final String picture1 =(String) ob.get("picture");
+//                        final String name = (String) ob.get("name");
+//                        final String country = (String) ob.get("country");
+//                        final String city1 = (String) ob.get("city");
+//                        final String price1 = (String) ob.get("price");
+//
+//                        Bestofferhotel listData = new Bestofferhotel(id,picture1,name,country,city1,price1);
 
-                        String offerName_ = theBest.get(i).getOffername();
 
-                        String country_ = theBest.get(i).getCountry();
-                        String hotelName_ = theBest.get(i).getHotelname();
-                        String image = theBest.get(i).getImage();
+
+
+                        Toast.makeText(OffersActivity.this, ""+listData.getCity(), Toast.LENGTH_LONG).show();
+
+                        bestofferhotels.add(listData);
+
+
+                        String country_ = bestofferhotels.get(i).getCountry();
+
+                        String hotelName_ = bestofferhotels.get(i).getName();
+                        String picture = bestofferhotels.get(i).getPicture();
+                        String city = bestofferhotels.get(i).getCity();
+                        String price = bestofferhotels.get(i).getPrice();
+
 
                         listNameHotel.add(hotelName_);
-                        listName.add(country_);
-                        listImage.add(image);
-                        offersAdapter = new OffersAdapter(OffersActivity.this,listName,listImage ,listNameHotel ,1);
+                        listCountry.add(country_);
+                        listPicture.add(picture);
+                        listcity.add(city);
+                        listprice.add(price);
+
+
+
+
+                        offersAdapter = new OffersAdapter(OffersActivity.this,1,listCountry,listPicture ,listNameHotel ,listprice,listcity);
 
                         recyclerView.setLayoutManager(new LinearLayoutManager(OffersActivity.this));
                         recyclerView.setAdapter(offersAdapter);

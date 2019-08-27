@@ -25,10 +25,10 @@
         
         
         <TextView
-            android:id="@+id/tv_one_offers"
+            android:id="@+id/tv_hotel_offers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hwail Pharmacy"
+            android:text="Hotel Name"
             android:textColor="@color/app_color"
             android:textStyle="bold"
             android:layout_toRightOf="@+id/iv_image_offer"
@@ -46,26 +46,51 @@
 
 
         <TextView
-            android:id="@+id/tv_address"
+            android:id="@+id/tv_country_offer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="35st, Kuwait City, Kuwait "
+            android:text="Country"
             android:textColor="@color/white"
-            android:layout_below="@+id/tv_one_offers"
+            android:layout_below="@+id/tv_hotel_offers"
             android:layout_marginStart="@dimen/_40sdp"
             android:layout_toRightOf="@+id/iv_image_offer"
             android:layout_marginTop="@dimen/_10sdp"
             />
 
         <TextView
-            android:id="@+id/tv_phone_offer"
+            android:id="@+id/tv_city_offer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+96522413905"
+            android:text="City"
             android:textColor="@color/white"
-            android:layout_below="@+id/tv_address"
+            android:layout_below="@+id/tv_country_offer"
             android:layout_marginStart="@dimen/_45sdp"
             android:layout_toRightOf="@+id/iv_image_offer"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_price_offer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_country_offer"
+            android:text="Price : "
+            android:textColor="@color/app_color"
+            android:layout_marginStart="@dimen/_240sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_country_offer"
+            android:text="2000"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@+id/tv_price_offer"
+            android:layout_marginTop="@dimen/_20sdp"
+
 
             />
 
