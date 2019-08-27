@@ -644,7 +644,7 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("roomprice",roomPrice_);
+                parameters.put("roomprice   ",roomPrice_);
 
 
                 return parameters;

@@ -75,7 +75,8 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     ArrayOfRequestedRooms arrayOfRooms;
 
 
-    public RoomsAdapter(ArrayList<Integer> roomCombs, Activity activity, AuthenticationData data, BasicHttpBinding_IHotelService1 service, HotelRoomAvailabilityResponse response, List<Hotel_Room> rooms, Hotel_Room hotel_room,
+    public RoomsAdapter(ArrayList<Integer> roomCombs, Activity activity, AuthenticationData data, BasicHttpBinding_IHotelService1 service,
+                        HotelRoomAvailabilityResponse response, List<Hotel_Room> rooms, Hotel_Room hotel_room,
                         String date1, String date2, int noOfRooms, int resultIndex, String mHotelCode, AuthenticationData authenticationData, String sessionId, Context context) {
         this.rooms = rooms;
         this.hotel_room = hotel_room;
@@ -189,9 +190,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                          ArrayList<RoomCombination> optionsForBooking = response.OptionsForBooking.RoomCombination;
                                                          possibleCombinations = new ArrayList();
 
-
+//
                                                          for (RoomCombination roomCombination : optionsForBooking) {
-                                                             for (int i : roomCombination.RoomIndex) {
+                                                             for (int i  : roomCombination.RoomIndex) {
                                                                  if (i == rooms.get(position).RoomIndex) {
 
                                                                      possibleCombinations.add(roomCombination);
@@ -276,6 +277,8 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                          requestedRooms.RoomRate.RoomTax = rooms.get(position).RoomRate.RoomTax;
                                                          requestedRooms.RoomRate.TotalFare = rooms.get(position).RoomRate.TotalFare;
                                                          requestedRooms.RoomTypeCode = rooms.get(position).RoomTypeCode;
+                                                         requestedRooms.RoomTypeName = rooms.get(position).RoomTypeName;
+
                                                          arrayOfRooms.add(requestedRooms);
 
                                                          String requestedRoomsString = gson.toJson(arrayOfRooms);
