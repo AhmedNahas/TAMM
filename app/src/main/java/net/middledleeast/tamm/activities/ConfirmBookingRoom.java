@@ -308,6 +308,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     private boolean ClickConfirmHotel = false;
     private int no_adultroom1, no_adultroom2, no_adultroom3, no_adultroom4;
     private int child_countroom4, child_countroom3, child_countroom2, child_countroom1;
+    ImageView iv_booked_conf_booking;
+
 
 
     @Override
@@ -316,6 +318,15 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         setContentView(R.layout.activity_confirm_booking_room);
         ButterKnife.bind(this);
         confirmRoom = findViewById(R.id.confirm_room_booking);
+        iv_booked_conf_booking=findViewById(R.id.iv_booked_conf_booking);
+        iv_booked_conf_booking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ConfirmBookingRoom.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Gson gson = new Gson();
 
         back = findViewById(R.id.toolbar_back1);

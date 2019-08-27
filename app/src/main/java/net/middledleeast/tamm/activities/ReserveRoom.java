@@ -31,7 +31,7 @@ public class ReserveRoom extends AppCompatActivity {
     @BindView(R.id.assistant_label_message_hotel)
     TextView assistantLabelMessage;
     private Toolbar toolbar;
-    private ImageView logo, imgbutton, bigline, smallline, imghotel, imgman;
+    private ImageView logo, imgbutton, bigline, smallline, imghotel, imgman,iv_booked_reserve;
     private TextView tammtxt, hotelstxt, besttxt, specialtxt, anywhere, anytime;
     private Button btnarrow, reservebtn;
     LinearLayout imageView;
@@ -55,6 +55,17 @@ public class ReserveRoom extends AppCompatActivity {
 
 
         imageView = findViewById(R.id.back_pressed);
+        iv_booked_reserve=findViewById(R.id.iv_booked_reserve);
+        iv_booked_reserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent=new Intent(ReserveRoom.this,MyBookActivity.class);
+                startActivity(intent);
+
+
+            }
+        });
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override

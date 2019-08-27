@@ -1,6 +1,9 @@
 package net.middledleeast.tamm.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,6 +31,9 @@ public class OffersActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     OffersAdapter offersAdapter;
+    ImageView iv_booked_offers;
+
+
     private String best_hotels = "http://egyptgoogle.com/backend/hotels/bestdeals.php";
 
     List<String> listName = new ArrayList<>();
@@ -37,21 +43,28 @@ public class OffersActivity extends AppCompatActivity {
 
 
 
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offers);
 
+        iv_booked_offers =findViewById(R.id.iv_booked_offers);
+        iv_booked_offers.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(OffersActivity.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
+
         recyclerView = findViewById(R.id.recycler_view_offer);
 
         getOffers();
-
-
-
-
-
-
-
 
     }
 

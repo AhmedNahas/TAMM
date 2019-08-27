@@ -44,6 +44,7 @@
             />
 
         <ImageView
+            android:id="@+id/iv_booked_conf_booking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

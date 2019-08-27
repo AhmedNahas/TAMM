@@ -18,6 +18,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -90,6 +91,8 @@ public class FindHotels extends AppCompatActivity {
     @BindView(R.id.findHotels)
     Button findHotels;
     ArrayList<Integer> ratrHotel = new ArrayList<Integer>();
+
+    ImageView iv_booked_find_hotels;
 
     //    RelativeLayout relativeImgFindHotelTamm;
 //    @BindView(R.id.assistant_label_voice_find_hotel)
@@ -194,8 +197,17 @@ public class FindHotels extends AppCompatActivity {
         auth();
 
 
+        iv_booked_find_hotels=findViewById(R.id.iv_booked_find_hotels);
 
+        iv_booked_find_hotels.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(FindHotels.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
 //
+
         areas = findViewById(R.id.area_spinner);
         regions = findViewById(R.id.region_spinner);
 

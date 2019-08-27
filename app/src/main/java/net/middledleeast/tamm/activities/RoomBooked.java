@@ -1,26 +1,22 @@
 package net.middledleeast.tamm.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.Tamm.Hotels.wcf.AmendInformation;
-import com.Tamm.Hotels.wcf.AmendmentRequestType;
-import com.Tamm.Hotels.wcf.AmendmentResponse;
 import com.Tamm.Hotels.wcf.ArrayOfGuest;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.ArrayOfSupplement;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
-import com.Tamm.Hotels.wcf.CheckInReq;
 import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.Guest;
 import com.Tamm.Hotels.wcf.HotelBookResponse;
@@ -28,7 +24,6 @@ import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.PaymentInfo;
 import com.Tamm.Hotels.wcf.RequestedRooms;
 import com.Tamm.Hotels.wcf.ResponseStatus;
-import com.Tamm.Hotels.wcf.RoomGuest;
 import com.Tamm.Hotels.wcf.SuppInfo;
 import com.Tamm.Hotels.wcf.Supplement;
 import com.google.gson.Gson;
@@ -80,11 +75,23 @@ public class RoomBooked extends AppCompatActivity {
     private Button button;
     private boolean ClickBookedHotel = false;
 
+    ImageView iv_booked_room;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.room_booked);
         ButterKnife.bind(this);
+
+
+        iv_booked_room=findViewById(R.id.iv_booked_room);
+        iv_booked_room.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RoomBooked.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
 
         backButton = findViewById(R.id.toolbar_back1);
         backButton.setOnClickListener(new View.OnClickListener() {

@@ -6,17 +6,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import com.bumptech.glide.Glide;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.model.Room.AppDatabase;
+import net.middledleeast.tamm.model.Room.RoomCartModel;
 
 import java.util.List;
 
+
+
 public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewholder> {
+    public static AppDatabase appDatabase;
+    private boolean Offer = false;
+
     Context context;
     int id ;
     List<String> listName;
@@ -50,7 +59,6 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
 
 
 
-
         if (id==1){
 
             String country = listName.get(a);
@@ -58,21 +66,56 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
             String hotelName  = getListNameHotel.get(a);
 
             holder.txtview1.setText(hotelName);
-
             holder.txtview2.setText(country);
-
             Glide.with(context).load(images).into(holder.imageView2);
+
+            appDatabase= Room.databaseBuilder(context, AppDatabase.class,"offerdp").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+            holder.iv_star_offer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (Offer==false){
+
+
+                        holder.iv_star_offer.setImageResource(R.drawable.ic_favorite_true);
+
+                        String country = listName.get(a);
+                        String images = listImg.get(a);
+                        String hotelName  = getListNameHotel.get(a);
+
+                        RoomCartModel roomCartModel=new RoomCartModel(country,images,hotelName);
+
+                        appDatabase.cartDao().addoffer(roomCartModel);
+                        Toast.makeText(context, "Hotel Add To Favorite", Toast.LENGTH_SHORT).show();
+                        Offer =true;
+
+                    }else {
+
+                        appDatabase.cartDao().deletAll();
+                        holder.iv_star_offer.setImageResource(R.drawable.ic_favorite_false);
+                        Offer =false;
+
+
+                    }
+
+
+
+
+                }
+            });
 
 
 
         }else {
 
-            holder.txtview1.setText("Huwai Pharmacy");
-            holder.txtview2.setText("gjsafdjsafdaskliyuyr123456");
-            holder.txtview3.setText("+95684712356");
 
 
         }
+
+
+
+
+
 
 
 
@@ -86,13 +129,15 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
 
     public class Offerviewholder extends RecyclerView.ViewHolder {
 
-        ImageView imageView1,imageView2;
+        ImageView imageView1,imageView2,iv_star_offer;
+
         TextView txtview1,txtview2,txtview3;
 
         public Offerviewholder(@NonNull View itemView) {
             super(itemView);
             imageView1=itemView.findViewById(R.id.iv_star_offer);
             imageView2=itemView.findViewById(R.id.iv_image_offer);
+            iv_star_offer=itemView.findViewById(R.id.iv_star_offer);
 
             txtview1=itemView.findViewById(R.id.tv_one_offers);
             txtview2=itemView.findViewById(R.id.tv_address);
