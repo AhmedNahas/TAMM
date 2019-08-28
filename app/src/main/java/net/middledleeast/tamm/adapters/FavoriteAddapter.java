@@ -44,8 +44,7 @@ List<RoomCartModel> roomCartModels ;
     public void onBindViewHolder(@NonNull FavoriteViewholder holder, int position) {
 
 
-//        RoomCartModel roomCartModel=new RoomCartModel();
-//
+
 
         final RoomCartModel roomCartModel = roomCartModels.get(position);
 
@@ -61,7 +60,6 @@ List<RoomCartModel> roomCartModels ;
         holder.tv_country_offer.setText(country);
         holder.tv_hotel_offers.setText(namehotel);
         holder.tv_price.setText(price);
-        
         Glide.with(context).load(image).into(holder.iv_image_offer);
 
 

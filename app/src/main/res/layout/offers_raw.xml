@@ -76,7 +76,7 @@
             android:layout_below="@+id/tv_country_offer"
             android:text="Price : "
             android:textColor="@color/app_color"
-            android:layout_marginStart="@dimen/_240sdp"
+            android:layout_marginStart="@dimen/_200sdp"
             android:layout_marginTop="@dimen/_20sdp"
 
             />

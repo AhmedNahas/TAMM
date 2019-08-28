@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -81,11 +80,15 @@ public class OffersActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_view_offer);
 
+
+
+
         getOffers();
 
     }
 
     private void getOffers() {
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, best_offer_hotels, new Response.Listener<String>() {
             @Override
@@ -97,60 +100,32 @@ public class OffersActivity extends AppCompatActivity {
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject ob = array.getJSONObject(i);
 
-
-
-
-Bestofferhotel listData=new Bestofferhotel(ob.getString("id"),ob.getString("picture"),ob.getString("name"),ob.getString("country"),ob.getString("city"),ob.getString("price"));
-//
-
-
-//                        final String id = (String) ob.get("id");
-//                        final String picture1 =(String) ob.get("picture");
-//                        final String name = (String) ob.get("name");
-//                        final String country = (String) ob.get("country");
-//                        final String city1 = (String) ob.get("city");
-//                        final String price1 = (String) ob.get("price");
-//
-//                        Bestofferhotel listData = new Bestofferhotel(id,picture1,name,country,city1,price1);
-
-
-
-
-                        Toast.makeText(OffersActivity.this, ""+listData.getCity(), Toast.LENGTH_LONG).show();
-
+                        Bestofferhotel listData = new Bestofferhotel(ob.getString("id")
+                                , ob.getString("picture"),ob.getString("name"),ob.getString("country"),ob.getString("city"),ob.getString("price"));
                         bestofferhotels.add(listData);
 
-
-                        String country_ = bestofferhotels.get(i).getCountry();
-
-                        String hotelName_ = bestofferhotels.get(i).getName();
-                        String picture = bestofferhotels.get(i).getPicture();
+                        String name = bestofferhotels.get(i).getName();
+                        String image = bestofferhotels.get(i).getPicture();
+                        String country = bestofferhotels.get(i).getCountry();
                         String city = bestofferhotels.get(i).getCity();
                         String price = bestofferhotels.get(i).getPrice();
 
-
-                        listNameHotel.add(hotelName_);
-                        listCountry.add(country_);
-                        listPicture.add(picture);
+                        listNameHotel.add(name);
+                        listPicture.add(image);
+                        listCountry.add(country);
                         listcity.add(city);
                         listprice.add(price);
 
 
-
-
-                        offersAdapter = new OffersAdapter(OffersActivity.this,1,listCountry,listPicture ,listNameHotel ,listprice,listcity);
-
-                        recyclerView.setLayoutManager(new LinearLayoutManager(OffersActivity.this));
-                        recyclerView.setAdapter(offersAdapter);
-
                     }
-
-
+                    offersAdapter = new OffersAdapter(OffersActivity.this,1,listNameHotel,listPicture ,listCountry ,listprice,listcity);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(OffersActivity.this));
+                    recyclerView.setAdapter(offersAdapter);
+                    offersAdapter.notifyDataSetChanged();
 
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-
 
                 }
 
@@ -160,16 +135,17 @@ Bestofferhotel listData=new Bestofferhotel(ob.getString("id"),ob.getString("pict
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                //dialog.cancel();
+
             }
         });
-
         RequestQueue requestQueue = Volley.newRequestQueue(OffersActivity.this);
         requestQueue.add(stringRequest);
+    }
+
 
 
 
     }
 
-}
+
 

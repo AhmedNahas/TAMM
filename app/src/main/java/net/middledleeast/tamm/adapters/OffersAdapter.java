@@ -30,22 +30,19 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
     int id ;
     List<String> listName;
     List<String>listImg;
-    List<String> getListNameHotel;
+    List<String> listcountry;
     List<String> listprice;
     List<String> listcity;
 
-
-    public OffersAdapter(Context context, int id, List<String> listName, List<String> listImg, List<String> getListNameHotel, List<String> listprice, List<String> listcity) {
+    public OffersAdapter(Context context, int id, List<String> listName, List<String> listImg, List<String> listcountry, List<String> listprice, List<String> listcity) {
         this.context = context;
         this.id = id;
         this.listName = listName;
         this.listImg = listImg;
-        this.getListNameHotel = getListNameHotel;
+        this.listcountry = listcountry;
         this.listprice = listprice;
         this.listcity = listcity;
     }
-
-
 
     @NonNull
     @Override
@@ -63,19 +60,18 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
 
         if (id==1){
 
-            String country = listName.get(a);
+            String hotelName = listName.get(a);
             String images = listImg.get(a);
-            String hotelName  = getListNameHotel.get(a);
             String price=listprice.get(a);
             String city=listcity.get(a);
+            String country = listcountry.get(a);
 
 
-            holder.tv_city_offer1.setText(city);
-            holder.tv_country_offer1.setText(country);
+
             holder.tv_hotel_offers1.setText(hotelName);
+            holder.tv_country_offer1.setText(country);
+            holder.tv_city_offer1.setText(city);
             holder.tv_price1.setText(price);
-
-
             Glide.with(context).load(images).into(holder.iv_image_offer);
 
 
@@ -92,7 +88,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
 
                         String country = listName.get(a);
                         String images = listImg.get(a);
-                        String hotelName  = getListNameHotel.get(a);
+                        String hotelName  = listName.get(a);
                         String price=listprice.get(a);
                         String city=listcity.get(a);
 
@@ -138,8 +134,8 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Offerviewh
             super(itemView);
 
             iv_image_offer=itemView.findViewById(R.id.iv_image_offer);
-
             iv_star_offer=itemView.findViewById(R.id.iv_star_offer);
+
 
             tv_price1=itemView.findViewById(R.id.tv_price);
             tv_hotel_offers1=itemView.findViewById(R.id.tv_hotel_offers);

@@ -2,17 +2,16 @@ package net.middledleeast.tamm.fragments;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
@@ -30,9 +29,11 @@ import java.util.List;
 public class BestDeals extends Fragment {
     RecyclerView recyclerView;
     BestHotelAdapter bestHotelAdapter;
-    List<String> listName = new ArrayList<>();
+    List<String> listCountry = new ArrayList<>();
     List<String> listImage = new ArrayList<>();
     List<String> listNameHotel = new ArrayList<>();
+    List<String> listPrice = new ArrayList<>();
+    List<String> listCity = new ArrayList<>();
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
     ImageView right , left ;
@@ -113,13 +114,13 @@ public class BestDeals extends Fragment {
 
         auth();
 
-        listName.clear();
+        listCountry.clear();
         listImage.clear();
         listNameHotel.clear();
         getHotel("1000001");
 
         recyclerView.setLayoutManager(linearLayoutManager);
-        bestHotelAdapter = new BestHotelAdapter(getContext(),getActivity(),listName,listImage ,listNameHotel , 2);
+        bestHotelAdapter = new BestHotelAdapter(getContext(),getActivity(),2,listCountry,listImage ,listNameHotel ,listPrice);
         recyclerView.setAdapter(bestHotelAdapter);
 
         return view;
@@ -136,10 +137,11 @@ public class BestDeals extends Fragment {
 
             for (int i = 0; i < detailsResponse.HotelDetails.ImageUrls.size(); i++) {
                 String imges = detailsResponse.HotelDetails.ImageUrls.get(i).value;
-                String cityName = detailsResponse.HotelDetails.CityName;
+                String country = detailsResponse.HotelDetails.CityName;
                 String hotelName = detailsResponse.HotelDetails.HotelName;
+
                 listNameHotel.add(hotelName);
-                listName.add(cityName);
+                listCountry.add(country);
                 listImage.add(imges);
             }
 

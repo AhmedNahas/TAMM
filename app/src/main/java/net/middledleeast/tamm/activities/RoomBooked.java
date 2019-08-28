@@ -1,7 +1,9 @@
 package net.middledleeast.tamm.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -31,6 +33,13 @@ import com.Tamm.Hotels.wcf.RequestedRooms;
 import com.Tamm.Hotels.wcf.ResponseStatus;
 import com.Tamm.Hotels.wcf.SuppInfo;
 import com.Tamm.Hotels.wcf.Supplement;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
@@ -43,7 +52,9 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -77,19 +88,36 @@ public class RoomBooked extends AppCompatActivity {
     private String end_time;
     private String hotel_name;
     RelativeLayout backButton;
+    RequestQueue requestQueue;
+    Context context;
+
+    private static final String SENDBOOKEDHOTEL = "http://egyptgoogle.com/backend/bookingshow/insert.php";
 
 
     private Button button;
     private boolean ClickBookedHotel = false;
 
     ImageView iv_booked_room;
+    private String today_date;
+    private String name_city_;
+    private long nights;
+    private String firstName1GustOne;
+    private String lastName1GustOne;
+    private String roomType;
+    private String confirmationNo;
+    private Integer bookingId;
+    private PaymentInfo paymentInfo;
+    private String fullName;
+    private Integer noOfAdultRoom1;
+    private String tripName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.room_booked);
         ButterKnife.bind(this);
-
+        requestQueue = Volley.newRequestQueue(this);
+        connectdatabase();
 
         iv_booked_room=findViewById(R.id.iv_booked_room);
         iv_booked_room.setOnClickListener(new View.OnClickListener() {
@@ -140,10 +168,28 @@ public class RoomBooked extends AppCompatActivity {
         resultIndex = SharedPreferencesManger.LoadIntegerData(this, "resultindex");
         roomIndex = SharedPreferencesManger.LoadIntegerData(this, "roomIndex");
         mHOtelCode = SharedPreferencesManger.LoadStringData(this, "mHotel_code");
+        today_date = SharedPreferencesManger.LoadStringData(this, "today_date");
+        name_city_ = SharedPreferencesManger.LoadStringData(this, "name_city_");
+        nights = SharedPreferencesManger.LoadLongData(this, "nights");
+        roomType = SharedPreferencesManger.LoadStringData(this, "roomType");
+
         arrayOfGuest = new ArrayOfGuest();
 
+
+
+        start_time = SharedPreferencesManger.LoadStringData(RoomBooked.this, "start_date");
+        end_time = SharedPreferencesManger.LoadStringData(RoomBooked.this, "end_date");
+        hotel_name = SharedPreferencesManger.LoadStringData(RoomBooked.this, "hotel_name");
+        String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1GustOne");
+        String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1GustOne");
+
+        fullName = firstName1GustOne + " "+lastName1GustOne ;
+
+        tripName = firstName1GustOne + "_" + start_time;
+
+
 // FIXME: 7/31/2019 complete
-        int noOfAdultRoom1 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom1");
+        noOfAdultRoom1 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom1");
         int noOfAdultRoom2 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom2");
         int noOfAdultRoom3 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom3");
         int noOfAdultRoom4 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom4");
@@ -204,16 +250,14 @@ public class RoomBooked extends AppCompatActivity {
 
 
         // FIXME: 7/31/2019 end
-        PaymentInfo paymentInfo = new PaymentInfo();
+        paymentInfo = new PaymentInfo();
         paymentInfo.VoucherBooking = true;
         paymentInfo.PaymentModeType = Enums.PaymentModeType.Limit;
 
 
 //        paymentInfo.CvvNumber="500";
 
-        start_time = SharedPreferencesManger.LoadStringData(RoomBooked.this, "start_date");
-        end_time = SharedPreferencesManger.LoadStringData(RoomBooked.this, "end_date");
-        hotel_name = SharedPreferencesManger.LoadStringData(RoomBooked.this, "hotel_name");
+
 
 
         bookingresponse(paymentInfo);
@@ -235,14 +279,16 @@ public class RoomBooked extends AppCompatActivity {
         if (noOfAdultRoom4 == 1) {
 
 
-            String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust4");
-            String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust4");
+            firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1Gust4");
+            lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1Gust4");
             Guest guest = new Guest();
             guest.Title = "Mr";
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
             arrayOfGuest.add(guest);
+
+
 
 
 
@@ -980,7 +1026,6 @@ public class RoomBooked extends AppCompatActivity {
 
             }
 
-
             //   SharedPreferencesManger.SaveData(this, "arrayOfroomsreq", null);
 
             String clientReferenceNo = dtStr + "#TAMM";
@@ -1051,4 +1096,54 @@ public class RoomBooked extends AppCompatActivity {
         }
 
     }
+    private void connectdatabase() {
+
+            StringRequest request = new StringRequest(Request.Method.POST, SENDBOOKEDHOTEL, new Response.Listener<String>() {
+
+                @Override
+
+                public void onResponse(String response) {
+
+                    Toast.makeText(RoomBooked.this,"Registration Successful", Toast.LENGTH_SHORT).show();
+
+                    Log.e("HI", "onResponse: "+ response );
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(RoomBooked.this,"error", Toast.LENGTH_SHORT).show();
+                    Log.e("HI", "onResponse: "+ error );
+
+
+                }
+
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> parameters = new HashMap<String, String>();
+                    parameters.put("checkin", start_time);
+                    parameters.put("checkout", end_time);
+                    parameters.put("booked",today_date);
+                    parameters.put("lead", fullName);
+                    parameters.put("typeroom",roomType );
+                    parameters.put("noofroom", String.valueOf(noOfRooms));
+                    parameters.put("noofguest", String.valueOf(noOfAdultRoom1));
+                    parameters.put("hotelname", hotel_name);
+                    parameters.put("city", name_city_);
+                    parameters.put("tbohconfno","uyuygh");
+                    parameters.put("tripid","hgjhg");
+                    parameters.put("tripname",tripName);
+                    parameters.put("booking", "Vouched");
+                    parameters.put("nights", String.valueOf(nights));
+
+
+
+                    return parameters;
+                }
+            };
+            requestQueue.add(request);
+        }
+
+
 }

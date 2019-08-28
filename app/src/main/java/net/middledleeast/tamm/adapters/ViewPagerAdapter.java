@@ -35,6 +35,7 @@ private final List<Fragment> fragmentList =new ArrayList<>();
 
     public void AddFragment(Fragment fragment, String Title){
 
+
         fragmentList.add(fragment);
         fragmentListTitles.add(Title);
     }

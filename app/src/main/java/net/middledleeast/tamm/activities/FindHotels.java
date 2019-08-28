@@ -30,6 +30,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Tamm.Hotels.wcf.AmendInformation;
+import com.Tamm.Hotels.wcf.AmendmentRequestType;
+import com.Tamm.Hotels.wcf.AmendmentResponse;
 import com.Tamm.Hotels.wcf.ArrayOfInt;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
@@ -214,6 +217,30 @@ public class FindHotels extends AppCompatActivity {
 
 
 
+//        AmendmentRequestType amendmentRequestType = new AmendmentRequestType();
+//
+//        int code = amendmentRequestType.Type.getCode();
+//
+//        int code1 = amendmentRequestType.PriceChange.getCode();
+//
+//        AmendInformation amendInformation = new AmendInformation();
+//
+//        DateTime date = amendInformation.CheckIn.Date;
+//
+//        try {
+//            AmendmentResponse th = service.Amendment(amendmentRequestType, 2, amendInformation, "th", authenticationData);
+//
+//            String amendmentMessage = th.AmendmentMessage;
+//
+//            Toast.makeText(this, "cfc" + amendmentMessage, Toast.LENGTH_SHORT).show();
+//        } catch (Exception e) {
+//
+//
+//        }
+
+
+
+
         String dayOfTheWeek = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSyear");
         if (dayOfTheWeek!=null){
 
@@ -263,6 +290,8 @@ public class FindHotels extends AppCompatActivity {
             startDateDay.setText(date_n);
             startDateMonth.setText(date_m);
             startDateYear.setText(date_d);
+
+            SharedPreferencesManger.SaveData(this,"today_date",date_n+date_m+date_d);
 
 
         }
