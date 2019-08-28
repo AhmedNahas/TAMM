@@ -10,6 +10,8 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
 
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
+
 import java.util.List;
 
 public class adapterPhotoHotels extends PagerAdapter {
@@ -39,6 +41,9 @@ public class adapterPhotoHotels extends PagerAdapter {
         ImageView imageView = new ImageView(mContext);
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
+
+        String imgHotelOne = mImagList.get(0);
+        SharedPreferencesManger.SaveData(mContext,"imageHotel",imgHotelOne);
         Glide.with(mContext).load(mImagList.get(position)).into(imageView);
         container.addView(imageView, 0);
         return imageView;
