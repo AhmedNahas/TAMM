@@ -359,7 +359,7 @@ public class FlightsSummary extends AppCompatActivity {
                 passenger.setCountry(country);
                // passenger.setMobile1("00112545645");
 
-passenger.setAddressLine1("");
+passenger.setAddressLine1("cairo");
                 passengerList.add(passenger);
                 itinerary.setPassenger(passengerList);
 

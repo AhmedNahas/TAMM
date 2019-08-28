@@ -682,7 +682,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
 
 
-                segment.setPreferredArrivalTime(mReturnTime);
+               // segment.setPreferredArrivalTime(mReturnTime);
                 // add segments
                 segments.add(segment);
                 searchFlights[0].setSegment(segments);
@@ -719,6 +719,10 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
                             List<SearchFlightsResponse.Result> results1 = results.get(0);
 
+
+                            int size = results1.size();
+
+
                             for (int j = 0; j < results1.size(); j++) {
 
                                 String resultId = results1.get(0).getResultId();
@@ -744,10 +748,11 @@ public class ProceedBeyBeyOriginal extends Fragment {
                                 List<SearchFlightsResponse.Segment> segments2 = results1.get(j).getSegments().get(0);
 
 
+                                //
                                 for (int t = 0; t < segments2.size(); t++) {
 
 
-                                    String airlineName = segments2.get(t).getAirlineName();
+                                    String airlineName = segments2.get(t).getOrigin().getAirportName();
                                     String arrivalTime = segments2.get(t).getArrivalTime();
                                     String departureTime = segments2.get(t).getDepartureTime();
 
@@ -793,7 +798,13 @@ public class ProceedBeyBeyOriginal extends Fragment {
                             }
 
 
+
                             Intent intent = new Intent(getContext(), RecommendedOneWay.class);
+
+
+
+
+                            intent.putExtra("size", size);
 
                             intent.putExtra("airlineName", ListnameLine);
                             intent.putExtra("Listduration", Listduration);

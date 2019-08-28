@@ -40,6 +40,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
     List<String> countryNameOriginList;
     List<String> countryNameDestinationList;
 
+    int size ;
     List<String> listIncludedBaggage;
     List<String> listCabinBaggage;
     List<Double> listTotalFare;
@@ -51,7 +52,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
     public ChooseFlightAdapter(Context context, List<String> airLineName, List<String> Listduration, List<String> arriveTime, List<String> depuruerTime,
                                List<String> countryNameDestinationList, List<String> countryNameOriginList, List<String> listIncludedBaggage,
                                List<String> listCabinBaggage, List<Double> listTotalFare, List<String> listTypeFare , List<String> ListairportCode_Distnation
-            ,List<String> ListairportCode_Origin , List<String> ListflightNumber ,  List<String> ListMealType , List<Long> listnoSetAv
+            ,List<String> ListairportCode_Origin , List<String> ListflightNumber ,  List<String> ListMealType , List<Long> listnoSetAv , int size
     ) {
         this.context = context;
         this.airLineName = airLineName;
@@ -69,6 +70,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
         this.ListflightNumber =ListflightNumber;
         this.ListMealType = ListMealType ;
         this.listnoSetAv = listnoSetAv;
+        this.size = size;
     }
 
 
@@ -87,13 +89,13 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
         String airlin_name = airLineName.get(position);
 
 
-        if (airlin_name ==null){
-            holder.tvAirline.setText("Not Available right now");
-        }else {
+//        if (airLineName.size()==0){
+//            holder.tvAirline.setText("Not Available right now");
+//        }else {
 
             holder.tvAirline.setText(airlin_name);
 
-        }
+//        }
         String duration = Listduration.get(position);
         holder.tvTime.setText(duration);
 
@@ -147,7 +149,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
             public void onClick(View view) {
 
 
-                Intent intent = new Intent(context, FlightsSummary.class);
+                Intent intent = new Intent(context, Passenger_inform.class);
                 SharedPreferencesManger.SaveData(context, "deTime", deTime);
 
 
@@ -202,7 +204,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
 
     @Override
     public int getItemCount() {
-        return listTotalFare.size();
+        return size;
     }
 
     public class ChooseFlightViewHolder extends RecyclerView.ViewHolder {

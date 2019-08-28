@@ -89,6 +89,7 @@ public class BookedAdapter extends RecyclerView.Adapter<BookedAdapter.BookedView
 
         String confirmationNo = roomCartModel.getConfirmationNo();
 
+
         holder.btn_cancel_booked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
