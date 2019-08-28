@@ -78,7 +78,6 @@
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">
 
-
         </activity>
         <activity
             android:name=".activities.FlightTamm"
@@ -120,6 +119,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
 
 
         </activity>

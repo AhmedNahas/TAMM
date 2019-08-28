@@ -971,7 +971,7 @@ public class RoomBooked extends AppCompatActivity {
                         for (SuppInfo suppInfo : requestedRooms.Supplements) {
 
                             // get room type name
-                            requestedRooms.RoomTypeName = "  ";
+                            String roomTypeName = requestedRooms.RoomTypeName;
                             suppInfo.SuppChargeType = Enums.SuppChargeType.AtProperty;
                         }
                     }

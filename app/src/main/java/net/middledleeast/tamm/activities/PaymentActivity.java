@@ -123,11 +123,11 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-    //    mId = intent.getIntExtra("mId", 0);
+        mId = intent.getIntExtra("mId", 0);
 
 
         // just for test
-        mId=BOOKING_ROOM;
+       // mId=BOOKING_ROOM;
         relativeLayout.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -163,7 +163,10 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         if (mId == BOOKING_ROOM) {
-            roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
+
+//            SharedPreferencesManger.SaveData(checkroom.this, "finalpriceRoom",String.valueOf(sum));
+
+            roomPrice = SharedPreferencesManger.LoadStringData(this, "finalpriceRoom");
             currency = SharedPreferencesManger.LoadStringData(this, "currency");
             String last_name = SharedPreferencesManger.LoadStringData(this, "lastName");
             String first_name = SharedPreferencesManger.LoadStringData(this, "firstName");
