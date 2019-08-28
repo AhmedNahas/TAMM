@@ -1132,7 +1132,7 @@ public class RoomBooked extends AppCompatActivity {
                     parameters.put("tbohconfno","uyuygh");
                     parameters.put("tripid","hgjhg");
                     parameters.put("tripname",tripName);
-                    parameters.put("booking", "jjjj");
+                    parameters.put("booking", "Vouched");
                     parameters.put("nights", String.valueOf(nights));
 
 
