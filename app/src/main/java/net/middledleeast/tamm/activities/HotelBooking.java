@@ -71,12 +71,14 @@ public class HotelBooking extends AppCompatActivity {
             Enums.CancelRequestType cancelRequestType = Enums.CancelRequestType.HotelCancel;
 //            HotelCancelResponse hotelCancelResponse = service.HotelCancel(BookingId,cancelRequestType , "Testing", confirmationNo, authenticandata);
 
-            HotelBookingDetailResponse hotelBookingDetailResponse = service.HotelBookingDetail(BookingId, null, clientReferenceNo, authenticandata);
+            HotelBookingDetailResponse hotelBookingDetailResponse = service.HotelBookingDetail(BookingId, confirmationNo, clientReferenceNo, authenticandata);
             ResponseStatus status = hotelBookingDetailResponse.Status;
             String statuscODE = status.StatusCode;
 
 
-            code.setText(confirmationNo);
+            String confirmationNo1 = hotelBookingDetailResponse.BookingDetail.ConfirmationNo;
+
+            code.setText(confirmationNo1);
         } catch (Exception e) {
             e.printStackTrace();
         }
