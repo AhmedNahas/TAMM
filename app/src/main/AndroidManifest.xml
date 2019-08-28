@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.WRITE _EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -80,6 +81,12 @@
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
 
         </activity>
         <activity
@@ -89,11 +96,7 @@
             android:name=".activities.PaymentActivity"
             android:screenOrientation="portrait" >
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
 
         </activity>
@@ -144,6 +147,8 @@
             android:name=".activities.RenewAccount"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".activities.PaymentTemp" />
+        <activity android:name=".activities.OffersActivity" />
+        <activity android:name=".activities.FavoriteActivity" />
 
         <service
             android:name=".sevice.MyService"

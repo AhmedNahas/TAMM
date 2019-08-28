@@ -27,20 +27,22 @@ public class BestHotelAdapter extends RecyclerView.Adapter<BestHotelAdapter.Best
     Activity activity ;
     int id ;
 
-    public BestHotelAdapter(Context context, Activity activity, List<String> listName , List<String> listImg , List<String> getListNameHotel,int id ) {
+    List<String> listCountry ;
+    List<String>listImg ;
+    List<String> listNameHotel;
+    List<String> listPrice;
+
+    public BestHotelAdapter(Context context, Activity activity, int id, List<String> listCountry, List<String> listImg, List<String> listNameHotel, List<String> listPrice) {
         this.context = context;
         this.activity = activity;
-        this.listName = listName;
-        this.listImg = listImg;
-        this.getListNameHotel = getListNameHotel;
         this.id = id;
+
+        this.listCountry = listCountry;
+        this.listImg = listImg;
+        this.listNameHotel = listNameHotel;
+        this.listPrice = listPrice;
+
     }
-
-    List<String> listName ;
-    List<String>listImg ;
-    List<String> getListNameHotel;
-
-
 
     @NonNull
     @Override
@@ -63,20 +65,16 @@ public class BestHotelAdapter extends RecyclerView.Adapter<BestHotelAdapter.Best
 
         }else {
 
-            String name = listName.get(position);
-
+            String hotelname = listNameHotel.get(position);
             String images = listImg.get(position);
+            String country = listCountry.get(position);
+            String price = listPrice.get(position);
 
-            String hotelName  = getListNameHotel.get(position);
-            holder.tv_price_hotel.setText(hotelName);
 
-            holder.tv_country_hotel.setText(name);
+            holder.tv_best_hotel.setText(hotelname);
+            holder.tv_price_.setText(price);
+            holder.tv_country_hotel.setText(country);
             Glide.with(context).load(images).into(holder.img_hotel);
-
-
-
-
-
 
 
 
@@ -98,21 +96,18 @@ public class BestHotelAdapter extends RecyclerView.Adapter<BestHotelAdapter.Best
 
 
 
-
-
-
     }
 
 
     @Override
     public int getItemCount() {
 
-        return listName != null ? listName.size() : 0;
+        return listNameHotel != null ? listNameHotel.size() : 0;
     }
 
     public class BestHotelViewHolder extends RecyclerView.ViewHolder{
         ImageView star,img_hotel;
-        TextView tv_country_hotel,tv_price_hotel,tv_best_hotel;
+        TextView tv_country_hotel,tv_price_hotel,tv_best_hotel,tv_price_;
 
 
         public BestHotelViewHolder(@NonNull View itemView) {
@@ -120,6 +115,7 @@ public class BestHotelAdapter extends RecyclerView.Adapter<BestHotelAdapter.Best
             star=itemView.findViewById(R.id.iv_star_hotel);
             img_hotel=itemView.findViewById(R.id.iv_best_hotel);
 
+            tv_price_=itemView.findViewById(R.id.tv_price_);
             tv_country_hotel=itemView.findViewById(R.id.tv_country_hotel);
             tv_price_hotel=itemView.findViewById(R.id.tv_price_hotel);
             tv_best_hotel=itemView.findViewById(R.id.tv_best_hotel);

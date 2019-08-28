@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 
 
-@Database(entities = {RoomCartModel.class}, version = 12)
+@Database(entities = {RoomCartModel.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract CartDao cartDao();

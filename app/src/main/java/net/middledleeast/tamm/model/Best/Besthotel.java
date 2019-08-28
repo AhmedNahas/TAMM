@@ -1,11 +1,9 @@
-
-package net.middledleeast.tamm.model;
+package net.middledleeast.tamm.model.Best;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Bestofferhotel {
-
+public class Besthotel {
 
     @SerializedName("id")
     @Expose
@@ -26,15 +24,13 @@ public class Bestofferhotel {
     @Expose
     private String price;
 
-
-
-    public Bestofferhotel(String id, String picture, String name, String country, String city, String price) {
+    public Besthotel(String id, String picture, String name, String country, String price) {
         this.id=id;
-        this.name=name;
         this.picture=picture;
+        this.name=name;
         this.country=country;
-        this.city=city;
         this.price=price;
+
     }
 
     public String getId() {
@@ -73,9 +69,7 @@ public class Bestofferhotel {
         return city;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+
 
     public String getPrice() {
         return price;
