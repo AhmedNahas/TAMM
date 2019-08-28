@@ -5,9 +5,14 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.BookedAdapter;
+import net.middledleeast.tamm.model.Room.AppDatabase;
+import net.middledleeast.tamm.model.Room.RoomCartModel;
+
+import java.util.List;
 
 public class MyBookActivity extends AppCompatActivity {
 
@@ -19,6 +24,8 @@ public class MyBookActivity extends AppCompatActivity {
     private String checkout;
     private String cancellation;
 
+    AppDatabase appDatabase ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +35,19 @@ public class MyBookActivity extends AppCompatActivity {
         recycler_view_booked=findViewById(R.id.recycler_view_booked);
 
 
+        appDatabase= Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"myBooking").allowMainThreadQueries().build();
 
 
-        bookedAdapter=new BookedAdapter(MyBookActivity.this,namehotel,checkin,checkout,cancellation);
+        List<RoomCartModel> allData = appDatabase.cartDao().getAllData();
+
+
+
+
+
+        bookedAdapter=new BookedAdapter(MyBookActivity.this,allData);
         recycler_view_booked.setLayoutManager(new LinearLayoutManager(MyBookActivity.this));
         recycler_view_booked.setAdapter(bookedAdapter);
+        bookedAdapter.notifyDataSetChanged();
 
 
 

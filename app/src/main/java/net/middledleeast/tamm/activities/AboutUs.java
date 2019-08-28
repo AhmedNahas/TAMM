@@ -1,9 +1,12 @@
 package net.middledleeast.tamm.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -21,6 +24,8 @@ import org.json.JSONObject;
 public class AboutUs extends AppCompatActivity {
 
     private TextView textfamilyabout;
+
+    LinearLayout back_pressed_about;
     private static final String url ="http://egyptgoogle.com/backend/about/aboutjson.php/" ;
 
     @Override
@@ -29,6 +34,15 @@ public class AboutUs extends AppCompatActivity {
         setContentView(R.layout.activity_about_us);
 
         textfamilyabout=findViewById(R.id.family_message_about);
+        back_pressed_about=findViewById(R.id.back_pressed_about);
+        back_pressed_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AboutUs.this,RenewAccount.class);
+                startActivity(intent);
+
+            }
+        });
 
 
         gettextfamilyabout();

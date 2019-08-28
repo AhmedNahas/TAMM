@@ -1,11 +1,13 @@
 package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +18,7 @@ public class SettingActivity extends AppCompatActivity {
 //    private String mLanguageCodeEnglish = "en";
 
     private Button english,arabic,on,off;
+    RelativeLayout toolbar_back1_setting;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -29,6 +32,14 @@ public class SettingActivity extends AppCompatActivity {
         on=findViewById(R.id.btn_ON);
         off=findViewById(R.id.btn_off);
 
+        toolbar_back1_setting=findViewById(R.id.toolbar_back1_setting);
+        toolbar_back1_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingActivity.this,RenewAccount.class);
+                startActivity(intent);
+            }
+        });
 
 //        arabic.setOnClickListener(new View.OnClickListener() {
 //            @Override

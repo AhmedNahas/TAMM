@@ -39,6 +39,7 @@ import java.util.List;
 public class BestHotels extends Fragment {
     RecyclerView recyclerView;
     BestHotelAdapter bestHotelAdapter;
+
     List<String> listName = new ArrayList<>();
     List<String> listImage = new ArrayList<>();
     List<String> listNameHotel = new ArrayList<>();

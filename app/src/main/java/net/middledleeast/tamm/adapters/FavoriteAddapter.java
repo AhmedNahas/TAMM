@@ -50,12 +50,19 @@ List<RoomCartModel> roomCartModels ;
         final RoomCartModel roomCartModel = roomCartModels.get(position);
 
         final String image = roomCartModel.getImage();
-        final String name = roomCartModel.getName();
+        final String country = roomCartModel.getCountry();
         final String namehotel = roomCartModel.getNamehotel();
+        final String price=roomCartModel.getPrice();
+        final String city=roomCartModel.getCity();
 
-        holder.txtview1.setText(namehotel);
-        holder.txtview2.setText(name);
-        Glide.with(context).load(image).into(holder.imageView2);
+
+
+        holder.tv_city_offer.setText(city);
+        holder.tv_country_offer.setText(country);
+        holder.tv_hotel_offers.setText(namehotel);
+        holder.tv_price.setText(price);
+        
+        Glide.with(context).load(image).into(holder.iv_image_offer);
 
 
 
@@ -68,19 +75,22 @@ List<RoomCartModel> roomCartModels ;
 
     public class FavoriteViewholder extends RecyclerView.ViewHolder {
 
-        ImageView imageView1,imageView2;
-        TextView txtview1,txtview2,txtview3;
+        ImageView iv_image_offer,iv_star_offer;
+        TextView tv_hotel_offers,tv_country_offer,tv_city_offer,tv_price;
 
         public FavoriteViewholder(@NonNull View itemView) {
             super(itemView);
 
-            imageView1=itemView.findViewById(R.id.iv_star_offer);
-            imageView2=itemView.findViewById(R.id.iv_image_offer);
+            iv_image_offer=itemView.findViewById(R.id.iv_image_offer);
+            iv_star_offer=itemView.findViewById(R.id.iv_star_offer);
+
+            tv_price=itemView.findViewById(R.id.tv_price);
+            tv_hotel_offers=itemView.findViewById(R.id.tv_hotel_offers);
+            tv_country_offer=itemView.findViewById(R.id.tv_country_offer);
+            tv_city_offer=itemView.findViewById(R.id.tv_city_offer);
 
 
-            txtview1=itemView.findViewById(R.id.tv_one_offers);
-            txtview2=itemView.findViewById(R.id.tv_address);
-            txtview3=itemView.findViewById(R.id.tv_phone_offer);
+
 
         }
     }

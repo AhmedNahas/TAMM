@@ -7,31 +7,41 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Tamm.Hotels.wcf.AmendInformation;
+import com.Tamm.Hotels.wcf.AmendmentRequestType;
+import com.Tamm.Hotels.wcf.AuthenticationData;
+import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
+import com.Tamm.Hotels.wcf.CheckInReq;
+import com.Tamm.Hotels.wcf.Enums;
+import com.Tamm.Hotels.wcf.HotelCancelResponse;
+import com.bumptech.glide.Glide;
+
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.model.Room.RoomCartModel;
+
+import org.joda.time.DateTime;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 public class BookedAdapter extends RecyclerView.Adapter<BookedAdapter.BookedViewHolder> {
+    private AuthenticationData authenticandata;
 
     Context context;
-    String namehotel;
-    String checkin;
-    String checkout;
-    String Cancellation;
+    List<RoomCartModel> allData ;
+    private BasicHttpBinding_IHotelService1 service;
 
-    public BookedAdapter(Context context, String namehotel, String checkin, String checkout, String cancellation) {
+    public BookedAdapter(Context context, List<RoomCartModel> allData) {
         this.context = context;
-        this.namehotel = namehotel;
-        this.checkin = checkin;
-        this.checkout = checkout;
-        this.Cancellation = cancellation;
-    }
-
-    public BookedAdapter() {
+        this.allData = allData ;
 
     }
+
 
     @NonNull
     @Override
@@ -49,14 +59,71 @@ public class BookedAdapter extends RecyclerView.Adapter<BookedAdapter.BookedView
     @Override
     public void onBindViewHolder(@NonNull BookedViewHolder holder, int position) {
 
-        holder.tv_cancellation.setText("30/8/2019");
-        holder.tv_name_hotel_booked.setText("Mariot");
-        holder.tv_checkin_booked.setText("27/8/2019");
-        holder.tv_checkout_booked.setText("1/9/2019");
+
+
+        RoomCartModel roomCartModel = allData.get(position);
+
+        String checkIn = roomCartModel.getCheckIn();
+        String hotel_name = roomCartModel.getHotel_name();
+        String checkOut = roomCartModel.getCheckOut();
+        String imageRoom = roomCartModel.getImageRoom();
+
+        Glide.with(context).load(imageRoom).into(holder.iv_image_booked);
+
+        String untile = roomCartModel.getUntile();
+        holder.tv_cancellation.setText(untile);
+        holder.tv_name_hotel_booked.setText(hotel_name);
+        holder.tv_checkin_booked.setText(checkIn);
+        holder.tv_checkout_booked.setText(checkOut);
 
 
 
+        AmendmentRequestType amendmentRequestType = new AmendmentRequestType();
+        amendmentRequestType.Type = Enums.AmendmentType.OfflineAmendment;
+        AmendInformation amendInformation = new AmendInformation();
+        amendInformation.CheckIn = new CheckInReq();
+        amendInformation.CheckIn.Date = new DateTime(checkIn);
 
+        String bookingId = roomCartModel.getBookingId();
+
+
+        String confirmationNo = roomCartModel.getConfirmationNo();
+
+        holder.btn_cancel_booked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                try {
+
+
+                    service = new BasicHttpBinding_IHotelService1();
+                    service.enableLogging = true;
+                    authenticandata = new AuthenticationData();
+                    authenticandata.UserName = (context.getString(R.string.user_name_tamm));
+                    authenticandata.Password = (context.getString(R.string.passowrd_tamm));
+
+
+
+                    HotelCancelResponse hotelCancelResponse = service.HotelCancel(null, Enums.CancelRequestType.HotelCancel, "Test", confirmationNo, authenticandata);
+
+                    int code = hotelCancelResponse.RequestStatus.getCode();
+
+                    BigDecimal cancellationCharge = hotelCancelResponse.CancellationCharge;
+                    String cancellationcharge = cancellationCharge.toString();
+
+                    String description = hotelCancelResponse.Status.Description;
+
+                    Toast.makeText(context, "cod is : "+code+"" +
+                            "   "+description, Toast.LENGTH_LONG).show();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
 
 
 
@@ -66,7 +133,7 @@ public class BookedAdapter extends RecyclerView.Adapter<BookedAdapter.BookedView
     @Override
     public int getItemCount() {
 
-        return 10;
+        return allData.size();
     }
 
     public class BookedViewHolder extends RecyclerView.ViewHolder {

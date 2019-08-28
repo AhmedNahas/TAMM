@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorPrimary"
-    tools:context=".fragments.TammFamilyFragment">
+    tools:context=".activities.AboutUs">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/welcome_toolbar_about"

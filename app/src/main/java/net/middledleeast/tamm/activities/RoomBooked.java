@@ -12,7 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
+import com.Tamm.Hotels.wcf.AmendInformation;
+import com.Tamm.Hotels.wcf.AmendmentRequestType;
 import com.Tamm.Hotels.wcf.ArrayOfGuest;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
@@ -39,6 +42,8 @@ import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.Room.AppDatabase;
+import net.middledleeast.tamm.model.Room.RoomCartModel;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -54,7 +59,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class RoomBooked extends AppCompatActivity {
-
+    AppDatabase appDatabase;
 
     ArrayOfGuest arrayOfGuest;
     @BindView(R.id.assistant_label_voice_booked_hotel)
@@ -260,7 +265,6 @@ public class RoomBooked extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 startActivity(new Intent(RoomBooked.this, HotelBooking.class));
             }
         });
@@ -1019,6 +1023,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
             }
+
             //   SharedPreferencesManger.SaveData(this, "arrayOfroomsreq", null);
 
             String clientReferenceNo = dtStr + "#TAMM";
@@ -1027,29 +1032,44 @@ public class RoomBooked extends AppCompatActivity {
                     , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
                     null, true, authenticandata);
 
+            int bookingId = hotelBookingResponse.BookingId;
+
+            appDatabase= Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"myBooking").allowMainThreadQueries().build();
+
+
+            String untile  =   SharedPreferencesManger.LoadStringData(this, "Until");
+
+           String   imgHotelOne  =  SharedPreferencesManger.LoadStringData(this,"imageHotel");
 
 
 
-
-            ResponseStatus status = hotelBookingResponse.Status;
-            bookingId = hotelBookingResponse.BookingId;
-
-            Toast.makeText(this, ""+bookingId + status.Description, Toast.LENGTH_SHORT).show();
-
-            confirmationNo = hotelBookingResponse.ConfirmationNo;
-            SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
-            SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
-            SharedPreferencesManger.SaveData(this, "ConfirmationNo",confirmationNo );
-
-//            AmendmentRequestType amendmentRequestType = new AmendmentRequestType();
-//            amendmentRequestType.Type = Enums.AmendmentType.OfflineAmendment;
-//            AmendInformation amendInformation = new AmendInformation();
+                        AmendmentRequestType amendmentRequestType = new AmendmentRequestType();
+            amendmentRequestType.Type = Enums.AmendmentType.OfflineAmendment;
+            AmendInformation amendInformation = new AmendInformation();
 //            amendInformation.CheckIn = new CheckInReq();
 //            amendInformation.CheckIn.Date = new DateTime(start_time);
+
+            RoomCartModel roomCartModel=new RoomCartModel(untile ,imgHotelOne ,start_time,end_time,String.valueOf(bookingId),hotelBookingResponse.ConfirmationNo,
+                    String.valueOf(resultIndex),hotel_name);
+
+            appDatabase.cartDao().addoffer(roomCartModel);
+
+            Toast.makeText(RoomBooked.this, "Added To Your Bookings", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+            SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
+            SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
+            SharedPreferencesManger.SaveData(this, "ConfirmationNo", hotelBookingResponse.ConfirmationNo);
+
+
 //            AmendmentResponse amendmentResponse = service.Amendment(amendmentRequestType, hotelBookingResponse.BookingId, amendInformation, hotelBookingResponse.ConfirmationNo, authenticandata);
 ////this is to cancel request
 
-            //HotelCancelResponse hotelCancelResponse = service.HotelCancel(hotelBookingResponse.BookingId, Enums.CancelRequestType.HotelCancel, "Test", hotelBookingResponse.ConfirmationNo, authenticandata);
+           // HotelCancelResponse hotelCancelResponse = service.HotelCancel(hotelBookingResponse.BookingId, Enums.CancelRequestType.HotelCancel, "Test", hotelBookingResponse.ConfirmationNo, authenticandata);
 
         } catch (Exception e) {
             e.printStackTrace();
