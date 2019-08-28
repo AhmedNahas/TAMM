@@ -7,9 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.Tamm.Hotels.wcf.AmendInformation;
+import com.Tamm.Hotels.wcf.AmendmentDetails;
+import com.Tamm.Hotels.wcf.AmendmentRequestType;
+import com.Tamm.Hotels.wcf.AmendmentRequested;
+import com.Tamm.Hotels.wcf.AmendmentResponse;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
@@ -22,6 +28,8 @@ import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+
+import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -78,7 +86,6 @@ public class checkroom extends AppCompatActivity {
                 startActivity(new Intent(checkroom.this, ChooseBookingDate.class));
             }
         });
-
 
 
 

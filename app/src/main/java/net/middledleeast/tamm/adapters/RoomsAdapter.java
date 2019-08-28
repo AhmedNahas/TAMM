@@ -326,6 +326,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                          SharedPreferencesManger.SaveData(activity, "currency", currency);
                                                          SharedPreferencesManger.SaveData(activity, "roomPrice", roomprice.toString());
                                                          SharedPreferencesManger.SaveData(activity, "roomIndex", position);
+                                                         SharedPreferencesManger.SaveData(activity, "roomType", roomType);
                                                          String roomIndexStr = gson.toJson(roomIndices);
                                                          SharedPreferencesManger.SaveData(context, "roomIndexArray", roomIndexStr);
                                                          try {

@@ -149,8 +149,7 @@ private String best_hotels = "http://egyptgoogle.com/backend/hotels/bestdeals.ph
         linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        bestHotelAdapter = new BestHotelAdapter(getContext(),getActivity(),listName,listImage ,listNameHotel ,1);
-        recyclerView.setAdapter(bestHotelAdapter);
+
 
 
         return view;
@@ -217,6 +216,8 @@ private String best_hotels = "http://egyptgoogle.com/backend/hotels/bestdeals.ph
                         listName.add(country_);
                         listImage.add(image);
 
+                        bestHotelAdapter = new BestHotelAdapter(getContext(),getActivity(),listName,listImage ,listNameHotel ,1);
+                        recyclerView.setAdapter(bestHotelAdapter);
                     }
                     bestHotelAdapter.notifyDataSetChanged();
 
