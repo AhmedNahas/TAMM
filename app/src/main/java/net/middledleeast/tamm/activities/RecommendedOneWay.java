@@ -73,11 +73,13 @@ private RecyclerView recyclerView;
 
         ListnoOfSeatAvailable = (ArrayList<Long>) getIntent().getSerializableExtra("ListnoOfSeatAvailable");
 
+        int size = getIntent().getIntExtra("size", 0);
+
 
 
         ChooseFlightAdapter chooseFlightAdapter = new ChooseFlightAdapter(this,airlineNameList ,Listduration ,ListArriveTime,ListdeparuerTime
                 , countryNameDestinationList , countryNameOriginList,listIncludedBaggage,listCabinBaggage , listTotalFare, listTypeFare ,ListairportCode_Distnation , ListairportCode_Origin
-        , ListflightNumber , ListMealType , ListnoOfSeatAvailable);
+        , ListflightNumber , ListMealType , ListnoOfSeatAvailable , size);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(chooseFlightAdapter);
         chooseFlightAdapter.notifyDataSetChanged();
