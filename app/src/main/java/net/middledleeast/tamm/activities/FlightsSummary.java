@@ -151,8 +151,24 @@ public class FlightsSummary extends AppCompatActivity {
     private String password;
     public static final String BASE_URL = "https://xmloutapi.tboair.com/api/v1/";
     private String a_deTime;
+    private String MDataMrmisAdult,
+            MDataMrmisChild,
+            MDataMrmisInfent,
+            firstNameAduld,
+    firstNameChild,
+            firstNameInfant,
+    lastNameAduld,
+            lastNameChild,
+    lastNameInfant,
+            datebirthadult,
+    datebirthchild,
+            datebirthinfant,
+    nationality_adult,
+            nationality_child,
+    nationality_infant;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flights_summary);
@@ -170,65 +186,92 @@ public class FlightsSummary extends AppCompatActivity {
         });
 
 
-        String a_totalFare = SharedPreferencesManger.LoadStringData(this, "A_TotalFare");
-        String a_typeFare = SharedPreferencesManger.LoadStringData(this, "A_typeFare");
+        MDataMrmisAdult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult");
+        MDataMrmisChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisChild");
+        MDataMrmisInfent = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisInfent");
 
-        String a_airlin_name = SharedPreferencesManger.LoadStringData(this, "A_airlin_name");
-        String a_duration = SharedPreferencesManger.LoadStringData(this, "A_duration");
+        //first
+        firstNameAduld = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld");
+        firstNameChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameChild");
+        firstNameInfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameInfant");
 
-        tvTime.setText(a_duration);
-        //
-        String a_cabinBaggage = SharedPreferencesManger.LoadStringData(this, "A_CabinBaggage");
-
-        tvCambainBages.setText(a_cabinBaggage);
-        String a_includedBaggage = SharedPreferencesManger.LoadStringData(this, "A_IncludedBaggage");
-
-        tvKg.setText(a_includedBaggage);
-
-        // the all time without split  15-09-2019T10-20-55
-         a_deTime = SharedPreferencesManger.LoadStringData(this, "A_deTime");
-        String a_arrTime = SharedPreferencesManger.LoadStringData(this, "A_arrTime");
-
-        String a_destination = SharedPreferencesManger.LoadStringData(this, "A_destination");
-        String a_origin = SharedPreferencesManger.LoadStringData(this, "A_origin");
-
-        String distnation = SharedPreferencesManger.LoadStringData(this, "Distnation");
-        String origin = SharedPreferencesManger.LoadStringData(this, "Origin");
+        //last
+        lastNameAduld = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld");
+        lastNameChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameChild");
+        lastNameInfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameInfant");
 
 
-        String flightNumber = SharedPreferencesManger.LoadStringData(this, "flightNumber");
+        //date
+        datebirthadult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult");
+        datebirthchild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthchild");
+        datebirthinfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthinfant");
 
-        String a_startDateS = SharedPreferencesManger.LoadStringData(this, "A_startDateS");
-
-
-        String depuruerTime = SharedPreferencesManger.LoadStringData(this, "depuruerTime");
-        String arriveTime = SharedPreferencesManger.LoadStringData(this, "arriveTime");
-        tvDeparture.setText("Departure: " + depuruerTime);
-        tvArrival.setText("Arrival :" + arriveTime);
-
-
-        dateArrival.setText("Date: " + a_startDateS);
-        tvDateDeparture.setText("Date: " + a_startDateS);
+        // nationality
+        nationality_adult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult");
+        nationality_child = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_child");
+        nationality_infant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_infant");
 
 
-        if (a_airlin_name == null) {
-            tvAirline.setText("Not Available right now");
-
-
-        } else {
-
-            tvAirline.setText(a_airlin_name);
-        }
-
-
-        tvFlight.setText("Flight Nb :" + flightNumber);
-        // name
-        tvCountry.setText(a_origin);
-        tvCcountry.setText(a_destination);
-
-        // code
-        tvBey.setText(origin);
-        tvDxb.setText(distnation);
+//
+//        String a_totalFare = SharedPreferencesManger.LoadStringData(this, "A_TotalFare");
+//        String a_typeFare = SharedPreferencesManger.LoadStringData(this, "A_typeFare");
+//
+//        String a_airlin_name = SharedPreferencesManger.LoadStringData(this, "A_airlin_name");
+//        String a_duration = SharedPreferencesManger.LoadStringData(this, "A_duration");
+//
+//        tvTime.setText(a_duration);
+//        //
+//        String a_cabinBaggage = SharedPreferencesManger.LoadStringData(this, "A_CabinBaggage");
+//
+//        tvCambainBages.setText(a_cabinBaggage);
+//        String a_includedBaggage = SharedPreferencesManger.LoadStringData(this, "A_IncludedBaggage");
+//
+//        tvKg.setText(a_includedBaggage);
+//
+//        // the all time without split  15-09-2019T10-20-55
+//         a_deTime = SharedPreferencesManger.LoadStringData(this, "A_deTime");
+//        String a_arrTime = SharedPreferencesManger.LoadStringData(this, "A_arrTime");
+//
+//        String a_destination = SharedPreferencesManger.LoadStringData(this, "A_destination");
+//        String a_origin = SharedPreferencesManger.LoadStringData(this, "A_origin");
+//
+//        String distnation = SharedPreferencesManger.LoadStringData(this, "Distnation");
+//        String origin = SharedPreferencesManger.LoadStringData(this, "Origin");
+//
+//
+//        String flightNumber = SharedPreferencesManger.LoadStringData(this, "flightNumber");
+//
+//        String a_startDateS = SharedPreferencesManger.LoadStringData(this, "A_startDateS");
+//
+//
+//        String depuruerTime = SharedPreferencesManger.LoadStringData(this, "depuruerTime");
+//        String arriveTime = SharedPreferencesManger.LoadStringData(this, "arriveTime");
+//        tvDeparture.setText("Departure: " + depuruerTime);
+//        tvArrival.setText("Arrival :" + arriveTime);
+//
+//
+//        dateArrival.setText("Date: " + a_startDateS);
+//        tvDateDeparture.setText("Date: " + a_startDateS);
+//
+//
+//        if (a_airlin_name == null) {
+//            tvAirline.setText("Not Available right now");
+//
+//
+//        } else {
+//
+//            tvAirline.setText(a_airlin_name);
+//        }
+//
+//
+//        tvFlight.setText("Flight Nb :" + flightNumber);
+//        // name
+//        tvCountry.setText(a_origin);
+//        tvCcountry.setText(a_destination);
+//
+//        // code
+//        tvBey.setText(origin);
+//        tvDxb.setText(distnation);
 
 
         flightCabinClass = SharedPreferencesManger.LoadLongData(this, "flightCabinClass");
@@ -318,17 +361,14 @@ public class FlightsSummary extends AppCompatActivity {
 
                 bookingFlights[0].setResultId((resultId1));
 
-                bookingFlights[0].setUserData("ahmed");
-
-
-
+                bookingFlights[0].setUserData(firstNameAduld);
 
 
                 FlightBook.Itinerary itinerary = new FlightBook.Itinerary();
 
                 FlightBook.City city = new FlightBook.City();
                 FlightBook.Nationality nationality = new FlightBook.Nationality();
-                nationality.setCountryCode("EG");
+                nationality.setCountryCode(nationality_adult);
                 nationality.setCountryName("CAI");
 
                 FlightBook.Country country = new FlightBook.Country();
@@ -339,7 +379,6 @@ public class FlightsSummary extends AppCompatActivity {
                 List<FlightBook.Passenger> passengerList = new ArrayList<>();
 
 
-
                 FlightBook.Fare fare = new FlightBook.Fare();
 
                 fare.setBaseFare(1230);
@@ -348,18 +387,19 @@ public class FlightsSummary extends AppCompatActivity {
                 fare.setServiceFee(500);
 
 
-
                 FlightBook.Passenger passenger = new FlightBook.Passenger();
                 passenger.setNationality(nationality);
-                passenger.setFirstName("ahmed");
+                passenger.setFirstName(firstNameAduld);
                 passenger.setTitle(getString(R.string.adult));
-                passenger.setLastName("ahmed");
+                passenger.setLastName(lastNameAduld);
                 passenger.setGender(1);
                 passenger.setCity(city);
                 passenger.setCountry(country);
-               // passenger.setMobile1("00112545645");
 
-passenger.setAddressLine1("cairo");
+
+                // passenger.setMobile1("00112545645");
+
+                passenger.setAddressLine1("cairo");
                 passengerList.add(passenger);
                 itinerary.setPassenger(passengerList);
 
@@ -367,8 +407,7 @@ passenger.setAddressLine1("cairo");
                 passenger.setFare(fare);
                 itinerary.setTravelDate(a_deTime);
 
-               bookingFlights[0].setItinerary(itinerary);
-
+                bookingFlights[0].setItinerary(itinerary);
 
 
                 Call<BookResponse> flightBook = flightApiService.getFlightBook("application/json", bookingFlights[0]);
@@ -378,13 +417,13 @@ passenger.setAddressLine1("cairo");
 
 
                         String ssrMessage = response.body().getTokenId();
-                        Toast.makeText(FlightsSummary.this, ""+ssrMessage, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FlightsSummary.this, "" + ssrMessage, Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onFailure(Call<BookResponse> call, Throwable t) {
 
-                        Toast.makeText(FlightsSummary.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FlightsSummary.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 //
@@ -395,7 +434,7 @@ passenger.setAddressLine1("cairo");
             public void onFailure(Call<FlightAuthentication> call, Throwable t) {
 
 
-                Toast.makeText(FlightsSummary.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(FlightsSummary.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
