@@ -28,7 +28,8 @@
             android:layout_height="100dp"
             android:background="@drawable/check_out"
             android:layout_centerHorizontal="true"
-
+            android:padding="@dimen/_5sdp"
+            android:scaleType="fitXY"
             />
         <TextView
             android:id="@+id/room_Tybe"

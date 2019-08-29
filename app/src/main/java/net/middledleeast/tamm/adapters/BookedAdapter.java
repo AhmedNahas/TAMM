@@ -106,7 +106,7 @@ public class BookedAdapter extends RecyclerView.Adapter<BookedAdapter.BookedView
 
 
 
-                    HotelCancelResponse hotelCancelResponse = service.HotelCancel(null, Enums.CancelRequestType.HotelCancel, "Test",confirmationNo , authenticandata);
+                    HotelCancelResponse hotelCancelResponse = service.HotelCancel(0, Enums.CancelRequestType.HotelCancel, "Test","5K6RUT" , authenticandata);
 
                     int code = hotelCancelResponse.RequestStatus.getCode();
 

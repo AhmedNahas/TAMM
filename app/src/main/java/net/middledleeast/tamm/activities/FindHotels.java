@@ -1614,7 +1614,7 @@ public class FindHotels extends AppCompatActivity {
 
 
                 hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
-                        true, noRomes, "EG", roomguests, null, 0, filters, "true", null,
+                        true, 1, "EG", roomguests, null, 0, filters, "true", null,
                         0, authenticationData);
 
 

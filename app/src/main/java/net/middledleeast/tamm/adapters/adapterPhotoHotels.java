@@ -45,6 +45,8 @@ public class adapterPhotoHotels extends PagerAdapter {
         String imgHotelOne = mImagList.get(0);
         SharedPreferencesManger.SaveData(mContext,"imageHotel",imgHotelOne);
         Glide.with(mContext).load(mImagList.get(position)).into(imageView);
+        String singlePic = mImagList.get(0);
+        SharedPreferencesManger.SaveData(mContext,"singlePic",singlePic);
         container.addView(imageView, 0);
         return imageView;
     }

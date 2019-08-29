@@ -92,7 +92,6 @@ public class RegisterationActivity extends Fragment {
 
     RequestQueue requestQueue;
     private String register_url_free = "http://egyptgoogle.com/freeusers/insertusers.php";
-    private String register_url_member = "http://egyptgoogle.com/paymentusers/insertstudents.php";
 
     private ArrayList<String> mrOrMissArray;
     private ArrayAdapter mrOrMissAdapter;
@@ -478,44 +477,10 @@ public class RegisterationActivity extends Fragment {
                     return parameters;
                 }
             };
+            RequestQueue requestQueue = Volley.newRequestQueue(getContext());
             requestQueue.add(request);
 
         } else if (user_id == 2) {
-
-            StringRequest request = new StringRequest(Request.Method.POST, register_url_member, new Response.Listener<String>() {
-
-                @Override
-
-                public void onResponse(String response) {
-
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-
-                }
-
-            }) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> parameters = new HashMap<String, String>();
-                    parameters.put("firstname", etFirstName.getText().toString());
-                    parameters.put("lastname", etLastName.getText().toString());
-                    parameters.put("username", etUserName.getText().toString());
-                    parameters.put("password", etPassword.getText().toString());
-                    parameters.put("day", day);
-                    parameters.put("month", month);
-                    parameters.put("year", year);
-                    parameters.put("location", country.getText().toString());
-                    parameters.put("occupation", ocupation.getText().toString());
-                    parameters.put("email", etEmail.getText().toString());
-                    parameters.put("phone", etPhone.getText().toString());
-                    parameters.put("city", city.getText().toString());
-
-                    return parameters;
-                }
-            };
-            requestQueue.add(request);
 
 
         }

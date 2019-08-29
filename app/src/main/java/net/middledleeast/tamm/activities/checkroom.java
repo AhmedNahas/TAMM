@@ -21,6 +21,7 @@ import com.Tamm.Hotels.wcf.CancelPolicies;
 import com.Tamm.Hotels.wcf.HotelCancellationPolicyResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.RoomCombination;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
@@ -64,6 +65,7 @@ public class checkroom extends AppCompatActivity {
     private String currency;
     private ArrayOfRequestedRooms arrayOfRooms = new ArrayOfRequestedRooms();
     private float sum;
+    private String singlePic;
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -92,6 +94,9 @@ public class checkroom extends AppCompatActivity {
         arrayOfRooms = gson1.fromJson(reqRoomString, ArrayOfRequestedRooms.class);
         roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
         currency = SharedPreferencesManger.LoadStringData(this, "currency");
+        singlePic = SharedPreferencesManger.LoadStringData(this, "singlePic");
+
+        Glide.with(this).load(singlePic).into(imgCheckOut);
 
 
         if (arrayOfRooms.size()==2){
