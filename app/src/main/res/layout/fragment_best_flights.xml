@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/black"
+    android:background="@color/float_transparent"
     tools:context=".fragments.BestFlights">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_flights"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:id="@+id/recycler_view_flight"
         android:layout_width="match_parent"
+        android:padding=".5dp"
+        android:nestedScrollingEnabled="false"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:background="@drawable/border2"
         android:layout_height="wrap_content">
-
-
-
-
     </androidx.recyclerview.widget.RecyclerView>
 
-</FrameLayout>
+
+
+
+    <ImageView
+        android:id="@+id/img_left_deals"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_circle_left"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/_5sdp"
+        />
+    <ImageView
+        android:id="@+id/img_right_deals"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_circle_right"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/_5sdp"
+        />
+
+</RelativeLayout>

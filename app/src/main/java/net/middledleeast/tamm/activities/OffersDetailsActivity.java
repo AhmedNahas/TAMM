@@ -45,8 +45,6 @@ public class OffersDetailsActivity extends AppCompatActivity {
     TextView hotelNameDetailOffer;
     @BindView(R.id.hotel_desc_detail_offer)
     TextView hotelDescDetailOffer;
-    @BindView(R.id.hotel_detils_rat_offer)
-    TextView hotelDetilsRatOffer;
     @BindView(R.id.hotel_rat_offer)
     TextView hotelRatOffer;
     @BindView(R.id.layout_rat_offer)
@@ -69,6 +67,10 @@ public class OffersDetailsActivity extends AppCompatActivity {
     TextView tvTabMeDetailsOffer;
 
     private List<String> listOfPhoto = new ArrayList<>();
+    List<String> listOfCountry = new ArrayList<>();
+    List<String> listOfHotelName = new ArrayList<>();
+    List<String> listOfPrice = new ArrayList<>();
+
 
 
     private int dotscount;
@@ -83,27 +85,24 @@ public class OffersDetailsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        final String offerName_ = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "offerName_");
+
         final String country_ = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "country_");
         final String hotelName_ = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "hotelName_");
-        final String breakfast = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "breakfast");
-        final String dinner = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "dinner");
-        final String lunch = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "lunch");
-        final String fromairport = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "fromairport");
-        final String fromhotel = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "fromhotel");
-        final String day = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "day");
-        final String month = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "month");
-        final String year = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "year");
-        final String dd = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "dd");
-        final String mm = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "mm");
-        final String yy = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "yy");
-        final String offerdesc = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "offerdesc");
-        final String image = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "image");
         final String price = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "price");
+        final String image = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "image");
+
 
 
 
         listOfPhoto.add(image);
+        listOfCountry.add(country_);
+        listOfHotelName.add(hotelName_);
+        listOfPrice.add(price);
+
+
+        hotelNameDetailOffer.setText(country_);
+        hotelDescDetailOffer.setText(hotelName_);
+        hotelRatOffer.setText(price);
 
 
         adapter = new AdapterOfferPhoto(OffersDetailsActivity.this, listOfPhoto);

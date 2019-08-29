@@ -480,7 +480,7 @@ public class RegisterationActivity extends Fragment {
             RequestQueue requestQueue = Volley.newRequestQueue(getContext());
             requestQueue.add(request);
 
-        } else if (user_id == 2) {
+        } else  {
 
 
         }
