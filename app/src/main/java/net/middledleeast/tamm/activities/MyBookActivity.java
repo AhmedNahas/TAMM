@@ -35,7 +35,7 @@ public class MyBookActivity extends AppCompatActivity {
         recycler_view_booked=findViewById(R.id.recycler_view_booked);
 
 
-        appDatabase= Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"myBooking").allowMainThreadQueries().build();
+        appDatabase= Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"myBooking").fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
 
         List<RoomCartModel> allData = appDatabase.cartDao().getAllData();

@@ -52,7 +52,7 @@ public class FavoriteActivity extends AppCompatActivity {
             }
         });
 
-        appDatabase= Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"offerdp").allowMainThreadQueries().build();
+        appDatabase= Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"offerdp").fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
         final List<RoomCartModel> allData = appDatabase.cartDao().getAllData();
 
