@@ -2,6 +2,7 @@ package net.middledleeast.tamm.fragments;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.LayoutInflater;
@@ -22,6 +23,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.activities.OffersDetailsActivity;
 import net.middledleeast.tamm.adapters.BestHotelAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.Best.Besthotel;
@@ -44,11 +46,12 @@ public class BestHotels extends Fragment {
     List<String> listImage = new ArrayList<>();
     List<String> listNameHotel = new ArrayList<>();
     List<String> listPrice = new ArrayList<>();
-    List<String> listCity = new ArrayList<>();
-
-
 
     private List<Besthotel> theBest = new ArrayList<>();
+
+
+
+
 
     //    private BasicHttpBinding_IHotelService1 service;
 //    private AuthenticationData authenticationData;
@@ -58,6 +61,7 @@ private String best_hotels = "http://egyptgoogle.com/backend/besthotels/besthote
 
     ImageView right , left ;
     private LinearLayoutManager linearLayoutManager;
+
     public BestHotels() {
         // Required empty public constructor
 
@@ -73,11 +77,9 @@ private String best_hotels = "http://egyptgoogle.com/backend/besthotels/besthote
         recyclerView=view.findViewById(R.id.recycler_view_hotels);
         right = view.findViewById(R.id.img_right);
 
-
-
-
-
         left = view.findViewById(R.id.img_left);
+
+
         right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +91,8 @@ private String best_hotels = "http://egyptgoogle.com/backend/besthotels/besthote
 
             }
         });
+
+
 
 
 
@@ -106,8 +110,14 @@ private String best_hotels = "http://egyptgoogle.com/backend/besthotels/besthote
                 return true;
             }
 
+
+
+
             @Override
             public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+
+                Intent intent =new Intent(getContext(), OffersDetailsActivity.class);
+                startActivity(intent);
 
             }
 
@@ -149,9 +159,6 @@ private String best_hotels = "http://egyptgoogle.com/backend/besthotels/besthote
 
 
         linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
-
-
-
 
 
         return view;

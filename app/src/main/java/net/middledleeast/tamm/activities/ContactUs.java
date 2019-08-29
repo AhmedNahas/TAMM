@@ -58,6 +58,7 @@ public class ContactUs extends AppCompatActivity {
             }
         });
 
+
         btn_send_contact=findViewById(R.id.btn_send_contact);
         btn_send_contact.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,8 +102,6 @@ public class ContactUs extends AppCompatActivity {
                 parameters.put("subject",et_subject .getText().toString());
                 parameters.put("message", message_contact.getText().toString());
                 parameters.put("username", user);
-
-
 
                 return parameters;
             }

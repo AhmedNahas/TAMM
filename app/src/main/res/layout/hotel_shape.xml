@@ -10,8 +10,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
 
             <ImageView
@@ -22,11 +21,12 @@
                 android:src="@drawable/bg" />
 
             <TextView
-                android:paddingStart="@dimen/_4sdp"
                 android:id="@+id/tv_country_hotel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:background="#5C000000"
+                android:paddingStart="@dimen/_4sdp"
                 android:text="Dubai"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -34,29 +34,40 @@
                 />
 
 
-            <TextView
-                android:id="@+id/tv_price_hotel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_country_hotel"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="@dimen/_130sdp"
-                android:text="Price : "
-                android:textColor="@color/app_color"
-                android:textStyle="bold"
-               />
+            <RelativeLayout
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/shape"
 
-            <TextView
-                android:id="@+id/tv_price_"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_price_hotel"
-                android:layout_alignParentBottom="true"
-                android:text="1200"
-                android:textColor="@color/white"
-                />
+                >
+
+                <TextView
+                    android:id="@+id/tv_price_hotel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:text="Price : "
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:paddingStart="@dimen/_5sdp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_price_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_2sdp"
+                    android:layout_toRightOf="@+id/tv_price_hotel"
+
+                    android:text="1200"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
 
+            </RelativeLayout>
 
 
             <ImageView
@@ -64,9 +75,13 @@
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:layout_marginRight="@dimen/_15sdp"
-                android:src="@drawable/star" />
+                android:src="@drawable/star"
+                android:background="#5C000000"
+
+                />
 
             <TextView
                 android:id="@+id/tv_best_hotel"
@@ -76,8 +91,8 @@
                 android:background="@drawable/shape"
                 android:gravity="center"
                 android:text="BEST HOTELS"
-                android:textStyle="bold"
                 android:textColor="@color/black"
+                android:textStyle="bold"
 
                 />
 

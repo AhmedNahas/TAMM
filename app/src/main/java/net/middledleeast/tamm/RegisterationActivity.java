@@ -480,7 +480,7 @@ public class RegisterationActivity extends Fragment {
             };
             requestQueue.add(request);
 
-        } else if (user_id == 2) {
+        } else  {
 
             StringRequest request = new StringRequest(Request.Method.POST, register_url_member, new Response.Listener<String>() {
 

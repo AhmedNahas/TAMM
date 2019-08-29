@@ -92,10 +92,6 @@ public class BestHotelAdapter extends RecyclerView.Adapter<BestHotelAdapter.Best
 
         }
 
-
-
-
-
     }
 
 
