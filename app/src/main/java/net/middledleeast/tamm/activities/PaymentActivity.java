@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,36 +24,31 @@ import com.Tamm.Hotels.wcf.AmendmentResponse;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.wirecard.ecom.Client;
 import com.wirecard.ecom.model.out.PaymentResponse;
-import com.wirecard.ecom.ui.WebViewActivity;
 
-import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterPayment;
-import net.middledleeast.tamm.fragments.FREEcONGRATS;
 import net.middledleeast.tamm.fragments.TermsFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
-import net.middledleeast.tamm.model.Freeuser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,7 +81,7 @@ public class PaymentActivity extends AppCompatActivity {
     private RelativeLayout relativeLayout;
     private AuthenticationData authenticandata;
     private BasicHttpBinding_IHotelService1 service;
-    private static final String urlmemberfees = "http://egyptgoogle.com/backend/memberfees/memberfees.php";
+    private static final String urlmemberfees = "http://egyptgoogle.com/backend/memberfees/memberfessjson.php";
     Toolbar toolbar;
     ImageView imageView;
     private List<String> spinnerTitles = new ArrayList<>();
@@ -107,6 +102,10 @@ public class PaymentActivity extends AppCompatActivity {
     private int FLIGHT =3;
     private boolean knet = false;
     private String urlAmount = "http://egyptgoogle.com/k/jsoninsert.php";
+    private Handler handler;
+    private Runnable runnable;
+    private long days;
+    private Date currentDate;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -680,8 +679,10 @@ public class PaymentActivity extends AppCompatActivity {
             } else if (mId==1){
 
                 sendDataToServer();
+                Toast.makeText(this, "Welcome", Toast.LENGTH_LONG).show();
 
-          startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
+
+
 
 
             }else if (mId==3){
@@ -692,25 +693,29 @@ public class PaymentActivity extends AppCompatActivity {
             }
 
         }else {
+            Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+
 
                     }
     }
 
     private void sendDataToServer() {
 
-
+        countDownStart();
         StringRequest request = new StringRequest(Request.Method.POST, register_url_member, new Response.Listener<String>() {
 
             @Override
 
             public void onResponse(String response) {
                 SharedPreferencesManger.SaveData(PaymentActivity.this, "username", username);
-
+                startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
+
+                Toast.makeText(PaymentActivity.this, "eroroororoor", Toast.LENGTH_SHORT).show();
             }
 
         }) {
@@ -729,7 +734,8 @@ public class PaymentActivity extends AppCompatActivity {
                 parameters.put("email", mail);
                 parameters.put("phone", phone);
                 parameters.put("city", city);
-                parameters.put("visa", "");
+                parameters.put("visa", "visa");
+                parameters.put("registrationdate", String.valueOf(days));
                 return parameters;
             }
         };
@@ -748,12 +754,12 @@ public class PaymentActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    JSONArray array = jsonObject.getJSONArray("memeberfees");
+                    JSONArray array = jsonObject.getJSONArray("memberfees");
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject ob = array.getJSONObject(i);
 
 
-                        msgbody = ob.getString("Msgbody");
+                        msgbody = ob.getString("Text");
                         tvKd.setText("USD " + msgbody);
 
 
@@ -806,5 +812,50 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         }
+    }
+    public void countDownStart() {
+        handler = new Handler();
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                handler.postDelayed(this, 1000);
+                try {
+
+                    // Please here set your event date//YYYY-MM-DD
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.add(Calendar.YEAR,1);
+                    Date futureDate = calendar.getTime();
+                    String dateFormat = new SimpleDateFormat("yyyy-MM-dd").format(futureDate);
+
+
+
+
+                    currentDate = new Date();
+                    if (!currentDate.after(futureDate)) {
+                        long diff = futureDate.getTime()
+                                - currentDate.getTime();
+                         days = diff / (24 * 60 * 60 * 1000);
+                        diff -= days * (24 * 60 * 60 * 1000);
+                        long hours = diff / (60 * 60 * 1000);
+                        diff -= hours * (60 * 60 * 1000);
+                        long minutes = diff / (60 * 1000);
+                        diff -= minutes * (60 * 1000);
+                        long seconds = diff / 1000;
+//                        txtmonth.setText("" + String.format("%02d", months));
+//                        txtDay.setText("" + String.format("%02d", days));
+//                        txtHour.setText("" + String.format("%02d", hours));
+//                        txtMinute.setText("" + String.format("%02d", minutes));
+//                        txtSecond.setText("" + String.format("%02d", seconds));
+
+                        SharedPreferencesManger.SaveData(PaymentActivity.this,"validTill",days);
+                    } else {
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        handler.postDelayed(runnable, 1 * 1000);
     }
 }

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
@@ -73,6 +75,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     Type fooType;
     ArrayList<RoomCombination> possibleCombinations;
     ArrayOfRequestedRooms arrayOfRooms;
+    private double sum;
 
 
     public RoomsAdapter(ArrayList<Integer> roomCombs, Activity activity, AuthenticationData data, BasicHttpBinding_IHotelService1 service,
@@ -130,6 +133,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         return holder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String roomType = rooms.get(position).RoomTypeName;
@@ -150,7 +154,40 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         }
         String roomPromotion = rooms.get(position).RoomPromtion;
         BigDecimal roomprice = rooms.get(position).RoomRate.TotalFare;
-        holder.roomPrice.setText(currency + " " + roomprice);
+
+
+
+
+        String isMemmber = SharedPreferencesManger.LoadStringData(context, "isMemmber");
+        if (isMemmber.equals("1")){
+            String fees_prem = SharedPreferencesManger.LoadStringData(context, "fees_prem");
+
+
+            double fessM = Double.parseDouble(fees_prem) ;
+            double price_ = Double.parseDouble(roomprice.toString());
+
+             sum = Double.sum(fessM, price_);
+            holder.roomPrice.setText(currency + " " + sum);
+        }else {
+            String  fees_free = SharedPreferencesManger.LoadStringData(context, "fees_free");
+
+            double fessFree = Double.parseDouble(fees_free) ;
+            double price_ = Double.parseDouble(roomprice.toString());
+
+             sum = Double.sum(fessFree, price_);
+            holder.roomPrice.setText(currency + " " + sum);
+
+        }
+
+
+
+
+
+
+
+
+
+
 
         roomInformation = rooms.get(position).RoomAdditionalInfo;
 //        BigDecimal price = rooms.get(position).Supplements.get(position).Price;
@@ -321,10 +358,10 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
                                                          intent.putExtra("description", description);
                                                          intent.putExtra("mealTybe", mealType);
-                                                         intent.putExtra("roomPrice", roomprice.toString());
+                                                         intent.putExtra("roomPrice", String.valueOf(sum));
                                                          intent.putExtra("currency", currency);
                                                          SharedPreferencesManger.SaveData(activity, "currency", currency);
-                                                         SharedPreferencesManger.SaveData(activity, "roomPrice", roomprice.toString());
+                                                         SharedPreferencesManger.SaveData(activity, "roomPrice", String.valueOf(sum));
                                                          SharedPreferencesManger.SaveData(activity, "roomIndex", position);
                                                          SharedPreferencesManger.SaveData(activity, "roomType", roomType);
                                                          String roomIndexStr = gson.toJson(roomIndices);

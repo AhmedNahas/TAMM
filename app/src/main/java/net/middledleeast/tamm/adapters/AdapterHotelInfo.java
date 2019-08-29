@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -84,6 +86,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         return new AdapterHotelInfo.SingleView(view, onHotelListener);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AdapterHotelInfo.SingleView holder, int position) {
@@ -107,7 +110,34 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         Collections.sort(listrat);
         Collections.reverse(listrat);
        String price = listprice.get(position);
-       holder.hotelPrice.setText(price);
+
+        String[] prisparts = price.split(" ");
+        String prispart2 = prisparts[1];
+        String usd = prisparts[0];
+
+
+        String isMemmber = SharedPreferencesManger.LoadStringData(context, "isMemmber");
+        if (isMemmber.equals("1")){
+            String fees_prem = SharedPreferencesManger.LoadStringData(context, "fees_prem");
+
+
+            double fessM = Double.parseDouble(fees_prem) ;
+            double price_ = Double.parseDouble(prispart2);
+
+            double sum = Double.sum(fessM, price_);
+            holder.hotelPrice.setText(usd+sum);
+        }else {
+        String  fees_free = SharedPreferencesManger.LoadStringData(context, "fees_free");
+
+            double fessFree = Double.parseDouble(fees_free) ;
+            double price_ = Double.parseDouble(prispart2);
+
+            double sum = Double.sum(fessFree, price_);
+            holder.hotelPrice.setText(usd+sum);
+
+        }
+
+
         Glide.with(context).load(photos).into(holder.photoHotel);
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
