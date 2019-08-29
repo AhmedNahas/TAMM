@@ -22,7 +22,11 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".activities.OffersDetailsActivity"></activity>
+
+
+
+        <!--<activity android:name="..VoiceMessageActivity"></activity>-->
+        <activity android:name=".activities.OffersDetailsActivity" />
         <activity android:name=".activities.SettingActivity" />
         <activity android:name=".activities.AboutUs" />
         <activity android:name=".activities.ContactUs" />
@@ -51,11 +55,6 @@
             android:name=".activities.Proceedbeybey"
             android:screenOrientation="portrait">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
 
         </activity>
@@ -82,9 +81,6 @@
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">
-
-
-
 
         </activity>
         <activity
@@ -122,6 +118,11 @@
             android:name=".activities.FindHotels"
             android:screenOrientation="portrait" >
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
 
 
@@ -144,20 +145,25 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.RenewAccount"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".activities.PaymentTemp" />
         <activity android:name=".activities.OffersActivity" />
-
-        <activity android:name=".activities.MyBookActivity"
-
-
-            android:screenOrientation="portrait"/>
-
-
+        <activity android:name=".activities.FavoriteActivity" />
 
         <service
             android:name=".sevice.MyService"
             android:enabled="true" />
+
     </application>
+
+
+
+
+
+
+
+
+
+
 
 </manifest>

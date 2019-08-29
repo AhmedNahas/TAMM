@@ -139,17 +139,7 @@
         android:layout_height="@dimen/_40sdp"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_margin="@dimen/_12sdp"
-            android:id="@+id/hotel_detils_rat_offer"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/shape3"
-            android:gravity="center"
-            android:text="5"
-            android:textColor="#FFFFFF" />
+
 
 
         <TextView

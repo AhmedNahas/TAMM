@@ -320,7 +320,7 @@
                         android:layout_height="@dimen/_35sdp"
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_25sdp"
+                        android:layout_marginEnd="@dimen/_22sdp"
                         android:backgroundTint="@android:color/transparent"
                         android:gravity="center"
                         android:hint="@string/phone_number"

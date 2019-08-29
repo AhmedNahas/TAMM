@@ -53,13 +53,14 @@
                 android:id="@+id/hotel_name"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:background="#CB000000"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginStart="1dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="35dp"
                 android:layout_marginEnd="2dp"
                 android:background="#CB000000">
 
@@ -99,7 +100,7 @@
                     android:id="@+id/hotel_pric"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="20dp"
-                    android:layout_marginStart="@dimen/_40sdp"
+                    android:layout_marginStart="@dimen/_25sdp"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:text="1gggggggggggggggggggggg2$"
@@ -120,7 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/shape"
+            android:background="#99660B"
             android:gravity="center"
             android:textStyle="bold"
             android:textColor="@android:color/white"
