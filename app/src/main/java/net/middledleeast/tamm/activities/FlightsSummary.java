@@ -444,103 +444,27 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
                 flightAuthentication[0] = response.body();
 
 
-//                boolean successful = response.isSuccessful();
-//
-//
-//
-//                String resultId = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "resultId");
-//
-//
-//
-//                String totalFare = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "totalFare");
-//
-//
-//                String baseFare = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "baseFare");
-//                String tax = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "tax");
-//                String serviceFee = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "serviceFee");
-//
-//
-//
-//                String tokenId = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "tokenId");
-//                String trackingId = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "trackingId");
-//
-//
-//
-//
-//                final FlightBook[] bookingFlights = {new FlightBook()};
-//
-//                bookingFlights[0].setIPAddress("192.168.4.238");
-//
-//                //Origin Country code
-//                bookingFlights[0].setPointOfSale("EG");
-//
-//                bookingFlights[0].setTokenId(tokenId);
-//                bookingFlights[0].setTrackingId(trackingId);
-//
-//                bookingFlights[0].setResultId((resultId));
-//
-//                bookingFlights[0].setUserData("ahmed");
-//
-//
-//                FlightBook.Itinerary itinerary = new FlightBook.Itinerary();
-//
-//                FlightBook.City city = new FlightBook.City();
-//                FlightBook.Nationality nationality = new FlightBook.Nationality();
-//                nationality.setCountryCode("EG");
-//                nationality.setCountryName("Egypt");
-//
-//                FlightBook.Country country = new FlightBook.Country();
-//                country.setCountryCode("EG");
-//                country.setCountryName("Egypt");
-//
-//                city.setCityName("Cairo");
-//                List<FlightBook.Passenger> passengerList = new ArrayList<>();
-//
-//
-//                FlightBook.Fare fare = new FlightBook.Fare();
-//
-//
-//
-//                fare.setBaseFare(Double.parseDouble(baseFare));
-//                fare.setTax(Double.parseDouble(tax));
-//                String[] split = totalFare.split(" ");
-//                String tootal = split[0];
-//                fare.setTotalFare(Double.parseDouble(tootal));
-//                fare.setServiceFee(Long.parseLong(serviceFee));
-//
-//
-//                FlightBook.Passenger passenger = new FlightBook.Passenger();
-//                passenger.setNationality(nationality);
-//                passenger.setFirstName(firstNameAduld);
-//                passenger.setTitle(getString(R.string.adult));
-//                passenger.setLastName(lastNameAduld);
-//                passenger.setGender(1);
-//                passenger.setCity(city);
-//                passenger.setCountry(country);
-//
-//
-//                 //passenger.setMobile1("00112545645");
-//
-//                passenger.setAddressLine1("cairo");
-//
-//                itinerary.setPassenger(passengerList);
-//
-//
-//                passenger.setFare(fare);
-//              //  itinerary.setTravelDate(a_deTime);
-//
-//                bookingFlights[0].setItinerary(itinerary);
-//                passengerList.add(passenger);
-
-
                 boolean successful = response.isSuccessful();
+
+
+
+                String resultId = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "resultId");
+
+
+
+                String totalFare = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "totalFare");
+
+
+                String baseFare = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "baseFare");
+                String tax = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "tax");
+                String serviceFee = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "serviceFee");
+
+
 
                 String tokenId = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "tokenId");
                 String trackingId = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "trackingId");
 
 
-                String resultId1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "resultId1");
-                String PointOfSale = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "PointOfSale");
 
 
                 final FlightBook[] bookingFlights = {new FlightBook()};
@@ -548,56 +472,57 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
                 bookingFlights[0].setIPAddress("192.168.4.238");
 
                 //Origin Country code
-                bookingFlights[0].setPointOfSale(PointOfSale);
+                bookingFlights[0].setPointOfSale(countryCodeOrigin1);
 
                 bookingFlights[0].setTokenId(tokenId);
                 bookingFlights[0].setTrackingId(trackingId);
 
-                bookingFlights[0].setResultId((resultId1));
+                bookingFlights[0].setResultId((resultId));
 
-                bookingFlights[0].setUserData("ahmed");
-
-
-
+                bookingFlights[0].setUserData(firstNameAduld);
 
 
                 FlightBook.Itinerary itinerary = new FlightBook.Itinerary();
 
                 FlightBook.City city = new FlightBook.City();
                 FlightBook.Nationality nationality = new FlightBook.Nationality();
-                nationality.setCountryCode("EG");
-                nationality.setCountryName("CAI");
+                nationality.setCountryCode(countryCodeOrigin1);
+                nationality.setCountryName(countryNameOrogin1);
 
                 FlightBook.Country country = new FlightBook.Country();
-                country.setCountryCode("EG");
-                country.setCountryName("CAI");
+                country.setCountryCode(countryCodeOrigin1);
+                country.setCountryName(countryNameOrogin1);
 
-                city.setCityName("Ciro");
+                city.setCityName(CityNameOrogin1);
                 List<FlightBook.Passenger> passengerList = new ArrayList<>();
-
 
 
                 FlightBook.Fare fare = new FlightBook.Fare();
 
-                fare.setBaseFare(1230);
-                fare.setTax(30);
-                fare.setTotalFare(1260);
-                fare.setServiceFee(500);
 
+
+                fare.setBaseFare(Double.parseDouble(baseFare));
+                fare.setTax(Double.parseDouble(tax));
+                String[] split = totalFare.split(" ");
+                String tootal = split[0];
+                fare.setTotalFare(Double.parseDouble(tootal));
+                fare.setServiceFee(Long.parseLong(serviceFee));
 
 
                 FlightBook.Passenger passenger = new FlightBook.Passenger();
                 passenger.setNationality(nationality);
-                passenger.setFirstName("ahmed");
+                passenger.setFirstName(firstNameAduld);
                 passenger.setTitle(getString(R.string.adult));
-                passenger.setLastName("ahmed");
+                passenger.setLastName(lastNameAduld);
                 passenger.setGender(1);
                 passenger.setCity(city);
                 passenger.setCountry(country);
-                // passenger.setMobile1("00112545645");
 
-                passenger.setAddressLine1("ghjkgjk");
-                passengerList.add(passenger);
+
+                 //passenger.setMobile1("00112545645");
+
+                passenger.setAddressLine1("cairo");
+
                 itinerary.setPassenger(passengerList);
 
 
@@ -605,7 +530,7 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
               //  itinerary.setTravelDate(a_deTime);
 
                 bookingFlights[0].setItinerary(itinerary);
-
+                passengerList.add(passenger);
 
                 Call<BookResponse> flightBook = flightApiService.getFlightBook("application/json", bookingFlights[0]);
                 flightBook.enqueue(new Callback<BookResponse>() {
