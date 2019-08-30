@@ -89,39 +89,39 @@ public class Passenger_inform extends AppCompatActivity {
                 }else if (edLastName.getText().toString().equals("")){
 
                     edLastName.setError("Invalid Last Name");
-                }else if (edFirstNameChild.getText().toString().equals("")) {
-                    edFirstNameChild.setError("Invalid First Name");
-
-                }else if (edLastNameChild.getText().toString().equals("")){
-
-                    edLastNameChild.setError("Invalid Last Name");
-                }else if (edFirstNameInfant.getText().toString().equals("")) {
-                    edFirstNameInfant.setError("Invalid First Name");
-
-                }else if (edLastNameInfant.getText().toString().equals("")) {
-
-                    edLastNameInfant.setError("Invalid Last Name");
+//                }else if (edFirstNameChild.getText().toString().equals("")) {
+//                    edFirstNameChild.setError("Invalid First Name");
+//
+//                }else if (edLastNameChild.getText().toString().equals("")){
+//
+//                    edLastNameChild.setError("Invalid Last Name");
+//                }else if (edFirstNameInfant.getText().toString().equals("")) {
+//                    edFirstNameInfant.setError("Invalid First Name");
+//
+//                }else if (edLastNameInfant.getText().toString().equals("")) {
+//
+//                    edLastNameInfant.setError("Invalid Last Name");
 
                 }else if (datebirthadult.getText().toString().equals("DD-MM-YYYY")) {
                     Toast.makeText(Passenger_inform.this, "Invalid DOB", Toast.LENGTH_SHORT).show();
-
-                }else if (datebirthchild.getText().toString().equals("DD-MM-YYYY")) {
-                    Toast.makeText(Passenger_inform.this, "Invalid DOB", Toast.LENGTH_SHORT).show();
-
-                }else if (datebirthinfant.getText().toString().equals("DD-MM-YYYY")) {
-
-                    Toast.makeText(Passenger_inform.this, "Invalid DOB", Toast.LENGTH_SHORT).show();
+//
+//                }else if (datebirthchild.getText().toString().equals("DD-MM-YYYY")) {
+//                    Toast.makeText(Passenger_inform.this, "Invalid DOB", Toast.LENGTH_SHORT).show();
+//
+//                }else if (datebirthinfant.getText().toString().equals("DD-MM-YYYY")) {
+//
+//                    Toast.makeText(Passenger_inform.this, "Invalid DOB", Toast.LENGTH_SHORT).show();
 
 
 
                     }else if (nationality_adult.getText().toString().equals("")){
                     nationality_adult.setError("Invalid Nationality");
 
-                }else if (nationality_child.getText().toString().equals("")){
-                    nationality_child.setError("Invalid Nationality");
-
-                }else if (nationality_adult_infant.getText().toString().equals("")){
-                    nationality_adult_infant.setError("Invalid Nationality");
+//                }else if (nationality_child.getText().toString().equals("")){
+//                    nationality_child.setError("Invalid Nationality");
+//
+//                }else if (nationality_adult_infant.getText().toString().equals("")){
+//                    nationality_adult_infant.setError("Invalid Nationality");
 
 
                 }else {
