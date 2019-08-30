@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.sevice.MyService;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -23,26 +23,79 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        animatedCircleLoadingView = (AnimatedCircleLoadingView) findViewById(R.id.circle_loading_view);
-        startLoading();
-        startPercentMockThread();
 
-        imageView = findViewById(R.id.img_splash_logo);
 
-        Animation animation = AnimationUtils.loadAnimation(this, R.anim.logo_splash_anim);
-        imageView.setAnimation(animation);
 
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
 
-                startActivity(new Intent(SplashActivity.this, WelcomeActivity.class));
-                finish();
-            }
-        }, 5000);
+        String mUsrename =    SharedPreferencesManger.LoadStringData(this, "user_name" );
+
+
+
+        if (mUsrename!=null&&mUsrename.length()>3){
+            animatedCircleLoadingView = (AnimatedCircleLoadingView) findViewById(R.id.circle_loading_view);
+            startLoading();
+            startPercentMockThread();
+
+
+            imageView = findViewById(R.id.img_splash_logo);
+
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.logo_splash_anim);
+            imageView.setAnimation(animation);
+
+
+            Handler handler = new Handler();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    startActivity(new Intent(SplashActivity.this,RenewAccount.class));
+                }
+            }, 5000);
+        }else {
+            animatedCircleLoadingView = (AnimatedCircleLoadingView) findViewById(R.id.circle_loading_view);
+            startLoading();
+            startPercentMockThread();
+
+            imageView = findViewById(R.id.img_splash_logo);
+
+            Animation animation = AnimationUtils.loadAnimation(this, R.anim.logo_splash_anim);
+            imageView.setAnimation(animation);
+
+
+
+
+
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    startActivity(new Intent(SplashActivity.this, WelcomeActivity.class));
+                    finish();
+                }
+            }, 5000);
+
+        }
+
+
+
+
+
+
+
+
+
+
+
 
     }
+
+
+
+
+
+
     private void startLoading() {
         animatedCircleLoadingView.startDeterminate();
     }
@@ -82,4 +135,30 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

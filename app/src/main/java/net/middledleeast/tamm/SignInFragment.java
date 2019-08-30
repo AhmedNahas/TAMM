@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,13 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import static net.middledleeast.tamm.helper.helperMethod.isInternetAvailable;
-import static net.middledleeast.tamm.helper.helperMethod.isNetworkConnected;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -37,24 +32,16 @@ import net.middledleeast.tamm.activities.RenewAccount;
 import net.middledleeast.tamm.fragments.AuthenticationFragment;
 import net.middledleeast.tamm.fragments.Buttons;
 import net.middledleeast.tamm.fragments.ForgotPasswordFragment;
-import net.middledleeast.tamm.fragments.LanguangeFragment;
-import net.middledleeast.tamm.fragments.PlansFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.Freeuser;
-import net.middledleeast.tamm.model.MemberAccount;
 import net.middledleeast.tamm.model.Paymentuser;
-
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 /**
@@ -179,6 +166,10 @@ public class SignInFragment extends Fragment {
                         accountType = 1;
                         SharedPreferencesManger.SaveData(getActivity(), "accountType", accountType);
                         Intent intent = new Intent(getContext(), RenewAccount.class);
+
+
+                        SharedPreferencesManger.SaveData(getActivity(), "user_name", mUsrename);
+
 
 
                         startActivity(intent);

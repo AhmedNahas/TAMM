@@ -67,6 +67,8 @@ public class OffersDetailsActivity extends AppCompatActivity {
     @BindView(R.id.tv_tab_me_details_offer)
     TextView tvTabMeDetailsOffer;
 
+
+
     private List<String> listOfPhoto = new ArrayList<>();
     List<String> listOfCountry = new ArrayList<>();
     List<String> listOfHotelName = new ArrayList<>();

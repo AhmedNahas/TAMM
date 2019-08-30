@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
     <application
         android:allowBackup="true"
@@ -23,11 +22,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".activities.VoiceMessageActivity">
-
-
-
-        </activity>
+        <activity android:name=".activities.VoiceMessageActivity"></activity>
         <activity android:name=".activities.OffersDetailsActivity" />
         <activity android:name=".activities.SettingActivity" />
         <activity android:name=".activities.AboutUs" />
@@ -86,11 +81,7 @@
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity
@@ -100,6 +91,11 @@
             android:name=".activities.PaymentActivity"
             android:screenOrientation="portrait" >
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
 
         </activity>
