@@ -166,15 +166,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_rat_offer"
         android:layout_centerInParent="true">
-        <Button
-            android:gravity="center"
-            android:id="@+id/btn_map_offer"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_20sdp"
-            android:textAllCaps="false"
-            android:text="Map"
-            android:background="#BE973B"
-            />
+
 
         <Button
             android:gravity="center"
@@ -182,10 +174,9 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_20sdp"
             android:textAllCaps="false"
-            android:text="Next"
-            android:layout_toRightOf="@+id/btn_map_offer"
+            android:text="Checkout"
             android:background="#BE973B"
-            android:layout_marginLeft="@dimen/_15sdp"
+
             />
 
     </RelativeLayout>

@@ -21,7 +21,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class OffersDetailsActivity extends AppCompatActivity {
 
@@ -49,8 +48,6 @@ public class OffersDetailsActivity extends AppCompatActivity {
     TextView hotelRatOffer;
     @BindView(R.id.layout_rat_offer)
     LinearLayout layoutRatOffer;
-    @BindView(R.id.btn_map_offer)
-    Button btnMapOffer;
     @BindView(R.id.btn_next_offer)
     Button btnNextOffer;
     @BindView(R.id.relative_map_next_offer)
@@ -65,6 +62,8 @@ public class OffersDetailsActivity extends AppCompatActivity {
     RelativeLayout relativeImgOfferDetailsTammOffer;
     @BindView(R.id.tv_tab_me_details_offer)
     TextView tvTabMeDetailsOffer;
+
+
 
     private List<String> listOfPhoto = new ArrayList<>();
     List<String> listOfCountry = new ArrayList<>();
@@ -103,6 +102,20 @@ public class OffersDetailsActivity extends AppCompatActivity {
         hotelNameDetailOffer.setText(country_);
         hotelDescDetailOffer.setText(hotelName_);
         hotelRatOffer.setText(price);
+
+
+        btnNextOffer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                //Intent intent =new Intent(OffersDetailsActivity.this,PaymentActivity.class);
+              //startActivity(intent);
+            }
+        });
+
+
 
 
         adapter = new AdapterOfferPhoto(OffersDetailsActivity.this, listOfPhoto);
@@ -160,13 +173,25 @@ public class OffersDetailsActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.btn_map_offer, R.id.btn_next_offer})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_map_offer:
-                break;
-            case R.id.btn_next_offer:
-                break;
-        }
-    }
+
+
+
+
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        Serializable paymentSdkResponse = data.getSerializableExtra(Client.EXTRA_PAYMENT_SDK_RESPONSE);
+//        if (paymentSdkResponse instanceof PaymentResponse) {
+//            String formattedResponse = ResponseHelper.getFormattedResponse((PaymentResponse) paymentSdkResponse);
+//
+//        }
+//        if (resultCode == RESULT_OK) {
+//            Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+//            startActivity(new Intent(OffersDetailsActivity.this, RoomBooked.class));
+//        }
+//    }
+
+
+
 }
