@@ -92,6 +92,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
     ArrayList<String> ListairportCode_Distnation = new ArrayList<>();
 
+    ArrayList<SearchFlightsResponse.Result> ListResult = new ArrayList<>();
 
 
     ArrayList<String> Listduration = new ArrayList<>();
@@ -113,6 +114,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
     private long JourneyType = 1;
     private String mReturnTime;
     private String daDepartureTimeyO;
+    private int sizeSegments;
 
 
     public ProceedBeyBeyOriginal() {
@@ -591,21 +593,22 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
         progressFlight.setVisibility(View.VISIBLE);
 
-        ListnameLine.clear();
-        Listduration.clear();
-        ListdeparuerTime.clear();
-        ListArriveTime.clear();
-        listTypeFare.clear();
-        countryNameDestinationList.clear();
-        countryNameOriginList.clear();
-        listCabinBaggage.clear();
-        listIncludedBaggage.clear();
-        listTotalFare.clear();
-        ListairportCode_Origin.clear();
-        ListairportCode_Distnation.clear();
-        ListflightNumber.clear();
-        ListMealType.clear();
-        ListnoOfSeatAvailable.clear();
+//        ListnameLine.clear();
+//        Listduration.clear();
+//        ListdeparuerTime.clear();
+//        ListArriveTime.clear();
+//        listTypeFare.clear();
+//        countryNameDestinationList.clear();
+//        countryNameOriginList.clear();
+//        listCabinBaggage.clear();
+//        listIncludedBaggage.clear();
+//        listTotalFare.clear();
+//        ListairportCode_Origin.clear();
+//        ListairportCode_Distnation.clear();
+//        ListflightNumber.clear();
+//        ListMealType.clear();
+//        ListnoOfSeatAvailable.clear();
+        ListResult.clear();
 
         Gson gson = new GsonBuilder()
                 .create();
@@ -695,144 +698,138 @@ public class ProceedBeyBeyOriginal extends Fragment {
                     public void onResponse(Call<SearchFlightsResponse> call, Response<SearchFlightsResponse> response) {
                         boolean successful = response.isSuccessful();
                         String trackingId = response.body().getTrackingId();
-                        List<List<SearchFlightsResponse.Result>> results = response.body().getResults();
-                        String resultId1 = results.get(0).get(0).getResultId();
 
                         String tokenId = response.body().getTokenId();
-
-
-
-                        SharedPreferencesManger.SaveData(getContext(),"tokenId",tokenId);
-                        SharedPreferencesManger.SaveData(getContext(),"trackingId",trackingId);
+                        List<List<SearchFlightsResponse.Result>> results = response.body().getResults();
 
 
 
 
-                        SharedPreferencesManger.SaveData(getContext(),"resultId1",resultId1);
-                        SharedPreferencesManger.SaveData(getContext(),"PointOfSale",to);
+                        SharedPreferencesManger.SaveData(getContext(), "tokenId", tokenId);
+                        SharedPreferencesManger.SaveData(getContext(), "trackingId", trackingId);
 
 
-                        if (successful && results != null && results.size() >0) {
+                        SharedPreferencesManger.SaveData(getContext(), "PointOfSale", to);
+
+
+                        if (successful && results != null && results.size() > 0) {
 
                             progressFlight.setVisibility(View.INVISIBLE);
 
 
                             List<SearchFlightsResponse.Result> results1 = results.get(0);
 
+                            ListResult.addAll(results1);
 
-                            int size = results1.size();
+//                            int size = results1.size();
 
-
-                            for (int j = 0; j < results1.size(); j++) {
-
-                                String resultId = results1.get(0).getResultId();
-                                String airlineRemark = results1.get(j).getAirlineRemark();
-                                String destination = results1.get(j).getDestination();
-                                String lastTicketDate = results1.get(j).getLastTicketDate();
-                                String origin = results1.get(j).getOrigin();
-                                String ticketAdvisory = results1.get(j).getTicketAdvisory();
-                                String validatingAirline = results1.get(j).getValidatingAirline();
-
-                                long journeyType = results1.get(j).getJourneyType();
-                                double totalFare = results1.get(j).getFare().getTotalFare();
-                                SearchFlightsResponse.Fare fare = results1.get(j).getFare();
-
-
-
-                                String fareType = results1.get(j).getFare().getAgentPreferredCurrency();
-
-                                listTypeFare.add(fareType);
-                                listTotalFare.add(totalFare);
-
-
-                                List<SearchFlightsResponse.Segment> segments2 = results1.get(j).getSegments().get(0);
+//
+//                            for (int j = 0; j < results1.size(); j++) {
+//
+//                                String resultId = results1.get(0).getResultId();
+//                                String airlineRemark = results1.get(j).getAirlineRemark();
+//                                String destination = results1.get(j).getDestination();
+//                                String lastTicketDate = results1.get(j).getLastTicketDate();
+//                                String origin = results1.get(j).getOrigin();
+//                                String ticketAdvisory = results1.get(j).getTicketAdvisory();
+//                                String validatingAirline = results1.get(j).getValidatingAirline();
+//
+//                                long journeyType = results1.get(j).getJourneyType();
+//                                double totalFare = results1.get(j).getFare().getTotalFare();
+//                                SearchFlightsResponse.Fare fare = results1.get(j).getFare();
+//
+//
+//                                String fareType = results1.get(j).getFare().getAgentPreferredCurrency();
+//
+//                                listTypeFare.add(fareType);
+//                                listTotalFare.add(totalFare);
 
 
-                                //
-                                for (int t = 0; t < segments2.size(); t++) {
+                            //  List<SearchFlightsResponse.Segment> segments = results1.get(j).getSegments().get(0);
 
 
-                                    String airlineName = segments2.get(t).getOrigin().getAirportName();
-                                    String arrivalTime = segments2.get(t).getArrivalTime();
-                                    String departureTime = segments2.get(t).getDepartureTime();
-
-                                    String countryNameDestination = segments2.get(t).getDestination().getCountryName();
-                                    String countryNameOrigin = segments2.get(t).getOrigin().getCountryName();
-
-
-                                    String airline = segments2.get(t).getAirline();
-
-                                    String airportCode_Origin = segments2.get(t).getOrigin().getAirportCode();
-
-                                    String airportCode_Destination = segments2.get(t).getDestination().getAirportCode();
-                                    String includedBaggage = segments2.get(t).getIncludedBaggage();
-
-                                    String cabinBaggage = (String) segments2.get(t).getCabinBaggage();
-
-                                    String duration = segments2.get(t).getDuration();
-                                    String mealType = (String) segments2.get(t).getMealType();
-                                    long noOfSeatAvailable = segments2.get(t).getNoOfSeatAvailable();
-
-
-                                    ListnoOfSeatAvailable.add(noOfSeatAvailable);
-
-                                    ListMealType.add(mealType);
-
-                                    String flightNumber = segments2.get(t).getFlightNumber();
-                                    ListflightNumber.add(flightNumber);
-
-                                    ListairportCode_Distnation.add(airportCode_Destination);
-                                    ListairportCode_Origin.add(airportCode_Origin);
-                                    ListnameLine.add(airlineName);
-                                    Listduration.add(duration);
-                                    ListArriveTime.add(arrivalTime);
-                                    ListdeparuerTime.add(departureTime);
-                                    countryNameDestinationList.add(countryNameDestination);
-                                    countryNameOriginList.add(countryNameOrigin);
-                                    listCabinBaggage.add(cabinBaggage);
-                                    listIncludedBaggage.add(includedBaggage);
-
-                                }
-
-
-                            }
-
+//                                 sizeSegments = segments.size();
+                            //
+//                                for (int t = 0; t < segments2.size(); t++) {
+//
+//
+//                                    String airlineName = segments2.get(t).getOrigin().getAirportName();
+//                                    String arrivalTime = segments2.get(t).getArrivalTime();
+//                                    String departureTime = segments2.get(t).getDepartureTime();
+//
+//                                    String countryNameDestination = segments2.get(t).getDestination().getCountryName();
+//                                    String countryNameOrigin = segments2.get(t).getOrigin().getCountryName();
+//
+//
+//                                    String airline = segments2.get(t).getAirline();
+//
+//                                    String airportCode_Origin = segments2.get(t).getOrigin().getAirportCode();
+//
+//                                    String airportCode_Destination = segments2.get(t).getDestination().getAirportCode();
+//                                    String includedBaggage = segments2.get(t).getIncludedBaggage();
+//
+//                                    String cabinBaggage = (String) segments2.get(t).getCabinBaggage();
+//
+//                                    String duration = segments2.get(t).getDuration();
+//                                    String mealType = (String) segments2.get(t).getMealType();
+//                                    long noOfSeatAvailable = segments2.get(t).getNoOfSeatAvailable();
+//
+//
+//                                    ListnoOfSeatAvailable.add(noOfSeatAvailable);
+//
+//                                    ListMealType.add(mealType);
+//
+//                                    String flightNumber = segments2.get(t).getFlightNumber();
+//                                    ListflightNumber.add(flightNumber);
+//
+//                                    ListairportCode_Distnation.add(airportCode_Destination);
+//                                    ListairportCode_Origin.add(airportCode_Origin);
+//                                    ListnameLine.add(airlineName);
+//                                    Listduration.add(duration);
+//                                    ListArriveTime.add(arrivalTime);
+//                                    ListdeparuerTime.add(departureTime);
+//                                    countryNameDestinationList.add(countryNameDestination);
+//                                    countryNameOriginList.add(countryNameOrigin);
+//                                    listCabinBaggage.add(cabinBaggage);
+//                                    listIncludedBaggage.add(includedBaggage);
+//
+//                                }
 
 
                             Intent intent = new Intent(getContext(), RecommendedOneWay.class);
 
+                            intent.putExtra("ListResult", ListResult);
 
+//                            intent.putExtra("size", size);
+                            //   intent.putExtra("sizeSegments", sizeSegments);
 
-
-                            intent.putExtra("size", size);
-
-                            intent.putExtra("airlineName", ListnameLine);
-                            intent.putExtra("Listduration", Listduration);
-
-                            intent.putExtra("arrivalTime", ListArriveTime);
-                            intent.putExtra("departureTime", ListdeparuerTime);
-
-                            intent.putExtra("countryNameDestinationList", countryNameDestinationList);
-                            intent.putExtra("countryNameOriginList", countryNameOriginList);
-
-                            intent.putExtra("listCabinBaggage", listCabinBaggage);
-                            intent.putExtra("listIncludedBaggage", listIncludedBaggage);
-
-                            intent.putExtra("listTotalFare", listTotalFare);
-                            intent.putExtra("listTypeFare", listTypeFare);
-
-
-                            intent.putExtra("ListairportCode_Distnation", ListairportCode_Distnation);
-                            intent.putExtra("ListairportCode_Origin", ListairportCode_Origin);
-
-                            intent.putExtra("ListflightNumber", ListflightNumber);
+//                            intent.putExtra("airlineName", ListnameLine);
+//                            intent.putExtra("Listduration", Listduration);
+//
+//                            intent.putExtra("arrivalTime", ListArriveTime);
+//                            intent.putExtra("departureTime", ListdeparuerTime);
+//
+//                            intent.putExtra("countryNameDestinationList", countryNameDestinationList);
+//                            intent.putExtra("countryNameOriginList", countryNameOriginList);
+//
+//                            intent.putExtra("listCabinBaggage", listCabinBaggage);
+//                            intent.putExtra("listIncludedBaggage", listIncludedBaggage);
+//
+//                            intent.putExtra("listTotalFare", listTotalFare);
+//                            intent.putExtra("listTypeFare", listTypeFare);
+//
+//
+//                            intent.putExtra("ListairportCode_Distnation", ListairportCode_Distnation);
+//                            intent.putExtra("ListairportCode_Origin", ListairportCode_Origin);
+//
+//                            intent.putExtra("ListflightNumber", ListflightNumber);
+//
+//
+//                            intent.putExtra("ListMealType", ListMealType);
+//
+//                            intent.putExtra("ListnoOfSeatAvailable", ListnoOfSeatAvailable);
 
                             SharedPreferencesManger.SaveData(getContext(),"flightCabinClass",flightCabinClass);
-
-                            intent.putExtra("ListMealType", ListMealType);
-
-                            intent.putExtra("ListnoOfSeatAvailable", ListnoOfSeatAvailable);
-
 
                             getContext().startActivity(intent);
 
@@ -857,8 +854,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
                             System.out.println("How: " + s);
                         }
-
                     }
+
 
                     @Override
                     public void onFailure(Call<SearchFlightsResponse> call, Throwable throwable) {

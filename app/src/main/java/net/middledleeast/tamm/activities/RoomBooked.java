@@ -104,12 +104,12 @@ public class RoomBooked extends AppCompatActivity {
     private String firstName1GustOne;
     private String lastName1GustOne;
     private String roomType;
-    private String confirmationNo;
-    private Integer bookingId;
     private PaymentInfo paymentInfo;
     private String fullName;
     private Integer noOfAdultRoom1;
     private String tripName;
+    private String confirmationNo;
+    private Integer bookingId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +117,7 @@ public class RoomBooked extends AppCompatActivity {
         setContentView(R.layout.room_booked);
         ButterKnife.bind(this);
         requestQueue = Volley.newRequestQueue(this);
-        connectdatabase();
+
 
         iv_booked_room=findViewById(R.id.iv_booked_room);
         iv_booked_room.setOnClickListener(new View.OnClickListener() {
@@ -262,7 +262,7 @@ public class RoomBooked extends AppCompatActivity {
 
         bookingresponse(paymentInfo);
 
-
+        connectdatabase();
         button = findViewById(R.id.get_code);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1034,14 +1034,15 @@ public class RoomBooked extends AppCompatActivity {
                     , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
                     null, true, authenticandata);
 
-            int bookingId = hotelBookingResponse.BookingId;
+            bookingId = hotelBookingResponse.BookingId;
+            confirmationNo = hotelBookingResponse.ConfirmationNo;
 
-            appDatabase= Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"myBooking").allowMainThreadQueries().build();
+            appDatabase= Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"myBooking").fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
 
             String untile  =   SharedPreferencesManger.LoadStringData(this, "Until");
 
-           String   imgHotelOne  =  SharedPreferencesManger.LoadStringData(this,"imageHotel");
+            String imgHotelOne  =  SharedPreferencesManger.LoadStringData(this,"imageHotel");
 
 
 
@@ -1051,7 +1052,9 @@ public class RoomBooked extends AppCompatActivity {
 //            amendInformation.CheckIn = new CheckInReq();
 //            amendInformation.CheckIn.Date = new DateTime(start_time);
 
-            RoomCartModel roomCartModel=new RoomCartModel(untile ,imgHotelOne ,start_time,end_time,String.valueOf(bookingId),hotelBookingResponse.ConfirmationNo,
+
+
+            RoomCartModel roomCartModel=new RoomCartModel(untile ,imgHotelOne ,start_time,end_time,String.valueOf(bookingId),confirmationNo,
                     String.valueOf(resultIndex),hotel_name);
 
             appDatabase.cartDao().addoffer(roomCartModel);
@@ -1065,7 +1068,7 @@ public class RoomBooked extends AppCompatActivity {
 
             SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
             SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
-            SharedPreferencesManger.SaveData(this, "ConfirmationNo", hotelBookingResponse.ConfirmationNo);
+            SharedPreferencesManger.SaveData(this, "ConfirmationNo", confirmationNo);
 
 
 //            AmendmentResponse amendmentResponse = service.Amendment(amendmentRequestType, hotelBookingResponse.BookingId, amendInformation, hotelBookingResponse.ConfirmationNo, authenticandata);
@@ -1104,7 +1107,7 @@ public class RoomBooked extends AppCompatActivity {
 
                 public void onResponse(String response) {
 
-                    Toast.makeText(RoomBooked.this,"Registration Successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RoomBooked.this,"Booked", Toast.LENGTH_SHORT).show();
 
                     Log.e("HI", "onResponse: "+ response );
 
@@ -1131,8 +1134,8 @@ public class RoomBooked extends AppCompatActivity {
                     parameters.put("noofguest", String.valueOf(noOfAdultRoom1));
                     parameters.put("hotelname", hotel_name);
                     parameters.put("city", name_city_);
-                    parameters.put("tbohconfno","uyuygh");
-                    parameters.put("tripid","hgjhg");
+                    parameters.put("tbohconfno",confirmationNo);
+                    parameters.put("tripid", String.valueOf(bookingId));
                     parameters.put("tripname",tripName);
                     parameters.put("booking", "Vouched");
                     parameters.put("nights", String.valueOf(nights));

@@ -56,10 +56,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,8 +81,7 @@ public class RegisterationActivity extends Fragment {
     private EditText zip_code;
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
-    private Handler handler;
-    private Runnable runnable;
+
 
     int free;
     int member;
@@ -92,7 +89,6 @@ public class RegisterationActivity extends Fragment {
 
     RequestQueue requestQueue;
     private String register_url_free = "http://egyptgoogle.com/freeusers/insertusers.php";
-    private String register_url_member = "http://egyptgoogle.com/paymentusers/insertstudents.php";
 
     private ArrayList<String> mrOrMissArray;
     private ArrayAdapter mrOrMissAdapter;
@@ -333,7 +329,7 @@ public class RegisterationActivity extends Fragment {
                     connectdatabase();
                     if (user_id == 2) {
 
-                        countDownStart();
+
 
                         Intent intent = new Intent(getContext(), PaymentActivity.class);
 
@@ -478,44 +474,10 @@ public class RegisterationActivity extends Fragment {
                     return parameters;
                 }
             };
+            RequestQueue requestQueue = Volley.newRequestQueue(getContext());
             requestQueue.add(request);
 
         } else  {
-
-            StringRequest request = new StringRequest(Request.Method.POST, register_url_member, new Response.Listener<String>() {
-
-                @Override
-
-                public void onResponse(String response) {
-
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-
-                }
-
-            }) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> parameters = new HashMap<String, String>();
-                    parameters.put("firstname", etFirstName.getText().toString());
-                    parameters.put("lastname", etLastName.getText().toString());
-                    parameters.put("username", etUserName.getText().toString());
-                    parameters.put("password", etPassword.getText().toString());
-                    parameters.put("day", day);
-                    parameters.put("month", month);
-                    parameters.put("year", year);
-                    parameters.put("location", country.getText().toString());
-                    parameters.put("occupation", ocupation.getText().toString());
-                    parameters.put("email", etEmail.getText().toString());
-                    parameters.put("phone", etPhone.getText().toString());
-                    parameters.put("city", city.getText().toString());
-
-                    return parameters;
-                }
-            };
-            requestQueue.add(request);
 
 
         }
@@ -1375,50 +1337,6 @@ public class RegisterationActivity extends Fragment {
     }
 
 
-    public void countDownStart() {
-        handler = new Handler();
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-                handler.postDelayed(this, 1000);
-                try {
 
-                    // Please here set your event date//YYYY-MM-DD
-                    Calendar calendar = Calendar.getInstance();
-                    calendar.add(Calendar.YEAR,1);
-                    Date futureDate = calendar.getTime();
-                    String dateFormat = new SimpleDateFormat("yyyy-MM-dd").format(futureDate);
-
-
-
-
-                    Date currentDate = new Date();
-                    if (!currentDate.after(futureDate)) {
-                        long diff = futureDate.getTime()
-                                - currentDate.getTime();
-                        long days = diff / (24 * 60 * 60 * 1000);
-                        diff -= days * (24 * 60 * 60 * 1000);
-                        long hours = diff / (60 * 60 * 1000);
-                        diff -= hours * (60 * 60 * 1000);
-                        long minutes = diff / (60 * 1000);
-                        diff -= minutes * (60 * 1000);
-                        long seconds = diff / 1000;
-//                        txtmonth.setText("" + String.format("%02d", months));
-//                        txtDay.setText("" + String.format("%02d", days));
-//                        txtHour.setText("" + String.format("%02d", hours));
-//                        txtMinute.setText("" + String.format("%02d", minutes));
-//                        txtSecond.setText("" + String.format("%02d", seconds));
-
-                        SharedPreferencesManger.SaveData(getActivity(),"validTill",days);
-                    } else {
-
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        handler.postDelayed(runnable, 1 * 1000);
-    }
 
 }

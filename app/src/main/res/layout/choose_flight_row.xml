@@ -8,7 +8,7 @@
     <View
         android:id="@+id/line2"
         android:layout_width="1dp"
-        android:layout_height="@dimen/_120sdp"
+        android:layout_height="208dp"
         android:layout_below="@+id/spinner_date"
         android:background="@drawable/line1"
         android:layout_marginLeft="@dimen/_15sdp"
@@ -17,7 +17,7 @@
     <RelativeLayout
         android:id="@+id/relative_country1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_105sdp"
+        android:layout_height="190dp"
         android:layout_below="@+id/spinner_date"
         android:layout_toRightOf="@+id/line2"
         android:layout_marginLeft="@dimen/_4sdp"
@@ -82,21 +82,21 @@
             android:textColor="@color/app_color"
 
             />
-        <!--<TextView-->
-            <!--android:id="@+id/tv_text2"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="-"-->
-            <!--android:layout_toRightOf="@+id/tv_beirut"-->
-            <!--android:layout_below="@+id/tv_time_two"-->
-            <!--android:textColor="@color/app_color"-->
+        <TextView
+            android:id="@+id/tv_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" - "
+            android:layout_toRightOf="@+id/tv_beirut"
+            android:layout_below="@+id/tv_time_two"
+            android:textColor="@color/app_color"
 
-            <!--/>-->
+            />
         <TextView
             android:id="@+id/tv_kuwait"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" "
+            android:text=" yhvyhy"
             android:layout_toRightOf="@+id/tv_text2"
             android:layout_below="@+id/tv_time_two"
             android:textColor="@color/app_color"
@@ -112,31 +112,83 @@
             android:textColor="@color/app_color"
 
             />
-        <!--<TextView-->
-            <!--android:id="@+id/tv_text3"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="-"-->
-            <!--android:layout_toRightOf="@+id/tv_kuwait2"-->
-            <!--android:layout_below="@+id/iv_icon"-->
-            <!--android:textColor="@color/app_color"-->
+        <TextView
+            android:id="@+id/tv_text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" - "
+            android:layout_toRightOf="@+id/tv_kuwait2"
+            android:layout_below="@+id/iv_icon"
+            android:textColor="@color/app_color"
 
-            <!--/>-->
+            />
         <TextView
             android:id="@+id/tv_bubai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="ybhythybhy"
             android:layout_toRightOf="@+id/tv_text3"
             android:layout_below="@+id/tv_beirut"
             android:textColor="@color/app_color"
 
             />
+
+        <TextView
+            android:id="@+id/tv_bubai2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ybhythybhy"
+            android:layout_toRightOf="@+id/tv_kuwait3"
+            android:layout_below="@+id/tv_bubai"
+            android:textColor="@color/app_color"
+
+            />
+
+
+
+
+        <TextView
+            android:id="@+id/tv_kuwait3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kuwait - "
+            android:layout_toRightOf="@+id/iv_icon"
+            android:layout_below="@+id/tv_kuwait2"
+            android:textColor="@color/app_color"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_kuwait4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kuwait"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:layout_below="@+id/tv_kuwait3"
+            android:textColor="@color/app_color"
+
+            />
+
+
+
+        <TextView
+            android:id="@+id/tv_bubai3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ybhythybhy"
+            android:layout_toRightOf="@+id/tv_kuwait3"
+            android:layout_below="@+id/tv_bubai2"
+            android:textColor="@color/app_color"
+
+            />
+
+
         <RelativeLayout
             android:id="@+id/relative_bag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_kuwait2"
+            android:layout_below="@+id/tv_kuwait4"
             android:layout_toRightOf="@+id/iv_icon"
 
             >
@@ -206,7 +258,6 @@
             android:id="@+id/tv_transit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Transit"
             android:textColor="#fff"
             android:layout_toLeftOf="@+id/iv_star"
             android:layout_below="@+id/tv_time"
@@ -244,22 +295,22 @@
             android:layout_height="@dimen/_20sdp"
             android:text="Select Flight"
             android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
             android:background="@drawable/shape"
             android:layout_marginEnd="@dimen/_15sdp"
 
+            android:layout_below="@+id/relative_bag"
 
             />
 
     </RelativeLayout>
+
     <View
         android:id="@+id/line3"
         android:layout_width="@dimen/_270sdp"
         android:layout_height="2dp"
-        android:background="@drawable/line1"
         android:layout_below="@+id/relative_country1"
-        android:layout_toRightOf="@+id/line2"
         android:layout_marginTop="@dimen/_5sdp"
-        />
+        android:layout_toRightOf="@+id/line2"
+        android:background="@drawable/line1" />
 
     </RelativeLayout>
