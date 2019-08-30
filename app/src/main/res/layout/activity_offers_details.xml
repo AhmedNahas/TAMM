@@ -172,21 +172,21 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_20sdp"
             android:textAllCaps="false"
-            android:text="Map"
+            android:text="Book"
             android:background="#BE973B"
             />
 
-        <Button
-            android:gravity="center"
-            android:id="@+id/btn_next_offer"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_20sdp"
-            android:textAllCaps="false"
-            android:text="Next"
-            android:layout_toRightOf="@+id/btn_map_offer"
-            android:background="#BE973B"
-            android:layout_marginLeft="@dimen/_15sdp"
-            />
+        <!--<Button-->
+            <!--android:gravity="center"-->
+            <!--android:id="@+id/btn_next_offer"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="@dimen/_20sdp"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:text="Next"-->
+            <!--android:layout_toRightOf="@+id/btn_map_offer"-->
+            <!--android:background="#BE973B"-->
+            <!--android:layout_marginLeft="@dimen/_15sdp"-->
+            <!--/>-->
 
     </RelativeLayout>
 

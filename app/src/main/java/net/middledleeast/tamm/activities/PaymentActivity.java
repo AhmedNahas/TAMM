@@ -2,12 +2,10 @@ package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -16,7 +14,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -44,7 +41,6 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -75,8 +71,7 @@ public class PaymentActivity extends AppCompatActivity {
     CheckBox checkBoxAgerr2;
     @BindView(R.id.terms_conditions_tv2)
     TextView termsConditionsTv2;
-    @BindView(R.id.sp_convert_to)
-    Spinner spConvertTo;
+
     private Button button;
     private RelativeLayout relativeLayout;
     private AuthenticationData authenticandata;
@@ -106,6 +101,9 @@ public class PaymentActivity extends AppCompatActivity {
     private Runnable runnable;
     private long days;
     private Date currentDate;
+    private String last_name;
+    private String first_name;
+    private String pricepffers;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -125,14 +123,12 @@ public class PaymentActivity extends AppCompatActivity {
         mId = intent.getIntExtra("mId", 0);
 
 
+
         // just for test
        // mId=BOOKING_ROOM;
         relativeLayout.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-
-
 
         }
         });
@@ -167,8 +163,8 @@ public class PaymentActivity extends AppCompatActivity {
 
             roomPrice = SharedPreferencesManger.LoadStringData(this, "finalpriceRoom");
             currency = SharedPreferencesManger.LoadStringData(this, "currency");
-            String last_name = SharedPreferencesManger.LoadStringData(this, "lastName");
-            String first_name = SharedPreferencesManger.LoadStringData(this, "firstName");
+            last_name = SharedPreferencesManger.LoadStringData(this, "lastName");
+            first_name = SharedPreferencesManger.LoadStringData(this, "firstName");
 
 
             tvLastName.setText(last_name);
@@ -223,18 +219,32 @@ public class PaymentActivity extends AppCompatActivity {
             tvFirstName.setText("");
             tvKd.setText(flightCurrency+" "+ TotalFare);
 
+        }else if (mId == 6){
+
+            Intent offerActiv = getIntent();
+
+
+             pricepffers = SharedPreferencesManger.LoadStringData(this, "pricepffers");
+
+
+
+            tvLastName.setText(last_name);
+            tvFirstName.setText(first_name);
+
+            tvKd.setText("USD" + " " + pricepffers);
+
         }
 
 
         spinnerTitles.add(getString(R.string.payment_method));
-        spinnerTitles.add(getString(R.string.visa_));
-        spinnerTitles.add(getString(R.string.master));
+//        spinnerTitles.add(getString(R.string.visa_));
+//        spinnerTitles.add(getString(R.string.master));
         spinnerTitles.add(getString(R.string.knet));
 
         spinnerImages.add(0);
 
-        spinnerImages.add(R.drawable.wd_ecom_visa);
-        spinnerImages.add(R.drawable.wd_ecom_mastercard);
+//        spinnerImages.add(R.drawable.wd_ecom_visa);
+//        spinnerImages.add(R.drawable.wd_ecom_mastercard);
         spinnerImages.add(R.drawable.ic_knet);
 
 
@@ -306,7 +316,13 @@ public class PaymentActivity extends AppCompatActivity {
                     openbankFlight(s2);
 
 
+                }else if(mId==6){
+
+
+                    openbankBestHotel("USD",pricepffers);
+
                 }
+
             }
         });
 
@@ -320,135 +336,39 @@ public class PaymentActivity extends AppCompatActivity {
         authenticandata.Password = (getString(R.string.passowrd_tamm));
 
 
-        List<String> listTypeMony = new ArrayList<>();
+    }
 
+    private void openbankBestHotel(String usd, String offerActivityprice) {
 
-        listTypeMony.add(getString(R.string.usd));
-        listTypeMony.add(getString(R.string.euro));
-        listTypeMony.add(getString(R.string.eg_pound));
-        listTypeMony.add(getString(R.string.kd));
+        try {
+//
+            BigDecimal amount = new BigDecimal(offerActivityprice);
+            PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
+            BigDecimal finalAmount = amount;
+            String finalCurrency = usd;
 
-        ArrayAdapter adapter = new ArrayAdapter(PaymentActivity.this, R.layout.item_spener, listTypeMony);
-        adapter.setDropDownViewResource(R.layout.drop_dowen_convert);
+            if (paymentChekd && checkBoxAgerr2.isChecked()) {
 
-        spConvertTo.setAdapter(adapter);
+                if (knet){
 
-        spConvertTo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
 
+                }else {
 
-                DecimalFormat df = new DecimalFormat("###.###");
-
-                if (mId==2){
-
-
-                    if (roomPrice.equals("")){
-
-
-                    }else {
-
-                        final   double priceDouble = Double.parseDouble(roomPrice);
-
-                        if (i == 3) {
-
-                            double convirtKD = priceDouble * 0.30;
-
-                            tvKd.setText("KD " + convirtKD);
-                            currency = "KD";
-
-                        } else if (i == 2) {
-
-                            double convirtEG = priceDouble * 16.58;
-
-                            tvKd.setText("EG " + convirtEG);
-                            currency = "EG";
-                        } else if (i == 1) {
-
-                            double convirtEU = priceDouble * 0.90;
-
-                            tvKd.setText("EURO " + convirtEU);
-
-                            currency = "EURO";
-
-
-                        } else {
-
-
-
-                            tvKd.setText("USD " + roomPrice);
-                            currency = "USD";
-
-                        }
-
-                    }
-
-
-                }else if (mId==1){
-
-
-                    if (!msgbody.equals("")){
-
-                        final   double priceDouble = Double.parseDouble(msgbody);
-
-
-                        if (i == 3) {
-
-                            double convirtKD = priceDouble * 0.30;
-
-                            tvKd.setText("KD " +convirtKD);
-                            currency = "KD";
-
-                        } else if (i == 2) {
-
-                            double convirtEG = priceDouble * 16.58;
-                            tvKd.setText("EG " +df.format(convirtEG));
-
-                            currency = "EG";
-                        } else if (i == 1) {
-
-                            double convirtEU = priceDouble * 0.90;
-
-                            tvKd.setText("EURO " + convirtEU);
-
-                            currency = "EURO";
-
-
-                        } else {
-
-
-                            tvKd.setText("USD " + msgbody);
-                            currency = "USD";
-
-                        }
-
-
-
-                    }else {
-
-
-
-                    }
-
-
-
+                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
                 }
 
 
+            } else {
 
-
-
-
+                Toast.makeText(PaymentActivity.this, "Choose Payment Method and agree in Terms and conditions", Toast.LENGTH_SHORT).show();
             }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
 
-            }
-        });
-
-
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void openbankFlight(String Price) {
@@ -690,6 +610,12 @@ public class PaymentActivity extends AppCompatActivity {
                 Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(PaymentActivity.this,FlightDetails.class));
+            }else if (mId==6){
+
+
+                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(PaymentActivity.this,HotelBooking.class));
             }
 
         }else {
