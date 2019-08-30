@@ -5,7 +5,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -27,13 +26,14 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.fragments.FreeAccount;
 import net.middledleeast.tamm.fragments.MemberShip;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
-import net.middledleeast.tamm.model.Freeuser;
+import net.middledleeast.tamm.model.Freeservicefee;
 import net.middledleeast.tamm.model.PlanModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHolder>  {
@@ -41,9 +41,12 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHol
     private Context context;
     Activity activity ;
     private List<PlanModel> planModelList;
+    private List<Freeservicefee> freeservicefees = new ArrayList<>();
+
     private int row_index = -1;
-    private String HI = "http://egyptgoogle.com/backend/freeamountformember/freememberfees.php";
-    private String HI2 = "http://egyptgoogle.com/backend/amountformember/amountformember.php";
+    private String HI = "http://egyptgoogle.com/backend/freeservicefees/freeservicefessjson.php";
+    private String HI2 = "http://egyptgoogle.com/backend/servicefees/premiumservicefessjson.php";
+    private String user;
 
     public PlansAdapter(Context context, List<PlanModel> planModelList) {
         this.context = context;
@@ -94,6 +97,10 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHol
 if(i==0)
 {
 
+
+    user = "1" ;
+    SharedPreferencesManger.SaveData(context,"isMemmber",user);
+
 getmember();
 
 
@@ -104,7 +111,8 @@ getmember();
 }
 else
 {
-
+    user = "2" ;
+    SharedPreferencesManger.SaveData(context,"isMemmber",user);
 
     getFree();
 
@@ -155,14 +163,23 @@ else
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject=new JSONObject(response);
-                    JSONArray array=jsonObject.getJSONArray("amountformember");
+                    JSONArray array=jsonObject.getJSONArray("premiumservicefees");
                     for (int i=0; i<1; i++ ){
                         JSONObject ob=array.getJSONObject(i);
-                        String msgbody = ob.getString("Msgbody");
+
+                        Freeservicefee listData = new Freeservicefee(ob.getString("percentage"),ob.getString("KD"));
+                        freeservicefees.add(listData);
+
+                        String percentage = freeservicefees.get(i).getPercentage();
+                        String kd = freeservicefees.get(i).getKD();
 
 
+                        if (!percentage.isEmpty()){
+                            SharedPreferencesManger.SaveData(activity,"fees_prem",percentage);
 
-                        SharedPreferencesManger.SaveData(activity,"fees",msgbody);
+                        }else
+                            SharedPreferencesManger.SaveData(activity,"fees_prem",kd);
+
 
                     }
                 } catch (JSONException e) {
@@ -190,16 +207,22 @@ else
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject=new JSONObject(response);
-                    JSONArray array=jsonObject.getJSONArray("freeamountformember");
+                    JSONArray array=jsonObject.getJSONArray("freeservicefees");
                     for (int i=0; i<1; i++ ){
                         JSONObject ob=array.getJSONObject(i);
-                         String msgbody = ob.getString("Msgbody");
+                         String percentage = ob.getString("percentage");
+                         String kd = ob.getString("KD");
 
+                        if (!percentage.isEmpty()){
+                            SharedPreferencesManger.SaveData(activity,"fees_free",percentage);
 
+                        }else
+                            SharedPreferencesManger.SaveData(activity,"fees_free",kd);
 
-                        SharedPreferencesManger.SaveData(activity,"fees",msgbody);
 
                     }
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

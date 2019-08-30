@@ -22,10 +22,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-
-
-
-        <!--<activity android:name="..VoiceMessageActivity"></activity>-->
+        <activity android:name=".activities.VoiceMessageActivity"></activity>
         <activity android:name=".activities.OffersDetailsActivity" />
         <activity android:name=".activities.SettingActivity" />
         <activity android:name=".activities.AboutUs" />

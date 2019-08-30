@@ -85,14 +85,6 @@
         android:layout_height="wrap_content">
 
 
-        <Spinner
-            android:id="@+id/sp_convert_to"
-            android:backgroundTint="@color/app_color"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/_10sdp">
-
-        </Spinner>
 
     </RelativeLayout>
 

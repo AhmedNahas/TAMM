@@ -2,12 +2,10 @@ package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -16,7 +14,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -24,36 +21,30 @@ import com.Tamm.Hotels.wcf.AmendmentResponse;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.wirecard.ecom.Client;
 import com.wirecard.ecom.model.out.PaymentResponse;
-import com.wirecard.ecom.ui.WebViewActivity;
 
-import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterPayment;
-import net.middledleeast.tamm.fragments.FREEcONGRATS;
 import net.middledleeast.tamm.fragments.TermsFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
-import net.middledleeast.tamm.model.Freeuser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,13 +71,12 @@ public class PaymentActivity extends AppCompatActivity {
     CheckBox checkBoxAgerr2;
     @BindView(R.id.terms_conditions_tv2)
     TextView termsConditionsTv2;
-    @BindView(R.id.sp_convert_to)
-    Spinner spConvertTo;
+
     private Button button;
     private RelativeLayout relativeLayout;
     private AuthenticationData authenticandata;
     private BasicHttpBinding_IHotelService1 service;
-    private static final String urlmemberfees = "http://egyptgoogle.com/backend/memberfees/memberfees.php";
+    private static final String urlmemberfees = "http://egyptgoogle.com/backend/memberfees/memberfessjson.php";
     Toolbar toolbar;
     ImageView imageView;
     private List<String> spinnerTitles = new ArrayList<>();
@@ -107,6 +97,13 @@ public class PaymentActivity extends AppCompatActivity {
     private int FLIGHT =3;
     private boolean knet = false;
     private String urlAmount = "http://egyptgoogle.com/k/jsoninsert.php";
+    private Handler handler;
+    private Runnable runnable;
+    private long days;
+    private Date currentDate;
+    private String last_name;
+    private String first_name;
+    private String pricepffers;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -126,14 +123,12 @@ public class PaymentActivity extends AppCompatActivity {
         mId = intent.getIntExtra("mId", 0);
 
 
+
         // just for test
        // mId=BOOKING_ROOM;
         relativeLayout.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-
-
 
         }
         });
@@ -168,8 +163,8 @@ public class PaymentActivity extends AppCompatActivity {
 
             roomPrice = SharedPreferencesManger.LoadStringData(this, "finalpriceRoom");
             currency = SharedPreferencesManger.LoadStringData(this, "currency");
-            String last_name = SharedPreferencesManger.LoadStringData(this, "lastName");
-            String first_name = SharedPreferencesManger.LoadStringData(this, "firstName");
+            last_name = SharedPreferencesManger.LoadStringData(this, "lastName");
+            first_name = SharedPreferencesManger.LoadStringData(this, "firstName");
 
 
             tvLastName.setText(last_name);
@@ -224,18 +219,32 @@ public class PaymentActivity extends AppCompatActivity {
             tvFirstName.setText("");
             tvKd.setText(flightCurrency+" "+ TotalFare);
 
+        }else if (mId == 6){
+
+            Intent offerActiv = getIntent();
+
+
+             pricepffers = SharedPreferencesManger.LoadStringData(this, "pricepffers");
+
+
+
+            tvLastName.setText(last_name);
+            tvFirstName.setText(first_name);
+
+            tvKd.setText("USD" + " " + pricepffers);
+
         }
 
 
         spinnerTitles.add(getString(R.string.payment_method));
-        spinnerTitles.add(getString(R.string.visa_));
-        spinnerTitles.add(getString(R.string.master));
+//        spinnerTitles.add(getString(R.string.visa_));
+//        spinnerTitles.add(getString(R.string.master));
         spinnerTitles.add(getString(R.string.knet));
 
         spinnerImages.add(0);
 
-        spinnerImages.add(R.drawable.wd_ecom_visa);
-        spinnerImages.add(R.drawable.wd_ecom_mastercard);
+//        spinnerImages.add(R.drawable.wd_ecom_visa);
+//        spinnerImages.add(R.drawable.wd_ecom_mastercard);
         spinnerImages.add(R.drawable.ic_knet);
 
 
@@ -307,7 +316,13 @@ public class PaymentActivity extends AppCompatActivity {
                     openbankFlight(s2);
 
 
+                }else if(mId==6){
+
+
+                    openbankBestHotel("USD",pricepffers);
+
                 }
+
             }
         });
 
@@ -321,135 +336,39 @@ public class PaymentActivity extends AppCompatActivity {
         authenticandata.Password = (getString(R.string.passowrd_tamm));
 
 
-        List<String> listTypeMony = new ArrayList<>();
+    }
 
+    private void openbankBestHotel(String usd, String offerActivityprice) {
 
-        listTypeMony.add(getString(R.string.usd));
-        listTypeMony.add(getString(R.string.euro));
-        listTypeMony.add(getString(R.string.eg_pound));
-        listTypeMony.add(getString(R.string.kd));
+        try {
+//
+            BigDecimal amount = new BigDecimal(offerActivityprice);
+            PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
+            BigDecimal finalAmount = amount;
+            String finalCurrency = usd;
 
-        ArrayAdapter adapter = new ArrayAdapter(PaymentActivity.this, R.layout.item_spener, listTypeMony);
-        adapter.setDropDownViewResource(R.layout.drop_dowen_convert);
+            if (paymentChekd && checkBoxAgerr2.isChecked()) {
 
-        spConvertTo.setAdapter(adapter);
+                if (knet){
 
-        spConvertTo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
 
+                }else {
 
-                DecimalFormat df = new DecimalFormat("###.###");
-
-                if (mId==2){
-
-
-                    if (roomPrice.equals("")){
-
-
-                    }else {
-
-                        final   double priceDouble = Double.parseDouble(roomPrice);
-
-                        if (i == 3) {
-
-                            double convirtKD = priceDouble * 0.30;
-
-                            tvKd.setText("KD " + convirtKD);
-                            currency = "KD";
-
-                        } else if (i == 2) {
-
-                            double convirtEG = priceDouble * 16.58;
-
-                            tvKd.setText("EG " + convirtEG);
-                            currency = "EG";
-                        } else if (i == 1) {
-
-                            double convirtEU = priceDouble * 0.90;
-
-                            tvKd.setText("EURO " + convirtEU);
-
-                            currency = "EURO";
-
-
-                        } else {
-
-
-
-                            tvKd.setText("USD " + roomPrice);
-                            currency = "USD";
-
-                        }
-
-                    }
-
-
-                }else if (mId==1){
-
-
-                    if (!msgbody.equals("")){
-
-                        final   double priceDouble = Double.parseDouble(msgbody);
-
-
-                        if (i == 3) {
-
-                            double convirtKD = priceDouble * 0.30;
-
-                            tvKd.setText("KD " +convirtKD);
-                            currency = "KD";
-
-                        } else if (i == 2) {
-
-                            double convirtEG = priceDouble * 16.58;
-                            tvKd.setText("EG " +df.format(convirtEG));
-
-                            currency = "EG";
-                        } else if (i == 1) {
-
-                            double convirtEU = priceDouble * 0.90;
-
-                            tvKd.setText("EURO " + convirtEU);
-
-                            currency = "EURO";
-
-
-                        } else {
-
-
-                            tvKd.setText("USD " + msgbody);
-                            currency = "USD";
-
-                        }
-
-
-
-                    }else {
-
-
-
-                    }
-
-
-
+                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
                 }
 
 
+            } else {
 
-
-
-
+                Toast.makeText(PaymentActivity.this, "Choose Payment Method and agree in Terms and conditions", Toast.LENGTH_SHORT).show();
             }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
 
-            }
-        });
-
-
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void openbankFlight(String Price) {
@@ -680,8 +599,10 @@ public class PaymentActivity extends AppCompatActivity {
             } else if (mId==1){
 
                 sendDataToServer();
+                Toast.makeText(this, "Welcome", Toast.LENGTH_LONG).show();
 
-          startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
+
+
 
 
             }else if (mId==3){
@@ -689,28 +610,38 @@ public class PaymentActivity extends AppCompatActivity {
                 Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(PaymentActivity.this,FlightDetails.class));
+            }else if (mId==6){
+
+
+                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(PaymentActivity.this,HotelBooking.class));
             }
 
         }else {
+            Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+
 
                     }
     }
 
     private void sendDataToServer() {
 
-
+        countDownStart();
         StringRequest request = new StringRequest(Request.Method.POST, register_url_member, new Response.Listener<String>() {
 
             @Override
 
             public void onResponse(String response) {
                 SharedPreferencesManger.SaveData(PaymentActivity.this, "username", username);
-
+                startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
+
+                Toast.makeText(PaymentActivity.this, "eroroororoor", Toast.LENGTH_SHORT).show();
             }
 
         }) {
@@ -729,7 +660,8 @@ public class PaymentActivity extends AppCompatActivity {
                 parameters.put("email", mail);
                 parameters.put("phone", phone);
                 parameters.put("city", city);
-                parameters.put("visa", "");
+                parameters.put("visa", "visa");
+                parameters.put("registrationdate", String.valueOf(days));
                 return parameters;
             }
         };
@@ -748,12 +680,12 @@ public class PaymentActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    JSONArray array = jsonObject.getJSONArray("memeberfees");
+                    JSONArray array = jsonObject.getJSONArray("memberfees");
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject ob = array.getJSONObject(i);
 
 
-                        msgbody = ob.getString("Msgbody");
+                        msgbody = ob.getString("Text");
                         tvKd.setText("USD " + msgbody);
 
 
@@ -806,5 +738,50 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         }
+    }
+    public void countDownStart() {
+        handler = new Handler();
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                handler.postDelayed(this, 1000);
+                try {
+
+                    // Please here set your event date//YYYY-MM-DD
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.add(Calendar.YEAR,1);
+                    Date futureDate = calendar.getTime();
+                    String dateFormat = new SimpleDateFormat("yyyy-MM-dd").format(futureDate);
+
+
+
+
+                    currentDate = new Date();
+                    if (!currentDate.after(futureDate)) {
+                        long diff = futureDate.getTime()
+                                - currentDate.getTime();
+                         days = diff / (24 * 60 * 60 * 1000);
+                        diff -= days * (24 * 60 * 60 * 1000);
+                        long hours = diff / (60 * 60 * 1000);
+                        diff -= hours * (60 * 60 * 1000);
+                        long minutes = diff / (60 * 1000);
+                        diff -= minutes * (60 * 1000);
+                        long seconds = diff / 1000;
+//                        txtmonth.setText("" + String.format("%02d", months));
+//                        txtDay.setText("" + String.format("%02d", days));
+//                        txtHour.setText("" + String.format("%02d", hours));
+//                        txtMinute.setText("" + String.format("%02d", minutes));
+//                        txtSecond.setText("" + String.format("%02d", seconds));
+
+                        SharedPreferencesManger.SaveData(PaymentActivity.this,"validTill",days);
+                    } else {
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        handler.postDelayed(runnable, 1 * 1000);
     }
 }
