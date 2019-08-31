@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.fragments.LanguangeFragment;
+import net.middledleeast.tamm.fragments.TammFamilyFragment;
 import net.middledleeast.tamm.sevice.MyService;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -35,7 +35,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
 //        toolbar = findViewById(R.id.welcome_toolbar);
         setSupportActionBar(toolbar);
-        getSupportFragmentManager().beginTransaction().replace(R.id.welcome_container, new LanguangeFragment())
+        getSupportFragmentManager().beginTransaction().replace(R.id.welcome_container, new TammFamilyFragment())
                 .commit();
     }
 }
