@@ -22,15 +22,12 @@ import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.ArrayOfSupplement;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
-import com.Tamm.Hotels.wcf.CheckInReq;
 import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.Guest;
 import com.Tamm.Hotels.wcf.HotelBookResponse;
-import com.Tamm.Hotels.wcf.HotelCancelResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.PaymentInfo;
 import com.Tamm.Hotels.wcf.RequestedRooms;
-import com.Tamm.Hotels.wcf.ResponseStatus;
 import com.Tamm.Hotels.wcf.SuppInfo;
 import com.Tamm.Hotels.wcf.Supplement;
 import com.android.volley.AuthFailureError;
@@ -140,6 +137,9 @@ public class RoomBooked extends AppCompatActivity {
         assistantLabelCallBookedHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent = new Intent(RoomBooked.this, AssistantActivity.class);
+                startActivity(intent);
                 Toast.makeText(RoomBooked.this, "Call", Toast.LENGTH_SHORT).show();
             }
         });
@@ -147,6 +147,9 @@ public class RoomBooked extends AppCompatActivity {
         assistantLabelVoiceBookedHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent1 = new Intent(RoomBooked.this, VoiceMessageActivity.class);
+                startActivity(intent1);
                 Toast.makeText(RoomBooked.this, "Voice", Toast.LENGTH_SHORT).show();
             }
         });
@@ -154,6 +157,9 @@ public class RoomBooked extends AppCompatActivity {
         assistantLabelMessageBookedHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent2 = new Intent(RoomBooked.this, ContactUs.class);
+                startActivity(intent2);
                 Toast.makeText(RoomBooked.this, "Message", Toast.LENGTH_SHORT).show();
             }
         });

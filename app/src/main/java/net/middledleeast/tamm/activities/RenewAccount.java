@@ -160,6 +160,7 @@ public class  RenewAccount extends AppCompatActivity
         assistantLabelMessageRenewHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(RenewAccount.this, ContactUs.class);
                 startActivity(intent);
 

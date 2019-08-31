@@ -321,14 +321,22 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.assistant_label_voice_choose_hotel:
+                Intent intent = new Intent(ChooseHotelActivity.this, VoiceMessageActivity.class);
+                startActivity(intent);
+
                 Toast.makeText(this, "Voice", Toast.LENGTH_SHORT).show();
 
                 break;
             case R.id.assistant_label_call_choose_hotel:
+                Intent intent1 = new Intent(ChooseHotelActivity.this, AssistantActivity.class);
+                startActivity(intent1);
+
                 Toast.makeText(this, "Call", Toast.LENGTH_SHORT).show();
 
                 break;
             case R.id.assistant_label_message_choose_hotel:
+                Intent intent2 = new Intent(ChooseHotelActivity.this, ContactUs.class);
+                startActivity(intent2);
 
                 Toast.makeText(this, "Message", Toast.LENGTH_SHORT).show();
 
