@@ -22,15 +22,12 @@ import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.ArrayOfSupplement;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
-import com.Tamm.Hotels.wcf.CheckInReq;
 import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.Guest;
 import com.Tamm.Hotels.wcf.HotelBookResponse;
-import com.Tamm.Hotels.wcf.HotelCancelResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.PaymentInfo;
 import com.Tamm.Hotels.wcf.RequestedRooms;
-import com.Tamm.Hotels.wcf.ResponseStatus;
 import com.Tamm.Hotels.wcf.SuppInfo;
 import com.Tamm.Hotels.wcf.Supplement;
 import com.android.volley.AuthFailureError;
@@ -110,6 +107,7 @@ public class RoomBooked extends AppCompatActivity {
     private String tripName;
     private String confirmationNo;
     private Integer bookingId;
+    private String bookedOn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,6 +138,9 @@ public class RoomBooked extends AppCompatActivity {
         assistantLabelCallBookedHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent = new Intent(RoomBooked.this, AssistantActivity.class);
+                startActivity(intent);
                 Toast.makeText(RoomBooked.this, "Call", Toast.LENGTH_SHORT).show();
             }
         });
@@ -147,6 +148,9 @@ public class RoomBooked extends AppCompatActivity {
         assistantLabelVoiceBookedHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent1 = new Intent(RoomBooked.this, VoiceMessageActivity.class);
+                startActivity(intent1);
                 Toast.makeText(RoomBooked.this, "Voice", Toast.LENGTH_SHORT).show();
             }
         });
@@ -154,6 +158,9 @@ public class RoomBooked extends AppCompatActivity {
         assistantLabelMessageBookedHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent2 = new Intent(RoomBooked.this, ContactUs.class);
+                startActivity(intent2);
                 Toast.makeText(RoomBooked.this, "Message", Toast.LENGTH_SHORT).show();
             }
         });
@@ -172,6 +179,7 @@ public class RoomBooked extends AppCompatActivity {
         name_city_ = SharedPreferencesManger.LoadStringData(this, "name_city_");
         nights = SharedPreferencesManger.LoadLongData(this, "nights");
         roomType = SharedPreferencesManger.LoadStringData(this, "roomType");
+        bookedOn = SharedPreferencesManger.LoadStringData(this, "bookedOn");
 
         arrayOfGuest = new ArrayOfGuest();
 
@@ -1055,7 +1063,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
             RoomCartModel roomCartModel=new RoomCartModel(untile ,imgHotelOne ,start_time,end_time,String.valueOf(bookingId),confirmationNo,
-                    String.valueOf(resultIndex),hotel_name);
+                    String.valueOf(resultIndex),hotel_name,bookedOn,"vouched",tripName,fullName,noOfAdultRoom1,name_city_);
 
             appDatabase.cartDao().addoffer(roomCartModel);
 

@@ -1,6 +1,7 @@
 package net.middledleeast.tamm.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.LayoutInflater;
@@ -21,7 +22,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.activities.OffersFlightsDetailsActivity;
 import net.middledleeast.tamm.adapters.FlightAdapter;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.Bestflight;
 
 import org.json.JSONArray;
@@ -123,6 +126,8 @@ public class BestFlights extends Fragment {
             @Override
             public void onTouchEvent(RecyclerView rv, MotionEvent e) {
 
+                startActivity(new Intent(getContext(), OffersFlightsDetailsActivity.class));
+
             }
 
             @Override
@@ -184,6 +189,17 @@ public class BestFlights extends Fragment {
                         String price = bestflight.get(i).getPrice();
                         String takeoff = bestflight.get(i).getTakeoff();
                         String landing = bestflight.get(i).getLanding();
+
+                        SharedPreferencesManger.SaveData(getActivity(),"airplane",airplane);
+                        SharedPreferencesManger.SaveData(getActivity(),"from_airport",from_airport);
+
+                        SharedPreferencesManger.SaveData(getActivity(),"to_airport",to_airport);
+
+                        SharedPreferencesManger.SaveData(getActivity(),"price",price);
+                        SharedPreferencesManger.SaveData(getActivity(),"takeoff",takeoff);
+
+                        SharedPreferencesManger.SaveData(getActivity(),"landing",landing);
+
 
 
                         listairport.add(airplane);

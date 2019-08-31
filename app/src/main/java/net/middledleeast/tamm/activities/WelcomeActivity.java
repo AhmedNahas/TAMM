@@ -12,15 +12,28 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.fragments.TammFamilyFragment;
 import net.middledleeast.tamm.sevice.MyService;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class WelcomeActivity extends AppCompatActivity {
 
     Toolbar toolbar;
+    private Date currentDate;
 
     @SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+
+
+
+
+
+
+
 
 
         new AsyncTask<Void, Void, Void>() {

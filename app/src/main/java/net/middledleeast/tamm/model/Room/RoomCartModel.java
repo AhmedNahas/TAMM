@@ -5,8 +5,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.Tamm.Hotels.wcf.AmendmentRequestType;
-
 @Entity
 public class RoomCartModel {
 
@@ -21,11 +19,12 @@ public class RoomCartModel {
     }
 
 
-    public RoomCartModel(String untile, String imageRoom, String checkIn , String CheckOut , String BookingId   ,  String ConfirmationNo ,
+    public RoomCartModel(String untile, String imageRoom, String checkIn, String CheckOut, String BookingId, String ConfirmationNo,
 
-                          String resultIndex , String hotel_name
+                         String resultIndex, String hotel_name,
 
-                         ) {
+                         String booked, String booking, String tripname, String leadguest, int noofguest, String citymethod) {
+
         this.hotel_name = hotel_name;
         this.resultIndex = resultIndex;
         this.ConfirmationNo = ConfirmationNo;
@@ -34,17 +33,126 @@ public class RoomCartModel {
         this.checkIn = checkIn;
         this.CheckOut = CheckOut;
         this.BookingId = BookingId;
-
-
+        this.booked = booked;
+        this.booking = booking;
+        this.tripname = tripname;
+        this.leadguest = leadguest;
+        this.noofguest = noofguest;
+        this.citymethod = citymethod;
 
     }
+
+
+
+
+
+
+
+
+
+
 
 
     public RoomCartModel() {
     }
 
+
+
+
+
     @PrimaryKey
     private int id;
+
+
+
+    @ColumnInfo
+    private String booked;
+
+    @ColumnInfo
+    private String booking;
+
+    @ColumnInfo
+    private String tripname;
+
+    public String getBooked() {
+        return booked;
+    }
+
+    public void setBooked(String booked) {
+        this.booked = booked;
+    }
+
+    public String getBooking() {
+        return booking;
+    }
+
+    public void setBooking(String booking) {
+        this.booking = booking;
+    }
+
+    public String getTripname() {
+        return tripname;
+    }
+
+    public void setTripname(String tripname) {
+        this.tripname = tripname;
+    }
+
+    public String getLeadguest() {
+        return leadguest;
+    }
+
+    public void setLeadguest(String leadguest) {
+        this.leadguest = leadguest;
+    }
+
+    public int getNoofguest() {
+        return noofguest;
+    }
+
+    public void setNoofguest(int noofguest) {
+        this.noofguest = noofguest;
+    }
+
+    public String getCanceldate() {
+        return canceldate;
+    }
+
+    public void setCanceldate(String canceldate) {
+        this.canceldate = canceldate;
+    }
+
+    public String getCitymethod() {
+        return citymethod;
+    }
+
+    public void setCitymethod(String citymethod) {
+        this.citymethod = citymethod;
+    }
+
+    public String getCancelfees() {
+        return cancelfees;
+    }
+
+    public void setCancelfees(String cancelfees) {
+        this.cancelfees = cancelfees;
+    }
+
+    @ColumnInfo
+    private String leadguest;
+
+    @ColumnInfo
+    private int noofguest;
+
+
+    @ColumnInfo
+    private String canceldate;
+
+    @ColumnInfo
+    private String citymethod;
+
+    @ColumnInfo
+    private String cancelfees;
 
     public int getId() {
         return id;

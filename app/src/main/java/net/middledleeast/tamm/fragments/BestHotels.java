@@ -23,7 +23,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.OffersDetailsActivity;
+import net.middledleeast.tamm.activities.OffersHotelsDetailsActivity;
 import net.middledleeast.tamm.adapters.BestHotelAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.Best.Besthotel;
@@ -116,7 +116,7 @@ private String best_hotels = "http://egyptgoogle.com/backend/besthotels/besthote
             @Override
             public void onTouchEvent(RecyclerView rv, MotionEvent e) {
 
-                Intent intent =new Intent(getContext(), OffersDetailsActivity.class);
+                Intent intent =new Intent(getContext(), OffersHotelsDetailsActivity.class);
                 startActivity(intent);
 
             }
