@@ -86,6 +86,7 @@ private RecyclerView recyclerView;
 //        , ListflightNumber , ListMealType , ListnoOfSeatAvailable , size , sizeSegments);
         ArrayList<SearchFlightsResponse.Result> ListResult = (ArrayList<SearchFlightsResponse.Result>) getIntent().getSerializableExtra("ListResult");
 
+
         ChooseFlightAdapter chooseFlightAdapter  = new ChooseFlightAdapter(this,ListResult);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(chooseFlightAdapter);

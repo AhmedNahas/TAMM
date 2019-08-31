@@ -1,5 +1,6 @@
 package net.middledleeast.tamm.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -134,6 +136,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
         return new ChooseFlightViewHolder(view);
     }
 
+    @SuppressLint("ResourceType")
     @Override
     public void onBindViewHolder(@NonNull ChooseFlightViewHolder holder, int position) {
 
@@ -158,6 +161,13 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
         holder.tvTotalFare.setText(format + " " + agentPreferredCurrency);
 
         List<SearchFlightsResponse.Segment> segments = result.getSegments().get(0);
+        int journyTipe = SharedPreferencesManger.LoadIntegerData(context, "journyTipe");
+
+        if (journyTipe==2){
+           List<SearchFlightsResponse.Segment> segmentsReturn = result.getSegments().get(1);
+           String bookingClass1 = segmentsReturn.get(0).getBookingClass();
+
+       }
 
         String bookingClass = segments.get(0).getBookingClass();
 
@@ -178,24 +188,30 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
 
             CityNameOrogin1 = segments.get(0).getOrigin().getCityName();
             CityNameDestination1 = segments.get(0).getDestination().getCityName();
+            String airlineCode = segments.get(0).getAirlineDetails().getAirlineCode();
 
+
+            holder.tvTransit.setText("Direct");
+            holder.tvTransit.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_trending_flat,0,0,0);
+
+//          or
 
             countryNameOrogin1 = segments.get(0).getOrigin().getCountryName();
 
             countryNameDestination1 = segments.get(0).getDestination().getCountryName();
 
 
-            holder.tvTransit.setText("Direct");
+
             holder.tvBeirut.setText(CityNameOrogin1);
             holder.tvKuwait.setText(CityNameDestination1);
             holder.tvAirline.setText(airline);
-            holder.from2.setVisibility(View.INVISIBLE);
-            holder.to2.setVisibility(View.INVISIBLE);
-            holder.from3.setVisibility(View.INVISIBLE);
-            holder.to3.setVisibility(View.INVISIBLE);
+            holder.from2.setVisibility(View.GONE);
+            holder.to2.setVisibility(View.GONE);
+            holder.from3.setVisibility(View.GONE);
+            holder.to3.setVisibility(View.GONE);
 
-            holder.from4.setVisibility(View.INVISIBLE);
-            holder.to4.setVisibility(View.INVISIBLE);
+            holder.from4.setVisibility(View.GONE);
+            holder.to4.setVisibility(View.GONE);
 
             arrivalTime = segments.get(0).getArrivalTime();
             departureTime = segments.get(0).getDepartureTime();
@@ -263,10 +279,10 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
             holder.to2.setText(CityNameDestinationSize2_2);
 
 
-            holder.from3.setVisibility(View.INVISIBLE);
-            holder.to3.setVisibility(View.INVISIBLE);
-            holder.from4.setVisibility(View.INVISIBLE);
-            holder.to4.setVisibility(View.INVISIBLE);
+            holder.from3.setVisibility(View.GONE);
+            holder.to3.setVisibility(View.GONE);
+            holder.from4.setVisibility(View.GONE);
+            holder.to4.setVisibility(View.GONE);
 
             arrivalTimeSize2 = segments.get(0).getArrivalTime();
             departureTimeSize2 = segments.get(1).getDepartureTime();
@@ -361,8 +377,8 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
             arrivalTimeSize3 = ts1[1];
             holder.tvTimeOne.setText(departureTimeSize3 + " ");
             holder.tvTimeTwo.setText(" " + arrivalTimeSize3);
-            holder.from4.setVisibility(View.INVISIBLE);
-            holder.to4.setVisibility(View.INVISIBLE);
+            holder.from4.setVisibility(View.GONE);
+            holder.to4.setVisibility(View.GONE);
             groundTimeSiz3 = segments.get(2).getGroundTime();
 
             holder.tvTime.setText(groundTimeSiz3);
@@ -476,6 +492,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
             holder.tvKiloG2.setText(cabinBaggageSiz4_4);
 
         } else if (size == 5) {
+            holder.tvTransit.setText("Transit");
 
 
         }
@@ -880,7 +897,16 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
 //                SharedPreferencesManger.SaveData(context, "typeFare", typeFare);
 
 
-                context.startActivity(intent);
+                if (size==1){
+
+                    context.startActivity(intent);
+
+                }else {
+
+
+                    Toast.makeText(context, "Flight Available Just For Direct New ", Toast.LENGTH_SHORT).show();
+                }
+
 
 
 //                 intent to payment use it later
