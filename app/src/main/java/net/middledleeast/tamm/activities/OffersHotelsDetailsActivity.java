@@ -170,7 +170,7 @@ public class OffersHotelsDetailsActivity extends AppCompatActivity {
             case R.id.btn_map_offer:
 
 // TODO: 8/31/2019 intent to paymentActivity //// Nahas
-                Intent intent = new Intent(OffersHotelsDetailsActivity.this, HotelBooking.class);
+                Intent intent = new Intent(OffersHotelsDetailsActivity.this, PaymentActivity.class);
 
                 int id = 6;
                 intent.putExtra("mId", id);

@@ -342,7 +342,7 @@ public class PaymentActivity extends AppCompatActivity {
                 }else if(mId==7){
 
 
-                    openbankBestHotel("USD",priceFligt);
+                  openbankBestHotel("USD",priceFligt);
 
                 }
 
@@ -374,7 +374,8 @@ public class PaymentActivity extends AppCompatActivity {
 
                 if (knet){
 
-                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
+                    sendamount(offerActivityprice);
+                  //  startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
 
                 }else {
 
@@ -408,8 +409,8 @@ public class PaymentActivity extends AppCompatActivity {
             if (paymentChekd && checkBoxAgerr2.isChecked()) {
 
                 if (knet){
-
-                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
+                    sendamount(Price);
+                    //startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
 
                 }else {
 
