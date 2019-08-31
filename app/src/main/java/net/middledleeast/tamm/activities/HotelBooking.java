@@ -15,9 +15,19 @@ import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.Enums;
 import com.Tamm.Hotels.wcf.HotelBookingDetailResponse;
 import com.Tamm.Hotels.wcf.ResponseStatus;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class HotelBooking extends AppCompatActivity {
 
@@ -26,6 +36,13 @@ public class HotelBooking extends AppCompatActivity {
     private Button backToMain;
     private RelativeLayout backButton;
     ImageView iv_booked_booking;
+    private String send_best_Hotel_data = "http://egyptgoogle.com/backend/besthotelbooking/inserthotelbooking.php";
+    private String send_best_Flight_data = "http://egyptgoogle.com/backend/bestflightbooking/insertflightbooking.php";
+    private String price;
+    private String hotelName_;
+    private String country_;
+    private String takeoff  , airplane,from_airport,to_airport, priceflight,landing;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +52,21 @@ public class HotelBooking extends AppCompatActivity {
         TextView code = findViewById(R.id.tv_code);
         iv_booked_booking=findViewById(R.id.iv_booked_booking);
 
+
+        country_ = SharedPreferencesManger.LoadStringData(HotelBooking.this, "country_");
+        hotelName_ = SharedPreferencesManger.LoadStringData(HotelBooking.this, "hotelName_");
+        price = SharedPreferencesManger.LoadStringData(HotelBooking.this, "price");
+
+
+        airplane = SharedPreferencesManger.LoadStringData(HotelBooking.this, "airplane");
+        from_airport = SharedPreferencesManger.LoadStringData(HotelBooking.this, "from_airport");
+        to_airport = SharedPreferencesManger.LoadStringData(HotelBooking.this, "to_airport");
+        priceflight = SharedPreferencesManger.LoadStringData(HotelBooking.this, "price");
+        landing = SharedPreferencesManger.LoadStringData(HotelBooking.this, "landing");
+        takeoff = SharedPreferencesManger.LoadStringData(HotelBooking.this, "takeoff");
+
+        sendBestHotelBooked();
+        sendBestFlightBooked();
         iv_booked_booking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +122,77 @@ public class HotelBooking extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         startActivity(new Intent(HotelBooking.this, RoomBooked.class));
+
+    }
+
+    private void sendBestHotelBooked() {
+
+        StringRequest request = new StringRequest(Request.Method.POST, send_best_Hotel_data, new Response.Listener<String>() {
+
+            @Override
+
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+
+            }
+
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("name",hotelName_);
+                parameters.put("country",country_);
+                parameters.put("price", price);
+
+
+                return parameters;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(HotelBooking.this);
+        requestQueue.add(request);
+
+    }
+
+    private void sendBestFlightBooked() {
+
+        StringRequest request = new StringRequest(Request.Method.POST, send_best_Flight_data, new Response.Listener<String>() {
+
+            @Override
+
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+
+            }
+
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("airplane",airplane);
+                parameters.put("fromairport",from_airport);
+                parameters.put("toairport", to_airport);
+                parameters.put("price", priceflight);
+                parameters.put("takeoff", takeoff);
+                parameters.put("landing", landing);
+
+
+                return parameters;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(HotelBooking.this);
+        requestQueue.add(request);
 
     }
 }

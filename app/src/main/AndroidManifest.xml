@@ -22,8 +22,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".activities.VoiceMessageActivity"></activity>
-        <activity android:name=".activities.OffersDetailsActivity" />
+        <activity android:name=".activities.OffersFlightsDetailsActivity"></activity>
+        <activity android:name=".activities.VoiceMessageActivity" />
+        <activity android:name=".activities.OffersHotelsDetailsActivity" />
         <activity android:name=".activities.SettingActivity" />
         <activity android:name=".activities.AboutUs" />
         <activity android:name=".activities.ContactUs" />
@@ -38,7 +39,7 @@
         </activity>
         <activity
             android:name=".activities.SeatSelection"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.RecommendedTwoWay"
             android:screenOrientation="portrait" />
@@ -50,19 +51,10 @@
             android:screenOrientation="portrait" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
         <activity
             android:name=".activities.Proceedbeybey"
-            android:screenOrientation="portrait">
-
-
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.PassengerDeparture"
-            android:screenOrientation="portrait" >
-
-
-        </activity>
-
-
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.Passenger_inform"
             android:screenOrientation="portrait" />
@@ -81,24 +73,18 @@
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activities.FlightTamm"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.PaymentActivity"
-            android:screenOrientation="portrait" >
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.HotelBooking"
             android:screenOrientation="portrait" />
@@ -126,13 +112,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.FindHotels"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.FlightSearch"
-            android:screenOrientation="portrait">
-
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.ConfirmBookingRoom"
             android:screenOrientation="portrait" />
@@ -144,25 +127,15 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.RenewAccount"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".activities.PaymentTemp" />
         <activity android:name=".activities.OffersActivity" />
         <activity android:name=".activities.FavoriteActivity" />
+        <activity android:name=".activities.MyBookActivity" />
 
         <service
             android:name=".sevice.MyService"
             android:enabled="true" />
-
     </application>
-
-
-
-
-
-
-
-
-
-
 
 </manifest>

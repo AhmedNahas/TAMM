@@ -107,6 +107,7 @@ public class RoomBooked extends AppCompatActivity {
     private String tripName;
     private String confirmationNo;
     private Integer bookingId;
+    private String bookedOn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,6 +179,7 @@ public class RoomBooked extends AppCompatActivity {
         name_city_ = SharedPreferencesManger.LoadStringData(this, "name_city_");
         nights = SharedPreferencesManger.LoadLongData(this, "nights");
         roomType = SharedPreferencesManger.LoadStringData(this, "roomType");
+        bookedOn = SharedPreferencesManger.LoadStringData(this, "bookedOn");
 
         arrayOfGuest = new ArrayOfGuest();
 
@@ -1061,7 +1063,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
             RoomCartModel roomCartModel=new RoomCartModel(untile ,imgHotelOne ,start_time,end_time,String.valueOf(bookingId),confirmationNo,
-                    String.valueOf(resultIndex),hotel_name);
+                    String.valueOf(resultIndex),hotel_name,bookedOn,"vouched",tripName,fullName,noOfAdultRoom1,name_city_);
 
             appDatabase.cartDao().addoffer(roomCartModel);
 

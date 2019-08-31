@@ -105,6 +105,7 @@ public class PaymentActivity extends AppCompatActivity {
     private String last_name;
     private String first_name;
     private String pricepffers;
+    private String priceFligt;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -174,13 +175,13 @@ public class PaymentActivity extends AppCompatActivity {
             tvFirstName.setText(first_name);
 
             tvKd.setText(currency + " " + roomPrice);
-//            BigDecimal amount = new BigDecimal(roomPrice);
-//            PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
-//            BigDecimal finalAmount = amount;
-//            String finalCurrency = currency;
-//
-//            Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-//               client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+            BigDecimal amount = new BigDecimal(roomPrice);
+            PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
+            BigDecimal finalAmount = amount;
+            String finalCurrency = currency;
+
+            Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+               client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
 
 
         } else if (mId==RIGISTRATHION){
@@ -224,7 +225,6 @@ public class PaymentActivity extends AppCompatActivity {
 
         }else if (mId == 6){
 
-            Intent offerActiv = getIntent();
 
 
              pricepffers = SharedPreferencesManger.LoadStringData(this, "pricepffers");
@@ -235,6 +235,19 @@ public class PaymentActivity extends AppCompatActivity {
             tvFirstName.setText(first_name);
 
             tvKd.setText("USD" + " " + pricepffers);
+
+        }else if (mId == 7){
+
+
+
+            priceFligt = SharedPreferencesManger.LoadStringData(this, "priceflight");
+
+
+
+            tvLastName.setText(last_name);
+            tvFirstName.setText(first_name);
+
+            tvKd.setText("USD" + " " + priceFligt);
 
         }
 
@@ -323,6 +336,11 @@ public class PaymentActivity extends AppCompatActivity {
 
 
                     openbankBestHotel("USD",pricepffers);
+
+                }else if(mId==7){
+
+
+                    openbankBestHotel("USD",priceFligt);
 
                 }
 
@@ -424,10 +442,8 @@ public class PaymentActivity extends AppCompatActivity {
 
                 if (knet){
 
-
-
-
-                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
+                    sendamount(mSgbody);
+//                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
                 }else {
 
                     Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
@@ -491,62 +507,6 @@ public class PaymentActivity extends AppCompatActivity {
     private void sendamount(String roomPrice_) {
 
 
-//        try {
-//            RequestQueue requestQueue = Volley.newRequestQueue(this);
-//            String URL = ;
-//            JSONObject jsonBody = new JSONObject();
-//            jsonBody.put("roomprice", roomPrice);
-//            final String requestBody = jsonBody.toString();
-//
-//            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-//                @Override
-//                public void onResponse(String response) {
-//                    Log.i("VOLLEY", response);
-//                }
-//            }, new Response.ErrorListener() {
-//                @Override
-//                public void onErrorResponse(VolleyError error) {
-//                    Log.e("VOLLEY", error.toString());
-//                }
-//            }) {
-//                @Override
-//                public String getBodyContentType() {
-//                    return "application/json; charset=utf-8";
-//                }
-//
-//                @Override
-//                public byte[] getBody() throws AuthFailureError {
-//                    try {
-//                        return requestBody == null ? null : requestBody.getBytes("utf-8");
-//                    } catch (UnsupportedEncodingException uee) {
-//                        VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestBody, "utf-8");
-//                        return null;
-//                    }
-//                }
-//
-//                @Override
-//                protected Response<String> parseNetworkResponse(NetworkResponse response) {
-//                    String responseString = "";
-//                    if (response != null) {
-//                        responseString = String.valueOf(response.statusCode);
-//                        // can get more details such as response.headers
-//                    }
-//                    return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
-//                }
-//            };
-//
-//            requestQueue.add(stringRequest);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//
-//
-
-
-
-
         StringRequest request = new StringRequest(Request.Method.POST, urlAmount, new Response.Listener<String>() {
 
             @Override
@@ -554,7 +514,8 @@ public class PaymentActivity extends AppCompatActivity {
 
                 Toast.makeText(PaymentActivity.this, ""+response, Toast.LENGTH_SHORT).show();
 
-                startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
+               Intent intent =new Intent(PaymentActivity.this,KnetActivity.class);
+               startActivity(intent);
 
             }
         }, new Response.ErrorListener() {
@@ -569,7 +530,7 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("roomprice   ",roomPrice_);
+                parameters.put("roomprice",roomPrice_);
 
 
                 return parameters;
@@ -577,7 +538,7 @@ public class PaymentActivity extends AppCompatActivity {
         };
 
 
-        RequestQueue requestQueue = Volley.newRequestQueue(PaymentActivity.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         requestQueue.add(request);
 
@@ -719,7 +680,7 @@ public class PaymentActivity extends AppCompatActivity {
                 .replace(R.id.payment_terms_container, new TermsFragment())
                 .addToBackStack("RegisterationActivity").commit();
 
-//
+
 //        Intent intent = new Intent(PaymentActivity.this, TermsFragment.class);
 //        startActivity(intent);
 
