@@ -71,8 +71,8 @@ public class PaymentActivity extends AppCompatActivity {
     CheckBox checkBoxAgerr2;
     @BindView(R.id.terms_conditions_tv2)
     TextView termsConditionsTv2;
-    @BindView(R.id.sp_convert_to)
-    Spinner spConvertTo;
+//    @BindView(R.id.sp_convert_to)
+//    Spinner spConvertTo;
     private Button button;
     private RelativeLayout relativeLayout;
     private AuthenticationData authenticandata;
@@ -180,8 +180,8 @@ public class PaymentActivity extends AppCompatActivity {
             BigDecimal finalAmount = amount;
             String finalCurrency = currency;
 
-            Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-               client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+//            Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+//               client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
 
 
         } else if (mId==RIGISTRATHION){
@@ -253,14 +253,16 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         spinnerTitles.add(getString(R.string.payment_method));
-        spinnerTitles.add(getString(R.string.visa_));
-        spinnerTitles.add(getString(R.string.master));
+//        spinnerTitles.add(getString(R.string.visa_));
+//        spinnerTitles.add(getString(R.string.master));
+
+
         spinnerTitles.add(getString(R.string.knet));
 
         spinnerImages.add(0);
 
-        spinnerImages.add(R.drawable.wd_ecom_visa);
-        spinnerImages.add(R.drawable.wd_ecom_mastercard);
+//        spinnerImages.add(R.drawable.wd_ecom_visa);
+//        spinnerImages.add(R.drawable.wd_ecom_mastercard);
         spinnerImages.add(R.drawable.ic_knet);
 
 
@@ -357,9 +359,9 @@ public class PaymentActivity extends AppCompatActivity {
         authenticandata.Password = (getString(R.string.passowrd_tamm));
 
 
-    }
+        }
 
-    private void openbankBestHotel(String usd, String offerActivityprice) {
+        private void openbankBestHotel(String usd, String offerActivityprice) {
 
         try {
 //
@@ -390,9 +392,9 @@ public class PaymentActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+        }
 
-    private void openbankFlight(String Price) {
+         private void openbankFlight(String Price) {
 
 
 
@@ -427,9 +429,9 @@ public class PaymentActivity extends AppCompatActivity {
         }
 
 
-    }
+            }
 
-    private void openbankRegisrat(String mSgbody, String kd) {
+             private void openbankRegisrat(String mSgbody, String kd) {
 
         try {
 //
@@ -463,9 +465,9 @@ public class PaymentActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+         }
 
-    private void openBankRoom(String roomPrice, String currency) {
+         private void openBankRoom(String roomPrice, String currency) {
 
         try {
 //
@@ -502,9 +504,9 @@ public class PaymentActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+            }
 
-    private void sendamount(String roomPrice_) {
+         private void sendamount(String roomPrice_) {
 
 
         StringRequest request = new StringRequest(Request.Method.POST, urlAmount, new Response.Listener<String>() {
@@ -542,11 +544,11 @@ public class PaymentActivity extends AppCompatActivity {
 
         requestQueue.add(request);
 
-    }
+            }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+         @Override
+         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Serializable paymentSdkResponse = data.getSerializableExtra(Client.EXTRA_PAYMENT_SDK_RESPONSE);
         if (paymentSdkResponse instanceof PaymentResponse) {
