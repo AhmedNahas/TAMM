@@ -189,7 +189,7 @@ public class FlightBook implements Serializable {
     }
 
 
-    public class AirlineDetails implements Serializable {
+    public static class AirlineDetails implements Serializable {
 
         private final static long serialVersionUID = -2873923199869212482L;
         @SerializedName("AirlineCode")
@@ -426,7 +426,7 @@ public class FlightBook implements Serializable {
     }
 
 
-    public class Destination implements Serializable {
+    public static class Destination implements Serializable {
 
         private final static long serialVersionUID = -3127361373350279458L;
         @SerializedName("AirportCode")
@@ -1421,7 +1421,7 @@ public class FlightBook implements Serializable {
     }
 
 
-    public class Origin implements Serializable {
+    public static class Origin implements Serializable {
 
         private final static long serialVersionUID = 312887534063044639L;
         @SerializedName("AirportCode")
@@ -1625,7 +1625,7 @@ public class FlightBook implements Serializable {
         private String addressLine2;
         @SerializedName("Gender")
         @Expose
-        private long gender;
+        private String gender;
         @SerializedName("Email")
         @Expose
         private String email;
@@ -1706,7 +1706,7 @@ public class FlightBook implements Serializable {
          * @param passportIssueCountryCode
          * @param mobile1
          */
-        public Passenger(Object passportIssueCountryCode, String passportIssueDate, String title, String firstName, String lastName, String mobile1, String mobile1CountryCode, Object mobile2, boolean isLeadPax, String dateOfBirth, long type, String passportNo, String passportExpiry, Nationality nationality, Country country, City city, String addressLine1, String addressLine2, long gender, String email, Object meal, Object seat, Fare fare, Object fFAirline, Object fFNumber, long tboAirPaxId, List<Object> paxBaggage, List<Object> paxMeal, Object iDCardNo, Object zipCode, Object paxSeat, Object ticket) {
+        public Passenger(Object passportIssueCountryCode, String passportIssueDate, String title, String firstName, String lastName, String mobile1, String mobile1CountryCode, Object mobile2, boolean isLeadPax, String dateOfBirth, long type, String passportNo, String passportExpiry, Nationality nationality, Country country, City city, String addressLine1, String addressLine2, String gender, String email, Object meal, Object seat, Fare fare, Object fFAirline, Object fFNumber, long tboAirPaxId, List<Object> paxBaggage, List<Object> paxMeal, Object iDCardNo, Object zipCode, Object paxSeat, Object ticket) {
             super();
             this.passportIssueCountryCode = passportIssueCountryCode;
             this.passportIssueDate = passportIssueDate;
@@ -1976,15 +1976,15 @@ public class FlightBook implements Serializable {
             return this;
         }
 
-        public long getGender() {
+        public String getGender() {
             return gender;
         }
 
-        public void setGender(long gender) {
+        public void setGender(String gender) {
             this.gender = gender;
         }
 
-        public Passenger withGender(long gender) {
+        public Passenger withGender(String gender) {
             this.gender = gender;
             return this;
         }
@@ -2161,7 +2161,7 @@ public class FlightBook implements Serializable {
     }
 
 
-    public class Segment implements Serializable {
+    public static class Segment implements Serializable {
 
         private final static long serialVersionUID = -3706154628603223748L;
         @SerializedName("NoOfSeatAvailable")

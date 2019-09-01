@@ -31,7 +31,10 @@ import org.joda.time.DateTime;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -309,7 +312,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     private int no_adultroom1, no_adultroom2, no_adultroom3, no_adultroom4;
     private int child_countroom4, child_countroom3, child_countroom2, child_countroom1;
     ImageView iv_booked_conf_booking;
-
+    private String bookedOn;
 
 
     @Override
@@ -328,6 +331,11 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         });
 
         Gson gson = new Gson();
+
+        Calendar calendar = Calendar.getInstance();
+
+        Date futureDate = calendar.getTime();
+        bookedOn = new SimpleDateFormat("yyyy-MM-dd").format(futureDate);
 
         back = findViewById(R.id.toolbar_back1);
         back.setOnClickListener(new View.OnClickListener() {
@@ -432,6 +440,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         confirmRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                SharedPreferencesManger.SaveData(ConfirmBookingRoom.this,"bookedOn",bookedOn);
                 if (firstName1GustOne.getText().toString().equals("") || lastName1GustOne.getText().toString().equals("")) {
                     SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(ConfirmBookingRoom.this);
                     sweetAlertDialog.setConfirmButton("Ok", null);

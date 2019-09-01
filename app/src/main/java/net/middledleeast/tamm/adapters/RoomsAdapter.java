@@ -157,27 +157,37 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
 
 
+        try {
 
-        String isMemmber = SharedPreferencesManger.LoadStringData(context, "isMemmber");
-        if (isMemmber.equals("1")){
-            String fees_prem = SharedPreferencesManger.LoadStringData(context, "fees_prem");
+            String isMemmber = SharedPreferencesManger.LoadStringData(context, "isMemmber");
+            if (isMemmber.equals("1")){
+                String fees_prem = SharedPreferencesManger.LoadStringData(context, "fees_prem");
 
 
-            double fessM = Double.parseDouble(fees_prem) ;
-            double price_ = Double.parseDouble(roomprice.toString());
+                double fessM = Double.parseDouble(fees_prem) ;
+                double price_ = Double.parseDouble(roomprice.toString());
 
-             sum = Double.sum(fessM, price_);
-            holder.roomPrice.setText(currency + " " + sum);
-        }else {
-            String  fees_free = SharedPreferencesManger.LoadStringData(context, "fees_free");
+                sum = Double.sum(fessM, price_);
+                holder.roomPrice.setText(currency + " " + sum);
+            }else {
+                String  fees_free = SharedPreferencesManger.LoadStringData(context, "fees_free");
 
-            double fessFree = Double.parseDouble(fees_free) ;
-            double price_ = Double.parseDouble(roomprice.toString());
+                double fessFree = Double.parseDouble(fees_free) ;
+                double price_ = Double.parseDouble(roomprice.toString());
 
-             sum = Double.sum(fessFree, price_);
-            holder.roomPrice.setText(currency + " " + sum);
+                sum = Double.sum(fessFree, price_);
+                holder.roomPrice.setText(currency + " " + sum);
+
+            }
+
+
+        }catch (Exception e){
+
+
 
         }
+
+
 
 
 

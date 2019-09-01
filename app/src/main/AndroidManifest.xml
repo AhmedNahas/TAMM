@@ -22,8 +22,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".activities.VoiceMessageActivity"></activity>
-        <activity android:name=".activities.OffersDetailsActivity" />
+        <activity android:name=".activities.OffersFlightsDetailsActivity"></activity>
+        <activity android:name=".activities.VoiceMessageActivity" />
+        <activity android:name=".activities.OffersHotelsDetailsActivity" />
         <activity android:name=".activities.SettingActivity" />
         <activity android:name=".activities.AboutUs" />
         <activity android:name=".activities.ContactUs" />
@@ -81,7 +82,6 @@
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -150,7 +150,6 @@
         <activity android:name=".activities.PaymentTemp" />
         <activity android:name=".activities.OffersActivity" />
         <activity android:name=".activities.FavoriteActivity" />
-        <activity android:name=".activities.MyBookActivity" />
 
         <service
             android:name=".sevice.MyService"

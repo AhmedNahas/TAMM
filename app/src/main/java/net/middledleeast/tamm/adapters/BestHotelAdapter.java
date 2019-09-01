@@ -2,7 +2,6 @@ package net.middledleeast.tamm.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.OffersDetailsActivity;
 
 import java.util.List;
 
@@ -76,19 +74,6 @@ public class BestHotelAdapter extends RecyclerView.Adapter<BestHotelAdapter.Best
             holder.tv_country_hotel.setText(country);
             Glide.with(context).load(images).into(holder.img_hotel);
 
-
-
-
-            holder.img_hotel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-
-                    Intent intent = new Intent(context , OffersDetailsActivity.class);
-                    context.startActivity(intent);
-
-                }
-            });
 
         }
 

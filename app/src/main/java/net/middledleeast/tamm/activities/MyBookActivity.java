@@ -23,6 +23,8 @@ public class MyBookActivity extends AppCompatActivity {
     RelativeLayout toolbar_back1_booked;
 
 
+
+
     private String namehotel;
     private String checkin;
     private String checkout;
@@ -66,4 +68,20 @@ public class MyBookActivity extends AppCompatActivity {
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

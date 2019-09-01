@@ -115,6 +115,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
     private String mReturnTime;
     private String daDepartureTimeyO;
     private int sizeSegments;
+    private String daDepartureTimeyR;
 
 
     public ProceedBeyBeyOriginal() {
@@ -562,7 +563,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 myCalendar.set(Calendar.MONTH, month);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                String myFormat = "yyyy-MM-dd' T'00:00:00"; //In which you need put here
+                String myFormat ="yyyy-MM-dd' T'00:00:00";
                 SimpleDateFormat start = new SimpleDateFormat(myFormat, Locale.US);
                 time2 = myCalendar.getTime();
                 mReturnTime = start.format(myCalendar.getTime());
@@ -574,6 +575,10 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 String day = (String) DateFormat.format("dd", time); // Thursday
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
+
+
+
+                daDepartureTimeyR = (String) DateFormat.format(myFormat, time);
 
                 SharedPreferencesManger.SaveData(getActivity(), "returnDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "till ");
 
@@ -650,7 +655,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 searchFlights[0].setPointOfSale(to);
 
                 //4 test
-                searchFlights[0].setRequestOrigin("United Arab Emirates");
+                searchFlights[0].setRequestOrigin("Egypt");
                 //5
                 searchFlights[0].setTokenId(flightAuthentication[0].getTokenId());
                 //6
@@ -671,6 +676,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 //11
                 List<SearchFlights.Segment> segments = new ArrayList<>();
                 SearchFlights.Segment segment = new SearchFlights.Segment();
+                SearchFlights.Segment segment2 = new SearchFlights.Segment();
+
 
 
                 //11.1
@@ -678,16 +685,41 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 //11.2
                 segment.setOrigin(from);
 
+
+
+                segment2.setDestination(from);
+                segment2.setOrigin(to);
                 // List<String> airlines = new ArrayList<>();
                 //11.3    // "2019-09-20 T00:00:00" 2019-09-20 T18:56:17
+
+
+
                 segment.setPreferredDepartureTime(daDepartureTimeyO);
+                segment.setPreferredArrivalTime(daDepartureTimeyO);
+
+                segment2.setPreferredDepartureTime(daDepartureTimeyR);
+                segment2.setPreferredArrivalTime(daDepartureTimeyR);
                 //  11.4
 
 
 
                // segment.setPreferredArrivalTime(mReturnTime);
                 // add segments
-                segments.add(segment);
+
+
+                if (JourneyType==1){
+
+                    segments.add(segment);
+                }else {
+                    segments.add(segment);
+                    segments.add(segment2);
+
+                }
+
+
+
+
+
                 searchFlights[0].setSegment(segments);
 
                 Call<SearchFlightsResponse> searchCall = flightApiService.getFlightSearch("application/json", searchFlights[0]);
@@ -799,6 +831,18 @@ public class ProceedBeyBeyOriginal extends Fragment {
                             Intent intent = new Intent(getContext(), RecommendedOneWay.class);
 
                             intent.putExtra("ListResult", ListResult);
+
+
+
+                            if (JourneyType==1){
+
+                                SharedPreferencesManger.SaveData(getContext(),"journyTipe", 1);
+
+                            }else {
+                                SharedPreferencesManger.SaveData(getContext(),"journyTipe", 2);
+
+
+                            }
 
 //                            intent.putExtra("size", size);
                             //   intent.putExtra("sizeSegments", sizeSegments);

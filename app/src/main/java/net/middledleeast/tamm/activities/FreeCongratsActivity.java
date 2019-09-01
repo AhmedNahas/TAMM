@@ -12,12 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.SignInFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FreeCongratsActivity extends AppCompatActivity {
+
 
     @BindView(R.id.iv_ok1)
     ImageView ivOk1;
@@ -29,7 +29,7 @@ public class FreeCongratsActivity extends AppCompatActivity {
     TextView tvCommunity;
     @BindView(R.id.iv_theman2)
     ImageView ivTheman2;
-    @BindView(R.id.continueTo)
+    @BindView(R.id.continueToFree)
     Button continueTo;
     @BindView(R.id.relative_free_congrats)
     RelativeLayout relativeFreeCongrats;
@@ -39,7 +39,6 @@ public class FreeCongratsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_free_congrats);
         ButterKnife.bind(this);
-
 
 
         continueTo.setOnClickListener(new View.OnClickListener() {

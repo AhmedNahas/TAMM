@@ -24,7 +24,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class OffersDetailsActivity extends AppCompatActivity {
+public class OffersFlightsDetailsActivity extends AppCompatActivity {
+
 
     @BindView(R.id.toolbar_back2_offer)
     ImageView toolbarBack2Offer;
@@ -36,24 +37,40 @@ public class OffersDetailsActivity extends AppCompatActivity {
     RelativeLayout relativeOfferDetail;
     @BindView(R.id.img_linee_offer)
     ImageView imgLineeOffer;
-    @BindView(R.id.hotel_image_detail_offer)
-    ViewPager hotelImageDetailOffer;
-    @BindView(R.id.view_pager_details_offer)
-    RelativeLayout viewPagerDetailsOffer;
-    @BindView(R.id.SliderDots_offer)
-    LinearLayout SliderDotsOffer;
-    @BindView(R.id.hotel_name_detail_offer)
-    TextView hotelNameDetailOffer;
-    @BindView(R.id.hotel_desc_detail_offer)
-    TextView hotelDescDetailOffer;
-    @BindView(R.id.hotel_rat_offer)
-    TextView hotelRatOffer;
-    @BindView(R.id.layout_rat_offer)
-    LinearLayout layoutRatOffer;
+    @BindView(R.id.flight_image_detail_offer)
+    ViewPager flightImageDetailOffer;
+    @BindView(R.id.view_pager_details_offer_flight)
+    RelativeLayout viewPagerDetailsOfferFlight;
+    @BindView(R.id.flight_SliderDots_offer)
+    LinearLayout flightSliderDotsOffer;
+    @BindView(R.id.flight_name_detail_offer)
+    TextView flightNameDetailOffer;
+    @BindView(R.id.tv_from_flight)
+    TextView tvFromFlight;
+    @BindView(R.id.tv_from_airport_flight)
+    TextView tvFromAirportFlight;
+    @BindView(R.id.tv_to_flight)
+    TextView tvToFlight;
+    @BindView(R.id.tv_to_airport_flight)
+    TextView tvToAirportFlight;
+    @BindView(R.id.relative_flight)
+    RelativeLayout relativeFlight;
+    @BindView(R.id.tv_takeoff_date_flight)
+    TextView tvTakeoffDateFlight;
+    @BindView(R.id.tv_takeoff_flight)
+    TextView tvTakeoffFlight;
+    @BindView(R.id.relative_takeoff_flight)
+    RelativeLayout relativeTakeoffFlight;
+    @BindView(R.id.tv_landing_date_flight)
+    TextView tvLandingDateFlight;
+    @BindView(R.id.tv_land_date)
+    TextView tvLandDate;
+    @BindView(R.id.relative_landing_date_best_flight)
+    RelativeLayout relativeLandingDateBestFlight;
+    @BindView(R.id.flight_price_offer)
+    TextView flightPriceOffer;
     @BindView(R.id.btn_map_offer)
     Button btnMapOffer;
-//    @BindView(R.id.btn_next_offer)
-//    Button btnNextOffer;
     @BindView(R.id.relative_map_next_offer)
     RelativeLayout relativeMapNextOffer;
     @BindView(R.id.assistant_label_voice_details_offer)
@@ -66,59 +83,56 @@ public class OffersDetailsActivity extends AppCompatActivity {
     RelativeLayout relativeImgOfferDetailsTammOffer;
     @BindView(R.id.tv_tab_me_details_offer)
     TextView tvTabMeDetailsOffer;
-
-
-
-    private List<String> listOfPhoto = new ArrayList<>();
-    List<String> listOfCountry = new ArrayList<>();
-    List<String> listOfHotelName = new ArrayList<>();
-    List<String> listOfPrice = new ArrayList<>();
-
+    private List<String> listairPlane = new ArrayList<>();
+    List<String> listfromairport = new ArrayList<>();
+    List<String> listtoairport = new ArrayList<>();
+    List<String> listflightprice = new ArrayList<>();
 
 
     private int dotscount;
     private ImageView[] dots;
     private AdapterOfferPhoto adapter;
+    private String airplane;
+    private String from_airport;
+    private String to_airport;
     private String price;
+    private String landing;
+    private String takeoff;
+    private List<String> listtakeoff = new ArrayList<>();
+    private List<String> listlanding = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_offers_details);
+        setContentView(R.layout.activity_offers_flights_details);
         ButterKnife.bind(this);
 
+        airplane = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "airplane");
+        from_airport = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "from_airport");
+        to_airport = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "to_airport");
+        price = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "price");
+        landing = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "landing");
+        takeoff = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "takeoff");
 
 
-        final String country_ = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "country_");
-        final String hotelName_ = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "hotelName_");
-        price = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "price");
-        final String image = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "image");
-        relativeOfferDetail=findViewById(R.id.relative_offer_detail);
-
-        relativeOfferDetail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(OffersDetailsActivity.this,RenewAccount.class);
-                startActivity(intent);
-            }
-        });
+        listairPlane.add(airplane);
+        listfromairport.add(from_airport);
+        listtoairport.add(to_airport);
+        listflightprice.add(price);
+        listlanding.add(landing);
+        listtakeoff.add(takeoff);
 
 
+        flightNameDetailOffer.setText(airplane);
+        tvFromAirportFlight.setText(from_airport);
+        tvToAirportFlight.setText(to_airport);
+        tvTakeoffFlight.setText(takeoff);
+        tvLandDate.setText(landing);
+        flightPriceOffer.setText(price);
 
-        listOfPhoto.add(image);
-        listOfCountry.add(country_);
-        listOfHotelName.add(hotelName_);
-        listOfPrice.add(price);
-
-
-        hotelNameDetailOffer.setText(country_);
-        hotelDescDetailOffer.setText(hotelName_);
-        hotelRatOffer.setText(price);
-
-
-        adapter = new AdapterOfferPhoto(OffersDetailsActivity.this, listOfPhoto);
-        hotelImageDetailOffer.setAdapter(adapter);
+        adapter = new AdapterOfferPhoto(OffersFlightsDetailsActivity.this, listairPlane);
+        flightImageDetailOffer.setAdapter(adapter);
 
 
         dotscount = adapter.getCount();
@@ -134,7 +148,7 @@ public class OffersDetailsActivity extends AppCompatActivity {
 
             params.setMargins(8, 0, 8, 0);
 
-            SliderDotsOffer.addView(dots[i], params);
+            flightSliderDotsOffer.addView(dots[i], params);
 
         }
 
@@ -146,7 +160,7 @@ public class OffersDetailsActivity extends AppCompatActivity {
         }
 
 
-        hotelImageDetailOffer.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        flightImageDetailOffer.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
@@ -177,21 +191,18 @@ public class OffersDetailsActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_map_offer:
 
+// TODO: 8/31/2019 intent to paymentActivity //// Nahas
+                Intent intent = new Intent(OffersFlightsDetailsActivity.this, HotelBooking.class);
 
-                Intent intent = new Intent(OffersDetailsActivity.this,PaymentActivity.class);
+                int id = 7;
+                intent.putExtra("mId", id);
 
-                int id = 6;
-                intent.putExtra("mId",id);
-
-                SharedPreferencesManger.SaveData(this,"pricepffers",price);
+                SharedPreferencesManger.SaveData(this, "priceflight", price);
                 startActivity(intent);
 
                 break;
 
         }
 
-
     }
-
-
 }

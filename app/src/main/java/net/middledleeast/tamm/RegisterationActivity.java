@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.StrictMode;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -131,6 +130,15 @@ public class RegisterationActivity extends Fragment {
     private String usernamevalidation;
     private String emailvalidation;
     private String nameCountry;
+    private String firstName;
+    private String lastName;
+    private String userName;
+    private String password;
+    private String counTry;
+    private String occup;
+    private String email;
+    private String phoneM;
+    private String cityUser;
 
 
     @SuppressLint("StaticFieldLeak")
@@ -323,8 +331,17 @@ public class RegisterationActivity extends Fragment {
 
                 } else {
 
-                    SharedPreferencesManger.SaveData(getContext(), "first_name", etFirstName.getText().toString());
-                    SharedPreferencesManger.SaveData(getContext(), "last_name", etLastName.getText().toString());
+                    firstName = etFirstName.getText().toString();
+                    lastName = etLastName.getText().toString();
+                    userName = etUserName.getText().toString();
+                    password = etPassword.getText().toString();
+                    counTry = country.getText().toString();
+                    occup = ocupation.getText().toString();
+                    email = etEmail.getText().toString();
+                    phoneM = etPhone.getText().toString();
+                    cityUser = city.getText().toString();
+                    SharedPreferencesManger.SaveData(getContext(), "first_name", firstName);
+                    SharedPreferencesManger.SaveData(getContext(), "last_name", lastName);
 
                     connectdatabase();
                     if (user_id == 2) {
@@ -333,8 +350,8 @@ public class RegisterationActivity extends Fragment {
 
                         Intent intent = new Intent(getContext(), PaymentActivity.class);
 
-                        intent.putExtra("first_name",etFirstName.getText().toString());
-                        intent.putExtra("last_name",etLastName.getText().toString());
+                        intent.putExtra("first_name", firstName);
+                        intent.putExtra("last_name", lastName);
                         intent.putExtra("day",day);
                         intent.putExtra("month",month);
                         intent.putExtra("year",year);
@@ -457,18 +474,18 @@ public class RegisterationActivity extends Fragment {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> parameters = new HashMap<String, String>();
-                    parameters.put("firstname", etFirstName.getText().toString());
-                    parameters.put("lastname", etLastName.getText().toString());
-                    parameters.put("username", etUserName.getText().toString());
-                    parameters.put("password", etPassword.getText().toString());
+                    parameters.put("firstname",firstName );
+                    parameters.put("lastname", lastName);
+                    parameters.put("username", userName);
+                    parameters.put("password", password);
                     parameters.put("day", day);
                     parameters.put("month", month);
                     parameters.put("year", year);
-                    parameters.put("location", country.getText().toString());
-                    parameters.put("occupation", ocupation.getText().toString());
-                    parameters.put("email", etEmail.getText().toString());
-                    parameters.put("phone", etPhone.getText().toString());
-                    parameters.put("city", city.getText().toString());
+                    parameters.put("location",counTry );
+                    parameters.put("occupation", occup);
+                    parameters.put("email",email );
+                    parameters.put("phone",phoneM );
+                    parameters.put("city",cityUser );
 
 
                     return parameters;
@@ -477,11 +494,7 @@ public class RegisterationActivity extends Fragment {
             RequestQueue requestQueue = Volley.newRequestQueue(getContext());
             requestQueue.add(request);
 
-        } else  {
-
-
         }
-
 
     }
 
