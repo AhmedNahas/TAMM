@@ -67,6 +67,8 @@ public class OffersHotelsDetailsActivity extends AppCompatActivity {
     @BindView(R.id.tv_tab_me_details_offer)
     TextView tvTabMeDetailsOffer;
 
+    ImageView iv_booked_offer_hotel;
+
 
 
     private List<String> listOfPhoto = new ArrayList<>();
@@ -88,7 +90,14 @@ public class OffersHotelsDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_offers_details);
         ButterKnife.bind(this);
 
-
+        iv_booked_offer_hotel=findViewById(R.id.iv_booked_offer_hotel);
+        iv_booked_offer_hotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(OffersHotelsDetailsActivity.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
 
         final String country_ = SharedPreferencesManger.LoadStringData(OffersHotelsDetailsActivity.this, "country_");
         final String hotelName_ = SharedPreferencesManger.LoadStringData(OffersHotelsDetailsActivity.this, "hotelName_");

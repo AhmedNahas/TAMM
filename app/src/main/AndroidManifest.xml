@@ -150,6 +150,7 @@
         <activity android:name=".activities.PaymentTemp" />
         <activity android:name=".activities.OffersActivity" />
         <activity android:name=".activities.FavoriteActivity" />
+        <activity android:name=".activities.MyBookActivity" />
 
         <service
             android:name=".sevice.MyService"

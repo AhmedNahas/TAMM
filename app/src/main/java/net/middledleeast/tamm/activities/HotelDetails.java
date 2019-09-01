@@ -107,7 +107,6 @@ public class HotelDetails extends AppCompatActivity {
 //                Intent intent = new Intent(HotelDetails.this,ChooseHotelActivity.class);
 //                startActivity(intent);
                 onBackPressed();
-
             }
         });
 
