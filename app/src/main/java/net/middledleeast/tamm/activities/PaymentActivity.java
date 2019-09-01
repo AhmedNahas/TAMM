@@ -71,8 +71,8 @@ public class PaymentActivity extends AppCompatActivity {
     CheckBox checkBoxAgerr2;
     @BindView(R.id.terms_conditions_tv2)
     TextView termsConditionsTv2;
-    @BindView(R.id.sp_convert_to)
-    Spinner spConvertTo;
+//    @BindView(R.id.sp_convert_to)
+//    Spinner spConvertTo;
     private Button button;
     private RelativeLayout relativeLayout;
     private AuthenticationData authenticandata;

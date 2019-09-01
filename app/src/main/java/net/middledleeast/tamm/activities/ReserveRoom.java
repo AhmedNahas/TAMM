@@ -70,7 +70,7 @@ public class ReserveRoom extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ReserveRoom.this, RenewAccount.class));
+                onBackPressed();
             }
         });
 //
@@ -149,6 +149,6 @@ public class ReserveRoom extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(ReserveRoom.this, RenewAccount.class));
+//        startActivity(new Intent(ReserveRoom.this, RenewAccount.class));
     }
 }

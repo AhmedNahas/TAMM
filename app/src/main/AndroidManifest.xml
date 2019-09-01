@@ -82,6 +82,12 @@
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
 
         </activity>
         <activity
@@ -91,11 +97,7 @@
             android:name=".activities.PaymentActivity"
             android:screenOrientation="portrait" >
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
 
         </activity>
@@ -148,6 +150,7 @@
         <activity android:name=".activities.PaymentTemp" />
         <activity android:name=".activities.OffersActivity" />
         <activity android:name=".activities.FavoriteActivity" />
+        <activity android:name=".activities.MyBookActivity" />
 
         <service
             android:name=".sevice.MyService"

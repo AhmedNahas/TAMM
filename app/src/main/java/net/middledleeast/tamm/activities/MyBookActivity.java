@@ -1,6 +1,8 @@
 package net.middledleeast.tamm.activities;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +20,8 @@ public class MyBookActivity extends AppCompatActivity {
 
     RecyclerView recycler_view_booked;
     BookedAdapter bookedAdapter;
+    RelativeLayout toolbar_back1_booked;
+
 
     private String namehotel;
     private String checkin;
@@ -33,6 +37,14 @@ public class MyBookActivity extends AppCompatActivity {
 
 
         recycler_view_booked=findViewById(R.id.recycler_view_booked);
+
+        toolbar_back1_booked=findViewById(R.id.toolbar_back1_booked);
+        toolbar_back1_booked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
         appDatabase= Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"myBooking").fallbackToDestructiveMigration().allowMainThreadQueries().build();

@@ -35,6 +35,7 @@ public class AboutUs extends AppCompatActivity {
 
         textfamilyabout=findViewById(R.id.family_message_about);
         back_pressed_about=findViewById(R.id.back_pressed_about);
+
         back_pressed_about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

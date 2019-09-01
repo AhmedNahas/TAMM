@@ -30,9 +30,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.Tamm.Hotels.wcf.AmendInformation;
-import com.Tamm.Hotels.wcf.AmendmentRequestType;
-import com.Tamm.Hotels.wcf.AmendmentResponse;
 import com.Tamm.Hotels.wcf.ArrayOfInt;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
 import com.Tamm.Hotels.wcf.AuthenticationData;
@@ -432,8 +429,11 @@ public class FindHotels extends AppCompatActivity {
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FindHotels.this, ReserveRoom.class));
+//                startActivity(new Intent(FindHotels.this, ReserveRoom.class));
+            onBackPressed();
             }
+
+
         });
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -1536,7 +1536,7 @@ public class FindHotels extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(FindHotels.this, ReserveRoom.class));
+//        startActivity(new Intent(FindHotels.this, ReserveRoom.class));
 
     }
 

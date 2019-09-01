@@ -94,7 +94,15 @@ public class OffersDetailsActivity extends AppCompatActivity {
         final String hotelName_ = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "hotelName_");
         price = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "price");
         final String image = SharedPreferencesManger.LoadStringData(OffersDetailsActivity.this, "image");
+        relativeOfferDetail=findViewById(R.id.relative_offer_detail);
 
+        relativeOfferDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OffersDetailsActivity.this,RenewAccount.class);
+                startActivity(intent);
+            }
+        });
 
 
 
