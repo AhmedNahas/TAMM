@@ -83,6 +83,8 @@ public class OffersFlightsDetailsActivity extends AppCompatActivity {
     RelativeLayout relativeImgOfferDetailsTammOffer;
     @BindView(R.id.tv_tab_me_details_offer)
     TextView tvTabMeDetailsOffer;
+
+    ImageView iv_booked_offer_flight;
     private List<String> listairPlane = new ArrayList<>();
     List<String> listfromairport = new ArrayList<>();
     List<String> listtoairport = new ArrayList<>();
@@ -107,6 +109,15 @@ public class OffersFlightsDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_offers_flights_details);
         ButterKnife.bind(this);
+
+        iv_booked_offer_flight=findViewById(R.id.iv_booked_offer_flight);
+        iv_booked_offer_flight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(OffersFlightsDetailsActivity.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
 
         airplane = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "airplane");
         from_airport = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "from_airport");
