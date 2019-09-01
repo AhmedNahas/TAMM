@@ -43,6 +43,7 @@ public class OffersActivity extends AppCompatActivity {
     List<String> listprice = new ArrayList<>();
     List<String> listcity =new ArrayList<>();
 
+
     private List<Bestofferhotel> bestofferhotels = new ArrayList<>();
 
 
@@ -68,6 +69,7 @@ public class OffersActivity extends AppCompatActivity {
         });
 
         toolbar_back1_offer=findViewById(R.id.toolbar_back1_offer);
+
         toolbar_back1_offer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

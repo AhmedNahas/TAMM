@@ -57,9 +57,11 @@ public class ChooseBookingDate extends AppCompatActivity {
     private String hotel_name_s;
     private TextView tv_name_hotel,tv_date_hotels;
     private Button btn_search_change  ;
-    private RelativeLayout back_chose_booking;
+    private RelativeLayout toolbar_back1;
     private TextView tv_word;
     ImageView iv_booked_temp;
+
+
 
 
 
@@ -83,11 +85,17 @@ public class ChooseBookingDate extends AppCompatActivity {
         tv_name_hotel = findViewById(R.id.tv_name_hotel);
         tv_date_hotels = findViewById(R.id.tv_date_hotels);
         tv_word = findViewById(R.id.tv_word);
-        back_chose_booking = findViewById(R.id.toolbar_back1);
+
 
 
         btn_search_change = findViewById(R.id.btn_search_change);
-
+        toolbar_back1=findViewById(R.id.toolbar_back1);
+        toolbar_back1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         iv_booked_temp=findViewById(R.id.iv_booked_temp);
         iv_booked_temp.setOnClickListener(new View.OnClickListener() {
@@ -110,15 +118,7 @@ public class ChooseBookingDate extends AppCompatActivity {
 //
 //         }
 
-        back_chose_booking.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-
-                backIntent();
-
-            }
-        });
 
 
         btn_search_change.setOnClickListener(new View.OnClickListener() {
@@ -379,7 +379,7 @@ public class ChooseBookingDate extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(ChooseBookingDate.this,FindHotels.class);
-        startActivity(intent);
+//        Intent intent = new Intent(ChooseBookingDate.this,FindHotels.class);
+//        startActivity(intent);
     }
 }

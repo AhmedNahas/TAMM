@@ -351,6 +351,1162 @@
     <string name="eg_pound">EG POUND</string>
     <string name="kd" translatable="false">KD</string>
 
+    <string name="A0B">Blue Air Transport Aerian</string>
+    <string name="A0D">Darwin Airline</string>
+    <string name="A0V">VIETNAM AIR SERVICE</string>
+    <string name="A1B">BH Air</string>
+    <string name="A1X">Branson Air Express</string>
+    <string name="A2A">DEUTSCHE BAHN AG</string>
+    <string name="A2B">Aerocondor</string>
+    <string name="A2C">SNCF</string>
+    <string name="A2D">Dynamic Airways</string>
+    <string name="A2E">Smokey Bay Air</string>
+    <string name="A2F">Frontier Flying Service</string>
+    <string name="A2H">European Airlines</string>
+    <string name="A2I">Star Peru</string>
+    <string name="A2J">Air Burkina</string>
+    <string name="A2K">AEROGAL</string>
+    <string name="A2L">Helvetic Airways</string>
+    <string name="A2M">Moldavian Airlines</string>
+    <string name="A2N">Next Jet</string>
+    <string name="A2P">Air Philippines</string>
+    <string name="A2R">VIA Rail</string>
+    <string name="A2S">Air Carnival</string>
+    <string name="A2T">TruJet</string>
+    <string name="A2V">AMTRAK</string>
+    <string name="A2W">Welcome Air</string>
+    <string name="A2Y">Air Andaman</string>
+    <string name="A2Z">Passaredo Airlines</string>
+    <string name="A3B">Job Air</string>
+    <string name="A3C">Corporate Express Airlines</string>
+    <string name="A3D">Denim Air</string>
+    <string name="A3E">Air Choice One</string>
+    <string name="A3F">Pacific Airways</string>
+    <string name="A3G">Atlant-Soyuz</string>
+    <string name="A3H">Air Inuit</string>
+    <string name="A3J">JUBBA AIRWAYS</string>
+    <string name="A3K">JetStar Asia Airways</string>
+    <string name="A3L">Intersky</string>
+    <string name="A3M">Silver Airways</string>
+    <string name="A3N">Air Urga</string>
+    <string name="A3O">AirArabia</string>
+    <string name="A3P">Tiara Air</string>
+    <string name="A3Q">China Yunnan Airlines</string>
+    <string name="A3R">Avia Air</string>
+    <string name="A3S">Air Antilles</string>
+    <string name="A3T">Turan Air</string>
+    <string name="A3U">Sichuan Airlines</string>
+    <string name="A3W">Wanair</string>
+    <string name="A3X">Japan Air Commuter</string>
+    <string name="A3Z">Necon Air</string>
+    <string name="A4A">Royal Bengal Airline</string>
+    <string name="A4B">Olson Air Service</string>
+    <string name="A4C">Aires S.A.</string>
+    <string name="A4D">Air Sinai</string>
+    <string name="A4E">Tanana Air</string>
+    <string name="A4F">Air City</string>
+    <string name="A4G">Shenzhen Airlines</string>
+    <string name="A4H">Fly</string>
+    <string name="A4J">Somon Air</string>
+    <string name="A4K">Kenn Borek</string>
+    <string name="A4L">EuroLine</string>
+    <string name="A4M">LAN Argentina</string>
+    <string name="A4N">Air North</string>
+    <string name="A4O">Interjet</string>
+    <string name="A4P">Business Aviation</string>
+    <string name="A4Q">SAFI AIRWAYS</string>
+    <string name="A4R">Orient Eagle Airways</string>
+    <string name="A4S">East West Air</string>
+    <string name="A4T">BELAIR AIRLINES</string>
+    <string name="A4U">Germanwings</string>
+    <string name="A4V">Voyageur Airways</string>
+    <string name="A4W">Warbelow Air</string>
+    <string name="A4Z">SOUTH AFRICAN AIRLINK</string>
+    <string name="A5A">Alpine Aviat</string>
+    <string name="A5B">Tie Aviation</string>
+    <string name="A5C">Nature Air</string>
+    <string name="A5D">Aerolitoral S.A. de C.V.</string>
+    <string name="A5E">Base Airlines</string>
+    <string name="A5f">FLY ONE</string>
+    <string name="A5H">Fly540</string>
+    <string name="A5J">Cebu Pacific</string>
+    <string name="A5K">Odessa Airlines</string>
+    <string name="A5L">Aerosur</string>
+    <string name="A5M">Sibaviatrans</string>
+    <string name="A5N">Nordavia - Regional Airlines</string>
+    <string name="A5O">ASL Airlines France</string>
+    <string name="A5P">Penta Aerial Transports S/A</string>
+    <string name="A5Q">BQB L�neas A�reas</string>
+    <string name="A5R">IRS Aero</string>
+    <string name="A5T">Canadian North</string>
+    <string name="A5U">TAG - Transportes Aereos Guatemaltecos</string>
+    <string name="A5V">Lviv Airlines</string>
+    <string name="A5W">speed-alliance</string>
+    <string name="A5Y">Isles Scilly</string>
+    <string name="A6A">Aviacsa-Consorcio Aviaxsa</string>
+    <string name="A6C">Air Timor</string>
+    <string name="A6E">IndiGo</string>
+    <string name="A6G">Air Wales</string>
+    <string name="A6H">Israir</string>
+    <string name="A6J">Skyservice Airlinesd/b/a Roots Air</string>
+    <string name="A6K">Asian Spirit</string>
+    <string name="A6L">Aklak Air</string>
+    <string name="A6N">Trans Travel Airlines</string>
+    <string name="A6Q">Slovak Airlines</string>
+    <string name="A6S">SaudiGulf</string>
+    <string name="A6T">Air Mandalay</string>
+    <string name="A6U">Air Ukraine</string>
+    <string name="A6V">Lignes Aeriennes Congolaises</string>
+    <string name="A6W">Saratov Airlines</string>
+    <string name="A6Y">SMARTLYNX AIRLINES</string>
+    <string name="A7B">Atlant - Souyuz Air</string>
+    <string name="A7C">JEJU AIR</string>
+    <string name="A7D">Donbass Eastern Ukranian Airlines</string>
+    <string name="A7E">Sylt Air</string>
+    <string name="A7F">Firstair</string>
+    <string name="A7G">Bellair</string>
+    <string name="A7H">Corendon</string>
+    <string name="A7I">Insel Air</string>
+    <string name="A7J">Tajik Air</string>
+    <string name="A7K">Kogalymavia</string>
+    <string name="A7L">Aerocaribbean S. A.</string>
+    <string name="A7M">MAYAir</string>
+    <string name="A7N">PAWA DOMINICANA</string>
+    <string name="A7O">Galaxy Air</string>
+    <string name="A7Q">Air Venezuela</string>
+    <string name="A7R">Rusline</string>
+    <string name="A7S">Arctic Transportation Services</string>
+    <string name="A7T">Trans Cote</string>
+    <string name="A7V">Federal Airlines</string>
+    <string name="A7W">Wind Rose Aviation Company</string>
+    <string name="A7Y">European Aie Express</string>
+    <string name="A7Z">L B Limited</string>
+    <string name="A8A">Arctic Air</string>
+    <string name="A8B">Caribbean Star Airlines</string>
+    <string name="A8C">Shanxi Airlines</string>
+    <string name="A8D">Volare Airlines</string>
+    <string name="A8E">Bering Air</string>
+    <string name="A8F">Fischer Air</string>
+    <string name="A8G">Angel Airlines</string>
+    <string name="A8H">Equaflight</string>
+    <string name="A8I">Insel Air Aruba</string>
+    <string name="A8J">Jet4You</string>
+    <string name="A8L">LUCKY AIR</string>
+    <string name="A8M">Myanmar Airways</string>
+    <string name="A8N">Nordkalottlkyg</string>
+    <string name="A8O">West Coast Air</string>
+    <string name="A8P">Pacific Coastal</string>
+    <string name="A8Q">Onur Air</string>
+    <string name="A8R">SOL Lineas Aereas</string>
+    <string name="A8T">Air Tindi</string>
+    <string name="A8U">Afriqiyah Airways</string>
+    <string name="A8V">Wrightair Svc</string>
+    <string name="A8W">Private Wings</string>
+    <string name="A8Z">Laser</string>
+    <string name="A9A">Visa Airways</string>
+    <string name="A9B">ACCESRAIL</string>
+    <string name="A9C">SPRING AIRLINES</string>
+    <string name="A9D">Toumai Air Tchad</string>
+    <string name="A9E">Express Airlines</string>
+    <string name="A9F">Eurostar</string>
+    <string name="A9G">Galaxy Airways</string>
+    <string name="A9H">DUTCH Antiles Express</string>
+    <string name="A9I">Alliance Air</string>
+    <string name="A9J">Pacific Island Aviation</string>
+    <string name="A9K">Cape Air</string>
+    <string name="A9L">Colgan Air</string>
+    <string name="A9M">Central Mountain Air</string>
+    <string name="A9N">Tropic Air</string>
+    <string name="A9P">Pelangi Airways</string>
+    <string name="A9T">Transwest Air</string>
+    <string name="A9U">Air Moldova</string>
+    <string name="A9V">AVIOR AIRLINES</string>
+    <string name="A9W">Jet Airways</string>
+    <string name="A9Y">Air Kazakstan</string>
+    <string name="AA3">Aegean Airlines</string>
+    <string name="AA4">Aerocon</string>
+    <string name="AA5">HOP!</string>
+    <string name="AA6">Air Alps Aviation</string>
+    <string name="AA7">Air Comet</string>
+    <string name="AA8">Aerolineas Paraguayas</string>
+    <string name="AA9">Georgian Airlines</string>
+    <string name="AAA">American Airlines</string>
+    <string name="AAB">Air Berlin</string>
+    <string name="AAC">Air Canada</string>
+    <string name="AAD">Azul Linhas Airline</string>
+    <string name="AAE">Mandarin Airlines</string>
+    <string name="AAF">Air France</string>
+    <string name="AAG">Air Contractors</string>
+    <string name="AAH">Air Algerie</string>
+    <string name="AAI">Air India</string>
+    <string name="AAJ">AeroContractors</string>
+    <string name="AAK">AirAsia</string>
+    <string name="AAL">Astral Aviation</string>
+    <string name="AAM">Aeromexico Aeronaves De Mexico</string>
+    <string name="AAN">Ansett Australia</string>
+    <string name="AAO">Australian Airlines</string>
+    <string name="AAP">Air One</string>
+    <string name="AAQ">Aloha Airline</string>
+    <string name="AAR">Aerolineas Argentinas</string>
+    <string name="AAS">Alaska Airlines</string>
+    <string name="AAT">Royal Air Maroc</string>
+    <string name="AAU">Austral Lineas Aereas Sa</string>
+    <string name="AAV">AVIANCA</string>
+    <string name="AAW">Africa World Airlines</string>
+    <string name="AAX">American Connection</string>
+    <string name="AAY">Finnair</string>
+    <string name="AAZ">Alitalia</string>
+    <string name="AB0">LA COMPAGNIE</string>
+    <string name="AB2">Belavia</string>
+    <string name="AB3">Bhutan Airlines</string>
+    <string name="AB4">B.A.C.H Flugbetrieb</string>
+    <string name="AB5">East African Safari Air Express</string>
+    <string name="AB6">jetBlue</string>
+    <string name="AB7">Uni Airways</string>
+    <string name="AB8">ERITREAN AIRLINES</string>
+    <string name="AB9">Iran Air Tours</string>
+    <string name="ABA">British Airways</string>
+    <string name="ABB">Seaborne Aviation</string>
+    <string name="ABC">Skymark Airlines</string>
+    <string name="ABD">Flybmi</string>
+    <string name="ABE">Flybe</string>
+    <string name="ABF">Markair</string>
+    <string name="ABG">Biman Bangladesh Airlines</string>
+    <string name="ABH">Hawkair</string>
+    <string name="ABI">Royal Brunei Airlines</string>
+    <string name="ABJ">Nouvelair</string>
+    <string name="ABL">Pacific Airlines</string>
+    <string name="ABM">Aero Traporti</string>
+    <string name="ABN">Bahrain Air</string>
+    <string name="ABO">Bouraq Airlines</string>
+    <string name="ABP">Air Botswana</string>
+    <string name="ABR">Eva Airways</string>
+    <string name="ABS">British Intl</string>
+    <string name="ABT">Air Baltic</string>
+    <string name="ABU">Braathens ASA</string>
+    <string name="ABV">Blue Panorama Airlines</string>
+    <string name="ABW">Caribbean Airlines</string>
+    <string name="ABX">Air Busan</string>
+    <string name="ABY">Thomson Fly</string>
+    <string name="ABZ">Keystone Air Service</string>
+    <string name="AC3">Icar</string>
+    <string name="AC5">CommutAir</string>
+    <string name="AC7">Aerocontinente Chile</string>
+    <string name="AC8">Chicago Express Airlines</string>
+    <string name="AC9">Cirrus Airlines</string>
+    <string name="ACA">Air China</string>
+    <string name="ACB">ScotAirways</string>
+    <string name="ACC">Macair</string>
+    <string name="ACD">Alliance-Air</string>
+    <string name="ACE">Nationwide Air</string>
+    <string name="ACF">City Airline</string>
+    <string name="ACG">Milne Bay Air</string>
+    <string name="ACH">Bemidji Aviation</string>
+    <string name="ACI">China Airline</string>
+    <string name="ACJ">China Northern Airlines</string>
+    <string name="ACK">Andesmar Lineas Aereas S</string>
+    <string name="ACL">Lufthansa Cityline Gmbh</string>
+    <string name="ACM">Copa Airlines</string>
+    <string name="ACN">Islands Nationair</string>
+    <string name="ACO">COBALTAIR</string>
+    <string name="ACP">Canadian Airlines International</string>
+    <string name="ACQ">Czec Connect Airlines</string>
+    <string name="ACS">Continental Micronesia</string>
+    <string name="ACT">ALITALIA CITY LINER SPA</string>
+    <string name="ACU">Consolidada Cubana De Avia</string>
+    <string name="ACV">Air Chathams</string>
+    <string name="ACW">Airline Of Marshall Islands</string>
+    <string name="ACX">Cathay Pacific Airways</string>
+    <string name="ACY">Cyprus Airways</string>
+    <string name="ACZ">Chinasouthern</string>
+    <string name="AD2">Severstal Aircompany</string>
+    <string name="AD3">Daallo Airlines</string>
+    <string name="AD4">Alidaunai</string>
+    <string name="AD6">Inter Aviatn</string>
+    <string name="AD7">AirAsia X</string>
+    <string name="AD8">NORWEGIAN AIR INTERNATIONAL</string>
+    <string name="AD9">Aeroflot-Don</string>
+    <string name="ADB">Brittany Air International</string>
+    <string name="ADC">BRAATHENS REGIONAL</string>
+    <string name="ADD">Nokair</string>
+    <string name="ADE">Condor Flugdienst Gmbh</string>
+    <string name="ADF">Aebal</string>
+    <string name="ADG">Tigerair Philippines</string>
+    <string name="ADH">Independence</string>
+    <string name="ADI">Deutsche BA</string>
+    <string name="ADJ">AirAsia Japan</string>
+    <string name="ADK">Eastland Air</string>
+    <string name="ADL">Delta Air Lines</string>
+    <string name="ADM">Maersk Air</string>
+    <string name="ADN">Senegal Airlines</string>
+    <string name="ADO">Air Vallee</string>
+    <string name="ADP">Air 2000 Limited</string>
+    <string name="ADQ">Coastal Air Transport</string>
+    <string name="ADR">Airmediterranee</string>
+    <string name="ADT">Taag Linhas Aereas De Angola</string>
+    <string name="ADU">Hemus Air</string>
+    <string name="ADV">JSC Aircompany Scat</string>
+    <string name="ADX">Danish Air Transport</string>
+    <string name="ADY">NORWEGIAN AIR SHUTTLE</string>
+    <string name="ADZ">Transcaraibes</string>
+    <string name="AE2">Kampuchea Airlines</string>
+    <string name="AE3">Domodedovo Airlines</string>
+    <string name="AE4">Aero Asia International</string>
+    <string name="AE5">AirArabia</string>
+    <string name="AE6">Aviaexpresscruise Airline</string>
+    <string name="AE7">Equaflight Services</string>
+    <string name="AE8">Alpi Eagles</string>
+    <string name="AE9">EVELOP AIRLINES</string>
+    <string name="AEA">European Regions Airlines</string>
+    <string name="AEC">Heli Inter Riviera</string>
+    <string name="AED">Ccair</string>
+    <string name="AEE">REGIONAL JET</string>
+    <string name="AEF">Far Eastern Air</string>
+    <string name="AEG">Japan Asia Airways</string>
+    <string name="AEH">ANA WINGS</string>
+    <string name="AEI">Aer Lingus Teoranta Aerlinte Eirean</string>
+    <string name="AEJ">New England Airlines</string>
+    <string name="AEK">Emirates Airlines</string>
+    <string name="AEL">Ellinair</string>
+    <string name="AEM">Western Airlines</string>
+    <string name="AEN">Air Dolomiti</string>
+    <string name="AEO">Hewa Bora Airways</string>
+    <string name="AEQ">Transportes Aereos Militates ecuador</string>
+    <string name="AET">Ethiopian Airlines S C</string>
+    <string name="AEU">Empresa Ecuatoriana De Aviacion Sa</string>
+    <string name="AEV">Atlantic Southeast Airlines</string>
+    <string name="AEW">Eurowings</string>
+    <string name="AEX">Air Santo Domingo</string>
+    <string name="AEY">Etihad Airways</string>
+    <string name="AEZ">Sun-Air</string>
+    <string name="AF2">Safarilink</string>
+    <string name="AF3">Flyadeal</string>
+    <string name="AF4">Eureca</string>
+    <string name="AF5">Cosmic Air</string>
+    <string name="AF6">China National Aviation</string>
+    <string name="AF7">Etihad Regional</string>
+    <string name="AF8">FLAIR AIRLINES</string>
+    <string name="AF9">Frontier Airlines</string>
+    <string name="AFB">Biulgaria Air</string>
+    <string name="AFC">Templehof Express Airlines</string>
+    <string name="AFD">Thai AirAsia</string>
+    <string name="AFE">Royal Khmer Airlines</string>
+    <string name="AFG">Bakhtar Afghan Airlines</string>
+    <string name="AFI">Icelandair</string>
+    <string name="AFJ">Fiji Airways</string>
+    <string name="AFK">Keewatin Air</string>
+    <string name="AFL">Airtran Airways</string>
+    <string name="AFM">Shanghai Airlines</string>
+    <string name="AFN">fastjet</string>
+    <string name="AFQ">Thomas Cook Belgium Airlines</string>
+    <string name="AFR">Ryan Air</string>
+    <string name="AFS">Syphax Airlines</string>
+    <string name="AFU">Air Littoral</string>
+    <string name="AFV">ROSSIYA-RUSSIAN AIRLINES</string>
+    <string name="AFW">Fair</string>
+    <string name="AFY">Firefly</string>
+    <string name="AFZ">Fly Dubai</string>
+    <string name="AG2">Avirex Gabon</string>
+    <string name="AG3">GOL Linhas Aereas Inteligentes</string>
+    <string name="AG4">Allegiant Air</string>
+    <string name="AG5">Enkor Airlines</string>
+    <string name="AG6">Guine Bissau Airlines</string>
+    <string name="AG7">Gandalf Airlines</string>
+    <string name="AG8">GoAir</string>
+    <string name="AG9">Air Arabia</string>
+    <string name="AGA">Garuda</string>
+    <string name="AGC">Gambia International Airlines</string>
+    <string name="AGE">Transasia Airways</string>
+    <string name="AGF">Gulf Air</string>
+    <string name="AGG">Air Guyane</string>
+    <string name="AGH">Ghana Airways Corporation</string>
+    <string name="AGJ">Eurofly</string>
+    <string name="AGK">Go One Airways</string>
+    <string name="AGL">Global International Airways Corp</string>
+    <string name="AGM">Air Slovakia Bwj</string>
+    <string name="AGN">Air Gabon</string>
+    <string name="AGO">Go</string>
+    <string name="AGP">APG Airline</string>
+    <string name="AGQ">Big Sky Airlines</string>
+    <string name="AGR">Aurigny Air Services</string>
+    <string name="AGS">Grant</string>
+    <string name="AGT">Gibraltar Airways</string>
+    <string name="AGU">Aviateca S A</string>
+    <string name="AGW">Air Lines Of Kuban</string>
+    <string name="AGX">Pacificair</string>
+    <string name="AGY">Guyana Airways Corporation</string>
+    <string name="AGZ">Air Rarotonga</string>
+    <string name="AH1">Hahn Air Systems</string>
+    <string name="AH2">Sky Airline</string>
+    <string name="AH3">Harbour Air</string>
+    <string name="AH4">Inter Islands Airlines</string>
+    <string name="AH5">Magadan Air</string>
+    <string name="AH6">Hageland</string>
+    <string name="AH7">Eagle Aviation Uganda</string>
+    <string name="AH8">Dalavia-Far East Airways Khabarovsk</string>
+    <string name="AH9">Himalyan Airline</string>
+    <string name="AHA">Hawaiian Airlines</string>
+    <string name="AHB">Homer Air</string>
+    <string name="AHC">Aero-Tropics Air Services</string>
+    <string name="AHD">Hokkaido International Airlines</string>
+    <string name="AHE">Lgw Luftfahrtgesellschaft</string>
+    <string name="AHF">Air C�te d'Ivoire</string>
+    <string name="AHG">Niki</string>
+    <string name="AHH">Islandsflug</string>
+    <string name="AHI">Papillon Air</string>
+    <string name="AHJ">Swedeways Air Lines</string>
+    <string name="AHK">Yangon Airways</string>
+    <string name="AHM">Air Seychelles</string>
+    <string name="AHN">Proteus Helicopteres</string>
+    <string name="AHO">Juneyao Airline</string>
+    <string name="AHP">America West</string>
+    <string name="AHQ">THOMAS COOK AIRLINES BELGIUM</string>
+    <string name="AHR">Hahn Air</string>
+    <string name="AHS">Skyways Regional</string>
+    <string name="AHT">Royal Airways</string>
+    <string name="AHU">Hainan Airlines</string>
+    <string name="AHV">Transavia Airlines</string>
+    <string name="AHW">North Wright</string>
+    <string name="AHX">Hong Kong Airlines</string>
+    <string name="AHY">Uzbekistan Airways</string>
+    <string name="AHZ">Aurora Airlines</string>
+    <string name="AI2">IBERIA EXPRESS</string>
+    <string name="AI5">AirAsia</string>
+    <string name="AI7">Paramount Airways</string>
+    <string name="AI9">Air-Service</string>
+    <string name="AIA">Iraqi/Airways</string>
+    <string name="AIB">Iberia Airlines</string>
+    <string name="AIC">Indian Airlines</string>
+    <string name="AID">BATIK AIR INDONESIA</string>
+    <string name="AIE">Solomon Islands Airways</string>
+    <string name="AIG">Meridiana</string>
+    <string name="AIH">Falcon Air</string>
+    <string name="AIJ">Air Liberte</string>
+    <string name="AIK">Imair</string>
+    <string name="AIM">Intensive Air</string>
+    <string name="AIN">Mat Macedonia</string>
+    <string name="AIP">Atyrau Airways</string>
+    <string name="AIQ">Augsburg Airways</string>
+    <string name="AIR">Iran National Airlines</string>
+    <string name="AIS">Island Airlines</string>
+    <string name="AIT">Tigerair Taiwan</string>
+    <string name="AIW">Air Lib</string>
+    <string name="AIX">Air India Express</string>
+    <string name="AIY">Yemen Airways Corporation</string>
+    <string name="AIZ">Arkia Israel Inland Airlines</string>
+    <string name="AJ0">JETLINK EXPRE</string>
+    <string name="AJ2">Azerbaijan Airlines</string>
+    <string name="AJ3">Northwestern Air Lease</string>
+    <string name="AJ4">Buffalo Air</string>
+    <string name="AJ5">Alaska Seaplanes</string>
+    <string name="AJ6">Larrys Flying</string>
+    <string name="AJ7">Centre-Avia Airlines</string>
+    <string name="AJ8">Berjaya Air</string>
+    <string name="AJ9">Jazera Airways</string>
+    <string name="AJA">BH Airlines</string>
+    <string name="AJB">Helijet International</string>
+    <string name="AJC">JAL Express</string>
+    <string name="AJD">Japan Air Sys</string>
+    <string name="AJE">Mango</string>
+    <string name="AJF">Jet Asia Airways</string>
+    <string name="AJH">Nordeste-Linhas Aereas Regionais Sa</string>
+    <string name="AJI">Midway Airlines</string>
+    <string name="AJJ">TAM Linhas Aereas</string>
+    <string name="AJK">Spanair</string>
+    <string name="AJL">Japan Airlines</string>
+    <string name="AJM">Air Jamaica</string>
+    <string name="AJN">Excel Airways</string>
+    <string name="AJO">JALways</string>
+    <string name="AJP">Adria Airways</string>
+    <string name="AJQ">Jetstar</string>
+    <string name="AJR">Aerocalfornia</string>
+    <string name="AJS">Air Koryo</string>
+    <string name="AJT">LionAir</string>
+    <string name="AJU">Air Serbia</string>
+    <string name="AJV">Bearskin Lake</string>
+    <string name="AJW">Skippers Aviation</string>
+    <string name="AJX">Nice Helicopteres</string>
+    <string name="AJY">INTERCARIBBEAN AIRWAYS</string>
+    <string name="AJZ">Skyways Ab</string>
+    <string name="AK2">Eurolot S.A</string>
+    <string name="AK3">Taquan Air Services</string>
+    <string name="AK4">Kronflyg</string>
+    <string name="AK5">Seaport Airlines</string>
+    <string name="AK6">Cambodia Angkor Air</string>
+    <string name="AK7">Sakha Avia</string>
+    <string name="AK9">Skyward Aviation</string>
+    <string name="AKA">Dragonair</string>
+    <string name="AKB">Druk Air</string>
+    <string name="AKC">Air Astana</string>
+    <string name="AKD">KD Avia</string>
+    <string name="AKE">Korean Air Lines</string>
+    <string name="AKF">Oy Air Botnia</string>
+    <string name="AKH">Siem Reap Airways International</string>
+    <string name="AKI">Time Air</string>
+    <string name="AKJ">British Mediterranean</string>
+    <string name="AKK">Atlasjet Airlines</string>
+    <string name="AKL">Klm Royal Dutch Airlines</string>
+    <string name="AKM">Air Malta</string>
+    <string name="AKN">CHINA UNITED AIRLINES</string>
+    <string name="AKO">Alaska Central Express</string>
+    <string name="AKP">ASKY</string>
+    <string name="AKQ">Kenya Airways</string>
+
+
+
+    ,
+    ,
+    ,
+    ,
+    ,
+    ,
+    ,
+
+
+
+<!--Flights AirLine-->
+
+    <string name="ASJ" translatable="false">Sriwijaya Air</string>
+    <string name="AEB" translatable="false">Wamos Air</string>
+    <string name="AVI" translatable="false">Volga-Dnepr Airlines</string>
+    <string name="A5X" translatable="false">SF UPS Airlines</string>
+    <string name="AO3" translatable="false">SF Airlines</string>
+
+    <string name="AOF" translatable="false">Overland Airways</string>
+    <string name="ABK" translatable="false">Okay Airways</string>
+    <string name="AKZ" translatable="false">Nippon Cargo Airlines (NCA)</string>
+    <string name="ANO" translatable="false">Neos</string>
+    <string name="AMB" translatable="false">MNG Airlines</string>
+    <string name="AN4" translatable="false">"LLC ""NORD WIND"""</string>
+    <string name="AEP" translatable="false">Iran Aseman Airlines</string>
+    <string name="AFH" translatable="false">Freebird Airlines</string>
+    <string name="AFT" translatable="false">FlyEgypt</string>
+    <string name="AFX" translatable="false">Federal Express</string>
+    <string name="AES" translatable="false">DHL Aviation EEMEA B.S.C.(c)</string>
+    <string name="AD0" translatable="false">DHL Air</string>
+    <string name="AW8" translatable="false">Cargojet Airways</string>
+    <string name="A3V" translatable="false">ASL Airlines Belgium</string>
+    <string name="A5Z" translatable="false">CemAir</string>
+    <string name="AFA" translatable="false">FlySafair</string>
+    <string name="AZY" translatable="false">Ada Air</string>
+    <string name="AZX" translatable="false">Air British Columbia</string>
+
+    <string name="AZW" translatable="false">Air Wisconsin</string>
+    <string name="AZV" translatable="false">Air Midwest</string>
+    <string name="AZT" translatable="false">Air Zambezi</string>
+    <string name="AZS" translatable="false">Sama Airlines</string>
+    <string name="AZR" translatable="false">Muk Air</string>
+    <string name="AZP" translatable="false">Air St Thomas</string>
+    <string name="AZO" translatable="false">Zoom Air</string>
+    <string name="AZN" translatable="false">Eagle Air</string>
+    <string name="AZM" translatable="false">AIR MANAS</string>
+    <string name="AZL" translatable="false">AHazelton Air Services Pty</string>
+
+
+    <string name="AY8" translatable="false">Passaredo Transportes</string>
+    <string name="AY9" translatable="false">Trans Air Congo</string>
+    <string name="AYB" translatable="false">South African Express Airlines</string>
+    <string name="AYC" translatable="false">Yamal Airlines</string>
+    <string name="AYD" translatable="false">Gomelavia</string>
+    <string name="AYE" translatable="false">YAN AIR</string>
+    <string name="AYI" translatable="false">Air Sunshine</string>
+    <string name="AYJ" translatable="false">National Air</string>
+    <string name="AYK" translatable="false">Avia Traffic Company</string>
+    <string name="AYM" translatable="false">Montenegro Airlines</string>
+    <string name="AYN" translatable="false">Air Creebec</string>
+    <string name="AYO" translatable="false">Heli Air Monaco</string>
+    <string name="AYP" translatable="false">Aero Lloyd</string>
+    <string name="AYQ" translatable="false">Polet Airlines</string>
+    <string name="AYR" translatable="false">Scenic Air Lines</string>
+    <string name="AYS" translatable="false">Proteus</string>
+    <string name="AYT" translatable="false">YETI AIRLINES</string>
+    <string name="AYU" translatable="false">EUROATLANTIC AIRWAYS</string>
+    <string name="AYV" translatable="false">Mesa Aviation Services</string>
+    <string name="AYW" translatable="false">Air Nostrum</string>
+    <string name="AYX" translatable="false">Midwest Express Airlines</string>
+    <string name="AZ2" translatable="false">Philippines AirAsia</string>
+    <string name="AZ3" translatable="false">Promech</string>
+    <string name="AZ4" translatable="false">Tayfunair</string>
+    <string name="AZ5" translatable="false">Gmg Airlines</string>
+    <string name="AZ6" translatable="false">Dnieproavia Joint Stock Aviation Company</string>
+    <string name="AZ7" translatable="false">Flyafrica.com</string>
+    <string name="AZ8" translatable="false">Pulkovo Aviation Enterprise</string>
+    <string name="AZ9" translatable="false">JSC BEK AIR</string>
+    <string name="AZA" translatable="false">Sky Angkor Airlines</string>
+    <string name="AZB" translatable="false">Monarch Airline</string>
+    <string name="AZC" translatable="false">KORONGO AIRLINES</string>
+    <string name="AZG" translatable="false">Groznyy Avia</string>
+    <string name="AZH" translatable="false">Shenzhen Airlines</string>
+    <string name="AZI" translatable="false">Aigle Azur Transport Ariens</string>
+    <string name="AZJ" translatable="false">Zambezi Airlines</string>
+    <string name="AZK" translatable="false">Great Lakes</string>
+
+
+
+    <string name="AWI" translatable="false">WHITE AIRWAYS S.A.</string>
+    <string name="AWJ" translatable="false">Labrador Airways</string>
+    <string name="AWK" translatable="false">American Falcon S.A.</string>
+    <string name="AWL" translatable="false">Aeroperlas</string>
+    <string name="AWM" translatable="false">Windward Islands Airways Intl</string>
+    <string name="AWN" translatable="false">Southwest Airlines Dallas</string>
+    <string name="AWP" translatable="false">Island AiR</string>
+    <string name="AWQ" translatable="false">Romavia</string>
+    <string name="AWR" translatable="false">Royal Tongan</string>
+    <string name="AWS" translatable="false">Westjet Airlines</string>
+    <string name="AWT" translatable="false">Nigeria Airways</string>
+    <string name="AWV" translatable="false">Aero Vip</string>
+    <string name="AWW" translatable="false">WOW AIR</string>
+    <string name="AWX" translatable="false">City jet</string>
+    <string name="AWY" translatable="false">Oman Aviation</string>
+    <string name="AWZ" translatable="false">Acvila Air</string>
+    <string name="AX3" translatable="false">TUIfly</string>
+    <string name="AX5" translatable="false">Cronus Air</string>
+    <string name="AX7" translatable="false">Exec Air Inc. of Naples</string>
+    <string name="AX9" translatable="false">Khors Air Company</string>
+    <string name="AXC" translatable="false">Corendon Airlines</string>
+    <string name="AXF" translatable="false">Vladivostok Air</string>
+    <string name="AXG" translatable="false">SunExpress Deutschland</string>
+    <string name="AXH" translatable="false">Hndlg Angent</string>
+    <string name="AXI" translatable="false">Air India Expres (Intl)</string>
+    <string name="AXJ" translatable="false">Thai AirAsia</string>
+    <string name="AXK" translatable="false">Compagnie Corse Mediterranee</string>
+    <string name="AXL" translatable="false">Lanecuador</string>
+    <string name="AXM" translatable="false">Alitalia Express</string>
+    <string name="AXN" translatable="false">Xpress Air</string>
+    <string name="AXO" translatable="false">China Xinjiang Airl</string>
+    <string name="AXQ" translatable="false">SunExpress</string>
+    <string name="AXR" translatable="false">Skywest Airlines</string>
+    <string name="AXT" translatable="false">Klm Exel</string>
+    <string name="Axv" translatable="false">BVI Airways</string>
+    <string name="AXW" translatable="false">Nokscoot</string>
+    <string name="AXY" translatable="false">FLYNAS</string>
+    <string name="AXZ" translatable="false">SOUTH AFRICAN EXPRESS</string>
+    <string name="AY2" translatable="false">Alliance Air</string>
+    <string name="AY4" translatable="false">Eagle Aviatio</string>
+    <string name="AY7" translatable="false">JSC Airline Taimyr</string>
+
+
+
+    <string name="AUM" translatable="false">Air Zimbabwe</string>
+    <string name="AUN" translatable="false">Transaero</string>
+    <string name="AUO" translatable="false">Hong Kong Express Airways</string>
+    <string name="AUP" translatable="false">Bahamasair</string>
+    <string name="AUQ" translatable="false">O\'Connor Airlines</string>
+    <string name="AUS" translatable="false">US Airways</string>
+    <string name="AUT" translatable="false">UT Air</string>
+    <string name="AUU" translatable="false">Air Austral</string>
+    <string name="AUV" translatable="false">Helicopteros Del Sureste</string>
+    <string name="AUW" translatable="false">Perimeter Aviation</string>
+    <string name="AUX" translatable="false">Air Europa</string>
+    <string name="AUY" translatable="false">Cameroon Airlines</string>
+    <string name="AUZ" translatable="false">U. P. Air</string>
+    <string name="AV0" translatable="false">Conviasa</string>
+    <string name="AV2" translatable="false">Vision Airlines</string>
+    <string name="AV3" translatable="false">Carpatair</string>
+    <string name="AV4" translatable="false">Vieques Air Link</string>
+    <string name="AV5" translatable="false">Ventura Airconnect</string>
+    <string name="AV6" translatable="false">VI AIR LINK</string>
+    <string name="AV7" translatable="false">Volotea</string>
+    <string name="AV8" translatable="false">TAPSA Aviacion</string>
+    <string name="AV9" translatable="false">Bashkir Airlines</string>
+    <string name="AVA" translatable="false">Virgin Australia</string>
+    <string name="AVB" translatable="false">Maersk Air Lt</string>
+    <string name="AVC" translatable="false">Servivensa</string>
+    <string name="AVE" translatable="false">Aerovias Venezulanas</string>
+    <string name="AVF" translatable="false">Nevis Express</string>
+    <string name="AVG" translatable="false">VLM Airlines</string>
+    <string name="AVH" translatable="false">Aeropostal Alas De Venezue</string>
+    <string name="AVJ" translatable="false">VietJet Air</string>
+    <string name="AVK" translatable="false">Virgin Express Ireland.</string>
+    <string name="AVL" translatable="false">Med-View Airline</string>
+    <string name="AVM" translatable="false">Regional Airlines</string>
+    <string name="AVN" translatable="false">Vietnam Airlines</string>
+    <string name="AVO" translatable="false">Tyrolean Air</string>
+    <string name="AVP" translatable="false">Vasp Brazilian Airlines</string>
+    <string name="AVR" translatable="false">Transportes Aereos De Cabo Verde</string>
+    <string name="AVS" translatable="false">Virgin Atlantic Airways</string>
+    <string name="AVT" translatable="false">Air Tahiti</string>
+    <string name="AVU" translatable="false">Air Ivoire</string>
+    <string name="AVV" translatable="false">Aerosvit Airlines</string>
+    <string name="AVW" translatable="false">Aeromar Airlines</string>
+    <string name="AVX" translatable="false">Virgin America</string>
+    <string name="AVY" translatable="false">Vueling Airlines</string>
+    <string name="AVZ" translatable="false">Air Tours Intl Airways</string>
+    <string name="AW2" translatable="false">World Airline</string>
+    <string name="AW3" translatable="false">Arik Air</string>
+    <string name="AW4" translatable="false">LC Per�</string>
+    <string name="AW5" translatable="false">Mahan Air</string>
+    <string name="AW6" translatable="false">Wizz Air</string>
+    <string name="AW7" translatable="false">Sayakhat Air Company</string>
+    <string name="AW9" translatable="false">Air Bagan</string>
+    <string name="AWA" translatable="false">Klm Cityhoppe</string>
+    <string name="AWB" translatable="false">Rwandair Express</string>
+    <string name="AWC" translatable="false">Islena Airl</string>
+    <string name="AWD" translatable="false">Halisa Air</string>
+    <string name="AWE" translatable="false">Thai Smile</string>
+    <string name="AWF" translatable="false">Wideroes Flyveselskap A/S</string>
+    <string name="AWG" translatable="false">SUNWING AIRLINES INC</string>
+    <string name="AWH" translatable="false">China N West</string>
+
+
+    <string name="AT5" translatable="false">Turkmenistan</string>
+    <string name="AT6" translatable="false">Tavrey Aircompany</string>
+    <string name="AT7" translatable="false">Twin Jet</string>
+    <string name="AT8" translatable="false">Transportes Aereos Nuequen</string>
+    <string name="AT9" translatable="false">Varmlandsflyg</string>
+    <string name="ATA" translatable="false">Taca International Airlines</string>
+    <string name="ATB" translatable="false">Jetairfly.com</string>
+    <string name="ATC" translatable="false">Air Tanzania Corp</string>
+    <string name="ATD" translatable="false">ATLANTIS EUROPEAN AIRWAYS</string>
+    <string name="ATE" translatable="false">Lithuanian Airlines</string>
+    <string name="ATF" translatable="false">Malmo Aviation</string>
+    <string name="ATG" translatable="false">Thai Airways International</string>
+    <string name="ATH" translatable="false">British Regional Airlines</string>
+    <string name="ATI" translatable="false">KINGFISHER AIRLINES (INT)</string>
+    <string name="ATJ" translatable="false">Tradewind Aviation</string>
+    <string name="ATK" translatable="false">Turkish Airlines</string>
+    <string name="ATL" translatable="false">Airnorth Reg</string>
+    <string name="ATM" translatable="false">Lam Linhas Aereas De Mocambique</string>
+    <string name="ATN" translatable="false">Air Tahiti Nui</string>
+    <string name="ATO" translatable="false">Transavia France</string>
+    <string name="ATP" translatable="false">Air Portugal</string>
+    <string name="ATQ" translatable="false">Tandem Aero</string>
+    <string name="ATR" translatable="false">Flyscoot</string>
+    <string name="ATS" translatable="false">Air Transat A.T.</string>
+    <string name="ATT" translatable="false">Tigerair Australia</string>
+    <string name="ATU" translatable="false">Tunis Air</string>
+    <string name="ATV" translatable="false">Virgin Expres</string>
+    <string name="ATW" translatable="false">TWAY AIR</string>
+    <string name="ATX" translatable="false">Air Caraibes</string>
+    <string name="ATY" translatable="false">Air Caledonia</string>
+    <string name="ATZ" translatable="false">Scoot</string>
+    <string name="AU2" translatable="false">Easyjet Airline Company</string>
+    <string name="AU4" translatable="false">Buryat Airlines</string>
+    <string name="AU5" translatable="false">USA 3000 Airlines</string>
+    <string name="AU6" translatable="false">Ural Airlines</string>
+    <string name="AU7" translatable="false">Air Uganda</string>
+    <string name="AU8" translatable="false">Armavia</string>
+    <string name="AU9" translatable="false">Tatarstan</string>
+    <string name="AUA" translatable="false">United Airlines</string>
+    <string name="AUB" translatable="false">Myanma Airway</string>
+    <string name="AUC" translatable="false">Linea Aerea Del Cobre</string>
+    <string name="AUD" translatable="false">Hex Air</string>
+    <string name="AUE" translatable="false">Transeuropean Airlines</string>
+    <string name="AUF" translatable="false">Ukranian-Mediterranean Airlines</string>
+    <string name="AUG" translatable="false">Tuninter</string>
+    <string name="AUH" translatable="false">US Helicopter</string>
+    <string name="AUI" translatable="false">Auric Air</string>
+    <string name="AUJ" translatable="false">Aerosanta Airlines</string>
+    <string name="AUK" translatable="false">Vistara</string>
+    <string name="AUL" translatable="false">Sri Lankan Airlines</string>
+
+
+
+    <string name="ARJ" translatable="false">Royal Jordanian</string>
+    <string name="ARK" translatable="false">Air Afrique</string>
+    <string name="ARL" translatable="false">Royal Phnom Penh Airways</string>
+    <string name="ARM" translatable="false">Air Moldova I</string>
+    <string name="ARO" translatable="false">Tarom</string>
+    <string name="ARP" translatable="false">Chantangua Airlines</string>
+    <string name="ARQ" translatable="false">Kam Air</string>
+    <string name="ARR" translatable="false">Royal Air Force-38 Transport Group</string>
+    <string name="ARS" translatable="false">S Seoul</string>
+    <string name="ART" translatable="false">Jsc Uvt Aero</string>
+    <string name="ARU" translatable="false">Tci Skyking</string>
+    <string name="ARV" translatable="false">Caspian Air Lines</string>
+    <string name="ARW" translatable="false">Ras Fluggesellschaft</string>
+    <string name="ARX" translatable="false">Regent Airways</string>
+    <string name="ARY" translatable="false">European Executive Express</string>
+    <string name="ARZ" translatable="false">Servicios Aereos Nacionales S A</string>
+    <string name="AS2" translatable="false">JetKonnect</string>
+    <string name="AS3" translatable="false">Santa Barbara Airlines</string>
+    <string name="AS4" translatable="false">Sata International</string>
+    <string name="AS5" translatable="false">Shuttle America</string>
+    <string name="AS7" translatable="false">Siberia Airlines</string>
+    <string name="AS8" translatable="false">Estonian Aviation Company</string>
+    <string name="AS9" translatable="false">SWE Aviation Europe</string>
+    <string name="ASA" translatable="false">South African Airways</string>
+    <string name="ASB" translatable="false">Air Caledonie International</string>
+    <string name="ASC" translatable="false">Shandong Air</string>
+    <string name="ASD" translatable="false">Sudan Airways</string>
+    <string name="ASE" translatable="false">XL AIRWAYS FRANCE</string>
+    <string name="ASF" translatable="false">Tassili Airlines</string>
+    <string name="ASG" translatable="false">SpiceJet</string>
+    <string name="ASI" translatable="false">Blue Islands</string>
+    <string name="ASK" translatable="false">Scandinavian Airlines System</string>
+    <string name="ASL" translatable="false">Thai Lion Air</string>
+    <string name="ASM" translatable="false">Sunworld Intl</string>
+    <string name="ASN" translatable="false">SN Brussels Airlines</string>
+    <string name="ASP" translatable="false">Sociedade Acoreana De Transportes</string>
+    <string name="ASQ" translatable="false">Singapore Airlines</string>
+    <string name="ASR" translatable="false">Swiss Air Transport Co</string>
+    <string name="ASS" translatable="false">Corsair International</string>
+    <string name="AST" translatable="false">Germania</string>
+    <string name="ASU" translatable="false">Aeroflot Russian Airlines</string>
+    <string name="ASV" translatable="false">Saudi Arabian Airlines</string>
+    <string name="ASW" translatable="false">Air Namibia</string>
+    <string name="ASX" translatable="false">Sky Work Airlines</string>
+    <string name="ASY" translatable="false">Sun Country Airlines</string>
+    <string name="ASZ" translatable="false">Somon Air</string>
+    <string name="AT0" translatable="false">TACA PERU</string>
+    <string name="AT2" translatable="false">Nakima Air Service</string>
+    <string name="AT3" translatable="false">Eastern Airways</string>
+    <string name="AT4" translatable="false">Hellas Jet</string>
+
+
+
+    <string name="AO8" translatable="false">SIAM AIR TRANSPORT</string>
+    <string name="AOA" translatable="false">Olympic Airways</string>
+    <string name="AOB" translatable="false">Boliviana de Aviaci�n</string>
+    <string name="AOC" translatable="false">Omni</string>
+    <string name="AOD" translatable="false">Malindo Air</string>
+    <string name="AOE" translatable="false">Westair Commuter Airlines</string>
+    <string name="AOH" translatable="false">Comair</string>
+    <string name="AOI" translatable="false">Aspiring Air</string>
+    <string name="AOK" translatable="false">Czech Airline</string>
+    <string name="AOL" translatable="false">Ostfriesische Lufttransport Gmbh</string>
+    <string name="AOM" translatable="false">Miat Mongolia</string>
+    <string name="AON" translatable="false">Air Nauru</string>
+    <string name="AOO" translatable="false">Skywest Air</string>
+    <string name="AOP" translatable="false">Air Pegsus</string>
+    <string name="AOQ" translatable="false">Sunrise Airlines</string>
+    <string name="AOR" translatable="false">Arkefly</string>
+    <string name="AOS" translatable="false">Austrian Airlines</string>
+    <string name="AOT" translatable="false">Aeropelican Air Services</string>
+    <string name="AOU" translatable="false">Croatia Airlines</string>
+    <string name="AOV" translatable="false">SalamAir</string>
+    <string name="AOW" translatable="false">Executive Airlines/American Eagle</string>
+    <string name="AOX" translatable="false">Orient Thai Airlines</string>
+    <string name="AOY" translatable="false">OMNI AIR INTL</string>
+    <string name="AOZ" translatable="false">Asiana Air</string>
+    <string name="AP0" translatable="false">Proflight Zambia</string>
+    <string name="AP2" translatable="false">TyumenaviaTrans</string>
+    <string name="AP4" translatable="false">Aero Lineas Sosa</string>
+    <string name="AP5" translatable="false">Aerorepublica</string>
+    <string name="AP6" translatable="false">Pascan Aviation</string>
+    <string name="AP7" translatable="false">East Line Airlines</string>
+    <string name="AP8" translatable="false">Pantanal Linhas Aereas Sul</string>
+    <string name="AP9" translatable="false">Peruvian Airlines</string>
+    <string name="APA" translatable="false">AIRBLUE</string>
+    <string name="APB" translatable="false">Provincial Airlines</string>
+    <string name="APC" translatable="false">PEGASUS AIRLINES</string>
+    <string name="APD" translatable="false">Porter Airlines</string>
+    <string name="APE" translatable="false">Air Europe</string>
+    <string name="APF" translatable="false">Palestinian Airlines</string>
+    <string name="APG" translatable="false">Bangkok Airways</string>
+    <string name="APH" translatable="false">Polynesian Airlines</string>
+    <string name="API" translatable="false">Sol del Paraquay Lineas Aereas</string>
+    <string name="APJ" translatable="false">Air Saint-Pierre</string>
+    <string name="APK" translatable="false">Pakistan International Airlines</string>
+    <string name="APM" translatable="false">Tropic Air</string>
+    <string name="APN" translatable="false">Pan American Airways Corp.</string>
+    <string name="APQ" translatable="false">AirAsia Philipphines</string>
+    <string name="APR" translatable="false">Philippine Airlines</string>
+    <string name="APS" translatable="false">Ukraine International Airlines</string>
+    <string name="APT" translatable="false">West Air Sweden</string>
+    <string name="APU" translatable="false">Primeras Lineas Uruguayas</string>
+    <string name="APV" translatable="false">Saint Barth Commuter</string>
+    <string name="APW" translatable="false">Precisionair</string>
+    <string name="APX" translatable="false">Air Niugini</string>
+    <string name="APY" translatable="false">Surinam Airways</string>
+    <string name="APZ" translatable="false">Transportes Aereos Del Mercosur</string>
+    <string name="AQ2" translatable="false">Island Aviation Services</string>
+    <string name="AQ3" translatable="false">Zambian Airways</string>
+    <string name="AQ5" translatable="false">40 Mile Air</string>
+    <string name="AQ7" translatable="false">Sobelair</string>
+    <string name="AQ8" translatable="false">Pacific East Asia Cargo Airlines</string>
+    <string name="AQ9" translatable="false">Air Liaison</string>
+    <string name="AQA" translatable="false">Aerocaribe</string>
+    <string name="AQB" translatable="false">SkyGeorgia</string>
+    <string name="AQC" translatable="false">Camair-Co</string>
+    <string name="AQD" translatable="false">JC CAMBODIA INTL AIRLINES</string>
+    <string name="AQE" translatable="false">Europ Continental Airways d/b/a Crossair Europe</string>
+    <string name="AQF" translatable="false">Qantas Airways</string>
+    <string name="AQG" translatable="false">Citylink</string>
+    <string name="AQH" translatable="false">Air Kyrgyzstan</string>
+    <string name="AQI" translatable="false">Cimber Air</string>
+    <string name="AQJ" translatable="false">Latpass Airlines</string>
+    <string name="AQK" translatable="false">Air Nova</string>
+    <string name="AQL" translatable="false">Aero Lanka</string>
+    <string name="AQM" translatable="false">Air Malawi</string>
+    <string name="AQN" translatable="false">Royal Aviation</string>
+    <string name="AQP" translatable="false">Regional Air</string>
+    <string name="AQR" translatable="false">Qatar Airways</string>
+    <string name="AQS" translatable="false">Smart Wings</string>
+    <string name="AQT" translatable="false">Regional Air</string>
+    <string name="AQU" translatable="false">Uganda Air</string>
+    <string name="AQV" translatable="false">Lao Aviation</string>
+    <string name="AQW" translatable="false">Turks And Caicos National Airline</string>
+    <string name="AQX" translatable="false">Horizon Airlines</string>
+    <string name="AQY" translatable="false">European Air Transport</string>
+    <string name="AQZ" translatable="false">Indonesia AirAsia</string>
+    <string name="AR2" translatable="false">Orenburg</string>
+    <string name="AR3" translatable="false">Aircompany Yakutia</string>
+    <string name="AR4" translatable="false">The State Transport Company Russia</string>
+    <string name="AR5" translatable="false">Malta Air Charter</string>
+    <string name="AR6" translatable="false">Air Srpska</string>
+    <string name="AR7" translatable="false">Aserco Airlines</string>
+    <string name="AR9" translatable="false">Camai Air</string>
+    <string name="ARA" translatable="false">Royal Nepal Airlines Corp</string>
+    <string name="ARB" translatable="false">Syrian Arab Airlines</string>
+    <string name="ARC" translatable="false">Atlantic Airways Faroe Islands</string>
+    <string name="ARD" translatable="false">Alitalia Team</string>
+    <string name="ARE" translatable="false">Aer Arann Express</string>
+    <string name="ARG" translatable="false">Varig</string>
+    <string name="ARH" translatable="false">Regionnair</string>
+    <string name="ARI" translatable="false">P.T.Mandala Airlines</string>
+
+
+
+    <string name="AKR" translatable="false">Air Bishkek</string>
+    <string name="AKS" translatable="false">Penair</string>
+    <string name="AKU" translatable="false">Kuwait Airways Corporation</string>
+    <string name="AKV" translatable="false">Kavminvodyavi</string>
+    <string name="AKW" translatable="false">Air Company KAS</string>
+    <string name="AKX" translatable="false">Cayman Airways</string>
+    <string name="AKY" translatable="false">Air Sao Tome e Principe</string>
+    <string name="AL2" translatable="false">Lynden Air</string>
+    <string name="AL4" translatable="false">Lauda-air S.p.A.</string>
+    <string name="AL5" translatable="false">Lufttransport AS</string>
+    <string name="AL6" translatable="false">Air Maldives</string>
+    <string name="AL7" translatable="false">Laoag International Airlines</string>
+    <string name="AL8" translatable="false">AFRIC AVIATION</string>
+    <string name="AL9" translatable="false">Air Mali S.A.</string>
+    <string name="ALA" translatable="false">Lan-Linea Aerea Nacional-Chile Sa</string>
+    <string name="ALB" translatable="false">Air Costa</string>
+    <string name="ALC" translatable="false">ECAIR Equatorial Congo Airlines</string>
+    <string name="ALD" translatable="false">Linea Turistica Aereotuy</string>
+    <string name="ALE" translatable="false">Helgoland Airlines</string>
+    <string name="ALF" translatable="false">Nordic East</string>
+    <string name="ALG" translatable="false">Luxair</string>
+    <string name="ALH" translatable="false">Lufthansa</string>
+    <string name="ALI" translatable="false">Liat</string>
+    <string name="ALJ" translatable="false">Sierra Nation</string>
+    <string name="ALK" translatable="false">Continent Airlines</string>
+    <string name="ALL" translatable="false">Allegro</string>
+    <string name="ALM" translatable="false">Air ALM</string>
+    <string name="ALN" translatable="false">Libyan Arab Airlines</string>
+    <string name="ALO" translatable="false">Lot-Polish</string>
+    <string name="ALP" translatable="false">LanPeru</string>
+    <string name="ALQ" translatable="false">LANMEI AIRLINES</string>
+    <string name="ALR" translatable="false">Lineas Aereas Costarricenses</string>
+    <string name="ALS" translatable="false">Jet2</string>
+    <string name="ALT" translatable="false">Air Lituanica</string>
+    <string name="ALV" translatable="false">MEGA Maldives Airlines</string>
+    <string name="ALW" translatable="false">Pacific Wings</string>
+    <string name="ALX" translatable="false">Swiss</string>
+    <string name="ALY" translatable="false">PEl Al Israel Airlines Limited</string>
+    <string name="ALZ" translatable="false">Belle Air</string>
+    <string name="AM3" translatable="false">Air Service</string>
+    <string name="AM4" translatable="false">Avioimpex A.D.P.O.</string>
+    <string name="AM5" translatable="false">Kenmore</string>
+    <string name="AM7" translatable="false">Marsland Aviation</string>
+    <string name="AM9" translatable="false">Motor Sich PISC</string>
+    <string name="AMA" translatable="false">Malev Hungarian Airlines</string>
+    <string name="AMC" translatable="false">Military Air</string>
+    <string name="AMD" translatable="false">Air Madagascar</string>
+    <string name="AME" translatable="false">Middle East Airlines Airliban</string>
+    <string name="AMF" translatable="false">Xiamen Airlines</string>
+    <string name="AMG" translatable="false">Champion Air</string>
+    <string name="AMH" translatable="false">Malaysia Airlines</string>
+    <string name="AMI" translatable="false">Silkair</string>
+    <string name="AMJ" translatable="false">Mihin Lanka</string>
+    <string name="AMK" translatable="false">Air Mauritius</string>
+    <string name="AML" translatable="false">AIR MEDITERRANEE</string>
+    <string name="AMM" translatable="false">Medellin</string>
+    <string name="AMN" translatable="false">kulula</string>
+    <string name="AMO" translatable="false">Calm Air Intl</string>
+    <string name="AMP" translatable="false">Martinair</string>
+    <string name="AMQ" translatable="false">American Eagle</string>
+    <string name="AMR" translatable="false">Hunnu Air</string>
+    <string name="AMS" translatable="false">Egyptair</string>
+    <string name="AMT" translatable="false">Fly Thomascook</string>
+    <string name="AMU" translatable="false">China Eastern</string>
+    <string name="AMV" translatable="false">Manus Air</string>
+    <string name="AMW" translatable="false">Mokulele Airlines</string>
+    <string name="AMX" translatable="false">Mexicana</string>
+    <string name="AMY" translatable="false">Maya Island Air</string>
+    <string name="AMZ" translatable="false">Merpati Nusantara Dba Air Mali</string>
+    <string name="AN2" translatable="false">Aerolineas Internacionales</string>
+    <string name="AN6" translatable="false">Aero Continente</string>
+    <string name="AN7" translatable="false">National Airlines</string>
+    <string name="AN9" translatable="false">North Coast Aviation Pty</string>
+    <string name="ANA" translatable="false">Nesma Airlines</string>
+    <string name="ANB" translatable="false">Sterling</string>
+    <string name="ANC" translatable="false">National Jet Systems Pty</string>
+    <string name="AND" translatable="false">Airlink Limited</string>
+    <string name="ANE" translatable="false">Nesma Airlines</string>
+    <string name="ANF" translatable="false">Air Vanuatu</string>
+    <string name="ANG" translatable="false">Lauda Air</string>
+    <string name="ANH" translatable="false">All Nippon Airways Co</string>
+    <string name="ANI" translatable="false">Portugalia</string>
+    <string name="ANJ" translatable="false">Vanguard Airlines</string>
+    <string name="ANK" translatable="false">Spirit Airlines</string>
+    <string name="ANL" translatable="false">Shaheen Air</string>
+    <string name="ANN" translatable="false">Vim Airlines</string>
+    <string name="ANP" translatable="false">Nile Airlines</string>
+    <string name="ANQ" translatable="false">Air Japan</string>
+    <string name="ANS" translatable="false">HEBEI AIRLINES</string>
+    <string name="ANT" translatable="false">Binter Canarias</string>
+    <string name="ANU" translatable="false">Japan Transocean Air</string>
+    <string name="ANV" translatable="false">Northwest Territorial Airways</string>
+    <string name="ANW" translatable="false">Northwest Airlines</string>
+    <string name="ANX" translatable="false">Air Macau Company Limited</string>
+    <string name="ANY" translatable="false">Air Iceland</string>
+    <string name="ANZ" translatable="false">New Zealand</string>
+    <string name="AO2" translatable="false">JET AIR</string>
+    <string name="AO5" translatable="false">COMORES AVIATION INTL</string>
+    <string name="AO6" translatable="false">Avianca Brasil</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -22,36 +22,66 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name="net.middledleeast.tamm.activities.OffersFlightsDetailsActivity"></activity>
-        <activity android:name="net.middledleeast.tamm.activities.VoiceMessageActivity" />
-        <activity android:name="net.middledleeast.tamm.activities.OffersHotelsDetailsActivity" />
-        <activity android:name="net.middledleeast.tamm.activities.SettingActivity" />
-        <activity android:name="net.middledleeast.tamm.activities.AboutUs" />
-        <activity android:name="net.middledleeast.tamm.activities.ContactUs" />
-        <activity android:name="net.middledleeast.tamm.activities.AssistantActivity" />
-        <activity android:name="net.middledleeast.tamm.activities.MemberCongratsActivity" />
-        <activity android:name="net.middledleeast.tamm.activities.FreeCongratsActivity" />
-        <activity android:name="net.middledleeast.tamm.activities.TermsActivity" />
-        <activity android:name="net.middledleeast.tamm.activities.KnetActivity">
+        <activity android:name=".activities.OffersFlightsDetailsActivity"></activity>
+        <activity android:name=".activities.VoiceMessageActivity" />
+        <activity android:name=".activities.OffersHotelsDetailsActivity" />
+        <activity android:name=".activities.SettingActivity" />
+        <activity android:name=".activities.AboutUs" />
+        <activity android:name=".activities.ContactUs" />
+        <activity android:name=".activities.AssistantActivity" />
+        <activity android:name=".activities.MemberCongratsActivity" />
+        <activity android:name=".activities.FreeCongratsActivity" />
+        <activity android:name=".activities.TermsActivity" />
+        <activity android:name=".activities.KnetActivity">
+
+            <!-- android:theme="@android:style/Theme.NoTitleBar" -->
+
+        </activity>
+        <activity
+            android:name=".activities.SeatSelection"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activities.RecommendedTwoWay"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.RecommendedOneWay"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActivityToFragment.PaymentActivityFragment"
+            android:screenOrientation="portrait" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
+        <activity
+            android:name=".activities.Proceedbeybey"
+            android:screenOrientation="portrait">
+
 
 
         </activity>
         <activity
-            android:name="net.middledleeast.tamm.activities.SeatSelection"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.RecommendedTwoWay"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.RecommendedOneWay"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment"
-            android:screenOrientation="portrait" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
-        <activity
-            android:name="net.middledleeast.tamm.activities.Proceedbeybey"
-            android:screenOrientation="portrait">
+            android:name=".activities.PassengerDeparture"
+            android:screenOrientation="portrait" >
 
+
+        </activity>
+
+
+        <activity
+            android:name=".activities.Passenger_inform"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.FlightDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.PassengerInformation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.FlightsSummary"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.PaymentFlights"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -61,86 +91,81 @@
 
         </activity>
         <activity
-            android:name="net.middledleeast.tamm.activities.PassengerDeparture"
+            android:name=".activities.FlightTamm"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.PaymentActivity"
+            android:screenOrientation="portrait" >
+
+
+
+
+        </activity>
+        <activity
+            android:name=".activities.HotelBooking"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.RoomBooked"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.checkroom"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ChooseBookingDate"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.HotelDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ChooseHotelActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".LanguageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.FindHotels"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name="net.middledleeast.tamm.activities.Passenger_inform"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.FlightDetails"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.PassengerInformation"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.FlightsSummary"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.PaymentFlights"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.SplashActivity"
+            android:name=".activities.FlightSearch"
             android:screenOrientation="portrait">
 
 
         </activity>
         <activity
-            android:name="net.middledleeast.tamm.activities.FlightTamm"
+            android:name=".activities.ConfirmBookingRoom"
             android:screenOrientation="portrait" />
         <activity
-            android:name="net.middledleeast.tamm.activities.PaymentActivity"
+            android:name=".activities.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ReserveRoom"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.RenewAccount"
             android:screenOrientation="portrait"></activity>
-        <activity
-            android:name="net.middledleeast.tamm.activities.HotelBooking"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.RoomBooked"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.checkroom"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.ChooseBookingDate"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.HotelDetails"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.ChooseHotelActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.WelcomeActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name="net.middledleeast.tamm.LanguageActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.FindHotels"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.FlightSearch"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name="net.middledleeast.tamm.activities.ConfirmBookingRoom"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.MainActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.ReserveRoom"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="net.middledleeast.tamm.activities.RenewAccount"
-            android:screenOrientation="portrait" />
-        <activity android:name="net.middledleeast.tamm.activities.PaymentTemp" />
-        <activity android:name="net.middledleeast.tamm.activities.OffersActivity" />
-        <activity android:name="net.middledleeast.tamm.activities.FavoriteActivity" />
-        <activity android:name="net.middledleeast.tamm.activities.MyBookActivity" />
+        <activity android:name=".activities.PaymentTemp" />
+        <activity android:name=".activities.OffersActivity" />
+        <activity android:name=".activities.FavoriteActivity" />
+        <activity android:name=".activities.MyBookActivity" />
 
         <service
-            android:name="net.middledleeast.tamm.sevice.MyService"
+            android:name=".sevice.MyService"
             android:enabled="true" />
+
     </application>
+
+
+
+
+
+
+
+
+
+
 
 </manifest>

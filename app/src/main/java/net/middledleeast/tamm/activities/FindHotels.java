@@ -429,8 +429,11 @@ public class FindHotels extends AppCompatActivity {
         toolbar_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FindHotels.this, ReserveRoom.class));
+//                startActivity(new Intent(FindHotels.this, ReserveRoom.class));
+            onBackPressed();
             }
+
+
         });
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -1533,7 +1536,7 @@ public class FindHotels extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(FindHotels.this, ReserveRoom.class));
+//        startActivity(new Intent(FindHotels.this, ReserveRoom.class));
 
     }
 

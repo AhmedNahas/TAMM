@@ -82,7 +82,9 @@ public class HotelDetails extends AppCompatActivity {
     private String part2;
     private String map;
 
-    ImageView imageView,iv_booked_hotel_details;
+    RelativeLayout toolbar_back1;
+
+    ImageView iv_booked_hotel_details;
     private boolean ClickDetailsHotel=false;
 
 
@@ -95,6 +97,19 @@ public class HotelDetails extends AppCompatActivity {
         sliderDotspanel = findViewById(R.id.SliderDots);
         ButterKnife.bind(this);
 
+
+        toolbar_back1=findViewById(R.id.toolbar_back1);
+
+        toolbar_back1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                Intent intent = new Intent(HotelDetails.this,ChooseHotelActivity.class);
+//                startActivity(intent);
+                onBackPressed();
+            }
+        });
+
         iv_booked_hotel_details=findViewById(R.id.iv_booked_hotel_details);
         iv_booked_hotel_details.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,20 +119,14 @@ public class HotelDetails extends AppCompatActivity {
             }
         });
 
-        imageView = findViewById(R.id.toolbar_back2);
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(HotelDetails.this, FindHotels.class));
-            }
-        });
 
         assistantLabelVoiceDetailsHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
+                Intent intent = new Intent(HotelDetails.this, VoiceMessageActivity.class);
+                startActivity(intent);
                 Toast.makeText(HotelDetails.this, "Voice", Toast.LENGTH_SHORT).show();
             }
         });
@@ -125,6 +134,9 @@ public class HotelDetails extends AppCompatActivity {
         assistantLabelCallDetailsHotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent1 = new Intent(HotelDetails.this, AssistantActivity.class);
+                startActivity(intent1);
                 Toast.makeText(HotelDetails.this, "Call", Toast.LENGTH_SHORT).show();
 
             }
@@ -134,6 +146,8 @@ public class HotelDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Intent intent2 = new Intent(HotelDetails.this, ContactUs.class);
+                startActivity(intent2);
                 Toast.makeText(HotelDetails.this, "Message", Toast.LENGTH_SHORT).show();
 
             }
@@ -357,7 +371,7 @@ public class HotelDetails extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(HotelDetails.this, FindHotels.class));
+//        startActivity(new Intent(HotelDetails.this, FindHotels.class));
 
     }
 }
