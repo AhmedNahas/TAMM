@@ -5,29 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
 import net.middledleeast.tamm.R;
-
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-
 
 
 public class MemberShip extends Fragment {
@@ -64,11 +48,11 @@ public class MemberShip extends Fragment {
             "\n" +
             "3.7- Advising such other persons not to make false reservations or any reservations in anticipation of demand the website or mobile application may cancel without notice, all confirmations associated with multiple reservations to one or more destination on or about the same date.\n" +
             "\n" +
-            "3.8- You don’t have authority to deface, alter or interface with the front end of the website, mobile application or the underling tamm company software code.\n" +
+            "3.8- You don’t have authority to deface, alter or interface with the front end of the website, mobile application or the underling middledleeast company software code.\n" +
             "\n" +
-            "3.9- You don’t have authority to take any action that may impose and reasonable, unreasonable or disproportionately large load on the website or related tamm company infrastructure.\n" +
+            "3.9- You don’t have authority to take any action that may impose and reasonable, unreasonable or disproportionately large load on the website or related middledleeast company infrastructure.\n" +
             "\n" +
-            "3.10- You don’t have authority to take any action that may impose and reasonable, unreasonable or disproportionately large load on the website or related tamm company infrastructure.\n" +
+            "3.10- You don’t have authority to take any action that may impose and reasonable, unreasonable or disproportionately large load on the website or related middledleeast company infrastructure.\n" +
             "\n" +
             "3.11- Not to do anything which will or would damage interfere with disrupt access to interrupt or impair the functionality of the materials available on this website or mobile application.\n" +
             "\n" +
@@ -124,7 +108,7 @@ public class MemberShip extends Fragment {
             "\n" +
             "8.7- The App also has contact telephone numbers for Members to be able to call and speak to a Lifestyle Call Centre. Please note that telephone calls to Tamm Company may be monitored for training and quality control purposes.\n" +
             "\n" +
-            "8.8- We reserve the right at any time and from time to time to modify the Services we provide and to add or remove content.\n" +
+            "8.8- We reserve the right at any time and from time to time to modify the Services we provide and to ic_add or remove content.\n" +
             "\n" +
             "8.9- Where there are specific terms and conditions for different Services provided via the App, these are outlined below:\n" +
             "\n" +
@@ -353,7 +337,7 @@ public class MemberShip extends Fragment {
 //            }
 //        });
 //        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
-//        requestQueue.add(stringRequest);
+//        requestQueue.ic_add(stringRequest);
 //
 //    }
 

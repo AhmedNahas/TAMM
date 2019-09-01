@@ -10,11 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.model.UserList;
-import net.middledleeast.tamm.model.Users;
 
 import java.util.List;
 

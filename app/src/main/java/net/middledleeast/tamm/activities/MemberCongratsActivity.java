@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.fragments.MemberCongrats;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

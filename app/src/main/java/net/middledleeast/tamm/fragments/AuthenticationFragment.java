@@ -10,14 +10,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.RegisterationActivity;
 import net.middledleeast.tamm.SignInFragment;
 import net.middledleeast.tamm.activities.RenewAccount;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;

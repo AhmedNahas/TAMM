@@ -445,7 +445,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 if (firstName1GustOne.getText().toString().equals("") || lastName1GustOne.getText().toString().equals("")) {
                     SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(ConfirmBookingRoom.this);
                     sweetAlertDialog.setConfirmButton("Ok", null);
-                    sweetAlertDialog.setContentText("Please add First guest's first and last name at least");
+                    sweetAlertDialog.setContentText("Please ic_add First guest's first and last name at least");
                     sweetAlertDialog.show();
                     return;
                 }

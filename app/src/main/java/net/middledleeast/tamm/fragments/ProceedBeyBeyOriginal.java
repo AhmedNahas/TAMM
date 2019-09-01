@@ -704,7 +704,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
 
                // segment.setPreferredArrivalTime(mReturnTime);
-                // add segments
+                // ic_add segments
 
 
                 if (JourneyType==1){
@@ -773,8 +773,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
 //
 //                                String fareType = results1.get(j).getFare().getAgentPreferredCurrency();
 //
-//                                listTypeFare.add(fareType);
-//                                listTotalFare.add(totalFare);
+//                                listTypeFare.ic_add(fareType);
+//                                listTotalFare.ic_add(totalFare);
 
 
                             //  List<SearchFlightsResponse.Segment> segments = results1.get(j).getSegments().get(0);
@@ -807,23 +807,23 @@ public class ProceedBeyBeyOriginal extends Fragment {
 //                                    long noOfSeatAvailable = segments2.get(t).getNoOfSeatAvailable();
 //
 //
-//                                    ListnoOfSeatAvailable.add(noOfSeatAvailable);
+//                                    ListnoOfSeatAvailable.ic_add(noOfSeatAvailable);
 //
-//                                    ListMealType.add(mealType);
+//                                    ListMealType.ic_add(mealType);
 //
 //                                    String flightNumber = segments2.get(t).getFlightNumber();
-//                                    ListflightNumber.add(flightNumber);
+//                                    ListflightNumber.ic_add(flightNumber);
 //
-//                                    ListairportCode_Distnation.add(airportCode_Destination);
-//                                    ListairportCode_Origin.add(airportCode_Origin);
-//                                    ListnameLine.add(airlineName);
-//                                    Listduration.add(duration);
-//                                    ListArriveTime.add(arrivalTime);
-//                                    ListdeparuerTime.add(departureTime);
-//                                    countryNameDestinationList.add(countryNameDestination);
-//                                    countryNameOriginList.add(countryNameOrigin);
-//                                    listCabinBaggage.add(cabinBaggage);
-//                                    listIncludedBaggage.add(includedBaggage);
+//                                    ListairportCode_Distnation.ic_add(airportCode_Destination);
+//                                    ListairportCode_Origin.ic_add(airportCode_Origin);
+//                                    ListnameLine.ic_add(airlineName);
+//                                    Listduration.ic_add(duration);
+//                                    ListArriveTime.ic_add(arrivalTime);
+//                                    ListdeparuerTime.ic_add(departureTime);
+//                                    countryNameDestinationList.ic_add(countryNameDestination);
+//                                    countryNameOriginList.ic_add(countryNameOrigin);
+//                                    listCabinBaggage.ic_add(cabinBaggage);
+//                                    listIncludedBaggage.ic_add(includedBaggage);
 //
 //                                }
 

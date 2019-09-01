@@ -12,8 +12,6 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.fragments.TammFamilyFragment;
 import net.middledleeast.tamm.sevice.MyService;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class WelcomeActivity extends AppCompatActivity {

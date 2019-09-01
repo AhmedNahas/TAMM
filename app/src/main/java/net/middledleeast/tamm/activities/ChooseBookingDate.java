@@ -106,7 +106,7 @@ public class ChooseBookingDate extends AppCompatActivity {
 //
 //         while (st.hasMoreTokens()){
 //
-//             //Toast.makeText(this, ""+list_count_child.add(Integer.parseInt(st.nextToken())), Toast.LENGTH_SHORT).show();
+//             //Toast.makeText(this, ""+list_count_child.ic_add(Integer.parseInt(st.nextToken())), Toast.LENGTH_SHORT).show();
 //
 //         }
 
@@ -140,7 +140,7 @@ public class ChooseBookingDate extends AppCompatActivity {
 //        } else {
 //            StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
 //            while (st.hasMoreTokens()) {
-//                list_count_child.add(Integer.parseInt(st.nextToken().trim()));
+//                list_count_child.ic_add(Integer.parseInt(st.nextToken().trim()));
 //            }
         //Toast.makeText(this, ""+list_count_child.get(0), Toast.LENGTH_SHORT).show();
 //    }
@@ -233,10 +233,10 @@ public class ChooseBookingDate extends AppCompatActivity {
 
             // TODO: 17/07/19 fix
 //            for (int i =1;i<=rooms.size();i++) {
-//                roomCombination.RoomIndex.add(i);
+//                roomCombination.RoomIndex.ic_add(i);
 //            }
 
-//            bookingOptions.RoomCombination.add(roomCombination);
+//            bookingOptions.RoomCombination.ic_add(roomCombination);
 
 // TODO: 17/07/19 fix
 
@@ -252,7 +252,7 @@ public class ChooseBookingDate extends AppCompatActivity {
                 roomCombs = gson.fromJson(roomCombStr, ArrayList.class);
 //                if (roomCombs != null) {
 //                    for (double comb : roomCombs) {
-//                        roomCOmbsInt.add((int) comb);
+//                        roomCOmbsInt.ic_add((int) comb);
 //                    }
 
 

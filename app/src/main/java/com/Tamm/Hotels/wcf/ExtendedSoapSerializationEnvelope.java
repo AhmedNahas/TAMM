@@ -29,7 +29,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Vector;
 
-//If you have a compilation error here then you have to add a reference to ExKsoap2.jar to your project (you can find it in Libs folder in the generated zip file)
+//If you have a compilation error here then you have to ic_add a reference to ExKsoap2.jar to your project (you can find it in Libs folder in the generated zip file)
 public class ExtendedSoapSerializationEnvelope extends com.easywsdl.exksoap2.serialization.ExSoapSerializationEnvelope {
     protected static final int QNAME_NAMESPACE = 0;
     private static final String TYPE_LABEL = "type";

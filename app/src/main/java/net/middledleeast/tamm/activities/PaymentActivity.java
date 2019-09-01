@@ -28,7 +28,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.wirecard.ecom.Client;
-import com.wirecard.ecom.model.out.PaymentResponse;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterPayment;
@@ -39,7 +38,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,7 +51,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import payments.PaymentObjectProvider;
-import payments.ResponseHelper;
 
 public class PaymentActivity extends AppCompatActivity {
 
@@ -171,6 +168,7 @@ public class PaymentActivity extends AppCompatActivity {
             first_name = SharedPreferencesManger.LoadStringData(this, "firstName");
 
 
+
             tvLastName.setText(last_name);
             tvFirstName.setText(first_name);
 
@@ -179,6 +177,9 @@ public class PaymentActivity extends AppCompatActivity {
             PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
             BigDecimal finalAmount = amount;
             String finalCurrency = currency;
+
+
+
 
 //            Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
 //               client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
@@ -253,16 +254,16 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         spinnerTitles.add(getString(R.string.payment_method));
-//        spinnerTitles.add(getString(R.string.visa_));
-//        spinnerTitles.add(getString(R.string.master));
+//        spinnerTitles.ic_add(getString(R.string.visa_));
+//        spinnerTitles.ic_add(getString(R.string.master));
 
 
         spinnerTitles.add(getString(R.string.knet));
 
         spinnerImages.add(0);
 
-//        spinnerImages.add(R.drawable.wd_ecom_visa);
-//        spinnerImages.add(R.drawable.wd_ecom_mastercard);
+//        spinnerImages.ic_add(R.drawable.wd_ecom_visa);
+//        spinnerImages.ic_add(R.drawable.wd_ecom_mastercard);
         spinnerImages.add(R.drawable.ic_knet);
 
 
@@ -314,8 +315,8 @@ public class PaymentActivity extends AppCompatActivity {
                     String s2 = s[1];
 
 
-                    openbankRegisrat(s2, s1);
 
+                    openbankRegisrat(s2, s1);
 
                 } else if (mId==2){
 
@@ -379,8 +380,8 @@ public class PaymentActivity extends AppCompatActivity {
 
                 }else {
 
-                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+//                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+//                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
                 }
 
 
@@ -445,12 +446,14 @@ public class PaymentActivity extends AppCompatActivity {
 
                 if (knet){
 
-                    sendamount(mSgbody);
+                   // sendamount(mSgbody);
+
+                    sendDataToServer();
 //                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
                 }else {
 
-                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+//                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+//                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
 
                 }
 
@@ -490,8 +493,8 @@ public class PaymentActivity extends AppCompatActivity {
 
                  }else {
 
-                     Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-                     client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+//                     Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+//                     client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
                  }
 
 
@@ -548,49 +551,49 @@ public class PaymentActivity extends AppCompatActivity {
             }
 
 
-         @Override
-         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Serializable paymentSdkResponse = data.getSerializableExtra(Client.EXTRA_PAYMENT_SDK_RESPONSE);
-        if (paymentSdkResponse instanceof PaymentResponse) {
-            String formattedResponse = ResponseHelper.getFormattedResponse((PaymentResponse) paymentSdkResponse);
-
-
-        }
-        if (resultCode == RESULT_OK) {
-            Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
-
-
-            if (mId == BOOKING_ROOM) {
-                startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
-            } else if (mId==1){
-
-                sendDataToServer();
-                Toast.makeText(this, "Welcome", Toast.LENGTH_LONG).show();
-
-
-
-
-
-            }else if (mId==3){
-
-                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
-
-                startActivity(new Intent(PaymentActivity.this,FlightDetails.class));
-            }else if (mId==6){
-
-
-                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
-
-                startActivity(new Intent(PaymentActivity.this,HotelBooking.class));
-            }
-
-        }else {
-            Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
-
-
-                    }
-    }
+//         @Override
+//         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        Serializable paymentSdkResponse = data.getSerializableExtra(Client.EXTRA_PAYMENT_SDK_RESPONSE);
+//        if (paymentSdkResponse instanceof PaymentResponse) {
+//            String formattedResponse = ResponseHelper.getFormattedResponse((PaymentResponse) paymentSdkResponse);
+//
+//
+//        }
+//        if (resultCode == RESULT_OK) {
+//            Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+//
+//
+//            if (mId == BOOKING_ROOM) {
+//                startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
+//            } else if (mId==1){
+//
+//                sendDataToServer();
+//                Toast.makeText(this, "Welcome", Toast.LENGTH_LONG).show();
+//
+//
+//
+//
+//
+//            }else if (mId==3){
+//
+//                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+//
+//                startActivity(new Intent(PaymentActivity.this,FlightDetails.class));
+//            }else if (mId==6){
+//
+//
+//                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+//
+//                startActivity(new Intent(PaymentActivity.this,HotelBooking.class));
+//            }
+//
+//        }else {
+//            Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+//
+//
+//                    }
+//    }
 
     private void sendDataToServer() {
 
@@ -600,7 +603,7 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
 
             public void onResponse(String response) {
-                SharedPreferencesManger.SaveData(PaymentActivity.this, "username", username);
+                SharedPreferencesManger.SaveData(PaymentActivity.this, "user_name", username);
                 startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
             }
         }, new Response.ErrorListener() {
