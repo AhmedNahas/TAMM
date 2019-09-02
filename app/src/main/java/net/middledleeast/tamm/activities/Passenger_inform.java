@@ -12,6 +12,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,6 +61,9 @@ public class Passenger_inform extends AppCompatActivity {
     private List<String> list_nationalites = new ArrayList<>();
     private String MDataMrmisAdult   ,  MDataMrmisChild  ,MDataMrmisInfent;
 
+    RelativeLayout relative_back_passenger_inform;
+    ImageView iv_booked_passenger_inform;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +71,22 @@ public class Passenger_inform extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
+        iv_booked_passenger_inform=findViewById(R.id.iv_booked_passenger_inform);
+        iv_booked_passenger_inform.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(Passenger_inform.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        relative_back_passenger_inform=findViewById(R.id.relative_back_passenger_inform);
+        relative_back_passenger_inform.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         nationality_adult = findViewById(R.id.nationality_adult);
         nationality_child = findViewById(R.id.nationality_child);
         nationality_adult_infant = findViewById(R.id.nationality_adult_infant);

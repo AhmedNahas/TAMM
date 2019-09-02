@@ -14,25 +14,36 @@
         android:layout_margin="10dp"
         android:gravity="center">
 
-        <ImageView
-            android:id="@+id/toolbar_back1"
+        <RelativeLayout
+            android:id="@+id/relative_back_recommend_one_way"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/ic_back_arrow"
-            android:backgroundTint="#FFEB3B" />
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/toolbar_back1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/ic_back_arrow"
+                />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@+id/toolbar_back1"
-            android:text="BACK"
-            android:textColor="#ffff"
-            android:textSize="12sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@+id/toolbar_back1"
+                android:text="BACK"
+                android:textColor="#ffff"
+                android:textSize="12sp" />
+
+
+
+
+        </RelativeLayout>
+
+
 
         <ImageView
             android:layout_width="@dimen/_20sdp"
@@ -43,8 +54,8 @@
             android:background="@drawable/logo" />
 
         <ImageView
+            android:id="@+id/iv_booked_recommended_one_way"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center"

@@ -3,7 +3,8 @@ package net.middledleeast.tamm.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,13 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.ChooseFlightAdapter;
-import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
 
 import FlightApi.SearchFlightsResponse;
 
 public class RecommendedOneWay extends AppCompatActivity {
+
+    RelativeLayout relative_back_recommend_one_way;
 
 private RecyclerView recyclerView;
 //    private ArrayList<String> airlineNameList = new ArrayList<>();
@@ -39,12 +41,29 @@ private RecyclerView recyclerView;
 //    private ArrayList<Long> ListnoOfSeatAvailable = new ArrayList<>();
 
 
+    ImageView iv_booked_recommended_one_way;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recommended__one_way);
 
+        iv_booked_recommended_one_way=findViewById(R.id.iv_booked_recommended_one_way);
+        iv_booked_recommended_one_way.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(RecommendedOneWay.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
 
+        relative_back_recommend_one_way=findViewById(R.id.relative_back_recommend_one_way);
+        relative_back_recommend_one_way.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         recyclerView=findViewById(R.id.rv_flightList);
 //        Listduration = (ArrayList<String>) getIntent().getSerializableExtra("Listduration");
 //
