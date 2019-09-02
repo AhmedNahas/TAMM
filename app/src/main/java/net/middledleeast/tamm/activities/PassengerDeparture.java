@@ -208,7 +208,9 @@ public class PassengerDeparture extends AppCompatActivity {
     @BindView(R.id.tv_total2)
     TextView tvTotal2;
     @BindView(R.id.relative_many2)
-    RelativeLayout relativeMany2;
+    RelativeLayout relativeMany2,relative_back_flight_departure;
+
+    ImageView iv_booked_passenger_departure;
 
     private ImageView imgincreaseadult, imgdecreaseadult;
     // private TextView txtadult;
@@ -222,6 +224,24 @@ public class PassengerDeparture extends AppCompatActivity {
         priceFinal = findViewById(R.id.priceFinal);
         imgdecreaseadult = findViewById(R.id.decrease_adult);
         imgincreaseadult = findViewById(R.id.increase_adult);
+
+        iv_booked_passenger_departure=findViewById(R.id.iv_booked_passenger_departure);
+        iv_booked_passenger_departure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent =new Intent(PassengerDeparture.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        relative_back_flight_departure=findViewById(R.id.relative_back_flight_departure);
+        relative_back_flight_departure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         //   txtadult=findViewById(R.id.txtview_adult);
 
         priceFinal.setOnClickListener(new View.OnClickListener() {

@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -27,11 +29,37 @@ public class PassengerInformation extends AppCompatActivity {
     ArrayAdapter mrormiss1adapter,mrormiss2adapter,mrormiss3adapter;
     ArrayList<String> mrormiss1array,mrormiss2array,mrormiss3array;
     private Button confirmFlight;
+
+    ImageView iv_booked_passenger_information;
+
+
+    RelativeLayout relative_back_passenger_information;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.passenger_information);
+
+
+        iv_booked_passenger_information=findViewById(R.id.iv_booked_passenger_information);
+        iv_booked_passenger_information.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(PassengerInformation.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        relative_back_passenger_information=findViewById(R.id.relative_back_passenger_information);
+
+        relative_back_passenger_information.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
         mrormiss1array = new ArrayList<>();
         mrormiss1array.add(getString(R.string.mr));
         mrormiss1array.add(getString(R.string.mrs));

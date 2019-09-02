@@ -172,6 +172,9 @@ public class FlightsSummary extends AppCompatActivity {
     countryCodeDestnation1,
             countryCodeOrigin1;
     private String airlinenName;
+RelativeLayout relative_back_flight_summary;
+ImageView iv_booked_flight_summary;
+
     private String airlineCode   , countryNameOrogin1Return,
             countryNameDestination1Return,
     cabinBaggageReturn,
@@ -201,6 +204,24 @@ public class FlightsSummary extends AppCompatActivity {
         setContentView(R.layout.flights_summary);
         ButterKnife.bind(this);
         password = getString(R.string.passowrd_flight);
+
+        iv_booked_flight_summary=findViewById(R.id.iv_booked_flight_summary);
+        iv_booked_flight_summary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(FlightsSummary.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        relative_back_flight_summary=findViewById(R.id.relative_back_flight_summary);
+        relative_back_flight_summary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
 
         proccedBtn = findViewById(R.id.procced_btn);
         assistantLabelVoiceRenewHotel=findViewById(R.id.assistant_label_voice_renew_flight_summary);

@@ -3,6 +3,7 @@ package net.middledleeast.tamm.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 import FlightApi.SearchFlightsResponse;
 
 public class RecommendedOneWay extends AppCompatActivity {
+
+    RelativeLayout relative_back_recommend_one_way;
 
 private RecyclerView recyclerView;
 //    private ArrayList<String> airlineNameList = new ArrayList<>();
@@ -44,11 +47,21 @@ private RecyclerView recyclerView;
     TextView assistantLabelMessageRenewHotel;
     private boolean ClickRenewHotel = false;
 
+    ImageView iv_booked_recommended_one_way;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recommended__one_way);
 
+        iv_booked_recommended_one_way=findViewById(R.id.iv_booked_recommended_one_way);
+        iv_booked_recommended_one_way.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(RecommendedOneWay.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
         assistantLabelVoiceRenewHotel=findViewById(R.id.assistant_label_voice_renew_OneWay);
         relativeImgRenewHotelTamm=findViewById(R.id.relative_img_renew_OneWay_tamm);
         assistantLabelCallRenewHotel=findViewById(R.id.assistant_label_call_renew_OneWay);
@@ -68,6 +81,13 @@ private RecyclerView recyclerView;
                     assistantLabelVoiceRenewHotel.setVisibility(View.INVISIBLE);
                     ClickRenewHotel = false;
 
+        relative_back_recommend_one_way=findViewById(R.id.relative_back_recommend_one_way);
+        relative_back_recommend_one_way.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
                 }
             }
         });

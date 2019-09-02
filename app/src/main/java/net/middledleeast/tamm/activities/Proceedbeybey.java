@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,12 +39,34 @@ public class Proceedbeybey extends AppCompatActivity {
     private RecyclerView recyclerView = null;
     private boolean ClickRenewHotel = false;
 
+    RelativeLayout toolbar_back1;
+ImageView iv_booked_proceed;
+
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.proceedbey_bey);
+
+        iv_booked_proceed=findViewById(R.id.iv_booked_proceed);
+        iv_booked_proceed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent =new Intent(Proceedbeybey.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        toolbar_back1=findViewById(R.id.toolbar_back1);
+        toolbar_back1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
 
         assistantLabelVoiceRenewHotel=findViewById(R.id.assistant_label_voice_renew_flight);
         relativeImgRenewHotelTamm=findViewById(R.id.relative_img_renew_flight_tamm);
