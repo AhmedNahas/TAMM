@@ -82,9 +82,7 @@ public class RegisterationActivity extends Fragment {
     private AuthenticationData authenticationData;
 
 
-    int free;
-    int member;
-    int user_id;
+    int checkUserType;
 
     RequestQueue requestQueue;
     private String register_url_free = "http://egyptgoogle.com/freeusers/insertusers.php";
@@ -139,6 +137,9 @@ public class RegisterationActivity extends Fragment {
     private String email;
     private String phoneM;
     private String cityUser;
+    private String tokenId;
+    private int PAYMENT = 2;
+    private int FREE = 1;
 
 
     @SuppressLint("StaticFieldLeak")
@@ -166,7 +167,13 @@ public class RegisterationActivity extends Fragment {
         toolbar = view.findViewById(R.id.welcome_toolbar);
         imageView = view.findViewById(R.id.back_pressed);
 
-       special.setOnClickListener(new View.OnClickListener() {
+
+
+
+         checkUserType = SharedPreferencesManger.LoadIntegerData(getContext(), "isMemmber");
+
+
+        special.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
                switch (view.getId()){
@@ -236,29 +243,6 @@ public class RegisterationActivity extends Fragment {
 
 
 
-        Bundle arguments = getArguments();
-        try {
-            free = arguments.getInt("free");
-
-            member = arguments.getInt("member");
-
-        } catch (Exception ignored) {
-
-        }
-
-
-        if (free == 2) {
-
-            user_id = 1;
-
-
-        } else if (member == 1) {
-            user_id = 2;
-
-
-        } else {
-            return null;
-        }
 
 
         mrOrMissArray = new ArrayList<>();
@@ -273,7 +257,7 @@ public class RegisterationActivity extends Fragment {
             public void onClick(View view) {
 
 
-
+                // TODO: 9/1/2019  remove it when amir do it
                 if (isEmpty(etUserName)) {
                     etUserName.setError("user name is required!");
 
@@ -331,6 +315,7 @@ public class RegisterationActivity extends Fragment {
 
                 } else {
 
+
                     firstName = etFirstName.getText().toString();
                     lastName = etLastName.getText().toString();
                     userName = etUserName.getText().toString();
@@ -343,8 +328,7 @@ public class RegisterationActivity extends Fragment {
                     SharedPreferencesManger.SaveData(getContext(), "first_name", firstName);
                     SharedPreferencesManger.SaveData(getContext(), "last_name", lastName);
 
-                    connectdatabase();
-                    if (user_id == 2) {
+                    if (checkUserType ==FREE ) {
 
 
 
@@ -362,19 +346,14 @@ public class RegisterationActivity extends Fragment {
                         intent.putExtra("ocupation",ocupation.getText().toString());
                         intent.putExtra("username",etUserName.getText().toString());
                         intent.putExtra("pass",etPassword.getText().toString());
-
                         intent.putExtra("mId",1);
-//                        SharedPreferencesManger.SaveData(getContext(),"membership",2);
 
-                        SharedPreferencesManger.SaveData(getContext(),"username",etUserName.getText().toString());
                         startActivity(intent);
 
-                    } else if (user_id == 1) {
+                    } else if (checkUserType == PAYMENT) {
+                        sendFreeUser();
 
-                        Intent intent = new Intent(getContext(), FreeCongratsActivity.class);
-                        intent.putExtra("username",etUserName.getText().toString());
-//                        SharedPreferencesManger.SaveData(getContext(),"freeuser",1);
-                        startActivity(intent);
+
                     }
 
                 }
@@ -453,21 +432,27 @@ public class RegisterationActivity extends Fragment {
     }
 
 
-    // TODO: 25/07/2019  moving to the next page
-    private void connectdatabase() {
-        if (user_id == 1) {
+    // free users
+
+    // still waiting amir
+    private void sendFreeUser() {
+
             StringRequest request = new StringRequest(Request.Method.POST, register_url_free, new Response.Listener<String>() {
 
                 @Override
 
                 public void onResponse(String response) {
                     Toast.makeText(getContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
-
+                    Intent intent = new Intent(getContext(), FreeCongratsActivity.class);;
+                        SharedPreferencesManger.SaveData(getContext(),"user_name",1);
+                    startActivity(intent);
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
 
+                    int statusCode = error.networkResponse.statusCode;
+                    Toast.makeText(getContext(), ""+statusCode, Toast.LENGTH_SHORT).show();
                 }
 
             }) {
@@ -488,13 +473,17 @@ public class RegisterationActivity extends Fragment {
                     parameters.put("city",cityUser );
 
 
+
+                  //  parameters.put("tokenid",tokenId );
+
+
                     return parameters;
                 }
             };
             RequestQueue requestQueue = Volley.newRequestQueue(getContext());
             requestQueue.add(request);
 
-        }
+
 
     }
 
@@ -521,8 +510,6 @@ public class RegisterationActivity extends Fragment {
         country.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
-
 
                 nameCountry = list_country.get(adapter2.getPosition(adapter2.getItem(position)));
                 idCountry = listID.get(adapter2.getPosition(adapter2.getItem(position)));
@@ -624,12 +611,6 @@ public class RegisterationActivity extends Fragment {
         }//
 
     }
-
-
-
-
-
-
 
     private void getOcupation() {
 
@@ -1244,6 +1225,7 @@ public class RegisterationActivity extends Fragment {
     }
 
 
+    // TODO: 9/1/2019 remove it
     private void getValidationFree() {
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, HIVALIDATIONFREE, new Response.Listener<String>() {
@@ -1264,6 +1246,9 @@ public class RegisterationActivity extends Fragment {
                         phonevalidation = validationfree.get(i).getPhone();
                         usernamevalidation = validationfree.get(i).getUsername();
                         emailvalidation = validationfree.get(i).getEmail();
+
+
+
 
 
                         SharedPreferencesManger.SaveData(getActivity(), "user", usernamevalidation);
@@ -1293,7 +1278,7 @@ public class RegisterationActivity extends Fragment {
         requestQueue.add(stringRequest);
     }
 
-
+    // TODO: 9/1/2019 remove it
     private void getValidationMember() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, HIVALIDATIONMEMBER, new Response.Listener<String>() {
             @Override

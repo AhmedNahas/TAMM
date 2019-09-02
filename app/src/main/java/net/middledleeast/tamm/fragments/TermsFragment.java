@@ -13,12 +13,8 @@ import androidx.fragment.app.Fragment;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.RegisterationActivity;
-import net.middledleeast.tamm.activities.FindHotels;
 import net.middledleeast.tamm.activities.PaymentActivity;
-import net.middledleeast.tamm.activities.ReserveRoom;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
-
-import butterknife.BindView;
 
 import static net.middledleeast.tamm.fragments.MemberShip.TERMS;
 

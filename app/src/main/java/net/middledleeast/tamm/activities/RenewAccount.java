@@ -74,7 +74,7 @@ public class  RenewAccount extends AppCompatActivity
     private boolean ClickRenewHotel = false;
 
     private long validTillValue;
-    private int accountType;
+    private int accountType = 1 ;
 
     Button btn_renew_account, renew_sign_in, renew_register;
     private int renew = 1;
@@ -207,12 +207,12 @@ public class  RenewAccount extends AppCompatActivity
                 startActivity(intent);
             }
         });
-//        img1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(RenewAccount.this, FlightTamm.class));
-//            }
-//        });
+        img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RenewAccount.this, FlightTamm.class));
+            }
+        });
 
         try {
             user = SharedPreferencesManger.LoadStringData(this, "user");

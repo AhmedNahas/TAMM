@@ -1,6 +1,7 @@
 package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
@@ -16,6 +18,7 @@ import com.google.gson.GsonBuilder;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.Flights;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +29,11 @@ import FlightApi.FlightApiService;
 import FlightApi.FlightAuthentication;
 import FlightApi.FlightBook;
 import FlightApi.FlightConstants;
+import FlightApi.SearchFlights;
+import FlightApi.SearchFlightsResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -35,6 +41,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static net.middledleeast.tamm.activities.FlightSearch.BASE_URL;
 
 public class FlightsSummary extends AppCompatActivity {
 
@@ -213,6 +221,21 @@ ImageView iv_booked_flight_summary;
             }
         });
 
+
+        int journyTipe = SharedPreferencesManger.LoadIntegerData(this, "journyTipe");
+
+
+        if (journyTipe==1){
+
+
+
+
+        }else {
+
+
+
+
+        }
 
         MDataMrmisAdult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult");
         MDataMrmisChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisChild");

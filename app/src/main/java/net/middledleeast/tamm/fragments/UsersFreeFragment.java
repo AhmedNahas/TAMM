@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,14 +18,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.vision.L;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.FreeAdapter;
-import net.middledleeast.tamm.helper.SharedPreferencesManger;
-import net.middledleeast.tamm.model.ListUser;
 import net.middledleeast.tamm.model.UserList;
-import net.middledleeast.tamm.model.Users;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -64,12 +59,12 @@ public class UsersFreeFragment extends Fragment {
 
         getUserData();
 
-//        users.add(new Users("Mohamed","01062594878",""));
-//        users.add(new Users("Mohamed","01062594878",""));
-//        users.add(new Users("Mohamed","01062594878",""));
-//        users.add(new Users("Mohamed","01062594878",""));
-//        users.add(new Users("Mohamed","01062594878",""));
-//        users.add(new Users("Mohamed","01062594878",""));
+//        users.ic_add(new Users("Mohamed","01062594878",""));
+//        users.ic_add(new Users("Mohamed","01062594878",""));
+//        users.ic_add(new Users("Mohamed","01062594878",""));
+//        users.ic_add(new Users("Mohamed","01062594878",""));
+//        users.ic_add(new Users("Mohamed","01062594878",""));
+//        users.ic_add(new Users("Mohamed","01062594878",""));
 //
 //
 //

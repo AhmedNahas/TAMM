@@ -25,8 +25,6 @@ import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import okhttp3.Cache;
-
 public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.SingleView>{
 
     ArrayList<String> listnameHotel;
@@ -119,31 +117,15 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
 
 
 
-        try {
-            String isMemmber = SharedPreferencesManger.LoadStringData(context, "isMemmber");
-            if (isMemmber.equals("1")){
-                String fees_prem = SharedPreferencesManger.LoadStringData(context, "fees_prem");
 
-
-                double fessM = Double.parseDouble(fees_prem) ;
+                double fessM = 100;
                 double price_ = Double.parseDouble(prispart2);
 
                 double sum = Double.sum(fessM, price_);
                 holder.hotelPrice.setText(usd+sum);
-            }else {
-                String  fees_free = SharedPreferencesManger.LoadStringData(context, "fees_free");
 
-                double fessFree = Double.parseDouble(fees_free) ;
-                double price_ = Double.parseDouble(prispart2);
 
-                double sum = Double.sum(fessFree, price_);
-                holder.hotelPrice.setText(usd+sum);
 
-            }
-
-        } catch (Exception e){
-
-        }
 
 
 

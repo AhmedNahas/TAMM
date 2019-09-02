@@ -455,8 +455,8 @@ public class FindHotels extends AppCompatActivity {
 //        String code = allData.get(i).getCode();
 //        String name = allData.get(i).getName();
 //
-//        list.add(name);
-//        listID.add(code);
+//        list.ic_add(name);
+//        listID.ic_add(code);
 //
 //        Toast.makeText(this, ""+name, Toast.LENGTH_SHORT).show();
 //
@@ -498,7 +498,7 @@ public class FindHotels extends AppCompatActivity {
         room4ChildAgeSpinner.setAdapter(adapterChildCountRoom4);
         adapterChildCountRoom4.notifyDataSetChanged();
 
-//        listOfChild.add(0);
+//        listOfChild.ic_add(0);
         list1();
         listOfChildCount();
 
@@ -621,7 +621,7 @@ public class FindHotels extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-// TODO: 27/07/19 add for room 2
+// TODO: 27/07/19 ic_add for room 2
                 nom_adultRoom2 = listOfAdult.get(i);
                 SharedPreferencesManger.SaveData(FindHotels.this, "no_adultroom2", nom_adultRoom2);
 
@@ -641,7 +641,7 @@ public class FindHotels extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-// TODO: 27/07/19 add for room 2
+// TODO: 27/07/19 ic_add for room 2
                 nom_adultRoom3 = listOfAdult.get(i);
                 SharedPreferencesManger.SaveData(FindHotels.this, "no_adultroom3", nom_adultRoom3);
 
@@ -661,7 +661,7 @@ public class FindHotels extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-// TODO: 27/07/19 add for room 2
+// TODO: 27/07/19 ic_add for room 2
                 nom_adultRoom4 = listOfAdult.get(i);
                 SharedPreferencesManger.SaveData(FindHotels.this, "no_adultroom4", nom_adultRoom4);
 
@@ -1161,21 +1161,21 @@ public class FindHotels extends AppCompatActivity {
 //
 //        service.enableLogging = true;
 //        ArrayList<String> childAgeStringArray = new ArrayList<>();
-//        childAgeStringArray.add(SharedPreferencesManger.LoadStringData(this, "child_countroom1"));
-//        childAgeStringArray.add(SharedPreferencesManger.LoadStringData(this, "child_countroom2"));
-//        childAgeStringArray.add(SharedPreferencesManger.LoadStringData(this, "child_countroom3"));
-//        childAgeStringArray.add(SharedPreferencesManger.LoadStringData(this, "child_countroom4"));
+//        childAgeStringArray.ic_add(SharedPreferencesManger.LoadStringData(this, "child_countroom1"));
+//        childAgeStringArray.ic_add(SharedPreferencesManger.LoadStringData(this, "child_countroom2"));
+//        childAgeStringArray.ic_add(SharedPreferencesManger.LoadStringData(this, "child_countroom3"));
+//        childAgeStringArray.ic_add(SharedPreferencesManger.LoadStringData(this, "child_countroom4"));
 //
 //        ArrayList<Integer> adultCountArray = new ArrayList<>();
-//        adultCountArray.add(nom_adultRoom1);
-//        adultCountArray.add(nom_adultRoom2);
-//        adultCountArray.add(nom_adultRoom3);
-//        adultCountArray.add(nom_adultRoom4);
+//        adultCountArray.ic_add(nom_adultRoom1);
+//        adultCountArray.ic_add(nom_adultRoom2);
+//        adultCountArray.ic_add(nom_adultRoom3);
+//        adultCountArray.ic_add(nom_adultRoom4);
 //        ArrayList<Integer> childCountArray = new ArrayList<>();
-//        childCountArray.add(mChildCountRoom1);
-//        childCountArray.add(mChildCountRoom2);
-//        childCountArray.add(mChildCountRoom3);
-//        childCountArray.add(mChildCountRoom4);
+//        childCountArray.ic_add(mChildCountRoom1);
+//        childCountArray.ic_add(mChildCountRoom2);
+//        childCountArray.ic_add(mChildCountRoom3);
+//        childCountArray.ic_add(mChildCountRoom4);
 //
 //        for (int i = 0; i < noRomes; i++) {
 //
@@ -1195,11 +1195,11 @@ public class FindHotels extends AppCompatActivity {
 //
 //                    // child age count
 //                    String ageChildCount = st.nextToken().trim();
-//                    roomGuest.ChildAge.add(Integer.parseInt(ageChildCount));
+//                    roomGuest.ChildAge.ic_add(Integer.parseInt(ageChildCount));
 //
 //                }
 //            }
-//            roomguests.add(roomGuest);
+//            roomguests.ic_add(roomGuest);
 //
 //            SharedPreferencesManger.SaveData(this, "roomGuests", new Gson().toJson(roomguests));
 //        }
@@ -1236,7 +1236,7 @@ public class FindHotels extends AppCompatActivity {
 //                    MinHotelPrice minHotelPrice = hotelSearchResponse.HotelResultList.get(i).MinHotelPrice;
 //                    String currency = minHotelPrice.OriginalPrice.toString();
 //                    String currency1 = minHotelPrice.Currency;
-//                    listPrice.add(currency1 + " " + currency);
+//                    listPrice.ic_add(currency1 + " " + currency);
 //                    HotelInfo hotelInfo = hotel_result.HotelInfo;
 //                    sessionId = hotelSearchResponse.SessionId;
 //                    hotelAddress = hotelInfo.HotelAddress;
@@ -1245,16 +1245,16 @@ public class FindHotels extends AppCompatActivity {
 //                    int code = hotelInfo.Rating.getCode();
 //
 //
-//                    arrayOfResultIndex.add(hotel_result.ResultIndex);
+//                    arrayOfResultIndex.ic_add(hotel_result.ResultIndex);
 //
 //                    String hotelCode = hotelInfo.HotelCode;
 //
-//                    listcodeHotel.add(hotelCode);
+//                    listcodeHotel.ic_add(hotelCode);
 //
-//                    nameHotel.add(hotelName);
-//                    ratrHotel.add(code);
-//                    photoHotel.add(hotelPicture);
-//                    addressHotel.add(hotelAddress);
+//                    nameHotel.ic_add(hotelName);
+//                    ratrHotel.ic_add(code);
+//                    photoHotel.ic_add(hotelPicture);
+//                    addressHotel.ic_add(hotelAddress);
 //
 //                }
 //            }

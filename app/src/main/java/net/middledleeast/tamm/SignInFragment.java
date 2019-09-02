@@ -109,7 +109,7 @@ public class SignInFragment extends Fragment {
 
 
 
-        String username = SharedPreferencesManger.LoadStringData(getActivity(), "username");
+        String username = SharedPreferencesManger.LoadStringData(getActivity(), "user_name");
 
        userName.setText(username);
         dialog = new Dialog(getContext());
@@ -194,7 +194,7 @@ public class SignInFragment extends Fragment {
                     }
 
 
-                    if (userName.getText().toString().equals("tamm") && pass.getText().toString().equals("0123456")) {
+                    if (userName.getText().toString().equals("middledleeast") && pass.getText().toString().equals("0123456")) {
                         getActivity().getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.welcome_container, new Buttons())
                                 .commit();

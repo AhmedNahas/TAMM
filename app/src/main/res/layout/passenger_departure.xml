@@ -238,7 +238,7 @@
                     android:id="@+id/increase_adult"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/add"
+                    android:src="@drawable/ic_add"
                     android:layout_toRightOf="@+id/tv_adult_bg"
 
                     />
@@ -358,7 +358,7 @@
                     android:id="@+id/increase_child"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/add"
+                    android:src="@drawable/ic_add"
                     android:layout_toRightOf="@+id/tv_child_bg"
                     />
 
@@ -473,7 +473,7 @@
                     android:id="@+id/increase_infant"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/add"
+                    android:src="@drawable/ic_add"
                     android:layout_toRightOf="@+id/tv_infant_bg"/>
 
             </RelativeLayout>
@@ -704,7 +704,7 @@
                     android:id="@+id/increase_adult2"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/add"
+                    android:src="@drawable/ic_add"
                     android:layout_toRightOf="@+id/tv_adult_bg2"
 
                     />
@@ -820,7 +820,7 @@
                 android:id="@+id/increase_child2"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/add"
+                android:src="@drawable/ic_add"
                 android:layout_toRightOf="@+id/tv_child_bg2"
                 />
             </RelativeLayout>
@@ -935,7 +935,7 @@
                 android:id="@+id/increase_infant2"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/add"
+                android:src="@drawable/ic_add"
                 android:layout_toRightOf="@+id/tv_infant_bg2"/>
             </RelativeLayout>
 

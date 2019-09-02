@@ -1,26 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+android:layout_height="fill_parent"
+android:layout_width="fill_parent"
+android:orientation="vertical">
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="match_parent"
+    <Button android:id="@+id/button2"
+        android:layout_width="0dip"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/ic_knet" />
-
-    <WebView
-        android:id="@+id/webview_knet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/_152sdp"
-        android:gravity="center_horizontal"
-        android:text="Sorry\nThe knet service is currently not available\nThe service will be back the first of august\nPlease contact Knet for further details\nSorry for the inconvenience"
-        android:textStyle="bold" />
-
-
+        android:layout_gravity="top"
+        android:layout_weight="1" />
+</LinearLayout>
+<WebView
+    android:id="@+id/webview_knet"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"/>
 </LinearLayout>

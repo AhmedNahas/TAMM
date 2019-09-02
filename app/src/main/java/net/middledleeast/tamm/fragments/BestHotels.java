@@ -253,9 +253,9 @@ private String best_hotels = "http://egyptgoogle.com/backend/besthotels/besthote
 //                String imges = detailsResponse.HotelDetails.ImageUrls.get(i).value;
 //                String cityName = detailsResponse.HotelDetails.CityName;
 //                String hotelName = detailsResponse.HotelDetails.HotelName;
-//                listNameHotel.add(hotelName);
-//                listName.add(cityName);
-//                listImage.add(imges);
+//                listNameHotel.ic_add(hotelName);
+//                listName.ic_add(cityName);
+//                listImage.ic_add(imges);
 //            }
 //
 //

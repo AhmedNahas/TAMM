@@ -1,13 +1,9 @@
 package net.middledleeast.tamm.sevice;
 
-import android.app.Activity;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.StrictMode;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.Tamm.Hotels.wcf.AuthenticationData;
@@ -16,13 +12,10 @@ import com.Tamm.Hotels.wcf.CountryList;
 import com.Tamm.Hotels.wcf.CountryListResponse;
 import com.google.gson.Gson;
 
-import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.WelcomeActivity;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class MyService extends Service {
 

@@ -160,9 +160,9 @@ public class SearchFlightByCity extends Fragment {
 //                for (int y = 0; y < airportName.size(); y++) {
 //                    if (airportName.get(y).contains(search_flight_city.getText().toString())) {
 //
-//                        nameTemp.add(airportName.get(y));
-//                        codeAirportTemp.add(airportCode.get(y));
-//                        codecityTemp.add(cityCode.get(y));
+//                        nameTemp.ic_add(airportName.get(y));
+//                        codeAirportTemp.ic_add(airportCode.get(y));
+//                        codecityTemp.ic_add(cityCode.get(y));
 //
 //                        //  rv_country.setLayoutManager(new LinearLayoutManager(getContext()));
 //

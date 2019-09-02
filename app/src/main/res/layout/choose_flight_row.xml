@@ -1,72 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/transparent"
-    >
+    android:orientation="vertical">
 
-    <View
-        android:id="@+id/line2"
-        android:layout_width="1dp"
-        android:layout_height="208dp"
-        android:layout_below="@+id/spinner_date"
-        android:background="@drawable/line1"
-        android:layout_marginLeft="@dimen/_15sdp"
 
-        />
     <RelativeLayout
+        android:layout_marginTop="@dimen/_10sdp"
         android:id="@+id/relative_country1"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:layout_below="@+id/spinner_date"
-        android:layout_toRightOf="@+id/line2"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_4sdp"
-        android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginRight="@dimen/_8sdp"
-        >
+       >
 
-        <ImageView
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/iv_icon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/icon"
-            />
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/app_color"
+            app:civ_circle_background_color="@color/app_color" />
         <TextView
             android:id="@+id/tv_airline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_icon"
             android:text="TURKISH Airlines"
             android:textColor="@color/app_color"
-            android:layout_toRightOf="@+id/iv_icon"
 
             />
+
         <TextView
             android:id="@+id/tv_time_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="7:00 PM "
-            android:layout_toRightOf="@+id/iv_icon"
             android:layout_below="@+id/tv_airline"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:text="7:00 PM "
             android:textColor="#fff"
 
             />
+
         <TextView
             android:id="@+id/tv_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:layout_toRightOf="@+id/tv_time_one"
             android:layout_below="@+id/tv_airline"
+            android:layout_toRightOf="@+id/tv_time_one"
+            android:text="-"
             android:textColor="#fff"
 
             />
+
         <TextView
             android:id="@+id/tv_time_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10:45 PM "
-            android:layout_toRightOf="@+id/tv_text"
             android:layout_below="@+id/tv_airline"
+            android:layout_toRightOf="@+id/tv_text"
+            android:text="10:45 PM "
             android:textColor="#fff"
 
             />
@@ -76,59 +74,64 @@
             android:id="@+id/tv_beirut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Beirut "
-            android:layout_toRightOf="@+id/iv_icon"
             android:layout_below="@+id/tv_time_two"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:text="Beirut "
             android:textColor="@color/app_color"
 
             />
+
         <TextView
             android:id="@+id/tv_text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" - "
-            android:layout_toRightOf="@+id/tv_beirut"
             android:layout_below="@+id/tv_time_two"
+            android:layout_toRightOf="@+id/tv_beirut"
+            android:text=" - "
             android:textColor="@color/app_color"
 
             />
+
         <TextView
             android:id="@+id/tv_kuwait"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" yhvyhy"
-            android:layout_toRightOf="@+id/tv_text2"
             android:layout_below="@+id/tv_time_two"
+            android:layout_toRightOf="@+id/tv_text2"
+            android:text=" yhvyhy"
             android:textColor="@color/app_color"
 
             />
+
         <TextView
             android:id="@+id/tv_kuwait2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kuwait "
-            android:layout_toRightOf="@+id/iv_icon"
             android:layout_below="@+id/tv_beirut"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:text="Kuwait "
             android:textColor="@color/app_color"
 
             />
+
         <TextView
             android:id="@+id/tv_text3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" - "
-            android:layout_toRightOf="@+id/tv_kuwait2"
             android:layout_below="@+id/iv_icon"
+            android:layout_toRightOf="@+id/tv_kuwait2"
+            android:text=" - "
             android:textColor="@color/app_color"
 
             />
+
         <TextView
             android:id="@+id/tv_bubai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ybhythybhy"
-            android:layout_toRightOf="@+id/tv_text3"
             android:layout_below="@+id/tv_beirut"
+            android:layout_toRightOf="@+id/tv_text3"
+            android:text="ybhythybhy"
             android:textColor="@color/app_color"
 
             />
@@ -137,23 +140,21 @@
             android:id="@+id/tv_bubai2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ybhythybhy"
-            android:layout_toRightOf="@+id/tv_kuwait3"
             android:layout_below="@+id/tv_bubai"
+            android:layout_toRightOf="@+id/tv_kuwait3"
+            android:text="ybhythybhy"
             android:textColor="@color/app_color"
 
             />
-
-
 
 
         <TextView
             android:id="@+id/tv_kuwait3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kuwait - "
-            android:layout_toRightOf="@+id/iv_icon"
             android:layout_below="@+id/tv_kuwait2"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:text="Kuwait - "
             android:textColor="@color/app_color"
 
             />
@@ -163,22 +164,21 @@
             android:id="@+id/tv_kuwait4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kuwait"
-            android:layout_toRightOf="@+id/iv_icon"
             android:layout_below="@+id/tv_kuwait3"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:text="Kuwait"
             android:textColor="@color/app_color"
 
             />
-
 
 
         <TextView
             android:id="@+id/tv_bubai3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ybhythybhy"
-            android:layout_toRightOf="@+id/tv_kuwait3"
             android:layout_below="@+id/tv_bubai2"
+            android:layout_toRightOf="@+id/tv_kuwait3"
+            android:text="ybhythybhy"
             android:textColor="@color/app_color"
 
             />
@@ -192,24 +192,25 @@
             android:layout_toRightOf="@+id/iv_icon"
 
             >
+
             <ImageView
                 android:id="@+id/iv_bag"
                 android:layout_width="@dimen/_15sdp"
                 android:layout_height="30dp"
-                android:src="@drawable/bag"
-                />
+                android:src="@drawable/bag" />
+
             <TextView
-                android:textSize="@dimen/_8ssp"
                 android:id="@+id/tv_kg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="40 Kg"
-                android:textColor="#fff"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/iv_bag"
-                />
+                android:text="40 Kg"
+                android:textColor="#fff"
+                android:textSize="@dimen/_8ssp" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -217,6 +218,7 @@
             android:layout_toRightOf="@+id/iv_icon"
 
             >
+
             <ImageView
                 android:id="@+id/iv_bag2"
                 android:layout_width="@dimen/_15sdp"
@@ -224,17 +226,16 @@
                 android:src="@drawable/bag2"
 
                 />
+
             <TextView
-                android:textSize="@dimen/_8ssp"
                 android:id="@+id/tvKiloG2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="20 Kg"
-                android:textColor="#fff"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/iv_bag2"
-                />
-
+                android:text="20 Kg"
+                android:textColor="#fff"
+                android:textSize="@dimen/_8ssp" />
 
 
         </RelativeLayout>
@@ -243,74 +244,367 @@
             android:id="@+id/iv_star"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:src="@drawable/star"
             android:layout_alignParentRight="true"
-            />
+            android:src="@drawable/star" />
+
         <TextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3 hrs 40 min"
-            android:textColor="#fff"
             android:layout_toLeftOf="@+id/iv_star"
-            />
+            android:text="3 hrs 40 min"
+            android:textColor="#fff" />
+
         <TextView
             android:id="@+id/tv_transit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:layout_toLeftOf="@+id/iv_star"
             android:layout_below="@+id/tv_time"
+            android:layout_toLeftOf="@+id/iv_star"
             android:drawableLeft="@drawable/transit"
-            />
+            android:textColor="#fff" />
 
-        <!--<Spinner-->
-            <!---->
-            <!--android:id="@+id/spinner_dollar"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:layout_below="@+id/tv_transit"-->
-            <!--android:backgroundTint="@color/app_color"-->
-            <!--&gt;-->
-            <!---->
-        <!--</Spinner>-->
+
         <TextView
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="@dimen/_4sdp"
             android:id="@+id/tv_TotalFare"
-            android:gravity="end"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
-            android:text="246 grgrgg"
-            android:layout_toLeftOf="@+id/spinner_dollar"
             android:layout_below="@+id/tv_transit"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_toLeftOf="@+id/spinner_dollar"
+            android:gravity="end"
+            android:text="246 grgrgg"
             android:textColor="@color/app_color"
 
             />
+
         <Button
-            android:textSize="@dimen/_8ssp"
             android:id="@+id/select_flight"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_20sdp"
-            android:text="Select Flight"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/shape"
-            android:layout_marginEnd="@dimen/_15sdp"
-
             android:layout_below="@+id/relative_bag"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:background="@drawable/shape"
+            android:text="Select Flight"
+
+            android:textSize="@dimen/_8ssp"
 
             />
 
     </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/relative_country1_return"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_below="@+id/relative_country1"
+        android:layout_marginLeft="@dimen/_4sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        >
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/iv_icon_return"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/app_color"
+            app:civ_circle_background_color="@color/app_color" />
+
+        <TextView
+            android:id="@+id/tv_airline_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_icon_return"
+            android:text="TURKISH Airlines"
+            android:textColor="@color/app_color"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_time_one_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_airline_return"
+            android:layout_toRightOf="@+id/iv_icon_return"
+            android:text="7:00 PM "
+            android:textColor="#fff"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_text_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_airline_return"
+            android:layout_toRightOf="@+id/tv_time_one_return"
+            android:text="-"
+            android:textColor="#fff"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_time_two_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_airline_return"
+            android:layout_toRightOf="@+id/tv_text_return"
+            android:text="10:45 PM "
+            android:textColor="#fff"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_beirut_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time_two_return"
+            android:layout_toRightOf="@+id/iv_icon_return"
+            android:text="Beirut "
+            android:textColor="@color/app_color"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_text2_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time_two_return"
+            android:layout_toRightOf="@+id/tv_beirut_return"
+            android:text=" - "
+            android:textColor="@color/app_color"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_kuwait_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time_two_return"
+            android:layout_toRightOf="@+id/tv_text2_return"
+            android:text=" yhvyhy"
+            android:textColor="@color/app_color"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_kuwait2_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_beirut_return"
+            android:layout_toRightOf="@+id/iv_icon_return"
+            android:text="Kuwait "
+            android:textColor="@color/app_color"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_text3_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_icon_return"
+            android:layout_toRightOf="@+id/tv_kuwait2_return"
+            android:text=" - "
+            android:textColor="@color/app_color"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_bubai_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_beirut_return"
+            android:layout_toRightOf="@+id/tv_text3_return"
+            android:text="ybhythybhy"
+            android:textColor="@color/app_color"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_bubai2_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_bubai_return"
+            android:layout_toRightOf="@+id/tv_kuwait3_return"
+            android:text="ybhythybhy"
+            android:textColor="@color/app_color"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_kuwait3_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_kuwait2_return"
+            android:layout_toRightOf="@+id/iv_icon_return"
+            android:text="Kuwait - "
+            android:textColor="@color/app_color"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_kuwait4_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_kuwait3_return"
+            android:layout_toRightOf="@+id/iv_icon_return"
+            android:text="Kuwait"
+            android:textColor="@color/app_color"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_bubai3_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_bubai2_return"
+            android:layout_toRightOf="@+id/tv_kuwait3_return"
+            android:text="ybhythybhy"
+            android:textColor="@color/app_color"
+
+            />
+
+
+        <RelativeLayout
+            android:id="@+id/relative_bag_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_kuwait4_return"
+            android:layout_toRightOf="@+id/iv_icon_return"
+
+            >
+
+            <ImageView
+                android:id="@+id/iv_bag_return"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="30dp"
+                android:src="@drawable/bag" />
+
+            <TextView
+                android:id="@+id/tv_kg_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/iv_bag_return"
+                android:text="40 Kg"
+                android:textColor="#fff"
+                android:textSize="@dimen/_8ssp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_bag_return"
+            android:layout_toRightOf="@+id/iv_icon_return"
+
+            >
+
+            <ImageView
+                android:id="@+id/iv_bag2_return"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="30dp"
+                android:src="@drawable/bag2"
+
+                />
+
+            <TextView
+                android:id="@+id/tvKiloG2_return"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/iv_bag2_return"
+                android:text="20 Kg"
+                android:textColor="#fff"
+                android:textSize="@dimen/_8ssp" />
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_star_return"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/star" />
+
+        <TextView
+            android:id="@+id/tv_time_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/iv_star_return"
+            android:text="3 hrs 40 min"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/tv_transit_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time_return"
+            android:layout_toLeftOf="@+id/iv_star_return"
+            android:drawableLeft="@drawable/transit"
+            android:textColor="#fff" />
+
+
+        <TextView
+            android:id="@+id/tv_TotalFare_return"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_transit_return"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:layout_toLeftOf="@+id/spinner_dollar"
+            android:gravity="end"
+            android:text="246 grgrgg"
+            android:textColor="@color/app_color"
+
+            />
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <View
         android:id="@+id/line3"
         android:layout_width="@dimen/_270sdp"
         android:layout_height="2dp"
-        android:layout_below="@+id/relative_country1"
+        android:layout_below="@+id/relative_country1_return"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_toRightOf="@+id/line2"
         android:background="@drawable/line1" />
 
-    </RelativeLayout>
+</RelativeLayout>
