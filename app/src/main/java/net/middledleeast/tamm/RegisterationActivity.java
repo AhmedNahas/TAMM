@@ -55,8 +55,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -85,7 +87,7 @@ public class RegisterationActivity extends Fragment {
     int checkUserType;
 
     RequestQueue requestQueue;
-    private String register_url_free = "http://egyptgoogle.com/freeusers/insertusers.php";
+    private String register_url_free = "http://egyptgoogle.com/paymentusertest/user_control.php";
 
     private ArrayList<String> mrOrMissArray;
     private ArrayAdapter mrOrMissAdapter;
@@ -140,6 +142,7 @@ public class RegisterationActivity extends Fragment {
     private String tokenId;
     private int PAYMENT = 2;
     private int FREE = 1;
+    private String bookedOn;
 
 
     @SuppressLint("StaticFieldLeak")
@@ -168,7 +171,10 @@ public class RegisterationActivity extends Fragment {
         imageView = view.findViewById(R.id.back_pressed);
 
 
+        Calendar calendar = Calendar.getInstance();
 
+        Date futureDate = calendar.getTime();
+        bookedOn = new SimpleDateFormat("yyyy-MM-dd").format(futureDate);
 
          checkUserType = SharedPreferencesManger.LoadIntegerData(getContext(), "isMemmber");
 
@@ -443,9 +449,12 @@ public class RegisterationActivity extends Fragment {
 
                 public void onResponse(String response) {
                     Toast.makeText(getContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getContext(), FreeCongratsActivity.class);;
-                        SharedPreferencesManger.SaveData(getContext(),"user_name",1);
+                    Intent intent = new Intent(getContext(), FreeCongratsActivity.class);
+                        SharedPreferencesManger.SaveData(getContext(),"user_name",userName);
                     startActivity(intent);
+
+
+
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -463,14 +472,14 @@ public class RegisterationActivity extends Fragment {
                     parameters.put("lastname", lastName);
                     parameters.put("username", userName);
                     parameters.put("password", password);
-                    parameters.put("day", day);
-                    parameters.put("month", month);
-                    parameters.put("year", year);
-                    parameters.put("location",counTry );
-                    parameters.put("occupation", occup);
-                    parameters.put("email",email );
+                    parameters.put("birthdate"," " + day+ " - " + month+ " - " + year + " ");
+                    parameters.put("country", counTry);
+                    parameters.put("occupation",occup);
+                    parameters.put("email", email);
                     parameters.put("phone",phoneM );
-                    parameters.put("city",cityUser );
+                    parameters.put("city", cityUser);
+                    parameters.put("registrationdate",bookedOn );
+                    parameters.put("usertype","free");
 
 
 

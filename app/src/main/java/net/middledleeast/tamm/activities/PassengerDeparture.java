@@ -208,8 +208,8 @@ public class PassengerDeparture extends AppCompatActivity {
     @BindView(R.id.tv_total2)
     TextView tvTotal2;
     @BindView(R.id.relative_many2)
-    RelativeLayout relativeMany2,relative_back_flight_departure;
-
+    RelativeLayout relativeMany2;
+    RelativeLayout relative_back_flight_departure;
     ImageView iv_booked_passenger_departure;
 
     private ImageView imgincreaseadult, imgdecreaseadult;

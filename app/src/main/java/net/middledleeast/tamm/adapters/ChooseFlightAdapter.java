@@ -27,6 +27,7 @@ import FlightApi.SearchFlightsResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Retrofit;
 
 public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapter.ChooseFlightViewHolder> {
 
@@ -143,6 +144,8 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
     private String bookingClass
             ;
     private String bookingClassReturn;
+    private Retrofit retrofit;
+
 
 
     public ChooseFlightAdapter(Context context, List<SearchFlightsResponse.Result> ListResult
@@ -799,7 +802,6 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
 
                 SharedPreferencesManger.SaveData(context, "size", size);
                 SharedPreferencesManger.SaveData(context, "sizeReturn", sizeReturn);
-
 
 
 

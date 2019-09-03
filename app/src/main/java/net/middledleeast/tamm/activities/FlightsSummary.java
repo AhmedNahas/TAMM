@@ -22,10 +22,16 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import FlightApi.BookResponse;
+import FlightApi.FareQuote;
+import FlightApi.FareQuoteRespone;
+import FlightApi.FareRule;
+import FlightApi.FareRuleResponse;
 import FlightApi.FlightApiService;
 import FlightApi.FlightAuthentication;
 import FlightApi.FlightBook;
 import FlightApi.FlightConstants;
+import FlightApi.FlightSSR;
+import FlightApi.FlightSSRRespone;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -147,29 +153,29 @@ public class FlightsSummary extends AppCompatActivity {
             MDataMrmisChild,
             MDataMrmisInfent,
             firstNameAduld,
-    firstNameChild,
+            firstNameChild,
             firstNameInfant,
-    lastNameAduld,
+            lastNameAduld,
             lastNameChild,
-    lastNameInfant,
+            lastNameInfant,
             datebirthadult,
-    datebirthchild,
+            datebirthchild,
             datebirthinfant,
-    nationality_adult,
+            nationality_adult,
             nationality_child,
-    nationality_infant;
+            nationality_infant;
     private String countryNameOrogin1,
-    countryNameDestination1,
+            countryNameDestination1,
             cabinBaggage,
-    CityNameDestination1,
+            CityNameDestination1,
             CityNameOrogin1,
-    groundTime,
+            groundTime,
             Direct,
-    additionalBaggage,
+            additionalBaggage,
             flightNumberSize1,
-    departureTime,
+            departureTime,
             arrivalTime,
-    countryCodeDestnation1,
+            countryCodeDestnation1,
             countryCodeOrigin1;
     private String airlinenName;
 RelativeLayout relative_back_flight_summary;
@@ -196,6 +202,7 @@ ImageView iv_booked_flight_summary;
     TextView assistantLabelCallRenewHotel;
     TextView assistantLabelMessageRenewHotel;
     private boolean ClickRenewHotel = false;
+    private List<FareQuoteRespone.Result> result;
 
     @Override
 
@@ -204,6 +211,8 @@ ImageView iv_booked_flight_summary;
         setContentView(R.layout.flights_summary);
         ButterKnife.bind(this);
         password = getString(R.string.passowrd_flight);
+
+
 
         iv_booked_flight_summary=findViewById(R.id.iv_booked_flight_summary);
         iv_booked_flight_summary.setOnClickListener(new View.OnClickListener() {
@@ -222,7 +231,7 @@ ImageView iv_booked_flight_summary;
             }
         });
 
-
+BookingFlight();
         proccedBtn = findViewById(R.id.procced_btn);
         assistantLabelVoiceRenewHotel=findViewById(R.id.assistant_label_voice_renew_flight_summary);
         relativeImgRenewHotelTamm=findViewById(R.id.relative_img_renew_flight_summary);
@@ -381,10 +390,8 @@ ImageView iv_booked_flight_summary;
         }
 
 
-
-
-SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
-        SharedPreferencesManger.remove(FlightsSummary.this,"arrivalTime");
+        SharedPreferencesManger.remove(FlightsSummary.this, "departureTime");
+        SharedPreferencesManger.remove(FlightsSummary.this, "arrivalTime");
 
 
 
@@ -426,10 +433,10 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
         }
 
 
+
     }
 
     private void setDataOneWayDirect() {
-
 
 
         MDataMrmisAdult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult");
@@ -708,6 +715,8 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
 
     private void BookingFlight() {
 
+
+
         Gson gson = new GsonBuilder()
                 .create();
 
@@ -727,12 +736,117 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
         flightAuthentication[0].setBookingMode("API");
         flightAuthentication[0].setIPAddress("192.168.4.238");
 
+        //--------------------------------------------------------------
+
+
+        FareRule fareRule = new FareRule();
+        String resultId = SharedPreferencesManger.LoadStringData(this, "resultId");
+
+
+        String tokenId = SharedPreferencesManger.LoadStringData(this, "tokenId");
+        String trackingId = SharedPreferencesManger.LoadStringData(this, "trackingId");
+
+        fareRule.setResultId(resultId);
+        fareRule.setTokenId(tokenId);
+        fareRule.setTrackingId(trackingId);
+        fareRule.setPointOfSale("AE");
+        fareRule.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
+        fareRule.setIPAddress("192.168.4.238");
+        fareRule.setRequestOrigin("Egypt");
+
+        Call<FareRuleResponse> fareRuleResponseCall = flightApiService.getFareRuleResponse("application/json",fareRule);
+        fareRuleResponseCall.enqueue(new Callback<FareRuleResponse>() {
+            @Override
+            public void onResponse(Call<FareRuleResponse> call, Response<FareRuleResponse> response) {
+
+
+                FareRuleResponse body = response.body();
+                Toast.makeText(FlightsSummary.this, ""+body, Toast.LENGTH_SHORT).show();
+
+
+            }
+
+            @Override
+            public void onFailure(Call<FareRuleResponse> call, Throwable t) {
+
+                t.getMessage();
+            }
+        });
+
+        //-------------------------------------------------------------------
+
+        FareQuote fareQuote = new FareQuote();
+
+        fareQuote.setResultId(resultId);
+        fareQuote.setTokenId(tokenId);
+        fareQuote.setTrackingId(trackingId);
+        fareQuote.setPointOfSale("AE");
+        fareQuote.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
+        fareQuote.setIPAddress("192.168.4.238");
+        fareQuote.setRequestOrigin("Egypt");
+
+        Call<FareQuoteRespone> fareQuoteResponeCall = flightApiService.getFareQuote("application/json",fareQuote);
+        fareQuoteResponeCall.enqueue(new Callback<FareQuoteRespone>() {
+            @Override
+            public void onResponse(Call<FareQuoteRespone> call, Response<FareQuoteRespone> response) {
+
+
+                result = response.body().getResult();
+                result.get(0).getFare().getBaseFare();
+                result.get(0).getFare().getServiceFee();
+                result.get(0).getFare().getTax();
+
+            }
+
+            @Override
+            public void onFailure(Call<FareQuoteRespone> call, Throwable t) {
+
+            }
+        });
+
+
+
+
+
+        //--------------------------------------------------------------------------
+
+        //-------------------------------------------------------------------
+
+        FlightSSR flightSSR = new FlightSSR();
+
+        flightSSR.setResultId(resultId);
+        flightSSR.setTokenId(tokenId);
+        flightSSR.setTrackingId(trackingId);
+        flightSSR.setPointOfSale("AE");
+        flightSSR.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
+        flightSSR.setRequestOrigin("Egypt");
+
+        Call<FlightSSRRespone> flightSSRResponeCall = flightApiService.getSSRResponse("application/json",flightSSR);
+        flightSSRResponeCall.enqueue(new Callback<FlightSSRRespone>() {
+            @Override
+            public void onResponse(Call<FlightSSRRespone> call, Response<FlightSSRRespone> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<FlightSSRRespone> call, Throwable t) {
+
+            }
+        });
+
+
+
+
+
+        //--------------------------------------------------------------------------
+
         Call<FlightAuthentication> call = flightApiService.getAuthentication("application/json", flightAuthentication[0]);
         call.enqueue(new Callback<FlightAuthentication>() {
             @Override
             public void onResponse(Call<FlightAuthentication> call, Response<FlightAuthentication> response) {
                 flightAuthentication[0] = response.body();
 
+                FlightBook.Itinerary itinerary = new FlightBook.Itinerary();
 
                 boolean successful = response.isSuccessful();
 
@@ -759,45 +873,48 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
                 bookingFlights[0].setResultId((resultId1));
 
                 bookingFlights[0].setUserData("ahmed");
+                bookingFlights[0].setItinerary(itinerary);
+
 
                 List<FlightBook.Passenger> passengerList = new ArrayList<>();
                 FlightBook.Passenger passenger  = new FlightBook.Passenger();
 
-//                passenger.setTitle("Mr");
-//                passenger.setFirstName("Abdallah");
-//                passenger.setLastName("Mohammed");
-//                passenger.setIsLeadPax(true);
-//                passenger.setGender("1");
-//                passenger.setAddressLine1("cairo");
-//                passenger.setAddressLine2("cairo");
-//                FlightBook.City city  = new FlightBook.City();
-//                city.setCityCode("CAI");
-//                city.setCityName("Cairo");
-//                city.setCountryCode("EG");
-//                passenger.setCity(city);
-//
-//                FlightBook.Country country = new FlightBook.Country();
-//                country.setCountryName("Egypt");
-//                country.setCountryCode("EG");
-//                passenger.setCountry(country);
-//                passenger.setZipCode("11828");
-//                passenger.setEmail("abdallah@gmail.com");
-//                passenger.setMobile1CountryCode("002");
-//                passenger.setType(1);
+                passenger.setTitle("Mr");
+                passenger.setFirstName("Abdallah");
+                passenger.setLastName("Mohammed");
+                passenger.setIsLeadPax(true);
+                passenger.setGender("1");
+                passenger.setAddressLine1("cairo");
+                passenger.setAddressLine2("cairo");
+                FlightBook.City city  = new FlightBook.City();
+                city.setCityCode("CAI");
+                city.setCityName("Cairo");
+                city.setCountryCode("EG");
+                passenger.setCity(city);
+
+                FlightBook.Country country = new FlightBook.Country();
+                country.setCountryName("Egypt");
+                country.setCountryCode("EG");
+                passenger.setCountry(country);
+                passenger.setZipCode("11828");
+                passenger.setEmail("abdallah@gmail.com");
+                passenger.setMobile1CountryCode("002");
+                passenger.setType(1);
 
                 passengerList.add(passenger);
+                itinerary.setTravelDate(departureTime);
+
+//                itinerary.setSegments();
+                itinerary.setPassenger(passengerList);
 
 
 
 
 
-//
-        FlightBook.Itinerary itinerary = new FlightBook.Itinerary();
-//        itinerary.setPassenger(passengerList);
-////
-//
-//
-//
+
+
+
+
 //                FlightBook.FareRule fareRule = new FlightBook.FareRule();
 //
 //                FlightBook.AirlineDetails  airlineDetails = new FlightBook.AirlineDetails();
@@ -891,31 +1008,9 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
 
 
 
-
-
-
-////
-//              FlightBook.Passenger passenger = new FlightBook.Passenger();
-//                passenger.setNationality(nationality);
-//                passenger.setFirstName("ahmed");
-//                passenger.setTitle("Mr");
-//                passenger.setLastName("ahmed");
-//                passenger.setIsLeadPax(true);
-//                passenger.setGender("1");
-//                passenger.setCity(city);
-//                passenger.setCountry(country);
-//                passenger.setMobile1("00112545645");
-////                passenger.setFare(fare);
-//                passenger.setAddressLine1("cairo");
-//                passenger.setEmail("abdallah@gmail.com");
-//                passengerList.ic_add(passenger);
-//                itinerary.setPassenger(passengerList);
-////
-////
-//
-//               itinerary.setTravelDate(a_deTime);
-//
              bookingFlights[0].setItinerary(itinerary);
+
+
 
 
 
@@ -935,7 +1030,7 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
                         Toast.makeText(FlightsSummary.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-//
+
 
             }
 

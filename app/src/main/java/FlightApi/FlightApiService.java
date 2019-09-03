@@ -19,7 +19,23 @@ public interface FlightApiService {
     Call<SearchFlightsResponse> getFlightSearch(@Header("Content-Type") String content_type,
                                         @Body SearchFlights body);
 
+    // Nahas
+    @Headers("Content-Type: application/json")
+    @POST("Detail/FareRule")
+    Call<FareRuleResponse> getFareRuleResponse(@Header("Content-Type") String content_type,
+                                                @Body FareRule body);
 
+    // Nahas
+    @Headers("Content-Type: application/json")
+    @POST("Detail/FareQuote")
+    Call<FareQuoteRespone> getFareQuote(@Header("Content-Type") String content_type,
+                                               @Body FareQuote body);
+
+    // Nahas
+    @Headers("Content-Type: application/json")
+    @POST("Detail/GetSSR")
+    Call<FlightSSRRespone> getSSRResponse(@Header("Content-Type") String content_type,
+                                        @Body FlightSSR body);
 
 
     @Headers("Content-Type: application/json")
