@@ -33,6 +33,7 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterPayment;
 import net.middledleeast.tamm.fragments.TermsFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -74,7 +75,7 @@ public class PaymentActivity extends AppCompatActivity {
     private RelativeLayout relativeLayout;
     private AuthenticationData authenticandata;
     private BasicHttpBinding_IHotelService1 service;
-    private static final String urlmemberfees = "http://egyptgoogle.com/backend/memberfees/memberfessjson.php";
+//    private static final String urlmemberfees = "http://egyptgoogle.com/backend/memberfees/memberfessjson.php";
     Toolbar toolbar;
     ImageView imageView;
     private List<String> spinnerTitles = new ArrayList<>();
@@ -88,13 +89,13 @@ public class PaymentActivity extends AppCompatActivity {
     private String msgbody = "";
     String first_name1 , last_name1 ,date , country ,city,mail,phone,ocupation,username ,pass ;
 
-    private String register_url_member = "http://egyptgoogle.com/paymentusers/insertstudents.php";
+//    private String register_url_member = "http://egyptgoogle.com/paymentusers/insertstudents.php";
     private String day , month , year ;
     private int RIGISTRATHION = 1;
     private int BOOKING_ROOM = 2 ;
     private int FLIGHT =3;
     private boolean knet = false;
-    private String urlAmount = "http://egyptgoogle.com/k/jsoninsert.php";
+//    private String urlAmount = "http://egyptgoogle.com/k/jsoninsert.php";
     private Handler handler;
     private Runnable runnable;
     private long days;
@@ -513,7 +514,7 @@ public class PaymentActivity extends AppCompatActivity {
          private void sendamount(String roomPrice_) {
 
 
-        StringRequest request = new StringRequest(Request.Method.POST, urlAmount, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_AMOUNT, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -598,7 +599,7 @@ public class PaymentActivity extends AppCompatActivity {
     private void sendDataToServer() {
 
         countDownStart();
-        StringRequest request = new StringRequest(Request.Method.POST, register_url_member, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_REGISTER_MEMBER, new Response.Listener<String>() {
 
             @Override
 
@@ -645,7 +646,7 @@ public class PaymentActivity extends AppCompatActivity {
     private void getmemberfees() {
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, urlmemberfees, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, LinksUrl.URL_MEMBER_FEES, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

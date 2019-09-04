@@ -15,6 +15,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,8 +43,8 @@ public class KnetActivity extends AppCompatActivity {
 
         WebViewClientImpl webViewClient = new WebViewClientImpl(this);
         webviewKnet.setWebViewClient(webViewClient);
-        webviewKnet.loadUrl("http://www.egyptgoogle.com/k");
-
+//        webviewKnet.loadUrl("http://www.egyptgoogle.com/k");
+        webviewKnet.loadUrl(LinksUrl.URL_KNET);
 
     }
 

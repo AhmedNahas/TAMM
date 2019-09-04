@@ -20,6 +20,7 @@ import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +33,7 @@ public class ContactUs extends AppCompatActivity {
     Button btn_send_contact;
     RequestQueue requestQueue;
     private String user;
-    private String contact_url_message="http://egyptgoogle.com/backend/sendtouser/insertsendtouser.php";
+//    private String contact_url_message="http://egyptgoogle.com/backend/sendtouser/insertsendtouser.php";
 
 
     @Override
@@ -81,7 +82,7 @@ public class ContactUs extends AppCompatActivity {
     private void setContent() {
 
 
-        StringRequest request = new StringRequest(Request.Method.POST, contact_url_message, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_CONTACTUS, new Response.Listener<String>() {
 
             @Override
 
