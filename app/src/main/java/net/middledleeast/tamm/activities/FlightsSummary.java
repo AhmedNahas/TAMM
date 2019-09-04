@@ -1,7 +1,6 @@
 package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +9,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
@@ -18,22 +16,25 @@ import com.google.gson.GsonBuilder;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
-import net.middledleeast.tamm.model.Flights;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import FlightApi.BookResponse;
+import FlightApi.FareQuote;
+import FlightApi.FareQuoteRespone;
+import FlightApi.FareRule;
+import FlightApi.FareRuleResponse;
 import FlightApi.FlightApiService;
 import FlightApi.FlightAuthentication;
 import FlightApi.FlightBook;
 import FlightApi.FlightConstants;
-import FlightApi.SearchFlights;
-import FlightApi.SearchFlightsResponse;
+import FlightApi.FlightSSR;
+import FlightApi.FlightSSRRespone;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.pedant.SweetAlert.SweetAlertDialog;
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -41,8 +42,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import static net.middledleeast.tamm.activities.FlightSearch.BASE_URL;
 
 public class FlightsSummary extends AppCompatActivity {
 
@@ -72,7 +71,7 @@ public class FlightsSummary extends AppCompatActivity {
     @BindView(R.id.tv_flight)
     TextView tvFlight;
     @BindView(R.id.iv_icon)
-    ImageView ivIcon;
+    CircleImageView ivIcon;
     @BindView(R.id.tv_airline)
     TextView tvAirline;
     @BindView(R.id.tv_time)
@@ -143,8 +142,6 @@ public class FlightsSummary extends AppCompatActivity {
     RelativeLayout closure;
     @BindView(R.id.relative_all)
     RelativeLayout relativeAll;
-    @BindView(R.id.iv_man_hand)
-    ImageView ivManHand;
     @BindView(R.id.tv_cambainBages)
     TextView tvCambainBages;
     private long flightCabinClass;
@@ -156,34 +153,56 @@ public class FlightsSummary extends AppCompatActivity {
             MDataMrmisChild,
             MDataMrmisInfent,
             firstNameAduld,
-    firstNameChild,
+            firstNameChild,
             firstNameInfant,
-    lastNameAduld,
+            lastNameAduld,
             lastNameChild,
-    lastNameInfant,
+            lastNameInfant,
             datebirthadult,
-    datebirthchild,
+            datebirthchild,
             datebirthinfant,
-    nationality_adult,
+            nationality_adult,
             nationality_child,
-    nationality_infant;
+            nationality_infant;
     private String countryNameOrogin1,
-    countryNameDestination1,
+            countryNameDestination1,
             cabinBaggage,
-    CityNameDestination1,
+            CityNameDestination1,
             CityNameOrogin1,
-    groundTime,
+            groundTime,
             Direct,
-    additionalBaggage,
+            additionalBaggage,
             flightNumberSize1,
-    departureTime,
+            departureTime,
             arrivalTime,
-    countryCodeDestnation1,
+            countryCodeDestnation1,
             countryCodeOrigin1;
     private String airlinenName;
 RelativeLayout relative_back_flight_summary;
 ImageView iv_booked_flight_summary;
 
+    private String airlineCode   , countryNameOrogin1Return,
+            countryNameDestination1Return,
+    cabinBaggageReturn,
+            CityNameDestination1Return,
+    CityNameOrogin1Return,
+            groundTimeReturn,
+    directReturn,
+            additionalBaggageReturn,
+    flightNumberSize1Return,
+            departureTime_Return,
+    arrivalTime_Return,
+            countryCodeDestnation1Return,
+    countryCodeOrigin1Return;
+    private String airlineReturn;
+    private String bookingClassReturn;
+    private String airlineCode_return;
+    TextView assistantLabelVoiceRenewHotel;
+    RelativeLayout relativeImgRenewHotelTamm;
+    TextView assistantLabelCallRenewHotel;
+    TextView assistantLabelMessageRenewHotel;
+    private boolean ClickRenewHotel = false;
+    private List<FareQuoteRespone.Result> result;
 
     @Override
 
@@ -192,6 +211,8 @@ ImageView iv_booked_flight_summary;
         setContentView(R.layout.flights_summary);
         ButterKnife.bind(this);
         password = getString(R.string.passowrd_flight);
+
+
 
         iv_booked_flight_summary=findViewById(R.id.iv_booked_flight_summary);
         iv_booked_flight_summary.setOnClickListener(new View.OnClickListener() {
@@ -210,8 +231,58 @@ ImageView iv_booked_flight_summary;
             }
         });
 
-
+BookingFlight();
         proccedBtn = findViewById(R.id.procced_btn);
+        assistantLabelVoiceRenewHotel=findViewById(R.id.assistant_label_voice_renew_flight_summary);
+        relativeImgRenewHotelTamm=findViewById(R.id.relative_img_renew_flight_summary);
+        assistantLabelCallRenewHotel=findViewById(R.id.assistant_label_call_renew_flight_summary);
+        assistantLabelMessageRenewHotel=findViewById(R.id.assistant_label_message_renew_flight_summary);
+        relativeImgRenewHotelTamm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ClickRenewHotel == false) {
+                    assistantLabelCallRenewHotel.setVisibility(View.VISIBLE);
+                    assistantLabelMessageRenewHotel.setVisibility(View.VISIBLE);
+                    assistantLabelVoiceRenewHotel.setVisibility(View.VISIBLE);
+                    ClickRenewHotel = true;
+
+                } else {
+                    assistantLabelCallRenewHotel.setVisibility(View.INVISIBLE);
+                    assistantLabelMessageRenewHotel.setVisibility(View.INVISIBLE);
+                    assistantLabelVoiceRenewHotel.setVisibility(View.INVISIBLE);
+                    ClickRenewHotel = false;
+
+                }
+            }
+        });
+        assistantLabelVoiceRenewHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FlightsSummary.this, VoiceMessageActivity.class);
+                startActivity(intent);
+                Toast.makeText(FlightsSummary.this, "Voice", Toast.LENGTH_SHORT).show();
+            }
+        });
+        assistantLabelCallRenewHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FlightsSummary.this, AssistantActivity.class);
+                startActivity(intent);
+
+                Toast.makeText(FlightsSummary.this, "Call", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        assistantLabelMessageRenewHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(FlightsSummary.this, ContactUs.class);
+                startActivity(intent);
+
+                Toast.makeText(FlightsSummary.this, "Message", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         proccedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,198 +295,110 @@ ImageView iv_booked_flight_summary;
 
         int journyTipe = SharedPreferencesManger.LoadIntegerData(this, "journyTipe");
 
-
-        if (journyTipe==1){
-
-
-
-
-        }else {
-
-
-
-
-        }
-
-        MDataMrmisAdult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult");
-        MDataMrmisChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisChild");
-        MDataMrmisInfent = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisInfent");
-
-        //first
-        firstNameAduld = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld");
-        firstNameChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameChild");
-        firstNameInfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameInfant");
-
-        //last
-        lastNameAduld = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld");
-        lastNameChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameChild");
-        lastNameInfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameInfant");
-
-
-        //date
-        datebirthadult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult");
-        datebirthchild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthchild");
-        datebirthinfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthinfant");
-
-        // nationality
-        nationality_adult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult");
-        nationality_child = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_child");
-        nationality_infant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_infant");
-
-
-
-
-
-
-
         int size =  SharedPreferencesManger.LoadIntegerData(FlightsSummary.this, "size");
+        int sizeReturn =  SharedPreferencesManger.LoadIntegerData(FlightsSummary.this, "sizeReturn");
 
 
-        String bookingClass = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "bookingClass");
-         airlinenName = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "airline");
+        if (journyTipe==1&&size==1){
+
+
+            setDataOneWayDirect();
+
+
+        }else if (journyTipe==2&&sizeReturn==1){
+
+            setDataOneWayDirect();
+
+            closure.setVisibility(View.VISIBLE);
+
+            countryNameOrogin1Return =    SharedPreferencesManger.LoadStringData(this, "countryNameOrogin1Return" );
+
+            countryNameDestination1Return=  SharedPreferencesManger.LoadStringData(this, "countryNameDestination1Return" );
+
+            cabinBaggageReturn    = SharedPreferencesManger.LoadStringData(this, "cabinBaggageReturn" );
+
+            CityNameDestination1Return  =SharedPreferencesManger.LoadStringData(this, "CityNameDestination1Return" );
+
+            CityNameOrogin1Return  = SharedPreferencesManger.LoadStringData(this, "CityNameOrogin1Return" );
+
+
+            groundTimeReturn    = SharedPreferencesManger.LoadStringData(this, "groundTimeReturn" );
+
+            directReturn =SharedPreferencesManger.LoadStringData(this, "directReturn");
+
+            additionalBaggageReturn =SharedPreferencesManger.LoadStringData(this, "additionalBaggageReturn" );
+
+
+            flightNumberSize1Return   = SharedPreferencesManger.LoadStringData(this, "flightNumberSize1Return" );
+
+            departureTime_Return  =SharedPreferencesManger.LoadStringData(this, "departureTimeReturn" );
+
+            arrivalTime_Return = SharedPreferencesManger.LoadStringData(this, "arrivalTimeReturn" );
+
+            countryCodeDestnation1Return  = SharedPreferencesManger.LoadStringData(this, "countryCodeDestnation1Return" );
+
+            countryCodeOrigin1Return    = SharedPreferencesManger.LoadStringData(this, "countryCodeOrigin1Return" );
+            airlineReturn    = SharedPreferencesManger.LoadStringData(this, "airlineReturn" );
+            bookingClassReturn    = SharedPreferencesManger.LoadStringData(this, "bookingClassReturn" );
+            airlineCode_return    = SharedPreferencesManger.LoadStringData(this, "airlineCode_return" );
+
+
+            tvBey2.setText(countryCodeOrigin1Return);
+            tvDxb2.setText(countryCodeDestnation1Return);
+            tvCountry2.setText(CityNameOrogin1Return);
+            tvCcountry2.setText(CityNameDestination1Return);
+            tvFlight2.setText(
+                    "Flight Nb: "+flightNumberSize1Return);
+            tvAirline2.setText(airlineReturn);
+            tvTime2.setText(groundTimeReturn);
+            tvKg2.setText(additionalBaggageReturn);
+            tvCabinClass2.setText(bookingClassReturn);
+
+            ivIcon2.setImageResource(getResources().getIdentifier(airlineCode_return, "drawable", getPackageName()));
 
 
 
-        if (size==1){
 
 
 
 
-    countryNameOrogin1 =  SharedPreferencesManger.LoadStringData(this, "countryNameOrogin1" );
-
-    countryNameDestination1= SharedPreferencesManger.LoadStringData(this, "countryNameDestination1" );
-
-    cabinBaggage =SharedPreferencesManger.LoadStringData(this, "cabinBaggage" );
-
-    CityNameDestination1= SharedPreferencesManger.LoadStringData(this, "CityNameDestination1" );
-
-    CityNameOrogin1= SharedPreferencesManger.LoadStringData(this, "CityNameOrogin1" );
-
-
-    groundTime  = SharedPreferencesManger.LoadStringData(this, "groundTime" );
-
-    Direct = SharedPreferencesManger.LoadStringData(this, "direct" );
-
-    additionalBaggage = SharedPreferencesManger.LoadStringData(this, "additionalBaggage" );
-
-
-    flightNumberSize1  = SharedPreferencesManger.LoadStringData(this, "flightNumberSize1" );
-
-    departureTime=  SharedPreferencesManger.LoadStringData(this, "departureTime" );
-
-    arrivalTime=  SharedPreferencesManger.LoadStringData(this, "arrivalTime" );
-
-    countryCodeDestnation1 =SharedPreferencesManger.LoadStringData(this, "countryCodeDestnation1" );
-
-    countryCodeOrigin1 = SharedPreferencesManger.LoadStringData(this, "countryCodeOrigin1" );
-
-
-
-        tvBey.setText(countryCodeOrigin1);
-        tvCountry.setText(CityNameOrogin1);
-
-        tvDxb.setText(countryCodeDestnation1);
-        tvCcountry.setText(CityNameDestination1);
-
-        tvFlight.setText("Flight Nb: "+flightNumberSize1);
-
-        tvAirline.setText(airlinenName);
-tvTime.setText(groundTime);
-tvCambainBages.setText(cabinBaggage);
-tvKg.setText(additionalBaggage);
-tvCabinClass.setText(bookingClass);
-
-
-            String[] detimeSplit = departureTime.split("T");
+            String[] detimeSplit = departureTime_Return.split("T");
 
             String datDe = detimeSplit[0];
             String timeD = detimeSplit[1];
 
-            tvDateDeparture.setText("DATE : "+datDe);
-            tvDeparture.setText("Departure : "+timeD);
+            tvDateDeparture2.setText("DATE : "+datDe);
+            tvDeparture2.setText("Departure : "+timeD);
 
 
-            String[] arrSplit = arrivalTime.split("T");
+            String[] arrSplit = arrivalTime_Return.split("T");
             String arrDate = arrSplit[0];
             String arrTime = arrSplit[1];
 
-            dateArrival.setText("DATE : "+arrDate);
+            dateArrival2.setText("DATE : "+arrDate);
 
 
-tvArrival.setText("Arrive : "+arrTime);
+            tvArrival2.setText("Arrive : "+arrTime);
+
+
+
+
+
+
+
 
         }
 
 
-SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
-        SharedPreferencesManger.remove(FlightsSummary.this,"arrivalTime");
+        SharedPreferencesManger.remove(FlightsSummary.this, "departureTime");
+        SharedPreferencesManger.remove(FlightsSummary.this, "arrivalTime");
 
 
 
-
-//
-//        String a_totalFare = SharedPreferencesManger.LoadStringData(this, "A_TotalFare");
-//        String a_typeFare = SharedPreferencesManger.LoadStringData(this, "A_typeFare");
-//
-//        String a_airlin_name = SharedPreferencesManger.LoadStringData(this, "A_airlin_name");
-//        String a_duration = SharedPreferencesManger.LoadStringData(this, "A_duration");
-//
-//        tvTime.setText(a_duration);
-//        //
-//        String a_cabinBaggage = SharedPreferencesManger.LoadStringData(this, "A_CabinBaggage");
-//
-//        tvCambainBages.setText(a_cabinBaggage);
-//        String a_includedBaggage = SharedPreferencesManger.LoadStringData(this, "A_IncludedBaggage");
-//
-//        tvKg.setText(a_includedBaggage);
-//
-//        // the all time without split  15-09-2019T10-20-55
-//         a_deTime = SharedPreferencesManger.LoadStringData(this, "A_deTime");
-//        String a_arrTime = SharedPreferencesManger.LoadStringData(this, "A_arrTime");
-//
-//        String a_destination = SharedPreferencesManger.LoadStringData(this, "A_destination");
-//        String a_origin = SharedPreferencesManger.LoadStringData(this, "A_origin");
-//
-//        String distnation = SharedPreferencesManger.LoadStringData(this, "Distnation");
-//        String origin = SharedPreferencesManger.LoadStringData(this, "Origin");
-//
-//
-//        String flightNumber = SharedPreferencesManger.LoadStringData(this, "flightNumber");
-//
-//        String a_startDateS = SharedPreferencesManger.LoadStringData(this, "A_startDateS");
-//
-//
-//        String depuruerTime = SharedPreferencesManger.LoadStringData(this, "depuruerTime");
-//        String arriveTime = SharedPreferencesManger.LoadStringData(this, "arriveTime");
-//        tvDeparture.setText("Departure: " + depuruerTime);
-//        tvArrival.setText("Arrival :" + arriveTime);
-//
-//
-//        dateArrival.setText("Date: " + a_startDateS);
-//        tvDateDeparture.setText("Date: " + a_startDateS);
-//
-//
-//        if (a_airlin_name == null) {
-//            tvAirline.setText("Not Available right now");
-//
-//
-//        } else {
-//
-//            tvAirline.setText(a_airlin_name);
-//        }
-//
-//
-//        tvFlight.setText("Flight Nb :" + flightNumber);
-//        // name
-//        tvCountry.setText(a_origin);
-//        tvCcountry.setText(a_destination);
-//
-//        // code
-//        tvBey.setText(origin);
-//        tvDxb.setText(distnation);
 
 
         flightCabinClass = SharedPreferencesManger.LoadLongData(this, "flightCabinClass");
+
         switch ((int) flightCabinClass) {
 
             case 1:
@@ -448,6 +431,129 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
 
                 break;
         }
+
+
+
+    }
+
+    private void setDataOneWayDirect() {
+
+
+        MDataMrmisAdult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult");
+        MDataMrmisChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisChild");
+        MDataMrmisInfent = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisInfent");
+
+        //first
+        firstNameAduld = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld");
+        firstNameChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameChild");
+        firstNameInfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameInfant");
+
+        //last
+        lastNameAduld = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld");
+        lastNameChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameChild");
+        lastNameInfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameInfant");
+
+
+        //date
+        datebirthadult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult");
+        datebirthchild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthchild");
+        datebirthinfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthinfant");
+
+        // nationality
+        nationality_adult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult");
+        nationality_child = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_child");
+        nationality_infant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_infant");
+
+
+
+
+
+
+
+
+
+
+        String bookingClass = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "bookingClass");
+        airlinenName = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "airline");
+
+
+
+
+        airlineCode =  SharedPreferencesManger.LoadStringData(this, "logoOneWaySize1");
+
+
+
+        ivIcon.setImageResource(getResources().getIdentifier(airlineCode, "drawable",getPackageName()));
+
+
+        countryNameOrogin1 =  SharedPreferencesManger.LoadStringData(this, "countryNameOrogin1" );
+
+        countryNameDestination1= SharedPreferencesManger.LoadStringData(this, "countryNameDestination1" );
+
+        cabinBaggage =SharedPreferencesManger.LoadStringData(this, "cabinBaggage" );
+
+        CityNameDestination1= SharedPreferencesManger.LoadStringData(this, "CityNameDestination1" );
+
+        CityNameOrogin1= SharedPreferencesManger.LoadStringData(this, "CityNameOrogin1" );
+
+
+        groundTime  = SharedPreferencesManger.LoadStringData(this, "groundTime" );
+
+        Direct = SharedPreferencesManger.LoadStringData(this, "direct" );
+
+        additionalBaggage = SharedPreferencesManger.LoadStringData(this, "additionalBaggage" );
+
+
+        flightNumberSize1  = SharedPreferencesManger.LoadStringData(this, "flightNumberSize1" );
+
+        departureTime=  SharedPreferencesManger.LoadStringData(this, "departureTime" );
+
+        arrivalTime=  SharedPreferencesManger.LoadStringData(this, "arrivalTime" );
+
+        countryCodeDestnation1 =SharedPreferencesManger.LoadStringData(this, "countryCodeDestnation1" );
+
+        countryCodeOrigin1 = SharedPreferencesManger.LoadStringData(this, "countryCodeOrigin1" );
+
+
+
+
+
+
+
+
+
+        tvBey.setText(countryCodeOrigin1);
+        tvCountry.setText(CityNameOrogin1);
+
+        tvDxb.setText(countryCodeDestnation1);
+        tvCcountry.setText(CityNameDestination1);
+
+        tvFlight.setText("Flight Nb: "+flightNumberSize1);
+
+        tvAirline.setText(airlinenName);
+        tvTime.setText(groundTime);
+        tvCambainBages.setText(cabinBaggage);
+        tvKg.setText(additionalBaggage);
+        tvCabinClass.setText(bookingClass);
+
+
+        String[] detimeSplit = departureTime.split("T");
+
+        String datDe = detimeSplit[0];
+        String timeD = detimeSplit[1];
+
+        tvDateDeparture.setText("DATE : "+datDe);
+        tvDeparture.setText("Departure : "+timeD);
+
+
+        String[] arrSplit = arrivalTime.split("T");
+        String arrDate = arrSplit[0];
+        String arrTime = arrSplit[1];
+
+        dateArrival.setText("DATE : "+arrDate);
+
+
+        tvArrival.setText("Arrive : "+arrTime);
 
 
     }
@@ -562,7 +668,7 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
 ////                passenger.setAddressLine1("cairo");
 ////                passenger.setFare(fare);
 ////                //  itinerary.setTravelDate(a_deTime);
-////                passengerList.add(passenger);
+////                passengerList.ic_add(passenger);
 ////
 ////                itinerary.setPassenger(passengerList);
 ////
@@ -609,6 +715,8 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
 
     private void BookingFlight() {
 
+
+
         Gson gson = new GsonBuilder()
                 .create();
 
@@ -628,12 +736,117 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
         flightAuthentication[0].setBookingMode("API");
         flightAuthentication[0].setIPAddress("192.168.4.238");
 
+        //--------------------------------------------------------------
+
+
+        FareRule fareRule = new FareRule();
+        String resultId = SharedPreferencesManger.LoadStringData(this, "resultId");
+
+
+        String tokenId = SharedPreferencesManger.LoadStringData(this, "tokenId");
+        String trackingId = SharedPreferencesManger.LoadStringData(this, "trackingId");
+
+        fareRule.setResultId(resultId);
+        fareRule.setTokenId(tokenId);
+        fareRule.setTrackingId(trackingId);
+        fareRule.setPointOfSale("AE");
+        fareRule.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
+        fareRule.setIPAddress("192.168.4.238");
+        fareRule.setRequestOrigin("Egypt");
+
+        Call<FareRuleResponse> fareRuleResponseCall = flightApiService.getFareRuleResponse("application/json",fareRule);
+        fareRuleResponseCall.enqueue(new Callback<FareRuleResponse>() {
+            @Override
+            public void onResponse(Call<FareRuleResponse> call, Response<FareRuleResponse> response) {
+
+
+                FareRuleResponse body = response.body();
+                Toast.makeText(FlightsSummary.this, ""+body, Toast.LENGTH_SHORT).show();
+
+
+            }
+
+            @Override
+            public void onFailure(Call<FareRuleResponse> call, Throwable t) {
+
+                t.getMessage();
+            }
+        });
+
+        //-------------------------------------------------------------------
+
+        FareQuote fareQuote = new FareQuote();
+
+        fareQuote.setResultId(resultId);
+        fareQuote.setTokenId(tokenId);
+        fareQuote.setTrackingId(trackingId);
+        fareQuote.setPointOfSale("AE");
+        fareQuote.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
+        fareQuote.setIPAddress("192.168.4.238");
+        fareQuote.setRequestOrigin("Egypt");
+
+        Call<FareQuoteRespone> fareQuoteResponeCall = flightApiService.getFareQuote("application/json",fareQuote);
+        fareQuoteResponeCall.enqueue(new Callback<FareQuoteRespone>() {
+            @Override
+            public void onResponse(Call<FareQuoteRespone> call, Response<FareQuoteRespone> response) {
+
+
+                result = response.body().getResult();
+                result.get(0).getFare().getBaseFare();
+                result.get(0).getFare().getServiceFee();
+                result.get(0).getFare().getTax();
+
+            }
+
+            @Override
+            public void onFailure(Call<FareQuoteRespone> call, Throwable t) {
+
+            }
+        });
+
+
+
+
+
+        //--------------------------------------------------------------------------
+
+        //-------------------------------------------------------------------
+
+        FlightSSR flightSSR = new FlightSSR();
+
+        flightSSR.setResultId(resultId);
+        flightSSR.setTokenId(tokenId);
+        flightSSR.setTrackingId(trackingId);
+        flightSSR.setPointOfSale("AE");
+        flightSSR.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
+        flightSSR.setRequestOrigin("Egypt");
+
+        Call<FlightSSRRespone> flightSSRResponeCall = flightApiService.getSSRResponse("application/json",flightSSR);
+        flightSSRResponeCall.enqueue(new Callback<FlightSSRRespone>() {
+            @Override
+            public void onResponse(Call<FlightSSRRespone> call, Response<FlightSSRRespone> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<FlightSSRRespone> call, Throwable t) {
+
+            }
+        });
+
+
+
+
+
+        //--------------------------------------------------------------------------
+
         Call<FlightAuthentication> call = flightApiService.getAuthentication("application/json", flightAuthentication[0]);
         call.enqueue(new Callback<FlightAuthentication>() {
             @Override
             public void onResponse(Call<FlightAuthentication> call, Response<FlightAuthentication> response) {
                 flightAuthentication[0] = response.body();
 
+                FlightBook.Itinerary itinerary = new FlightBook.Itinerary();
 
                 boolean successful = response.isSuccessful();
 
@@ -660,45 +873,48 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
                 bookingFlights[0].setResultId((resultId1));
 
                 bookingFlights[0].setUserData("ahmed");
+                bookingFlights[0].setItinerary(itinerary);
+
 
                 List<FlightBook.Passenger> passengerList = new ArrayList<>();
                 FlightBook.Passenger passenger  = new FlightBook.Passenger();
 
-//                passenger.setTitle("Mr");
-//                passenger.setFirstName("Abdallah");
-//                passenger.setLastName("Mohammed");
-//                passenger.setIsLeadPax(true);
-//                passenger.setGender("1");
-//                passenger.setAddressLine1("cairo");
-//                passenger.setAddressLine2("cairo");
-//                FlightBook.City city  = new FlightBook.City();
-//                city.setCityCode("CAI");
-//                city.setCityName("Cairo");
-//                city.setCountryCode("EG");
-//                passenger.setCity(city);
-//
-//                FlightBook.Country country = new FlightBook.Country();
-//                country.setCountryName("Egypt");
-//                country.setCountryCode("EG");
-//                passenger.setCountry(country);
-//                passenger.setZipCode("11828");
-//                passenger.setEmail("abdallah@gmail.com");
-//                passenger.setMobile1CountryCode("002");
-//                passenger.setType(1);
+                passenger.setTitle("Mr");
+                passenger.setFirstName("Abdallah");
+                passenger.setLastName("Mohammed");
+                passenger.setIsLeadPax(true);
+                passenger.setGender("1");
+                passenger.setAddressLine1("cairo");
+                passenger.setAddressLine2("cairo");
+                FlightBook.City city  = new FlightBook.City();
+                city.setCityCode("CAI");
+                city.setCityName("Cairo");
+                city.setCountryCode("EG");
+                passenger.setCity(city);
+
+                FlightBook.Country country = new FlightBook.Country();
+                country.setCountryName("Egypt");
+                country.setCountryCode("EG");
+                passenger.setCountry(country);
+                passenger.setZipCode("11828");
+                passenger.setEmail("abdallah@gmail.com");
+                passenger.setMobile1CountryCode("002");
+                passenger.setType(1);
 
                 passengerList.add(passenger);
+                itinerary.setTravelDate(departureTime);
+
+//                itinerary.setSegments();
+                itinerary.setPassenger(passengerList);
 
 
 
 
 
-//
-        FlightBook.Itinerary itinerary = new FlightBook.Itinerary();
-//        itinerary.setPassenger(passengerList);
-////
-//
-//
-//
+
+
+
+
 //                FlightBook.FareRule fareRule = new FlightBook.FareRule();
 //
 //                FlightBook.AirlineDetails  airlineDetails = new FlightBook.AirlineDetails();
@@ -751,7 +967,7 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
 //                segment.setAirlineDetails(airlineDetails);
 //
 //
-//                segmentList.add(segment);
+//                segmentList.ic_add(segment);
 //                itinerary.setSegments(segmentList);
 
 
@@ -792,31 +1008,9 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
 
 
 
-
-
-
-////
-//              FlightBook.Passenger passenger = new FlightBook.Passenger();
-//                passenger.setNationality(nationality);
-//                passenger.setFirstName("ahmed");
-//                passenger.setTitle("Mr");
-//                passenger.setLastName("ahmed");
-//                passenger.setIsLeadPax(true);
-//                passenger.setGender("1");
-//                passenger.setCity(city);
-//                passenger.setCountry(country);
-//                passenger.setMobile1("00112545645");
-////                passenger.setFare(fare);
-//                passenger.setAddressLine1("cairo");
-//                passenger.setEmail("abdallah@gmail.com");
-//                passengerList.add(passenger);
-//                itinerary.setPassenger(passengerList);
-////
-////
-//
-//               itinerary.setTravelDate(a_deTime);
-//
              bookingFlights[0].setItinerary(itinerary);
+
+
 
 
 
@@ -836,7 +1030,7 @@ SharedPreferencesManger.remove(FlightsSummary.this,"departureTime");
                         Toast.makeText(FlightsSummary.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-//
+
 
             }
 

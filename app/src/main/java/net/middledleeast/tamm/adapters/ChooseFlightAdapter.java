@@ -27,6 +27,7 @@ import FlightApi.SearchFlightsResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Retrofit;
 
 public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapter.ChooseFlightViewHolder> {
 
@@ -120,6 +121,31 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
             countryNameDestinationSize4_4;
     private InputStream inputStream;
     private int sizeReturn;
+    private String stringResourceByName;
+    private String airlineCode   ,    airlineCode_return,
+    CityNameOrogin1Return,
+            CityNameDestination1Return,
+    airlineReturn,
+            arrivalTimeReturn,
+    departureTimeReturn,
+            departureTime_Return,
+    arrivalTime_Return,
+            groundTimeReturn,
+    cabinBaggageReturn,
+            additionalBaggageReturn,
+
+    countryCodeOrigin1Return,
+            countryCodeDestnation1Return,
+    countryNameOrogin1Return,
+            countryNameDestination1Return;
+    private String flightNumberSize1Return;
+    private String stringResourceByNameReturn
+            ;
+    private String bookingClass
+            ;
+    private String bookingClassReturn;
+    private Retrofit retrofit;
+
 
 
     public ChooseFlightAdapter(Context context, List<SearchFlightsResponse.Result> ListResult
@@ -197,7 +223,11 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
 
         holder.tvTotalFare.setText(format + " " + agentPreferredCurrency);
 
+
+        // one way
         List<SearchFlightsResponse.Segment> segments = result.getSegments().get(0);
+
+
         int journyTipe = SharedPreferencesManger.LoadIntegerData(context, "journyTipe");
 
 
@@ -207,16 +237,17 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
 
             List<SearchFlightsResponse.Segment> segmentsReturn = result.getSegments().get(1);
 
-
              sizeReturn = segmentsReturn.size();
 
             if (sizeReturn == 1) {
 
+                flightNumberSize1Return = segmentsReturn.get(0).getFlightNumber();
 
-                String airlineCode = "a" + segmentsReturn.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
+                 airlineCode_return = "a" + segmentsReturn.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
+                bookingClassReturn = segmentsReturn.get(0).getBookingClass();
 
 
-                holder.ivIconReturn.setImageResource(context.getResources().getIdentifier(airlineCode, "drawable", context.getPackageName()));
+                holder.ivIconReturn.setImageResource(context.getResources().getIdentifier(airlineCode_return, "drawable", context.getPackageName()));
 
 
                 holder.tvTransitReturn.setText("Direct");
@@ -232,8 +263,8 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
                 holder.to4Return.setVisibility(View.GONE);
 
 
-               String CityNameOrogin1Return = segmentsReturn.get(0).getOrigin().getCityName();
-                String  CityNameDestination1Return = segmentsReturn.get(0).getDestination().getCityName();
+                CityNameOrogin1Return = segmentsReturn.get(0).getOrigin().getCityName();
+                  CityNameDestination1Return = segmentsReturn.get(0).getDestination().getCityName();
 
 
 
@@ -242,41 +273,47 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
 
 
 
-               String airlineReturn = "AMS";
+                airlineReturn = "A"+segmentsReturn.get(0).getAirlineDetails().getAirlineCode();
 
 
-                String stringResourceByName = getStringResourceByName(airlineReturn);
+                 stringResourceByNameReturn = getStringResourceByName(airlineReturn);
 
                 holder.tvAirlineReturn.setText(stringResourceByName);
 
 
-                 String arrivalTimeReturn = segmentsReturn.get(0).getArrivalTime();
-                String departureTimeReturn = segmentsReturn.get(0).getDepartureTime();
+                  arrivalTimeReturn = segmentsReturn.get(0).getArrivalTime();
+                 departureTimeReturn = segmentsReturn.get(0).getDepartureTime();
 
 
                 String[] ts = departureTimeReturn.split("T");
-                String departureTime_Return = ts[1];
+                 departureTime_Return = ts[1];
 
                 String[] ts1 = arrivalTimeReturn.split("T");
-                String   arrivalTime_Return = ts1[1];
+                   arrivalTime_Return = ts1[1];
                 holder.tvTimeOneReturn.setText(departureTime_Return + " ");
                 holder.tvTimeTwoReturn.setText(" " + arrivalTime_Return);
 
-              String  groundTimeReturn = segmentsReturn.get(0).getGroundTime();
+                groundTimeReturn = segmentsReturn.get(0).getGroundTime();
                 holder.tvTimeReturn.setText(groundTimeReturn);
 
                 holder.tvTotalFareReturn.setVisibility(View.GONE);
 
 
-               String cabinBaggageReturn = (String) segmentsReturn.get(0).getCabinBaggage();
-               String additionalBaggageReturn = (String) segmentsReturn.get(0).getAdditionalBaggage();
+                cabinBaggageReturn = (String) segmentsReturn.get(0).getCabinBaggage();
+                additionalBaggageReturn = (String) segmentsReturn.get(0).getAdditionalBaggage();
 
                 holder.tvKgReturn.setText(additionalBaggageReturn);
                 holder.tvKiloG2Return.setText(cabinBaggageReturn);
 
 
 
+                countryCodeOrigin1Return = segmentsReturn.get(0).getOrigin().getCountryCode();
 
+                countryCodeDestnation1Return = segmentsReturn.get(0).getDestination().getCountryCode();
+
+                countryNameOrogin1Return = segmentsReturn.get(0).getOrigin().getCountryName();
+
+                countryNameDestination1Return = segmentsReturn.get(0).getDestination().getCountryName();
 
 
 
@@ -290,7 +327,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
         }
 
 
-        String bookingClass = segments.get(0).getBookingClass();
+
 
         int size = segments.size();
 
@@ -299,7 +336,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
 
 
             // flight number
-
+             bookingClass = segments.get(0).getBookingClass();
             flightNumberSize1 = segments.get(0).getFlightNumber();
 
             countryCodeOrigin1 = segments.get(0).getOrigin().getCountryCode();
@@ -307,15 +344,15 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
             countryCodeDestnation1 = segments.get(0).getDestination().getCountryCode();
 
 
-            airline = "AMS";
+            airline ="A"+ segments.get(0).getAirlineDetails().getAirlineCode();
 
 
-            String stringResourceByName = getStringResourceByName(airline);
+             stringResourceByName = getStringResourceByName(airline);
 
 
             CityNameOrogin1 = segments.get(0).getOrigin().getCityName();
             CityNameDestination1 = segments.get(0).getDestination().getCityName();
-            String airlineCode = "a" + segments.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
+             airlineCode = "a" + segments.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
 
 
             holder.ivIcon.setImageResource(context.getResources().getIdentifier(airlineCode, "drawable", context.getPackageName()));
@@ -752,7 +789,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
 
                 SharedPreferencesManger.SaveData(context, "resultId", resultId);
 
-                SharedPreferencesManger.SaveData(context, "airline", airline);
+
 
                 SharedPreferencesManger.SaveData(context, "totalFare", format + " " + agentPreferredCurrency);
 
@@ -761,14 +798,22 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
                 SharedPreferencesManger.SaveData(context, "tax", String.valueOf(tax));
                 SharedPreferencesManger.SaveData(context, "serviceFee", String.valueOf(serviceFee));
 
-                SharedPreferencesManger.SaveData(context, "bookingClass", bookingClass);
 
 
                 SharedPreferencesManger.SaveData(context, "size", size);
+                SharedPreferencesManger.SaveData(context, "sizeReturn", sizeReturn);
+
+
+
 
 
                 if (size == 1||sizeReturn==1) {
 
+                    SharedPreferencesManger.SaveData(context, "bookingClass", bookingClass);
+
+                    SharedPreferencesManger.SaveData(context, "logoOneWaySize1", airlineCode);
+
+                    SharedPreferencesManger.SaveData(context, "airline", stringResourceByName);
 
                     SharedPreferencesManger.SaveData(context, "countryNameOrogin1", countryNameOrogin1);
 
@@ -799,7 +844,44 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
                     SharedPreferencesManger.SaveData(context, "countryCodeOrigin1", countryCodeOrigin1);
 
 
-                } else if (size == 2) {
+///
+                    SharedPreferencesManger.SaveData(context, "countryNameOrogin1Return", countryNameOrogin1Return);
+
+                    SharedPreferencesManger.SaveData(context, "countryNameDestination1Return", countryNameDestination1Return);
+
+                    SharedPreferencesManger.SaveData(context, "cabinBaggageReturn", cabinBaggageReturn);
+
+                    SharedPreferencesManger.SaveData(context, "CityNameDestination1Return", CityNameDestination1Return);
+
+                    SharedPreferencesManger.SaveData(context, "CityNameOrogin1Return", CityNameOrogin1Return);
+
+
+                    SharedPreferencesManger.SaveData(context, "groundTimeReturn", groundTimeReturn);
+
+                    SharedPreferencesManger.SaveData(context, "directReturn", "Direct");
+
+                    SharedPreferencesManger.SaveData(context, "additionalBaggageReturn", additionalBaggageReturn);
+
+
+                    SharedPreferencesManger.SaveData(context, "flightNumberSize1Return", flightNumberSize1Return);
+
+                    SharedPreferencesManger.SaveData(context, "departureTimeReturn", departureTimeReturn);
+
+                    SharedPreferencesManger.SaveData(context, "arrivalTimeReturn", arrivalTimeReturn);
+
+                    SharedPreferencesManger.SaveData(context, "countryCodeDestnation1Return", countryCodeDestnation1Return);
+
+                    SharedPreferencesManger.SaveData(context, "countryCodeOrigin1Return", countryCodeOrigin1Return);
+
+                    SharedPreferencesManger.SaveData(context, "airlineReturn", stringResourceByNameReturn);
+                    SharedPreferencesManger.SaveData(context, "bookingClassReturn", bookingClassReturn);
+                    SharedPreferencesManger.SaveData(context, "airlineCode_return", airlineCode_return);
+
+
+
+
+
+                } else if (size == 2||sizeReturn==2) {
 
 
                     SharedPreferencesManger.SaveData(context, "countryNameOroginSize2_1", countryNameOroginSize2_1);
