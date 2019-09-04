@@ -16,7 +16,9 @@
             android:id="@+id/toolbar_back1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_12sdp">
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            >
             <ImageView
                 android:id="@+id/toolbar_back_image_back"
                 android:layout_width="wrap_content"

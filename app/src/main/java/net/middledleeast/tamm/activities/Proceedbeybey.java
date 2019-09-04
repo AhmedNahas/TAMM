@@ -1,36 +1,22 @@
 package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.CheckedTextView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.fragments.MultiCitiesFlights;
 import net.middledleeast.tamm.fragments.ProceedBeyBeyOriginal;
-import net.middledleeast.tamm.fragments.ReturnWayFlights;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import FlightApi.FlightApiService;
 import FlightApi.FlightAuthentication;
-import FlightApi.FlightConstants;
-import FlightApi.SearchFlights;
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -45,7 +31,7 @@ public class Proceedbeybey extends AppCompatActivity {
     private RecyclerView recyclerView = null;
 
     RelativeLayout toolbar_back1;
-ImageView iv_booked_proceed;
+    ImageView iv_booked_proceed;
 
 
     @SuppressLint("ClickableViewAccessibility")

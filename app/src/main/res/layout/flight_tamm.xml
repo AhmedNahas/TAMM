@@ -21,14 +21,16 @@
             android:id="@+id/toolbar_back1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp">
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            >
+
             <ImageView
                 android:id="@+id/toolbar_back_image_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/ic_back_arrow"
-                />
+                android:background="@drawable/ic_back_arrow" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -52,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:background="@drawable/ic_button" />
     </RelativeLayout>
 
