@@ -178,22 +178,22 @@ public class FlightsSummary extends AppCompatActivity {
             countryCodeDestnation1,
             countryCodeOrigin1;
     private String airlinenName;
-RelativeLayout relative_back_flight_summary;
-ImageView iv_booked_flight_summary;
+    RelativeLayout relative_back_flight_summary;
+    ImageView iv_booked_flight_summary;
 
     private String airlineCode   , countryNameOrogin1Return,
             countryNameDestination1Return,
-    cabinBaggageReturn,
+            cabinBaggageReturn,
             CityNameDestination1Return,
-    CityNameOrogin1Return,
+            CityNameOrogin1Return,
             groundTimeReturn,
-    directReturn,
+            directReturn,
             additionalBaggageReturn,
-    flightNumberSize1Return,
+            flightNumberSize1Return,
             departureTime_Return,
-    arrivalTime_Return,
+            arrivalTime_Return,
             countryCodeDestnation1Return,
-    countryCodeOrigin1Return;
+            countryCodeOrigin1Return;
     private String airlineReturn;
     private String bookingClassReturn;
     private String airlineCode_return;
@@ -231,7 +231,7 @@ ImageView iv_booked_flight_summary;
             }
         });
 
-BookingFlight();
+        BookingFlight();
         proccedBtn = findViewById(R.id.procced_btn);
         assistantLabelVoiceRenewHotel=findViewById(R.id.assistant_label_voice_renew_flight_summary);
         relativeImgRenewHotelTamm=findViewById(R.id.relative_img_renew_flight_summary);
@@ -288,7 +288,7 @@ BookingFlight();
             @Override
             public void onClick(View view) {
 
-            //    BookingFlight();
+                //    BookingFlight();
             }
         });
 
@@ -865,7 +865,7 @@ BookingFlight();
                 bookingFlights[0].setRequestOrigin("Egypt");
 
                 //Origin Country code
-               bookingFlights[0].setPointOfSale(PointOfSale);
+                bookingFlights[0].setPointOfSale(PointOfSale);
 
                 bookingFlights[0].setTokenId(tokenId);
                 bookingFlights[0].setTrackingId(trackingId);
@@ -1008,7 +1008,7 @@ BookingFlight();
 
 
 
-             bookingFlights[0].setItinerary(itinerary);
+                bookingFlights[0].setItinerary(itinerary);
 
 
 
