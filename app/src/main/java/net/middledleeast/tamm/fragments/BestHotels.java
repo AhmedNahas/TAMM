@@ -26,6 +26,7 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.OffersHotelsDetailsActivity;
 import net.middledleeast.tamm.adapters.BestHotelAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 import net.middledleeast.tamm.model.Best.Besthotel;
 
 import org.json.JSONArray;
@@ -55,7 +56,7 @@ public class BestHotels extends Fragment {
 
     //    private BasicHttpBinding_IHotelService1 service;
 //    private AuthenticationData authenticationData;
-private String best_hotels = "http://egyptgoogle.com/backend/besthotels/besthotels.php";
+//private String best_hotels = "http://egyptgoogle.com/backend/besthotels/besthotels.php";
     RequestQueue requestQueue;
 
 
@@ -168,7 +169,7 @@ private String best_hotels = "http://egyptgoogle.com/backend/besthotels/besthote
 
 
     private void getBestHotels() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, best_hotels, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, LinksUrl.URL_BEST_HOTEL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 

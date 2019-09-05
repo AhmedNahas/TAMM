@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.FreeAdapter;
+import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 import net.middledleeast.tamm.model.UserList;
 
 import org.json.JSONArray;
@@ -42,7 +43,7 @@ public class UsersFreeFragment extends Fragment {
     ImageView imgView;
     RecyclerView recyclerView;
     FreeAdapter freeAdapter;
-    private static final String url_user_phone ="http://egyptgoogle.com/freeusers/listusers.php" ;
+//    private static final String url_user_phone ="http://egyptgoogle.com/freeusers/listusers.php" ;
     List<UserList> users=new ArrayList<>();
     private List<String> listUserName = new ArrayList<>();
     private List<String> listUserPhone = new ArrayList<>();
@@ -81,7 +82,7 @@ public class UsersFreeFragment extends Fragment {
 
     private void getUserData() {
 
-        StringRequest stringRequest=new StringRequest(Request.Method.GET, url_user_phone, new Response.Listener<String>() {
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, LinksUrl.URL_USER_APP, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

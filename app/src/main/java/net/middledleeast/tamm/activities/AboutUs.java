@@ -16,6 +16,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,12 +27,19 @@ public class AboutUs extends AppCompatActivity {
     private TextView textfamilyabout;
 
     LinearLayout back_pressed_about;
-    private static final String url ="http://egyptgoogle.com/backend/about/aboutjson.php/" ;
+
+//    private static final String url ="http://egyptgoogle.com/backend/about/aboutjson.php/" ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
+
+
+
+
+
 
         textfamilyabout=findViewById(R.id.family_message_about);
         back_pressed_about=findViewById(R.id.back_pressed_about);
@@ -52,7 +60,7 @@ public class AboutUs extends AppCompatActivity {
 
     private void gettextfamilyabout() {
 
-        StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, LinksUrl.URL_ABOUTUS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

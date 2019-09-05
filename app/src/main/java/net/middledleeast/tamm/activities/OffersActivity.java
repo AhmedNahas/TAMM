@@ -19,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.OffersAdapter;
+import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 import net.middledleeast.tamm.model.Bestofferhotel;
 
 import org.json.JSONArray;
@@ -35,7 +36,7 @@ public class OffersActivity extends AppCompatActivity {
     ImageView iv_booked_offers;
     RelativeLayout toolbar_back1_offer;
 
-    private String best_offer_hotels = "http://egyptgoogle.com/backend/hotels/bestdeals.php";
+//    private String best_offer_hotels = "http://egyptgoogle.com/backend/hotels/bestdeals.php";
 
     List<String> listCountry = new ArrayList<>();
     List<String> listPicture = new ArrayList<>();
@@ -92,7 +93,7 @@ public class OffersActivity extends AppCompatActivity {
     private void getOffers() {
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, best_offer_hotels, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, LinksUrl.URL_BEST_OFFER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 

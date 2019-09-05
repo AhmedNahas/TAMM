@@ -25,6 +25,7 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.OffersFlightsDetailsActivity;
 import net.middledleeast.tamm.adapters.FlightAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 import net.middledleeast.tamm.model.Bestflight;
 
 import org.json.JSONArray;
@@ -55,7 +56,7 @@ public class BestFlights extends Fragment {
     private List<Bestflight>  bestflight = new ArrayList<>();
     private LinearLayoutManager linearLayoutManager;
 
-    private String best_flight = "http://egyptgoogle.com/bestflight/bestflightjson.php";
+//    private String best_flight = "http://egyptgoogle.com/bestflight/bestflightjson.php";
 
     RequestQueue requestQueue;
 
@@ -164,7 +165,7 @@ public class BestFlights extends Fragment {
 
     private void getBestFlight() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, best_flight, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, LinksUrl.URL_BEST_FLIGHT, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
