@@ -1378,507 +1378,507 @@ public class FareQuoteRespone implements Serializable {
 
     }
 
-    public class Segment implements Serializable {
-
-        private final static long serialVersionUID = -3706154628603223748L;
-        @SerializedName("NoOfSeatAvailable")
-        @Expose
-        private long noOfSeatAvailable;
-        @SerializedName("OperatingCarrier")
-        @Expose
-        private String operatingCarrier;
-        @SerializedName("SegmentIndicator")
-        @Expose
-        private long segmentIndicator;
-        @SerializedName("Airline")
-        @Expose
-        private String airline;
-        @SerializedName("Origin")
-        @Expose
-        private Origin origin;
-        @SerializedName("Destination")
-        @Expose
-        private Destination destination;
-        @SerializedName("FlightNumber")
-        @Expose
-        private String flightNumber;
-        @SerializedName("DepartureTime")
-        @Expose
-        private String departureTime;
-        @SerializedName("ArrivalTime")
-        @Expose
-        private String arrivalTime;
-        @SerializedName("BookingClass")
-        @Expose
-        private String bookingClass;
-        @SerializedName("MealType")
-        @Expose
-        private Object mealType;
-        @SerializedName("ETicketEligible")
-        @Expose
-        private boolean eTicketEligible;
-        @SerializedName("Craft")
-        @Expose
-        private String craft;
-        @SerializedName("StopOver")
-        @Expose
-        private boolean stopOver;
-        @SerializedName("Stops")
-        @Expose
-        private long stops;
-        @SerializedName("Mile")
-        @Expose
-        private long mile;
-        @SerializedName("Duration")
-        @Expose
-        private String duration;
-        @SerializedName("GroundTime")
-        @Expose
-        private String groundTime;
-        @SerializedName("AccumulatedDuration")
-        @Expose
-        private String accumulatedDuration;
-        @SerializedName("StopPoint")
-        @Expose
-        private Object stopPoint;
-        @SerializedName("StopPointArrivalTime")
-        @Expose
-        private String stopPointArrivalTime;
-        @SerializedName("StopPointDepartureTime")
-        @Expose
-        private String stopPointDepartureTime;
-        @SerializedName("IncludedBaggage")
-        @Expose
-        private String includedBaggage;
-        @SerializedName("CabinBaggage")
-        @Expose
-        private String cabinBaggage;
-        @SerializedName("AdditionalBaggage")
-        @Expose
-        private Object additionalBaggage;
-        @SerializedName("AirlineDetails")
-        @Expose
-        private AirlineDetails airlineDetails;
-        @SerializedName("AirlineName")
-        @Expose
-        private String airlineName;
-
-        /**
-         * No args constructor for use in serialization
-         */
-        public Segment() {
-        }
-
-        /**
-         * @param groundTime
-         * @param airlineName
-         * @param craft
-         * @param stopOver
-         * @param includedBaggage
-         * @param stopPointArrivalTime
-         * @param noOfSeatAvailable
-         * @param flightNumber
-         * @param cabinBaggage
-         * @param stops
-         * @param stopPointDepartureTime
-         * @param mile
-         * @param additionalBaggage
-         * @param airline
-         * @param mealType
-         * @param operatingCarrier
-         * @param segmentIndicator
-         * @param eTicketEligible
-         * @param departureTime
-         * @param origin
-         * @param accumulatedDuration
-         * @param stopPoint
-         * @param destination
-         * @param bookingClass
-         * @param airlineDetails
-         * @param duration
-         * @param arrivalTime
-         */
-        public Segment(long noOfSeatAvailable, String operatingCarrier, long segmentIndicator, String airline, Origin origin, Destination destination, String flightNumber, String departureTime, String arrivalTime, String bookingClass, Object mealType, boolean eTicketEligible, String craft, boolean stopOver, long stops, long mile, String duration, String groundTime, String accumulatedDuration, Object stopPoint, String stopPointArrivalTime, String stopPointDepartureTime, String includedBaggage, String cabinBaggage, Object additionalBaggage, AirlineDetails airlineDetails, String airlineName) {
-            super();
-            this.noOfSeatAvailable = noOfSeatAvailable;
-            this.operatingCarrier = operatingCarrier;
-            this.segmentIndicator = segmentIndicator;
-            this.airline = airline;
-            this.origin = origin;
-            this.destination = destination;
-            this.flightNumber = flightNumber;
-            this.departureTime = departureTime;
-            this.arrivalTime = arrivalTime;
-            this.bookingClass = bookingClass;
-            this.mealType = mealType;
-            this.eTicketEligible = eTicketEligible;
-            this.craft = craft;
-            this.stopOver = stopOver;
-            this.stops = stops;
-            this.mile = mile;
-            this.duration = duration;
-            this.groundTime = groundTime;
-            this.accumulatedDuration = accumulatedDuration;
-            this.stopPoint = stopPoint;
-            this.stopPointArrivalTime = stopPointArrivalTime;
-            this.stopPointDepartureTime = stopPointDepartureTime;
-            this.includedBaggage = includedBaggage;
-            this.cabinBaggage = cabinBaggage;
-            this.additionalBaggage = additionalBaggage;
-            this.airlineDetails = airlineDetails;
-            this.airlineName = airlineName;
-        }
-
-        public long getNoOfSeatAvailable() {
-            return noOfSeatAvailable;
-        }
-
-        public void setNoOfSeatAvailable(long noOfSeatAvailable) {
-            this.noOfSeatAvailable = noOfSeatAvailable;
-        }
-
-        public Segment withNoOfSeatAvailable(long noOfSeatAvailable) {
-            this.noOfSeatAvailable = noOfSeatAvailable;
-            return this;
-        }
-
-        public String getOperatingCarrier() {
-            return operatingCarrier;
-        }
-
-        public void setOperatingCarrier(String operatingCarrier) {
-            this.operatingCarrier = operatingCarrier;
-        }
-
-        public Segment withOperatingCarrier(String operatingCarrier) {
-            this.operatingCarrier = operatingCarrier;
-            return this;
-        }
-
-        public long getSegmentIndicator() {
-            return segmentIndicator;
-        }
-
-        public void setSegmentIndicator(long segmentIndicator) {
-            this.segmentIndicator = segmentIndicator;
-        }
-
-        public Segment withSegmentIndicator(long segmentIndicator) {
-            this.segmentIndicator = segmentIndicator;
-            return this;
-        }
-
-        public String getAirline() {
-            return airline;
-        }
-
-        public void setAirline(String airline) {
-            this.airline = airline;
-        }
-
-        public Segment withAirline(String airline) {
-            this.airline = airline;
-            return this;
-        }
-
-        public Origin getOrigin() {
-            return origin;
-        }
-
-        public void setOrigin(Origin origin) {
-            this.origin = origin;
-        }
-
-        public Segment withOrigin(Origin origin) {
-            this.origin = origin;
-            return this;
-        }
-
-        public Destination getDestination() {
-            return destination;
-        }
-
-        public void setDestination(Destination destination) {
-            this.destination = destination;
-        }
-
-        public Segment withDestination(Destination destination) {
-            this.destination = destination;
-            return this;
-        }
-
-        public String getFlightNumber() {
-            return flightNumber;
-        }
-
-        public void setFlightNumber(String flightNumber) {
-            this.flightNumber = flightNumber;
-        }
-
-        public Segment withFlightNumber(String flightNumber) {
-            this.flightNumber = flightNumber;
-            return this;
-        }
-
-        public String getDepartureTime() {
-            return departureTime;
-        }
-
-        public void setDepartureTime(String departureTime) {
-            this.departureTime = departureTime;
-        }
-
-        public Segment withDepartureTime(String departureTime) {
-            this.departureTime = departureTime;
-            return this;
-        }
-
-        public String getArrivalTime() {
-            return arrivalTime;
-        }
-
-        public void setArrivalTime(String arrivalTime) {
-            this.arrivalTime = arrivalTime;
-        }
-
-        public Segment withArrivalTime(String arrivalTime) {
-            this.arrivalTime = arrivalTime;
-            return this;
-        }
-
-        public String getBookingClass() {
-            return bookingClass;
-        }
-
-        public void setBookingClass(String bookingClass) {
-            this.bookingClass = bookingClass;
-        }
-
-        public Segment withBookingClass(String bookingClass) {
-            this.bookingClass = bookingClass;
-            return this;
-        }
-
-        public Object getMealType() {
-            return mealType;
-        }
-
-        public void setMealType(Object mealType) {
-            this.mealType = mealType;
-        }
-
-        public Segment withMealType(Object mealType) {
-            this.mealType = mealType;
-            return this;
-        }
-
-        public boolean isETicketEligible() {
-            return eTicketEligible;
-        }
-
-        public void setETicketEligible(boolean eTicketEligible) {
-            this.eTicketEligible = eTicketEligible;
-        }
-
-        public Segment withETicketEligible(boolean eTicketEligible) {
-            this.eTicketEligible = eTicketEligible;
-            return this;
-        }
-
-        public String getCraft() {
-            return craft;
-        }
-
-        public void setCraft(String craft) {
-            this.craft = craft;
-        }
-
-        public Segment withCraft(String craft) {
-            this.craft = craft;
-            return this;
-        }
-
-        public boolean isStopOver() {
-            return stopOver;
-        }
-
-        public void setStopOver(boolean stopOver) {
-            this.stopOver = stopOver;
-        }
-
-        public Segment withStopOver(boolean stopOver) {
-            this.stopOver = stopOver;
-            return this;
-        }
-
-        public long getStops() {
-            return stops;
-        }
-
-        public void setStops(long stops) {
-            this.stops = stops;
-        }
-
-        public Segment withStops(long stops) {
-            this.stops = stops;
-            return this;
-        }
-
-        public long getMile() {
-            return mile;
-        }
-
-        public void setMile(long mile) {
-            this.mile = mile;
-        }
-
-        public Segment withMile(long mile) {
-            this.mile = mile;
-            return this;
-        }
-
-        public String getDuration() {
-            return duration;
-        }
-
-        public void setDuration(String duration) {
-            this.duration = duration;
-        }
-
-        public Segment withDuration(String duration) {
-            this.duration = duration;
-            return this;
-        }
-
-        public String getGroundTime() {
-            return groundTime;
-        }
-
-        public void setGroundTime(String groundTime) {
-            this.groundTime = groundTime;
-        }
-
-        public Segment withGroundTime(String groundTime) {
-            this.groundTime = groundTime;
-            return this;
-        }
-
-        public String getAccumulatedDuration() {
-            return accumulatedDuration;
-        }
-
-        public void setAccumulatedDuration(String accumulatedDuration) {
-            this.accumulatedDuration = accumulatedDuration;
-        }
-
-        public Segment withAccumulatedDuration(String accumulatedDuration) {
-            this.accumulatedDuration = accumulatedDuration;
-            return this;
-        }
-
-        public Object getStopPoint() {
-            return stopPoint;
-        }
-
-        public void setStopPoint(Object stopPoint) {
-            this.stopPoint = stopPoint;
-        }
-
-        public Segment withStopPoint(Object stopPoint) {
-            this.stopPoint = stopPoint;
-            return this;
-        }
-
-        public String getStopPointArrivalTime() {
-            return stopPointArrivalTime;
-        }
-
-        public void setStopPointArrivalTime(String stopPointArrivalTime) {
-            this.stopPointArrivalTime = stopPointArrivalTime;
-        }
-
-        public Segment withStopPointArrivalTime(String stopPointArrivalTime) {
-            this.stopPointArrivalTime = stopPointArrivalTime;
-            return this;
-        }
-
-        public String getStopPointDepartureTime() {
-            return stopPointDepartureTime;
-        }
-
-        public void setStopPointDepartureTime(String stopPointDepartureTime) {
-            this.stopPointDepartureTime = stopPointDepartureTime;
-        }
-
-        public Segment withStopPointDepartureTime(String stopPointDepartureTime) {
-            this.stopPointDepartureTime = stopPointDepartureTime;
-            return this;
-        }
-
-        public String getIncludedBaggage() {
-            return includedBaggage;
-        }
-
-        public void setIncludedBaggage(String includedBaggage) {
-            this.includedBaggage = includedBaggage;
-        }
-
-        public Segment withIncludedBaggage(String includedBaggage) {
-            this.includedBaggage = includedBaggage;
-            return this;
-        }
-
-        public String getCabinBaggage() {
-            return cabinBaggage;
-        }
-
-        public void setCabinBaggage(String cabinBaggage) {
-            this.cabinBaggage = cabinBaggage;
-        }
-
-        public Segment withCabinBaggage(String cabinBaggage) {
-            this.cabinBaggage = cabinBaggage;
-            return this;
-        }
-
-        public Object getAdditionalBaggage() {
-            return additionalBaggage;
-        }
-
-        public void setAdditionalBaggage(Object additionalBaggage) {
-            this.additionalBaggage = additionalBaggage;
-        }
-
-        public Segment withAdditionalBaggage(Object additionalBaggage) {
-            this.additionalBaggage = additionalBaggage;
-            return this;
-        }
-
-        public AirlineDetails getAirlineDetails() {
-            return airlineDetails;
-        }
-
-        public void setAirlineDetails(AirlineDetails airlineDetails) {
-            this.airlineDetails = airlineDetails;
-        }
-
-        public Segment withAirlineDetails(AirlineDetails airlineDetails) {
-            this.airlineDetails = airlineDetails;
-            return this;
-        }
-
-        public String getAirlineName() {
-            return airlineName;
-        }
-
-        public void setAirlineName(String airlineName) {
-            this.airlineName = airlineName;
-        }
-
-        public Segment withAirlineName(String airlineName) {
-            this.airlineName = airlineName;
-            return this;
-        }
-
-    }
+//    public class Segment  implements Serializable {
+//
+//        private final static long serialVersionUID = -3706154628603223748L;
+//        @SerializedName("NoOfSeatAvailable")
+//        @Expose
+//        private long noOfSeatAvailable;
+//        @SerializedName("OperatingCarrier")
+//        @Expose
+//        private String operatingCarrier;
+//        @SerializedName("SegmentIndicator")
+//        @Expose
+//        private long segmentIndicator;
+//        @SerializedName("Airline")
+//        @Expose
+//        private String airline;
+//        @SerializedName("Origin")
+//        @Expose
+//        private Origin origin;
+//        @SerializedName("Destination")
+//        @Expose
+//        private Destination destination;
+//        @SerializedName("FlightNumber")
+//        @Expose
+//        private String flightNumber;
+//        @SerializedName("DepartureTime")
+//        @Expose
+//        private String departureTime;
+//        @SerializedName("ArrivalTime")
+//        @Expose
+//        private String arrivalTime;
+//        @SerializedName("BookingClass")
+//        @Expose
+//        private String bookingClass;
+//        @SerializedName("MealType")
+//        @Expose
+//        private Object mealType;
+//        @SerializedName("ETicketEligible")
+//        @Expose
+//        private boolean eTicketEligible;
+//        @SerializedName("Craft")
+//        @Expose
+//        private String craft;
+//        @SerializedName("StopOver")
+//        @Expose
+//        private boolean stopOver;
+//        @SerializedName("Stops")
+//        @Expose
+//        private long stops;
+//        @SerializedName("Mile")
+//        @Expose
+//        private long mile;
+//        @SerializedName("Duration")
+//        @Expose
+//        private String duration;
+//        @SerializedName("GroundTime")
+//        @Expose
+//        private String groundTime;
+//        @SerializedName("AccumulatedDuration")
+//        @Expose
+//        private String accumulatedDuration;
+//        @SerializedName("StopPoint")
+//        @Expose
+//        private Object stopPoint;
+//        @SerializedName("StopPointArrivalTime")
+//        @Expose
+//        private String stopPointArrivalTime;
+//        @SerializedName("StopPointDepartureTime")
+//        @Expose
+//        private String stopPointDepartureTime;
+//        @SerializedName("IncludedBaggage")
+//        @Expose
+//        private String includedBaggage;
+//        @SerializedName("CabinBaggage")
+//        @Expose
+//        private String cabinBaggage;
+//        @SerializedName("AdditionalBaggage")
+//        @Expose
+//        private Object additionalBaggage;
+//        @SerializedName("AirlineDetails")
+//        @Expose
+//        private AirlineDetails airlineDetails;
+//        @SerializedName("AirlineName")
+//        @Expose
+//        private String airlineName;
+//
+//        /**
+//         * No args constructor for use in serialization
+//         */
+//        public Segment() {
+//        }
+//
+//        /**
+//         * @param groundTime
+//         * @param airlineName
+//         * @param craft
+//         * @param stopOver
+//         * @param includedBaggage
+//         * @param stopPointArrivalTime
+//         * @param noOfSeatAvailable
+//         * @param flightNumber
+//         * @param cabinBaggage
+//         * @param stops
+//         * @param stopPointDepartureTime
+//         * @param mile
+//         * @param additionalBaggage
+//         * @param airline
+//         * @param mealType
+//         * @param operatingCarrier
+//         * @param segmentIndicator
+//         * @param eTicketEligible
+//         * @param departureTime
+//         * @param origin
+//         * @param accumulatedDuration
+//         * @param stopPoint
+//         * @param destination
+//         * @param bookingClass
+//         * @param airlineDetails
+//         * @param duration
+//         * @param arrivalTime
+//         */
+//        public Segment(long noOfSeatAvailable, String operatingCarrier, long segmentIndicator, String airline, Origin origin, Destination destination, String flightNumber, String departureTime, String arrivalTime, String bookingClass, Object mealType, boolean eTicketEligible, String craft, boolean stopOver, long stops, long mile, String duration, String groundTime, String accumulatedDuration, Object stopPoint, String stopPointArrivalTime, String stopPointDepartureTime, String includedBaggage, String cabinBaggage, Object additionalBaggage, AirlineDetails airlineDetails, String airlineName) {
+//            super();
+//            this.noOfSeatAvailable = noOfSeatAvailable;
+//            this.operatingCarrier = operatingCarrier;
+//            this.segmentIndicator = segmentIndicator;
+//            this.airline = airline;
+//            this.origin = origin;
+//            this.destination = destination;
+//            this.flightNumber = flightNumber;
+//            this.departureTime = departureTime;
+//            this.arrivalTime = arrivalTime;
+//            this.bookingClass = bookingClass;
+//            this.mealType = mealType;
+//            this.eTicketEligible = eTicketEligible;
+//            this.craft = craft;
+//            this.stopOver = stopOver;
+//            this.stops = stops;
+//            this.mile = mile;
+//            this.duration = duration;
+//            this.groundTime = groundTime;
+//            this.accumulatedDuration = accumulatedDuration;
+//            this.stopPoint = stopPoint;
+//            this.stopPointArrivalTime = stopPointArrivalTime;
+//            this.stopPointDepartureTime = stopPointDepartureTime;
+//            this.includedBaggage = includedBaggage;
+//            this.cabinBaggage = cabinBaggage;
+//            this.additionalBaggage = additionalBaggage;
+//            this.airlineDetails = airlineDetails;
+//            this.airlineName = airlineName;
+//        }
+//
+//        public long getNoOfSeatAvailable() {
+//            return noOfSeatAvailable;
+//        }
+//
+//        public void setNoOfSeatAvailable(long noOfSeatAvailable) {
+//            this.noOfSeatAvailable = noOfSeatAvailable;
+//        }
+//
+//        public Segment withNoOfSeatAvailable(long noOfSeatAvailable) {
+//            this.noOfSeatAvailable = noOfSeatAvailable;
+//            return this;
+//        }
+//
+//        public String getOperatingCarrier() {
+//            return operatingCarrier;
+//        }
+//
+//        public void setOperatingCarrier(String operatingCarrier) {
+//            this.operatingCarrier = operatingCarrier;
+//        }
+//
+//        public Segment withOperatingCarrier(String operatingCarrier) {
+//            this.operatingCarrier = operatingCarrier;
+//            return this;
+//        }
+//
+//        public long getSegmentIndicator() {
+//            return segmentIndicator;
+//        }
+//
+//        public void setSegmentIndicator(long segmentIndicator) {
+//            this.segmentIndicator = segmentIndicator;
+//        }
+//
+//        public Segment withSegmentIndicator(long segmentIndicator) {
+//            this.segmentIndicator = segmentIndicator;
+//            return this;
+//        }
+//
+//        public String getAirline() {
+//            return airline;
+//        }
+//
+//        public void setAirline(String airline) {
+//            this.airline = airline;
+//        }
+//
+//        public Segment withAirline(String airline) {
+//            this.airline = airline;
+//            return this;
+//        }
+//
+//        public Origin getOrigin() {
+//            return origin;
+//        }
+//
+//        public void setOrigin(Origin origin) {
+//            this.origin = origin;
+//        }
+//
+//        public Segment withOrigin(Origin origin) {
+//            this.origin = origin;
+//            return this;
+//        }
+//
+//        public Destination getDestination() {
+//            return destination;
+//        }
+//
+//        public void setDestination(Destination destination) {
+//            this.destination = destination;
+//        }
+//
+//        public Segment withDestination(Destination destination) {
+//            this.destination = destination;
+//            return this;
+//        }
+//
+//        public String getFlightNumber() {
+//            return flightNumber;
+//        }
+//
+//        public void setFlightNumber(String flightNumber) {
+//            this.flightNumber = flightNumber;
+//        }
+//
+//        public Segment withFlightNumber(String flightNumber) {
+//            this.flightNumber = flightNumber;
+//            return this;
+//        }
+//
+//        public String getDepartureTime() {
+//            return departureTime;
+//        }
+//
+//        public void setDepartureTime(String departureTime) {
+//            this.departureTime = departureTime;
+//        }
+//
+//        public Segment withDepartureTime(String departureTime) {
+//            this.departureTime = departureTime;
+//            return this;
+//        }
+//
+//        public String getArrivalTime() {
+//            return arrivalTime;
+//        }
+//
+//        public void setArrivalTime(String arrivalTime) {
+//            this.arrivalTime = arrivalTime;
+//        }
+//
+//        public Segment withArrivalTime(String arrivalTime) {
+//            this.arrivalTime = arrivalTime;
+//            return this;
+//        }
+//
+//        public String getBookingClass() {
+//            return bookingClass;
+//        }
+//
+//        public void setBookingClass(String bookingClass) {
+//            this.bookingClass = bookingClass;
+//        }
+//
+//        public Segment withBookingClass(String bookingClass) {
+//            this.bookingClass = bookingClass;
+//            return this;
+//        }
+//
+//        public Object getMealType() {
+//            return mealType;
+//        }
+//
+//        public void setMealType(Object mealType) {
+//            this.mealType = mealType;
+//        }
+//
+//        public Segment withMealType(Object mealType) {
+//            this.mealType = mealType;
+//            return this;
+//        }
+//
+//        public boolean isETicketEligible() {
+//            return eTicketEligible;
+//        }
+//
+//        public void setETicketEligible(boolean eTicketEligible) {
+//            this.eTicketEligible = eTicketEligible;
+//        }
+//
+//        public Segment withETicketEligible(boolean eTicketEligible) {
+//            this.eTicketEligible = eTicketEligible;
+//            return this;
+//        }
+//
+//        public String getCraft() {
+//            return craft;
+//        }
+//
+//        public void setCraft(String craft) {
+//            this.craft = craft;
+//        }
+//
+//        public Segment withCraft(String craft) {
+//            this.craft = craft;
+//            return this;
+//        }
+//
+//        public boolean isStopOver() {
+//            return stopOver;
+//        }
+//
+//        public void setStopOver(boolean stopOver) {
+//            this.stopOver = stopOver;
+//        }
+//
+//        public Segment withStopOver(boolean stopOver) {
+//            this.stopOver = stopOver;
+//            return this;
+//        }
+//
+//        public long getStops() {
+//            return stops;
+//        }
+//
+//        public void setStops(long stops) {
+//            this.stops = stops;
+//        }
+//
+//        public Segment withStops(long stops) {
+//            this.stops = stops;
+//            return this;
+//        }
+//
+//        public long getMile() {
+//            return mile;
+//        }
+//
+//        public void setMile(long mile) {
+//            this.mile = mile;
+//        }
+//
+//        public Segment withMile(long mile) {
+//            this.mile = mile;
+//            return this;
+//        }
+//
+//        public String getDuration() {
+//            return duration;
+//        }
+//
+//        public void setDuration(String duration) {
+//            this.duration = duration;
+//        }
+//
+//        public Segment withDuration(String duration) {
+//            this.duration = duration;
+//            return this;
+//        }
+//
+//        public String getGroundTime() {
+//            return groundTime;
+//        }
+//
+//        public void setGroundTime(String groundTime) {
+//            this.groundTime = groundTime;
+//        }
+//
+//        public Segment withGroundTime(String groundTime) {
+//            this.groundTime = groundTime;
+//            return this;
+//        }
+//
+//        public String getAccumulatedDuration() {
+//            return accumulatedDuration;
+//        }
+//
+//        public void setAccumulatedDuration(String accumulatedDuration) {
+//            this.accumulatedDuration = accumulatedDuration;
+//        }
+//
+//        public Segment withAccumulatedDuration(String accumulatedDuration) {
+//            this.accumulatedDuration = accumulatedDuration;
+//            return this;
+//        }
+//
+//        public Object getStopPoint() {
+//            return stopPoint;
+//        }
+//
+//        public void setStopPoint(Object stopPoint) {
+//            this.stopPoint = stopPoint;
+//        }
+//
+//        public Segment withStopPoint(Object stopPoint) {
+//            this.stopPoint = stopPoint;
+//            return this;
+//        }
+//
+//        public String getStopPointArrivalTime() {
+//            return stopPointArrivalTime;
+//        }
+//
+//        public void setStopPointArrivalTime(String stopPointArrivalTime) {
+//            this.stopPointArrivalTime = stopPointArrivalTime;
+//        }
+//
+//        public Segment withStopPointArrivalTime(String stopPointArrivalTime) {
+//            this.stopPointArrivalTime = stopPointArrivalTime;
+//            return this;
+//        }
+//
+//        public String getStopPointDepartureTime() {
+//            return stopPointDepartureTime;
+//        }
+//
+//        public void setStopPointDepartureTime(String stopPointDepartureTime) {
+//            this.stopPointDepartureTime = stopPointDepartureTime;
+//        }
+//
+//        public Segment withStopPointDepartureTime(String stopPointDepartureTime) {
+//            this.stopPointDepartureTime = stopPointDepartureTime;
+//            return this;
+//        }
+//
+//        public String getIncludedBaggage() {
+//            return includedBaggage;
+//        }
+//
+//        public void setIncludedBaggage(String includedBaggage) {
+//            this.includedBaggage = includedBaggage;
+//        }
+//
+//        public Segment withIncludedBaggage(String includedBaggage) {
+//            this.includedBaggage = includedBaggage;
+//            return this;
+//        }
+//
+//        public String getCabinBaggage() {
+//            return cabinBaggage;
+//        }
+//
+//        public void setCabinBaggage(String cabinBaggage) {
+//            this.cabinBaggage = cabinBaggage;
+//        }
+//
+//        public Segment withCabinBaggage(String cabinBaggage) {
+//            this.cabinBaggage = cabinBaggage;
+//            return this;
+//        }
+//
+//        public Object getAdditionalBaggage() {
+//            return additionalBaggage;
+//        }
+//
+//        public void setAdditionalBaggage(Object additionalBaggage) {
+//            this.additionalBaggage = additionalBaggage;
+//        }
+//
+//        public Segment withAdditionalBaggage(Object additionalBaggage) {
+//            this.additionalBaggage = additionalBaggage;
+//            return this;
+//        }
+//
+//        public AirlineDetails getAirlineDetails() {
+//            return airlineDetails;
+//        }
+//
+//        public void setAirlineDetails(AirlineDetails airlineDetails) {
+//            this.airlineDetails = airlineDetails;
+//        }
+//
+//        public Segment withAirlineDetails(AirlineDetails airlineDetails) {
+//            this.airlineDetails = airlineDetails;
+//            return this;
+//        }
+//
+//        public String getAirlineName() {
+//            return airlineName;
+//        }
+//
+//        public void setAirlineName(String airlineName) {
+//            this.airlineName = airlineName;
+//        }
+//
+//        public Segment withAirlineName(String airlineName) {
+//            this.airlineName = airlineName;
+//            return this;
+//        }
+//
+//    }
 }
