@@ -33,6 +33,8 @@ import net.middledleeast.tamm.fragments.AuthenticationFragment;
 import net.middledleeast.tamm.fragments.ForgotPasswordFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.AllLinks.LinksUrl;
+import net.middledleeast.tamm.model.Freeuser;
+import net.middledleeast.tamm.model.Paymentuser;
 
 import org.json.JSONArray;
 import org.json.JSONException;

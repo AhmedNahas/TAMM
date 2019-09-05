@@ -227,7 +227,8 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                  public void onClick(View v) {
 
 
-                                                     SharedPreferencesManger.SaveData(activity, "roomPrice", String.valueOf(sum));
+//                                                     SharedPreferencesManger.SaveData(activity, "roomPrice", String.valueOf(sum));
+
 
 
                                                      if (possibleCombinations == null || possibleCombinations.size() == 0) {
@@ -360,6 +361,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                          intent.putExtra("roomIndex", position + 1);
                                                          intent.putExtra("smok", roomInstructions);
                                                          intent.putExtra("roomTybe", roomType);
+
+
+                                                         intent.putExtra("roomPrice", holder.roomPrice.getText().toString());
 
 
 

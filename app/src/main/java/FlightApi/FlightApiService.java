@@ -1,5 +1,8 @@
 package FlightApi;
 
+
+
+import FlightApi.booking.BookingFlight;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Header;
@@ -40,8 +43,8 @@ public interface FlightApiService {
 
     @Headers("Content-Type: application/json")
     @POST("Booking/Book")
-    Call<BookResponse> getFlightBook(@Header("Content-Type") String content_type,
-                                                @Body FlightBook body);
+    Call<GetBookingResponse> getFlightBook(@Header("Content-Type") String content_type,
+                                           @Body BookingFlight body);
 
 
 
