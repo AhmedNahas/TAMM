@@ -168,8 +168,8 @@ public class PaymentActivity extends AppCompatActivity {
 
             roomPrice = SharedPreferencesManger.LoadStringData(this, "finalpriceRoom");
             currency = SharedPreferencesManger.LoadStringData(this, "currency");
-            last_name = SharedPreferencesManger.LoadStringData(this, "lastName");
-            first_name = SharedPreferencesManger.LoadStringData(this, "firstName");
+            last_name = SharedPreferencesManger.LoadStringData(this, "lastName1GustOne");
+            first_name = SharedPreferencesManger.LoadStringData(this, "firstName1GustOne");
 
 
 
