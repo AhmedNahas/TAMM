@@ -163,29 +163,46 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         if (cancelPolicies != null) {
             DateTime deadLine = cancelPolicies.LastCancellationDeadline;
         }
-        String roomPromotion = rooms.get(position).RoomPromtion;
+
+        String gustMode = SharedPreferencesManger.LoadStringData(context, "gustMode");
+
         BigDecimal roomprice = rooms.get(position).RoomRate.TotalFare;
 
 
-        if (accountPlan == 1){
-
-            double price_ = Double.parseDouble(roomprice.toString());
-            double price_1 = Double.parseDouble(feesFree);
+        if (gustMode!=null){
 
 
-            sum = Double.sum(price_1, price_);
-            holder.roomPrice.setText(currency + " " + sum);
+            holder.roomPrice.setText(roomprice.toString());
 
-        }else if (accountPlan == 0){
+        }else {
 
-            double price_ = Double.parseDouble(roomprice.toString());
-            double price_1 = Double.parseDouble(feesMember);
+            String roomPromotion = rooms.get(position).RoomPromtion;
 
 
-            sum = Double.sum(price_1, price_);
-            holder.roomPrice.setText(currency + " " + sum);
+            if (accountPlan == 1){
+
+                double price_ = Double.parseDouble(roomprice.toString());
+                double price_1 = Double.parseDouble(feesFree);
+
+
+                sum = Double.sum(price_1, price_);
+                holder.roomPrice.setText(currency + " " + sum);
+
+            }else if (accountPlan == 0){
+
+                double price_ = Double.parseDouble(roomprice.toString());
+                double price_1 = Double.parseDouble(feesMember);
+
+
+                sum = Double.sum(price_1, price_);
+                holder.roomPrice.setText(currency + " " + sum);
+
+            }
+
 
         }
+
+
 
 
 
