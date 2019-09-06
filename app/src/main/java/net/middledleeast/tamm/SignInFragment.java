@@ -90,9 +90,7 @@ public class SignInFragment extends Fragment {
 
         toolbar = view.findViewById(R.id.welcome_toolbar);
         imageView = view.findViewById(R.id.back_pressed);
-
-
-
+        
 
 //
 //        userName.setText("ahmed");
