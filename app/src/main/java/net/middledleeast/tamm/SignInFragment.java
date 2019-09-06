@@ -294,6 +294,7 @@ public class SignInFragment extends Fragment {
                         // Launch main activity
                         Intent intent = new Intent(getContext(),
                                 RenewAccount.class);
+                        SharedPreferencesManger.remove(getContext(),"gustMode");
                         startActivity(intent);
 
                     } else {

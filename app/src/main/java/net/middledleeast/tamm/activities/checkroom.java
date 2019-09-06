@@ -98,7 +98,8 @@ public class checkroom extends AppCompatActivity {
 
         Glide.with(this).load(singlePic).into(imgCheckOut);
 
-//
+
+
 //        if (arrayOfRooms.size()==2){
 //
 //            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;

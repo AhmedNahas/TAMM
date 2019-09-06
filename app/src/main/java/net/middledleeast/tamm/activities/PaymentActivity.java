@@ -635,6 +635,8 @@ public class PaymentActivity extends AppCompatActivity {
 //                        db.addUser(name, email, uid, created_at);
 
                         Intent intent =new Intent(PaymentActivity.this,MemberCongratsActivity.class);
+                        SharedPreferencesManger.remove(PaymentActivity.this,"gustMode");
+
                         startActivity(intent);
                         // Launch login activity
 
