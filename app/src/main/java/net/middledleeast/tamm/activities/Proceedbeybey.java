@@ -3,22 +3,39 @@ package net.middledleeast.tamm.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.fragments.MultiCitiesFlights;
 import net.middledleeast.tamm.fragments.ProceedBeyBeyOriginal;
+import net.middledleeast.tamm.fragments.ReturnWayFlights;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import FlightApi.FlightApiService;
 import FlightApi.FlightAuthentication;
+import FlightApi.FlightConstants;
+import FlightApi.SearchFlights;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -40,7 +57,7 @@ public class Proceedbeybey extends AppCompatActivity {
     private boolean ClickRenewHotel = false;
 
     RelativeLayout toolbar_back1;
-ImageView iv_booked_proceed;
+    ImageView iv_booked_proceed;
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -166,10 +183,10 @@ ImageView iv_booked_proceed;
 //                segment.setPreferredArrivalTime("2019-8-8T00:00:00");
 //
 //                List<String> airlines = new ArrayList<>();
-//                airlines.ic_add("DEL");
-//                airlines.ic_add("DXB");
+//                airlines.add("DEL");
+//                airlines.add("DXB");
 //                segment.setPreferredAirlines(airlines);
-//                segments.ic_add(segment);
+//                segments.add(segment);
 //                searchFlights[0].setSegment(segments);
 //                Call<SearchFlights> searchCall = flightApiService.getFlightSearch("application/json", searchFlights[0]);
 //                searchCall.enqueue(new Callback<SearchFlights>() {
@@ -211,10 +228,10 @@ ImageView iv_booked_proceed;
 //            segment.setPreferredDepartureTime("2018-12-29T00:00:00");
 //
 //            List<String> airlines = new ArrayList<>();
-//            airlines.ic_add("EK");
-//            airlines.ic_add("AI");
+//            airlines.add("EK");
+//            airlines.add("AI");
 //            segment.setPreferredAirlines(airlines);
-//            segments.ic_add(segment);
+//            segments.add(segment);
 //            searchFlights[0].setSegment(segments);
 //            Call<SearchFlights> searchCall = flightApiService.getFlightSearch("application/json", searchFlights[0]);
 //            searchCall.enqueue(new Callback<SearchFlights>() {

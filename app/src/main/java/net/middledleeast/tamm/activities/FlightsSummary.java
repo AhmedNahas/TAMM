@@ -764,7 +764,7 @@ public class FlightsSummary extends AppCompatActivity {
             public void onResponse(Call<FareQuoteRespone> call, Response<FareQuoteRespone> response) {
 
 
-               FlightApi.Segment segment = response.body().getResult().get(0).getSegments().get(0).get(0);
+                FlightApi.Segment segment = response.body().getResult().get(0).getSegments().get(0).get(0);
                 String   origin = response.body().getResult().get(0).getOrigin();
                 String destination = response.body().getResult().get(0).getDestination();
                 FareQuoteRespone.Fare fare = response.body().getResult().get(0).getFare();
@@ -808,29 +808,29 @@ public class FlightsSummary extends AppCompatActivity {
 
                 FlightApi.booking.Passenger passenger =new FlightApi.booking.Passenger();
 
-              passenger.setFare(fare1);
-              passenger.setAddressLine1("cairo");
-              passenger.setAddressLine2("cairo");
-              FlightApi.booking.City city = new FlightApi.booking.City();
-              city.setCityCode("CAI");
-              city.setCityName("cairo");
-              city.setCountryCode("Egypt");
-              passenger.setCity(city);
+                passenger.setFare(fare1);
+                passenger.setAddressLine1("cairo");
+                passenger.setAddressLine2("cairo");
+                FlightApi.booking.City city = new FlightApi.booking.City();
+                city.setCityCode("CAI");
+                city.setCityName("cairo");
+                city.setCountryCode("Egypt");
+                passenger.setCity(city);
 
                 FlightApi.booking.Country country = new FlightApi.booking.Country();
                 country.setCountryCode("EG");
                 country.setCountryName("Egypt");
-              passenger.setCountry(country);
-              passenger.setEmail("abdallah@yahoo.com");
-              passenger.setFirstName("abdallah");
-              passenger.setGender(1);
-              passenger.setIsLeadPax(true);
-              passenger.setLastName("mohamed");
-              passenger.setType(1);
-              passenger.setTitle("MS");
+                passenger.setCountry(country);
+                passenger.setEmail("abdallah@yahoo.com");
+                passenger.setFirstName("abdallah");
+                passenger.setGender(1);
+                passenger.setIsLeadPax(true);
+                passenger.setLastName("mohamed");
+                passenger.setType(1);
+                passenger.setTitle("MS");
 
-              ArrayList<Segment> segmentList = new ArrayList<>();
-              segmentList.add(segment);
+                ArrayList<Segment> segmentList = new ArrayList<>();
+                segmentList.add(segment);
 
 
 
@@ -838,7 +838,7 @@ public class FlightsSummary extends AppCompatActivity {
 
 
 
-               itinerary.setDestination(destination);
+                itinerary.setDestination(destination);
                 FlightApi.booking.FareRule fareRule1 = new FlightApi.booking.FareRule();
                 fareRule1.setAirline(airlineCode);
                 fareRule1.setDestination(destination);
@@ -849,12 +849,12 @@ public class FlightsSummary extends AppCompatActivity {
                 List<FlightApi.booking.FareRule> fareRuleList = new ArrayList<>();
                 fareRuleList.add(fareRule1);
 
-       itinerary.setFareRules(fareRuleList);
+                itinerary.setFareRules(fareRuleList);
 
-        ArrayList<Passenger> passengerList = new ArrayList<>();
-       // passengerList.add(passenger);
+                ArrayList<Passenger> passengerList = new ArrayList<>();
+                // passengerList.add(passenger);
 
-       // itinerary.setPassenger(passengerList);
+                // itinerary.setPassenger(passengerList);
                 book.setItinerary(itinerary);
 
 
@@ -867,7 +867,7 @@ public class FlightsSummary extends AppCompatActivity {
 
 
 
-                 response.raw().body();
+                        response.raw().body();
                         long status = response.body().getStatus();
                         String tokenId1 = response.body().getTokenId();
 
@@ -884,7 +884,7 @@ public class FlightsSummary extends AppCompatActivity {
 
 
 
-        }
+            }
 
             @Override
             public void onFailure(Call<FareQuoteRespone> call, Throwable t) {

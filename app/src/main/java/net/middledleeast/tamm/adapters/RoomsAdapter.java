@@ -76,6 +76,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     ArrayList<RoomCombination> possibleCombinations;
     ArrayOfRequestedRooms arrayOfRooms;
     private double sum;
+    private Integer accountPlan;
+    private String feesFree;
+    private String feesMember;
 
 
     public RoomsAdapter(ArrayList<Integer> roomCombs, Activity activity, AuthenticationData data, BasicHttpBinding_IHotelService1 service,
@@ -139,8 +142,16 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         String roomType = rooms.get(position).RoomTypeName;
         hotel_room = rooms.get(position);
 
+        feesFree = SharedPreferencesManger.LoadStringData(context, "feesFree");
+        feesMember = SharedPreferencesManger.LoadStringData(context, "feesMember");
+
+//        String feesMemberForEachRoom = SharedPreferencesManger.LoadStringData(context, "feesMemberForEachRoom");
+//        String feesFreeForEachRoom = SharedPreferencesManger.LoadStringData(context, "feesFreeForEachRoom");
+        accountPlan = SharedPreferencesManger.LoadIntegerData(context, "accountPlan");
+
 
         SharedPreferencesManger.SaveData(context, "RoomComb", new Gson().toJson(possibleCombinations, fooType));
+
 
 //        Hotel_Room hotel_room1 = rooms.get(1);
         String mealType = rooms.get(position).MealType;
@@ -156,23 +167,25 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         BigDecimal roomprice = rooms.get(position).RoomRate.TotalFare;
 
 
+        if (accountPlan == 1){
+
+            double price_ = Double.parseDouble(roomprice.toString());
+            double price_1 = Double.parseDouble(feesFree);
 
 
-                double fessM = Double.parseDouble("100") ;
-                double price_ = Double.parseDouble(roomprice.toString());
+            sum = Double.sum(price_1, price_);
+            holder.roomPrice.setText(currency + " " + sum);
 
-                sum = Double.sum(fessM, price_);
-                holder.roomPrice.setText(currency + " " + sum);
+        }else if (accountPlan == 0){
 
-
-
-
+            double price_ = Double.parseDouble(roomprice.toString());
+            double price_1 = Double.parseDouble(feesMember);
 
 
+            sum = Double.sum(price_1, price_);
+            holder.roomPrice.setText(currency + " " + sum);
 
-
-
-
+        }
 
 
 

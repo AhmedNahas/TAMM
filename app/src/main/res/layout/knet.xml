@@ -1,20 +1,35 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_height="fill_parent"
 android:layout_width="fill_parent"
-android:orientation="vertical">
+android:orientation="vertical"
+    android:background="@color/black">
 <LinearLayout
     android:orientation="horizontal"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="fill_parent">
 
-    <Button android:id="@+id/button2"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:layout_weight="1" />
+    <WebView
+        android:id="@+id/webview_knet"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none"
+        android:layout_margin="@dimen/_30sdp"/>
+
 </LinearLayout>
-<WebView
-    android:id="@+id/webview_knet"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"/>
-</LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/loadWebPage"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_width="@dimen/_90sdp"
+        android:background="@drawable/shape"
+        android:text="Load Web Page"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+
+        />
+</RelativeLayout>
