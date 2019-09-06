@@ -1,12 +1,10 @@
 
-package FlightApi;
+package FlightApi.booking;
 
-import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BookFlight implements Serializable
-{
+public class BookingFlight {
 
     @SerializedName("ResultId")
     @Expose
@@ -19,11 +17,10 @@ public class BookFlight implements Serializable
     private String trackingId;
     @SerializedName("IPAddress")
     @Expose
-    private String ipAddress;
+    private String iPAddress;
     @SerializedName("Itinerary")
     @Expose
     private Itinerary itinerary;
-    private final static long serialVersionUID = 6787855190819769375L;
 
     public String getResultId() {
         return resultId;
@@ -49,6 +46,14 @@ public class BookFlight implements Serializable
         this.trackingId = trackingId;
     }
 
+    public String getIPAddress() {
+        return iPAddress;
+    }
+
+    public void setIPAddress(String iPAddress) {
+        this.iPAddress = iPAddress;
+    }
+
     public Itinerary getItinerary() {
         return itinerary;
     }
@@ -57,9 +62,4 @@ public class BookFlight implements Serializable
         this.itinerary = itinerary;
     }
 
-    public void setIPAddress(String ipAddress) {
-
-        this.ipAddress = ipAddress;
-
-    }
 }

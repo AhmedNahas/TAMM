@@ -19,13 +19,10 @@ import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import FlightApi.BookFlight;
-import FlightApi.BookFlightResponse;
-import FlightApi.Fare;
 import FlightApi.FareQuote;
 import FlightApi.FareQuoteRespone;
 import FlightApi.FareRule;
@@ -35,14 +32,14 @@ import FlightApi.FlightAuthentication;
 import FlightApi.FlightConstants;
 import FlightApi.FlightSSR;
 import FlightApi.FlightSSRRespone;
-import FlightApi.Itinerary;
-import FlightApi.Passenger;
+import FlightApi.GetBookingResponse;
 import FlightApi.Segment;
+import FlightApi.booking.BookingFlight;
+import FlightApi.booking.Passenger;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.OkHttpClient;
-import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -767,25 +764,28 @@ public class FlightsSummary extends AppCompatActivity {
             public void onResponse(Call<FareQuoteRespone> call, Response<FareQuoteRespone> response) {
 
 
-                Segment segment = response.body().getResult().get(0).getSegments().get(0).get(0);
+               FlightApi.Segment segment = response.body().getResult().get(0).getSegments().get(0).get(0);
                 String   origin = response.body().getResult().get(0).getOrigin();
                 String destination = response.body().getResult().get(0).getDestination();
                 FareQuoteRespone.Fare fare = response.body().getResult().get(0).getFare();
-                List<FareQuoteRespone.FareRule> fareRules = response.body().getResult().get(0).getFareRules();
+                List<FareRule> fareRules = response.body().getResult().get(0).getFareRules();
+                String tokenId = response.body().getTokenId();
+                String trackingId = response.body().getTrackingId();
 
 
-                BookFlight book  = new BookFlight();
+                BookingFlight book  = new BookingFlight();
 
                 book.setTrackingId(trackingId);
                 book.setResultId(resultId);
                 book.setTokenId(tokenId);
+                book.setIPAddress("192.168.4.238");
 
-                Itinerary itinerary = new Itinerary();
+                FlightApi.booking.Itinerary itinerary = new FlightApi.booking.Itinerary ();
                 itinerary.setOrigin(origin);
                 itinerary.setDestination(destination);
 //
 
-                Fare fare1  = new Fare();
+                FlightApi.booking.Fare fare1  = new FlightApi.booking.Fare();
 
                 double baseFare = fare.getBaseFare();
                 long agentMarkup = fare.getAgentMarkup();
@@ -806,37 +806,76 @@ public class FlightsSummary extends AppCompatActivity {
                 fare1.setTotalFare(totalFare);
 
 
-                Passenger[] passenger ={new Passenger()};
+                FlightApi.booking.Passenger passenger =new FlightApi.booking.Passenger();
 
-                passenger[0].setFare(fare1);
-                itinerary.setSegments(Collections.singletonList(segment));
+              passenger.setFare(fare1);
+              passenger.setAddressLine1("cairo");
+              passenger.setAddressLine2("cairo");
+              FlightApi.booking.City city = new FlightApi.booking.City();
+              city.setCityCode("CAI");
+              city.setCityName("cairo");
+              city.setCountryCode("Egypt");
+              passenger.setCity(city);
+
+                FlightApi.booking.Country country = new FlightApi.booking.Country();
+                country.setCountryCode("EG");
+                country.setCountryName("Egypt");
+              passenger.setCountry(country);
+              passenger.setEmail("abdallah@yahoo.com");
+              passenger.setFirstName("abdallah");
+              passenger.setGender(1);
+              passenger.setIsLeadPax(true);
+              passenger.setLastName("mohamed");
+              passenger.setType(1);
+              passenger.setTitle("MS");
+
+              ArrayList<Segment> segmentList = new ArrayList<>();
+              segmentList.add(segment);
 
 
-                List<Passenger> passengerList  = new ArrayList<>();
-                passengerList.add(passenger[0]);
 
-                itinerary.setPassenger(passengerList);
+                itinerary.setSegments(segmentList);
+
+
+
+               itinerary.setDestination(destination);
+                FlightApi.booking.FareRule fareRule1 = new FlightApi.booking.FareRule();
+                fareRule1.setAirline(airlineCode);
+                fareRule1.setDestination(destination);
+                fareRule1.setFareBasisCode("W2LSPOIA");
+                fareRule1.setFareRuleDetail("");
+                fareRule1.setOrigin(origin);
+
+                List<FlightApi.booking.FareRule> fareRuleList = new ArrayList<>();
+                fareRuleList.add(fareRule1);
+
+       itinerary.setFareRules(fareRuleList);
+
+        ArrayList<Passenger> passengerList = new ArrayList<>();
+       // passengerList.add(passenger);
+
+       // itinerary.setPassenger(passengerList);
                 book.setItinerary(itinerary);
 
 
-                Call<BookFlightResponse> flightBookCall = flightApiService.getFlightBook("application/json", book);
+                Call<GetBookingResponse> flightBookCall = flightApiService.getFlightBook("application/json", book);
 
 
-                flightBookCall.enqueue(new Callback<BookFlightResponse>() {
+                flightBookCall.enqueue(new Callback<GetBookingResponse>() {
                     @Override
-                    public void onResponse(Call<BookFlightResponse> call, Response<BookFlightResponse> response) {
+                    public void onResponse(Call<GetBookingResponse> call, Response<GetBookingResponse> response) {
 
 
-                        ResponseBody body = response.raw().body();
-//                        long status = response.body().getStatus();
-//                        String tokenId1 = response.body().getTokenId();
-//                        String pnr = response.body().getPNR();
+
+                 response.raw().body();
+                        long status = response.body().getStatus();
+                        String tokenId1 = response.body().getTokenId();
 
 
                     }
 
                     @Override
-                    public void onFailure(Call<BookFlightResponse> call, Throwable t) {
+                    public void onFailure(Call<GetBookingResponse> call, Throwable t) {
                         t.getMessage();
                     }
                 });

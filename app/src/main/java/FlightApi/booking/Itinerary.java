@@ -1,10 +1,12 @@
 
-package FlightApi;
+package FlightApi.booking;
 
 import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import FlightApi.Segment;
 
 public class Itinerary implements Serializable
 {
@@ -20,10 +22,10 @@ public class Itinerary implements Serializable
     private List<Segment> segments = null;
     @SerializedName("Passenger")
     @Expose
-    private Passenger passenger = null;
+    private List<Passenger> passenger = null;
     @SerializedName("FareRules")
     @Expose
-    private List<FareRule> fareRules = null;
+    private List<FlightApi.booking.FareRule> fareRules = null;
     @SerializedName("PNR")
     @Expose
     private String pNR;
@@ -86,15 +88,15 @@ public class Itinerary implements Serializable
         this.segments = segments;
     }
 
-    public Passenger getPassenger() {
+    public List<Passenger> getPassenger() {
         return passenger;
     }
 
-    public void setPassenger(Passenger passenger) {
+    public void setPassenger(List<Passenger> passenger) {
         this.passenger = passenger;
     }
 
-    public List<FareRule> getFareRules() {
+    public List<FlightApi.booking.FareRule> getFareRules() {
         return fareRules;
     }
 
