@@ -76,6 +76,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     ArrayList<RoomCombination> possibleCombinations;
     ArrayOfRequestedRooms arrayOfRooms;
     private double sum;
+    private Integer accountPlan;
+    private String feesFree;
+    private String feesMember;
 
 
     public RoomsAdapter(ArrayList<Integer> roomCombs, Activity activity, AuthenticationData data, BasicHttpBinding_IHotelService1 service,
@@ -139,8 +142,16 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         String roomType = rooms.get(position).RoomTypeName;
         hotel_room = rooms.get(position);
 
+        feesFree = SharedPreferencesManger.LoadStringData(context, "feesFree");
+        feesMember = SharedPreferencesManger.LoadStringData(context, "feesMember");
+
+//        String feesMemberForEachRoom = SharedPreferencesManger.LoadStringData(context, "feesMemberForEachRoom");
+//        String feesFreeForEachRoom = SharedPreferencesManger.LoadStringData(context, "feesFreeForEachRoom");
+        accountPlan = SharedPreferencesManger.LoadIntegerData(context, "accountPlan");
+
 
         SharedPreferencesManger.SaveData(context, "RoomComb", new Gson().toJson(possibleCombinations, fooType));
+
 
 //        Hotel_Room hotel_room1 = rooms.get(1);
         String mealType = rooms.get(position).MealType;
@@ -152,25 +163,44 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         if (cancelPolicies != null) {
             DateTime deadLine = cancelPolicies.LastCancellationDeadline;
         }
-        String roomPromotion = rooms.get(position).RoomPromtion;
+
+        String gustMode = SharedPreferencesManger.LoadStringData(context, "gustMode");
+
         BigDecimal roomprice = rooms.get(position).RoomRate.TotalFare;
 
 
+        if (gustMode!=null){
 
 
-                double fessM = Double.parseDouble("100") ;
+            holder.roomPrice.setText(roomprice.toString());
+
+        }else {
+
+            String roomPromotion = rooms.get(position).RoomPromtion;
+
+
+            if (accountPlan == 1){
+
                 double price_ = Double.parseDouble(roomprice.toString());
+                double price_1 = Double.parseDouble(feesFree);
 
-                sum = Double.sum(fessM, price_);
+
+                sum = Double.sum(price_1, price_);
                 holder.roomPrice.setText(currency + " " + sum);
 
+            }else if (accountPlan == 0){
+
+                double price_ = Double.parseDouble(roomprice.toString());
+                double price_1 = Double.parseDouble(feesMember);
 
 
+                sum = Double.sum(price_1, price_);
+                holder.roomPrice.setText(currency + " " + sum);
+
+            }
 
 
-
-
-
+        }
 
 
 
@@ -214,7 +244,8 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                  public void onClick(View v) {
 
 
-                                                     SharedPreferencesManger.SaveData(activity, "roomPrice", String.valueOf(sum));
+//                                                     SharedPreferencesManger.SaveData(activity, "roomPrice", String.valueOf(sum));
+
 
 
                                                      if (possibleCombinations == null || possibleCombinations.size() == 0) {
@@ -349,6 +380,9 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                          intent.putExtra("roomTybe", roomType);
 
 
+                                                         intent.putExtra("roomPrice", holder.roomPrice.getText().toString());
+
+
 
                                                          intent.putExtra("description", description);
                                                          intent.putExtra("mealTybe", mealType);
@@ -437,6 +471,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                                  @Override
                                                                  public void onClick(DialogInterface dialogInterface, int i) {
 
+                                                                     SharedPreferencesManger.remove(context,"gustMode");
 
                                                                      // TODO: 7/28/2019  intent to Registration Fragment
                                                                      Intent intent1 = new Intent(activity, WelcomeActivity.class);

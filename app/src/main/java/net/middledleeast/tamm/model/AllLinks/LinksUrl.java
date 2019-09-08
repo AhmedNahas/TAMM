@@ -27,6 +27,9 @@ public class LinksUrl {
 
     public static final String URL_SEND_BOOKED_HOTEL = "http://egyptgoogle.com/backend/bookingshow/insert.php";
 
+    public static String URL_REGISTER = "http://egyptgoogle.com/backend/android_login_api/register.php";
+
+    public static String URL_LOGIN = "http://egyptgoogle.com/backend/android_login_api/login.php ";
 
 
     // FRAGMENT.....................

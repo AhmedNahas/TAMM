@@ -123,20 +123,20 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
     private int sizeReturn;
     private String stringResourceByName;
     private String airlineCode   ,    airlineCode_return,
-    CityNameOrogin1Return,
+            CityNameOrogin1Return,
             CityNameDestination1Return,
-    airlineReturn,
+            airlineReturn,
             arrivalTimeReturn,
-    departureTimeReturn,
+            departureTimeReturn,
             departureTime_Return,
-    arrivalTime_Return,
+            arrivalTime_Return,
             groundTimeReturn,
-    cabinBaggageReturn,
+            cabinBaggageReturn,
             additionalBaggageReturn,
 
     countryCodeOrigin1Return,
             countryCodeDestnation1Return,
-    countryNameOrogin1Return,
+            countryNameOrogin1Return,
             countryNameDestination1Return;
     private String flightNumberSize1Return;
     private String stringResourceByNameReturn

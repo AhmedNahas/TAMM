@@ -1,5 +1,5 @@
 
-package FlightApi;
+package FlightApi.booking;
 
 import java.io.Serializable;
 import com.google.gson.annotations.Expose;

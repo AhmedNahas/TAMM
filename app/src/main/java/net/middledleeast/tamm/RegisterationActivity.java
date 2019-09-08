@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,15 +43,12 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
-import net.middledleeast.tamm.activities.FreeCongratsActivity;
 import net.middledleeast.tamm.activities.PaymentActivity;
 import net.middledleeast.tamm.adapters.AutoCompleteAdapter;
 import net.middledleeast.tamm.fragments.TermsFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
-import net.middledleeast.tamm.model.validation.Validationfree;
-import net.middledleeast.tamm.model.validation.Validtionmember;
+import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -81,12 +79,12 @@ public class RegisterationActivity extends Fragment {
     private EditText zip_code;
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
-
+    private static final String TAG = RegisterationActivity.class.getSimpleName();
 
     int checkUserType;
 
     RequestQueue requestQueue;
-    private String register_url_free = "http://egyptgoogle.com/paymentusertest/user_control.php";
+//    private String register_url_free = "http://egyptgoogle.com/paymentusertest/user_control.php";
 
     private ArrayList<String> mrOrMissArray;
     private ArrayAdapter mrOrMissAdapter;
@@ -110,25 +108,25 @@ public class RegisterationActivity extends Fragment {
 
     TextView terms_conditions ;
     RadioButton special;
-    private static final String HIVALIDATIONFREE = "http://www.egyptgoogle.com/freeusers/validationfree.php";
-    private List<Validationfree> validationfree = new ArrayList<>();
-    private List<String> listUserNamevalidationfree = new ArrayList<>();
-    private List<String> listUserPhonefree = new ArrayList<>();
-    private List<String> listEmailvalidationfree = new ArrayList<>();
+//    private static final String HIVALIDATIONFREE = "http://www.egyptgoogle.com/freeusers/validationfree.php";
+//    private List<Validationfree> validationfree = new ArrayList<>();
+//    private List<String> listUserNamevalidationfree = new ArrayList<>();
+//    private List<String> listUserPhonefree = new ArrayList<>();
+//    private List<String> listEmailvalidationfree = new ArrayList<>();
 
 
-    private static final String HIVALIDATIONMEMBER = "http://www.egyptgoogle.com/freeusers/validationfree.php";
+//    private static final String HIVALIDATIONMEMBER = "http://www.egyptgoogle.com/freeusers/validationfree.php";
+//
+//    private List<Validtionmember> validationmember = new ArrayList<>();
+//    private List<String> listUserNamevalidationmember = new ArrayList<>();
+//    private List<String> listUserPhonemember = new ArrayList<>();
+//    private List<String> listEmailvalidationmember = new ArrayList<>();
 
-    private List<Validtionmember> validationmember = new ArrayList<>();
-    private List<String> listUserNamevalidationmember = new ArrayList<>();
-    private List<String> listUserPhonemember = new ArrayList<>();
-    private List<String> listEmailvalidationmember = new ArrayList<>();
 
-
-    private String phonevalidation;
-    private String usernamevalidation;
-    private String emailvalidation;
-    private String nameCountry;
+//    private String phonevalidation;
+//    private String usernamevalidation;
+//    private String emailvalidation;
+//    private String nameCountry;
     private String firstName;
     private String lastName;
     private String userName;
@@ -142,6 +140,9 @@ public class RegisterationActivity extends Fragment {
     private int PAYMENT = 2;
     private int FREE = 1;
     private String bookedOn;
+    private int isfree = 1;
+    private String created_at;
+    private String nameCountry;
 
 
     @SuppressLint("StaticFieldLeak")
@@ -216,8 +217,8 @@ public class RegisterationActivity extends Fragment {
             @Override
             protected Void doInBackground(Void... voids) {
 
-                getValidationMember();
-                getValidationFree();
+//                getValidationMember();
+//                getValidationFree();
                 return null;
             }
         }.execute();
@@ -265,15 +266,7 @@ public class RegisterationActivity extends Fragment {
                     etUserName.setError("user name is required!");
 
 
-                } else if (listUserNamevalidationfree.contains(etUserName.getText().toString()) || listUserNamevalidationmember.contains(etUserName.getText().toString())) {
-                    etUserName.setError("user name  is already taken!");
 
-
-                } else if (listUserPhonefree.contains(etPhone.getText().toString()) || listUserPhonemember.contains(etPhone.getText().toString())) {
-                    etPhone.setError("phone is already exist!");
-
-                } else if (listEmailvalidationfree.contains(etEmail.getText().toString()) || listEmailvalidationmember.contains(etEmail.getText().toString())) {
-                    etEmail.setError("email is already exist!");
 
 
                 } else if (isEmpty(etEmail)) {
@@ -328,8 +321,11 @@ public class RegisterationActivity extends Fragment {
                     email = etEmail.getText().toString();
                     phoneM = etPhone.getText().toString();
                     cityUser = city.getText().toString();
+
                     SharedPreferencesManger.SaveData(getContext(), "first_name", firstName);
                     SharedPreferencesManger.SaveData(getContext(), "last_name", lastName);
+                    SharedPreferencesManger.remove(getContext(),"gustMode");
+
 
                     if (checkUserType ==FREE ) {
 
@@ -440,43 +436,98 @@ public class RegisterationActivity extends Fragment {
     // still waiting amir
     private void sendFreeUser() {
 
-            StringRequest request = new StringRequest(Request.Method.POST, register_url_free, new Response.Listener<String>() {
+            StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_REGISTER, new Response.Listener<String>() {
 
                 @Override
 
                 public void onResponse(String response) {
-                    Toast.makeText(getContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getContext(), FreeCongratsActivity.class);
-                        SharedPreferencesManger.SaveData(getContext(),"user_name",userName);
-                    startActivity(intent);
+
+                    Log.d(TAG, "Register Response: " + response.toString());
+
+
+                    try {
+                        JSONObject jObj = new JSONObject(response);
+                        int status = jObj.getInt("status");
+                        if (status == 1) {
+                            // User successfully stored in MySQL
+                            // Now store the user in sqlite
+
+                            String uid = jObj.getString("uid");
+
+                            JSONObject user = jObj.getJSONObject("user");
+                            userName = user.getString("username");
+                            firstName = user.getString("firstname");
+                            lastName = user.getString("lastname");
+                            counTry = user.getString("country");
+                            cityUser = user.getString("city");
+                            phoneM = user.getString("phone");
+                            isfree = user.getInt("isfree");
+                            occup = user.getString("occupation");
+                            email = user.getString("email");
+                            created_at = user.getString("created_at");
+
+
+                            SharedPreferencesManger.SaveData(getContext(),"accountPlan",isfree);
+
+                            // Inserting row in users table
+//                        db.addUser(name, email, uid, created_at);
+
+                            getActivity().getSupportFragmentManager().beginTransaction()
+                                    .replace(R.id.welcome_container, new SignInFragment())
+                                    .commit();
+                            // Launch login activity
+
+
+                        } else {
+
+                            // Error occurred in registration. Get the error
+                            // message
+                            String errorMsg = jObj.getString("error_msg");
+                            Toast.makeText(getContext(),
+                                    errorMsg, Toast.LENGTH_LONG).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+//                    Toast.makeText(getContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(getContext(), FreeCongratsActivity.class);
+//                        SharedPreferencesManger.SaveData(getContext(),"user_name",userName);
+//                    startActivity(intent);
 
 
 
                 }
+
             }, new Response.ErrorListener() {
+
                 @Override
                 public void onErrorResponse(VolleyError error) {
 
                     int statusCode = error.networkResponse.statusCode;
                     Toast.makeText(getContext(), ""+statusCode, Toast.LENGTH_SHORT).show();
-                }
 
+                }
             }) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> parameters = new HashMap<String, String>();
+                    parameters.put("username", userName);
                     parameters.put("firstname",firstName );
                     parameters.put("lastname", lastName);
-                    parameters.put("username", userName);
-                    parameters.put("password", password);
-                    parameters.put("birthdate"," " + day+ " - " + month+ " - " + year + " ");
                     parameters.put("country", counTry);
+                    parameters.put("city", cityUser);
+                    parameters.put("phone",phoneM );
+                    parameters.put("isfree",String.valueOf(isfree));
                     parameters.put("occupation",occup);
                     parameters.put("email", email);
-                    parameters.put("phone",phoneM );
-                    parameters.put("city", cityUser);
-                    parameters.put("registrationdate",bookedOn );
-                    parameters.put("usertype","free");
+                    parameters.put("password", password);
+                    parameters.put("birthdate"," " + day+ " - " + month+ " - " + year + " ");
+
+
+
+
 
 
 
@@ -1232,108 +1283,108 @@ public class RegisterationActivity extends Fragment {
 
 
     // TODO: 9/1/2019 remove it
-    private void getValidationFree() {
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, HIVALIDATIONFREE, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONArray array = jsonObject.getJSONArray("validationfree");
-                    for (int i = 0; i < array.length(); i++) {
-                        JSONObject ob = array.getJSONObject(i);
-
-                        Validationfree listData = new Validationfree(ob.getString("username")
-                                , ob.getString("phone"), ob.getString("email"));
-
-                        validationfree.add(listData);
-
-                        phonevalidation = validationfree.get(i).getPhone();
-                        usernamevalidation = validationfree.get(i).getUsername();
-                        emailvalidation = validationfree.get(i).getEmail();
-
-
-
-
-
-                        SharedPreferencesManger.SaveData(getActivity(), "user", usernamevalidation);
-
-                        listUserNamevalidationfree.add(usernamevalidation);
-                        listEmailvalidationfree.add(emailvalidation);
-                        listUserPhonefree.add(phonevalidation);
-
-
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-
-                }
-
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                // dialog.cancel();
-            }
-        });
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
-    }
-
-    // TODO: 9/1/2019 remove it
-    private void getValidationMember() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, HIVALIDATIONMEMBER, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONArray array = jsonObject.getJSONArray("Validtionmember");
-                    for (int i = 0; i < array.length(); i++) {
-                        JSONObject ob = array.getJSONObject(i);
-
-                        Validtionmember listData = new Validtionmember(ob.getString("username")
-                                , ob.getString("phone"), ob.getString("email"));
-
-                        validationmember.add(listData);
-
-                        phonevalidation = validationmember.get(i).getPhone();
-                        usernamevalidation = validationmember.get(i).getUsername();
-                        emailvalidation = validationmember.get(i).getEmail();
-
-                        SharedPreferencesManger.SaveData(getActivity(), "user", usernamevalidation);
-
-                        listUserNamevalidationmember.add(usernamevalidation);
-                        listEmailvalidationmember.add(emailvalidation);
-                        listUserPhonemember.add(phonevalidation);
-
-
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-
-
-                }
-
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                //dialog.cancel();
-            }
-        });
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
-
-
-    }
+//    private void getValidationFree() {
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, HIVALIDATIONFREE, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//
+//                try {
+//                    JSONObject jsonObject = new JSONObject(response);
+//                    JSONArray array = jsonObject.getJSONArray("validationfree");
+//                    for (int i = 0; i < array.length(); i++) {
+//                        JSONObject ob = array.getJSONObject(i);
+//
+//                        Validationfree listData = new Validationfree(ob.getString("username")
+//                                , ob.getString("phone"), ob.getString("email"));
+//
+//                        validationfree.add(listData);
+//
+//                        phonevalidation = validationfree.get(i).getPhone();
+//                        usernamevalidation = validationfree.get(i).getUsername();
+//                        emailvalidation = validationfree.get(i).getEmail();
+//
+//
+//
+//
+//
+//                        SharedPreferencesManger.SaveData(getActivity(), "user", usernamevalidation);
+//
+//                        listUserNamevalidationfree.add(usernamevalidation);
+//                        listEmailvalidationfree.add(emailvalidation);
+//                        listUserPhonefree.add(phonevalidation);
+//
+//
+//                    }
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//
+//                }
+//
+//
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//                // dialog.cancel();
+//            }
+//        });
+//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+//        requestQueue.add(stringRequest);
+//    }
+//
+//    // TODO: 9/1/2019 remove it
+//    private void getValidationMember() {
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, HIVALIDATIONMEMBER, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//
+//                try {
+//                    JSONObject jsonObject = new JSONObject(response);
+//                    JSONArray array = jsonObject.getJSONArray("Validtionmember");
+//                    for (int i = 0; i < array.length(); i++) {
+//                        JSONObject ob = array.getJSONObject(i);
+//
+//                        Validtionmember listData = new Validtionmember(ob.getString("username")
+//                                , ob.getString("phone"), ob.getString("email"));
+//
+//                        validationmember.add(listData);
+//
+//                        phonevalidation = validationmember.get(i).getPhone();
+//                        usernamevalidation = validationmember.get(i).getUsername();
+//                        emailvalidation = validationmember.get(i).getEmail();
+//
+//                        SharedPreferencesManger.SaveData(getActivity(), "user", usernamevalidation);
+//
+//                        listUserNamevalidationmember.add(usernamevalidation);
+//                        listEmailvalidationmember.add(emailvalidation);
+//                        listUserPhonemember.add(phonevalidation);
+//
+//
+//                    }
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//
+//
+//                }
+//
+//
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//                //dialog.cancel();
+//            }
+//        });
+//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+//        requestQueue.add(stringRequest);
+//
+//
+//    }
 
 
     @OnClick(R.id.terms_conditions_tv)

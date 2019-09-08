@@ -50,6 +50,9 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
     String name;
     String photos;
     int rat;
+    private String feesFree;
+    private String feesMember;
+    private Integer accountPlan;
 
 
     public AdapterHotelInfo(Activity activity, ArrayList<String> listnameHotel, ArrayList<Integer> hotelrat, ArrayList<String> listPhotoHotel,
@@ -91,6 +94,58 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
     @Override
     public void onBindViewHolder(@NonNull AdapterHotelInfo.SingleView holder, int position) {
 
+
+
+
+        feesFree = SharedPreferencesManger.LoadStringData(context, "feesFree");
+        feesMember = SharedPreferencesManger.LoadStringData(context, "feesMember");
+        accountPlan = SharedPreferencesManger.LoadIntegerData(context, "accountPlan");
+       String gustMode = SharedPreferencesManger.LoadStringData(context, "gustMode");
+
+
+
+        String price = listprice.get(position);
+
+        if (gustMode!=null){
+
+            holder.hotelPrice.setText(price);
+
+        }else {
+            try {
+
+
+                String[] prisparts = price.split(" ");
+                String prispart2 = prisparts[1];
+                String usd = prisparts[0];
+
+                if (accountPlan == 1){
+
+                    double price_ = Double.parseDouble(prispart2);
+                    double price_1 = Double.parseDouble(feesFree);
+//            SharedPreferencesManger.SaveData(context,"feesFreeForEachRoom", String.valueOf(price_1));
+
+
+                    double sum = Double.sum(price_1, price_);
+                    holder.hotelPrice.setText(usd+sum);
+
+                }else if (accountPlan == 0){
+
+                    double price_ = Double.parseDouble(prispart2);
+                    double price_1 = Double.parseDouble(feesMember);
+//            SharedPreferencesManger.SaveData(context,"feesMemberForEachRoom", String.valueOf(price_1));
+
+
+                    double sum = Double.sum(price_1, price_);
+                    holder.hotelPrice.setText(usd+sum);
+
+                }
+            }catch (Exception e){
+
+            }
+
+        }
+
+
         if (position == 0){
             holder.recommended.setVisibility(View.VISIBLE);
         }else{
@@ -109,20 +164,15 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
 
         Collections.sort(listrat);
         Collections.reverse(listrat);
-       String price = listprice.get(position);
-
-        String[] prisparts = price.split(" ");
-        String prispart2 = prisparts[1];
-        String usd = prisparts[0];
 
 
 
 
-                double fessM = 100;
-                double price_ = Double.parseDouble(prispart2);
 
-                double sum = Double.sum(fessM, price_);
-                holder.hotelPrice.setText(usd+sum);
+
+
+
+
 
 
 
