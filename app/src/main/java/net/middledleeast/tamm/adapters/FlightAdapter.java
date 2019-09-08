@@ -54,11 +54,11 @@ Context context;
 
         String airline = listairport.get(position);
         String image=listImgflight.get(position);
-        String takeoff = listtakeoffdate.get(position);
-        String landing =listlandingdate.get(position);
+//        String takeoff = listtakeoffdate.get(position);
+//        String landing =listlandingdate.get(position);
         String price = listPrice.get(position);
-        String fromairport = listfromairport.get(position);
-        String toairport = listtoairport.get(position);
+//        String fromairport = listfromairport.get(position);
+//        String toairport = listtoairport.get(position);
 
 
 
