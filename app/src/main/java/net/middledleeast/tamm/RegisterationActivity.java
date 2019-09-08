@@ -194,9 +194,11 @@ public class RegisterationActivity extends Fragment {
                }
            }
        });
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getActivity().onBackPressed();
 
             }
         });

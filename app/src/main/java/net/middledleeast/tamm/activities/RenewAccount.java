@@ -337,8 +337,6 @@ public class  RenewAccount extends AppCompatActivity
                 menu.findItem(R.id.nav_offer).setVisible(false);
                 menu.findItem(R.id.nav_conversation).setVisible(false);
                 menu.findItem(R.id.nav_favorites).setVisible(false);
-                menu.findItem(R.id.nav_contuctus).setVisible(false);
-                menu.findItem(R.id.nav_setting).setVisible(false);
                 menu.findItem(R.id.nav_logout).setVisible(false);
 
 

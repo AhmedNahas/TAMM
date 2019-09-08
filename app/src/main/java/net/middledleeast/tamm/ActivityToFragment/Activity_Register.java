@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.RegisterationActivity;
+import net.middledleeast.tamm.fragments.PlansFragment;
 
 public class Activity_Register extends AppCompatActivity {
 
@@ -16,7 +16,7 @@ public class Activity_Register extends AppCompatActivity {
 
         if (savedInstanceState == null) {
 
-            getSupportFragmentManager().beginTransaction().add(android.R.id.content, new RegisterationActivity()).commit();
+            getSupportFragmentManager().beginTransaction().add(android.R.id.content, new PlansFragment()).commit();
 
         }
 

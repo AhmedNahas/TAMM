@@ -64,6 +64,7 @@ public class AuthenticationFragment extends Fragment {
                 Intent intent = new Intent(getContext(), RenewAccount.class);
                 intent.putExtra("renew",12);
 
+
                 SharedPreferencesManger.SaveData(getContext(),"guestMode","guestMode");
 
                 startActivity(intent);

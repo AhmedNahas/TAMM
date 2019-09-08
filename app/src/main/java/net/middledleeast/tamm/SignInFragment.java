@@ -33,8 +33,6 @@ import net.middledleeast.tamm.fragments.AuthenticationFragment;
 import net.middledleeast.tamm.fragments.ForgotPasswordFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.AllLinks.LinksUrl;
-import net.middledleeast.tamm.model.Freeuser;
-import net.middledleeast.tamm.model.Paymentuser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -102,18 +100,29 @@ public class SignInFragment extends Fragment {
         getmember();
 
 
-//
-//        userName.setText("ahmed");
-//        pass.setText("123456");
+        final String guestMode = SharedPreferencesManger.LoadStringData(getContext(), "guestMode");
+        if(guestMode==guestMode){
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.welcome_container, new AuthenticationFragment())
-                        .addToBackStack("SignInFragment").commit();
-            }
-        });
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent =new Intent(getContext(),RenewAccount.class);
+                    startActivity(intent);
+                }
+            });
+        }else{
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.welcome_container, new AuthenticationFragment())
+                            .addToBackStack("SignInFragment").commit();
+                }
+            });
+
+        }
+
+
 
 
 
