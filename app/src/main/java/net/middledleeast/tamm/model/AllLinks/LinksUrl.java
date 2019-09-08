@@ -6,6 +6,7 @@ public class LinksUrl {
 
     //ACTIVITY...................
 
+
     public static String URL_ABOUTUS="http://egyptgoogle.com/backend/about/aboutjson.php/";
 
     public static String URL_CONTACTUS="http://egyptgoogle.com/backend/sendtouser/insertsendtouser.php";
@@ -32,6 +33,7 @@ public class LinksUrl {
 
 
     // FRAGMENT.....................
+
 
     public static String URL_BEST_FLIGHT = "http://egyptgoogle.com/bestflight/bestflightjson.php";
 

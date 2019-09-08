@@ -140,8 +140,8 @@
             >
 
             <TextView
-                android:layout_marginTop="@dimen/_8sdp"
-
+                android:layout_marginTop="@dimen/_18sdp"
+                android:textSize="@dimen/_8ssp"
                 android:fontFamily="sans-serif-thin"
                 android:backgroundTint="@color/app_color"
                 android:id="@+id/tv_mr_mrs"
@@ -154,10 +154,10 @@
 
                 />
 
-            <TextView
+            <EditText
+                android:textSize="@dimen/_8ssp"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="@dimen/_70sdp"
-                android:drawableBottom="@drawable/line1"
                 android:fontFamily="sans-serif-thin"
                 android:backgroundTint="@color/app_color"
                 android:id="@+id/tv_firstName"
@@ -171,7 +171,9 @@
 
                 />
 
-            <TextView
+            <EditText
+                android:textSize="@dimen/_8ssp"
+
                 android:id="@+id/tv_last_name"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="wrap_content"
@@ -179,7 +181,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_toRightOf="@+id/tv_firstName"
                 android:backgroundTint="@color/app_color"
-                android:drawableBottom="@drawable/line1"
                 android:fontFamily="sans-serif-thin"
                 android:hint="@string/last_name"
                 android:textColor="@color/white"

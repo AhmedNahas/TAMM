@@ -46,7 +46,6 @@ import com.google.gson.Gson;
 import net.middledleeast.tamm.activities.FreeCongratsActivity;
 import net.middledleeast.tamm.activities.PaymentActivity;
 import net.middledleeast.tamm.adapters.AutoCompleteAdapter;
-import net.middledleeast.tamm.fragments.PlansFragment;
 import net.middledleeast.tamm.fragments.TermsFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.AllLinks.LinksUrl;
@@ -199,9 +198,7 @@ public class RegisterationActivity extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.welcome_container, new PlansFragment())
-                        .commit();
+
             }
         });
 

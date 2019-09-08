@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,8 @@ import com.Tamm.Hotels.wcf.TopDestinationsResponse;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import net.middledleeast.tamm.ActivityToFragment.Activity_Register;
+import net.middledleeast.tamm.ActivityToFragment.PaymentActivityFragment;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.ViewPagerAdapter;
 import net.middledleeast.tamm.fragments.BestDeals;
@@ -103,6 +106,20 @@ public class  RenewAccount extends AppCompatActivity
         tabLayout = findViewById(R.id.tap_layout);
         viewPager = findViewById(R.id.view_pager_renew);
         imageView7=findViewById(R.id.imageView7);
+
+        renew_sign_in=findViewById(R.id.renew_sign_in);
+        renew_register=findViewById(R.id.renew_register);
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -240,6 +257,7 @@ public class  RenewAccount extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
 
+
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         View hView = navigationView.getHeaderView(0);
@@ -254,6 +272,8 @@ public class  RenewAccount extends AppCompatActivity
         renew_sign_in = hView.findViewById(R.id.renew_sign_in);
         renew_register = hView.findViewById(R.id.renew_register);
         valid_till_months = hView.findViewById(R.id.valid_till_months);
+
+
 
 
 
@@ -327,6 +347,37 @@ public class  RenewAccount extends AppCompatActivity
                 renew_sign_in.setVisibility(View.VISIBLE);
                 renew_register.setVisibility(View.VISIBLE);
 
+                Menu menu =navigationView.getMenu();
+                menu.findItem(R.id.nav_offer).setVisible(false);
+                menu.findItem(R.id.nav_conversation).setVisible(false);
+                menu.findItem(R.id.nav_favorites).setVisible(false);
+                menu.findItem(R.id.nav_contuctus).setVisible(false);
+                menu.findItem(R.id.nav_setting).setVisible(false);
+                menu.findItem(R.id.nav_logout).setVisible(false);
+
+
+
+                renew_sign_in.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent =new Intent(RenewAccount.this, PaymentActivityFragment.class);
+                        startActivity(intent);
+
+                    }
+                });
+
+
+                renew_register.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent =new Intent(RenewAccount.this, Activity_Register.class);
+                        startActivity(intent);
+
+                    }
+                });
+
 
             }
 
@@ -367,6 +418,7 @@ public class  RenewAccount extends AppCompatActivity
                         public void onClick(DialogInterface dialog, int id) {
 
                             dialog.cancel();
+
                         }
                     });
 
@@ -382,6 +434,9 @@ public class  RenewAccount extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+
+
+
         if (id == R.id.nav_offer) {
 
             startActivity(new Intent(RenewAccount.this, OffersActivity.class));
@@ -473,83 +528,6 @@ public class  RenewAccount extends AppCompatActivity
     }
 
 
-//    @Override
-//    public boolean onPrepareOptionsMenu(Menu menu) {
-//        MenuItem register1 = menu.findItem(R.id.nav_offer);
-//        MenuItem register2 = menu.findItem(R.id.nav_logout);
-//        MenuItem register3 = menu.findItem(R.id.nav_aboutus);
-//        MenuItem register4 = menu.findItem(R.id.nav_contuctus);
-//        MenuItem register5 = menu.findItem(R.id.nav_favorites);
-//        MenuItem register6 = menu.findItem(R.id.nav_conversation);
-//        MenuItem register7 = menu.findItem(R.id.nav_setting);
-//        MenuItem register8 = menu.findItem(R.id.nav_terms);
-//
-//        if (renew == 12) {
-//
-//            MenuItem register = menu.findItem(R.id.nav_offer);
-//            register.setVisible(false);  //userRegistered is boolean, pointing if the user has registered or not.
-//            return true;
-////            register1.setVisible(false);
-////            register2.setVisible(false);
-////            register3.setVisible(false);
-////            register4.setVisible(false);
-////            register5.setVisible(false);
-////            register6.setVisible(false);
-////            register7.setVisible(false);
-////            register8.setVisible(false);
-//
-//        } else {
-////            register1.setVisible(true);
-////            register2.setVisible(true);
-////            register3.setVisible(true);
-////            register4.setVisible(true);
-////            register5.setVisible(true);
-////            register6.setVisible(true);
-////            register7.setVisible(true);
-////            register8.setVisible(true);
-//
-//        return true;
-//
 
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        if (renew == 12) {
-//
-//            MenuItem register = menu.findItem(R.id.nav_offer);
-//            register.setVisible(false);  //userRegistered is boolean, pointing if the user has registered or not.
-//
-//
-//        }
-//
-//        return  true;
-//    }
-
-
-//    @Override
-//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-//        super.onCreateContextMenu(menu, v, menuInfo);
-//
-//        MenuInflater inflater = getMenuInflater();
-//
-//        inflater.inflate(R.menu.renew_account_drawer,menu);
-//
-//
-//        AdapterView.AdapterContextMenuInfo info =
-//                (AdapterView.AdapterContextMenuInfo) menuInfo;
-//
-//        int pos = info.position;
-//
-//        MenuItem MenuItem =menu.findItem(R.id.nav_offer);
-//        if (renew==12){
-//            MenuItem.setVisible(true);
-//
-//        }else {
-//            MenuItem.setVisible(false);
-//        }
-//
-//
-//
-//    }
 
 }

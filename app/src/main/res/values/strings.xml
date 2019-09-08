@@ -853,7 +853,6 @@
     <string name="AKQ">Kenya Airways</string>
 
 
-
     ,
     ,
     ,
@@ -863,8 +862,7 @@
     ,
 
 
-
-<!--Flights AirLine-->
+    <!--Flights AirLine-->
 
     <string name="ASJ" translatable="false">Sriwijaya Air</string>
     <string name="AEB" translatable="false">Wamos Air</string>
@@ -942,7 +940,6 @@
     <string name="AZK" translatable="false">Great Lakes</string>
 
 
-
     <string name="AWI" translatable="false">WHITE AIRWAYS S.A.</string>
     <string name="AWJ" translatable="false">Labrador Airways</string>
     <string name="AWK" translatable="false">American Falcon S.A.</string>
@@ -984,7 +981,6 @@
     <string name="AY2" translatable="false">Alliance Air</string>
     <string name="AY4" translatable="false">Eagle Aviatio</string>
     <string name="AY7" translatable="false">JSC Airline Taimyr</string>
-
 
 
     <string name="AUM" translatable="false">Air Zimbabwe</string>
@@ -1101,7 +1097,6 @@
     <string name="AUL" translatable="false">Sri Lankan Airlines</string>
 
 
-
     <string name="ARJ" translatable="false">Royal Jordanian</string>
     <string name="ARK" translatable="false">Air Afrique</string>
     <string name="ARL" translatable="false">Royal Phnom Penh Airways</string>
@@ -1152,7 +1147,6 @@
     <string name="AT2" translatable="false">Nakima Air Service</string>
     <string name="AT3" translatable="false">Eastern Airways</string>
     <string name="AT4" translatable="false">Hellas Jet</string>
-
 
 
     <string name="AO8" translatable="false">SIAM AIR TRANSPORT</string>
@@ -1257,7 +1251,6 @@
     <string name="ARI" translatable="false">P.T.Mandala Airlines</string>
 
 
-
     <string name="AKR" translatable="false">Air Bishkek</string>
     <string name="AKS" translatable="false">Penair</string>
     <string name="AKU" translatable="false">Kuwait Airways Corporation</string>
@@ -1357,11 +1350,6 @@
     <string name="AO2" translatable="false">JET AIR</string>
     <string name="AO5" translatable="false">COMORES AVIATION INTL</string>
     <string name="AO6" translatable="false">Avianca Brasil</string>
-
-
-
-
-
 
 
 </resources>

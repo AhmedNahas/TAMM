@@ -20,18 +20,7 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/bg" />
 
-            <TextView
-                android:id="@+id/tv_country_hotel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:background="#5C000000"
-                android:paddingStart="@dimen/_4sdp"
-                android:text="Dubai"
-                android:textColor="@color/white"
-                android:textStyle="bold"
 
-                />
 
 
             <RelativeLayout
@@ -61,7 +50,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_2sdp"
                     android:layout_toRightOf="@+id/tv_price_hotel"
-
                     android:text="1200"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
@@ -70,31 +58,55 @@
             </RelativeLayout>
 
 
-            <ImageView
-                android:id="@+id/iv_star_hotel"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginRight="@dimen/_15sdp"
-                android:src="@drawable/star"
-                android:background="#5C000000"
+            <!--<ImageView-->
+                <!--android:id="@+id/iv_star_hotel"-->
+                <!--android:layout_width="@dimen/_20sdp"-->
+                <!--android:layout_height="@dimen/_20sdp"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_marginTop="@dimen/_15sdp"-->
+                <!--android:layout_marginRight="@dimen/_15sdp"-->
+                <!--android:src="@drawable/star"-->
+                <!--android:background="#5C000000"-->
 
-                />
-
-            <TextView
-                android:id="@+id/tv_best_hotel"
-                android:layout_width="@dimen/_100sdp"
+                <!--/>-->
+            <RelativeLayout
+                android:id="@+id/relative_name_hotel"
+                android:layout_width="@dimen/_120sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:background="@drawable/shape"
-                android:gravity="center"
-                android:text="BEST HOTELS"
-                android:textColor="@color/black"
-                android:textStyle="bold"
+                >
 
-                />
+                <TextView
+                    android:id="@+id/tv_best_hotel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape"
+                    android:layout_centerVertical="true"
+                    android:text="BEST HOTELS"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_toEndOf="@+id/tv_country_hotel"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_country_hotel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_4sdp"
+                    android:layout_centerVertical="true"
+                    android:text="Dubai"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+
+                    />
+
+
+            </RelativeLayout>
+
+
 
         </RelativeLayout>
 
