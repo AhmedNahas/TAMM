@@ -22,62 +22,62 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/bg" />
 
-            <RelativeLayout
-                android:id="@+id/relative_flight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_best_flight"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:background="#5C000000">
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/relative_flight"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/tv_best_flight"-->
+                <!--android:layout_marginTop="@dimen/_5sdp"-->
+                <!--android:background="#5C000000">-->
 
-                <TextView
-                    android:id="@+id/tv_from_flight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/_4sdp"
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_from_flight"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:paddingStart="@dimen/_4sdp"-->
 
-                    android:text="From : "
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
+                    <!--android:text="From : "-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textStyle="bold"-->
 
-                    />
+                    <!--/>-->
 
-                <TextView
-                    android:id="@+id/tv_from_airport_flight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/tv_from_flight"
-                    android:text="airport"
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_from_airport_flight"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_toRightOf="@+id/tv_from_flight"-->
+                    <!--android:text="airport"-->
 
-                    android:textColor="@color/white" />
+                    <!--android:textColor="@color/white" />-->
 
-                <TextView
-                    android:id="@+id/tv_to_flight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:layout_toRightOf="@+id/tv_from_airport_flight"
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_to_flight"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginStart="@dimen/_20sdp"-->
+                    <!--android:layout_toRightOf="@+id/tv_from_airport_flight"-->
 
-                    android:text="to : "
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
+                    <!--android:text="to : "-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textStyle="bold"-->
 
-                    />
-
-
-                <TextView
-                    android:id="@+id/tv_to_airport_flight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/tv_to_flight"
-                    android:text="airport"
-
-                    android:textColor="@color/white"
-
-                    />
+                    <!--/>-->
 
 
-            </RelativeLayout>
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_to_airport_flight"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_toRightOf="@+id/tv_to_flight"-->
+                    <!--android:text="airport"-->
+
+                    <!--android:textColor="@color/white"-->
+
+                    <!--/>-->
+
+
+            <!--</RelativeLayout>-->
 
 
             <RelativeLayout
@@ -129,79 +129,79 @@
 
                 />
 
-            <RelativeLayout
-                android:id="@+id/relative_takeoff_flight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/relative_flight"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:background="#5C000000">
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/relative_takeoff_flight"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/relative_flight"-->
+                <!--android:layout_marginTop="@dimen/_30sdp"-->
+                <!--android:background="#5C000000">-->
 
-                <TextView
-                    android:id="@+id/tv_takeoff_date_flight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/_4sdp"
-                    android:text="TAKEOFF DATE : "
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_10sdp"
-                    android:textStyle="bold"
-
-
-                    />
-
-                <TextView
-                    android:id="@+id/tv_takeoff_flight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/tv_takeoff_date_flight"
-                    android:text="1/5/2019"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_10sdp"
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_takeoff_date_flight"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:paddingStart="@dimen/_4sdp"-->
+                    <!--android:text="TAKEOFF DATE : "-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="@dimen/_10sdp"-->
+                    <!--android:textStyle="bold"-->
 
 
-                    />
+                    <!--/>-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_takeoff_flight"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_toRightOf="@+id/tv_takeoff_date_flight"-->
+                    <!--android:text="1/5/2019"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="@dimen/_10sdp"-->
 
 
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/relative_takeoff_flight"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:background="#5C000000"
+                    <!--/>-->
 
 
-                >
+            <!--</RelativeLayout>-->
 
-                <TextView
-                    android:id="@+id/tv_landing_date_flight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/_4sdp"
-                    android:text="LANDING DATE : "
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_10sdp"
-                    android:textStyle="bold"
+            <!--<RelativeLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/relative_takeoff_flight"-->
+                <!--android:layout_marginTop="@dimen/_5sdp"-->
+                <!--android:background="#5C000000"-->
 
 
-                    />
+                <!--&gt;-->
 
-                <TextView
-                    android:id="@+id/tv_land_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/tv_landing_date_flight"
-                    android:text="1/5/2019"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_10sdp"
-
-
-                    />
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_landing_date_flight"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:paddingStart="@dimen/_4sdp"-->
+                    <!--android:text="LANDING DATE : "-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="@dimen/_10sdp"-->
+                    <!--android:textStyle="bold"-->
 
 
-            </RelativeLayout>
+                    <!--/>-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_land_date"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_toRightOf="@+id/tv_landing_date_flight"-->
+                    <!--android:text="1/5/2019"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="@dimen/_10sdp"-->
+
+
+                    <!--/>-->
+
+
+            <!--</RelativeLayout>-->
 
 
         </RelativeLayout>
