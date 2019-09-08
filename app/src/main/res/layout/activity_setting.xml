@@ -150,12 +150,18 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/relative_notification_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_language"
+        >
+
 
     <TextView
         android:id="@+id/tv_notification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relative_language"
         android:layout_marginStart="@dimen/_50sdp"
         android:fontFamily="sans-serif-light"
         android:text="Notifications"
@@ -300,6 +306,7 @@
 
 
 
+    </RelativeLayout>
 
 
 

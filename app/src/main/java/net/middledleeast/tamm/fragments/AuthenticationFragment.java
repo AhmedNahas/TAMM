@@ -26,6 +26,8 @@ import net.middledleeast.tamm.helper.SharedPreferencesManger;
 public class AuthenticationFragment extends Fragment {
 
 
+    private Integer accountPlan = 0;
+
     public AuthenticationFragment() {
         // Required empty public constructor
     }
@@ -46,6 +48,9 @@ public class AuthenticationFragment extends Fragment {
         toolbar = view.findViewById(R.id.welcome_toolbar);
         imageView = view.findViewById(R.id.back_pressed);
 
+        accountPlan = SharedPreferencesManger.LoadIntegerData(getActivity(), "accountPlan");
+
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +66,7 @@ public class AuthenticationFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                accountPlan = 2;
                 Intent intent = new Intent(getContext(), RenewAccount.class);
                 intent.putExtra("renew",12);
 

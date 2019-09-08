@@ -111,18 +111,6 @@ public class  RenewAccount extends AppCompatActivity
         renew_register=findViewById(R.id.renew_register);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         feesFree = SharedPreferencesManger.LoadStringData(this, "feesFree");
         feesMember = SharedPreferencesManger.LoadStringData(this, "feesMember");
         accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
@@ -305,18 +293,33 @@ public class  RenewAccount extends AppCompatActivity
 
 
         try {
-            user_name_profile.setText(user);
-            user_name_profile.setText(userNameFromSignIn);
+
             if (accountPlan == 1){
 
-
-                relative_expire.setVisibility(View.GONE);
-
+                user_name_profile.setVisibility(View.VISIBLE);
+                textView_account.setVisibility(View.VISIBLE);
+                user_name_profile.setText(user);
+                user_name_profile.setText(userNameFromSignIn);
                 textView_account.setText("FreeUser Account");
             }else if (accountPlan == 0){
+                user_name_profile.setVisibility(View.VISIBLE);
                 relative_expire.setVisibility(View.VISIBLE);
-                valid_till_months.setText((validTillValue + " days"));
+                textView_account.setVisibility(View.VISIBLE);
+
                 textView_account.setText("MemberShip Account");
+
+                user_name_profile.setText(user);
+                user_name_profile.setText(userNameFromSignIn);
+
+                valid_till_months.setText((validTillValue + " days"));
+
+
+            }else if (accountPlan == 2){
+
+                relative_expire.setVisibility(View.GONE);
+                textView_account.setText("");
+                valid_till_months.setText((""));
+                textView_account.setText("");
 
             }
 
@@ -351,8 +354,6 @@ public class  RenewAccount extends AppCompatActivity
                 menu.findItem(R.id.nav_offer).setVisible(false);
                 menu.findItem(R.id.nav_conversation).setVisible(false);
                 menu.findItem(R.id.nav_favorites).setVisible(false);
-                menu.findItem(R.id.nav_contuctus).setVisible(false);
-                menu.findItem(R.id.nav_setting).setVisible(false);
                 menu.findItem(R.id.nav_logout).setVisible(false);
 
 

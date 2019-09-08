@@ -88,7 +88,8 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#fff"
                 android:textSize="16dp"
-                android:text="Mahmoud Al Dikhed" />
+                android:text="Mahmoud Al Dikhed"
+                android:visibility="invisible"/>
 
             <TextView
 
@@ -99,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
-
+android:visibility="invisible"
                 android:text=""
                 android:layout_gravity="center"
                 android:textColor="@color/app_color"
@@ -115,6 +116,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/textView_account"
                 android:id="@+id/relative_expire"
+                android:visibility="invisible"
                 >
 
 

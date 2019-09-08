@@ -1124,7 +1124,6 @@ public class RoomBooked extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(RoomBooked.this,"error", Toast.LENGTH_SHORT).show();
                     Log.e("HI", "onResponse: "+ error );
 
 

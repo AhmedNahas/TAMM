@@ -277,6 +277,8 @@ public class HotelDetails extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                
                 Intent intent = new Intent(HotelDetails.this, ChooseBookingDate.class);
                 intent.putExtra("checkInDate", mstartTime);
                 intent.putExtra("checkOutDate", mendTime);

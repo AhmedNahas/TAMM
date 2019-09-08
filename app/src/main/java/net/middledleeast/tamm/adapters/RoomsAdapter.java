@@ -37,8 +37,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.WelcomeActivity;
 import net.middledleeast.tamm.activities.ChooseBookingDate;
+import net.middledleeast.tamm.activities.WelcomeActivity;
 import net.middledleeast.tamm.activities.checkroom;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
@@ -164,22 +164,22 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
             DateTime deadLine = cancelPolicies.LastCancellationDeadline;
         }
 
-        String gustMode = SharedPreferencesManger.LoadStringData(context, "gustMode");
+        String gustMode = SharedPreferencesManger.LoadStringData(context, "guestMode");
 
         BigDecimal roomprice = rooms.get(position).RoomRate.TotalFare;
 
 
-        if (gustMode!=null){
+        if (gustMode != null) {
 
 
             holder.roomPrice.setText(roomprice.toString());
 
-        }else {
+        } else {
 
             String roomPromotion = rooms.get(position).RoomPromtion;
 
 
-            if (accountPlan == 1){
+            if (accountPlan == 1) {
 
                 double price_ = Double.parseDouble(roomprice.toString());
                 double price_1 = Double.parseDouble(feesFree);
@@ -188,7 +188,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 sum = Double.sum(price_1, price_);
                 holder.roomPrice.setText(currency + " " + sum);
 
-            }else if (accountPlan == 0){
+            } else if (accountPlan == 0) {
 
                 double price_ = Double.parseDouble(roomprice.toString());
                 double price_1 = Double.parseDouble(feesMember);
@@ -197,16 +197,11 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                 sum = Double.sum(price_1, price_);
                 holder.roomPrice.setText(currency + " " + sum);
 
+
             }
 
 
         }
-
-
-
-
-
-
 
 
         roomInformation = rooms.get(position).RoomAdditionalInfo;
@@ -247,14 +242,13 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 //                                                     SharedPreferencesManger.SaveData(activity, "roomPrice", String.valueOf(sum));
 
 
-
                                                      if (possibleCombinations == null || possibleCombinations.size() == 0) {
                                                          ArrayList<RoomCombination> optionsForBooking = response.OptionsForBooking.RoomCombination;
                                                          possibleCombinations = new ArrayList();
 
 //
                                                          for (RoomCombination roomCombination : optionsForBooking) {
-                                                             for (int i  : roomCombination.RoomIndex) {
+                                                             for (int i : roomCombination.RoomIndex) {
                                                                  if (i == rooms.get(position).RoomIndex) {
 
                                                                      possibleCombinations.add(roomCombination);
@@ -368,7 +362,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 //                intent.putExtra("arrayOfRooms", new Gson().toJson(arrayOfRooms));
 //                intent.putExtra("rooms", new Gson().toJson(rooms));
 //                intent.putExtra("hotel_room(xxhdpi)", new Gson().toJson(hotel_room(xxhdpi)));
-                                                        // intent.putExtra("sessionId", sessionId);
+                                                         // intent.putExtra("sessionId", sessionId);
                                                          intent.putExtra("noOfRooms", noOfRooms);
                                                          intent.putExtra("resultIndex", resultIndex);
                                                          intent.putExtra("date1", date1);
@@ -381,7 +375,6 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
 
                                                          intent.putExtra("roomPrice", holder.roomPrice.getText().toString());
-
 
 
                                                          intent.putExtra("description", description);
@@ -459,7 +452,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                          SharedPreferencesManger.SaveData((Activity) context, "arrayOfroomsreq", requestedRoomsString);
                                                          SharedPreferencesManger.SaveData(context, "RoomComb", null);
 
-                                                         String gustMode = SharedPreferencesManger.LoadStringData(context, "gustMode");
+                                                         String gustMode = SharedPreferencesManger.LoadStringData(context, "guestMode");
                                                          if (gustMode != null) {
 
 
@@ -471,7 +464,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                                  @Override
                                                                  public void onClick(DialogInterface dialogInterface, int i) {
 
-                                                                     SharedPreferencesManger.remove(context,"gustMode");
+                                                                     SharedPreferencesManger.remove(context, "gustMode");
 
                                                                      // TODO: 7/28/2019  intent to Registration Fragment
                                                                      Intent intent1 = new Intent(activity, WelcomeActivity.class);
@@ -495,10 +488,10 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                      }
                                                  }
                                              }
-            );
+        );
 
 
-        }
+    }
 
     @Override
     public int getItemCount() {

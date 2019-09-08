@@ -100,7 +100,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         feesFree = SharedPreferencesManger.LoadStringData(context, "feesFree");
         feesMember = SharedPreferencesManger.LoadStringData(context, "feesMember");
         accountPlan = SharedPreferencesManger.LoadIntegerData(context, "accountPlan");
-       String gustMode = SharedPreferencesManger.LoadStringData(context, "gustMode");
+       String gustMode = SharedPreferencesManger.LoadStringData(context, "guestMode");
 
 
 
@@ -133,6 +133,16 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
                     double price_ = Double.parseDouble(prispart2);
                     double price_1 = Double.parseDouble(feesMember);
 //            SharedPreferencesManger.SaveData(context,"feesMemberForEachRoom", String.valueOf(price_1));
+
+
+                    double sum = Double.sum(price_1, price_);
+                    holder.hotelPrice.setText(usd+sum);
+
+                }else if (accountPlan == 2){
+
+                    double price_ = Double.parseDouble(prispart2);
+                    double price_1 = Double.parseDouble("500");
+////            SharedPreferencesManger.SaveData(context,"feesFreeForEachRoom", String.valueOf(price_1));
 
 
                     double sum = Double.sum(price_1, price_);

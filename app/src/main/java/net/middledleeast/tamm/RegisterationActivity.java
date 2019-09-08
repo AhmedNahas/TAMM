@@ -199,6 +199,8 @@ public class RegisterationActivity extends Fragment {
             @Override
             public void onClick(View v) {
 
+                getActivity().onBackPressed();
+
             }
         });
 

@@ -110,13 +110,15 @@ public class SignInFragment extends Fragment {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.welcome_container, new AuthenticationFragment())
                         .addToBackStack("SignInFragment").commit();
+
+
             }
         });
 
+try {
 
-
-        String username = SharedPreferencesManger.LoadStringData(getActivity(), "user_name");
-
+    String username = SharedPreferencesManger.LoadStringData(getActivity(), "user_name");
+}catch (Exception e ){}
        userName.setText(username);
         dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.custom_dialog);

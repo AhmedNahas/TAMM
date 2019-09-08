@@ -64,10 +64,10 @@ Context context;
 
         holder.tv_best_flight.setText(airline);
         holder.tv_price_.setText(price);
-        holder.tv_from_airport_flight.setText(fromairport);
-        holder.tv_to_airport_flight.setText(toairport);
-        holder.tv_takeoff_flight.setText(takeoff);
-        holder.tv_land_date.setText(landing);
+//        holder.tv_from_airport_flight.setText(fromairport);
+//        holder.tv_to_airport_flight.setText(toairport);
+//        holder.tv_takeoff_flight.setText(takeoff);
+//        holder.tv_land_date.setText(landing);
 
         Glide.with(context).load(image).into(holder.iv_best_flight);
 

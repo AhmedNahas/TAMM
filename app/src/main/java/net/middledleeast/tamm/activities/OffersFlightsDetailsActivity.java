@@ -1,5 +1,7 @@
 package net.middledleeast.tamm.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -102,6 +104,7 @@ public class OffersFlightsDetailsActivity extends AppCompatActivity {
     private String takeoff;
     private List<String> listtakeoff = new ArrayList<>();
     private List<String> listlanding = new ArrayList<>();
+    private String guestMode;
 
 
     @Override
@@ -119,29 +122,40 @@ public class OffersFlightsDetailsActivity extends AppCompatActivity {
             }
         });
 
-        airplane = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "airplane");
-        from_airport = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "from_airport");
-        to_airport = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "to_airport");
-        price = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "price");
-        landing = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "landing");
-        takeoff = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "takeoff");
+
+        toolbarBack1Offer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                onBackPressed();
+            }
+        });
+try {
+    guestMode = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "guestMode");
+
+    airplane = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "airplane");
+    from_airport = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "from_airport");
+    to_airport = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "to_airport");
+    price = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "price");
+    landing = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "landing");
+    takeoff = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "takeoff");
 
 
-        listairPlane.add(airplane);
-        listfromairport.add(from_airport);
-        listtoairport.add(to_airport);
-        listflightprice.add(price);
-        listlanding.add(landing);
-        listtakeoff.add(takeoff);
+    listairPlane.add(airplane);
+    listfromairport.add(from_airport);
+    listtoairport.add(to_airport);
+    listflightprice.add(price);
+    listlanding.add(landing);
+    listtakeoff.add(takeoff);
 
 
-        flightNameDetailOffer.setText(airplane);
-        tvFromAirportFlight.setText(from_airport);
-        tvToAirportFlight.setText(to_airport);
-        tvTakeoffFlight.setText(takeoff);
-        tvLandDate.setText(landing);
-        flightPriceOffer.setText(price);
-
+    flightNameDetailOffer.setText(airplane);
+    tvFromAirportFlight.setText(from_airport);
+    tvToAirportFlight.setText(to_airport);
+    tvTakeoffFlight.setText(takeoff);
+    tvLandDate.setText(landing);
+    flightPriceOffer.setText(price);
+}catch (Exception e){}
         adapter = new AdapterOfferPhoto(OffersFlightsDetailsActivity.this, listairPlane);
         flightImageDetailOffer.setAdapter(adapter);
 
@@ -203,14 +217,30 @@ public class OffersFlightsDetailsActivity extends AppCompatActivity {
             case R.id.btn_map_offer:
 
 // TODO: 8/31/2019 intent to paymentActivity //// Nahas
-                Intent intent = new Intent(OffersFlightsDetailsActivity.this, HotelBooking.class);
 
-                int id = 7;
-                intent.putExtra("mId", id);
+                if (guestMode != null) {
 
-                SharedPreferencesManger.SaveData(this, "priceflight", price);
-                startActivity(intent);
 
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                    alertDialogBuilder.setTitle("You in gust Mode");
+                    alertDialogBuilder
+                            .setMessage("You hav to Sign Up First")
+                            .setCancelable(true).setPositiveButton("Sign up", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            SharedPreferencesManger.remove(OffersFlightsDetailsActivity.this,"gustMode");
+
+                            // TODO: 7/28/2019  intent to Registration Fragment
+                            Intent intent1 = new Intent(OffersFlightsDetailsActivity.this, WelcomeActivity.class);
+
+                            startActivity(intent1);
+
+                        }
+                    });
+                    alertDialogBuilder.show();
+
+                }
                 break;
 
         }

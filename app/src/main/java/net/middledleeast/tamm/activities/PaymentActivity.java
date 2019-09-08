@@ -793,9 +793,10 @@ public class PaymentActivity extends AppCompatActivity {
 
 
                     currentDate = new Date();
+                    new SimpleDateFormat("yyyy-MM-dd").format(currentDate);
+
                     if (!currentDate.after(futureDate)) {
-                        long diff = futureDate.getTime()
-                                - currentDate.getTime();
+                        long diff = futureDate.getTime() - currentDate.getTime();
                          days = diff / (24 * 60 * 60 * 1000);
                         diff -= days * (24 * 60 * 60 * 1000);
                         long hours = diff / (60 * 60 * 1000);
@@ -803,6 +804,7 @@ public class PaymentActivity extends AppCompatActivity {
                         long minutes = diff / (60 * 1000);
                         diff -= minutes * (60 * 1000);
                         long seconds = diff / 1000;
+
 //                        txtmonth.setText("" + String.format("%02d", months));
 //                        txtDay.setText("" + String.format("%02d", days));
 //                        txtHour.setText("" + String.format("%02d", hours));
