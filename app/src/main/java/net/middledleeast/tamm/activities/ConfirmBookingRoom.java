@@ -400,7 +400,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         start_time = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "start_date");
         end_time = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "end_date");
         hotel_name = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "hotel_name");
-        roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
+        roomPrice = SharedPreferencesManger.LoadStringData(this, "finalpriceRoom");
         currency = SharedPreferencesManger.LoadStringData(this, "currency");
 
 

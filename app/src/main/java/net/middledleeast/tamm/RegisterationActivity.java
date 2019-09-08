@@ -327,6 +327,8 @@ public class RegisterationActivity extends Fragment {
 
                     SharedPreferencesManger.SaveData(getContext(), "first_name", firstName);
                     SharedPreferencesManger.SaveData(getContext(), "last_name", lastName);
+                    SharedPreferencesManger.remove(getContext(),"gustMode");
+
 
                     if (checkUserType ==FREE ) {
 
