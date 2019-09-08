@@ -1,6 +1,7 @@
 package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -43,6 +44,8 @@ public class KnetActivity extends AppCompatActivity  implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.loadWebPage:
+
+                startActivity(new Intent(KnetActivity.this, RoomBooked.class));
 
                 break;
         }

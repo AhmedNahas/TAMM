@@ -156,7 +156,9 @@ public class SignInFragment extends Fragment {
            public void onClick(View view) {
 
                String user_Name = userName.getText().toString().trim();
-             String password = pass.getText().toString().trim();
+
+               SharedPreferencesManger.SaveData(getContext(),"userNameFromSignIn",user_Name);
+               String password = pass.getText().toString().trim();
                // Check for empty data in the form
                if (!user_Name.isEmpty() && !password.isEmpty()) {
                    // login user
