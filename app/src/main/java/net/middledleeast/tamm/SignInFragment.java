@@ -33,8 +33,6 @@ import net.middledleeast.tamm.fragments.AuthenticationFragment;
 import net.middledleeast.tamm.fragments.ForgotPasswordFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.AllLinks.LinksUrl;
-import net.middledleeast.tamm.model.Freeuser;
-import net.middledleeast.tamm.model.Paymentuser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -147,7 +145,9 @@ public class SignInFragment extends Fragment {
            public void onClick(View view) {
 
                String user_Name = userName.getText().toString().trim();
-             String password = pass.getText().toString().trim();
+
+               SharedPreferencesManger.SaveData(getContext(),"userNameFromSignIn",user_Name);
+               String password = pass.getText().toString().trim();
                // Check for empty data in the form
                if (!user_Name.isEmpty() && !password.isEmpty()) {
                    // login user

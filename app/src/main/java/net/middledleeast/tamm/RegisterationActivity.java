@@ -43,6 +43,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
+import net.middledleeast.tamm.activities.FreeCongratsActivity;
 import net.middledleeast.tamm.activities.PaymentActivity;
 import net.middledleeast.tamm.adapters.AutoCompleteAdapter;
 import net.middledleeast.tamm.fragments.PlansFragment;
@@ -494,10 +495,10 @@ public class RegisterationActivity extends Fragment {
                     }
 
 
-//                    Toast.makeText(getContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(getContext(), FreeCongratsActivity.class);
-//                        SharedPreferencesManger.SaveData(getContext(),"user_name",userName);
-//                    startActivity(intent);
+                    Toast.makeText(getContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getContext(), FreeCongratsActivity.class);
+                        SharedPreferencesManger.SaveData(getContext(),"user_name",userName);
+                    startActivity(intent);
 
 
 

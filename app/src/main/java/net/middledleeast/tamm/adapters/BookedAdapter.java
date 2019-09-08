@@ -166,6 +166,14 @@ public class BookedAdapter extends RecyclerView.Adapter<BookedAdapter.BookedView
             }
         });
 
+        holder.btn_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
+
 
 
 

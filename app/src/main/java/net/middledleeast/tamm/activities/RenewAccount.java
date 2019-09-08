@@ -78,6 +78,10 @@ public class  RenewAccount extends AppCompatActivity
 
     Button btn_renew_account, renew_sign_in, renew_register;
     private int renew = 1;
+    private String feesFree;
+    private String feesMember;
+    private Integer accountPlan;
+    private String userNameFromSignIn;
 
 
 //    private AuthenticationData authenticandata;
@@ -99,6 +103,13 @@ public class  RenewAccount extends AppCompatActivity
         tabLayout = findViewById(R.id.tap_layout);
         viewPager = findViewById(R.id.view_pager_renew);
         imageView7=findViewById(R.id.imageView7);
+
+
+
+        feesFree = SharedPreferencesManger.LoadStringData(this, "feesFree");
+        feesMember = SharedPreferencesManger.LoadStringData(this, "feesMember");
+        accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
+
 
 
         imageView7.setOnClickListener(new View.OnClickListener() {
@@ -215,7 +226,8 @@ public class  RenewAccount extends AppCompatActivity
         });
 
         try {
-            user = SharedPreferencesManger.LoadStringData(this, "user");
+            user = SharedPreferencesManger.LoadStringData(this, "user_name");
+            userNameFromSignIn = SharedPreferencesManger.LoadStringData(this, "userNameFromSignIn");
 
         } catch (Exception e) {
 
@@ -271,15 +283,17 @@ public class  RenewAccount extends AppCompatActivity
         }
 
 
+
         try {
             user_name_profile.setText(user);
-            if (accountType == 1){
+            user_name_profile.setText(userNameFromSignIn);
+            if (accountPlan == 1){
 
 
                 relative_expire.setVisibility(View.GONE);
 
                 textView_account.setText("FreeUser Account");
-            }else if (accountType == 2){
+            }else if (accountPlan == 0){
                 relative_expire.setVisibility(View.VISIBLE);
                 valid_till_months.setText((validTillValue + " days"));
                 textView_account.setText("MemberShip Account");
