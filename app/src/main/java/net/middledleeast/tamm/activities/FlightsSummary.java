@@ -308,6 +308,7 @@ public class FlightsSummary extends AppCompatActivity {
 
         if (journyTipe == 1 && size == 1) {
 
+            closure.setVisibility(View.GONE);
 
             setDataOneWayDirect();
 
@@ -866,10 +867,10 @@ public class FlightsSummary extends AppCompatActivity {
                     public void onResponse(Call<GetBookingResponse> call, Response<GetBookingResponse> response) {
 
 
-
-                        response.raw().body();
-                        long status = response.body().getStatus();
-                        String tokenId1 = response.body().getTokenId();
+//
+//                        response.raw().body();
+//                        long status = response.body().getStatus();
+//                        String tokenId1 = response.body().getTokenId();
 
 
                     }
