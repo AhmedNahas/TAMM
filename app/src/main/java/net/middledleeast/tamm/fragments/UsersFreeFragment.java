@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,14 +18,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.vision.L;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.FreeAdapter;
-import net.middledleeast.tamm.helper.SharedPreferencesManger;
-import net.middledleeast.tamm.model.ListUser;
+import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 import net.middledleeast.tamm.model.UserList;
-import net.middledleeast.tamm.model.Users;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,7 +43,7 @@ public class UsersFreeFragment extends Fragment {
     ImageView imgView;
     RecyclerView recyclerView;
     FreeAdapter freeAdapter;
-    private static final String url_user_phone ="http://egyptgoogle.com/freeusers/listusers.php" ;
+//    private static final String url_user_phone ="http://egyptgoogle.com/freeusers/listusers.php" ;
     List<UserList> users=new ArrayList<>();
     private List<String> listUserName = new ArrayList<>();
     private List<String> listUserPhone = new ArrayList<>();
@@ -64,12 +60,12 @@ public class UsersFreeFragment extends Fragment {
 
         getUserData();
 
-//        users.add(new Users("Mohamed","01062594878",""));
-//        users.add(new Users("Mohamed","01062594878",""));
-//        users.add(new Users("Mohamed","01062594878",""));
-//        users.add(new Users("Mohamed","01062594878",""));
-//        users.add(new Users("Mohamed","01062594878",""));
-//        users.add(new Users("Mohamed","01062594878",""));
+//        users.ic_add(new Users("Mohamed","01062594878",""));
+//        users.ic_add(new Users("Mohamed","01062594878",""));
+//        users.ic_add(new Users("Mohamed","01062594878",""));
+//        users.ic_add(new Users("Mohamed","01062594878",""));
+//        users.ic_add(new Users("Mohamed","01062594878",""));
+//        users.ic_add(new Users("Mohamed","01062594878",""));
 //
 //
 //
@@ -86,7 +82,7 @@ public class UsersFreeFragment extends Fragment {
 
     private void getUserData() {
 
-        StringRequest stringRequest=new StringRequest(Request.Method.GET, url_user_phone, new Response.Listener<String>() {
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, LinksUrl.URL_USER_APP, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

@@ -54,20 +54,20 @@ Context context;
 
         String airline = listairport.get(position);
         String image=listImgflight.get(position);
-        String takeoff = listtakeoffdate.get(position);
-        String landing =listlandingdate.get(position);
+//        String takeoff = listtakeoffdate.get(position);
+//        String landing =listlandingdate.get(position);
         String price = listPrice.get(position);
-        String fromairport = listfromairport.get(position);
-        String toairport = listtoairport.get(position);
+//        String fromairport = listfromairport.get(position);
+//        String toairport = listtoairport.get(position);
 
 
 
         holder.tv_best_flight.setText(airline);
         holder.tv_price_.setText(price);
-        holder.tv_from_airport_flight.setText(fromairport);
-        holder.tv_to_airport_flight.setText(toairport);
-        holder.tv_takeoff_flight.setText(takeoff);
-        holder.tv_land_date.setText(landing);
+//        holder.tv_from_airport_flight.setText(fromairport);
+//        holder.tv_to_airport_flight.setText(toairport);
+//        holder.tv_takeoff_flight.setText(takeoff);
+//        holder.tv_land_date.setText(landing);
 
         Glide.with(context).load(image).into(holder.iv_best_flight);
 

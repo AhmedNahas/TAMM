@@ -90,13 +90,16 @@ public class checkroom extends AppCompatActivity {
         String reqRoomString = SharedPreferencesManger.LoadStringData(this, "arrayOfroomsreq");
 
         arrayOfRooms = gson1.fromJson(reqRoomString, ArrayOfRequestedRooms.class);
-        roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
+//        roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
         currency = SharedPreferencesManger.LoadStringData(this, "currency");
         singlePic = SharedPreferencesManger.LoadStringData(this, "singlePic");
 
+        tvTotalMount.setText("  TOTAl AMOUNT :                          " + roomPrice);
+
         Glide.with(this).load(singlePic).into(imgCheckOut);
 
-//
+
+
 //        if (arrayOfRooms.size()==2){
 //
 //            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
@@ -211,7 +214,6 @@ public class checkroom extends AppCompatActivity {
 
         try {
 
-            tvTotalMount.setText("  TOTAl AMOUNT :                          " + currency + " " + roomPrice);
 
             // TODO: 31/07/2019  error
             roomIndexArray = gson.fromJson(roomIndexArrayStr,ArrayList.class);
@@ -320,7 +322,10 @@ public class checkroom extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                SharedPreferencesManger.SaveData(checkroom.this, "finalpriceRoom",roomPrice);
+                String[] s = roomPrice.split(" ");
+                String s1 = s[0];
+                String s2 = s[1];
+                SharedPreferencesManger.SaveData(checkroom.this, "finalpriceRoom",s2);
 
                 startActivity(new Intent(checkroom.this, ConfirmBookingRoom.class));
 
@@ -343,6 +348,8 @@ public class checkroom extends AppCompatActivity {
         intent = getIntent().getStringExtra("smok");
 
         roomTybe = getIntent().getStringExtra("roomTybe");
+        roomPrice = getIntent().getStringExtra("roomPrice");
+
 
         description = getIntent().getStringExtra("description");
         sessionId = SharedPreferencesManger.LoadStringData(this, "session_id");

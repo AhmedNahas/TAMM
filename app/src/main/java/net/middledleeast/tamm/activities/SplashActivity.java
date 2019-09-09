@@ -26,6 +26,8 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
+        SharedPreferencesManger.clean(this);
+
 
         String mUsrename =    SharedPreferencesManger.LoadStringData(this, "user_name" );
 

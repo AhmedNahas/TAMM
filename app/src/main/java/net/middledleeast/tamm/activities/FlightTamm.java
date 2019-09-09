@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,8 @@ public class FlightTamm extends AppCompatActivity {
     private Button button;
     private RelativeLayout toolbar_back;
 
+    ImageView iv_booked_flight_tamm;
+
     boolean Click = false;
 
     @Override
@@ -36,6 +39,15 @@ public class FlightTamm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flight_tamm);
         ButterKnife.bind(this);
+
+        iv_booked_flight_tamm=findViewById(R.id.iv_booked_flight_tamm);
+        iv_booked_flight_tamm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(FlightTamm.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
 
         toolbar_back= findViewById(R.id.toolbar_back1);
 

@@ -24,7 +24,7 @@
 
             android:paddingStart="@dimen/_4sdp"
             android:paddingEnd="@dimen/_4sdp"
-  android:id="@+id/passen_air"
+            android:id="@+id/passen_air"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Passenger Airplane"
@@ -36,7 +36,7 @@
 
     </RelativeLayout>
     <RelativeLayout
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_4sdp"
         android:id="@+id/rel2_checked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/rel2_checked"
         android:layout_marginLeft="@dimen/_50sdp"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:text="From"
         android:textAllCaps="false"
         android:textColor="@color/white" />
@@ -110,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/rel2_checked"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_70sdp"
         android:text="To"
         android:textAllCaps="false"
@@ -200,7 +200,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_from_to"
         android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginRight="@dimen/_20sdp"
         android:background="@drawable/shape2">
 
@@ -209,7 +209,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_2sdp"
 
             >
 
@@ -239,7 +239,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative_dep_return"
             android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/_5sdp">
+            android:layout_marginTop="@dimen/_2sdp">
 
             <TextView
 
@@ -306,7 +306,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/spinner_depar_return"
             android:layout_marginLeft="@dimen/_40sdp"
-            android:layout_marginTop="@dimen/_10sdp">
+            android:layout_marginTop="@dimen/_4sdp">
 
             <TextView
                 android:id="@+id/passengers_on"
@@ -327,7 +327,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative_passengers"
             android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/_5sdp">
+            android:layout_marginTop="@dimen/_2sdp">
 
             <TextView
 
@@ -388,7 +388,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative_adult_child"
             android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_5sdp">
+            android:layout_marginTop="@dimen/_2sdp">
 
             <TextView
 
@@ -422,7 +422,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative_infant"
             android:layout_marginLeft="@dimen/_45sdp"
-            android:layout_marginTop="@dimen/_10sdp">
+            android:layout_marginTop="@dimen/_4sdp">
 
             <TextView
                 android:id="@+id/cabin_class"
@@ -441,7 +441,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative_cabin"
             android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_4sdp"
             android:layout_marginBottom="@dimen/_15sdp">
 
             <CheckedTextView

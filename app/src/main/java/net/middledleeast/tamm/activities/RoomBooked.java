@@ -41,6 +41,7 @@ import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 import net.middledleeast.tamm.model.Room.AppDatabase;
 import net.middledleeast.tamm.model.Room.RoomCartModel;
 
@@ -88,7 +89,7 @@ public class RoomBooked extends AppCompatActivity {
     RequestQueue requestQueue;
     Context context;
 
-    private static final String SENDBOOKEDHOTEL = "http://egyptgoogle.com/backend/bookingshow/insert.php";
+//    private static final String SENDBOOKEDHOTEL = "http://egyptgoogle.com/backend/bookingshow/insert.php";
 
 
     private Button button;
@@ -1109,7 +1110,7 @@ public class RoomBooked extends AppCompatActivity {
     }
     private void connectdatabase() {
 
-            StringRequest request = new StringRequest(Request.Method.POST, SENDBOOKEDHOTEL, new Response.Listener<String>() {
+            StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SEND_BOOKED_HOTEL, new Response.Listener<String>() {
 
                 @Override
 
@@ -1123,7 +1124,6 @@ public class RoomBooked extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(RoomBooked.this,"error", Toast.LENGTH_SHORT).show();
                     Log.e("HI", "onResponse: "+ error );
 
 

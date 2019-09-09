@@ -14,25 +14,40 @@
         android:layout_margin="10dp"
         android:gravity="center">
 
-        <ImageView
-            android:id="@+id/toolbar_back1"
+        <RelativeLayout
+            android:id="@+id/relative_back_flight_summary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/ic_back_arrow"
-            android:backgroundTint="#FFEB3B" />
+            android:layout_marginStart="@dimen/_10sdp"
+            >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@+id/toolbar_back1"
-            android:text="BACK"
-            android:textColor="#ffff"
-            android:textSize="12sp" />
+            <ImageView
+                android:id="@+id/toolbar_back1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/ic_back_arrow"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@+id/toolbar_back1"
+                android:text="BACK"
+                android:textColor="#ffff"
+                android:textSize="12sp" />
+
+
+
+
+
+        </RelativeLayout>
+
+
 
         <ImageView
             android:layout_width="@dimen/_20sdp"
@@ -43,8 +58,8 @@
             android:background="@drawable/logo" />
 
         <ImageView
+            android:id="@+id/iv_booked_flight_summary"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center"
@@ -176,15 +191,18 @@
                 android:layout_marginLeft="10dp"
                 >
 
-                    <ImageView
-                        android:id="@+id/iv_icon"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/icon"
-                        />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/iv_icon"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="@color/app_color"
+                    app:civ_circle_background_color="@color/app_color" />
                 <TextView
                     android:id="@+id/tv_airline"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/_100sdp"
                     android:layout_height="wrap_content"
                     android:text="TURKISH Airlines"
                     android:textColor="@color/app_color"
@@ -315,8 +333,21 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <RelativeLayout
-            android:visibility="gone"
             android:id="@+id/closure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -401,15 +432,19 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_flight2">
 
-                <ImageView
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/iv_icon2"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/icon"
-                    />
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="@color/app_color"
+                    app:civ_circle_background_color="@color/app_color" />
                 <TextView
                     android:id="@+id/tv_airline2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/_100sdp"
                     android:layout_height="wrap_content"
                     android:text="TURKISH Airlines"
                     android:textColor="@color/app_color"
@@ -547,21 +582,82 @@
         android:text="PROCEED"/>
 
 
-    <ImageView
-        android:id="@+id/iv_man_hand"
-        android:layout_width="wrap_content"
-        android:layout_height="180dp"
-        android:src="@drawable/man1"
-        android:layout_below="@+id/relative_all"
+    <RelativeLayout
+        android:id="@+id/relative_img_renew_flight_summary"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:background="@drawable/man1"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/tv_tab_me_renew_hotels"
+        >
 
-        />
+        <TextView
+            android:id="@+id/assistant_label_voice_renew_flight_summary"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:drawablePadding="8dp"
+            android:layout_marginStart="8dp"
+            android:drawableStart="@drawable/ic_assistant_voice"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text="SEND VOICE NOTE TO AGENT"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/_7ssp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+
+        <TextView
+            android:id="@+id/assistant_label_call_renew_flight_summary"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="8dp"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_assistant_call"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text="CALL AGENT"
+            android:textStyle="bold"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/_7ssp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_below="@+id/assistant_label_voice_renew_flight_summary"
+            />
+
+
+        <TextView
+            android:paddingStart="@dimen/_9ssp"
+            android:id="@+id/assistant_label_message_renew_flight_summary"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="38"
+            android:drawablePadding="8dp"
+            android:drawableStart="@drawable/ic_assistant_message"
+            android:fontFamily="sans-serif"
+            android:text="SEND MESSAGE TO AGENT"
+            android:textColor="@color/app_color"
+            android:textSize="@dimen/_7ssp"
+            android:gravity="center"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:layout_alignParentRight="true"/>
+
+
+
+    </RelativeLayout>
+
+
     <TextView
+        android:id="@+id/tv_tab_me_renew_hotels"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tap me if you need MY ASSISTANCE "
-        android:textColor="#fff"
+        android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:layout_below="@+id/iv_man_hand"
-        />
+        android:text="Tap me if you need MY ASSISTANCE "
+        android:textColor="#fff" />
 
 </RelativeLayout>

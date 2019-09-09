@@ -1,122 +1,85 @@
 
 package FlightApi;
 
+import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
+public class Fare implements Serializable
+{
 
-public class Fare implements Serializable {
-
-    private final static long serialVersionUID = 7964126857077636792L;
     @SerializedName("TotalFare")
     @Expose
-    private double totalFare;
+    private Double totalFare;
+    @SerializedName("BaseFare")
+    @Expose
+    private Double baseFare;
     @SerializedName("FareType")
     @Expose
-    private String fareType;
+    private Object fareType;
     @SerializedName("AgentMarkup")
     @Expose
-    private long agentMarkup;
+    private Double agentMarkup;
     @SerializedName("OtherCharges")
     @Expose
-    private long otherCharges;
+    private Double otherCharges;
+    @SerializedName("Tax")
+    @Expose
+    private Double tax;
     @SerializedName("AgentPreferredCurrency")
     @Expose
     private String agentPreferredCurrency;
     @SerializedName("ServiceFee")
     @Expose
-    private long serviceFee;
-    @SerializedName("Vat")
-    @Expose
-    private long vat;
-    @SerializedName("BaseFare")
-    @Expose
-    private double baseFare;
-    @SerializedName("Tax")
-    @Expose
-    private double tax;
+    private Double serviceFee;
+    private final static long serialVersionUID = -7385814073415771750L;
 
-    /**
-     * No args constructor for use in serialization
-     */
-    public Fare() {
-    }
-
-    /**
-     * @param baseFare
-     * @param serviceFee
-     * @param totalFare
-     * @param tax
-     * @param agentMarkup
-     * @param agentPreferredCurrency
-     * @param otherCharges
-     * @param vat
-     * @param fareType
-     */
-    public Fare(double totalFare, String fareType, long agentMarkup, long otherCharges, String agentPreferredCurrency, long serviceFee, long vat, double baseFare, double tax) {
-        super();
-        this.totalFare = totalFare;
-        this.fareType = fareType;
-        this.agentMarkup = agentMarkup;
-        this.otherCharges = otherCharges;
-        this.agentPreferredCurrency = agentPreferredCurrency;
-        this.serviceFee = serviceFee;
-        this.vat = vat;
-        this.baseFare = baseFare;
-        this.tax = tax;
-    }
-
-    public double getTotalFare() {
+    public Double getTotalFare() {
         return totalFare;
     }
 
-    public void setTotalFare(double totalFare) {
+    public void setTotalFare(Double totalFare) {
         this.totalFare = totalFare;
     }
 
-    public Fare withTotalFare(double totalFare) {
-        this.totalFare = totalFare;
-        return this;
+    public Double getBaseFare() {
+        return baseFare;
     }
 
-    public String getFareType() {
+    public void setBaseFare(Double baseFare) {
+        this.baseFare = baseFare;
+    }
+
+    public Object getFareType() {
         return fareType;
     }
 
-    public void setFareType(String fareType) {
+    public void setFareType(Object fareType) {
         this.fareType = fareType;
     }
 
-    public Fare withFareType(String fareType) {
-        this.fareType = fareType;
-        return this;
-    }
-
-    public long getAgentMarkup() {
+    public Double getAgentMarkup() {
         return agentMarkup;
     }
 
-    public void setAgentMarkup(long agentMarkup) {
+    public void setAgentMarkup(Double agentMarkup) {
         this.agentMarkup = agentMarkup;
     }
 
-    public Fare withAgentMarkup(long agentMarkup) {
-        this.agentMarkup = agentMarkup;
-        return this;
-    }
-
-    public long getOtherCharges() {
+    public Double getOtherCharges() {
         return otherCharges;
     }
 
-    public void setOtherCharges(long otherCharges) {
+    public void setOtherCharges(Double otherCharges) {
         this.otherCharges = otherCharges;
     }
 
-    public Fare withOtherCharges(long otherCharges) {
-        this.otherCharges = otherCharges;
-        return this;
+    public Double getTax() {
+        return tax;
+    }
+
+    public void setTax(Double tax) {
+        this.tax = tax;
     }
 
     public String getAgentPreferredCurrency() {
@@ -127,61 +90,12 @@ public class Fare implements Serializable {
         this.agentPreferredCurrency = agentPreferredCurrency;
     }
 
-    public Fare withAgentPreferredCurrency(String agentPreferredCurrency) {
-        this.agentPreferredCurrency = agentPreferredCurrency;
-        return this;
-    }
-
-    public long getServiceFee() {
+    public Double getServiceFee() {
         return serviceFee;
     }
 
-    public void setServiceFee(long serviceFee) {
+    public void setServiceFee(Double serviceFee) {
         this.serviceFee = serviceFee;
-    }
-
-    public Fare withServiceFee(long serviceFee) {
-        this.serviceFee = serviceFee;
-        return this;
-    }
-
-    public long getVat() {
-        return vat;
-    }
-
-    public void setVat(long vat) {
-        this.vat = vat;
-    }
-
-    public Fare withVat(long vat) {
-        this.vat = vat;
-        return this;
-    }
-
-    public double getBaseFare() {
-        return baseFare;
-    }
-
-    public void setBaseFare(double baseFare) {
-        this.baseFare = baseFare;
-    }
-
-    public Fare withBaseFare(double baseFare) {
-        this.baseFare = baseFare;
-        return this;
-    }
-
-    public double getTax() {
-        return tax;
-    }
-
-    public void setTax(double tax) {
-        this.tax = tax;
-    }
-
-    public Fare withTax(double tax) {
-        this.tax = tax;
-        return this;
     }
 
 }

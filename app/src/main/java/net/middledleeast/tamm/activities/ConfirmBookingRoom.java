@@ -400,7 +400,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         start_time = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "start_date");
         end_time = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "end_date");
         hotel_name = SharedPreferencesManger.LoadStringData(ConfirmBookingRoom.this, "hotel_name");
-        roomPrice = SharedPreferencesManger.LoadStringData(this, "roomPrice");
+        roomPrice = SharedPreferencesManger.LoadStringData(this, "finalpriceRoom");
         currency = SharedPreferencesManger.LoadStringData(this, "currency");
 
 
@@ -445,7 +445,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 if (firstName1GustOne.getText().toString().equals("") || lastName1GustOne.getText().toString().equals("")) {
                     SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(ConfirmBookingRoom.this);
                     sweetAlertDialog.setConfirmButton("Ok", null);
-                    sweetAlertDialog.setContentText("Please add First guest's first and last name at least");
+                    sweetAlertDialog.setContentText("Please ic_add First guest's first and last name at least");
                     sweetAlertDialog.show();
                     return;
                 }

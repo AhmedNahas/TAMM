@@ -25,6 +25,8 @@ public class FavoriteActivity extends AppCompatActivity {
     ImageView iv_booked_favorite;
     RelativeLayout toolbar_back1_favorite;
 
+
+
     public static AppDatabase appDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -3,21 +3,15 @@ package net.middledleeast.tamm.fragments;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
@@ -29,6 +23,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,7 +40,7 @@ public class TammFamilyFragment extends Fragment {
     LinearLayout imageView;
 
 
-    private static final String url ="http://egyptgoogle.com/backend/terms/tammfamily.php" ;
+//    private static final String url ="http://egyptgoogle.com/backend/terms/tammfamily.php" ;
 
     public TammFamilyFragment() {
         // Required empty public constructor
@@ -119,7 +114,7 @@ public class TammFamilyFragment extends Fragment {
 
     private void gettextfamily() {
 
-        StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, LinksUrl.URL_TAMM_FAMILY, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

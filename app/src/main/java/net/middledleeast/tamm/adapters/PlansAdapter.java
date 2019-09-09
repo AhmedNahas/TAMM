@@ -46,7 +46,7 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHol
     private int row_index = -1;
     private String HI = "http://egyptgoogle.com/backend/freeservicefees/freeservicefessjson.php";
     private String HI2 = "http://egyptgoogle.com/backend/servicefees/premiumservicefessjson.php";
-    private String user;
+    private int user;
 
     public PlansAdapter(Context context, List<PlanModel> planModelList) {
         this.context = context;
@@ -98,7 +98,7 @@ if(i==0)
 {
 
 
-    user = "1" ;
+    user = 1 ;
     SharedPreferencesManger.SaveData(context,"isMemmber",user);
 
 getmember();
@@ -111,7 +111,7 @@ getmember();
 }
 else
 {
-    user = "2" ;
+    user = 2 ;
     SharedPreferencesManger.SaveData(context,"isMemmber",user);
 
     getFree();

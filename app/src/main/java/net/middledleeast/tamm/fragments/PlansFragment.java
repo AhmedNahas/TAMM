@@ -1,11 +1,11 @@
 package net.middledleeast.tamm.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.activities.RenewAccount;
 import net.middledleeast.tamm.adapters.PlansAdapter;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.PlanModel;
 
 import java.util.ArrayList;
@@ -56,14 +58,34 @@ public class PlansFragment extends Fragment {
         toolbar = view.findViewById(R.id.welcome_toolbar);
         imageView = view.findViewById(R.id.back_pressed);
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.welcome_container, new AuthenticationFragment())
-                        .addToBackStack( "PlansFragment" ) .commit();
-            }
-        });
+
+
+
+        final String guestMode = SharedPreferencesManger.LoadStringData(getContext(), "guestMode");
+        if(guestMode==guestMode){
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent =new Intent(getContext(), RenewAccount.class);
+                    startActivity(intent);
+                }
+            });
+
+
+        }else{
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.welcome_container, new AuthenticationFragment())
+                            .addToBackStack( "PlansFragment" ) .commit();
+                }
+            });
+
+        }
+
+
 
 
         return view;

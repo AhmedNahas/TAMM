@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -28,18 +29,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.wirecard.ecom.Client;
-import com.wirecard.ecom.model.out.PaymentResponse;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterPayment;
 import net.middledleeast.tamm.fragments.TermsFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,7 +53,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import payments.PaymentObjectProvider;
-import payments.ResponseHelper;
 
 public class PaymentActivity extends AppCompatActivity {
 
@@ -62,9 +61,9 @@ public class PaymentActivity extends AppCompatActivity {
     @BindView(R.id.tv_mr_mrs)
     TextView tvMrMrs;
     @BindView(R.id.tv_firstName)
-    TextView tvFirstName;
+    EditText tvFirstName;
     @BindView(R.id.tv_last_name)
-    TextView tvLastName;
+    EditText tvLastName;
     @BindView(R.id.tv_kd)
     TextView tvKd;
     @BindView(R.id.check_box_agerr2)
@@ -77,7 +76,7 @@ public class PaymentActivity extends AppCompatActivity {
     private RelativeLayout relativeLayout;
     private AuthenticationData authenticandata;
     private BasicHttpBinding_IHotelService1 service;
-    private static final String urlmemberfees = "http://egyptgoogle.com/backend/memberfees/memberfessjson.php";
+//    private static final String urlmemberfees = "http://egyptgoogle.com/backend/memberfees/memberfessjson.php";
     Toolbar toolbar;
     ImageView imageView;
     private List<String> spinnerTitles = new ArrayList<>();
@@ -89,23 +88,26 @@ public class PaymentActivity extends AppCompatActivity {
     private String currency;
     private  String flightCurrency;
     private String msgbody = "";
-    String first_name1 , last_name1 ,date , country ,city,mail,phone,ocupation,username ,pass ;
+    String first_name1 , last_name1 ,birthdate , country ,city,email,phone,ocupation,username ,pass ;
 
-    private String register_url_member = "http://egyptgoogle.com/paymentusers/insertstudents.php";
+//    private String register_url_member = "http://egyptgoogle.com/paymentusers/insertstudents.php";
     private String day , month , year ;
     private int RIGISTRATHION = 1;
     private int BOOKING_ROOM = 2 ;
     private int FLIGHT =3;
     private boolean knet = false;
-    private String urlAmount = "http://egyptgoogle.com/k/jsoninsert.php";
+//    private String urlAmount = "http://egyptgoogle.com/k/jsoninsert.php";
     private Handler handler;
     private Runnable runnable;
     private long days;
     private Date currentDate;
-    private String last_name;
-    private String first_name;
+
     private String pricepffers;
     private String priceFligt;
+    private int isfree=0;
+    private String last_name;
+    private String first_name;
+
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -167,8 +169,9 @@ public class PaymentActivity extends AppCompatActivity {
 
             roomPrice = SharedPreferencesManger.LoadStringData(this, "finalpriceRoom");
             currency = SharedPreferencesManger.LoadStringData(this, "currency");
-            last_name = SharedPreferencesManger.LoadStringData(this, "lastName");
-            first_name = SharedPreferencesManger.LoadStringData(this, "firstName");
+            last_name = SharedPreferencesManger.LoadStringData(this, "lastName1GustOne");
+            first_name = SharedPreferencesManger.LoadStringData(this, "firstName1GustOne");
+
 
 
             tvLastName.setText(last_name);
@@ -179,6 +182,9 @@ public class PaymentActivity extends AppCompatActivity {
             PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
             BigDecimal finalAmount = amount;
             String finalCurrency = currency;
+
+
+
 
 //            Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
 //               client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
@@ -203,7 +209,7 @@ public class PaymentActivity extends AppCompatActivity {
             year = intent.getStringExtra("year");
              country = intent.getStringExtra("country");
              city = intent.getStringExtra("city");
-             mail = intent.getStringExtra("mail");
+             email = intent.getStringExtra("mail");
              phone = intent.getStringExtra("phone");
              ocupation = intent.getStringExtra("ocupation");
              username = intent.getStringExtra("username");
@@ -253,16 +259,16 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         spinnerTitles.add(getString(R.string.payment_method));
-//        spinnerTitles.add(getString(R.string.visa_));
-//        spinnerTitles.add(getString(R.string.master));
+//        spinnerTitles.ic_add(getString(R.string.visa_));
+//        spinnerTitles.ic_add(getString(R.string.master));
 
 
         spinnerTitles.add(getString(R.string.knet));
 
         spinnerImages.add(0);
 
-//        spinnerImages.add(R.drawable.wd_ecom_visa);
-//        spinnerImages.add(R.drawable.wd_ecom_mastercard);
+//        spinnerImages.ic_add(R.drawable.wd_ecom_visa);
+//        spinnerImages.ic_add(R.drawable.wd_ecom_mastercard);
         spinnerImages.add(R.drawable.ic_knet);
 
 
@@ -312,6 +318,7 @@ public class PaymentActivity extends AppCompatActivity {
                     String[] s = tvKd.getText().toString().split(" ");
                     String s1 = s[0];
                     String s2 = s[1];
+
 
 
                     openbankRegisrat(s2, s1);
@@ -379,8 +386,8 @@ public class PaymentActivity extends AppCompatActivity {
 
                 }else {
 
-                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+//                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+//                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
                 }
 
 
@@ -446,11 +453,13 @@ public class PaymentActivity extends AppCompatActivity {
                 if (knet){
 
                     sendamount(mSgbody);
+                    sendDataToServer();
+
 //                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
                 }else {
 
-                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+//                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+//                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
 
                 }
 
@@ -490,8 +499,8 @@ public class PaymentActivity extends AppCompatActivity {
 
                  }else {
 
-                     Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-                     client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+//                     Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+//                     client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
                  }
 
 
@@ -510,7 +519,7 @@ public class PaymentActivity extends AppCompatActivity {
          private void sendamount(String roomPrice_) {
 
 
-        StringRequest request = new StringRequest(Request.Method.POST, urlAmount, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_AMOUNT, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -548,87 +557,147 @@ public class PaymentActivity extends AppCompatActivity {
             }
 
 
-         @Override
-         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Serializable paymentSdkResponse = data.getSerializableExtra(Client.EXTRA_PAYMENT_SDK_RESPONSE);
-        if (paymentSdkResponse instanceof PaymentResponse) {
-            String formattedResponse = ResponseHelper.getFormattedResponse((PaymentResponse) paymentSdkResponse);
-
-
-        }
-        if (resultCode == RESULT_OK) {
-            Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
-
-
-            if (mId == BOOKING_ROOM) {
-                startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
-            } else if (mId==1){
-
-                sendDataToServer();
-                Toast.makeText(this, "Welcome", Toast.LENGTH_LONG).show();
-
-
-
-
-
-            }else if (mId==3){
-
-                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
-
-                startActivity(new Intent(PaymentActivity.this,FlightDetails.class));
-            }else if (mId==6){
-
-
-                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
-
-                startActivity(new Intent(PaymentActivity.this,HotelBooking.class));
-            }
-
-        }else {
-            Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
-
-
-                    }
-    }
+//         @Override
+//         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        Serializable paymentSdkResponse = data.getSerializableExtra(Client.EXTRA_PAYMENT_SDK_RESPONSE);
+//        if (paymentSdkResponse instanceof PaymentResponse) {
+//            String formattedResponse = ResponseHelper.getFormattedResponse((PaymentResponse) paymentSdkResponse);
+//
+//
+//        }
+//        if (resultCode == RESULT_OK) {
+//            Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+//
+//
+//            if (mId == BOOKING_ROOM) {
+//                startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
+//            } else if (mId==1){
+//
+//                sendDataToServer();
+//                Toast.makeText(this, "Welcome", Toast.LENGTH_LONG).show();
+//
+//
+//
+//
+//
+//            }else if (mId==3){
+//
+//                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+//
+//                startActivity(new Intent(PaymentActivity.this,FlightDetails.class));
+//            }else if (mId==6){
+//
+//
+//                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+//
+//                startActivity(new Intent(PaymentActivity.this,HotelBooking.class));
+//            }
+//
+//        }else {
+//            Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+//
+//
+//                    }
+//    }
 
     private void sendDataToServer() {
 
         countDownStart();
-        StringRequest request = new StringRequest(Request.Method.POST, register_url_member, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_REGISTER, new Response.Listener<String>() {
 
             @Override
 
             public void onResponse(String response) {
-                SharedPreferencesManger.SaveData(PaymentActivity.this, "username", username);
+                SharedPreferencesManger.SaveData(PaymentActivity.this, "user_name", username);
                 startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    int status = jObj.getInt("status");
+                    if (status == 1) {
+                        // User successfully stored in MySQL
+                        // Now store the user in sqlite
+
+                        String uid = jObj.getString("uid");
+
+                        JSONObject user = jObj.getJSONObject("user");
+                        username = user.getString("username");
+                        first_name1 = user.getString("firstname");
+                        last_name1 = user.getString("lastname");
+                        country = user.getString("country");
+                        city = user.getString("city");
+                        phone = user.getString("phone");
+                        isfree = user.getInt("isfree");
+                        ocupation = user.getString("occupation");
+                        email = user.getString("email");
+
+
+                        // Inserting row in users table
+//                        db.addUser(name, email, uid, created_at);
+
+                        Intent intent =new Intent(PaymentActivity.this,MemberCongratsActivity.class);
+                        SharedPreferencesManger.remove(PaymentActivity.this,"gustMode");
+
+                        startActivity(intent);
+                        // Launch login activity
+
+
+                    } else {
+
+                        // Error occurred in registration. Get the error
+                        // message
+                        String errorMsg = jObj.getString("error_msg");
+                        Toast.makeText(PaymentActivity.this,
+                                errorMsg, Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+//                    Toast.makeText(getContext(), "Registration Successful", Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(getContext(), FreeCongratsActivity.class);
+//                        SharedPreferencesManger.SaveData(getContext(),"user_name",userName);
+//                    startActivity(intent);
+
+
+
             }
+
         }, new Response.ErrorListener() {
+
             @Override
             public void onErrorResponse(VolleyError error) {
 
+                int statusCode = error.networkResponse.statusCode;
+                Toast.makeText(PaymentActivity.this, ""+statusCode, Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(PaymentActivity.this, "eroroororoor", Toast.LENGTH_SHORT).show();
             }
-
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("firstname",first_name1);
-                parameters.put("lastname",last_name1);
                 parameters.put("username", username);
-                parameters.put("password", pass);
-                parameters.put("day", day);
-                parameters.put("month", month);
-                parameters.put("year", year);
-                parameters.put("location",country);
-                parameters.put("occupation", ocupation);
-                parameters.put("email", mail);
-                parameters.put("phone", phone);
+                parameters.put("firstname",first_name1 );
+                parameters.put("lastname", last_name1);
+                parameters.put("country", country);
                 parameters.put("city", city);
-                parameters.put("visa", "visa");
-                parameters.put("registrationdate", String.valueOf(days));
+                parameters.put("phone",phone );
+                parameters.put("isfree",String.valueOf(isfree));
+                parameters.put("occupation",ocupation);
+                parameters.put("email", email);
+                parameters.put("password", pass);
+                parameters.put("birthdate"," " + day+ " - " + month+ " - " + year + " ");
+
+
+
+
+
+
+
+                //  parameters.put("tokenid",tokenId );
+
+
                 return parameters;
             }
         };
@@ -642,7 +711,7 @@ public class PaymentActivity extends AppCompatActivity {
     private void getmemberfees() {
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, urlmemberfees, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, LinksUrl.URL_MEMBER_FEES, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -724,9 +793,10 @@ public class PaymentActivity extends AppCompatActivity {
 
 
                     currentDate = new Date();
+                    new SimpleDateFormat("yyyy-MM-dd").format(currentDate);
+
                     if (!currentDate.after(futureDate)) {
-                        long diff = futureDate.getTime()
-                                - currentDate.getTime();
+                        long diff = futureDate.getTime() - currentDate.getTime();
                          days = diff / (24 * 60 * 60 * 1000);
                         diff -= days * (24 * 60 * 60 * 1000);
                         long hours = diff / (60 * 60 * 1000);
@@ -734,6 +804,7 @@ public class PaymentActivity extends AppCompatActivity {
                         long minutes = diff / (60 * 1000);
                         diff -= minutes * (60 * 1000);
                         long seconds = diff / 1000;
+
 //                        txtmonth.setText("" + String.format("%02d", months));
 //                        txtDay.setText("" + String.format("%02d", days));
 //                        txtHour.setText("" + String.format("%02d", hours));

@@ -15,7 +15,11 @@ public class PaymentActivityFragment extends AppCompatActivity {
         setContentView(R.layout.activity_payment_fragment);
 
         if (savedInstanceState == null) {
+
             getSupportFragmentManager().beginTransaction().add(android.R.id.content, new SignInFragment()).commit();
+
         }
+
+
     }
 }

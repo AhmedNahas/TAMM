@@ -1,5 +1,7 @@
 package net.middledleeast.tamm.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -52,7 +54,7 @@ public class OffersHotelsDetailsActivity extends AppCompatActivity {
     LinearLayout layoutRatOffer;
     @BindView(R.id.btn_map_offer)
     Button btnMapOffer;
-//    @BindView(R.id.btn_next_offer)
+    //    @BindView(R.id.btn_next_offer)
 //    Button btnNextOffer;
     @BindView(R.id.relative_map_next_offer)
     RelativeLayout relativeMapNextOffer;
@@ -69,13 +71,12 @@ public class OffersHotelsDetailsActivity extends AppCompatActivity {
 
     ImageView iv_booked_offer_hotel;
 
-
+    private String guestMode;
 
     private List<String> listOfPhoto = new ArrayList<>();
     List<String> listOfCountry = new ArrayList<>();
     List<String> listOfHotelName = new ArrayList<>();
     List<String> listOfPrice = new ArrayList<>();
-
 
 
     private int dotscount;
@@ -90,14 +91,15 @@ public class OffersHotelsDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_offers_details);
         ButterKnife.bind(this);
 
-        iv_booked_offer_hotel=findViewById(R.id.iv_booked_offer_hotel);
+        iv_booked_offer_hotel = findViewById(R.id.iv_booked_offer_hotel);
         iv_booked_offer_hotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(OffersHotelsDetailsActivity.this,MyBookActivity.class);
+                Intent intent = new Intent(OffersHotelsDetailsActivity.this, MyBookActivity.class);
                 startActivity(intent);
             }
         });
+        guestMode = SharedPreferencesManger.LoadStringData(OffersHotelsDetailsActivity.this, "guestMode");
 
         final String country_ = SharedPreferencesManger.LoadStringData(OffersHotelsDetailsActivity.this, "country_");
         final String hotelName_ = SharedPreferencesManger.LoadStringData(OffersHotelsDetailsActivity.this, "hotelName_");
@@ -107,11 +109,10 @@ public class OffersHotelsDetailsActivity extends AppCompatActivity {
         relativeOfferDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OffersHotelsDetailsActivity.this,RenewAccount.class);
+                Intent intent = new Intent(OffersHotelsDetailsActivity.this, RenewAccount.class);
                 startActivity(intent);
             }
         });
-
 
 
         listOfPhoto.add(image);
@@ -186,20 +187,35 @@ public class OffersHotelsDetailsActivity extends AppCompatActivity {
             case R.id.btn_map_offer:
 
 // TODO: 8/31/2019 intent to paymentActivity //// Nahas
-                Intent intent = new Intent(OffersHotelsDetailsActivity.this, PaymentActivity.class);
+                if (guestMode != null) {
 
-                int id = 6;
-                intent.putExtra("mId", id);
 
-                SharedPreferencesManger.SaveData(this, "pricepffers", price);
-                startActivity(intent);
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                    alertDialogBuilder.setTitle("You in gust Mode");
+                    alertDialogBuilder
+                            .setMessage("You hav to Sign Up First")
+                            .setCancelable(true).setPositiveButton("Sign up", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
 
-                break;
+                            SharedPreferencesManger.remove(OffersHotelsDetailsActivity.this, "gustMode");
+
+                            // TODO: 7/28/2019  intent to Registration Fragment
+                            Intent intent1 = new Intent(OffersHotelsDetailsActivity.this, WelcomeActivity.class);
+
+                            startActivity(intent1);
+
+                        }
+                    });
+                    alertDialogBuilder.show();
+
+                    break;
+
+                }
+
 
         }
 
 
     }
-
-
 }

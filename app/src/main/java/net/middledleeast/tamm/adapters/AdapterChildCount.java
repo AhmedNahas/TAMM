@@ -1,10 +1,8 @@
 package net.middledleeast.tamm.adapters;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,23 +10,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.common.api.Api;
 import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.FindHotels;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.SingleView> {
 
@@ -85,7 +77,7 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
 //                list_age_save.clear();
-//                list_age_save.add(list_age.get(i));
+//                list_age_save.ic_add(list_age.get(i));
 //                StringBuilder str = new StringBuilder();
 //                for (int k=0;k<listCountCild.size();k++)
 //                {
@@ -130,12 +122,12 @@ public class AdapterChildCount extends RecyclerView.Adapter<AdapterChildCount.Si
 
 //
 //
-//                //    add list of age to save list
+//                //    ic_add list of age to save list
 //                final AdapterView.OnItemSelectedListener sp = holder.spinner_no_Child.getOnItemSelectedListener();
 //
 //                if (list_age.get(i) != 0) {
 //
-//                    list_age_save.add(list_age.get(i));
+//                    list_age_save.ic_add(list_age.get(i));
 //
 //                    if (list_age_save.size() > listCountCild.size()) {
 //

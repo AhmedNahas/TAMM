@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.RecommendedTwoWay"
     android:background="@drawable/bg"
-    >
+    tools:context=".activities.RecommendedTwoWay">
+
     <RelativeLayout
         android:id="@+id/toolbar_back"
         android:layout_width="match_parent"
@@ -14,26 +14,37 @@
         android:layout_margin="10dp"
         android:gravity="center">
 
+        <RelativeLayout
 
-        <ImageView
-            android:id="@+id/toolbar_back1"
+            android:id="@+id/relative_back_recommend_two_way"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/ic_back_arrow"
-            android:backgroundTint="#FFEB3B" />
+            android:layout_marginStart="@dimen/_10sdp"
+            >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@+id/toolbar_back1"
-            android:text="BACK"
-            android:textColor="#ffff"
-            android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/toolbar_back1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/ic_back_arrow" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@+id/toolbar_back1"
+                android:text="BACK"
+                android:textColor="#ffff"
+                android:textSize="12sp" />
+
+
+        </RelativeLayout>
+
 
         <ImageView
             android:layout_width="@dimen/_20sdp"
@@ -44,8 +55,9 @@
             android:background="@drawable/logo" />
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:id="@+id/iv_booked_recommended_two_way"
 
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center"
@@ -68,12 +80,9 @@
         android:layout_width="@dimen/_135sdp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/line1"
-        android:layout_marginTop="@dimen/_15sdp"
         android:layout_marginLeft="@dimen/_15sdp"
-        android:backgroundTint="@color/app_color"
-        >
-
-
+        android:layout_marginTop="@dimen/_15sdp"
+        android:backgroundTint="@color/app_color">
 
 
     </Spinner>
@@ -84,61 +93,64 @@
         android:layout_width="1dp"
         android:layout_height="@dimen/_350sdp"
         android:layout_below="@+id/spinner_date"
-        android:background="@drawable/line1"
         android:layout_marginLeft="@dimen/_25sdp"
+        android:background="@drawable/line1"
 
         />
+
     <RelativeLayout
         android:id="@+id/relative_country1"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_105sdp"
         android:layout_below="@+id/spinner_date"
-        android:layout_toRightOf="@+id/line2"
         android:layout_marginLeft="@dimen/_15sdp"
-        >
+        android:layout_toRightOf="@+id/line2">
 
         <ImageView
             android:id="@+id/iv_icon"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/icon"
-            />
+            android:src="@drawable/icon" />
+
         <TextView
             android:id="@+id/tv_airline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_icon"
             android:text="TURKISH Airlines"
             android:textColor="@color/app_color"
-            android:layout_toRightOf="@+id/iv_icon"
 
             />
+
         <TextView
             android:id="@+id/tv_time_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="7:00 PM "
-            android:layout_toRightOf="@+id/iv_icon"
             android:layout_below="@+id/tv_airline"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:text="7:00 PM "
             android:textColor="#fff"
 
             />
+
         <TextView
             android:id="@+id/tv_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:layout_toRightOf="@+id/tv_time_one"
             android:layout_below="@+id/tv_airline"
+            android:layout_toRightOf="@+id/tv_time_one"
+            android:text="-"
             android:textColor="#fff"
 
             />
+
         <TextView
             android:id="@+id/tv_time_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10:45 PM "
-            android:layout_toRightOf="@+id/tv_text"
             android:layout_below="@+id/tv_airline"
+            android:layout_toRightOf="@+id/tv_text"
+            android:text="10:45 PM "
             android:textColor="#fff"
 
             />
@@ -148,62 +160,68 @@
             android:id="@+id/tv_beirut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Beirut "
-            android:layout_toRightOf="@+id/iv_icon"
             android:layout_below="@+id/tv_time_two"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:text="Beirut "
             android:textColor="@color/app_color"
 
             />
+
         <TextView
             android:id="@+id/tv_text2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:layout_toRightOf="@+id/tv_beirut"
             android:layout_below="@+id/tv_time_two"
+            android:layout_toRightOf="@+id/tv_beirut"
+            android:text="-"
             android:textColor="@color/app_color"
 
             />
+
         <TextView
             android:id="@+id/tv_kuwait"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kuwait "
-            android:layout_toRightOf="@+id/tv_text2"
             android:layout_below="@+id/tv_time_two"
+            android:layout_toRightOf="@+id/tv_text2"
+            android:text="Kuwait "
             android:textColor="@color/app_color"
 
             />
+
         <TextView
             android:id="@+id/tv_kuwait2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kuwait "
-            android:layout_toRightOf="@+id/iv_icon"
             android:layout_below="@+id/tv_beirut"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:text="Kuwait "
             android:textColor="@color/app_color"
 
             />
+
         <TextView
             android:id="@+id/tv_text3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:layout_toRightOf="@+id/tv_kuwait2"
             android:layout_below="@+id/iv_icon"
+            android:layout_toRightOf="@+id/tv_kuwait2"
+            android:text="-"
             android:textColor="@color/app_color"
 
             />
+
         <TextView
             android:id="@+id/tv_bubai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dubai "
-            android:layout_toRightOf="@+id/tv_text3"
             android:layout_below="@+id/tv_beirut"
+            android:layout_toRightOf="@+id/tv_text3"
+            android:text="Dubai "
             android:textColor="@color/app_color"
 
             />
+
         <RelativeLayout
             android:id="@+id/relative_bag"
             android:layout_width="wrap_content"
@@ -212,31 +230,33 @@
             android:layout_toRightOf="@+id/iv_icon"
 
             >
+
             <ImageView
                 android:id="@+id/iv_bag"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/bag"
-                />
+                android:src="@drawable/bag" />
+
             <TextView
                 android:id="@+id/tv_kg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="40 Kg"
-                android:textColor="#fff"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/iv_bag"
-                />
+                android:text="40 Kg"
+                android:textColor="#fff" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative_bag"
-            android:layout_toRightOf="@+id/iv_icon"
             android:layout_marginTop="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/iv_icon"
 
             >
+
             <ImageView
                 android:id="@+id/iv_bag2"
                 android:layout_width="30dp"
@@ -244,15 +264,14 @@
                 android:src="@drawable/bag2"
 
                 />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="20 Kg"
-                android:textColor="#fff"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/iv_bag2"
-                />
-
+                android:text="20 Kg"
+                android:textColor="#fff" />
 
 
         </RelativeLayout>
@@ -261,67 +280,67 @@
             android:id="@+id/iv_star"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:src="@drawable/star"
             android:layout_alignParentRight="true"
-            />
+            android:src="@drawable/star" />
+
         <TextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3 hrs 40 min"
-            android:textColor="#fff"
             android:layout_toLeftOf="@+id/iv_star"
-            />
+            android:text="3 hrs 40 min"
+            android:textColor="#fff" />
+
         <TextView
             android:id="@+id/tv_transit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Transit"
-            android:textColor="#fff"
-            android:layout_toLeftOf="@+id/iv_star"
             android:layout_below="@+id/tv_time"
+            android:layout_toLeftOf="@+id/iv_star"
             android:drawableLeft="@drawable/transit"
-            />
+            android:text="Transit"
+            android:textColor="#fff" />
 
         <Spinner
             android:id="@+id/spinner_dollar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_below="@+id/tv_transit"
-            android:backgroundTint="@color/app_color"
-            >
+            android:layout_alignParentRight="true"
+            android:backgroundTint="@color/app_color">
 
 
         </Spinner>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="246"
-            android:layout_toLeftOf="@+id/spinner_dollar"
             android:layout_below="@+id/tv_transit"
+            android:layout_toLeftOf="@+id/spinner_dollar"
+            android:text="246"
             android:textColor="@color/app_color"
 
             />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_20sdp"
-            android:text="Select Flight"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:background="@drawable/shape"
+            android:text="Select Flight"
 
 
             />
     </RelativeLayout>
+
     <Spinner
         android:id="@+id/spinner_date2"
         android:layout_width="@dimen/_135sdp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_country1"
         android:layout_toRightOf="@+id/line2"
-        android:backgroundTint="@color/app_color"
-        >
+        android:backgroundTint="@color/app_color">
 
 
     </Spinner>
@@ -331,52 +350,54 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_105sdp"
         android:layout_below="@+id/spinner_date2"
-        android:layout_toRightOf="@+id/line2"
         android:layout_marginLeft="@dimen/_15sdp"
-        >
+        android:layout_toRightOf="@+id/line2">
 
         <ImageView
             android:id="@+id/iv_icon2"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/bird"
-            />
+            android:src="@drawable/bird" />
+
         <TextView
             android:id="@+id/tv_airline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_icon2"
             android:text="KUWAIT Airlines"
             android:textColor="@color/app_color"
-            android:layout_toRightOf="@+id/iv_icon2"
 
             />
+
         <TextView
             android:id="@+id/tv_time_one2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="7:00 PM "
-            android:layout_toRightOf="@+id/iv_icon2"
             android:layout_below="@+id/tv_airline2"
+            android:layout_toRightOf="@+id/iv_icon2"
+            android:text="7:00 PM "
             android:textColor="#fff"
 
             />
+
         <TextView
             android:id="@+id/tv_text5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:layout_toRightOf="@+id/tv_time_one2"
             android:layout_below="@+id/tv_airline2"
+            android:layout_toRightOf="@+id/tv_time_one2"
+            android:text="-"
             android:textColor="#fff"
 
             />
+
         <TextView
             android:id="@+id/tv_time_two2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10:45 PM "
-            android:layout_toRightOf="@+id/tv_text5"
             android:layout_below="@+id/tv_airline2"
+            android:layout_toRightOf="@+id/tv_text5"
+            android:text="10:45 PM "
             android:textColor="#fff"
 
             />
@@ -386,35 +407,36 @@
             android:id="@+id/tv_beirut2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Beirut "
-            android:layout_toRightOf="@+id/iv_icon2"
             android:layout_below="@+id/tv_time_two2"
+            android:layout_toRightOf="@+id/iv_icon2"
+            android:text="Beirut "
             android:textColor="@color/app_color"
 
             />
+
         <TextView
             android:id="@+id/tv_text4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:layout_toRightOf="@+id/tv_beirut2"
             android:layout_below="@+id/tv_time_two2"
+            android:layout_toRightOf="@+id/tv_beirut2"
+            android:text="-"
             android:textColor="@color/app_color"
 
             />
-
 
 
         <TextView
             android:id="@+id/tv_dubai2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dubai "
-            android:layout_toRightOf="@+id/tv_text4"
             android:layout_below="@+id/tv_time_two2"
+            android:layout_toRightOf="@+id/tv_text4"
+            android:text="Dubai "
             android:textColor="@color/app_color"
 
             />
+
         <RelativeLayout
             android:id="@+id/relative_bag2"
             android:layout_width="wrap_content"
@@ -423,31 +445,33 @@
             android:layout_toRightOf="@+id/iv_icon2"
 
             >
+
             <ImageView
                 android:id="@+id/iv_bag22"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/bag"
-                />
+                android:src="@drawable/bag" />
+
             <TextView
                 android:id="@+id/tv_kg2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="40 Kg"
-                android:textColor="#fff"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/iv_bag22"
-                />
+                android:text="40 Kg"
+                android:textColor="#fff" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative_bag2"
-            android:layout_toRightOf="@+id/iv_icon2"
             android:layout_marginTop="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/iv_icon2"
 
             >
+
             <ImageView
                 android:id="@+id/iv_bag222"
                 android:layout_width="30dp"
@@ -455,15 +479,14 @@
                 android:src="@drawable/bag2"
 
                 />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="20 Kg"
-                android:textColor="#fff"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/iv_bag222"
-                />
-
+                android:text="20 Kg"
+                android:textColor="#fff" />
 
 
         </RelativeLayout>
@@ -472,27 +495,26 @@
             android:id="@+id/iv_star2"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:src="@drawable/star"
             android:layout_alignParentRight="true"
-            />
+            android:src="@drawable/star" />
+
         <TextView
             android:id="@+id/tv_time2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3 hrs 40 min"
-            android:textColor="#fff"
             android:layout_toLeftOf="@+id/iv_star2"
-            />
+            android:text="3 hrs 40 min"
+            android:textColor="#fff" />
 
         <TextView
             android:id="@+id/tv_direct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time2"
+            android:layout_toLeftOf="@+id/iv_star2"
+            android:drawableLeft="@drawable/ic_trending_flat"
             android:text="Direct"
             android:textColor="#fff"
-            android:drawableLeft="@drawable/ic_trending_flat"
-            android:layout_toLeftOf="@+id/iv_star2"
-            android:layout_below="@+id/tv_time2"
 
             />
 
@@ -501,37 +523,34 @@
             android:id="@+id/spinner_dollar2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_below="@+id/tv_direct"
-            android:backgroundTint="@color/app_color"
-            >
+            android:layout_alignParentRight="true"
+            android:backgroundTint="@color/app_color">
 
 
         </Spinner>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="350"
-            android:layout_toLeftOf="@+id/spinner_dollar2"
             android:layout_below="@+id/tv_direct"
+            android:layout_toLeftOf="@+id/spinner_dollar2"
+            android:text="350"
             android:textColor="@color/app_color"
 
             />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_20sdp"
-            android:text="Select Flight"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:background="@drawable/shape"
+            android:text="Select Flight"
 
 
             />
     </RelativeLayout>
-
-
-
-
 
 
     <View
@@ -539,10 +558,9 @@
         android:layout_width="@dimen/_270sdp"
         android:layout_height="2dp"
         android:layout_below="@+id/relative_country2"
-        android:background="@drawable/line1"
-        android:layout_toRightOf="@+id/line2"
         android:layout_marginTop="@dimen/_5sdp"
-        />
+        android:layout_toRightOf="@+id/line2"
+        android:background="@drawable/line1" />
 
 
     <RelativeLayout
@@ -550,52 +568,54 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_105sdp"
         android:layout_below="@+id/line3"
-        android:layout_toRightOf="@+id/line2"
         android:layout_marginLeft="@dimen/_15sdp"
-        >
+        android:layout_toRightOf="@+id/line2">
 
         <ImageView
             android:id="@+id/iv_icon3"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/mea"
-            />
+            android:src="@drawable/mea" />
+
         <TextView
             android:id="@+id/tv_airline3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_icon3"
             android:text="KUWAIT Airlines"
             android:textColor="@color/app_color"
-            android:layout_toRightOf="@+id/iv_icon3"
 
             />
+
         <TextView
             android:id="@+id/tv_time_one3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="7:00 PM "
-            android:layout_toRightOf="@+id/iv_icon3"
             android:layout_below="@+id/tv_airline3"
+            android:layout_toRightOf="@+id/iv_icon3"
+            android:text="7:00 PM "
             android:textColor="#fff"
 
             />
+
         <TextView
             android:id="@+id/tv_text6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:layout_toRightOf="@+id/tv_time_one3"
             android:layout_below="@+id/tv_airline3"
+            android:layout_toRightOf="@+id/tv_time_one3"
+            android:text="-"
             android:textColor="#fff"
 
             />
+
         <TextView
             android:id="@+id/tv_time_two3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10:45 PM "
-            android:layout_toRightOf="@+id/tv_text6"
             android:layout_below="@+id/tv_airline3"
+            android:layout_toRightOf="@+id/tv_text6"
+            android:text="10:45 PM "
             android:textColor="#fff"
 
             />
@@ -605,35 +625,36 @@
             android:id="@+id/tv_beirut3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Beirut "
-            android:layout_toRightOf="@+id/iv_icon3"
             android:layout_below="@+id/tv_time_two3"
+            android:layout_toRightOf="@+id/iv_icon3"
+            android:text="Beirut "
             android:textColor="@color/app_color"
 
             />
+
         <TextView
             android:id="@+id/tv_text7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:layout_toRightOf="@+id/tv_beirut3"
             android:layout_below="@+id/tv_time_two3"
+            android:layout_toRightOf="@+id/tv_beirut3"
+            android:text="-"
             android:textColor="@color/app_color"
 
             />
-
 
 
         <TextView
             android:id="@+id/tv_dubai3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dubai "
-            android:layout_toRightOf="@+id/tv_text7"
             android:layout_below="@+id/tv_time_two3"
+            android:layout_toRightOf="@+id/tv_text7"
+            android:text="Dubai "
             android:textColor="@color/app_color"
 
             />
+
         <RelativeLayout
             android:id="@+id/relative_bag3"
             android:layout_width="wrap_content"
@@ -642,31 +663,33 @@
             android:layout_toRightOf="@+id/iv_icon3"
 
             >
+
             <ImageView
                 android:id="@+id/iv_bag223"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/bag"
-                />
+                android:src="@drawable/bag" />
+
             <TextView
                 android:id="@+id/tv_kg3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="40 Kg"
-                android:textColor="#fff"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/iv_bag223"
-                />
+                android:text="40 Kg"
+                android:textColor="#fff" />
 
         </RelativeLayout>
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative_bag3"
-            android:layout_toRightOf="@+id/iv_icon3"
             android:layout_marginTop="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/iv_icon3"
 
             >
+
             <ImageView
                 android:id="@+id/iv_bag2223"
                 android:layout_width="30dp"
@@ -674,15 +697,14 @@
                 android:src="@drawable/bag2"
 
                 />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="20 Kg"
-                android:textColor="#fff"
                 android:layout_marginTop="5dp"
                 android:layout_toRightOf="@+id/iv_bag2223"
-                />
-
+                android:text="20 Kg"
+                android:textColor="#fff" />
 
 
         </RelativeLayout>
@@ -691,27 +713,26 @@
             android:id="@+id/iv_star3"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:src="@drawable/star"
             android:layout_alignParentRight="true"
-            />
+            android:src="@drawable/star" />
+
         <TextView
             android:id="@+id/tv_time3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3 hrs 40 min"
-            android:textColor="#fff"
             android:layout_toLeftOf="@+id/iv_star3"
-            />
+            android:text="3 hrs 40 min"
+            android:textColor="#fff" />
 
         <TextView
             android:id="@+id/tv_direct3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time3"
+            android:layout_toLeftOf="@+id/iv_star3"
+            android:drawableLeft="@drawable/ic_trending_flat"
             android:text="Direct"
             android:textColor="#fff"
-            android:drawableLeft="@drawable/ic_trending_flat"
-            android:layout_toLeftOf="@+id/iv_star3"
-            android:layout_below="@+id/tv_time3"
 
             />
 
@@ -720,29 +741,30 @@
             android:id="@+id/spinner_dollar3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_below="@+id/tv_direct3"
-            android:backgroundTint="@color/app_color"
-            >
+            android:layout_alignParentRight="true"
+            android:backgroundTint="@color/app_color">
 
 
         </Spinner>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="512"
-            android:layout_toLeftOf="@+id/spinner_dollar3"
             android:layout_below="@+id/tv_direct3"
+            android:layout_toLeftOf="@+id/spinner_dollar3"
+            android:text="512"
             android:textColor="@color/app_color"
 
             />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_20sdp"
-            android:text="Select Flight"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:background="@drawable/shape"
+            android:text="Select Flight"
 
 
             />
@@ -753,23 +775,21 @@
         android:id="@+id/btn_proceed"
         android:layout_width="@dimen/_90sdp"
         android:layout_height="@dimen/_20sdp"
-        android:text="PROCEED"
-        android:background="@drawable/shape"
         android:layout_below="@+id/relative_country3"
         android:layout_centerInParent="true"
+        android:background="@drawable/shape"
+        android:text="PROCEED"
 
         />
+
     <ImageView
         android:id="@+id/iv_man_hand"
         android:layout_width="wrap_content"
         android:layout_height="180dp"
-        android:src="@drawable/man1"
         android:layout_alignParentBottom="true"
+        android:src="@drawable/man1"
 
         />
-
-
-
 
 
 </RelativeLayout>

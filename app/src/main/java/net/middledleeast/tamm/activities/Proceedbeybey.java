@@ -1,11 +1,16 @@
 package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.CheckedTextView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +41,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Proceedbeybey extends AppCompatActivity {
 
+    TextView assistantLabelVoiceRenewHotel;
+    RelativeLayout relativeImgRenewHotelTamm;
+    TextView assistantLabelCallRenewHotel;
+    TextView assistantLabelMessageRenewHotel;
+
+
  //   private CheckedTextView passenger, jet, one_way, return_passe, multi_cities;
     public static final String BASE_URL = "https://xmloutapi.tboair.com/api/v1/";
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -43,6 +54,10 @@ public class Proceedbeybey extends AppCompatActivity {
     public FlightAuthentication flightAuthentication;
     String password;
     private RecyclerView recyclerView = null;
+    private boolean ClickRenewHotel = false;
+
+    RelativeLayout toolbar_back1;
+    ImageView iv_booked_proceed;
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -50,6 +65,76 @@ public class Proceedbeybey extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.proceedbey_bey);
+
+        iv_booked_proceed=findViewById(R.id.iv_booked_proceed);
+        iv_booked_proceed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent =new Intent(Proceedbeybey.this,MyBookActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        toolbar_back1=findViewById(R.id.toolbar_back1);
+        toolbar_back1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
+        assistantLabelVoiceRenewHotel=findViewById(R.id.assistant_label_voice_renew_flight);
+        relativeImgRenewHotelTamm=findViewById(R.id.relative_img_renew_flight_tamm);
+        assistantLabelCallRenewHotel=findViewById(R.id.assistant_label_call_renew_flight);
+        assistantLabelMessageRenewHotel=findViewById(R.id.assistant_label_message_renew_flight);
+        relativeImgRenewHotelTamm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ClickRenewHotel == false) {
+                    assistantLabelCallRenewHotel.setVisibility(View.VISIBLE);
+                    assistantLabelMessageRenewHotel.setVisibility(View.VISIBLE);
+                    assistantLabelVoiceRenewHotel.setVisibility(View.VISIBLE);
+                    ClickRenewHotel = true;
+
+                } else {
+                    assistantLabelCallRenewHotel.setVisibility(View.INVISIBLE);
+                    assistantLabelMessageRenewHotel.setVisibility(View.INVISIBLE);
+                    assistantLabelVoiceRenewHotel.setVisibility(View.INVISIBLE);
+                    ClickRenewHotel = false;
+
+                }
+            }
+        });
+        assistantLabelVoiceRenewHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Proceedbeybey.this, VoiceMessageActivity.class);
+                startActivity(intent);
+                Toast.makeText(Proceedbeybey.this, "Voice", Toast.LENGTH_SHORT).show();
+            }
+        });
+        assistantLabelCallRenewHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Proceedbeybey.this, AssistantActivity.class);
+                startActivity(intent);
+
+                Toast.makeText(Proceedbeybey.this, "Call", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        assistantLabelMessageRenewHotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Proceedbeybey.this, ContactUs.class);
+                startActivity(intent);
+
+                Toast.makeText(Proceedbeybey.this, "Message", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 //        password = "App02072019";
@@ -262,6 +347,7 @@ public class Proceedbeybey extends AppCompatActivity {
         }
         return retrofit;
     }
+
 
 }
 

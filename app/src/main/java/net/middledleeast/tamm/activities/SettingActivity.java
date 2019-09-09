@@ -12,13 +12,15 @@ import android.widget.RelativeLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 public class SettingActivity extends AppCompatActivity {
 //    private String mLanguageCodeArabic = "ar";
 //    private String mLanguageCodeEnglish = "en";
 
     private Button english,arabic,on,off;
-    RelativeLayout toolbar_back1_setting;
+    RelativeLayout toolbar_back1_setting , relative_notification_pass;
+    private String guestMode;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -31,7 +33,8 @@ public class SettingActivity extends AppCompatActivity {
 
         on=findViewById(R.id.btn_ON);
         off=findViewById(R.id.btn_off);
-
+        guestMode = SharedPreferencesManger.LoadStringData(SettingActivity.this, "guestMode");
+        relative_notification_pass=findViewById(R.id.relative_notification_pass);
         toolbar_back1_setting=findViewById(R.id.toolbar_back1_setting);
         toolbar_back1_setting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +65,12 @@ public class SettingActivity extends AppCompatActivity {
 //        });
 
 
+        if (guestMode != null) {
 
+            relative_notification_pass.setVisibility(View.GONE);
+
+
+        }
 
 
         english.setOnTouchListener(new View.OnTouchListener() {
@@ -74,16 +82,10 @@ public class SettingActivity extends AppCompatActivity {
                     english.setTextColor(0xFF000000);
                     english.setTypeface(null, Typeface.BOLD_ITALIC);
 
-
-
                     arabic.setBackground(getDrawable(R.color.float_transparent));
                     arabic.setTextColor(0xFFBE973B);
 
-
-
-
                 }
-
 
                 return false;
             }

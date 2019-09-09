@@ -25,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,8 +37,8 @@ public class HotelBooking extends AppCompatActivity {
     private Button backToMain;
     private RelativeLayout backButton;
     ImageView iv_booked_booking;
-    private String send_best_Hotel_data = "http://egyptgoogle.com/backend/besthotelbooking/inserthotelbooking.php";
-    private String send_best_Flight_data = "http://egyptgoogle.com/backend/bestflightbooking/insertflightbooking.php";
+//    private String send_best_Hotel_data = "http://egyptgoogle.com/backend/besthotelbooking/inserthotelbooking.php";
+//    private String send_best_Flight_data = "http://egyptgoogle.com/backend/bestflightbooking/insertflightbooking.php";
     private String price;
     private String hotelName_;
     private String country_;
@@ -127,7 +128,7 @@ public class HotelBooking extends AppCompatActivity {
 
     private void sendBestHotelBooked() {
 
-        StringRequest request = new StringRequest(Request.Method.POST, send_best_Hotel_data, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.SEND_BEST_HOTEL_DATA, new Response.Listener<String>() {
 
             @Override
 
@@ -161,7 +162,7 @@ public class HotelBooking extends AppCompatActivity {
 
     private void sendBestFlightBooked() {
 
-        StringRequest request = new StringRequest(Request.Method.POST, send_best_Flight_data, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.SEND_BEST_FLIGHT_DATA, new Response.Listener<String>() {
 
             @Override
 

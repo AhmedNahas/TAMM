@@ -93,7 +93,7 @@ public class BestHotelAdapter extends RecyclerView.Adapter<BestHotelAdapter.Best
 
         public BestHotelViewHolder(@NonNull View itemView) {
             super(itemView);
-            star=itemView.findViewById(R.id.iv_star_hotel);
+//            star=itemView.findViewById(R.id.iv_star_hotel);
             img_hotel=itemView.findViewById(R.id.iv_best_hotel);
 
             tv_price_=itemView.findViewById(R.id.tv_price_);
