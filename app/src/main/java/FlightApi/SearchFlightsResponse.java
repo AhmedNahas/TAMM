@@ -1346,6 +1346,7 @@ public class SearchFlightsResponse implements Serializable {
 
     public class Segment implements Serializable {
 
+
         private final static long serialVersionUID = 1920498373727248598L;
         @SerializedName("NoOfSeatAvailable")
         @Expose

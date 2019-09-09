@@ -1,12 +1,10 @@
 
 package FlightApi;
 
-import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Segment implements Serializable
-{
+public class Segment {
 
     @SerializedName("NoOfSeatAvailable")
     @Expose
@@ -98,7 +96,6 @@ public class Segment implements Serializable
     @SerializedName("DepDateText")
     @Expose
     private Object depDateText;
-    private final static long serialVersionUID = 6840247231670000942L;
 
     public Integer getNoOfSeatAvailable() {
         return noOfSeatAvailable;
