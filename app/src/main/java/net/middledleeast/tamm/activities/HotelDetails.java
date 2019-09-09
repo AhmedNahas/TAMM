@@ -86,6 +86,7 @@ public class HotelDetails extends AppCompatActivity {
 
     ImageView iv_booked_hotel_details;
     private boolean ClickDetailsHotel=false;
+    private Integer accountPlan;
 
 
     @SuppressLint("SetTextI18n")
@@ -118,6 +119,24 @@ public class HotelDetails extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
+        try {
+            if (accountPlan == 1) {
+
+
+                iv_booked_hotel_details.setVisibility(View.VISIBLE);
+
+            } else if (accountPlan == 0) {
+
+                iv_booked_hotel_details.setVisibility(View.VISIBLE);
+
+            } else if (accountPlan == 2) {
+                iv_booked_hotel_details.setVisibility(View.GONE);
+
+            }
+        }catch (Exception e){}
 
 
 

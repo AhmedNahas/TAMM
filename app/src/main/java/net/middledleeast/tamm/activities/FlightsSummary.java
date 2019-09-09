@@ -17,9 +17,7 @@ import com.google.gson.GsonBuilder;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
-
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -210,6 +208,7 @@ public class FlightsSummary extends AppCompatActivity {
     double baseFare,
             serviceFee,
             tax;
+    private Integer accountPlan;
 
 
     @Override
@@ -229,6 +228,24 @@ public class FlightsSummary extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
+
+        try {
+            if (accountPlan == 1) {
+
+
+                iv_booked_flight_summary.setVisibility(View.VISIBLE);
+
+            } else if (accountPlan == 0) {
+
+                iv_booked_flight_summary.setVisibility(View.VISIBLE);
+
+            } else if (accountPlan == 2) {
+                iv_booked_flight_summary.setVisibility(View.GONE);
+
+            }
+        }catch (Exception e){}
+
 
         relative_back_flight_summary = findViewById(R.id.relative_back_flight_summary);
         relative_back_flight_summary.setOnClickListener(new View.OnClickListener() {

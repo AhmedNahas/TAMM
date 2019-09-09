@@ -85,6 +85,7 @@ public class  RenewAccount extends AppCompatActivity
     private String feesMember;
     private Integer accountPlan;
     private String userNameFromSignIn;
+    private String guestMode;
 
 
 //    private AuthenticationData authenticandata;
@@ -114,6 +115,7 @@ public class  RenewAccount extends AppCompatActivity
         feesFree = SharedPreferencesManger.LoadStringData(this, "feesFree");
         feesMember = SharedPreferencesManger.LoadStringData(this, "feesMember");
         accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
+        guestMode = SharedPreferencesManger.LoadStringData(this, "guestMode");
 
 
 
@@ -139,7 +141,7 @@ public class  RenewAccount extends AppCompatActivity
         }catch (Exception e){}
         adapter.AddFragment(new BestFlights(), "Best Flights");
         adapter.AddFragment(new BestHotels(), "Best Hotels");
-        adapter.AddFragment(new BestDeals(), "Best Deals");
+        adapter.AddFragment(new BestDeals(), "Best   Deals");
 
 
         viewPager.setAdapter(adapter);
@@ -294,6 +296,8 @@ public class  RenewAccount extends AppCompatActivity
 
         try {
 
+
+
             if (accountPlan == 1){
 
                 user_name_profile.setVisibility(View.VISIBLE);
@@ -301,7 +305,7 @@ public class  RenewAccount extends AppCompatActivity
                 user_name_profile.setText(user);
                 user_name_profile.setText(userNameFromSignIn);
                 textView_account.setText("FreeUser Account");
-            }else if (accountPlan == 0){
+            }else if (accountPlan == 0) {
                 user_name_profile.setVisibility(View.VISIBLE);
                 relative_expire.setVisibility(View.VISIBLE);
                 textView_account.setVisibility(View.VISIBLE);
@@ -313,14 +317,51 @@ public class  RenewAccount extends AppCompatActivity
 
                 valid_till_months.setText((validTillValue + " days"));
 
+            }else  if (accountPlan == 2) {
 
-            }else if (accountPlan == 2){
 
                 relative_expire.setVisibility(View.GONE);
                 textView_account.setText("");
                 valid_till_months.setText((""));
                 textView_account.setText("");
 
+                user_name_profile.setVisibility(View.GONE);
+                relative_expire.setVisibility(View.GONE);
+                textView_account.setVisibility(View.GONE);
+                btn_renew_account.setVisibility(View.GONE);
+                imageView7.setVisibility(View.GONE);
+
+                renew_sign_in.setVisibility(View.VISIBLE);
+                renew_register.setVisibility(View.VISIBLE);
+
+                Menu menu = navigationView.getMenu();
+                menu.findItem(R.id.nav_offer).setVisible(false);
+                menu.findItem(R.id.nav_conversation).setVisible(false);
+                menu.findItem(R.id.nav_favorites).setVisible(false);
+                menu.findItem(R.id.nav_logout).setVisible(false);
+
+
+                renew_sign_in.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(RenewAccount.this, PaymentActivityFragment.class);
+                        startActivity(intent);
+
+                    }
+                });
+
+
+                renew_register.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(RenewAccount.this, Activity_Register.class);
+                        startActivity(intent);
+
+
+                    }
+                });
             }
 
             addPic.setOnClickListener(new View.OnClickListener() {
@@ -338,53 +379,7 @@ public class  RenewAccount extends AppCompatActivity
         }
 
 
-        try {
 
-            renew = getIntent().getIntExtra("renew", 0);
-            if (renew == 12) {
-                user_name_profile.setVisibility(View.GONE);
-                relative_expire.setVisibility(View.GONE);
-                textView_account.setVisibility(View.GONE);
-                btn_renew_account.setVisibility(View.GONE);
-
-                renew_sign_in.setVisibility(View.VISIBLE);
-                renew_register.setVisibility(View.VISIBLE);
-
-                Menu menu =navigationView.getMenu();
-                menu.findItem(R.id.nav_offer).setVisible(false);
-                menu.findItem(R.id.nav_conversation).setVisible(false);
-                menu.findItem(R.id.nav_favorites).setVisible(false);
-                menu.findItem(R.id.nav_logout).setVisible(false);
-
-
-
-                renew_sign_in.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        Intent intent =new Intent(RenewAccount.this, PaymentActivityFragment.class);
-                        startActivity(intent);
-
-                    }
-                });
-
-
-                renew_register.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        Intent intent =new Intent(RenewAccount.this, Activity_Register.class);
-                        startActivity(intent);
-
-                    }
-                });
-
-
-            }
-
-        } catch (Exception e) {
-
-        }
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

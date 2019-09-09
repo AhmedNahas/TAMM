@@ -60,9 +60,7 @@ public class ChooseBookingDate extends AppCompatActivity {
     private RelativeLayout toolbar_back1;
     private TextView tv_word;
     ImageView iv_booked_temp;
-
-
-
+    private Integer accountPlan;
 
 
     @Override
@@ -105,6 +103,24 @@ public class ChooseBookingDate extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
+        try {
+            if (accountPlan == 1) {
+
+
+                iv_booked_temp.setVisibility(View.VISIBLE);
+
+            } else if (accountPlan == 0) {
+
+                iv_booked_temp.setVisibility(View.VISIBLE);
+
+            } else if (accountPlan == 2) {
+                iv_booked_temp.setVisibility(View.GONE);
+
+            }
+        }catch (Exception e){}
 
 
 //

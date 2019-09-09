@@ -69,6 +69,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     private boolean ClickChooseHotel = false;
     private ArrayList<Integer> list;
     ImageView iv_booked_choose_hotel;
+    private Integer accountPlan;
 
 
     @Override
@@ -102,6 +103,24 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
                 startActivity(new Intent(ChooseHotelActivity.this, FindHotels.class));
             }
         });
+
+
+        accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
+        try {
+            if (accountPlan == 1) {
+
+
+                iv_booked_choose_hotel.setVisibility(View.VISIBLE);
+
+            } else if (accountPlan == 0) {
+
+                iv_booked_choose_hotel.setVisibility(View.VISIBLE);
+
+            } else if (accountPlan == 2) {
+                iv_booked_choose_hotel.setVisibility(View.GONE);
+
+            }
+        }catch (Exception e){}
 
         searchHotelName.addTextChangedListener(new TextWatcher() {
             @Override

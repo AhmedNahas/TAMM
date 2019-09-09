@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,6 +34,7 @@ public class FlightTamm extends AppCompatActivity {
     ImageView iv_booked_flight_tamm;
 
     boolean Click = false;
+    private Integer accountPlan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,24 @@ public class FlightTamm extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
+
+        try {
+            if (accountPlan == 1) {
+
+
+                iv_booked_flight_tamm.setVisibility(View.VISIBLE);
+
+            } else if (accountPlan == 0) {
+
+                iv_booked_flight_tamm.setVisibility(View.VISIBLE);
+
+            } else if (accountPlan == 2) {
+                iv_booked_flight_tamm.setVisibility(View.GONE);
+
+            }
+        }catch (Exception e){}
 
         toolbar_back= findViewById(R.id.toolbar_back1);
 

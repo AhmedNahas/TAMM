@@ -37,12 +37,15 @@ public class ReserveRoom extends AppCompatActivity {
     LinearLayout imageView;
 
     boolean ClickHotel=false;
+    private Integer accountPlan;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reserve_room);
         ButterKnife.bind(this);
+        accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
 
 
         SharedPreferencesManger.remove(this,"startDateSyear");
@@ -52,6 +55,11 @@ public class ReserveRoom extends AppCompatActivity {
         SharedPreferencesManger.remove(this,"endDateSyear");
         SharedPreferencesManger.remove(this,"endDateSday");
         SharedPreferencesManger.remove(this,"endDateSmonth");
+
+
+
+
+
 
 
         imageView = findViewById(R.id.back_pressed);
@@ -73,6 +81,27 @@ public class ReserveRoom extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+
+
+
+try {
+    if (accountPlan == 1) {
+
+
+        iv_booked_reserve.setVisibility(View.VISIBLE);
+
+    } else if (accountPlan == 0) {
+
+        iv_booked_reserve.setVisibility(View.VISIBLE);
+
+    } else if (accountPlan == 2) {
+        iv_booked_reserve.setVisibility(View.GONE);
+
+    }
+}catch (Exception e){}
+
+
 //
 
 
@@ -151,4 +180,9 @@ public class ReserveRoom extends AppCompatActivity {
         super.onBackPressed();
 //        startActivity(new Intent(ReserveRoom.this, RenewAccount.class));
     }
+
+
+
+
+
 }

@@ -76,6 +76,7 @@ public class SignInFragment extends Fragment {
     private String HI_ = "http://egyptgoogle.com/backend/freeamountformember/freememberfees.php";
     private String HI2_ = "http://egyptgoogle.com/backend/amountformember/amountformember.php";
     private int accountType = 0;
+    private String guestMode;
 
 
     public SignInFragment() {
@@ -99,9 +100,10 @@ public class SignInFragment extends Fragment {
         getFree();
         getmember();
 
+try {
+     guestMode = SharedPreferencesManger.LoadStringData(getContext(), "guestMode");
 
-        final String guestMode = SharedPreferencesManger.LoadStringData(getContext(), "guestMode");
-        if(guestMode==guestMode){
+        if(!guestMode.isEmpty()){
 
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -122,7 +124,7 @@ public class SignInFragment extends Fragment {
 
         }
 
-
+}catch (Exception e){}
 
 
 try {
@@ -156,6 +158,8 @@ try {
            @Override
            public void onClick(View view) {
 
+
+
                String user_Name = userName.getText().toString().trim();
 
                SharedPreferencesManger.SaveData(getContext(),"userNameFromSignIn",user_Name);
@@ -171,6 +175,7 @@ try {
                            .show();
                }
 
+               SharedPreferencesManger.remove(getContext(),"guestMode");
 
            }
        });

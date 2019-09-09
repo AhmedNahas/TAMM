@@ -184,6 +184,7 @@ public class FindHotels extends AppCompatActivity {
     private boolean ClickFindHotel = false;
     private Filters filters;
     private boolean counttryCheked = false;
+    private Integer accountPlan;
 
 
 //    private boolean saved ;
@@ -214,84 +215,76 @@ public class FindHotels extends AppCompatActivity {
 
 
 
-//        AmendmentRequestType amendmentRequestType = new AmendmentRequestType();
-//
-//        int code = amendmentRequestType.Type.getCode();
-//
-//        int code1 = amendmentRequestType.PriceChange.getCode();
-//
-//        AmendInformation amendInformation = new AmendInformation();
-//
-//        DateTime date = amendInformation.CheckIn.Date;
-//
-//        try {
-//            AmendmentResponse th = service.Amendment(amendmentRequestType, 2, amendInformation, "th", authenticationData);
-//
-//            String amendmentMessage = th.AmendmentMessage;
-//
-//            Toast.makeText(this, "cfc" + amendmentMessage, Toast.LENGTH_SHORT).show();
-//        } catch (Exception e) {
-//
-//
-//        }
+
+
+        accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
+        try {
+            if (accountPlan == 1) {
+
+
+                iv_booked_find_hotels.setVisibility(View.VISIBLE);
+
+            } else if (accountPlan == 0) {
+
+                iv_booked_find_hotels.setVisibility(View.VISIBLE);
+
+            } else if (accountPlan == 2) {
+                iv_booked_find_hotels.setVisibility(View.GONE);
+
+            }
+        }catch (Exception e){}
 
 
 
+try {
+    String dayOfTheWeek = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSyear");
+    if (dayOfTheWeek != null) {
 
-        String dayOfTheWeek = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSyear");
-        if (dayOfTheWeek!=null){
+        startDateYear.setText(dayOfTheWeek);
 
-            startDateYear.setText(dayOfTheWeek);
+        String day = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSday");
+        startDateDay.setText(day);
 
-            String day = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSday");
-            startDateDay.setText(day);
+        String monthString = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSmonth");
+        startDateMonth.setText(monthString);
 
-            String monthString = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSmonth");
-            startDateMonth.setText(monthString);
+        String enddayOfTheWeek = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSyear");
+        endDateYear.setText(enddayOfTheWeek);
 
-            String enddayOfTheWeek = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSyear");
-            endDateYear.setText(enddayOfTheWeek);
+        String endday = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSday");
+        endDateDay.setText(endday);
 
-            String endday = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSday");
-            endDateDay.setText(endday);
-
-            String endmonthString = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSmonth");
-            endDateMonth.setText(endmonthString);
-
-
-
-            String nameCountry =SharedPreferencesManger.LoadStringData(FindHotels.this, "nameCountry_");
-            regions.setText(nameCountry);
-
-            String nameCity=SharedPreferencesManger.LoadStringData(FindHotels.this,"name_city_");
-            areas.setText(nameCity);
+        String endmonthString = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSmonth");
+        endDateMonth.setText(endmonthString);
 
 
+        String nameCountry = SharedPreferencesManger.LoadStringData(FindHotels.this, "nameCountry_");
+        regions.setText(nameCountry);
+
+        String nameCity = SharedPreferencesManger.LoadStringData(FindHotels.this, "name_city_");
+        areas.setText(nameCity);
 
 
+    } else {
 
 
+        String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
+        String date_m = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());
+        String date_d = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
 
 
-        }else {
+        endDateDay.setText(date_n);
+        endDateMonth.setText(date_m);
+        endDateYear.setText(date_d);
+        startDateDay.setText(date_n);
+        startDateMonth.setText(date_m);
+        startDateYear.setText(date_d);
+
+        SharedPreferencesManger.SaveData(this, "today_date", date_n + date_m + date_d);
 
 
-            String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
-            String date_m = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());
-            String date_d = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
-
-
-            endDateDay.setText(date_n);
-            endDateMonth.setText(date_m);
-            endDateYear.setText(date_d);
-            startDateDay.setText(date_n);
-            startDateMonth.setText(date_m);
-            startDateYear.setText(date_d);
-
-            SharedPreferencesManger.SaveData(this,"today_date",date_n+date_m+date_d);
-
-
-        }
+    }
+}catch (Exception e ){}
 
 //        simpleProgressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
 //        simpleProgressBar.setVisibility(View.INVISIBLE);
@@ -362,7 +355,6 @@ public class FindHotels extends AppCompatActivity {
                         }
                     })
                     .show();
-
 
         }
 
@@ -468,8 +460,10 @@ public class FindHotels extends AppCompatActivity {
 
 //}
 
+try {
+    getCountries();
 
-        getCountries();
+}catch (Exception e){}
 
 
         recycl_child_spiner.setLayoutManager(new GridLayoutManager(this, 2));

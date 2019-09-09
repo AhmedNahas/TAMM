@@ -127,8 +127,8 @@ public class OffersFlightsDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                onBackPressed();
-            }
+                Intent intent = new Intent(OffersFlightsDetailsActivity.this, RenewAccount.class);
+                startActivity(intent);            }
         });
 try {
     guestMode = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "guestMode");
