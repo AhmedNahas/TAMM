@@ -236,7 +236,7 @@ public class FindHotels extends AppCompatActivity {
 
 
 
-try {
+
     String dayOfTheWeek = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSyear");
     if (dayOfTheWeek != null) {
 
@@ -284,7 +284,7 @@ try {
 
 
     }
-}catch (Exception e ){}
+
 
 //        simpleProgressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
 //        simpleProgressBar.setVisibility(View.INVISIBLE);
@@ -460,10 +460,10 @@ try {
 
 //}
 
-try {
+
     getCountries();
 
-}catch (Exception e){}
+
 
 
         recycl_child_spiner.setLayoutManager(new GridLayoutManager(this, 2));

@@ -11,7 +11,7 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tap_layout"
-        android:layout_width="@dimen/_250sdp"
+        android:layout_width="@dimen/_290sdp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         app:tabBackground="@drawable/shep_selector"
