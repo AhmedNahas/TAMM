@@ -209,7 +209,7 @@ public class FlightsSummary extends AppCompatActivity {
     TextView assistantLabelCallRenewHotel;
     TextView assistantLabelMessageRenewHotel;
     private boolean ClickRenewHotel = false;
-  //  private List<FareQuoteRespone.Result> result;
+    //  private List<FareQuoteRespone.Result> result;
     double baseFare,
             serviceFee,
             tax;
@@ -628,9 +628,9 @@ public class FlightsSummary extends AppCompatActivity {
                         book.setTrackingId(trackingId);
                         book.setResultId(resultId);
                         book.setTokenId(tokenId);
-                     //   book.setIPAddress("192.168.4.238");
+                        //   book.setIPAddress("192.168.4.238");
 
-                   Itinerary itinerary = new Itinerary();
+                        Itinerary itinerary = new Itinerary();
                         itinerary.setOrigin(origin);
                         itinerary.setDestination(destination);
 
@@ -640,12 +640,12 @@ public class FlightsSummary extends AppCompatActivity {
                         passenger.setFare(fare);
                         passenger.setAddressLine1("cairo");
                         passenger.setAddressLine2("cairo");
-                     City city = new City();
+                        City city = new City();
                         city.setCityCode("CAI");
                         city.setCityName("cairo");
                         city.setCountryCode("Egypt");
                         passenger.setCity(city);
-Country country = new Country();
+                        Country country = new Country();
                         country.setCountryCode("EG");
                         country.setCountryName("Egypt");
                         passenger.setCountry(country);
@@ -665,7 +665,7 @@ Country country = new Country();
                         itinerary.setDestination(destination);
 
 
-                      itinerary.setFareRules(fareRulesList);
+                        itinerary.setFareRules(fareRulesList);
 
                         itinerary.setValidatingAirlineCode(validatingAirline);
                         ArrayList<Passenger> passengerList = new ArrayList<>();
@@ -767,7 +767,7 @@ Country country = new Country();
 
 
         //--------------------------------------------------------------------------
-   }
+    }
 
 
     public Retrofit connectAndGetApiData(Gson gson, OkHttpClient client) {

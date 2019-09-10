@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.ChooseFlightAdapter;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
 
@@ -48,6 +49,7 @@ private RecyclerView recyclerView;
     private boolean ClickRenewHotel = false;
 
     ImageView iv_booked_recommended_one_way;
+    private Integer accountPlan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,24 @@ private RecyclerView recyclerView;
                 startActivity(intent);
             }
         });
+
+        accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
+
+        try {
+            if (accountPlan == 1) {
+
+
+                iv_booked_recommended_one_way.setVisibility(View.VISIBLE);
+
+            } else if (accountPlan == 0) {
+
+                iv_booked_recommended_one_way.setVisibility(View.VISIBLE);
+
+            } else if (accountPlan == 2) {
+                iv_booked_recommended_one_way.setVisibility(View.GONE);
+
+            }
+        }catch (Exception e){}
         assistantLabelVoiceRenewHotel=findViewById(R.id.assistant_label_voice_renew_OneWay);
         relativeImgRenewHotelTamm=findViewById(R.id.relative_img_renew_OneWay_tamm);
         assistantLabelCallRenewHotel=findViewById(R.id.assistant_label_call_renew_OneWay);

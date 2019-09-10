@@ -201,7 +201,7 @@ public class RegisterationActivity extends Fragment {
             public void onClick(View v) {
                 getActivity().onBackPressed();
 
-                getActivity().onBackPressed();
+             
 
             }
         });
@@ -235,18 +235,19 @@ public class RegisterationActivity extends Fragment {
 
 
         register = view.findViewById(R.id.proceedcheck_out);
-
         Context context = getActivity();
-        requestQueue = Volley.newRequestQueue(context);
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        try {
+    requestQueue = Volley.newRequestQueue(context);
 
-        StrictMode.setThreadPolicy(policy);
-        auth();
-        getCountries();
+    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
-        getOcupation();
+    StrictMode.setThreadPolicy(policy);
+    auth();
+    getCountries();
 
+    getOcupation();
+}catch (Exception e){}
 //        ArrayAdapter  = new ArrayAdapter<String>(getContext(), R.layout.item_spener_reg, list_country);
 
 

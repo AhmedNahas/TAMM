@@ -113,7 +113,7 @@ public class RoomBooked extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.room_booked);
+        setContentView(R.layout.roombooked);
         ButterKnife.bind(this);
         requestQueue = Volley.newRequestQueue(this);
 

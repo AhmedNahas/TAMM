@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import net.middledleeast.tamm.ActivityToFragment.Activity_Register;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterOfferPhoto;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
@@ -127,8 +128,8 @@ public class OffersFlightsDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                onBackPressed();
-            }
+                Intent intent = new Intent(OffersFlightsDetailsActivity.this, RenewAccount.class);
+                startActivity(intent);            }
         });
 try {
     guestMode = SharedPreferencesManger.LoadStringData(OffersFlightsDetailsActivity.this, "guestMode");
@@ -232,7 +233,7 @@ try {
                             SharedPreferencesManger.remove(OffersFlightsDetailsActivity.this,"gustMode");
 
                             // TODO: 7/28/2019  intent to Registration Fragment
-                            Intent intent1 = new Intent(OffersFlightsDetailsActivity.this, WelcomeActivity.class);
+                            Intent intent1 = new Intent(OffersFlightsDetailsActivity.this, Activity_Register.class);
 
                             startActivity(intent1);
 

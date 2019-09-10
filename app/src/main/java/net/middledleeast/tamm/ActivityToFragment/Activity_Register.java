@@ -16,7 +16,7 @@ public class Activity_Register extends AppCompatActivity {
 
         if (savedInstanceState == null) {
 
-            getSupportFragmentManager().beginTransaction().add(android.R.id.content, new PlansFragment()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.welcome_container, new PlansFragment()).commit();
 
         }
 

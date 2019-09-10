@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import net.middledleeast.tamm.ActivityToFragment.Activity_Register;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterOfferPhoto;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
@@ -201,7 +202,7 @@ public class OffersHotelsDetailsActivity extends AppCompatActivity {
                             SharedPreferencesManger.remove(OffersHotelsDetailsActivity.this, "gustMode");
 
                             // TODO: 7/28/2019  intent to Registration Fragment
-                            Intent intent1 = new Intent(OffersHotelsDetailsActivity.this, WelcomeActivity.class);
+                            Intent intent1 = new Intent(OffersHotelsDetailsActivity.this, Activity_Register.class);
 
                             startActivity(intent1);
 

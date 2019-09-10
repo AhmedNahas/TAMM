@@ -464,7 +464,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                                  @Override
                                                                  public void onClick(DialogInterface dialogInterface, int i) {
 
-                                                                     SharedPreferencesManger.remove(context, "gustMode");
+                                                                     SharedPreferencesManger.remove(context, "guestMode");
 
                                                                      // TODO: 7/28/2019  intent to Registration Fragment
                                                                      Intent intent1 = new Intent(activity, WelcomeActivity.class);
