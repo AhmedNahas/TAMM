@@ -2,7 +2,6 @@ package FlightApi;
 
 
 
-import FlightApi.booking.BookingFlight;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Header;
@@ -22,11 +21,11 @@ public interface FlightApiService {
     Call<SearchFlightsResponse> getFlightSearch(@Header("Content-Type") String content_type,
                                         @Body SearchFlights body);
 
-    // Nahas
+
     @Headers("Content-Type: application/json")
-    @POST("Detail/FareRule")
+    @POST("Detail/FareRules")
     Call<FareRuleResponse> getFareRuleResponse(@Header("Content-Type") String content_type,
-                                                @Body FareRule body);
+                                                @Body FareRuleRequest body);
 
     // Nahas
     @Headers("Content-Type: application/json")
@@ -44,7 +43,7 @@ public interface FlightApiService {
     @Headers("Content-Type: application/json")
     @POST("Booking/Book")
     Call<GetBookingResponse> getFlightBook(@Header("Content-Type") String content_type,
-                                           @Body BookingFlight body);
+                                           @Body BookFlight body);
 
 
 

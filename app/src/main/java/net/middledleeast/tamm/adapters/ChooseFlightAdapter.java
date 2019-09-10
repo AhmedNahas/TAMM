@@ -170,38 +170,6 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
     public void onBindViewHolder(@NonNull ChooseFlightViewHolder holder, int position) {
 
 
-//        inputStream = context.getResources().openRawResource(R.raw.airline_);
-//
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-//
-//        try {
-//
-//            String data;
-//
-//            while ((data = reader.readLine()) != null) {
-//
-//                String[] split = data.split(",");
-//
-//                try {
-//
-//                    String airportCode = split[0];
-//
-//
-//                    String airportName = split[1];
-//
-//
-//                } catch (Exception e) {
-//
-//
-//                }
-//
-//            }
-//
-//
-//        } catch (Exception e) {
-//
-//
-//        }
 
 
         SearchFlightsResponse.Result result = ListResult.get(position);

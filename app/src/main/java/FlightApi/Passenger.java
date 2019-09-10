@@ -1,13 +1,11 @@
 
 package FlightApi;
 
-import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Passenger implements Serializable
-{
+public class Passenger {
 
     @SerializedName("PassportIssueCountryCode")
     @Expose
@@ -102,7 +100,6 @@ public class Passenger implements Serializable
     @SerializedName("Ticket")
     @Expose
     private Object ticket;
-    private final static long serialVersionUID = -23645195414366268L;
 
     public Object getPassportIssueCountryCode() {
         return passportIssueCountryCode;

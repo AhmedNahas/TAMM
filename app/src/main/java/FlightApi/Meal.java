@@ -1,12 +1,10 @@
 
 package FlightApi;
 
-import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Meal implements Serializable
-{
+public class Meal {
 
     @SerializedName("Code")
     @Expose
@@ -14,7 +12,6 @@ public class Meal implements Serializable
     @SerializedName("Description")
     @Expose
     private Object description;
-    private final static long serialVersionUID = 5435915554787644658L;
 
     public Object getCode() {
         return code;

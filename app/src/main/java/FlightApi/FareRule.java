@@ -1,152 +1,104 @@
+
 package FlightApi;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
+public class FareRule {
 
-public class FareRule implements Serializable {
-
-    private final static long serialVersionUID = 4845964177673056932L;
-    public FareRuleResponse fareRuleResponse;
-    @SerializedName("ResultId")
+    @SerializedName("Origin")
     @Expose
-    private String resultId;
-    @SerializedName("EndUserBrowserAgent")
+    private String origin;
+    @SerializedName("Destination")
     @Expose
-    private String endUserBrowserAgent;
-    @SerializedName("PointOfSale")
+    private String destination;
+    @SerializedName("Airline")
     @Expose
-    private String pointOfSale;
-    @SerializedName("RequestOrigin")
+    private String airline;
+    @SerializedName("FareRestriction")
     @Expose
-    private String requestOrigin;
-    @SerializedName("TokenId")
+    private Object fareRestriction;
+    @SerializedName("FareBasisCode")
     @Expose
-    private String tokenId;
-    @SerializedName("TrackingId")
+    private String fareBasisCode;
+    @SerializedName("FareRuleDetail")
     @Expose
-    private String trackingId;
-    @SerializedName("IPAddress")
+    private String fareRuleDetail;
+
+
+    @SerializedName("FlightNumber")
     @Expose
-    private String iPAddress;
+    private String flightNumber;
 
-    /**
-     * No args constructor for use in serialization
-     */
-    public FareRule() {
-        fareRuleResponse = new FareRuleResponse();
+    public String getFlightNumber() {
+        return flightNumber;
     }
 
-    /**
-     * @param endUserBrowserAgent
-     * @param tokenId
-     * @param trackingId
-     * @param pointOfSale
-     * @param requestOrigin
-     * @param iPAddress
-     * @param resultId
-     */
-    public FareRule(String resultId, String endUserBrowserAgent, String pointOfSale, String requestOrigin, String tokenId, String trackingId, String iPAddress) {
-        super();
-        this.resultId = resultId;
-        this.endUserBrowserAgent = endUserBrowserAgent;
-        this.pointOfSale = pointOfSale;
-        this.requestOrigin = requestOrigin;
-        this.tokenId = tokenId;
-        this.trackingId = trackingId;
-        this.iPAddress = iPAddress;
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
     }
 
-    public String getResultId() {
-        return resultId;
+    public String getDepartureDate() {
+        return departureDate;
     }
 
-    public void setResultId(String resultId) {
-        this.resultId = resultId;
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
     }
 
-    public FareRule withResultId(String resultId) {
-        this.resultId = resultId;
-        return this;
+    @SerializedName("DepartureDate")
+    @Expose
+    private String departureDate;
+
+
+
+
+    public String getOrigin() {
+        return origin;
     }
 
-    public String getEndUserBrowserAgent() {
-        return endUserBrowserAgent;
+    public void setOrigin(String origin) {
+        this.origin = origin;
     }
 
-    public void setEndUserBrowserAgent(String endUserBrowserAgent) {
-        this.endUserBrowserAgent = endUserBrowserAgent;
+    public String getDestination() {
+        return destination;
     }
 
-    public FareRule withEndUserBrowserAgent(String endUserBrowserAgent) {
-        this.endUserBrowserAgent = endUserBrowserAgent;
-        return this;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
-    public String getPointOfSale() {
-        return pointOfSale;
+    public String getAirline() {
+        return airline;
     }
 
-    public void setPointOfSale(String pointOfSale) {
-        this.pointOfSale = pointOfSale;
+    public void setAirline(String airline) {
+        this.airline = airline;
     }
 
-    public FareRule withPointOfSale(String pointOfSale) {
-        this.pointOfSale = pointOfSale;
-        return this;
+    public Object getFareRestriction() {
+        return fareRestriction;
     }
 
-    public String getRequestOrigin() {
-        return requestOrigin;
+    public void setFareRestriction(Object fareRestriction) {
+        this.fareRestriction = fareRestriction;
     }
 
-    public void setRequestOrigin(String requestOrigin) {
-        this.requestOrigin = requestOrigin;
+    public String getFareBasisCode() {
+        return fareBasisCode;
     }
 
-    public FareRule withRequestOrigin(String requestOrigin) {
-        this.requestOrigin = requestOrigin;
-        return this;
+    public void setFareBasisCode(String fareBasisCode) {
+        this.fareBasisCode = fareBasisCode;
     }
 
-    public String getTokenId() {
-        return tokenId;
+    public String getFareRuleDetail() {
+        return fareRuleDetail;
     }
 
-    public void setTokenId(String tokenId) {
-        this.tokenId = tokenId;
-    }
-
-    public FareRule withTokenId(String tokenId) {
-        this.tokenId = tokenId;
-        return this;
-    }
-
-    public String getTrackingId() {
-        return trackingId;
-    }
-
-    public void setTrackingId(String trackingId) {
-        this.trackingId = trackingId;
-    }
-
-    public FareRule withTrackingId(String trackingId) {
-        this.trackingId = trackingId;
-        return this;
-    }
-
-    public String getIPAddress() {
-        return iPAddress;
-    }
-
-    public void setIPAddress(String iPAddress) {
-        this.iPAddress = iPAddress;
-    }
-
-    public FareRule withIPAddress(String iPAddress) {
-        this.iPAddress = iPAddress;
-        return this;
+    public void setFareRuleDetail(String fareRuleDetail) {
+        this.fareRuleDetail = fareRuleDetail;
     }
 
 }

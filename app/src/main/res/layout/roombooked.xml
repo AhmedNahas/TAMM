@@ -140,8 +140,7 @@
         android:layout_height="@dimen/_90sdp"
         android:layout_marginTop="@dimen/_30sdp"
         android:background="@drawable/man1"
-        android:layout_below="@+id/btn_book_hotel"
-        >
+android:layout_above="@+id/tv_tab_me_booked_hotels"        >
 
         <TextView
             android:id="@+id/assistant_label_voice_booked_hotel"
@@ -205,7 +204,7 @@
         android:text="Tap me if you need MY ASSISTANCE "
         android:textColor="#fff"
         android:gravity="center"
-        android:layout_below="@+id/relative_img_hotel_booked_tamm"
+        android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/_5sdp"
         />
 

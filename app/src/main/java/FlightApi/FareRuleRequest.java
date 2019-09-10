@@ -1,14 +1,23 @@
 
-package FlightApi.booking;
+package FlightApi;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BookingFlight {
+public class FareRuleRequest {
 
     @SerializedName("ResultId")
     @Expose
     private String resultId;
+    @SerializedName("EndUserBrowserAgent")
+    @Expose
+    private String endUserBrowserAgent;
+    @SerializedName("PointOfSale")
+    @Expose
+    private String pointOfSale;
+    @SerializedName("RequestOrigin")
+    @Expose
+    private String requestOrigin;
     @SerializedName("TokenId")
     @Expose
     private String tokenId;
@@ -18,9 +27,6 @@ public class BookingFlight {
     @SerializedName("IPAddress")
     @Expose
     private String iPAddress;
-    @SerializedName("Itinerary")
-    @Expose
-    private Itinerary itinerary;
 
     public String getResultId() {
         return resultId;
@@ -28,6 +34,30 @@ public class BookingFlight {
 
     public void setResultId(String resultId) {
         this.resultId = resultId;
+    }
+
+    public String getEndUserBrowserAgent() {
+        return endUserBrowserAgent;
+    }
+
+    public void setEndUserBrowserAgent(String endUserBrowserAgent) {
+        this.endUserBrowserAgent = endUserBrowserAgent;
+    }
+
+    public String getPointOfSale() {
+        return pointOfSale;
+    }
+
+    public void setPointOfSale(String pointOfSale) {
+        this.pointOfSale = pointOfSale;
+    }
+
+    public String getRequestOrigin() {
+        return requestOrigin;
+    }
+
+    public void setRequestOrigin(String requestOrigin) {
+        this.requestOrigin = requestOrigin;
     }
 
     public String getTokenId() {
@@ -52,14 +82,6 @@ public class BookingFlight {
 
     public void setIPAddress(String iPAddress) {
         this.iPAddress = iPAddress;
-    }
-
-    public Itinerary getItinerary() {
-        return itinerary;
-    }
-
-    public void setItinerary(Itinerary itinerary) {
-        this.itinerary = itinerary;
     }
 
 }

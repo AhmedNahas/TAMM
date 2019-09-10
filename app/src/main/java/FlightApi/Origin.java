@@ -1,12 +1,10 @@
 
 package FlightApi;
 
-import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Origin implements Serializable
-{
+public class Origin {
 
     @SerializedName("AirportCode")
     @Expose
@@ -29,7 +27,6 @@ public class Origin implements Serializable
     @SerializedName("Terminal")
     @Expose
     private String terminal;
-    private final static long serialVersionUID = 7930344813925567276L;
 
     public String getAirportCode() {
         return airportCode;

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class FareQuoteRespone implements Serializable {
 
     private final static long serialVersionUID = 2759729124741058958L;
@@ -421,185 +422,185 @@ public class FareQuoteRespone implements Serializable {
     }
 
 
-    public class Fare implements Serializable {
-
-        private final static long serialVersionUID = 5552962623498734665L;
-        @SerializedName("TotalFare")
-        @Expose
-        private double totalFare;
-        @SerializedName("FareType")
-        @Expose
-        private String fareType;
-        @SerializedName("AgentMarkup")
-        @Expose
-        private long agentMarkup;
-        @SerializedName("OtherCharges")
-        @Expose
-        private long otherCharges;
-        @SerializedName("Currency")
-        @Expose
-        private String currency;
-        @SerializedName("ServiceFee")
-        @Expose
-        private long serviceFee;
-        @SerializedName("Vat")
-        @Expose
-        private long vat;
-        @SerializedName("BaseFare")
-        @Expose
-        private double baseFare;
-        @SerializedName("Tax")
-        @Expose
-        private double tax;
-
-        /**
-         * No args constructor for use in serialization
-         */
-        public Fare() {
-        }
-
-        /**
-         * @param baseFare
-         * @param serviceFee
-         * @param totalFare
-         * @param tax
-         * @param agentMarkup
-         * @param otherCharges
-         * @param vat
-         * @param fareType
-         * @param currency
-         */
-        public Fare(double totalFare, String fareType, long agentMarkup, long otherCharges, String currency, long serviceFee, long vat, double baseFare, double tax) {
-            super();
-            this.totalFare = totalFare;
-            this.fareType = fareType;
-            this.agentMarkup = agentMarkup;
-            this.otherCharges = otherCharges;
-            this.currency = currency;
-            this.serviceFee = serviceFee;
-            this.vat = vat;
-            this.baseFare = baseFare;
-            this.tax = tax;
-        }
-
-        public double getTotalFare() {
-            return totalFare;
-        }
-
-        public void setTotalFare(double totalFare) {
-            this.totalFare = totalFare;
-        }
-
-        public Fare withTotalFare(double totalFare) {
-            this.totalFare = totalFare;
-            return this;
-        }
-
-        public String getFareType() {
-            return fareType;
-        }
-
-        public void setFareType(String fareType) {
-            this.fareType = fareType;
-        }
-
-        public Fare withFareType(String fareType) {
-            this.fareType = fareType;
-            return this;
-        }
-
-        public long getAgentMarkup() {
-            return agentMarkup;
-        }
-
-        public void setAgentMarkup(long agentMarkup) {
-            this.agentMarkup = agentMarkup;
-        }
-
-        public Fare withAgentMarkup(long agentMarkup) {
-            this.agentMarkup = agentMarkup;
-            return this;
-        }
-
-        public long getOtherCharges() {
-            return otherCharges;
-        }
-
-        public void setOtherCharges(long otherCharges) {
-            this.otherCharges = otherCharges;
-        }
-
-        public Fare withOtherCharges(long otherCharges) {
-            this.otherCharges = otherCharges;
-            return this;
-        }
-
-        public String getCurrency() {
-            return currency;
-        }
-
-        public void setCurrency(String currency) {
-            this.currency = currency;
-        }
-
-        public Fare withCurrency(String currency) {
-            this.currency = currency;
-            return this;
-        }
-
-        public long getServiceFee() {
-            return serviceFee;
-        }
-
-        public void setServiceFee(long serviceFee) {
-            this.serviceFee = serviceFee;
-        }
-
-        public Fare withServiceFee(long serviceFee) {
-            this.serviceFee = serviceFee;
-            return this;
-        }
-
-        public long getVat() {
-            return vat;
-        }
-
-        public void setVat(long vat) {
-            this.vat = vat;
-        }
-
-        public Fare withVat(long vat) {
-            this.vat = vat;
-            return this;
-        }
-
-        public double getBaseFare() {
-            return baseFare;
-        }
-
-        public void setBaseFare(double baseFare) {
-            this.baseFare = baseFare;
-        }
-
-        public Fare withBaseFare(double baseFare) {
-            this.baseFare = baseFare;
-            return this;
-        }
-
-        public double getTax() {
-            return tax;
-        }
-
-        public void setTax(double tax) {
-            this.tax = tax;
-        }
-
-        public Fare withTax(double tax) {
-            this.tax = tax;
-            return this;
-        }
-
-    }
+//    public class Fare implements Serializable {
+//
+//        private final static long serialVersionUID = 5552962623498734665L;
+//        @SerializedName("TotalFare")
+//        @Expose
+//        private double totalFare;
+//        @SerializedName("FareType")
+//        @Expose
+//        private String fareType;
+//        @SerializedName("AgentMarkup")
+//        @Expose
+//        private long agentMarkup;
+//        @SerializedName("OtherCharges")
+//        @Expose
+//        private long otherCharges;
+//        @SerializedName("Currency")
+//        @Expose
+//        private String currency;
+//        @SerializedName("ServiceFee")
+//        @Expose
+//        private long serviceFee;
+//        @SerializedName("Vat")
+//        @Expose
+//        private long vat;
+//        @SerializedName("BaseFare")
+//        @Expose
+//        private double baseFare;
+//        @SerializedName("Tax")
+//        @Expose
+//        private double tax;
+//
+//        /**
+//         * No args constructor for use in serialization
+//         */
+//        public Fare() {
+//        }
+//
+//        /**
+//         * @param baseFare
+//         * @param serviceFee
+//         * @param totalFare
+//         * @param tax
+//         * @param agentMarkup
+//         * @param otherCharges
+//         * @param vat
+//         * @param fareType
+//         * @param currency
+//         */
+//        public Fare(double totalFare, String fareType, long agentMarkup, long otherCharges, String currency, long serviceFee, long vat, double baseFare, double tax) {
+//            super();
+//            this.totalFare = totalFare;
+//            this.fareType = fareType;
+//            this.agentMarkup = agentMarkup;
+//            this.otherCharges = otherCharges;
+//            this.currency = currency;
+//            this.serviceFee = serviceFee;
+//            this.vat = vat;
+//            this.baseFare = baseFare;
+//            this.tax = tax;
+//        }
+//
+//        public double getTotalFare() {
+//            return totalFare;
+//        }
+//
+//        public void setTotalFare(double totalFare) {
+//            this.totalFare = totalFare;
+//        }
+//
+//        public Fare withTotalFare(double totalFare) {
+//            this.totalFare = totalFare;
+//            return this;
+//        }
+//
+//        public String getFareType() {
+//            return fareType;
+//        }
+//
+//        public void setFareType(String fareType) {
+//            this.fareType = fareType;
+//        }
+//
+//        public Fare withFareType(String fareType) {
+//            this.fareType = fareType;
+//            return this;
+//        }
+//
+//        public long getAgentMarkup() {
+//            return agentMarkup;
+//        }
+//
+//        public void setAgentMarkup(long agentMarkup) {
+//            this.agentMarkup = agentMarkup;
+//        }
+//
+//        public Fare withAgentMarkup(long agentMarkup) {
+//            this.agentMarkup = agentMarkup;
+//            return this;
+//        }
+//
+//        public long getOtherCharges() {
+//            return otherCharges;
+//        }
+//
+//        public void setOtherCharges(long otherCharges) {
+//            this.otherCharges = otherCharges;
+//        }
+//
+//        public Fare withOtherCharges(long otherCharges) {
+//            this.otherCharges = otherCharges;
+//            return this;
+//        }
+//
+//        public String getCurrency() {
+//            return currency;
+//        }
+//
+//        public void setCurrency(String currency) {
+//            this.currency = currency;
+//        }
+//
+//        public Fare withCurrency(String currency) {
+//            this.currency = currency;
+//            return this;
+//        }
+//
+//        public long getServiceFee() {
+//            return serviceFee;
+//        }
+//
+//        public void setServiceFee(long serviceFee) {
+//            this.serviceFee = serviceFee;
+//        }
+//
+//        public Fare withServiceFee(long serviceFee) {
+//            this.serviceFee = serviceFee;
+//            return this;
+//        }
+//
+//        public long getVat() {
+//            return vat;
+//        }
+//
+//        public void setVat(long vat) {
+//            this.vat = vat;
+//        }
+//
+//        public Fare withVat(long vat) {
+//            this.vat = vat;
+//            return this;
+//        }
+//
+//        public double getBaseFare() {
+//            return baseFare;
+//        }
+//
+//        public void setBaseFare(double baseFare) {
+//            this.baseFare = baseFare;
+//        }
+//
+//        public Fare withBaseFare(double baseFare) {
+//            this.baseFare = baseFare;
+//            return this;
+//        }
+//
+//        public double getTax() {
+//            return tax;
+//        }
+//
+//        public void setTax(double tax) {
+//            this.tax = tax;
+//        }
+//
+//        public Fare withTax(double tax) {
+//            this.tax = tax;
+//            return this;
+//        }
+//
+//    }
 
 
     public class FareBreakdown implements Serializable {
@@ -1128,7 +1129,7 @@ public class FareQuoteRespone implements Serializable {
         private List<List<Segment>> segments = new ArrayList<List<Segment>>();
         @SerializedName("FareRules")
         @Expose
-        private List<FlightApi.FareRule> fareRules = new ArrayList<FlightApi.FareRule>();
+        private List<FareRule> fareRules = new ArrayList<FareRule>();
         @SerializedName("ValidatingAirline")
         @Expose
         private String validatingAirline;
@@ -1162,7 +1163,7 @@ public class FareQuoteRespone implements Serializable {
          * @param fareRules
          * @param responseTime
          */
-        public Result(String resultId, String origin, String destination, boolean isLcc, boolean nonRefundable, String airlineRemark, Fare fare, List<FareBreakdown> fareBreakdown, Object lastTicketDate, Object ticketAdvisory, List<List<Segment>> segments, List<FlightApi.FareRule> fareRules, String validatingAirline, String responseTime, long journeyType) {
+        public Result(String resultId, String origin, String destination, boolean isLcc, boolean nonRefundable, String airlineRemark, Fare fare, List<FareBreakdown> fareBreakdown, Object lastTicketDate, Object ticketAdvisory, List<List<Segment>> segments, List<FareRule> fareRules, String validatingAirline, String responseTime, long journeyType) {
             super();
             this.resultId = resultId;
             this.origin = origin;
@@ -1324,15 +1325,15 @@ public class FareQuoteRespone implements Serializable {
             return this;
         }
 
-        public List<FlightApi.FareRule> getFareRules() {
+        public List<FareRule> getFareRules() {
             return fareRules;
         }
 
-        public void setFareRules(List<FlightApi.FareRule> fareRules) {
+        public void setFareRules(List<FareRule> fareRules) {
             this.fareRules = fareRules;
         }
 
-        public Result withFareRules(List<FlightApi.FareRule> fareRules) {
+        public Result withFareRules(List<FareRule> fareRules) {
             this.fareRules = fareRules;
             return this;
         }

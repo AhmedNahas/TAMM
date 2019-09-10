@@ -1,13 +1,11 @@
 
 package FlightApi;
 
-import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BookFlightResponse implements Serializable
-{
+public class BookFlightResponse {
 
     @SerializedName("BookingId")
     @Expose
@@ -51,7 +49,6 @@ public class BookFlightResponse implements Serializable
     @SerializedName("TrackingId")
     @Expose
     private String trackingId;
-    private final static long serialVersionUID = 1064056356831038554L;
 
     public String getBookingId() {
         return bookingId;

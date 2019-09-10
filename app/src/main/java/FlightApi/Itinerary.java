@@ -1,35 +1,30 @@
 
 package FlightApi;
 
-import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Itinerary implements Serializable
-{
+public class Itinerary {
 
     @SerializedName("IsHoldEligibleForLcc")
     @Expose
     private Boolean isHoldEligibleForLcc;
-    @SerializedName("FlightId")
-    @Expose
-    private Integer flightId;
     @SerializedName("Segments")
     @Expose
     private List<Segment> segments = null;
     @SerializedName("Passenger")
     @Expose
-    private Passenger passenger = null;
+    private List<Passenger> passenger = null;
     @SerializedName("FareRules")
     @Expose
     private List<FareRule> fareRules = null;
-    @SerializedName("PNR")
-    @Expose
-    private String pNR;
     @SerializedName("Destination")
     @Expose
     private String destination;
+    @SerializedName("FareType")
+    @Expose
+    private String fareType;
     @SerializedName("LastTicketDate")
     @Expose
     private String lastTicketDate;
@@ -48,19 +43,30 @@ public class Itinerary implements Serializable
     @SerializedName("AirlineCode")
     @Expose
     private Object airlineCode;
+    @SerializedName("TravelDate")
+    @Expose
+    private String travelDate;
     @SerializedName("NonRefundable")
     @Expose
     private Boolean nonRefundable;
-    @SerializedName("BookingId")
+    @SerializedName("AgentRefNo")
     @Expose
-    private Integer bookingId;
+    private Object agentRefNo;
     @SerializedName("IsLcc")
     @Expose
     private Boolean isLcc;
     @SerializedName("AirlineRemark")
     @Expose
     private String airlineRemark;
-    private final static long serialVersionUID = -7737601744203642679L;
+    @SerializedName("SearchType")
+    @Expose
+    private Integer searchType;
+    @SerializedName("EarnedLoyaltyPoints")
+    @Expose
+    private Integer earnedLoyaltyPoints;
+    @SerializedName("StaffRemarks")
+    @Expose
+    private Object staffRemarks;
 
     public Boolean getIsHoldEligibleForLcc() {
         return isHoldEligibleForLcc;
@@ -68,14 +74,6 @@ public class Itinerary implements Serializable
 
     public void setIsHoldEligibleForLcc(Boolean isHoldEligibleForLcc) {
         this.isHoldEligibleForLcc = isHoldEligibleForLcc;
-    }
-
-    public Integer getFlightId() {
-        return flightId;
-    }
-
-    public void setFlightId(Integer flightId) {
-        this.flightId = flightId;
     }
 
     public List<Segment> getSegments() {
@@ -86,11 +84,11 @@ public class Itinerary implements Serializable
         this.segments = segments;
     }
 
-    public Passenger getPassenger() {
+    public List<Passenger> getPassenger() {
         return passenger;
     }
 
-    public void setPassenger(Passenger passenger) {
+    public void setPassenger(List<Passenger> passenger) {
         this.passenger = passenger;
     }
 
@@ -102,20 +100,20 @@ public class Itinerary implements Serializable
         this.fareRules = fareRules;
     }
 
-    public String getPNR() {
-        return pNR;
-    }
-
-    public void setPNR(String pNR) {
-        this.pNR = pNR;
-    }
-
     public String getDestination() {
         return destination;
     }
 
     public void setDestination(String destination) {
         this.destination = destination;
+    }
+
+    public String getFareType() {
+        return fareType;
+    }
+
+    public void setFareType(String fareType) {
+        this.fareType = fareType;
     }
 
     public String getLastTicketDate() {
@@ -166,6 +164,14 @@ public class Itinerary implements Serializable
         this.airlineCode = airlineCode;
     }
 
+    public String getTravelDate() {
+        return travelDate;
+    }
+
+    public void setTravelDate(String travelDate) {
+        this.travelDate = travelDate;
+    }
+
     public Boolean getNonRefundable() {
         return nonRefundable;
     }
@@ -174,12 +180,12 @@ public class Itinerary implements Serializable
         this.nonRefundable = nonRefundable;
     }
 
-    public Integer getBookingId() {
-        return bookingId;
+    public Object getAgentRefNo() {
+        return agentRefNo;
     }
 
-    public void setBookingId(Integer bookingId) {
-        this.bookingId = bookingId;
+    public void setAgentRefNo(Object agentRefNo) {
+        this.agentRefNo = agentRefNo;
     }
 
     public Boolean getIsLcc() {
@@ -196,6 +202,30 @@ public class Itinerary implements Serializable
 
     public void setAirlineRemark(String airlineRemark) {
         this.airlineRemark = airlineRemark;
+    }
+
+    public Integer getSearchType() {
+        return searchType;
+    }
+
+    public void setSearchType(Integer searchType) {
+        this.searchType = searchType;
+    }
+
+    public Integer getEarnedLoyaltyPoints() {
+        return earnedLoyaltyPoints;
+    }
+
+    public void setEarnedLoyaltyPoints(Integer earnedLoyaltyPoints) {
+        this.earnedLoyaltyPoints = earnedLoyaltyPoints;
+    }
+
+    public Object getStaffRemarks() {
+        return staffRemarks;
+    }
+
+    public void setStaffRemarks(Object staffRemarks) {
+        this.staffRemarks = staffRemarks;
     }
 
 }
