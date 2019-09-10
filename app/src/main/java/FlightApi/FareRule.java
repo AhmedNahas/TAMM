@@ -17,13 +17,41 @@ public class FareRule {
     private String airline;
     @SerializedName("FareRestriction")
     @Expose
-    private String fareRestriction;
+    private Object fareRestriction;
     @SerializedName("FareBasisCode")
     @Expose
     private String fareBasisCode;
     @SerializedName("FareRuleDetail")
     @Expose
     private String fareRuleDetail;
+
+
+    @SerializedName("FlightNumber")
+    @Expose
+    private String flightNumber;
+
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public String getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    @SerializedName("DepartureDate")
+    @Expose
+    private String departureDate;
+
+
+
 
     public String getOrigin() {
         return origin;
@@ -49,11 +77,11 @@ public class FareRule {
         this.airline = airline;
     }
 
-    public String getFareRestriction() {
+    public Object getFareRestriction() {
         return fareRestriction;
     }
 
-    public void setFareRestriction(String fareRestriction) {
+    public void setFareRestriction(Object fareRestriction) {
         this.fareRestriction = fareRestriction;
     }
 

@@ -21,11 +21,11 @@ public interface FlightApiService {
     Call<SearchFlightsResponse> getFlightSearch(@Header("Content-Type") String content_type,
                                         @Body SearchFlights body);
 
-    // Nahas
+
     @Headers("Content-Type: application/json")
     @POST("Detail/FareRules")
     Call<FareRuleResponse> getFareRuleResponse(@Header("Content-Type") String content_type,
-                                                @Body FareRules body);
+                                                @Body FareRuleRequest body);
 
     // Nahas
     @Headers("Content-Type: application/json")

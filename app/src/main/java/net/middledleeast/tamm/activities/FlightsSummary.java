@@ -29,6 +29,8 @@ import FlightApi.Fare;
 import FlightApi.FareQuote;
 import FlightApi.FareQuoteRespone;
 import FlightApi.FareRule;
+import FlightApi.FareRuleRequest;
+import FlightApi.FareRuleResponse;
 import FlightApi.FlightApiService;
 import FlightApi.FlightAuthentication;
 import FlightApi.FlightConstants;
@@ -207,7 +209,7 @@ public class FlightsSummary extends AppCompatActivity {
     TextView assistantLabelCallRenewHotel;
     TextView assistantLabelMessageRenewHotel;
     private boolean ClickRenewHotel = false;
-    private List<FareQuoteRespone.Result> result;
+  //  private List<FareQuoteRespone.Result> result;
     double baseFare,
             serviceFee,
             tax;
@@ -575,23 +577,23 @@ public class FlightsSummary extends AppCompatActivity {
         //--------------------------------------------------------------
 
 
-//        FareRules fareRules = new FareRules();
-//
-//
-//        fareRules.setResultId(resultId);
-//        fareRules.setTokenId(tokenId);
-//        fareRules.setTrackingId(trackingId);
-//        fareRules.setPointOfSale("AE");
-//        fareRules.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
-//        fareRules.setIPAddress("192.168.4.238");
-//        fareRules.setRequestOrigin("Egypt");
-//
-//        Call<FareRule> fareRuleResponseCall = flightApiService.getFareRuleResponse("application/json", fareRules);
-//        fareRuleResponseCall.enqueue(new Callback<FareRule>() {
-//            @Override
-//            public void onResponse(Call<FareRule> call, Response<FareRule> response) {
-//
-//                List<FareRule> fareRules = response.body().getFareRules().get(0);
+        FareRuleRequest fareRules = new FareRuleRequest();
+
+
+        fareRules.setResultId(resultId);
+        fareRules.setTokenId(tokenId);
+        fareRules.setTrackingId(trackingId);
+        fareRules.setPointOfSale("AE");
+        fareRules.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
+        fareRules.setIPAddress("192.168.4.238");
+        fareRules.setRequestOrigin("Egypt");
+
+        Call<FareRuleResponse> fareRuleResponseCall = flightApiService.getFareRuleResponse("application/json", fareRules);
+        fareRuleResponseCall.enqueue(new Callback<FareRuleResponse>() {
+            @Override
+            public void onResponse(Call<FareRuleResponse> call, Response<FareRuleResponse> response) {
+
+                List<FareRule> fareRulesList = response.body().getFareRules().get(0);
 
 
                 FareQuote fareQuote = new FareQuote();
@@ -663,7 +665,7 @@ Country country = new Country();
                         itinerary.setDestination(destination);
 
 
-                    //    itinerary.setFareRules(fareRules);
+                      itinerary.setFareRules(fareRulesList);
 
                         itinerary.setValidatingAirlineCode(validatingAirline);
                         ArrayList<Passenger> passengerList = new ArrayList<>();
@@ -724,12 +726,12 @@ Country country = new Country();
 
             }
 
-//            @Override
-//            public void onFailure(Call<FareRuleResponse> call, Throwable t) {
-//
-//                t.getMessage();
-//            }
-//        });
+            @Override
+            public void onFailure(Call<FareRuleResponse> call, Throwable t) {
+
+                t.getMessage();
+            }
+        });
 
         //-------------------------------------------------------------------
 
@@ -764,7 +766,7 @@ Country country = new Country();
 
 
         //--------------------------------------------------------------------------
-//    }
+   }
 
 
     public Retrofit connectAndGetApiData(Gson gson, OkHttpClient client) {

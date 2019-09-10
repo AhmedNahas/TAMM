@@ -1129,7 +1129,7 @@ public class FareQuoteRespone implements Serializable {
         private List<List<Segment>> segments = new ArrayList<List<Segment>>();
         @SerializedName("FareRules")
         @Expose
-        private List<FareRules> fareRules = new ArrayList<FareRules>();
+        private List<FareRule> fareRules = new ArrayList<FareRule>();
         @SerializedName("ValidatingAirline")
         @Expose
         private String validatingAirline;
@@ -1163,7 +1163,7 @@ public class FareQuoteRespone implements Serializable {
          * @param fareRules
          * @param responseTime
          */
-        public Result(String resultId, String origin, String destination, boolean isLcc, boolean nonRefundable, String airlineRemark, Fare fare, List<FareBreakdown> fareBreakdown, Object lastTicketDate, Object ticketAdvisory, List<List<Segment>> segments, List<FareRules> fareRules, String validatingAirline, String responseTime, long journeyType) {
+        public Result(String resultId, String origin, String destination, boolean isLcc, boolean nonRefundable, String airlineRemark, Fare fare, List<FareBreakdown> fareBreakdown, Object lastTicketDate, Object ticketAdvisory, List<List<Segment>> segments, List<FareRule> fareRules, String validatingAirline, String responseTime, long journeyType) {
             super();
             this.resultId = resultId;
             this.origin = origin;
@@ -1325,15 +1325,15 @@ public class FareQuoteRespone implements Serializable {
             return this;
         }
 
-        public List<FareRules> getFareRules() {
+        public List<FareRule> getFareRules() {
             return fareRules;
         }
 
-        public void setFareRules(List<FareRules> fareRules) {
+        public void setFareRules(List<FareRule> fareRules) {
             this.fareRules = fareRules;
         }
 
-        public Result withFareRules(List<FareRules> fareRules) {
+        public Result withFareRules(List<FareRule> fareRules) {
             this.fareRules = fareRules;
             return this;
         }
