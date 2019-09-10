@@ -144,7 +144,7 @@ public class HotelDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(HotelDetails.this, VoiceMessageActivity.class);
+                Intent intent = new Intent(HotelDetails.this, AssistantActivity.class);
                 startActivity(intent);
                 Toast.makeText(HotelDetails.this, "Voice", Toast.LENGTH_SHORT).show();
             }
@@ -165,7 +165,7 @@ public class HotelDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent2 = new Intent(HotelDetails.this, ContactUs.class);
+                Intent intent2 = new Intent(HotelDetails.this, AssistantActivity.class);
                 startActivity(intent2);
                 Toast.makeText(HotelDetails.this, "Message", Toast.LENGTH_SHORT).show();
 

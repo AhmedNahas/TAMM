@@ -153,7 +153,7 @@ try {
         switch (view.getId()) {
             case R.id.assistant_label_voice_hotel:
 
-                Intent intent = new Intent(ReserveRoom.this, VoiceMessageActivity.class);
+                Intent intent = new Intent(ReserveRoom.this, AssistantActivity.class);
                 startActivity(intent);
                 Toast.makeText(this, "Voice", Toast.LENGTH_SHORT).show();
 
@@ -167,7 +167,7 @@ try {
                 break;
             case R.id.assistant_label_message_hotel:
 
-                Intent intent2 = new Intent(ReserveRoom.this, ContactUs.class);
+                Intent intent2 = new Intent(ReserveRoom.this, AssistantActivity.class);
                 startActivity(intent2);
                 Toast.makeText(this, "Message", Toast.LENGTH_SHORT).show();
 

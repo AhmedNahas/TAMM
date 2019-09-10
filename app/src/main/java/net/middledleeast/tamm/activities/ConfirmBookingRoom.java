@@ -1297,7 +1297,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.assistant_label_voice_confirm_hotel:
 
-                Intent intent = new Intent(ConfirmBookingRoom.this, VoiceMessageActivity.class);
+                Intent intent = new Intent(ConfirmBookingRoom.this, AssistantActivity.class);
                 startActivity(intent);
                 Toast.makeText(this, "Voice", Toast.LENGTH_SHORT).show();
 
@@ -1311,7 +1311,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 break;
             case R.id.assistant_label_message_confirm_hotel:
 
-                Intent intent2 = new Intent(ConfirmBookingRoom.this, ContactUs.class);
+                Intent intent2 = new Intent(ConfirmBookingRoom.this, AssistantActivity.class);
                 startActivity(intent2);
                 Toast.makeText(this, "Message", Toast.LENGTH_SHORT).show();
 
