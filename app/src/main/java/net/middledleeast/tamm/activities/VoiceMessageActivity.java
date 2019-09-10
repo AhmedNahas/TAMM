@@ -44,12 +44,12 @@ public class VoiceMessageActivity extends AppCompatActivity {
 
         outputFile = getExternalCacheDir().getAbsolutePath();
         outputFile += "/audiorecordtest.3gp";
-
-        myAudioRecorder = new MediaRecorder();
-        myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        myAudioRecorder.setOutputFile(outputFile);
-        myAudioRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
+//
+//        myAudioRecorder = new MediaRecorder();
+//        myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+//        myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+//        myAudioRecorder.setOutputFile(outputFile);
+//        myAudioRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
 
 
 

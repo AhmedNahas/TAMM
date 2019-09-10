@@ -729,6 +729,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                     @Override
                     public void onResponse(Call<SearchFlightsResponse> call, Response<SearchFlightsResponse> response) {
                         boolean successful = response.isSuccessful();
+
                         String trackingId = response.body().getTrackingId();
 
                         String tokenId = response.body().getTokenId();

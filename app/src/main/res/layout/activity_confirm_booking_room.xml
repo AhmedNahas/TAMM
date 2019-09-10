@@ -1341,10 +1341,9 @@ android:id="@+id/last_name_4_gust_2"
         android:id="@+id/relative_img_confirm_hotel_tamm"
         android:layout_width="@dimen/_300sdp"
         android:layout_height="@dimen/_90sdp"
-        android:layout_marginTop="@dimen/_50sdp"
         android:background="@drawable/man1"
         android:layout_centerInParent="true"
-        android:layout_below="@+id/confirm_room_booking"
+        android:layout_above="@+id/tv_tab_me_confirm_hotels"
         >
 
         <TextView
@@ -1411,8 +1410,7 @@ android:id="@+id/last_name_4_gust_2"
         android:text="Tap me if you need MY ASSISTANCE "
         android:textColor="#fff"
         android:gravity="center"
-        android:layout_below="@+id/relative_img_confirm_hotel_tamm"
-        android:layout_marginBottom="@dimen/_5sdp"
+android:layout_alignParentBottom="true"
         />
 
 </RelativeLayout>

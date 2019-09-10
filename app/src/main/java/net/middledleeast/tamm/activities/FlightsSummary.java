@@ -688,6 +688,7 @@ Country country = new Country();
                                 response.raw().body();
                                 long status = response.body().getStatus();
                                 String tokenId1 = response.body().getTokenId();
+                                String pnr = response.body().getItinerary().getPNR();
 
 
                             }

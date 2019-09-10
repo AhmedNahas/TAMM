@@ -133,18 +133,19 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
+        android:layout_above="@+id/textTapme"
         android:id="@+id/man_seat"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_below="@+id/frame_seats"
         android:src="@drawable/man1"
 
         />
 
     <TextView
+        android:id="@+id/textTapme"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/man_seat"
         android:gravity="center"
         android:text="Tap me if you need MY ASSISTANCE "
         android:textColor="#fff"

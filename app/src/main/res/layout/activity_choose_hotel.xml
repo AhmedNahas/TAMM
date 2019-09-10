@@ -103,11 +103,11 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <RelativeLayout
-        android:layout_below="@+id/hotels_rv"
+
         android:id="@+id/relative_img_choose_hotel_tamm"
         android:layout_width="@dimen/_300sdp"
         android:layout_height="@dimen/_90sdp"
-
+        android:layout_above="@+id/tv_tab_me_choose_hotels"
         android:background="@drawable/man1"
         android:layout_centerInParent="true"
         >
@@ -177,13 +177,13 @@
     </RelativeLayout>
 
     <TextView
+        android:layout_alignParentBottom="true"
         android:id="@+id/tv_tab_me_choose_hotels"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tap me if you need MY ASSISTANCE "
         android:textColor="#fff"
         android:gravity="center"
-       android:layout_below="@+id/relative_img_choose_hotel_tamm"
         android:layout_marginBottom="@dimen/_5sdp"
         />
 
