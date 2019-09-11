@@ -655,7 +655,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 searchFlights[0].setPointOfSale(to);
 
                 //4 test
-                searchFlights[0].setRequestOrigin("Egypt");
+                searchFlights[0].setRequestOrigin(country_selected_from_spinner.getText().toString());
                 //5
                 searchFlights[0].setTokenId(flightAuthentication[0].getTokenId());
                 //6
@@ -678,14 +678,10 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 SearchFlights.Segment segment = new SearchFlights.Segment();
                 SearchFlights.Segment segment2 = new SearchFlights.Segment();
 
-
-
                 //11.1
                 segment.setDestination(to);
                 //11.2
                 segment.setOrigin(from);
-
-
 
                 segment2.setDestination(from);
                 segment2.setOrigin(to);
@@ -715,10 +711,6 @@ public class ProceedBeyBeyOriginal extends Fragment {
                     segments.add(segment2);
 
                 }
-
-
-
-
 
                 searchFlights[0].setSegment(segments);
 

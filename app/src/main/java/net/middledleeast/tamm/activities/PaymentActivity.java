@@ -215,19 +215,16 @@ public class PaymentActivity extends AppCompatActivity {
              username = intent.getStringExtra("username");
              pass = intent.getStringExtra("pass");
 
-
-
-
         }else if (mId==FLIGHT){
 
-            String TotalFare = SharedPreferencesManger.LoadStringData(this, "TotalFare");
-            flightCurrency = SharedPreferencesManger.LoadStringData(this, "typeFare");
+//            String TotalFare = SharedPreferencesManger.LoadStringData(this, "TotalFare");
+//            flightCurrency = SharedPreferencesManger.LoadStringData(this, "typeFare");
 
-
-            tvMrMrs.setText(getString(R.string.mr));
-            tvLastName.setText("");
-            tvFirstName.setText("");
-            tvKd.setText(flightCurrency+" "+ TotalFare);
+//
+//            tvMrMrs.setText(getString(R.string.mr));
+//            tvLastName.setText("");
+//            tvFirstName.setText("");
+//            tvKd.setText(flightCurrency+" "+ TotalFare);
 
         }else if (mId == 6){
 

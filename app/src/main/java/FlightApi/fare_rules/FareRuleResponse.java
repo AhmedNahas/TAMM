@@ -1,5 +1,5 @@
 
-package FlightApi;
+package FlightApi.fare_rules;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

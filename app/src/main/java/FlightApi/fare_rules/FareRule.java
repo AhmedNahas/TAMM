@@ -1,5 +1,5 @@
 
-package FlightApi;
+package FlightApi.fare_rules;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -24,34 +24,12 @@ public class FareRule {
     @SerializedName("FareRuleDetail")
     @Expose
     private String fareRuleDetail;
-
-
-//    @SerializedName("FlightNumber")
-//    @Expose
-//    private String flightNumber;
-
-//    public String getFlightNumber() {
-//        return flightNumber;
-//    }
-//
-//    public void setFlightNumber(String flightNumber) {
-//        this.flightNumber = flightNumber;
-//    }
-//
-//    public String getDepartureDate() {
-//        return departureDate;
-//    }
-//
-//    public void setDepartureDate(String departureDate) {
-//        this.departureDate = departureDate;
-//    }
-////
-//    @SerializedName("DepartureDate")
-//    @Expose
-//    private String departureDate;
-
-
-
+    @SerializedName("DepartureDate")
+    @Expose
+    private String departureDate;
+    @SerializedName("FlightNumber")
+    @Expose
+    private String flightNumber;
 
     public String getOrigin() {
         return origin;
@@ -99,6 +77,22 @@ public class FareRule {
 
     public void setFareRuleDetail(String fareRuleDetail) {
         this.fareRuleDetail = fareRuleDetail;
+    }
+
+    public String getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(String departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
     }
 
 }

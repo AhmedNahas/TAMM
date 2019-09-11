@@ -9,24 +9,25 @@ public class FareRuleRequest {
     @SerializedName("ResultId")
     @Expose
     private String resultId;
-    @SerializedName("EndUserBrowserAgent")
-    @Expose
-    private String endUserBrowserAgent;
-    @SerializedName("PointOfSale")
-    @Expose
-    private String pointOfSale;
-    @SerializedName("RequestOrigin")
-    @Expose
-    private String requestOrigin;
+//    @SerializedName("EndUserBrowserAgent")
+//    @Expose
+//    private String endUserBrowserAgent;
+//    @SerializedName("PointOfSale")
+//    @Expose
+//    private String pointOfSale;
+//    @SerializedName("RequestOrigin")
+//    @Expose
+//    private String requestOrigin;
     @SerializedName("TokenId")
     @Expose
     private String tokenId;
+
     @SerializedName("TrackingId")
     @Expose
     private String trackingId;
-    @SerializedName("IPAddress")
-    @Expose
-    private String iPAddress;
+//    @SerializedName("IPAddress")
+//    @Expose
+//    private String iPAddress;
 
     public String getResultId() {
         return resultId;
@@ -36,29 +37,29 @@ public class FareRuleRequest {
         this.resultId = resultId;
     }
 
-    public String getEndUserBrowserAgent() {
-        return endUserBrowserAgent;
-    }
+//    public String getEndUserBrowserAgent() {
+//        return endUserBrowserAgent;
+//    }
 
-    public void setEndUserBrowserAgent(String endUserBrowserAgent) {
-        this.endUserBrowserAgent = endUserBrowserAgent;
-    }
+//    public void setEndUserBrowserAgent(String endUserBrowserAgent) {
+//        this.endUserBrowserAgent = endUserBrowserAgent;
+//    }
 
-    public String getPointOfSale() {
-        return pointOfSale;
-    }
+//    public String getPointOfSale() {
+//        return pointOfSale;
+//    }
 
-    public void setPointOfSale(String pointOfSale) {
-        this.pointOfSale = pointOfSale;
-    }
+//    public void setPointOfSale(String pointOfSale) {
+//        this.pointOfSale = pointOfSale;
+//    }
 
-    public String getRequestOrigin() {
-        return requestOrigin;
-    }
+//    public String getRequestOrigin() {
+//        return requestOrigin;
+//    }
 
-    public void setRequestOrigin(String requestOrigin) {
-        this.requestOrigin = requestOrigin;
-    }
+//    public void setRequestOrigin(String requestOrigin) {
+//        this.requestOrigin = requestOrigin;
+//    }
 
     public String getTokenId() {
         return tokenId;
@@ -76,12 +77,12 @@ public class FareRuleRequest {
         this.trackingId = trackingId;
     }
 
-    public String getIPAddress() {
-        return iPAddress;
-    }
+//    public String getIPAddress() {
+//        return iPAddress;
+//    }
 
-    public void setIPAddress(String iPAddress) {
-        this.iPAddress = iPAddress;
-    }
+//    public void setIPAddress(String iPAddress) {
+//        this.iPAddress = iPAddress;
+//    }
 
 }

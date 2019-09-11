@@ -20,6 +20,7 @@ import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import FlightApi.BookFlight;
@@ -28,17 +29,18 @@ import FlightApi.Country;
 import FlightApi.Fare;
 import FlightApi.FareQuote;
 import FlightApi.FareQuoteRespone;
-import FlightApi.FareRule;
 import FlightApi.FareRuleRequest;
-import FlightApi.FareRuleResponse;
 import FlightApi.FlightApiService;
 import FlightApi.FlightAuthentication;
 import FlightApi.FlightConstants;
 import FlightApi.GetBookingResponse;
 import FlightApi.Itinerary;
+import FlightApi.Nationality;
 import FlightApi.Passenger;
 import FlightApi.Segment;
 
+import FlightApi.fare_rules.FareRule;
+import FlightApi.fare_rules.FareRuleResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -443,7 +445,6 @@ public class FlightsSummary extends AppCompatActivity {
         }
 
 
-
     }
 
 
@@ -562,17 +563,17 @@ public class FlightsSummary extends AppCompatActivity {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
 
-        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).connectTimeout(100, TimeUnit.SECONDS)
-                .readTimeout(100, TimeUnit.SECONDS).build();
+        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).connectTimeout(0, TimeUnit.SECONDS)
+                .readTimeout(0, TimeUnit.SECONDS).build();
 
         connectAndGetApiData(gson, client);
         FlightApiService flightApiService = retrofit.create(FlightApiService.class);
 
-        final FlightAuthentication[] flightAuthentication = {new FlightAuthentication()};
-        flightAuthentication[0].setUserName(FlightConstants.API_USER_NAME);
-        flightAuthentication[0].setPassword(password);
-        flightAuthentication[0].setBookingMode("API");
-        flightAuthentication[0].setIPAddress("192.168.4.238");
+//        final FlightAuthentication[] flightAuthentication = {new FlightAuthentication()};
+//        flightAuthentication[0].setUserName(FlightConstants.API_USER_NAME);
+//        flightAuthentication[0].setPassword(password);
+//        flightAuthentication[0].setBookingMode("API");
+//        flightAuthentication[0].setIPAddress("192.168.4.238");
 
         //--------------------------------------------------------------
 
@@ -583,19 +584,23 @@ public class FlightsSummary extends AppCompatActivity {
         fareRules.setResultId(resultId);
         fareRules.setTokenId(tokenId);
         fareRules.setTrackingId(trackingId);
-        fareRules.setPointOfSale("AE");
-        fareRules.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
-        fareRules.setIPAddress("192.168.4.238");
-        fareRules.setRequestOrigin("Egypt");
+//        fareRules.setPointOfSale("DOH");
+//        fareRules.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
+//        fareRules.setIPAddress("192.168.4.238");
+//        fareRules.setRequestOrigin("Doha International");
 
         Call<FareRuleResponse> fareRuleResponseCall = flightApiService.getFareRuleResponse("application/json", fareRules);
         fareRuleResponseCall.enqueue(new Callback<FareRuleResponse>() {
             @Override
             public void onResponse(Call<FareRuleResponse> call, Response<FareRuleResponse> response) {
 
+
+                okhttp3.Response raw = response.raw();
                 List<FareRule> fareRulesList = response.body().getFareRules().get(0);
 
 
+                String tokenId = response.body().getTokenId();
+                String trackingId = response.body().getTrackingId();
                 FareQuote fareQuote = new FareQuote();
 
                 fareQuote.setResultId(resultId);
@@ -606,123 +611,138 @@ public class FlightsSummary extends AppCompatActivity {
                 fareQuote.setIPAddress("192.168.4.238");
                 fareQuote.setRequestOrigin("Egypt");
 
-                Call<FareQuoteRespone> fareQuoteResponeCall = flightApiService.getFareQuote("application/json", fareQuote);
-                fareQuoteResponeCall.enqueue(new Callback<FareQuoteRespone>() {
-                    @Override
-                    public void onResponse(Call<FareQuoteRespone> call, Response<FareQuoteRespone> response) {
+
+                if (response.body().getIsSuccess()) {
 
 
-                        airlineCode = response.body().getResult().get(0).getSegments().get(0).get(0).getAirlineDetails().getAirlineCode();
-                        departureTime = response.body().getResult().get(0).getSegments()
-                                .get(0).get(0).getDepartureTime();
-                        destination = response.body().getResult().get(0).getDestination();
-                        segmentsList = response.body().getResult().get(0).getSegments().get(0);
-                        origin = response.body().getResult().get(0).getOrigin();
-                        Fare fare = response.body().getResult().get(0).getFare();
-                        lastTicketDate = (String) response.body().getResult().get(0).getLastTicketDate();
-                        validatingAirline = response.body().getResult().get(0).getValidatingAirline();
+                    Call<FareQuoteRespone> fareQuoteResponeCall = flightApiService.getFareQuote("application/json", fareQuote);
+                    fareQuoteResponeCall.enqueue(new Callback<FareQuoteRespone>() {
+                        @Override
+                        public void onResponse(Call<FareQuoteRespone> call, Response<FareQuoteRespone> response) {
 
 
-                        BookFlight book = new BookFlight();
+                            if (response.body().isIsSuccess()) {
 
-                        book.setTrackingId(trackingId);
-                        book.setResultId(resultId);
-                        book.setTokenId(tokenId);
-                        //   book.setIPAddress("192.168.4.238");
+                                String airlineCode = response.body().getResult().get(0).getSegments().get(0).get(0).getAirlineDetails().getAirlineCode();
+                                String departureTime = response.body().getResult().get(0).getSegments().get(0).get(0).getDepartureTime();
+                                String destination = response.body().getResult().get(0).getDestination();
+                                List<Segment> segments = response.body().getResult().get(0).getSegments().get(0);
+                                String arrivalTime = response.body().getResult().get(0).getSegments().get(0).get(0).getArrivalTime();
+                                String origin = response.body().getResult().get(0).getOrigin();
+                                Fare fare = response.body().getResult().get(0).getFare();
+                                Object lastTicketDate = response.body().getResult().get(0).getLastTicketDate();
+                                String validatingAirline = response.body().getResult().get(0).getValidatingAirline();
 
-                        Itinerary itinerary = new Itinerary();
-                        itinerary.setOrigin(origin);
-                        itinerary.setDestination(destination);
+                                String tokenId1 = response.body().getTokenId();
+                                String trackingId1 = response.body().getTrackingId();
 
+                                BookFlight book = new BookFlight();
 
-                        Passenger passenger = new Passenger();
+                                book.setTrackingId(trackingId1);
+                                book.setResultId(resultId);
+                                book.setTokenId(tokenId1);
 
-                        passenger.setFare(fare);
-                        passenger.setAddressLine1("cairo");
-                        passenger.setAddressLine2("cairo");
-                        City city = new City();
-                        city.setCityCode("CAI");
-                        city.setCityName("cairo");
-                        city.setCountryCode("Egypt");
-                        passenger.setCity(city);
-                        Country country = new Country();
-                        country.setCountryCode("EG");
-                        country.setCountryName("Egypt");
-                        passenger.setCountry(country);
-                        passenger.setEmail("abdallah@yahoo.com");
-                        passenger.setFirstName("abdallah");
-                        passenger.setGender(1);
-                        passenger.setIsLeadPax(true);
-                        passenger.setLastName("mohamed");
-                        passenger.setType(1);
-                        passenger.setTitle("MS");
+                                Itinerary itinerary = new Itinerary();
+                                itinerary.setOrigin(origin);
+                                itinerary.setDestination(destination);
 
 
-                        itinerary.setSegments(segmentsList);
+                                Passenger passenger = new Passenger();
 
-                        itinerary.setTravelDate("2019-09-09T15:41:03.964386+00:00");
+                                passenger.setFare(fare);
+                                passenger.setAddressLine1("cairo");
+                                passenger.setAddressLine2("cairo");
+                                City city = new City();
+                                city.setCityCode("CAI");
+                                city.setCityName("cairo");
+                                city.setCountryCode("Egypt");
+                                passenger.setCity(city);
+                                Country country = new Country();
+                                country.setCountryCode("EG");
+                                country.setCountryName("Egypt");
+                                passenger.setCountry(country);
+                                passenger.setEmail("abdallah@yahoo.com");
+                                passenger.setFirstName("abdallah");
+                                passenger.setGender(1);
+                                passenger.setIsLeadPax(true);
+                                passenger.setLastName("mohamed");
+                                passenger.setType(1);
+                                passenger.setTitle("MS");
+                                Nationality nationality = new Nationality();
 
-                        itinerary.setDestination(destination);
+                                nationality.setCountryCode(countryCodeDestnation1);
+                                nationality.setCountryName(countryNameDestination1);
+                                passenger.setNationality(nationality);
+
+                                passenger.setDateOfBirth("01/01/1995");
+                                passenger.setFFNumber(flightNumberSize1);
+                                passenger.setMobile1("01061213663");
+                                passenger.setMobile1CountryCode("+2");
+                                itinerary.setTravelDate(departureTime);
+
+                                itinerary.setTravelDate(arrivalTime);
 
 
-                        itinerary.setFareRules(fareRulesList);
+                                itinerary.setAirlineCode(airlineCode);
+                                itinerary.setLastTicketDate((String) lastTicketDate);
+                                itinerary.setValidatingAirlineCode(validatingAirline);
+                                itinerary.setSegments(segments);
 
-                        itinerary.setValidatingAirlineCode(validatingAirline);
-                        ArrayList<Passenger> passengerList = new ArrayList<>();
-                        passengerList.add(passenger);
-                        itinerary.setPassenger(passengerList);
-                        itinerary.setIsLcc(false);
-                        itinerary.setAirlineCode((String) airlineCode);
-                        book.setItinerary(itinerary);
+                                itinerary.setFareRules(fareRulesList);
+
+                                ArrayList<Passenger> passengerList = new ArrayList<>();
+                                passengerList.add(passenger);
+                                itinerary.setPassenger(passengerList);
+                                itinerary.setIsLcc(false);
+                                book.setItinerary(itinerary);
 
 
-                        Call<GetBookingResponse> flightBookCall = flightApiService.getFlightBook("application/json", book);
+                                Call<GetBookingResponse> flightBookCall = flightApiService.getFlightBook("application/json", book);
 
 
-                        flightBookCall.enqueue(new Callback<GetBookingResponse>() {
-                            @Override
-                            public void onResponse(Call<GetBookingResponse> call, Response<GetBookingResponse> response) {
+                                flightBookCall.enqueue(new Callback<GetBookingResponse>() {
+                                    @Override
+                                    public void onResponse(Call<GetBookingResponse> call, Response<GetBookingResponse> response) {
 
+
+                                        GetBookingResponse body = response.body();
+                                        System.out.print(body);
+//
+                                       if (response.body().getItinerary().getPNR()!=null){
+
+
+                                           Intent intent = new Intent(FlightsSummary.this,PaymentActivity.class);
+
+                                           intent.putExtra("mId",3);
+
+                                           startActivity(intent);
+                                       }
+
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<GetBookingResponse> call, Throwable t) {
+                                        t.getMessage();
+                                    }
+                                });
+
+                            }
+
+
+                        }
+
+
+                        @Override
+                        public void onFailure(Call<FareQuoteRespone> call, Throwable t) {
+
+                            t.getMessage();
+                        }
+                    });
+
+
+                }
 
 //
-                                response.raw().body();
-                                long status = response.body().getStatus();
-                                String tokenId1 = response.body().getTokenId();
-                                String pnr = response.body().getItinerary().getPNR();
-
-
-                            }
-
-                            @Override
-                            public void onFailure(Call<GetBookingResponse> call, Throwable t) {
-                                t.getMessage();
-                            }
-                        });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    }
-
-
-                    @Override
-                    public void onFailure(Call<FareQuoteRespone> call, Throwable t) {
-
-                        t.getMessage();
-                    }
-                });
-
-
 
 
             }
@@ -735,7 +755,6 @@ public class FlightsSummary extends AppCompatActivity {
         });
 
         //-------------------------------------------------------------------
-
 
 
 //

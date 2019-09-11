@@ -2,6 +2,7 @@ package FlightApi;
 
 
 
+import FlightApi.fare_rules.FareRuleResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Header;
@@ -23,9 +24,9 @@ public interface FlightApiService {
 
 
     @Headers("Content-Type: application/json")
-    @POST("Detail/FareRules")
+    @POST("Detail/FareRule")
     Call<FareRuleResponse> getFareRuleResponse(@Header("Content-Type") String content_type,
-                                                @Body FareRuleRequest body);
+                                               @Body FareRuleRequest body);
 
     // Nahas
     @Headers("Content-Type: application/json")

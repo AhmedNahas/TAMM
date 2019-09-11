@@ -18,7 +18,7 @@ public class Itinerary {
     private List<Passenger> passenger = null;
     @SerializedName("FareRules")
     @Expose
-    private List<FareRule> fareRules = null;
+    private List<FlightApi.fare_rules.FareRule> fareRules = null;
     @SerializedName("Destination")
     @Expose
     private String destination;
@@ -92,11 +92,11 @@ public class Itinerary {
         this.passenger = passenger;
     }
 
-    public List<FareRule> getFareRules() {
+    public List<FlightApi.fare_rules.FareRule> getFareRules() {
         return fareRules;
     }
 
-    public void setFareRules(List<FareRule> fareRules) {
+    public void setFareRules(List<FlightApi.fare_rules.FareRule> fareRules) {
         this.fareRules = fareRules;
     }
 
