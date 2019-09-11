@@ -26,6 +26,15 @@ public class AssistantActivity extends AppCompatActivity {
         iv_booked_assistant=findViewById(R.id.iv_booked_assistant);
         relative_flight_assist=findViewById(R.id.relative_flight_assist);
 
+
+        relative_flight_assist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(AssistantActivity.this,ChattingActivity.class);
+                startActivity(intent);
+            }
+        });
+
         toolbar_back1_assistant=findViewById(R.id.toolbar_back1_assistant);
         toolbar_back1_assistant.setOnClickListener(new View.OnClickListener() {
             @Override

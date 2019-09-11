@@ -53,12 +53,12 @@ public class HotelDetails extends AppCompatActivity {
     TextView hotelDetilsRat;
     @BindView(R.id.relative_img_hotel_details_tamm)
     RelativeLayout relativeImgHotelDetailsTamm;
-    @BindView(R.id.assistant_label_voice_details_hotel)
-    TextView assistantLabelVoiceDetailsHotel;
-    @BindView(R.id.assistant_label_call_details_hotel)
-    TextView assistantLabelCallDetailsHotel;
-    @BindView(R.id.assistant_label_message_details_hotel)
-    TextView assistantLabelMessageDetailsHotel;
+//    @BindView(R.id.assistant_label_voice_details_hotel)
+//    TextView assistantLabelVoiceDetailsHotel;
+//    @BindView(R.id.assistant_label_call_details_hotel)
+//    TextView assistantLabelCallDetailsHotel;
+//    @BindView(R.id.assistant_label_message_details_hotel)
+//    TextView assistantLabelMessageDetailsHotel;
     private AuthenticationData authenticationData;
     private int dotscount;
     private ImageView[] dots;
@@ -139,38 +139,38 @@ public class HotelDetails extends AppCompatActivity {
         }catch (Exception e){}
 
 
-
-        assistantLabelVoiceDetailsHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(HotelDetails.this, AssistantActivity.class);
-                startActivity(intent);
-                Toast.makeText(HotelDetails.this, "Voice", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        assistantLabelCallDetailsHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent1 = new Intent(HotelDetails.this, AssistantActivity.class);
-                startActivity(intent1);
-                Toast.makeText(HotelDetails.this, "Call", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        assistantLabelMessageDetailsHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent2 = new Intent(HotelDetails.this, AssistantActivity.class);
-                startActivity(intent2);
-                Toast.makeText(HotelDetails.this, "Message", Toast.LENGTH_SHORT).show();
-
-            }
-        });
+//
+//        assistantLabelVoiceDetailsHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent = new Intent(HotelDetails.this, AssistantActivity.class);
+//                startActivity(intent);
+//                Toast.makeText(HotelDetails.this, "Voice", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        assistantLabelCallDetailsHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent1 = new Intent(HotelDetails.this, AssistantActivity.class);
+//                startActivity(intent1);
+//                Toast.makeText(HotelDetails.this, "Call", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//
+//        assistantLabelMessageDetailsHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent2 = new Intent(HotelDetails.this, AssistantActivity.class);
+//                startActivity(intent2);
+//                Toast.makeText(HotelDetails.this, "Message", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
 
 
 
@@ -373,19 +373,22 @@ public class HotelDetails extends AppCompatActivity {
     @OnClick(R.id.relative_img_hotel_details_tamm)
     public void onViewClicked() {
 
-        if (ClickDetailsHotel == false) {
-            assistantLabelCallDetailsHotel.setVisibility(View.VISIBLE);
-            assistantLabelMessageDetailsHotel.setVisibility(View.VISIBLE);
-            assistantLabelVoiceDetailsHotel.setVisibility(View.VISIBLE);
-            ClickDetailsHotel = true;
 
-        } else {
-            assistantLabelCallDetailsHotel.setVisibility(View.INVISIBLE);
-            assistantLabelMessageDetailsHotel.setVisibility(View.INVISIBLE);
-            assistantLabelVoiceDetailsHotel.setVisibility(View.INVISIBLE);
-            ClickDetailsHotel = false;
-
-        }
+        Intent intent =new Intent(HotelDetails.this,AssistantActivity.class);
+        startActivity(intent);
+//        if (ClickDetailsHotel == false) {
+//            assistantLabelCallDetailsHotel.setVisibility(View.VISIBLE);
+//            assistantLabelMessageDetailsHotel.setVisibility(View.VISIBLE);
+//            assistantLabelVoiceDetailsHotel.setVisibility(View.VISIBLE);
+//            ClickDetailsHotel = true;
+//
+//        } else {
+//            assistantLabelCallDetailsHotel.setVisibility(View.INVISIBLE);
+//            assistantLabelMessageDetailsHotel.setVisibility(View.INVISIBLE);
+//            assistantLabelVoiceDetailsHotel.setVisibility(View.INVISIBLE);
+//            ClickDetailsHotel = false;
+//
+//        }
 
     }
 

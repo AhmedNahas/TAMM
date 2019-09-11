@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,12 +23,12 @@ import butterknife.OnClick;
 public class ReserveRoom extends AppCompatActivity {
     @BindView(R.id.relative_img_hotel_tamm)
     RelativeLayout relativeImgHotelTamm;
-    @BindView(R.id.assistant_label_voice_hotel)
-    TextView assistantLabelVoiceHotel;
-    @BindView(R.id.assistant_label_call_hotel)
-    TextView assistantLabelCall;
-    @BindView(R.id.assistant_label_message_hotel)
-    TextView assistantLabelMessage;
+//    @BindView(R.id.assistant_label_voice_hotel)
+//    TextView assistantLabelVoiceHotel;
+//    @BindView(R.id.assistant_label_call_hotel)
+//    TextView assistantLabelCall;
+//    @BindView(R.id.assistant_label_message_hotel)
+//    TextView assistantLabelMessage;
     private Toolbar toolbar;
     private ImageView logo, imgbutton, bigline, smallline, imghotel, imgman,iv_booked_reserve;
     private TextView tammtxt, hotelstxt, besttxt, specialtxt, anywhere, anytime;
@@ -129,51 +128,52 @@ try {
 
     @OnClick(R.id.relative_img_hotel_tamm)
     public void onViewClicked() {
+        Intent intent =new Intent(ReserveRoom.this,AssistantActivity.class);
+        startActivity(intent);
 
-
-        if (ClickHotel == false) {
-            assistantLabelCall.setVisibility(View.VISIBLE);
-            assistantLabelMessage.setVisibility(View.VISIBLE);
-            assistantLabelVoiceHotel.setVisibility(View.VISIBLE);
-            ClickHotel = true;
-
-        } else {
-            assistantLabelCall.setVisibility(View.INVISIBLE);
-            assistantLabelMessage.setVisibility(View.INVISIBLE);
-            assistantLabelVoiceHotel.setVisibility(View.INVISIBLE);
-            ClickHotel = false;
-
-        }
+//        if (ClickHotel == false) {
+//            assistantLabelCall.setVisibility(View.VISIBLE);
+//            assistantLabelMessage.setVisibility(View.VISIBLE);
+//            assistantLabelVoiceHotel.setVisibility(View.VISIBLE);
+//            ClickHotel = true;
+//
+//        } else {
+//            assistantLabelCall.setVisibility(View.INVISIBLE);
+//            assistantLabelMessage.setVisibility(View.INVISIBLE);
+//            assistantLabelVoiceHotel.setVisibility(View.INVISIBLE);
+//            ClickHotel = false;
+//
+//        }
 
 
     }
-
-    @OnClick({R.id.assistant_label_voice_hotel, R.id.assistant_label_call_hotel, R.id.assistant_label_message_hotel})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.assistant_label_voice_hotel:
-
-                Intent intent = new Intent(ReserveRoom.this, AssistantActivity.class);
-                startActivity(intent);
-                Toast.makeText(this, "Voice", Toast.LENGTH_SHORT).show();
-
-                break;
-            case R.id.assistant_label_call_hotel:
-
-                Intent intent1 = new Intent(ReserveRoom.this, AssistantActivity.class);
-                startActivity(intent1);
-                Toast.makeText(this, "Call", Toast.LENGTH_SHORT).show();
-
-                break;
-            case R.id.assistant_label_message_hotel:
-
-                Intent intent2 = new Intent(ReserveRoom.this, AssistantActivity.class);
-                startActivity(intent2);
-                Toast.makeText(this, "Message", Toast.LENGTH_SHORT).show();
-
-                break;
-        }
-    }
+//
+//    @OnClick({R.id.assistant_label_voice_hotel, R.id.assistant_label_call_hotel, R.id.assistant_label_message_hotel})
+//    public void onViewClicked(View view) {
+//        switch (view.getId()) {
+//            case R.id.assistant_label_voice_hotel:
+//
+//                Intent intent = new Intent(ReserveRoom.this, AssistantActivity.class);
+//                startActivity(intent);
+//                Toast.makeText(this, "Voice", Toast.LENGTH_SHORT).show();
+//
+//                break;
+//            case R.id.assistant_label_call_hotel:
+//
+//                Intent intent1 = new Intent(ReserveRoom.this, AssistantActivity.class);
+//                startActivity(intent1);
+//                Toast.makeText(this, "Call", Toast.LENGTH_SHORT).show();
+//
+//                break;
+//            case R.id.assistant_label_message_hotel:
+//
+//                Intent intent2 = new Intent(ReserveRoom.this, AssistantActivity.class);
+//                startActivity(intent2);
+//                Toast.makeText(this, "Message", Toast.LENGTH_SHORT).show();
+//
+//                break;
+//        }
+//    }
 
     @Override
     public void onBackPressed() {

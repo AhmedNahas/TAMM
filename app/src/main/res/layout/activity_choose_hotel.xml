@@ -107,77 +107,71 @@
         android:id="@+id/relative_img_choose_hotel_tamm"
         android:layout_width="@dimen/_300sdp"
         android:layout_height="@dimen/_90sdp"
-        android:layout_above="@+id/tv_tab_me_choose_hotels"
+
         android:background="@drawable/man1"
         android:layout_centerInParent="true"
+        android:layout_below="@+id/hotels_rv"
         >
 
-        <TextView
-            android:id="@+id/assistant_label_voice_choose_hotel"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_assistant_voice"
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:text="SEND VOICE NOTE TO AGENT"
-            android:textColor="@color/app_color"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            android:visibility="gone"
-            tools:visibility="visible"/>
+        <!--<TextView-->
+            <!--android:id="@+id/assistant_label_voice_choose_hotel"-->
+            <!--android:layout_width="@dimen/_130sdp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:drawablePadding="8dp"-->
+            <!--android:drawableStart="@drawable/ic_assistant_voice"-->
+            <!--android:fontFamily="sans-serif"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:text="SEND VOICE NOTE TO AGENT"-->
+            <!--android:textColor="@color/app_color"-->
+            <!--android:textSize="13sp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:visibility="gone"-->
+            <!--tools:visibility="visible"/>-->
 
 
-        <TextView
-            android:id="@+id/assistant_label_call_choose_hotel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_assistant_call"
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:text="CALL AGENT"
-            android:textStyle="bold"
-            android:textColor="@color/app_color"
-            android:textSize="13sp"
-            android:visibility="gone"
-            tools:visibility="visible"
-            android:layout_below="@+id/assistant_label_voice_choose_hotel"
-            />
+        <!--<TextView-->
+            <!--android:id="@+id/assistant_label_call_choose_hotel"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:drawablePadding="8dp"-->
+            <!--android:drawableStart="@drawable/ic_assistant_call"-->
+            <!--android:fontFamily="sans-serif"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:text="CALL AGENT"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textColor="@color/app_color"-->
+            <!--android:textSize="13sp"-->
+            <!--android:visibility="gone"-->
+            <!--tools:visibility="visible"-->
+            <!--android:layout_below="@+id/assistant_label_voice_choose_hotel"-->
+            <!--/>-->
 
 
-        <TextView
-            android:id="@+id/assistant_label_message_choose_hotel"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_weight="38"
-            android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_assistant_message"
-            android:fontFamily="sans-serif"
-            android:text="SEND MESSAGE TO AGENT"
-            android:textColor="@color/app_color"
-            android:textSize="13sp"
-            android:visibility="gone"
-            tools:visibility="visible"
-            android:layout_alignParentRight="true"/>
-
-
-
-
-
-
-
+        <!--<TextView-->
+            <!--android:id="@+id/assistant_label_message_choose_hotel"-->
+            <!--android:layout_width="@dimen/_130sdp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_weight="38"-->
+            <!--android:drawablePadding="8dp"-->
+            <!--android:drawableStart="@drawable/ic_assistant_message"-->
+            <!--android:fontFamily="sans-serif"-->
+            <!--android:text="SEND MESSAGE TO AGENT"-->
+            <!--android:textColor="@color/app_color"-->
+            <!--android:textSize="13sp"-->
+            <!--android:visibility="gone"-->
+            <!--tools:visibility="visible"-->
+            <!--android:layout_alignParentRight="true"/>-->
 
 
 
     </RelativeLayout>
 
     <TextView
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/relative_img_choose_hotel_tamm"
         android:id="@+id/tv_tab_me_choose_hotels"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -23,7 +23,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".ActivityToFragment.Activity_Register"></activity>
+        <activity android:name=".activities.ChattingActivity"></activity>
+        <activity android:name=".ActivityToFragment.Activity_Register" />
         <activity android:name=".activities.OffersFlightsDetailsActivity" />
         <activity android:name=".activities.VoiceMessageActivity" />
         <activity android:name=".activities.OffersHotelsDetailsActivity" />
@@ -53,14 +54,10 @@
             android:screenOrientation="portrait" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
         <activity
             android:name=".activities.Proceedbeybey"
-            android:screenOrientation="portrait">
-
-
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.PassengerDeparture"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.Passenger_inform"
             android:screenOrientation="portrait" />
@@ -84,14 +81,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".activities.FlightTamm"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.PaymentActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.HotelBooking"
             android:screenOrientation="portrait" />
@@ -122,10 +118,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.FlightSearch"
-            android:screenOrientation="portrait">
-
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.ConfirmBookingRoom"
             android:screenOrientation="portrait" />
