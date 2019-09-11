@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,12 +52,12 @@ public class  RenewAccount extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ImageView img1, img2, addPic, right, left,imageView7;
     TextView user_name_profile, textView_account , valid_till_months;
-    @BindView(R.id.assistant_label_voice_renew_hotel)
-    TextView assistantLabelVoiceRenewHotel;
-    @BindView(R.id.assistant_label_call_renew_hotel)
-    TextView assistantLabelCallRenewHotel;
-    @BindView(R.id.assistant_label_message_renew_hotel)
-    TextView assistantLabelMessageRenewHotel;
+//    @BindView(R.id.assistant_label_voice_renew_hotel)
+//    TextView assistantLabelVoiceRenewHotel;
+//    @BindView(R.id.assistant_label_call_renew_hotel)
+//    TextView assistantLabelCallRenewHotel;
+//    @BindView(R.id.assistant_label_message_renew_hotel)
+//    TextView assistantLabelMessageRenewHotel;
     @BindView(R.id.relative_img_renew_hotel_tamm)
     RelativeLayout relativeImgRenewHotelTamm;
     RelativeLayout relative_expire;
@@ -157,34 +156,34 @@ public class  RenewAccount extends AppCompatActivity
 
 
 
-        assistantLabelVoiceRenewHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RenewAccount.this, VoiceMessageActivity.class);
-                startActivity(intent);
-                Toast.makeText(RenewAccount.this, "Voice", Toast.LENGTH_SHORT).show();
-            }
-        });
-        assistantLabelCallRenewHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RenewAccount.this, AssistantActivity.class);
-                startActivity(intent);
-
-                Toast.makeText(RenewAccount.this, "Call", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        assistantLabelMessageRenewHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(RenewAccount.this, ContactUs.class);
-                startActivity(intent);
-
-                Toast.makeText(RenewAccount.this, "Message", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        assistantLabelVoiceRenewHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(RenewAccount.this, AssistantActivity.class);
+//                startActivity(intent);
+//                Toast.makeText(RenewAccount.this, "Voice", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        assistantLabelCallRenewHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(RenewAccount.this, AssistantActivity.class);
+//                startActivity(intent);
+//
+//                Toast.makeText(RenewAccount.this, "Call", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        assistantLabelMessageRenewHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent = new Intent(RenewAccount.this, AssistantActivity.class);
+//                startActivity(intent);
+//
+//                Toast.makeText(RenewAccount.this, "Message", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
@@ -232,14 +231,11 @@ public class  RenewAccount extends AppCompatActivity
             }
         });
 
-        try {
+
             user = SharedPreferencesManger.LoadStringData(this, "user_name");
             userNameFromSignIn = SharedPreferencesManger.LoadStringData(this, "userNameFromSignIn");
 
-        } catch (Exception e) {
 
-
-        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -339,6 +335,8 @@ public class  RenewAccount extends AppCompatActivity
                 menu.findItem(R.id.nav_conversation).setVisible(false);
                 menu.findItem(R.id.nav_favorites).setVisible(false);
                 menu.findItem(R.id.nav_logout).setVisible(false);
+                menu.findItem(R.id.nav_contuctus).setVisible(false);
+
 
 
                 renew_sign_in.setOnClickListener(new View.OnClickListener() {
@@ -506,19 +504,23 @@ public class  RenewAccount extends AppCompatActivity
     @OnClick(R.id.relative_img_renew_hotel_tamm)
     public void onViewClicked() {
 
-        if (ClickRenewHotel == false) {
-            assistantLabelCallRenewHotel.setVisibility(View.VISIBLE);
-            assistantLabelMessageRenewHotel.setVisibility(View.VISIBLE);
-            assistantLabelVoiceRenewHotel.setVisibility(View.VISIBLE);
-            ClickRenewHotel = true;
 
-        } else {
-            assistantLabelCallRenewHotel.setVisibility(View.INVISIBLE);
-            assistantLabelMessageRenewHotel.setVisibility(View.INVISIBLE);
-            assistantLabelVoiceRenewHotel.setVisibility(View.INVISIBLE);
-            ClickRenewHotel = false;
+        Intent intent =new Intent(RenewAccount.this,AssistantActivity.class);
+        startActivity(intent);
 
-        }
+//        if (ClickRenewHotel == false) {
+////            assistantLabelCallRenewHotel.setVisibility(View.VISIBLE);
+////            assistantLabelMessageRenewHotel.setVisibility(View.VISIBLE);
+////            assistantLabelVoiceRenewHotel.setVisibility(View.VISIBLE);
+////            ClickRenewHotel = true;
+////
+////        } else {
+////            assistantLabelCallRenewHotel.setVisibility(View.INVISIBLE);
+////            assistantLabelMessageRenewHotel.setVisibility(View.INVISIBLE);
+////            assistantLabelVoiceRenewHotel.setVisibility(View.INVISIBLE);
+////            ClickRenewHotel = false;
+////
+////        }
 
 
     }

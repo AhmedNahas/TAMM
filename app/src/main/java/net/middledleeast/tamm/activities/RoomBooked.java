@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -62,12 +61,12 @@ public class RoomBooked extends AppCompatActivity {
     AppDatabase appDatabase;
 
     ArrayOfGuest arrayOfGuest;
-    @BindView(R.id.assistant_label_voice_booked_hotel)
-    TextView assistantLabelVoiceBookedHotel;
-    @BindView(R.id.assistant_label_call_booked_hotel)
-    TextView assistantLabelCallBookedHotel;
-    @BindView(R.id.assistant_label_message_booked_hotel)
-    TextView assistantLabelMessageBookedHotel;
+//    @BindView(R.id.assistant_label_voice_booked_hotel)
+//    TextView assistantLabelVoiceBookedHotel;
+//    @BindView(R.id.assistant_label_call_booked_hotel)
+//    TextView assistantLabelCallBookedHotel;
+//    @BindView(R.id.assistant_label_message_booked_hotel)
+//    TextView assistantLabelMessageBookedHotel;
     @BindView(R.id.relative_img_hotel_booked_tamm)
     RelativeLayout relativeImgHotelBookedTamm;
     private Hotel_Room hotel_room;
@@ -135,36 +134,36 @@ public class RoomBooked extends AppCompatActivity {
             }
         });
 
-
-        assistantLabelCallBookedHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(RoomBooked.this, AssistantActivity.class);
-                startActivity(intent);
-                Toast.makeText(RoomBooked.this, "Call", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        assistantLabelVoiceBookedHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent1 = new Intent(RoomBooked.this, VoiceMessageActivity.class);
-                startActivity(intent1);
-                Toast.makeText(RoomBooked.this, "Voice", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        assistantLabelMessageBookedHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent2 = new Intent(RoomBooked.this, ContactUs.class);
-                startActivity(intent2);
-                Toast.makeText(RoomBooked.this, "Message", Toast.LENGTH_SHORT).show();
-            }
-        });
+//
+//        assistantLabelCallBookedHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent = new Intent(RoomBooked.this, AssistantActivity.class);
+//                startActivity(intent);
+//                Toast.makeText(RoomBooked.this, "Call", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        assistantLabelVoiceBookedHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent1 = new Intent(RoomBooked.this, VoiceMessageActivity.class);
+//                startActivity(intent1);
+//                Toast.makeText(RoomBooked.this, "Voice", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        assistantLabelMessageBookedHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent2 = new Intent(RoomBooked.this, ContactUs.class);
+//                startActivity(intent2);
+//                Toast.makeText(RoomBooked.this, "Message", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         service = new BasicHttpBinding_IHotelService1();
         service.enableLogging = true;
@@ -1093,19 +1092,19 @@ public class RoomBooked extends AppCompatActivity {
     @OnClick(R.id.relative_img_hotel_booked_tamm)
     public void onViewClicked() {
 
-        if (ClickBookedHotel == false) {
-            assistantLabelCallBookedHotel.setVisibility(View.VISIBLE);
-            assistantLabelMessageBookedHotel.setVisibility(View.VISIBLE);
-            assistantLabelVoiceBookedHotel.setVisibility(View.VISIBLE);
-            ClickBookedHotel = true;
-
-        } else {
-            assistantLabelCallBookedHotel.setVisibility(View.INVISIBLE);
-            assistantLabelMessageBookedHotel.setVisibility(View.INVISIBLE);
-            assistantLabelVoiceBookedHotel.setVisibility(View.INVISIBLE);
-            ClickBookedHotel = false;
-
-        }
+//        if (ClickBookedHotel == false) {
+//            assistantLabelCallBookedHotel.setVisibility(View.VISIBLE);
+//            assistantLabelMessageBookedHotel.setVisibility(View.VISIBLE);
+//            assistantLabelVoiceBookedHotel.setVisibility(View.VISIBLE);
+//            ClickBookedHotel = true;
+//
+//        } else {
+//            assistantLabelCallBookedHotel.setVisibility(View.INVISIBLE);
+//            assistantLabelMessageBookedHotel.setVisibility(View.INVISIBLE);
+//            assistantLabelVoiceBookedHotel.setVisibility(View.INVISIBLE);
+//            ClickBookedHotel = false;
+//
+//        }
 
     }
     private void connectdatabase() {

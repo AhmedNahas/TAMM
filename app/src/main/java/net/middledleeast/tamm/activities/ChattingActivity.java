@@ -25,42 +25,57 @@ import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 import java.util.HashMap;
 import java.util.Map;
 
+public class ChattingActivity extends AppCompatActivity {
 
-public class ContactUs extends AppCompatActivity {
-
-    RelativeLayout toolbar_back_contact;
-    TextView et_subject,message_contact;
+    RelativeLayout toolbar_back1_assistant;
+    TextView et_subject,message_contact,tv_agent_assist;
     Button btn_send_contact;
     RequestQueue requestQueue;
     private String user;
-    private String subject;
-    private String message;
 //    private String contact_url_message="http://egyptgoogle.com/backend/sendtouser/insertsendtouser.php";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact_us);
+        setContentView(R.layout.activity_chatting);
 
-
-        btn_send_contact=findViewById(R.id.btn_send_contact);
         et_subject=findViewById(R.id.et_subject);
         message_contact=findViewById(R.id.message_contact);
-        toolbar_back_contact=findViewById(R.id.toolbar_back_contact);
-        user = SharedPreferencesManger.LoadStringData(ContactUs.this, "user");
+        tv_agent_assist=findViewById(R.id.tv_agent_assist);
+
+        user = SharedPreferencesManger.LoadStringData(ChattingActivity.this, "user");
+        user = SharedPreferencesManger.LoadStringData(ChattingActivity.this, "userNameFromSignIn");
+
+        toolbar_back1_assistant=findViewById(R.id.toolbar_back1_assistant);
+
+        btn_send_contact=findViewById(R.id.btn_send_contact);
+        requestQueue = Volley.newRequestQueue(this);
+
+        Integer idAssistant = SharedPreferencesManger.LoadIntegerData(ChattingActivity.this, "idAssistant");
+
+        if (idAssistant==1){
+
+            tv_agent_assist.setText("Flight agent :");
+
+        }else if (idAssistant==2){
+
+            tv_agent_assist.setText("Luxury agent :");
+
+        }else if (idAssistant==3){
+
+            tv_agent_assist.setText("Hotel agent :");
+
+        }
 
 
-         requestQueue = Volley.newRequestQueue(this);
-        toolbar_back_contact.setOnClickListener(new View.OnClickListener() {
+        toolbar_back1_assistant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent =new Intent(ContactUs.this,RenewAccount.class);
+                Intent intent =new Intent(ChattingActivity.this,AssistantActivity.class);
                 startActivity(intent);
 
             }
-
         });
 
 
@@ -68,11 +83,10 @@ public class ContactUs extends AppCompatActivity {
         btn_send_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                subject = et_subject.getText().toString();
-                message = message_contact.getText().toString();
+
 
                 setContent();
-                Toast.makeText(ContactUs.this, "Message Sent", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ChattingActivity.this, "Message Sent", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -83,6 +97,11 @@ public class ContactUs extends AppCompatActivity {
 
 
     }
+
+
+
+
+
 
     private void setContent() {
 
@@ -105,8 +124,8 @@ public class ContactUs extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("subject",subject);
-                parameters.put("message",message );
+                parameters.put("subject",et_subject .getText().toString());
+                parameters.put("message", message_contact.getText().toString());
                 parameters.put("username", user);
 
                 return parameters;
@@ -117,4 +136,5 @@ public class ContactUs extends AppCompatActivity {
 
 
     }
-}
+    }
+
