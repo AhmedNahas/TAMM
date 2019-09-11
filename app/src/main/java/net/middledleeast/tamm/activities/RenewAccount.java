@@ -231,14 +231,11 @@ public class  RenewAccount extends AppCompatActivity
             }
         });
 
-        try {
+
             user = SharedPreferencesManger.LoadStringData(this, "user_name");
             userNameFromSignIn = SharedPreferencesManger.LoadStringData(this, "userNameFromSignIn");
 
-        } catch (Exception e) {
 
-
-        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -338,6 +335,8 @@ public class  RenewAccount extends AppCompatActivity
                 menu.findItem(R.id.nav_conversation).setVisible(false);
                 menu.findItem(R.id.nav_favorites).setVisible(false);
                 menu.findItem(R.id.nav_logout).setVisible(false);
+                menu.findItem(R.id.nav_contuctus).setVisible(false);
+
 
 
                 renew_sign_in.setOnClickListener(new View.OnClickListener() {

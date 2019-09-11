@@ -27,8 +27,8 @@ import java.util.Map;
 
 public class ChattingActivity extends AppCompatActivity {
 
-    RelativeLayout toolbar_back_contact;
-    TextView et_subject,message_contact;
+    RelativeLayout toolbar_back1_assistant;
+    TextView et_subject,message_contact,tv_agent_assist;
     Button btn_send_contact;
     RequestQueue requestQueue;
     private String user;
@@ -41,22 +41,45 @@ public class ChattingActivity extends AppCompatActivity {
 
         et_subject=findViewById(R.id.et_subject);
         message_contact=findViewById(R.id.message_contact);
-        toolbar_back_contact=findViewById(R.id.toolbar_back_contact);
-        user = SharedPreferencesManger.LoadStringData(ChattingActivity.this, "user");
+        tv_agent_assist=findViewById(R.id.tv_agent_assist);
 
+        user = SharedPreferencesManger.LoadStringData(ChattingActivity.this, "user");
+        user = SharedPreferencesManger.LoadStringData(ChattingActivity.this, "userNameFromSignIn");
+
+        toolbar_back1_assistant=findViewById(R.id.toolbar_back1_assistant);
+
+        btn_send_contact=findViewById(R.id.btn_send_contact);
         requestQueue = Volley.newRequestQueue(this);
-        toolbar_back_contact.setOnClickListener(new View.OnClickListener() {
+
+        Integer idAssistant = SharedPreferencesManger.LoadIntegerData(ChattingActivity.this, "idAssistant");
+
+        if (idAssistant==1){
+
+            tv_agent_assist.setText("Flight agent :");
+
+        }else if (idAssistant==2){
+
+            tv_agent_assist.setText("Luxury agent :");
+
+        }else if (idAssistant==3){
+
+            tv_agent_assist.setText("Hotel agent :");
+
+        }
+
+
+        toolbar_back1_assistant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent =new Intent(ChattingActivity.this,RenewAccount.class);
+                Intent intent =new Intent(ChattingActivity.this,AssistantActivity.class);
                 startActivity(intent);
 
             }
         });
 
 
-        btn_send_contact=findViewById(R.id.btn_send_contact);
+
         btn_send_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +97,11 @@ public class ChattingActivity extends AppCompatActivity {
 
 
     }
+
+
+
+
+
 
     private void setContent() {
 

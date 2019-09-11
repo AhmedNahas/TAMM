@@ -78,16 +78,31 @@
         android:layout_below="@+id/line1_assistant"
         >
         <TextView
-            android:id="@+id/tv_agent_assist"
+            android:id="@+id/tv_contact_assist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CONTACT Flight Agent:"
+            android:text="CONTACT "
             android:textSize="@dimen/_15sdp"
             android:textColor="@color/white"
             android:layout_marginStart="@dimen/_15sdp"
             android:layout_marginTop="@dimen/_10sdp"
+            android:textStyle="bold"
 
             />
+        <TextView
+            android:id="@+id/tv_agent_assist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flight Agent :"
+            android:textSize="@dimen/_15sdp"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/tv_contact_assist"
+
+            />
+
+
+
 
         <ImageView
             android:id="@+id/flight_agent_call"

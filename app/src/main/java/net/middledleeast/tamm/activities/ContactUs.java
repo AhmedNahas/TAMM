@@ -33,6 +33,8 @@ public class ContactUs extends AppCompatActivity {
     Button btn_send_contact;
     RequestQueue requestQueue;
     private String user;
+    private String subject;
+    private String message;
 //    private String contact_url_message="http://egyptgoogle.com/backend/sendtouser/insertsendtouser.php";
 
 
@@ -42,11 +44,12 @@ public class ContactUs extends AppCompatActivity {
         setContentView(R.layout.activity_contact_us);
 
 
-
+        btn_send_contact=findViewById(R.id.btn_send_contact);
         et_subject=findViewById(R.id.et_subject);
         message_contact=findViewById(R.id.message_contact);
         toolbar_back_contact=findViewById(R.id.toolbar_back_contact);
         user = SharedPreferencesManger.LoadStringData(ContactUs.this, "user");
+
 
          requestQueue = Volley.newRequestQueue(this);
         toolbar_back_contact.setOnClickListener(new View.OnClickListener() {
@@ -57,14 +60,16 @@ public class ContactUs extends AppCompatActivity {
                 startActivity(intent);
 
             }
+
         });
 
 
-        btn_send_contact=findViewById(R.id.btn_send_contact);
+
         btn_send_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                subject = et_subject.getText().toString();
+                message = message_contact.getText().toString();
 
                 setContent();
                 Toast.makeText(ContactUs.this, "Message Sent", Toast.LENGTH_SHORT).show();
@@ -100,8 +105,8 @@ public class ContactUs extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("subject",et_subject .getText().toString());
-                parameters.put("message", message_contact.getText().toString());
+                parameters.put("subject",subject);
+                parameters.put("message",message );
                 parameters.put("username", user);
 
                 return parameters;

@@ -17,7 +17,6 @@ import com.google.gson.GsonBuilder;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -28,7 +27,6 @@ import FlightApi.Country;
 import FlightApi.Fare;
 import FlightApi.FareQuote;
 import FlightApi.FareQuoteRespone;
-import FlightApi.FareRule;
 import FlightApi.FareRuleRequest;
 import FlightApi.FareRuleResponse;
 import FlightApi.FlightApiService;
@@ -38,7 +36,6 @@ import FlightApi.GetBookingResponse;
 import FlightApi.Itinerary;
 import FlightApi.Passenger;
 import FlightApi.Segment;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -593,7 +590,7 @@ public class FlightsSummary extends AppCompatActivity {
             @Override
             public void onResponse(Call<FareRuleResponse> call, Response<FareRuleResponse> response) {
 
-                List<FareRule> fareRulesList = response.body().getFareRules().get(0);
+           //     List<FareRule> fareRulesList = response.body().getFareRules().get(0);
 
 
                 FareQuote fareQuote = new FareQuote();
@@ -665,7 +662,7 @@ public class FlightsSummary extends AppCompatActivity {
                         itinerary.setDestination(destination);
 
 
-                        itinerary.setFareRules(fareRulesList);
+                     //   itinerary.setFareRules(fareRulesList);
 
                         itinerary.setValidatingAirlineCode(validatingAirline);
                         ArrayList<Passenger> passengerList = new ArrayList<>();
