@@ -106,7 +106,8 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:hint="Country"
             android:paddingStart="@dimen/_5sdp"
-            />
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
 
         <AutoCompleteTextView
             android:id="@+id/act_city_favorite"
@@ -118,8 +119,8 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:hint="City"
             android:paddingStart="@dimen/_5sdp"
-
-            />
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"/>
 
         <SearchView
             android:id="@+id/sv_search_favorite"

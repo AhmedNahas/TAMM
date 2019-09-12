@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/manlap"
+    android:background="@drawable/home_screen_background"
     android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/relative_free_congrats"
@@ -20,6 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:src="@drawable/ok1"
+            android:scaleType="fitCenter"
             android:layout_centerHorizontal="true"
             />
 
@@ -63,7 +64,7 @@
             android:id="@+id/iv_theman2"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_150sdp"
-            android:src="@drawable/manok"
+            android:src="@drawable/man_pic_in_congratulations"
             android:layout_below="@+id/tv_community"
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/_15sdp"

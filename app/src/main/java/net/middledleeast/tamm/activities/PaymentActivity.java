@@ -455,7 +455,7 @@ public class PaymentActivity extends AppCompatActivity {
                     sendamount(mSgbody);
                     sendDataToServer();
 
-//                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
+                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
                 }else {
 
 //                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");

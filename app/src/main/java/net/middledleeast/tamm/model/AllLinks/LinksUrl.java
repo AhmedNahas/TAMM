@@ -29,7 +29,7 @@ public class LinksUrl {
 
     public static String URL_REGISTER = "http://egyptgoogle.com/backend/android_login_api/register.php";
 
-    public static String URL_LOGIN = "http://egyptgoogle.com/backend/android_login_api/login.php ";
+    public static String URL_LOGIN = "http://egyptgoogle.com/backend/android_login_api/login.php";
 
 
     // FRAGMENT.....................

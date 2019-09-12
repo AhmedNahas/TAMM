@@ -463,7 +463,7 @@ public class  RenewAccount extends AppCompatActivity
         } else if (id == R.id.nav_logout) {
 
 
-            SharedPreferencesManger.remove(this,"user_name");
+            SharedPreferencesManger.remove(this,"userNameFromSignIn");
 
             startActivity(new Intent(RenewAccount.this, WelcomeActivity.class));
 
