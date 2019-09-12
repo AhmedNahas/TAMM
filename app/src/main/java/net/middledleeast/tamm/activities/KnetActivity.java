@@ -11,7 +11,9 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.fragments.MemberCongrats;
 
+import FlightApi.FlightGetBooking;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -21,6 +23,7 @@ public class KnetActivity extends AppCompatActivity  implements View.OnClickList
     WebView webviewKnet;
     @BindView(R.id.loadWebPage)
     Button loadWebPage;
+    private int id;
 
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -37,6 +40,7 @@ public class KnetActivity extends AppCompatActivity  implements View.OnClickList
         webviewKnet.getSettings().setJavaScriptEnabled(true);
         webviewKnet.loadUrl(url); // load a web page in a web view
 
+         id = getIntent().getIntExtra("id", 0);
 
     }
 
@@ -45,7 +49,33 @@ public class KnetActivity extends AppCompatActivity  implements View.OnClickList
         switch (v.getId()) {
             case R.id.loadWebPage:
 
-                startActivity(new Intent(KnetActivity.this, RoomBooked.class));
+                if (id==1){
+
+
+                    Intent intent = new Intent(KnetActivity.this, MemberCongratsActivity.class);
+                    startActivity(intent);
+                }else if (id==2){
+
+                    Intent intent = new Intent(KnetActivity.this, RoomBooked.class);
+                    startActivity(intent);
+
+                }else if (id==3){
+
+                    Intent intent = new Intent(KnetActivity.this, FlightDetails.class);
+                    startActivity(intent);
+
+                }else if (id==6){
+
+
+
+                }else if (id==7){
+
+
+
+                }
+
+
+
 
                 break;
         }

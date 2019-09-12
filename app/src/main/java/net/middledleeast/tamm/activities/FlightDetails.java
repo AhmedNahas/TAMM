@@ -8,11 +8,21 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import net.middledleeast.tamm.R;
 
+import java.util.concurrent.TimeUnit;
+
+import FlightApi.FlightApiService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FlightDetails extends AppCompatActivity {
 
@@ -20,6 +30,11 @@ public class FlightDetails extends AppCompatActivity {
     Button backToHotel;
 
     ImageView iv_booked_flight_details;
+    public static final String BASE_URL = "https://xmloutapi.tboair.com/api/v1/";
+
+    private static Retrofit retrofit = null;
+    @BindView(R.id.get_code)
+    Button getCode;
 
 
     @Override
@@ -29,22 +44,55 @@ public class FlightDetails extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        iv_booked_flight_details=findViewById(R.id.iv_booked_flight_details);
-        iv_booked_flight_details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent =new Intent(FlightDetails.this,MyBookActivity.class);
-                startActivity(intent);
-            }
-        });
+        Gson gson = new GsonBuilder()
+                .create();
 
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+
+        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).connectTimeout(0, TimeUnit.SECONDS)
+                .readTimeout(0, TimeUnit.SECONDS).build();
+
+        connectAndGetApiData(gson, client);
+        FlightApiService flightApiService = retrofit.create(FlightApiService.class);
 
 
     }
 
-    @OnClick(R.id.back_to_hotel)
-    public void onViewClicked() {
 
-        startActivity(new Intent(FlightDetails.this,FindHotels.class));
+    public Retrofit connectAndGetApiData(Gson gson, OkHttpClient client) {
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .client(client)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .build();
+        }
+        return retrofit;
     }
+
+
+
+    @OnClick({R.id.iv_booked_flight_details, R.id.get_code, R.id.back_to_hotel})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_booked_flight_details:
+
+                break;
+            case R.id.get_code:
+
+                startActivity(new Intent(FlightDetails.this, FlightDetailsActivity.class));
+
+                break;
+            case R.id.back_to_hotel:
+
+                startActivity(new Intent(FlightDetails.this, FindHotels .class));
+
+                break;
+        }
+    }
+
+
+
 }

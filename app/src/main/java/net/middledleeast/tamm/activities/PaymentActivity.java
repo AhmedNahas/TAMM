@@ -220,11 +220,15 @@ public class PaymentActivity extends AppCompatActivity {
 //            String TotalFare = SharedPreferencesManger.LoadStringData(this, "TotalFare");
 //            flightCurrency = SharedPreferencesManger.LoadStringData(this, "typeFare");
 
-//
-//            tvMrMrs.setText(getString(R.string.mr));
-//            tvLastName.setText("");
-//            tvFirstName.setText("");
-//            tvKd.setText(flightCurrency+" "+ TotalFare);
+            String totalFare = getIntent().getStringExtra("totalFare");
+            String firstNameAduld = SharedPreferencesManger.LoadStringData(PaymentActivity.this, "FirstNameAduld");
+            String lastNameAduld = SharedPreferencesManger.LoadStringData(PaymentActivity.this, "LastNameAduld");
+
+
+            tvMrMrs.setText(getString(R.string.mr));
+            tvLastName.setText(lastNameAduld);
+            tvFirstName.setText(firstNameAduld);
+            tvKd.setText(totalFare);
 
         }else if (mId == 6){
 
@@ -334,7 +338,7 @@ public class PaymentActivity extends AppCompatActivity {
 
 
                     String[] s = tvKd.getText().toString().split(" ");
-                    String s2 = s[1];
+                    String s2 = s[0];
                     openbankFlight(s2);
 
 
@@ -405,25 +409,13 @@ public class PaymentActivity extends AppCompatActivity {
 
         try {
 //
-            BigDecimal amount = new BigDecimal(Price);
-            PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
-            BigDecimal finalAmount = amount;
-            String finalCurrency = flightCurrency;
 
             if (paymentChekd && checkBoxAgerr2.isChecked()) {
 
-                if (knet){
+
                     sendamount(Price);
-                    //startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
-
-                }else {
-
-                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
-                }
 
 
-            } else {
 
                 Toast.makeText(PaymentActivity.this, "Choose Payment Method and agree in Terms and conditions", Toast.LENGTH_SHORT).show();
             }
@@ -524,7 +516,40 @@ public class PaymentActivity extends AppCompatActivity {
                 Toast.makeText(PaymentActivity.this, ""+response, Toast.LENGTH_SHORT).show();
 
                Intent intent =new Intent(PaymentActivity.this,KnetActivity.class);
-               startActivity(intent);
+               if (mId==1){
+
+
+                   intent.putExtra("id",1);
+                   startActivity(intent);
+
+               }else if (mId==2){
+
+                   intent.putExtra("id",2);
+                   startActivity(intent);
+
+
+               }else if (mId==3){
+
+
+                    intent.putExtra("id",3);
+                    startActivity(intent);
+
+                }else if (mId==6){
+
+
+                   intent.putExtra("id",6);
+                   startActivity(intent);
+
+               }else if (mId==7){
+
+
+
+                   intent.putExtra("id",7);
+                   startActivity(intent);
+
+               }
+
+
 
             }
         }, new Response.ErrorListener() {

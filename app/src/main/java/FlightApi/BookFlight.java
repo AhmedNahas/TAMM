@@ -19,6 +19,32 @@ public class BookFlight {
     @Expose
     private Itinerary itinerary;
 
+
+    public String getiPAddress() {
+        return iPAddress;
+    }
+
+    public void setiPAddress(String iPAddress) {
+        this.iPAddress = iPAddress;
+    }
+
+    public String getEndUserBrowserAgent() {
+        return endUserBrowserAgent;
+    }
+
+    public void setEndUserBrowserAgent(String endUserBrowserAgent) {
+        this.endUserBrowserAgent = endUserBrowserAgent;
+    }
+
+    @SerializedName("IPAddress")
+    @Expose
+    private String iPAddress;
+    @SerializedName("EndUserBrowserAgent")
+    @Expose
+    private String endUserBrowserAgent;
+
+
+
     public String getResultId() {
         return resultId;
     }

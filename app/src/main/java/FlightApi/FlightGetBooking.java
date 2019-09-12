@@ -16,6 +16,21 @@ public class FlightGetBooking implements Serializable {
     @Expose
     private String pNR;
 
+    public String getTokinId() {
+        return tokinId;
+    }
+
+    public void setTokinId(String tokinId) {
+        this.tokinId = tokinId;
+    }
+
+    @SerializedName("TokenId")
+    @Expose
+    private String tokinId;
+
+
+
+
     /**
      * No args constructor for use in serialization
      */

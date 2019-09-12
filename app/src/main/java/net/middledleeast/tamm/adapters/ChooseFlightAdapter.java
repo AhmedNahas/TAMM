@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.FlightsSummary;
+import net.middledleeast.tamm.activities.Passenger_inform;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.io.InputStream;
@@ -752,7 +753,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
             public void onClick(View view) {
 
 
-                Intent intent = new Intent(context, FlightsSummary.class);
+                Intent intent = new Intent(context, Passenger_inform.class);
 
 
                 SharedPreferencesManger.SaveData(context, "resultId", resultId);

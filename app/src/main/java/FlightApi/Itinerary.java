@@ -68,6 +68,19 @@ public class Itinerary {
     @Expose
     private Object staffRemarks;
 
+    public String getPNR() {
+        return PNR;
+    }
+
+    public void setPNR(String PNR) {
+        this.PNR = PNR;
+    }
+
+    @SerializedName("PNR")
+    @Expose
+    private String PNR;
+
+
     public Boolean getIsHoldEligibleForLcc() {
         return isHoldEligibleForLcc;
     }
@@ -227,5 +240,6 @@ public class Itinerary {
     public void setStaffRemarks(Object staffRemarks) {
         this.staffRemarks = staffRemarks;
     }
+
 
 }

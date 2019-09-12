@@ -208,7 +208,7 @@ public class FlightAuthentication {
         private String currency;
         @SerializedName("TotalAailableLimit")
         @Expose
-        private long totalAailableLimit;
+        private double totalAailableLimit;
 
         /**
          * No args constructor for use in serialization
@@ -220,7 +220,7 @@ public class FlightAuthentication {
          * @param totalAailableLimit
          * @param currency
          */
-        public Agency(String currency, long totalAailableLimit) {
+        public Agency(String currency, Double totalAailableLimit) {
             super();
             this.currency = currency;
             this.totalAailableLimit = totalAailableLimit;
@@ -239,15 +239,15 @@ public class FlightAuthentication {
             return this;
         }
 
-        public long getTotalAailableLimit() {
+        public Double getTotalAailableLimit() {
             return totalAailableLimit;
         }
 
-        public void setTotalAailableLimit(long totalAailableLimit) {
+        public void setTotalAailableLimit(double totalAailableLimit) {
             this.totalAailableLimit = totalAailableLimit;
         }
 
-        public FlightAuthentication.Agency withTotalAailableLimit(long totalAailableLimit) {
+        public FlightAuthentication.Agency withTotalAailableLimit(double totalAailableLimit) {
             this.totalAailableLimit = totalAailableLimit;
             return this;
         }

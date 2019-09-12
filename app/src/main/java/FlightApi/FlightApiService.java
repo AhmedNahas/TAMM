@@ -48,4 +48,17 @@ public interface FlightApiService {
 
 
 
+    @Headers("Content-Type: application/json")
+    @POST("Booking/Ticket")
+    Call<TicketResponse> getFlightTicket(@Header("Content-Type") String content_type,
+                                           @Body FlightTicket body);
+
+
+
+    @Headers("Content-Type: application/json")
+    @POST("Booking/GetBookingDetails")
+    Call<GetBookingResponse> getFlightbooking(@Header("Content-Type") String content_type,
+                                         @Body FlightGetBooking body);
+
+
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,12 +33,15 @@ import FlightApi.FareRuleRequest;
 import FlightApi.FlightApiService;
 import FlightApi.FlightAuthentication;
 import FlightApi.FlightConstants;
+import FlightApi.FlightGetBooking;
+import FlightApi.FlightTicket;
 import FlightApi.GetBookingResponse;
 import FlightApi.Itinerary;
 import FlightApi.Nationality;
 import FlightApi.Passenger;
 import FlightApi.Segment;
 
+import FlightApi.TicketResponse;
 import FlightApi.fare_rules.FareRule;
 import FlightApi.fare_rules.FareRuleResponse;
 import butterknife.BindView;
@@ -50,6 +54,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static net.middledleeast.tamm.helper.helperMethod.getLocalIpAddress;
 
 public class FlightsSummary extends AppCompatActivity {
 
@@ -220,8 +226,9 @@ public class FlightsSummary extends AppCompatActivity {
             trackingId;
     private String origin, destination;
 //    private FareRuleResponse.FareRule fareRule1;
-
+ProgressBar flight_progress;
     private String lastTicketDate, validatingAirline;
+    private String totalFare;
 
 
     @Override
@@ -231,6 +238,12 @@ public class FlightsSummary extends AppCompatActivity {
         setContentView(R.layout.flights_summary);
         ButterKnife.bind(this);
         password = getString(R.string.passowrd_flight);
+
+
+        flight_progress =findViewById(R.id.flight_progress);
+
+
+        flight_progress.setVisibility(View.INVISIBLE);
 
         resultId = SharedPreferencesManger.LoadStringData(this, "resultId");
 
@@ -318,6 +331,7 @@ public class FlightsSummary extends AppCompatActivity {
 
 
         int journyTipe = SharedPreferencesManger.LoadIntegerData(this, "journyTipe");
+         totalFare = SharedPreferencesManger.LoadStringData(this, "totalFare");
 
         int size = SharedPreferencesManger.LoadIntegerData(FlightsSummary.this, "size");
         int sizeReturn = SharedPreferencesManger.LoadIntegerData(FlightsSummary.this, "sizeReturn");
@@ -554,7 +568,7 @@ public class FlightsSummary extends AppCompatActivity {
 
     private void BookingFlight() {
 
-
+        flight_progress.setVisibility(View.VISIBLE);
         Gson gson = new GsonBuilder()
                 .create();
 
@@ -607,7 +621,9 @@ public class FlightsSummary extends AppCompatActivity {
                 fareQuote.setTrackingId(trackingId);
                 fareQuote.setPointOfSale("AE");
                 fareQuote.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
-                fareQuote.setIPAddress("192.168.4.238");
+                String localIpAddress = getLocalIpAddress();
+
+                fareQuote.setIPAddress(localIpAddress);
                 fareQuote.setRequestOrigin("Egypt");
 
 
@@ -641,6 +657,12 @@ public class FlightsSummary extends AppCompatActivity {
                                 book.setResultId(resultId);
                                 book.setTokenId(tokenId1);
 
+                                String localIpAddress = getLocalIpAddress();
+
+
+                                book.setiPAddress(localIpAddress);
+                                book.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
+
                                 Itinerary itinerary = new Itinerary();
                                 itinerary.setOrigin(origin);
                                 itinerary.setDestination(destination);
@@ -661,25 +683,36 @@ public class FlightsSummary extends AppCompatActivity {
                                 country.setCountryName("Egypt");
                                 passenger.setCountry(country);
                                 passenger.setEmail("abdallah@yahoo.com");
-                                passenger.setFirstName("abdallah");
+                                passenger.setFirstName(firstNameAduld);
                                 passenger.setGender(1);
                                 passenger.setIsLeadPax(true);
-                                passenger.setLastName("mohamed");
+                                passenger.setLastName(lastNameAduld);
                                 passenger.setType(1);
-                                passenger.setTitle("MS");
+                                passenger.setTitle(MDataMrmisAdult);
                                 Nationality nationality = new Nationality();
 
                                 nationality.setCountryCode(countryCodeDestnation1);
                                 nationality.setCountryName(countryNameDestination1);
                                 passenger.setNationality(nationality);
 
-                                passenger.setDateOfBirth("01/01/1995");
+                                passenger.setDateOfBirth(datebirthadult);
                                 passenger.setFFNumber(flightNumberSize1);
                                 passenger.setMobile1("01061213663");
                                 passenger.setMobile1CountryCode("+2");
+
+
+                                passenger.setPassportExpiry("02/02");
+                                passenger.setPassportIssueCountryCode("2365");
+                                passenger.setPassportIssueDate("01/01/1995");
+                                passenger.setPassportNo("12542362198754");
+
+
+
+
                                 itinerary.setTravelDate(departureTime);
 
                                 itinerary.setTravelDate(arrivalTime);
+
 
 
                                 itinerary.setAirlineCode(airlineCode);
@@ -704,17 +737,71 @@ public class FlightsSummary extends AppCompatActivity {
                                     public void onResponse(Call<GetBookingResponse> call, Response<GetBookingResponse> response) {
 
 
-                                        GetBookingResponse body = response.body();
-                                        System.out.print(body);
+                                        Itinerary itinerary1 = response.body().getItinerary();
+
+//
 //
                                        if (response.body().getItinerary().getPNR()!=null){
 
+                                           FlightTicket flightTicket = new FlightTicket();
+                                           String localIpAddress = getLocalIpAddress();
+                                           flightTicket.setIPAddress(localIpAddress);
+
+                                           flightTicket.setResultId(resultId);
+                                           flightTicket.setTokenId(tokenId);
+                                           flightTicket.setTrackingId(trackingId);
+                                           flightTicket.setPNR(response.body().getItinerary().getPNR());
+
+                                           flightTicket.setItinerary(itinerary1);
+
+                                           flightApiService.getFlightTicket("application/json",flightTicket).enqueue(new Callback<TicketResponse>() {
+                                               @Override
+                                               public void onResponse(Call<TicketResponse> call, Response<TicketResponse> response) {
+
+try {
+
+    okhttp3.Response raw = response.raw();
+    String pnr2 = response.body().getItinerary().getPNR();
+    String tokenId2 = response.body().getTokenId();
+
+
+    SharedPreferencesManger.SaveData(FlightsSummary.this,"pnr",pnr2);
+    SharedPreferencesManger.SaveData(FlightsSummary.this,"tokenId2",tokenId2);
+    Toast.makeText(FlightsSummary.this, "successful", Toast.LENGTH_SHORT).show();
+
+
+}catch (Exception e){}
 
                                            Intent intent = new Intent(FlightsSummary.this,PaymentActivity.class);
 
+                                           intent.putExtra("totalFare",totalFare);
                                            intent.putExtra("mId",3);
 
                                            startActivity(intent);
+
+
+                                               }
+
+                                               @Override
+                                               public void onFailure(Call<TicketResponse> call, Throwable t) {
+                                                   flight_progress.setVisibility(View.INVISIBLE);
+
+                                               }
+                                           });
+
+
+
+
+
+
+
+//
+//                                           Intent intent = new Intent(FlightsSummary.this,PaymentActivity.class);
+//
+//                                           intent.putExtra("totalFare",totalFare);
+//                                           intent.putExtra("mId",3);
+//
+//                                           startActivity(intent);
                                        }
 
                                     }
@@ -722,6 +809,10 @@ public class FlightsSummary extends AppCompatActivity {
                                     @Override
                                     public void onFailure(Call<GetBookingResponse> call, Throwable t) {
                                         t.getMessage();
+
+
+                                        flight_progress.setVisibility(View.INVISIBLE);
+
                                     }
                                 });
 
@@ -733,6 +824,7 @@ public class FlightsSummary extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<FareQuoteRespone> call, Throwable t) {
+                            flight_progress.setVisibility(View.INVISIBLE);
 
                             t.getMessage();
                         }
@@ -748,6 +840,7 @@ public class FlightsSummary extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<FareRuleResponse> call, Throwable t) {
+                flight_progress.setVisibility(View.INVISIBLE);
 
                 t.getMessage();
             }
