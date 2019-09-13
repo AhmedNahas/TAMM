@@ -35,11 +35,11 @@
         <activity android:name=".activities.MemberCongratsActivity" />
         <activity android:name=".activities.FreeCongratsActivity" />
         <activity android:name=".activities.TermsActivity" />
-        <activity android:name=".activities.KnetActivity">
+        <!--<activity android:name=".activities.KnetActivity">-->
 
-            <!-- android:theme="@android:style/Theme.NoTitleBar" -->
+            <!--&lt;!&ndash; android:theme="@android:style/Theme.NoTitleBar" &ndash;&gt;-->
 
-        </activity>
+        <!--</activity>-->
         <activity
             android:name=".activities.SeatSelection"
             android:screenOrientation="portrait" />

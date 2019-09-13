@@ -1045,12 +1045,12 @@ public class RoomBooked extends AppCompatActivity {
             bookingId = hotelBookingResponse.BookingId;
             confirmationNo = hotelBookingResponse.ConfirmationNo;
 
-            appDatabase= Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"myBooking").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+            appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myBooking").fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
 
-            String untile  =   SharedPreferencesManger.LoadStringData(this, "Until");
+            String untile = SharedPreferencesManger.LoadStringData(this, "Until");
 
-            String imgHotelOne  =  SharedPreferencesManger.LoadStringData(this,"imageHotel");
+            String imgHotelOne = SharedPreferencesManger.LoadStringData(this, "imageHotel");
 
 
 
