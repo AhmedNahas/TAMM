@@ -1,8 +1,10 @@
+
 package net.middledleeast.tamm.activities;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Movie;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -21,16 +23,20 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.activities.FlightsSummary;
+import net.middledleeast.tamm.activities.MyBookActivity;
 import net.middledleeast.tamm.adapters.AutoCompleteAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import FlightApi.SearchFlightsResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -71,11 +77,18 @@ public class Passenger_inform extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
+
+
+
+
+
+
+
         iv_booked_passenger_inform=findViewById(R.id.iv_booked_passenger_inform);
         iv_booked_passenger_inform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(Passenger_inform.this,MyBookActivity.class);
+                Intent intent =new Intent(Passenger_inform.this, MyBookActivity.class);
                 startActivity(intent);
             }
         });
@@ -173,8 +186,15 @@ public class Passenger_inform extends AppCompatActivity {
                     SharedPreferencesManger.SaveData(Passenger_inform.this,"nationality_child",nationality_child.getText().toString());
                     SharedPreferencesManger.SaveData(Passenger_inform.this,"nationality_infant",nationality_adult_infant.getText().toString());
 
+                    List<SearchFlightsResponse.Segment> segments = (List<SearchFlightsResponse.Segment> ) getIntent().getSerializableExtra("segments");
+                    SharedPreferencesManger.SaveData(Passenger_inform.this,"nationality_infant",nationality_adult_infant.getText().toString());
+                    Intent intent = new Intent(Passenger_inform.this, FlightsSummary.class);
+                    intent.putExtra("segments", (Serializable) segments);
 
-                    startActivity(new Intent(Passenger_inform.this, FlightsSummary.class));
+                    startActivity(intent);
+
+
+
 
                 }
                     //

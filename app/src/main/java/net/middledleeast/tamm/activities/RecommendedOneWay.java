@@ -178,6 +178,8 @@ private RecyclerView recyclerView;
 //        ChooseFlightAdapter ChooseFlightAdapter = new ChooseFlightAdapter(this,airlineNameList ,Listduration ,ListArriveTime,ListdeparuerTime
 //                , countryNameDestinationList , countryNameOriginList,listIncludedBaggage,listCabinBaggage , listTotalFare, listTypeFare ,ListairportCode_Distnation , ListairportCode_Origin
 //        , ListflightNumber , ListMealType , ListnoOfSeatAvailable , size , sizeSegments);
+
+
         ArrayList<SearchFlightsResponse.Result> ListResult = (ArrayList<SearchFlightsResponse.Result>) getIntent().getSerializableExtra("ListResult");
 
 
