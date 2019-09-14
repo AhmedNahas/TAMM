@@ -64,16 +64,16 @@
                 android:textAllCaps="true"
                 />
 
-            <!--<TextView-->
-                <!--android:id="@+id/plan_details"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/plan_details_text"-->
-                <!--android:textSize="10sp"-->
-                <!--android:textColor="#FFF"-->
-                <!--android:textStyle="normal"-->
-                <!--android:maxLines="2"-->
-                <!--android:textAllCaps="true"/>-->
+            <TextView
+                android:id="@+id/plan_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/plan_details_text"
+                android:textSize="10sp"
+                android:textColor="#FFF"
+                android:textStyle="normal"
+                android:maxLines="2"
+                android:textAllCaps="true"/>
 
         </LinearLayout>
 

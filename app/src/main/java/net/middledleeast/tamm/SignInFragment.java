@@ -297,6 +297,7 @@ try {
 
                         // Now store the user in SQLite
                         String uid = jObj.getString("uid");
+                        SharedPreferencesManger.SaveData(getContext(),"uid",uid);
 
                         JSONObject user = jObj.getJSONObject("user");
 

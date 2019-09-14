@@ -43,6 +43,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -112,6 +114,7 @@ public class PaymentActivity extends AppCompatActivity {
     WebView webviewKnet;
 
     RelativeLayout relative_radio_btn;
+    private String uid;
 
 
     @SuppressLint("SetTextI18n")
@@ -180,14 +183,22 @@ public class PaymentActivity extends AppCompatActivity {
             currency = SharedPreferencesManger.LoadStringData(this, "currency");
             last_name = SharedPreferencesManger.LoadStringData(this, "lastName1GustOne");
             first_name = SharedPreferencesManger.LoadStringData(this, "firstName1GustOne");
-
+             uid = SharedPreferencesManger.LoadStringData(this, "uid");
 
 
             tvLastName.setText(last_name);
             tvFirstName.setText(first_name);
 
-            tvKd.setText(currency + " " + roomPrice);
-            BigDecimal amount = new BigDecimal(roomPrice);
+            double v = Double.parseDouble(roomPrice);
+            double sum = v * 0.304380 ;
+
+
+            NumberFormat formatter = new DecimalFormat("#,###.##");
+
+            String formattedNumber = formatter.format(sum);
+
+            tvKd.setText("KD" + " " + formattedNumber);
+            BigDecimal amount = new BigDecimal(formattedNumber);
             PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
             BigDecimal finalAmount = amount;
             String finalCurrency = currency;
@@ -202,7 +213,7 @@ public class PaymentActivity extends AppCompatActivity {
         } else if (mId==RIGISTRATHION){
 
             getmemberfees();
-            tvKd.setText("USD " + msgbody);
+            tvKd.setText("KD " + msgbody);
 
             String last_name = SharedPreferencesManger.LoadStringData(this, "last_name");
             String first_name = SharedPreferencesManger.LoadStringData(this, "first_name");
@@ -612,11 +623,13 @@ public class PaymentActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
                 parameters.put("roomprice",roomPrice_);
+                parameters.put("token",uid);
 
 
                 return parameters;
             }
         };
+
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);

@@ -1115,15 +1115,15 @@ public class RoomBooked extends AppCompatActivity {
 
                 public void onResponse(String response) {
 
-                    Toast.makeText(RoomBooked.this,"Booked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RoomBooked.this, "Booked", Toast.LENGTH_SHORT).show();
 
-                    Log.e("HI", "onResponse: "+ response );
+                    Log.e("HI", "onResponse: " + response);
 
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Log.e("HI", "onResponse: "+ error );
+                    Log.e("HI", "onResponse: " + error);
 
 
                 }
@@ -1134,25 +1134,26 @@ public class RoomBooked extends AppCompatActivity {
                     Map<String, String> parameters = new HashMap<String, String>();
                     parameters.put("checkin", start_time);
                     parameters.put("checkout", end_time);
-                    parameters.put("booked",today_date);
+                    parameters.put("booked", today_date);
                     parameters.put("lead", fullName);
-                    parameters.put("typeroom",roomType );
+                    parameters.put("typeroom", roomType);
                     parameters.put("noofroom", String.valueOf(noOfRooms));
                     parameters.put("noofguest", String.valueOf(noOfAdultRoom1));
                     parameters.put("hotelname", hotel_name);
                     parameters.put("city", name_city_);
-                    parameters.put("tbohconfno",confirmationNo);
+                    parameters.put("tbohconfno", confirmationNo);
                     parameters.put("tripid", String.valueOf(bookingId));
-                    parameters.put("tripname",tripName);
+                    parameters.put("tripname", tripName);
                     parameters.put("booking", "Vouched");
                     parameters.put("nights", String.valueOf(nights));
 
 
-
                     return parameters;
+
                 }
             };
             requestQueue.add(request);
+
         }
 
 
