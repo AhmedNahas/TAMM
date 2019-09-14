@@ -71,40 +71,72 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
 
 
         String resultId = result.getResultId();
-        double totalFare = result.getFare().getTotalFare();
 
-        String agentPreferredCurrency = result.getFare().getAgentPreferredCurrency();
-
-
-        DecimalFormat df = new DecimalFormat("###.###");
-        String format = df.format(totalFare);
-
-        holder.tvTotalFare.setText(format + " " + agentPreferredCurrency);
-
-
-        // one way
         List<SearchFlightsResponse.Segment> segments = result.getSegments().get(0);
-
-
-
         int size = segments.size();
-
-      String  airline = "A" + segments.get(0).getAirlineDetails().getAirlineCode();
-      String  stringResourceByName = getStringResourceByName(airline);
-
-        String  airlineCode = "a" + segments.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
-
-
-        holder.ivIcon.setImageResource(context.getResources().getIdentifier(airlineCode, "drawable", context.getPackageName()));
-
-
-        holder.tvTransit.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_trending_flat, 0, 0, 0);
-
-
-        holder.tvAirline.setText(stringResourceByName);
-
-
         if (size == 1) {
+
+            String arrivalTime = segments.get(0).getArrivalTime();
+            String  departureTime = segments.get(0).getDepartureTime();
+
+            String[] ts = departureTime.split("T");
+            String   departureTime_ = ts[1];
+
+            String[] ts1 = arrivalTime.split("T");
+            String  arrivalTime_ = ts1[1];
+            holder.tvTimeOne.setText(departureTime_ + " ");
+            holder.tvTimeTwo.setText(" " + arrivalTime_);
+
+            String  groundTime = segments.get(0).getAccumulatedDuration();
+            holder.tvTime.setText(groundTime);
+            String  cabinBaggage = (String) segments.get(0).getCabinBaggage();
+            String   additionalBaggage = (String) segments.get(0).getAdditionalBaggage();
+
+            holder.tvKg.setText(additionalBaggage);
+            holder.tvKiloG2.setText(cabinBaggage);
+
+
+            double totalFare = result.getFare().getTotalFare();
+
+            String agentPreferredCurrency = result.getFare().getAgentPreferredCurrency();
+
+
+            DecimalFormat df = new DecimalFormat("###.###");
+            String format = df.format(totalFare);
+
+            holder.tvTotalFare.setText(format + " " + agentPreferredCurrency);
+
+
+            // one way
+
+
+
+
+
+
+            String  airline = "A" + segments.get(0).getAirlineDetails().getAirlineCode();
+            String  stringResourceByName = getStringResourceByName(airline);
+
+            String  airlineCode = "a" + segments.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
+
+
+            holder.ivIcon.setImageResource(context.getResources().getIdentifier(airlineCode, "drawable", context.getPackageName()));
+
+
+
+
+            holder.tvAirline.setText(stringResourceByName);
+
+
+
+
+
+
+
+
+
+
+            holder.tvTransit.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_trending_flat, 0, 0, 0);
 
             String CityNameOrogin1 = segments.get(0).getOrigin().getCityName();
             String   CityNameDestination1 = segments.get(0).getDestination().getCityName();
@@ -123,6 +155,68 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
             holder.to4.setVisibility(View.GONE);
 
         } else if (size == 2) {
+
+
+
+
+
+            String arrivalTime = segments.get(0).getArrivalTime();
+            String  departureTime = segments.get(0).getDepartureTime();
+
+            String[] ts = departureTime.split("T");
+            String   departureTime_ = ts[1];
+
+            String[] ts1 = arrivalTime.split("T");
+            String  arrivalTime_ = ts1[1];
+            holder.tvTimeOne.setText(departureTime_ + " ");
+            holder.tvTimeTwo.setText(" " + arrivalTime_);
+
+            String  groundTime = segments.get(0).getAccumulatedDuration();
+            holder.tvTime.setText(groundTime);
+            String  cabinBaggage = (String) segments.get(0).getCabinBaggage();
+            String   additionalBaggage = (String) segments.get(0).getAdditionalBaggage();
+
+            holder.tvKg.setText(additionalBaggage);
+            holder.tvKiloG2.setText(cabinBaggage);
+
+
+
+
+
+            double totalFare = result.getFare().getTotalFare();
+
+            String agentPreferredCurrency = result.getFare().getAgentPreferredCurrency();
+
+
+            DecimalFormat df = new DecimalFormat("###.###");
+            String format = df.format(totalFare);
+
+            holder.tvTotalFare.setText(format + " " + agentPreferredCurrency);
+
+
+            // one way
+
+
+
+
+
+
+            String  airline = "A" + segments.get(0).getAirlineDetails().getAirlineCode();
+            String  stringResourceByName = getStringResourceByName(airline);
+
+            String  airlineCode = "a" + segments.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
+
+
+            holder.ivIcon.setImageResource(context.getResources().getIdentifier(airlineCode, "drawable", context.getPackageName()));
+
+
+
+
+            holder.tvAirline.setText(stringResourceByName);
+
+
+
+
             String CityNameOrogin1 = segments.get(0).getOrigin().getCityName();
             String   CityNameDestination1 = segments.get(0).getDestination().getCityName();
 
@@ -131,6 +225,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
             holder.tvBeirut.setText(CityNameOrogin1);
             holder.tvKuwait.setText(CityNameDestination1);
 
+            holder.tvTransit.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.transit, 0, 0, 0);
 
             String countryName = segments.get(1).getOrigin().getCityName();
             String countryName1 = segments.get(1).getDestination().getCityName();
@@ -146,6 +241,72 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
 
 
         }else if (size==3){
+
+            String arrivalTime = segments.get(0).getArrivalTime();
+            String  departureTime = segments.get(0).getDepartureTime();
+
+            String[] ts = departureTime.split("T");
+            String   departureTime_ = ts[1];
+
+            String[] ts1 = arrivalTime.split("T");
+            String  arrivalTime_ = ts1[1];
+            holder.tvTimeOne.setText(departureTime_ + " ");
+            holder.tvTimeTwo.setText(" " + arrivalTime_);
+
+            String  groundTime = segments.get(0).getAccumulatedDuration();
+            holder.tvTime.setText(groundTime);
+            String  cabinBaggage = (String) segments.get(0).getCabinBaggage();
+            String   additionalBaggage = (String) segments.get(0).getAdditionalBaggage();
+
+            holder.tvKg.setText(additionalBaggage);
+            holder.tvKiloG2.setText(cabinBaggage);
+
+
+
+
+
+            double totalFare = result.getFare().getTotalFare();
+
+            String agentPreferredCurrency = result.getFare().getAgentPreferredCurrency();
+
+
+            DecimalFormat df = new DecimalFormat("###.###");
+            String format = df.format(totalFare);
+
+            holder.tvTotalFare.setText(format + " " + agentPreferredCurrency);
+
+
+            // one way
+
+
+
+
+
+
+            String  airline = "A" + segments.get(0).getAirlineDetails().getAirlineCode();
+            String  stringResourceByName = getStringResourceByName(airline);
+
+            String  airlineCode = "a" + segments.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
+
+
+            holder.ivIcon.setImageResource(context.getResources().getIdentifier(airlineCode, "drawable", context.getPackageName()));
+
+
+
+
+            holder.tvAirline.setText(stringResourceByName);
+
+
+
+
+
+
+
+
+
+
+
+            holder.tvTransit.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.transit, 0, 0, 0);
 
             holder.tvTransit.setText("Transit 3");
             String CityNameOrogin1 = segments.get(0).getOrigin().getCityName();
@@ -170,12 +331,76 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
             holder.from4.setVisibility(View.GONE);
             holder.to4.setVisibility(View.GONE);
         }else if (size==4){
+
+            String arrivalTime = segments.get(0).getArrivalTime();
+            String  departureTime = segments.get(0).getDepartureTime();
+
+            String[] ts = departureTime.split("T");
+            String   departureTime_ = ts[1];
+
+            String[] ts1 = arrivalTime.split("T");
+            String  arrivalTime_ = ts1[1];
+            holder.tvTimeOne.setText(departureTime_ + " ");
+            holder.tvTimeTwo.setText(" " + arrivalTime_);
+
+            String  groundTime = segments.get(0).getAccumulatedDuration();
+            holder.tvTime.setText(groundTime);
+            String  cabinBaggage = (String) segments.get(0).getCabinBaggage();
+            String   additionalBaggage = (String) segments.get(0).getAdditionalBaggage();
+
+            holder.tvKg.setText(additionalBaggage);
+            holder.tvKiloG2.setText(cabinBaggage);
+
+
+
+
+
+            double totalFare = result.getFare().getTotalFare();
+
+            String agentPreferredCurrency = result.getFare().getAgentPreferredCurrency();
+
+
+            DecimalFormat df = new DecimalFormat("###.###");
+            String format = df.format(totalFare);
+
+            holder.tvTotalFare.setText(format + " " + agentPreferredCurrency);
+
+
+            // one way
+
+
+
+
+
+
+            String  airline = "A" + segments.get(0).getAirlineDetails().getAirlineCode();
+            String  stringResourceByName = getStringResourceByName(airline);
+
+            String  airlineCode = "a" + segments.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
+
+
+            holder.ivIcon.setImageResource(context.getResources().getIdentifier(airlineCode, "drawable", context.getPackageName()));
+
+
+
+
+            holder.tvAirline.setText(stringResourceByName);
+
+
+
+
+
+
+
+
+
             String CityNameOrogin1 = segments.get(0).getOrigin().getCityName();
             String   CityNameDestination1 = segments.get(0).getDestination().getCityName();
             holder.tvTransit.setText("Transit 4");
 
             holder.tvBeirut.setText(CityNameOrogin1);
             holder.tvKuwait.setText(CityNameDestination1);
+            holder.tvTransit.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.transit, 0, 0, 0);
 
             String countryName = segments.get(1).getOrigin().getCityName();
             String countryName1 = segments.get(1).getDestination().getCityName();
@@ -193,27 +418,10 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
             String countryName_4 = segments.get(3).getDestination().getCityName();
             holder.from4.setText(countryName4+"-");
             holder.to4.setText(countryName_4);
+
         }
 
 
-        String arrivalTime = segments.get(0).getArrivalTime();
-        String  departureTime = segments.get(0).getDepartureTime();
-
-        String[] ts = departureTime.split("T");
-        String   departureTime_ = ts[1];
-
-        String[] ts1 = arrivalTime.split("T");
-        String  arrivalTime_ = ts1[1];
-        holder.tvTimeOne.setText(departureTime_ + " ");
-        holder.tvTimeTwo.setText(" " + arrivalTime_);
-
-        String  groundTime = segments.get(0).getGroundTime();
-        holder.tvTime.setText(groundTime);
-        String  cabinBaggage = (String) segments.get(0).getCabinBaggage();
-        String   additionalBaggage = (String) segments.get(0).getAdditionalBaggage();
-
-        holder.tvKg.setText(additionalBaggage);
-        holder.tvKiloG2.setText(cabinBaggage);
 
 
 //
@@ -663,7 +871,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
                 intent.putExtra("segments", (Serializable) segments);
 
                 SharedPreferencesManger.SaveData(context, "resultId", resultId);
-                SharedPreferencesManger.SaveData(context, "totalFare", format + " " + agentPreferredCurrency);
+//                SharedPreferencesManger.SaveData(context, "totalFare", format + " " + agentPreferredCurrency);
                 SharedPreferencesManger.SaveData(context, "baseFare", String.valueOf(baseFare));
                 SharedPreferencesManger.SaveData(context, "tax", String.valueOf(tax));
                 SharedPreferencesManger.SaveData(context, "serviceFee", String.valueOf(serviceFee));

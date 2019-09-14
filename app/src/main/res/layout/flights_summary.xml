@@ -139,7 +139,7 @@
                 />
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginStart="@dimen/_12sdp"
-                android:layout_width="@dimen/_100sdp"
+                android:layout_width="@dimen/_120sdp"
                 android:layout_height="wrap_content"
                 android:id="@+id/relative_country"
                 android:layout_below="@id/tv_dxb"
@@ -199,6 +199,7 @@
                     app:civ_border_color="@color/app_color"
                     app:civ_circle_background_color="@color/app_color" />
                 <TextView
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:id="@+id/tv_airline"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="wrap_content"

@@ -735,6 +735,10 @@ public class ProceedBeyBeyOriginal extends Fragment {
                         SharedPreferencesManger.SaveData(getContext(), "trackingId", trackingId);
 
 
+                        SharedPreferencesManger.SaveData(getContext(), "to", to);
+                        SharedPreferencesManger.SaveData(getContext(), "from", from);
+
+
                         SharedPreferencesManger.SaveData(getContext(), "PointOfSale", to);
 
 

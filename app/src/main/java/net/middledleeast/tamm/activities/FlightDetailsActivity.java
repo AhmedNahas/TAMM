@@ -101,8 +101,26 @@ public class FlightDetailsActivity extends AppCompatActivity {
                 String countryName = segment.getOrigin().getCityName();
                 String countryCode1 = segment.getDestination().getCityCode();
                 String countryName1 = segment.getDestination().getCityName();
-                To.setText(countryName1 + "  /  " + countryCode1);
-                From.setText(countryName + "  /  " + countryCode);
+
+
+
+                String  to =  SharedPreferencesManger.LoadStringData(FlightDetailsActivity.this, "to");
+                String  from=     SharedPreferencesManger.LoadStringData(FlightDetailsActivity.this, "from");
+
+
+                for (int i = 0; i < data.getSegments().size(); i++) {
+
+
+                    From.setText(countryName + "  /  " + from);
+
+                    To.setText( data.getSegments().get(i).getDestination().getCityName() + "  /  " + to);
+
+                }
+
+
+//
+//                To.setText(countryName + "  /  " + to);
+//                From.setText(countryName1 + "  /  " + from);
 
 
                 String groundTime = segment.getAccumulatedDuration();

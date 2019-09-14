@@ -284,12 +284,153 @@ android:backgroundTint="@color/app_color"
     </RelativeLayout>
 
 
-    <TextView
 
+
+    <EditText
+        android:backgroundTint="@color/float_transparent"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:textColor="@color/white"
+        android:textColorHint="#FFFFFF"
+        android:textSize="@dimen/_10ssp"
+        android:hint="PASSPORT NO OR CID"
+        android:layout_below="@+id/relative_date"
+        android:id="@+id/passport_no"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="wrap_content" />
+
+
+    <View
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="1dp"
+        android:id="@+id/view_Passport"
+        android:layout_below="@+id/passport_no"
+        android:background="@drawable/line1"
+        />
+
+
+
+    <TextView
+        android:layout_marginStart="@dimen/_15sdp"
+        android:fontFamily="sans-serif-light"
+
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/white"
+        android:textColorHint="#FFFFFF"
+        android:text="ISSUE DATE"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_below="@+id/view_Passport"
+        android:id="@+id/issue_"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="wrap_content" />
+
+
+    <View
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="1dp"
+        android:id="@+id/view_issue"
+        android:layout_below="@+id/issue_"
+        android:background="@drawable/line1"
+        />
+
+
+
+    <TextView
+        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+        android:fontFamily="sans-serif-light"
+
+        android:layout_marginStart="@dimen/_5sdp"
+android:layout_toEndOf="@+id/issue_"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/white"
+        android:textColorHint="#FFFFFF"
+        android:text="15/15/2015"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_below="@+id/view_Passport"
+        android:id="@+id/tv_issue_Date"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="wrap_content" />
+
+
+    <View
+        android:layout_toEndOf="@+id/issue_"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="1dp"
+        android:id="@+id/view_issue_"
+        android:layout_below="@+id/tv_issue_Date"
+        android:background="@drawable/line1"
+        />
+
+
+
+
+    <TextView
+        android:fontFamily="sans-serif-light"
+
+        android:layout_marginStart="@dimen/_15sdp"
+android:layout_toEndOf="@+id/tv_issue_Date"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/white"
+        android:textColorHint="#FFFFFF"
+        android:text="END DATE"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_below="@+id/view_Passport"
+        android:id="@+id/end_dat"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="wrap_content" />
+
+
+
+    <View
+        android:layout_toEndOf="@+id/tv_issue_Date"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="1dp"
+        android:id="@+id/view_issue_end"
+        android:layout_below="@+id/end_dat"
+        android:background="@drawable/line1"
+        />
+
+
+
+
+    <TextView
+        android:fontFamily="sans-serif-light"
+
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_toEndOf="@+id/end_dat"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/white"
+        android:textColorHint="#FFFFFF"
+        android:text="15/15/2015"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_below="@+id/view_Passport"
+        android:id="@+id/tv_end_dat"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_toEndOf="@+id/end_dat"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="1dp"
+        android:id="@+id/view_issue_end_"
+        android:layout_below="@+id/tv_end_dat"
+        android:background="@drawable/line1"
+        />
+
+
+
+
+    <TextView
         android:id="@+id/childtText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relative_date"
+        android:layout_below="@+id/view_issue"
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_10ssp"
         android:drawableStart="@drawable/ic_person"

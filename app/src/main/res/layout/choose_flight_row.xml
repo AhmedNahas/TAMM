@@ -596,9 +596,6 @@
 
 
 
-
-
-
     <View
         android:id="@+id/line3"
         android:layout_width="@dimen/_270sdp"
@@ -607,5 +604,9 @@
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_toRightOf="@+id/line2"
         android:background="@drawable/line1" />
+
+
+
+
 
 </RelativeLayout>
