@@ -29,10 +29,6 @@ public class FlightDetails extends AppCompatActivity {
     @BindView(R.id.back_to_hotel)
     Button backToHotel;
 
-    ImageView iv_booked_flight_details;
-    public static final String BASE_URL = "https://xmloutapi.tboair.com/api/v1/";
-
-    private static Retrofit retrofit = null;
     @BindView(R.id.get_code)
     Button getCode;
 
@@ -44,40 +40,15 @@ public class FlightDetails extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        Gson gson = new GsonBuilder()
-                .create();
-
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-
-        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).connectTimeout(0, TimeUnit.SECONDS)
-                .readTimeout(0, TimeUnit.SECONDS).build();
-
-        connectAndGetApiData(gson, client);
-        FlightApiService flightApiService = retrofit.create(FlightApiService.class);
-
 
     }
-
-
-    public Retrofit connectAndGetApiData(Gson gson, OkHttpClient client) {
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .client(client)
-                    .addConverterFactory(GsonConverterFactory.create(gson))
-                    .build();
-        }
-        return retrofit;
-    }
-
 
 
     @OnClick({R.id.iv_booked_flight_details, R.id.get_code, R.id.back_to_hotel})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_booked_flight_details:
+                startActivity(new Intent(FlightDetails.this,MyTripsActivity.class));
 
                 break;
             case R.id.get_code:

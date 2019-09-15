@@ -9,6 +9,110 @@ import androidx.room.PrimaryKey;
 public class RoomCartModel {
 
 
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo
+    private int id;
+
+    @ColumnInfo
+    private String To;
+
+    @ColumnInfo
+    private String FlightNo;
+
+
+    @ColumnInfo
+    private String Date;
+
+    @ColumnInfo
+    private String Gate;
+
+    @ColumnInfo
+    private String Seat;
+
+    @ColumnInfo
+    private String Time;
+
+    @ColumnInfo
+    private String TicketNo;
+
+
+    @ColumnInfo
+    private String booked;
+
+    @ColumnInfo
+    private String booking;
+
+    @ColumnInfo
+    private String tripname;
+
+    @ColumnInfo
+    private String City;
+
+    @ColumnInfo
+    private String ConfirmationNo;
+
+
+    @ColumnInfo
+    private String leadguest;
+
+    @ColumnInfo
+    private int noofguest;
+
+
+    @ColumnInfo
+    private String canceldate;
+
+    @ColumnInfo
+    private String citymethod;
+
+    @ColumnInfo
+    private String cancelfees;
+
+    @ColumnInfo
+    private String untile;
+
+    @ColumnInfo
+    private String imageRoom;
+
+
+
+    @ColumnInfo
+    private String checkIn;
+
+
+    @ColumnInfo
+    private String CheckOut;
+
+
+    @ColumnInfo
+    private String BookingId;
+
+    @ColumnInfo
+    private String Country;
+
+    @ColumnInfo
+    private String Image;
+
+
+    @ColumnInfo
+    private String Namehotel;
+
+    @ColumnInfo
+    private String Price;
+
+
+    @ColumnInfo
+    private String NamePassenger;
+
+
+    @ColumnInfo
+    private String From;
+    @ColumnInfo
+    private String hotel_name;
+
+    @ColumnInfo
+    private String resultIndex;
+
     public RoomCartModel( String country, String image, String namehotel, String price, String city) {
 
         this.Country = country;
@@ -43,36 +147,98 @@ public class RoomCartModel {
     }
 
 
-
-
-
-
-
-
-
-
-
-
     public RoomCartModel() {
+    }
+
+
+    public RoomCartModel(String namePassenger, String from, String to, String flightNo, String date, String gate, String seat, String time, String ticketNo) {
+        NamePassenger = namePassenger;
+        From = from;
+        To = to;
+        FlightNo = flightNo;
+        Date = date;
+        Gate = gate;
+        Seat = seat;
+        Time = time;
+        TicketNo = ticketNo;
     }
 
 
 
 
 
-    @PrimaryKey
-    private int id;
+    public String getNamePassenger() {
+        return NamePassenger;
+    }
 
+    public void setNamePassenger(String namePassenger) {
+        NamePassenger = namePassenger;
+    }
 
+    public String getFrom() {
+        return From;
+    }
 
-    @ColumnInfo
-    private String booked;
+    public void setFrom(String from) {
+        From = from;
+    }
 
-    @ColumnInfo
-    private String booking;
+    public String getTo() {
+        return To;
+    }
 
-    @ColumnInfo
-    private String tripname;
+    public void setTo(String to) {
+        To = to;
+    }
+
+    public String getFlightNo() {
+        return FlightNo;
+    }
+
+    public void setFlightNo(String flightNo) {
+        FlightNo = flightNo;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    public String getGate() {
+        return Gate;
+    }
+
+    public void setGate(String gate) {
+        Gate = gate;
+    }
+
+    public String getSeat() {
+        return Seat;
+    }
+
+    public void setSeat(String seat) {
+        Seat = seat;
+    }
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
+    }
+
+    public String getTicketNo() {
+        return TicketNo;
+    }
+
+    public void setTicketNo(String ticketNo) {
+        TicketNo = ticketNo;
+    }
+
 
     public String getBooked() {
         return booked;
@@ -138,21 +304,7 @@ public class RoomCartModel {
         this.cancelfees = cancelfees;
     }
 
-    @ColumnInfo
-    private String leadguest;
 
-    @ColumnInfo
-    private int noofguest;
-
-
-    @ColumnInfo
-    private String canceldate;
-
-    @ColumnInfo
-    private String citymethod;
-
-    @ColumnInfo
-    private String cancelfees;
 
     public int getId() {
         return id;
@@ -162,11 +314,7 @@ public class RoomCartModel {
         this.id = id;
     }
 
-    @ColumnInfo
-    private String hotel_name;
 
-    @ColumnInfo
-    private String resultIndex;
 
     public String getHotel_name() {
         return hotel_name;
@@ -234,61 +382,8 @@ public class RoomCartModel {
         BookingId = bookingId;
     }
 
-    @ColumnInfo
-    private String ConfirmationNo;
 
 
-
-
-    @ColumnInfo
-    private String untile;
-
-    @ColumnInfo
-    private String imageRoom;
-
-
-
-    @ColumnInfo
-    private String checkIn;
-
-
-    @ColumnInfo
-    private String CheckOut;
-
-
-    @ColumnInfo
-    private String BookingId;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @ColumnInfo
-    private String Country;
-
-    @ColumnInfo
-    private String Image;
-
-
-    @ColumnInfo
-    private String Namehotel;
-
-    @ColumnInfo
-    private String Price;
 
 
     public String getCountry() {
@@ -331,8 +426,7 @@ public class RoomCartModel {
         City = city;
     }
 
-    @ColumnInfo
-    private String City;
+
 
 
 }

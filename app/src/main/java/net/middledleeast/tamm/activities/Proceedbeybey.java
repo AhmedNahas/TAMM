@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,8 +57,7 @@ public class Proceedbeybey extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent =new Intent(Proceedbeybey.this,MyBookActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(Proceedbeybey.this,MyTripsActivity.class));
             }
         });
 

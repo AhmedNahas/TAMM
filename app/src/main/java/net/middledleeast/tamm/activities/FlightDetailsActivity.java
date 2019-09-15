@@ -1,15 +1,21 @@
 package net.middledleeast.tamm.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+import net.middledleeast.tamm.model.Room.AppDatabase;
+import net.middledleeast.tamm.model.Room.RoomCartModel;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +27,7 @@ import FlightApi.Passenger;
 import FlightApi.Segment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -52,9 +59,12 @@ public class FlightDetailsActivity extends AppCompatActivity {
     TextView TicketNo;
     @BindView(R.id.name_passenger)
     TextView namePassenger;
+    @BindView(R.id.myTrip_btn)
+    Button myTripBtn;
     private Retrofit retrofit;
 
     public static final String BASE_URL = "https://xmloutapi.tboair.com/api/v1/";
+    private AppDatabase appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,9 +113,8 @@ public class FlightDetailsActivity extends AppCompatActivity {
                 String countryName1 = segment.getDestination().getCityName();
 
 
-
-                String  to =  SharedPreferencesManger.LoadStringData(FlightDetailsActivity.this, "to");
-                String  from=     SharedPreferencesManger.LoadStringData(FlightDetailsActivity.this, "from");
+                String to = SharedPreferencesManger.LoadStringData(FlightDetailsActivity.this, "to");
+                String from = SharedPreferencesManger.LoadStringData(FlightDetailsActivity.this, "from");
 
 
                 for (int i = 0; i < data.getSegments().size(); i++) {
@@ -113,7 +122,7 @@ public class FlightDetailsActivity extends AppCompatActivity {
 
                     From.setText(countryName + "  /  " + from);
 
-                    To.setText( data.getSegments().get(i).getDestination().getCityName() + "  /  " + to);
+                    To.setText(data.getSegments().get(i).getDestination().getCityName() + "  /  " + to);
 
                 }
 
@@ -130,16 +139,16 @@ public class FlightDetailsActivity extends AppCompatActivity {
 
                 String firstName = passenger.getFirstName();
                 String lastName = passenger.getLastName();
-                NamePassenger.setText(firstName+" / "+lastName);
+                NamePassenger.setText(firstName + " / " + lastName);
 
                 String departureTime = segment.getDepartureTime();
 
 
                 String[] ts = departureTime.split("T");
                 String t = ts[0];
-                Date.setText("DATE   "+t);
+                Date.setText("DATE   " + t);
 
-                TicketNo.setText("TicketNo  : "+pnr1);
+                TicketNo.setText("TicketNo  : " + pnr1);
 
             }
 
@@ -162,5 +171,22 @@ public class FlightDetailsActivity extends AppCompatActivity {
                     .build();
         }
         return retrofit;
+    }
+
+    @OnClick(R.id.myTrip_btn)
+    public void onViewClicked() {
+
+        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+
+        RoomCartModel roomTripModel=new RoomCartModel(NamePassenger.getText().toString(),From.getText().toString(),To.getText().toString(),FlightNo.getText().toString(),Date.getText().toString(),Gate.getText().toString(),SEAT.getText().toString(),Hours.getText().toString(),TicketNo.getText().toString());
+
+        appDatabase.cartDao().addoffer(roomTripModel);
+
+        Toast.makeText(this, "Add To Your Trips", Toast.LENGTH_SHORT).show();
+
+
+        startActivity(new Intent(this,MyTripsActivity.class));
+
     }
 }

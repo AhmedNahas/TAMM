@@ -871,12 +871,27 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
                 intent.putExtra("segments", (Serializable) segments);
 
                 SharedPreferencesManger.SaveData(context, "resultId", resultId);
-//                SharedPreferencesManger.SaveData(context, "totalFare", format + " " + agentPreferredCurrency);
                 SharedPreferencesManger.SaveData(context, "baseFare", String.valueOf(baseFare));
                 SharedPreferencesManger.SaveData(context, "tax", String.valueOf(tax));
                 SharedPreferencesManger.SaveData(context, "serviceFee", String.valueOf(serviceFee));
 
-                context.startActivity(intent);
+
+                String guestMode = SharedPreferencesManger.LoadStringData(context, "guestMode");
+
+
+                if (guestMode!=null){
+
+                    Toast.makeText(context, "Sign in First", Toast.LENGTH_SHORT).show();
+
+                }else {
+
+
+                    context.startActivity(intent);
+
+                }
+
+
+
 
 
 //                SharedPreferencesManger.SaveData(context, "size", size);

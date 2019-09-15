@@ -66,9 +66,9 @@ public class PaymentActivity extends AppCompatActivity {
     @BindView(R.id.tv_mr_mrs)
     TextView tvMrMrs;
     @BindView(R.id.tv_firstName)
-    EditText tvFirstName;
+    TextView tvFirstName;
     @BindView(R.id.tv_last_name)
-    EditText tvLastName;
+    TextView tvLastName;
     @BindView(R.id.tv_kd)
     TextView tvKd;
     @BindView(R.id.check_box_agerr2)
@@ -138,6 +138,13 @@ public class PaymentActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         mId = intent.getIntExtra("mId", 0);
+        uid = SharedPreferencesManger.LoadStringData(this, "uid");
+
+
+        if (uid==null){
+
+            Toast.makeText(this, "fadi", Toast.LENGTH_SHORT).show();
+        }
 
 
         // just for test
@@ -184,7 +191,6 @@ public class PaymentActivity extends AppCompatActivity {
             currency = SharedPreferencesManger.LoadStringData(this, "currency");
             last_name = SharedPreferencesManger.LoadStringData(this, "lastName1GustOne");
             first_name = SharedPreferencesManger.LoadStringData(this, "firstName1GustOne");
-             uid = SharedPreferencesManger.LoadStringData(this, "uid");
 
 
             tvLastName.setText(last_name);
@@ -212,6 +218,10 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         } else if (mId==RIGISTRATHION){
+
+
+
+
 
             getmemberfees();
             tvKd.setText("KD " + msgbody);
@@ -249,10 +259,19 @@ public class PaymentActivity extends AppCompatActivity {
             String lastNameAduld = SharedPreferencesManger.LoadStringData(PaymentActivity.this, "LastNameAduld");
 
 
+
+            double v = Double.parseDouble(totalFare);
+            double sum = v * 0.304380 ;
+
+
+            NumberFormat formatter = new DecimalFormat("#,###.##");
+
+            String formattedNumber = formatter.format(sum);
+
             tvMrMrs.setText(getString(R.string.mr));
             tvLastName.setText(lastNameAduld);
             tvFirstName.setText(firstNameAduld);
-            tvKd.setText(totalFare);
+            tvKd.setText("KD "+formattedNumber);
 
         }else if (mId == 6){
 
@@ -277,7 +296,6 @@ public class PaymentActivity extends AppCompatActivity {
 
             tvLastName.setText(last_name);
             tvFirstName.setText(first_name);
-
             tvKd.setText("USD" + " " + priceFligt);
 
         }
@@ -414,6 +432,10 @@ public class PaymentActivity extends AppCompatActivity {
                     startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
                 }else if (mId==2) {
                     startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
+                }else if (mId==3){
+
+                    startActivity(new Intent(PaymentActivity.this, FlightDetails.class));
+
                 }
             }
 //            else{

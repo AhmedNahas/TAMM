@@ -72,6 +72,7 @@ public class Passenger_inform extends AppCompatActivity {
 
     RelativeLayout relative_back_passenger_inform;
     ImageView iv_booked_passenger_inform;
+    private boolean rightAge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,10 +162,15 @@ public class Passenger_inform extends AppCompatActivity {
 
                     tvIssueDate.setError("Invalid Issue Date");
 
-                }else if (passportNo.getText().toString().equals("")){
+                }else if (passportNo.getText().toString().equals("")) {
 
 
                     passportNo.setError("Invalid Passport Number ");
+                } else if (!rightAge){
+
+
+                    Toast.makeText(Passenger_inform.this, " your Age is less than 18  ", Toast.LENGTH_SHORT).show();
+
 
 
 
@@ -396,8 +402,15 @@ public class Passenger_inform extends AppCompatActivity {
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
-        });
 
+
+
+
+
+
+
+
+        });
         mDateSetListener1 = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -406,6 +419,22 @@ public class Passenger_inform extends AppCompatActivity {
 
                 String date = month + "/" + day + "/" + year;
                 datebirthadult.setText(date);
+                String age = getAge(year, month, day);
+
+                int ageInt = Integer.parseInt(age);
+
+                if (ageInt<18){
+                    rightAge = false;
+
+
+                }else {
+                    rightAge = true;
+
+
+                }
+
+
+
             }
         };
 
@@ -538,7 +567,23 @@ public class Passenger_inform extends AppCompatActivity {
 
     }
 
+    private String getAge(int year, int month, int day){
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
 
+        dob.set(year, month, day);
+
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)){
+            age--;
+        }
+
+        Integer ageInt = new Integer(age);
+        String ageS = ageInt.toString();
+
+        return ageS;
+    }
 
 
 

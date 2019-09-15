@@ -210,8 +210,7 @@ public class FlightsSummary extends AppCompatActivity {
         iv_booked_flight_summary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FlightsSummary.this, MyBookActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(FlightsSummary.this,MyTripsActivity.class));
             }
         });
 
@@ -494,6 +493,7 @@ public class FlightsSummary extends AppCompatActivity {
 
 
                 if (response.body().getIsSuccess()) {
+                    Toast.makeText(FlightsSummary.this, "Please Wait", Toast.LENGTH_SHORT).show();
 
 
                     Call<FareQuoteRespone> fareQuoteResponeCall = flightApiService.getFareQuote("application/json", fareQuote);
@@ -504,6 +504,7 @@ public class FlightsSummary extends AppCompatActivity {
 
                             if (response.body().isIsSuccess()) {
 
+                                Toast.makeText(FlightsSummary.this, "Please Wait", Toast.LENGTH_SHORT).show();
 
                                 List<Segment> segments = response.body().getResult().get(0).getSegments().get(0);
 
@@ -618,6 +619,7 @@ public class FlightsSummary extends AppCompatActivity {
 //
                                         try {
                                             if (response.body().getItinerary().getPNR() != null) {
+                                                Toast.makeText(FlightsSummary.this, "Please Wait", Toast.LENGTH_SHORT).show();
 
                                                 FlightTicket flightTicket = new FlightTicket();
                                                 String localIpAddress = getLocalIpAddress();
@@ -643,7 +645,6 @@ public class FlightsSummary extends AppCompatActivity {
 
                                                             SharedPreferencesManger.SaveData(FlightsSummary.this, "pnr", pnr2);
                                                             SharedPreferencesManger.SaveData(FlightsSummary.this, "tokenId2", tokenId2);
-                                                            Toast.makeText(FlightsSummary.this, "successful", Toast.LENGTH_SHORT).show();
 
 
                                                         } catch (Exception e) {
@@ -701,6 +702,7 @@ public class FlightsSummary extends AppCompatActivity {
 
                             }else {
 
+                                flight_progress.setVisibility(View.INVISIBLE);
 
                                 Toast.makeText(FlightsSummary.this, "error", Toast.LENGTH_SHORT).show();
 
@@ -721,6 +723,7 @@ public class FlightsSummary extends AppCompatActivity {
 
                 }else {
 
+                    flight_progress.setVisibility(View.INVISIBLE);
 
                     Toast.makeText(FlightsSummary.this, "error", Toast.LENGTH_SHORT).show();
 
@@ -792,4 +795,12 @@ public class FlightsSummary extends AppCompatActivity {
         return getString(resId);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+        flight_progress.setVisibility(View.INVISIBLE);
+
+    }
 }
