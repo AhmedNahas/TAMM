@@ -191,9 +191,6 @@ public class RoomCartModel {
         To = to;
     }
 
-    public String getFlightNo() {
-        return FlightNo;
-    }
 
     public void setFlightNo(String flightNo) {
         FlightNo = flightNo;
