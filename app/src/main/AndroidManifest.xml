@@ -95,6 +95,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.RoomBooked"
+            android:launchMode = "singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.checkroom"

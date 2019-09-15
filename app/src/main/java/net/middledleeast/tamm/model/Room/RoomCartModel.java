@@ -60,7 +60,7 @@ public class RoomCartModel {
 
 
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
 
