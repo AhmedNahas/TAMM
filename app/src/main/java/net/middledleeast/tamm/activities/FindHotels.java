@@ -102,6 +102,8 @@ public class FindHotels extends AppCompatActivity {
 //    @BindView(R.id.assistant_label_message_find_hotel)
 //    TextView assistantLabelMessageFindHotel;
     Spinner chooseRate;
+    @BindView(R.id.no_of_rooms)
+    Spinner noOfRooms;
     private List<String> listName = new ArrayList<>();
     ArrayList<String> addressHotel = new ArrayList<>();
     private List<String> nameCity = new ArrayList<>();
@@ -198,27 +200,28 @@ public class FindHotels extends AppCompatActivity {
         auth();
 
 
-        iv_booked_find_hotels=findViewById(R.id.iv_booked_find_hotels);
+        iv_booked_find_hotels = findViewById(R.id.iv_booked_find_hotels);
 
         iv_booked_find_hotels.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(FindHotels.this,MyBookActivity.class);
+                Intent intent = new Intent(FindHotels.this, MyBookActivity.class);
                 startActivity(intent);
             }
         });
 //
 
+
+      //  noOfRooms.setAdapter(new ArrayAdapter<Integer>(this,R.layout.item_spener_reg,listOfRooms));
+
+
         areas = findViewById(R.id.area_spinner);
         regions = findViewById(R.id.region_spinner);
 
 
-
-
-
-
-        accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
         try {
+            accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
+
             if (accountPlan == 1) {
 
 
@@ -232,58 +235,57 @@ public class FindHotels extends AppCompatActivity {
                 iv_booked_find_hotels.setVisibility(View.GONE);
 
             }
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
 
 
+        String dayOfTheWeek = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSyear");
+        if (dayOfTheWeek != null) {
+
+            startDateYear.setText(dayOfTheWeek);
+
+            String day = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSday");
+            startDateDay.setText(day);
+
+            String monthString = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSmonth");
+            startDateMonth.setText(monthString);
+
+            String enddayOfTheWeek = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSyear");
+            endDateYear.setText(enddayOfTheWeek);
+
+            String endday = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSday");
+            endDateDay.setText(endday);
+
+            String endmonthString = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSmonth");
+            endDateMonth.setText(endmonthString);
 
 
-    String dayOfTheWeek = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSyear");
-    if (dayOfTheWeek != null) {
+            String nameCountry = SharedPreferencesManger.LoadStringData(FindHotels.this, "nameCountry_");
+            regions.setText(nameCountry);
 
-        startDateYear.setText(dayOfTheWeek);
-
-        String day = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSday");
-        startDateDay.setText(day);
-
-        String monthString = SharedPreferencesManger.LoadStringData(FindHotels.this, "startDateSmonth");
-        startDateMonth.setText(monthString);
-
-        String enddayOfTheWeek = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSyear");
-        endDateYear.setText(enddayOfTheWeek);
-
-        String endday = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSday");
-        endDateDay.setText(endday);
-
-        String endmonthString = SharedPreferencesManger.LoadStringData(FindHotels.this, "endDateSmonth");
-        endDateMonth.setText(endmonthString);
+            String nameCity = SharedPreferencesManger.LoadStringData(FindHotels.this, "name_city_");
+            areas.setText(nameCity);
 
 
-        String nameCountry = SharedPreferencesManger.LoadStringData(FindHotels.this, "nameCountry_");
-        regions.setText(nameCountry);
-
-        String nameCity = SharedPreferencesManger.LoadStringData(FindHotels.this, "name_city_");
-        areas.setText(nameCity);
+        } else {
 
 
-    } else {
+            String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
+            String date_m = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());
+            String date_d = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
 
 
-        String date_n = new SimpleDateFormat("dd", Locale.getDefault()).format(new Date());
-        String date_m = new SimpleDateFormat("MMM", Locale.getDefault()).format(new Date());
-        String date_d = new SimpleDateFormat("EEEE", Locale.getDefault()).format(new Date());
+            endDateDay.setText(date_n);
+            endDateMonth.setText(date_m);
+            endDateYear.setText(date_d);
+            startDateDay.setText(date_n);
+            startDateMonth.setText(date_m);
+            startDateYear.setText(date_d);
+
+            SharedPreferencesManger.SaveData(this, "today_date", date_n + date_m + date_d);
 
 
-        endDateDay.setText(date_n);
-        endDateMonth.setText(date_m);
-        endDateYear.setText(date_d);
-        startDateDay.setText(date_n);
-        startDateMonth.setText(date_m);
-        startDateYear.setText(date_d);
-
-        SharedPreferencesManger.SaveData(this, "today_date", date_n + date_m + date_d);
-
-
-    }
+        }
 
 
 //        simpleProgressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
@@ -293,8 +295,6 @@ public class FindHotels extends AppCompatActivity {
         LayoutInflater inflater = (LayoutInflater) FindHotels.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         room1View = (RelativeLayout) inflater.inflate(R.layout.spinnersfrag2, null);
         frameLayout.addView(room1View);
-        TextView room2 = room1View.findViewById(R.id.no_of_rooms);
-        room2.setText("Room 2");
         Spinner room2Adult = room1View.findViewById(R.id.adilt_count);
         Spinner room2Child = room1View.findViewById(R.id.no_of_childs);
 
@@ -305,28 +305,21 @@ public class FindHotels extends AppCompatActivity {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         room2View = (RelativeLayout) inflater1.inflate(R.layout.spinnersfrag2, null);
         frameLayout1.addView(room2View);
-        TextView room3 = room2View.findViewById(R.id.no_of_rooms);
-        room3.setText("Room 3");
         room3Adult = room2View.findViewById(R.id.adilt_count);
         room3Child = room2View.findViewById(R.id.no_of_childs);
         room3ChildAgeSpinner = room2View.findViewById(R.id.rv_child);
 
-        room3.setVisibility(View.INVISIBLE);
 
         FrameLayout frameLayout2 = findViewById(R.id.frame3);
         LayoutInflater inflater2 = (LayoutInflater) this
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         room3View = (RelativeLayout) inflater2.inflate(R.layout.spinnersfrag2, null);
         frameLayout2.addView(room3View);
-        TextView room4 = room3View.findViewById(R.id.no_of_rooms);
-        room4.setText("Room 4");
         room4Adult = room3View.findViewById(R.id.adilt_count);
         room4Child = room3View.findViewById(R.id.no_of_childs);
-        room4.setVisibility(View.INVISIBLE);
         room4ChildAgeSpinner = room3View.findViewById(R.id.rv_child);
 
 
-        roomCount = findViewById(R.id.no_of_rooms);
         room1Adult = findViewById(R.id.adilt_count);
         childCountRoom1 = findViewById(R.id.no_of_childs);
         chooseNumberOfRoomsSpinner = findViewById(R.id.chooseroom);
@@ -338,10 +331,7 @@ public class FindHotels extends AppCompatActivity {
         room2ChildAgeSpinner = room1View.findViewById(R.id.rv_child);
 
 
-
-
-        if (!isNetworkConnected(this)){
-
+        if (!isNetworkConnected(this)) {
 
 
             new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
@@ -359,15 +349,14 @@ public class FindHotels extends AppCompatActivity {
         }
 
 
+        if (regions.getText().equals("") && regions.getText().equals("COUNTRY")) {
 
-        if (regions.getText().equals("")&&regions.getText().equals("COUNTRY")){
-
-            counttryCheked =false;
+            counttryCheked = false;
 
 
-        }else {
+        } else {
 
-            counttryCheked =true;
+            counttryCheked = true;
         }
 
 //        relativeImgFindHotelTamm = findViewById(R.id.relative_img_find_hotel_tamm);
@@ -422,7 +411,7 @@ public class FindHotels extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                startActivity(new Intent(FindHotels.this, ReserveRoom.class));
-            onBackPressed();
+                onBackPressed();
             }
 
 
@@ -461,9 +450,7 @@ public class FindHotels extends AppCompatActivity {
 //}
 
 
-    getCountries();
-
-
+        getCountries();
 
 
         recycl_child_spiner.setLayoutManager(new GridLayoutManager(this, 2));
@@ -516,15 +503,14 @@ public class FindHotels extends AppCompatActivity {
         }
 
 
-
         // ArrayAdapter adapterRoomCount = new ArrayAdapter(FindHotels.this, R.layout.item_spener, noO);
 
         ArrayAdapter numberOfRoomsAdapter = new ArrayAdapter(this, R.layout.item_spener, noOfROoms);
         numberOfRoomsAdapter.setDropDownViewResource(R.layout.drop_dowen);
-        chooseNumberOfRoomsSpinner.setDropDownWidth(420);
-        chooseNumberOfRoomsSpinner.setDropDownVerticalOffset(200);
-        chooseNumberOfRoomsSpinner.setAdapter(numberOfRoomsAdapter);
-        chooseNumberOfRoomsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        noOfRooms.setDropDownWidth(420);
+        noOfRooms.setDropDownVerticalOffset(200);
+        noOfRooms.setAdapter(numberOfRoomsAdapter);
+        noOfRooms.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -557,15 +543,15 @@ public class FindHotels extends AppCompatActivity {
                         room1View.setVisibility(View.VISIBLE);
                         room2View.setVisibility(View.VISIBLE);
                         room3View.setVisibility(View.INVISIBLE);
-                        room3.setVisibility(View.VISIBLE);
+//                        room3.setVisibility(View.VISIBLE);
 
                         break;
                     case 3:
                         room1View.setVisibility(View.VISIBLE);
                         room2View.setVisibility(View.VISIBLE);
                         room3View.setVisibility(View.VISIBLE);
-                        room3.setVisibility(View.VISIBLE);
-                        room4.setVisibility(View.VISIBLE);
+//                        room3.setVisibility(View.VISIBLE);
+//                        room4.setVisibility(View.VISIBLE);
                         noRomes = 4;
                         break;
 
@@ -741,7 +727,6 @@ public class FindHotels extends AppCompatActivity {
 
             }
         });
-
 
 
         //duplicate for room 2 children
@@ -1013,7 +998,7 @@ public class FindHotels extends AppCompatActivity {
 
 
                 nameCountry = listName.get(adapter2.getPosition(adapter2.getItem(position)));
-                SharedPreferencesManger.SaveData(FindHotels.this,"nameCountry_",nameCountry);
+                SharedPreferencesManger.SaveData(FindHotels.this, "nameCountry_", nameCountry);
                 idCountry = listID.get(adapter2.getPosition(adapter2.getItem(position)));
 
                 getCities(idCountry);
@@ -1121,7 +1106,7 @@ public class FindHotels extends AppCompatActivity {
 
 
                         name_city = nameCity.get(adapter2.getPosition(adapter2.getItem(position)));
-                        SharedPreferencesManger.SaveData(FindHotels.this,"name_city_",name_city);
+                        SharedPreferencesManger.SaveData(FindHotels.this, "name_city_", name_city);
                         ctyId = cities.CityList.get(adapter2.getPosition(adapter2.getItem(position))).CityCode;
 
 
@@ -1321,19 +1306,18 @@ public class FindHotels extends AppCompatActivity {
                 String dayOfTheWeek = (String) DateFormat.format("EEEE", time); // Thursday
                 String day = (String) DateFormat.format("dd", time); // Thursday
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
-                String day2 = (String) DateFormat.format("dd", time+86400000); // Thursday
+                String day2 = (String) DateFormat.format("dd", time + 86400000); // Thursday
 
 
                 SharedPreferencesManger.SaveData(FindHotels.this, "startDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "till ");
 
-                SharedPreferencesManger.SaveData(FindHotels.this, "startDateSyear", dayOfTheWeek );
-                SharedPreferencesManger.SaveData(FindHotels.this, "startDateSday",  day );
-                SharedPreferencesManger.SaveData(FindHotels.this, "startDateSmonth",  monthString);
+                SharedPreferencesManger.SaveData(FindHotels.this, "startDateSyear", dayOfTheWeek);
+                SharedPreferencesManger.SaveData(FindHotels.this, "startDateSday", day);
+                SharedPreferencesManger.SaveData(FindHotels.this, "startDateSmonth", monthString);
 
                 startDateDay.setText(day);
                 startDateMonth.setText(monthString);
                 startDateYear.setText(dayOfTheWeek);
-
 
 
                 endDateDay.setText(day2);
@@ -1407,19 +1391,16 @@ public class FindHotels extends AppCompatActivity {
 
                         SharedPreferencesManger.SaveData(FindHotels.this, "endDateS", dayOfTheWeek + " " + day + " " + monthString + " " + "-" + days + "  nights");
 
-                        SharedPreferencesManger.SaveData(FindHotels.this, "endDateSyear", dayOfTheWeek );
-                        SharedPreferencesManger.SaveData(FindHotels.this, "endDateSday",  day );
-                        SharedPreferencesManger.SaveData(FindHotels.this, "endDateSmonth",  monthString );
-                        SharedPreferencesManger.SaveData(FindHotels.this, "endDateSnights",  days + "  nights");
+                        SharedPreferencesManger.SaveData(FindHotels.this, "endDateSyear", dayOfTheWeek);
+                        SharedPreferencesManger.SaveData(FindHotels.this, "endDateSday", day);
+                        SharedPreferencesManger.SaveData(FindHotels.this, "endDateSmonth", monthString);
+                        SharedPreferencesManger.SaveData(FindHotels.this, "endDateSnights", days + "  nights");
 
                     }
 
 
-                }catch (Exception e){}
-
-
-
-
+                } catch (Exception e) {
+                }
 
 
             }
@@ -1470,7 +1451,7 @@ public class FindHotels extends AppCompatActivity {
 
         //    simpleProgressBar.setVisibility(View.VISIBLE);
 
-        if (isInternetAvailable()){
+        if (isInternetAvailable()) {
 
             if (chicDateStart && chicDateEnd && counttryCheked) {
 
@@ -1514,15 +1495,12 @@ public class FindHotels extends AppCompatActivity {
             }
 
 
-
-        }else {
+        } else {
 
 
             Toast.makeText(this, "no internet", Toast.LENGTH_SHORT).show();
             hideProgressingView();
         }
-
-
 
 
     }
@@ -1546,7 +1524,6 @@ public class FindHotels extends AppCompatActivity {
 
         @Override
         protected HotelSearchResponse doInBackground(Void... voids) {
-
 
 
             try {
@@ -1734,8 +1711,8 @@ public class FindHotels extends AppCompatActivity {
         }
 
 
-
     }
+
     ViewGroup progressView;
     protected boolean isProgressShowing = false;
 
@@ -1756,6 +1733,7 @@ public class FindHotels extends AppCompatActivity {
         viewGroup.removeView(progressView);
         isProgressShowing = false;
     }
+
     public static long formatTimeForEvent(long pacificTime) {
         return (pacificTime + TimeZone.getTimeZone("America/Los_Angeles").getOffset(pacificTime))
                 - TimeZone.getDefault().getOffset(pacificTime);

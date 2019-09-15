@@ -895,275 +895,275 @@ public class GetBookingResponse implements Serializable {
     }
 
 
-    public class Itinerary implements Serializable {
-
-        private final static long serialVersionUID = 4713545162284606969L;
-        @SerializedName("Segments")
-        @Expose
-        private List<Segment> segments = new ArrayList<Segment>();
-        @SerializedName("Passenger")
-        @Expose
-        private List<Passenger> passenger = new ArrayList<Passenger>();
-        @SerializedName("FareRules")
-        @Expose
-        private List<FareRule> fareRules = new ArrayList<FareRule>();
-        @SerializedName("PNR")
-        @Expose
-        private String pNR;
-        @SerializedName("Destination")
-        @Expose
-        private String destination;
-        @SerializedName("LastTicketDate")
-        @Expose
-        private String lastTicketDate;
-        @SerializedName("Origin")
-        @Expose
-        private String origin;
-        @SerializedName("CreatedOn")
-        @Expose
-        private String createdOn;
-        @SerializedName("ValidatingAirlineCode")
-        @Expose
-        private String validatingAirlineCode;
-        @SerializedName("IsDomestic")
-        @Expose
-        private boolean isDomestic;
-        @SerializedName("AirlineCode")
-        @Expose
-        private Object airlineCode;
-        @SerializedName("NonRefundable")
-        @Expose
-        private boolean nonRefundable;
-        @SerializedName("IsLcc")
-        @Expose
-        private boolean isLcc;
-        @SerializedName("AirlineRemark")
-        @Expose
-        private Object airlineRemark;
-
-        /**
-         * No args constructor for use in serialization
-         */
-        public Itinerary() {
-        }
-
-        /**
-         * @param nonRefundable
-         * @param createdOn
-         * @param pNR
-         * @param passenger
-         * @param airlineCode
-         * @param isDomestic
-         * @param segments
-         * @param validatingAirlineCode
-         * @param isLcc
-         * @param origin
-         * @param lastTicketDate
-         * @param airlineRemark
-         * @param fareRules
-         * @param destination
-         */
-        public Itinerary(List<Segment> segments, List<Passenger> passenger, List<FareRule> fareRules, String pNR, String destination, String lastTicketDate, String origin, String createdOn, String validatingAirlineCode, boolean isDomestic, Object airlineCode, boolean nonRefundable, boolean isLcc, Object airlineRemark) {
-            super();
-            this.segments = segments;
-            this.passenger = passenger;
-            this.fareRules = fareRules;
-            this.pNR = pNR;
-            this.destination = destination;
-            this.lastTicketDate = lastTicketDate;
-            this.origin = origin;
-            this.createdOn = createdOn;
-            this.validatingAirlineCode = validatingAirlineCode;
-            this.isDomestic = isDomestic;
-            this.airlineCode = airlineCode;
-            this.nonRefundable = nonRefundable;
-            this.isLcc = isLcc;
-            this.airlineRemark = airlineRemark;
-        }
-
-        public List<Segment> getSegments() {
-            return segments;
-        }
-
-        public void setSegments(List<Segment> segments) {
-            this.segments = segments;
-        }
-
-        public Itinerary withSegments(List<Segment> segments) {
-            this.segments = segments;
-            return this;
-        }
-
-        public List<Passenger> getPassenger() {
-            return passenger;
-        }
-
-        public void setPassenger(List<Passenger> passenger) {
-            this.passenger = passenger;
-        }
-
-        public Itinerary withPassenger(List<Passenger> passenger) {
-            this.passenger = passenger;
-            return this;
-        }
-
-        public List<FareRule> getFareRules() {
-            return fareRules;
-        }
-
-        public void setFareRules(List<FareRule> fareRules) {
-            this.fareRules = fareRules;
-        }
-
-        public Itinerary withFareRules(List<FareRule> fareRules) {
-            this.fareRules = fareRules;
-            return this;
-        }
-
-        public String getPNR() {
-            return pNR;
-        }
-
-        public void setPNR(String pNR) {
-            this.pNR = pNR;
-        }
-
-        public Itinerary withPNR(String pNR) {
-            this.pNR = pNR;
-            return this;
-        }
-
-        public String getDestination() {
-            return destination;
-        }
-
-        public void setDestination(String destination) {
-            this.destination = destination;
-        }
-
-        public Itinerary withDestination(String destination) {
-            this.destination = destination;
-            return this;
-        }
-
-        public String getLastTicketDate() {
-            return lastTicketDate;
-        }
-
-        public void setLastTicketDate(String lastTicketDate) {
-            this.lastTicketDate = lastTicketDate;
-        }
-
-        public Itinerary withLastTicketDate(String lastTicketDate) {
-            this.lastTicketDate = lastTicketDate;
-            return this;
-        }
-
-        public String getOrigin() {
-            return origin;
-        }
-
-        public void setOrigin(String origin) {
-            this.origin = origin;
-        }
-
-        public Itinerary withOrigin(String origin) {
-            this.origin = origin;
-            return this;
-        }
-
-        public String getCreatedOn() {
-            return createdOn;
-        }
-
-        public void setCreatedOn(String createdOn) {
-            this.createdOn = createdOn;
-        }
-
-        public Itinerary withCreatedOn(String createdOn) {
-            this.createdOn = createdOn;
-            return this;
-        }
-
-        public String getValidatingAirlineCode() {
-            return validatingAirlineCode;
-        }
-
-        public void setValidatingAirlineCode(String validatingAirlineCode) {
-            this.validatingAirlineCode = validatingAirlineCode;
-        }
-
-        public Itinerary withValidatingAirlineCode(String validatingAirlineCode) {
-            this.validatingAirlineCode = validatingAirlineCode;
-            return this;
-        }
-
-        public boolean isIsDomestic() {
-            return isDomestic;
-        }
-
-        public void setIsDomestic(boolean isDomestic) {
-            this.isDomestic = isDomestic;
-        }
-
-        public Itinerary withIsDomestic(boolean isDomestic) {
-            this.isDomestic = isDomestic;
-            return this;
-        }
-
-        public Object getAirlineCode() {
-            return airlineCode;
-        }
-
-        public void setAirlineCode(Object airlineCode) {
-            this.airlineCode = airlineCode;
-        }
-
-        public Itinerary withAirlineCode(Object airlineCode) {
-            this.airlineCode = airlineCode;
-            return this;
-        }
-
-        public boolean isNonRefundable() {
-            return nonRefundable;
-        }
-
-        public void setNonRefundable(boolean nonRefundable) {
-            this.nonRefundable = nonRefundable;
-        }
-
-        public Itinerary withNonRefundable(boolean nonRefundable) {
-            this.nonRefundable = nonRefundable;
-            return this;
-        }
-
-        public boolean isIsLcc() {
-            return isLcc;
-        }
-
-        public void setIsLcc(boolean isLcc) {
-            this.isLcc = isLcc;
-        }
-
-        public Itinerary withIsLcc(boolean isLcc) {
-            this.isLcc = isLcc;
-            return this;
-        }
-
-        public Object getAirlineRemark() {
-            return airlineRemark;
-        }
-
-        public void setAirlineRemark(Object airlineRemark) {
-            this.airlineRemark = airlineRemark;
-        }
-
-        public Itinerary withAirlineRemark(Object airlineRemark) {
-            this.airlineRemark = airlineRemark;
-            return this;
-        }
-
-    }
+//    public class Itinerary implements Serializable {
+//
+//        private final static long serialVersionUID = 4713545162284606969L;
+//        @SerializedName("Segments")
+//        @Expose
+//        private List<Segment> segments = new ArrayList<Segment>();
+//        @SerializedName("Passenger")
+//        @Expose
+//        private List<Passenger> passenger = new ArrayList<Passenger>();
+//        @SerializedName("FareRules")
+//        @Expose
+//        private List<FareRule> fareRules = new ArrayList<FareRule>();
+//        @SerializedName("PNR")
+//        @Expose
+//        private String pNR;
+//        @SerializedName("Destination")
+//        @Expose
+//        private String destination;
+//        @SerializedName("LastTicketDate")
+//        @Expose
+//        private String lastTicketDate;
+//        @SerializedName("Origin")
+//        @Expose
+//        private String origin;
+//        @SerializedName("CreatedOn")
+//        @Expose
+//        private String createdOn;
+//        @SerializedName("ValidatingAirlineCode")
+//        @Expose
+//        private String validatingAirlineCode;
+//        @SerializedName("IsDomestic")
+//        @Expose
+//        private boolean isDomestic;
+//        @SerializedName("AirlineCode")
+//        @Expose
+//        private Object airlineCode;
+//        @SerializedName("NonRefundable")
+//        @Expose
+//        private boolean nonRefundable;
+//        @SerializedName("IsLcc")
+//        @Expose
+//        private boolean isLcc;
+//        @SerializedName("AirlineRemark")
+//        @Expose
+//        private Object airlineRemark;
+//
+//        /**
+//         * No args constructor for use in serialization
+//         */
+//        public Itinerary() {
+//        }
+//
+//        /**
+//         * @param nonRefundable
+//         * @param createdOn
+//         * @param pNR
+//         * @param passenger
+//         * @param airlineCode
+//         * @param isDomestic
+//         * @param segments
+//         * @param validatingAirlineCode
+//         * @param isLcc
+//         * @param origin
+//         * @param lastTicketDate
+//         * @param airlineRemark
+//         * @param fareRules
+//         * @param destination
+//         */
+//        public Itinerary(List<Segment> segments, List<Passenger> passenger, List<FareRule> fareRules, String pNR, String destination, String lastTicketDate, String origin, String createdOn, String validatingAirlineCode, boolean isDomestic, Object airlineCode, boolean nonRefundable, boolean isLcc, Object airlineRemark) {
+//            super();
+//            this.segments = segments;
+//            this.passenger = passenger;
+//            this.fareRules = fareRules;
+//            this.pNR = pNR;
+//            this.destination = destination;
+//            this.lastTicketDate = lastTicketDate;
+//            this.origin = origin;
+//            this.createdOn = createdOn;
+//            this.validatingAirlineCode = validatingAirlineCode;
+//            this.isDomestic = isDomestic;
+//            this.airlineCode = airlineCode;
+//            this.nonRefundable = nonRefundable;
+//            this.isLcc = isLcc;
+//            this.airlineRemark = airlineRemark;
+//        }
+//
+//        public List<Segment> getSegments() {
+//            return segments;
+//        }
+//
+//        public void setSegments(List<Segment> segments) {
+//            this.segments = segments;
+//        }
+//
+//        public Itinerary withSegments(List<Segment> segments) {
+//            this.segments = segments;
+//            return this;
+//        }
+//
+//        public List<Passenger> getPassenger() {
+//            return passenger;
+//        }
+//
+//        public void setPassenger(List<Passenger> passenger) {
+//            this.passenger = passenger;
+//        }
+//
+//        public Itinerary withPassenger(List<Passenger> passenger) {
+//            this.passenger = passenger;
+//            return this;
+//        }
+//
+//        public List<FareRule> getFareRules() {
+//            return fareRules;
+//        }
+//
+//        public void setFareRules(List<FareRule> fareRules) {
+//            this.fareRules = fareRules;
+//        }
+//
+//        public Itinerary withFareRules(List<FareRule> fareRules) {
+//            this.fareRules = fareRules;
+//            return this;
+//        }
+//
+//        public String getPNR() {
+//            return pNR;
+//        }
+//
+//        public void setPNR(String pNR) {
+//            this.pNR = pNR;
+//        }
+//
+//        public Itinerary withPNR(String pNR) {
+//            this.pNR = pNR;
+//            return this;
+//        }
+//
+//        public String getDestination() {
+//            return destination;
+//        }
+//
+//        public void setDestination(String destination) {
+//            this.destination = destination;
+//        }
+//
+//        public Itinerary withDestination(String destination) {
+//            this.destination = destination;
+//            return this;
+//        }
+//
+//        public String getLastTicketDate() {
+//            return lastTicketDate;
+//        }
+//
+//        public void setLastTicketDate(String lastTicketDate) {
+//            this.lastTicketDate = lastTicketDate;
+//        }
+//
+//        public Itinerary withLastTicketDate(String lastTicketDate) {
+//            this.lastTicketDate = lastTicketDate;
+//            return this;
+//        }
+//
+//        public String getOrigin() {
+//            return origin;
+//        }
+//
+//        public void setOrigin(String origin) {
+//            this.origin = origin;
+//        }
+//
+//        public Itinerary withOrigin(String origin) {
+//            this.origin = origin;
+//            return this;
+//        }
+//
+//        public String getCreatedOn() {
+//            return createdOn;
+//        }
+//
+//        public void setCreatedOn(String createdOn) {
+//            this.createdOn = createdOn;
+//        }
+//
+//        public Itinerary withCreatedOn(String createdOn) {
+//            this.createdOn = createdOn;
+//            return this;
+//        }
+//
+//        public String getValidatingAirlineCode() {
+//            return validatingAirlineCode;
+//        }
+//
+//        public void setValidatingAirlineCode(String validatingAirlineCode) {
+//            this.validatingAirlineCode = validatingAirlineCode;
+//        }
+//
+//        public Itinerary withValidatingAirlineCode(String validatingAirlineCode) {
+//            this.validatingAirlineCode = validatingAirlineCode;
+//            return this;
+//        }
+//
+//        public boolean isIsDomestic() {
+//            return isDomestic;
+//        }
+//
+//        public void setIsDomestic(boolean isDomestic) {
+//            this.isDomestic = isDomestic;
+//        }
+//
+//        public Itinerary withIsDomestic(boolean isDomestic) {
+//            this.isDomestic = isDomestic;
+//            return this;
+//        }
+//
+//        public Object getAirlineCode() {
+//            return airlineCode;
+//        }
+//
+//        public void setAirlineCode(Object airlineCode) {
+//            this.airlineCode = airlineCode;
+//        }
+//
+//        public Itinerary withAirlineCode(Object airlineCode) {
+//            this.airlineCode = airlineCode;
+//            return this;
+//        }
+//
+//        public boolean isNonRefundable() {
+//            return nonRefundable;
+//        }
+//
+//        public void setNonRefundable(boolean nonRefundable) {
+//            this.nonRefundable = nonRefundable;
+//        }
+//
+//        public Itinerary withNonRefundable(boolean nonRefundable) {
+//            this.nonRefundable = nonRefundable;
+//            return this;
+//        }
+//
+//        public boolean isIsLcc() {
+//            return isLcc;
+//        }
+//
+//        public void setIsLcc(boolean isLcc) {
+//            this.isLcc = isLcc;
+//        }
+//
+//        public Itinerary withIsLcc(boolean isLcc) {
+//            this.isLcc = isLcc;
+//            return this;
+//        }
+//
+//        public Object getAirlineRemark() {
+//            return airlineRemark;
+//        }
+//
+//        public void setAirlineRemark(Object airlineRemark) {
+//            this.airlineRemark = airlineRemark;
+//        }
+//
+//        public Itinerary withAirlineRemark(Object airlineRemark) {
+//            this.airlineRemark = airlineRemark;
+//            return this;
+//        }
+//
+//    }
 
 
     public class Meal implements Serializable {

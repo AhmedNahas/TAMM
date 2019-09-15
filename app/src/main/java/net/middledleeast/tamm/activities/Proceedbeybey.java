@@ -61,9 +61,10 @@ public class Proceedbeybey extends AppCompatActivity {
             }
         });
 
-        accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
 
         try {
+            accountPlan = SharedPreferencesManger.LoadIntegerData(this, "accountPlan");
+
             if (accountPlan == 1) {
 
                 iv_booked_proceed.setVisibility(View.VISIBLE);

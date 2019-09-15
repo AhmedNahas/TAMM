@@ -283,7 +283,6 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
                                                          possiblerooms.addAll(roomCombination.RoomIndex);
 
-
                                                      }
 
 

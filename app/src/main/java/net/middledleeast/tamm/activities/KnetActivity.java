@@ -3,9 +3,10 @@ package net.middledleeast.tamm.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,10 +15,12 @@ import net.middledleeast.tamm.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class KnetActivity extends AppCompatActivity {
+public class KnetActivity extends AppCompatActivity  implements View.OnClickListener{
 
     @BindView(R.id.webview_knet)
     WebView webviewKnet;
+    @BindView(R.id.loadWebPage)
+    Button loadWebPage;
 
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -27,6 +30,8 @@ public class KnetActivity extends AppCompatActivity {
         setContentView(R.layout.knet);
         ButterKnife.bind(this);
 
+
+        loadWebPage.setOnClickListener(this);
         webviewKnet.setWebViewClient(new MyWebViewClient());
         String url = "http://www.egyptgoogle.com/k";
         webviewKnet.getSettings().setJavaScriptEnabled(true);
@@ -35,7 +40,16 @@ public class KnetActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.loadWebPage:
 
+                startActivity(new Intent(KnetActivity.this, RoomBooked.class));
+
+                break;
+        }
+    }
 
     private class MyWebViewClient extends WebViewClient {
         @Override
@@ -44,20 +58,7 @@ public class KnetActivity extends AppCompatActivity {
             return true;
         }
 
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            super.onPageFinished(view, url);
-            if (url.contains("CAPTURED"))
-            {
-                startActivity(new Intent(KnetActivity.this, RoomBooked.class));
-
-            }else{
-
-                Toast.makeText(KnetActivity.this, "Failed Unknown Error() 2145012114(Json)  ", Toast.LENGTH_SHORT).show();
-
-            }
-        }
-    }
+}
 //        WebSettings webSettings = webviewKnet.getSettings();
 //        webSettings.setJavaScriptEnabled(true);
 //

@@ -5,16 +5,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.adapters.FlightTransitAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
@@ -28,14 +32,17 @@ import FlightApi.Fare;
 import FlightApi.FareQuote;
 import FlightApi.FareQuoteRespone;
 import FlightApi.FareRuleRequest;
-import FlightApi.FareRuleResponse;
 import FlightApi.FlightApiService;
-import FlightApi.FlightAuthentication;
-import FlightApi.FlightConstants;
+import FlightApi.FlightTicket;
 import FlightApi.GetBookingResponse;
 import FlightApi.Itinerary;
+import FlightApi.Nationality;
 import FlightApi.Passenger;
+import FlightApi.SearchFlightsResponse;
 import FlightApi.Segment;
+import FlightApi.TicketResponse;
+import FlightApi.fare_rules.FareRule;
+import FlightApi.fare_rules.FareRuleResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -46,6 +53,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static net.middledleeast.tamm.helper.helperMethod.getLocalIpAddress;
 
 public class FlightsSummary extends AppCompatActivity {
 
@@ -66,12 +75,8 @@ public class FlightsSummary extends AppCompatActivity {
     TextView tvTo;
     @BindView(R.id.tv_dxb)
     TextView tvDxb;
-    @BindView(R.id.tv_country)
-    TextView tvCountry;
-    @BindView(R.id.tv_ccountry)
-    TextView tvCcountry;
     @BindView(R.id.relative_country)
-    RelativeLayout relativeCountry;
+    RecyclerView relativeCountry;
     @BindView(R.id.tv_flight)
     TextView tvFlight;
     @BindView(R.id.iv_icon)
@@ -106,12 +111,8 @@ public class FlightsSummary extends AppCompatActivity {
     TextView tvTo2;
     @BindView(R.id.tv_dxb2)
     TextView tvDxb2;
-    @BindView(R.id.tv_country2)
-    TextView tvCountry2;
-    @BindView(R.id.tv_ccountry2)
-    TextView tvCcountry2;
     @BindView(R.id.relative_country2)
-    RelativeLayout relativeCountry2;
+    RecyclerView relativeCountry2;
     @BindView(R.id.tv_flight2)
     TextView tvFlight2;
     @BindView(R.id.iv_icon2)
@@ -148,6 +149,8 @@ public class FlightsSummary extends AppCompatActivity {
     RelativeLayout relativeAll;
     @BindView(R.id.tv_cambainBages)
     TextView tvCambainBages;
+    @BindView(R.id.tvDirect_)
+    TextView tvDirect;
     private long flightCabinClass;
     private Retrofit retrofit;
     private String password;
@@ -167,57 +170,21 @@ public class FlightsSummary extends AppCompatActivity {
             datebirthinfant,
             nationality_adult,
             nationality_child,
-            nationality_infant;
-    private String countryNameOrogin1, airlineCode_,
-            countryNameDestination1,
-            cabinBaggage,
-            CityNameDestination1,
-            CityNameOrogin1,
-            groundTime,
-            Direct,
-            additionalBaggage,
-            flightNumberSize1,
-            departureTime,
-            arrivalTime,
-            countryCodeDestnation1,
-            countryCodeOrigin1;
-    private String airlinenName;
+            nationality_infant, resultId,
+            tokenId,
+            trackingId;
+
     RelativeLayout relative_back_flight_summary;
     ImageView iv_booked_flight_summary;
 
-    private String airlineCode, countryNameOrogin1Return,
-            countryNameDestination1Return,
-            cabinBaggageReturn,
-            CityNameDestination1Return,
-            CityNameOrogin1Return,
-            groundTimeReturn,
-            directReturn,
-            additionalBaggageReturn,
-            flightNumberSize1Return,
-            departureTime_Return,
-            arrivalTime_Return,
-            countryCodeDestnation1Return,
-            countryCodeOrigin1Return;
-    private String airlineReturn;
-    private String bookingClassReturn;
-    private String airlineCode_return;
+
     TextView assistantLabelVoiceRenewHotel;
     RelativeLayout relativeImgRenewHotelTamm;
     TextView assistantLabelCallRenewHotel;
     TextView assistantLabelMessageRenewHotel;
     private boolean ClickRenewHotel = false;
-    //  private List<FareQuoteRespone.Result> result;
-    double baseFare,
-            serviceFee,
-            tax;
-    private List<Segment> segmentsList = new ArrayList<>();
-    private String resultId,
-            tokenId,
-            trackingId;
-    private String origin, destination;
-//    private FareRuleResponse.FareRule fareRule1;
-
-    private String lastTicketDate, validatingAirline;
+    FlightTransitAdapter flightTransitAdapter;
+    ProgressBar flight_progress;
 
 
     @Override
@@ -228,8 +195,13 @@ public class FlightsSummary extends AppCompatActivity {
         ButterKnife.bind(this);
         password = getString(R.string.passowrd_flight);
 
-        resultId = SharedPreferencesManger.LoadStringData(this, "resultId");
 
+        flight_progress = findViewById(R.id.flight_progress);
+
+
+        flight_progress.setVisibility(View.INVISIBLE);
+
+        resultId = SharedPreferencesManger.LoadStringData(this, "resultId");
 
         tokenId = SharedPreferencesManger.LoadStringData(this, "tokenId");
         trackingId = SharedPreferencesManger.LoadStringData(this, "trackingId");
@@ -313,95 +285,112 @@ public class FlightsSummary extends AppCompatActivity {
         });
 
 
-        int journyTipe = SharedPreferencesManger.LoadIntegerData(this, "journyTipe");
+        MDataMrmisAdult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult");
+        MDataMrmisChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisChild");
+        MDataMrmisInfent = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisInfent");
 
-        int size = SharedPreferencesManger.LoadIntegerData(FlightsSummary.this, "size");
-        int sizeReturn = SharedPreferencesManger.LoadIntegerData(FlightsSummary.this, "sizeReturn");
+        //first
+        firstNameAduld = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld");
+        firstNameChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameChild");
+        firstNameInfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameInfant");
 
-
-        if (journyTipe == 1 && size == 1) {
-
-            closure.setVisibility(View.GONE);
-
-            setDataOneWayDirect();
-
-
-        } else if (journyTipe == 2 && sizeReturn == 1) {
-
-            setDataOneWayDirect();
-
-            closure.setVisibility(View.VISIBLE);
-
-            countryNameOrogin1Return = SharedPreferencesManger.LoadStringData(this, "countryNameOrogin1Return");
-
-            countryNameDestination1Return = SharedPreferencesManger.LoadStringData(this, "countryNameDestination1Return");
-
-            cabinBaggageReturn = SharedPreferencesManger.LoadStringData(this, "cabinBaggageReturn");
-
-            CityNameDestination1Return = SharedPreferencesManger.LoadStringData(this, "CityNameDestination1Return");
-
-            CityNameOrogin1Return = SharedPreferencesManger.LoadStringData(this, "CityNameOrogin1Return");
+        //last
+        lastNameAduld = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld");
+        lastNameChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameChild");
+        lastNameInfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameInfant");
 
 
-            groundTimeReturn = SharedPreferencesManger.LoadStringData(this, "groundTimeReturn");
+        //date
+        datebirthadult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult");
+        datebirthchild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthchild");
+        datebirthinfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthinfant");
 
-            directReturn = SharedPreferencesManger.LoadStringData(this, "directReturn");
-
-            additionalBaggageReturn = SharedPreferencesManger.LoadStringData(this, "additionalBaggageReturn");
-
-
-            flightNumberSize1Return = SharedPreferencesManger.LoadStringData(this, "flightNumberSize1Return");
-
-            departureTime_Return = SharedPreferencesManger.LoadStringData(this, "departureTimeReturn");
-
-            arrivalTime_Return = SharedPreferencesManger.LoadStringData(this, "arrivalTimeReturn");
-
-            countryCodeDestnation1Return = SharedPreferencesManger.LoadStringData(this, "countryCodeDestnation1Return");
-
-            countryCodeOrigin1Return = SharedPreferencesManger.LoadStringData(this, "countryCodeOrigin1Return");
-            airlineReturn = SharedPreferencesManger.LoadStringData(this, "airlineReturn");
-            bookingClassReturn = SharedPreferencesManger.LoadStringData(this, "bookingClassReturn");
-            airlineCode_return = SharedPreferencesManger.LoadStringData(this, "airlineCode_return");
+        // nationality
+        nationality_adult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult");
+        nationality_child = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_child");
+        nationality_infant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_infant");
 
 
-            tvBey2.setText(countryCodeOrigin1Return);
-            tvDxb2.setText(countryCodeDestnation1Return);
-            tvCountry2.setText(CityNameOrogin1Return);
-            tvCcountry2.setText(CityNameDestination1Return);
-            tvFlight2.setText(
-                    "Flight Nb: " + flightNumberSize1Return);
-            tvAirline2.setText(airlineReturn);
-            tvTime2.setText(groundTimeReturn);
-            tvKg2.setText(additionalBaggageReturn);
-            tvCabinClass2.setText(bookingClassReturn);
-
-            ivIcon2.setImageResource(getResources().getIdentifier(airlineCode_return, "drawable", getPackageName()));
+        closure.setVisibility(View.GONE);
 
 
-            String[] detimeSplit = departureTime_Return.split("T");
+        List<SearchFlightsResponse.Segment> segments = (List<SearchFlightsResponse.Segment>) getIntent().getSerializableExtra("segments");
 
-            String datDe = detimeSplit[0];
-            String timeD = detimeSplit[1];
+        relativeCountry.setLayoutManager(new LinearLayoutManager(this));
 
-            tvDateDeparture2.setText("DATE : " + datDe);
-            tvDeparture2.setText("Departure : " + timeD);
-
-
-            String[] arrSplit = arrivalTime_Return.split("T");
-            String arrDate = arrSplit[0];
-            String arrTime = arrSplit[1];
-
-            dateArrival2.setText("DATE : " + arrDate);
+        flightTransitAdapter = new FlightTransitAdapter(this, segments);
+        relativeCountry.setAdapter(flightTransitAdapter);
+        flightTransitAdapter.notifyDataSetChanged();
 
 
-            tvArrival2.setText("Arrive : " + arrTime);
+        String airlineName = segments.get(0).getAirlineName();
+
+        String flightNumber = segments.get(0).getFlightNumber();
+
+        String countryCodeOrigin = segments.get(0).getOrigin().getCountryCode();
+
+        String countryDestinationCode = segments.get(0).getDestination().getCountryCode();
+
+
+        String cabinBaggage = (String) segments.get(0).getCabinBaggage();
+
+        tvFlight.setText("Flight Nb: " + flightNumber);
+
+        String accumulatedDuration = segments.get(0).getGroundTime();
+        String additionalBaggage = (String) segments.get(0).getAdditionalBaggage();
+
+
+        String airline = "A" + segments.get(0).getAirlineDetails().getAirlineCode();
+        String stringResourceByName = getStringResourceByName(airline);
+
+        tvAirline.setText(stringResourceByName);
+
+        String bookingClass = segments.get(0).getBookingClass();
+        String airlineCode_ = "a" + segments.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
+        ivIcon.setImageResource(getResources().getIdentifier(airlineCode_, "drawable", getPackageName()));
+
+        tvTime.setText(accumulatedDuration);
+        tvCambainBages.setText(cabinBaggage);
+        tvKg.setText(additionalBaggage);
+        tvCabinClass.setText("Booking Class is : " + bookingClass);
+
+        String departureTime = segments.get(0).getDepartureTime();
+        String[] detimeSplit = departureTime.split("T");
+
+        String datDe = detimeSplit[0];
+        String timeD = detimeSplit[1];
+
+        tvDateDeparture.setText("DATE : " + datDe);
+        tvDeparture.setText("Departure : " + timeD);
+
+        String arrivalTime = segments.get(0).getArrivalTime();
+        String[] arrSplit = arrivalTime.split("T");
+        String arrDate = arrSplit[0];
+        String arrTime = arrSplit[1];
+
+        dateArrival.setText("DATE : " + arrDate);
+
+
+        tvArrival.setText("Arrive : " + arrTime);
+
+
+        String to = SharedPreferencesManger.LoadStringData(this, "to");
+        String from = SharedPreferencesManger.LoadStringData(this, "from");
+
+
+        tvBey.setText(from);
+        tvDxb.setText(to);
+
+
+        if (segments.size() > 1) {
+
+            tvDirect.setText("Transit");
+
+            tvDirect.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.transit, 0, 0, 0);
+
 
 
         }
-
-
-        SharedPreferencesManger.remove(FlightsSummary.this, "departureTime");
-        SharedPreferencesManger.remove(FlightsSummary.this, "arrivalTime");
 
 
         flightCabinClass = SharedPreferencesManger.LoadLongData(this, "flightCabinClass");
@@ -440,118 +429,12 @@ public class FlightsSummary extends AppCompatActivity {
         }
 
 
-
-    }
-
-
-    private void setDataOneWayDirect() {
-
-
-        MDataMrmisAdult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult");
-        MDataMrmisChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisChild");
-        MDataMrmisInfent = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisInfent");
-
-        //first
-        firstNameAduld = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld");
-        firstNameChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameChild");
-        firstNameInfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameInfant");
-
-        //last
-        lastNameAduld = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld");
-        lastNameChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameChild");
-        lastNameInfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameInfant");
-
-
-        //date
-        datebirthadult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult");
-        datebirthchild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthchild");
-        datebirthinfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthinfant");
-
-        // nationality
-        nationality_adult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult");
-        nationality_child = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_child");
-        nationality_infant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_infant");
-
-
-        String bookingClass = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "bookingClass");
-        airlinenName = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "airline");
-
-
-        airlineCode_ = SharedPreferencesManger.LoadStringData(this, "logoOneWaySize1");
-
-
-        ivIcon.setImageResource(getResources().getIdentifier(airlineCode_, "drawable", getPackageName()));
-
-
-        countryNameOrogin1 = SharedPreferencesManger.LoadStringData(this, "countryNameOrogin1");
-
-        countryNameDestination1 = SharedPreferencesManger.LoadStringData(this, "countryNameDestination1");
-
-        cabinBaggage = SharedPreferencesManger.LoadStringData(this, "cabinBaggage");
-
-        CityNameDestination1 = SharedPreferencesManger.LoadStringData(this, "CityNameDestination1");
-
-        CityNameOrogin1 = SharedPreferencesManger.LoadStringData(this, "CityNameOrogin1");
-
-
-        groundTime = SharedPreferencesManger.LoadStringData(this, "groundTime");
-
-        Direct = SharedPreferencesManger.LoadStringData(this, "direct");
-
-        additionalBaggage = SharedPreferencesManger.LoadStringData(this, "additionalBaggage");
-
-
-        flightNumberSize1 = SharedPreferencesManger.LoadStringData(this, "flightNumberSize1");
-
-        departureTime = SharedPreferencesManger.LoadStringData(this, "departureTime");
-
-        arrivalTime = SharedPreferencesManger.LoadStringData(this, "arrivalTime");
-
-        countryCodeDestnation1 = SharedPreferencesManger.LoadStringData(this, "countryCodeDestnation1");
-
-        countryCodeOrigin1 = SharedPreferencesManger.LoadStringData(this, "countryCodeOrigin1");
-
-
-        tvBey.setText(countryCodeOrigin1);
-        tvCountry.setText(CityNameOrogin1);
-
-        tvDxb.setText(countryCodeDestnation1);
-        tvCcountry.setText(CityNameDestination1);
-
-        tvFlight.setText("Flight Nb: " + flightNumberSize1);
-
-        tvAirline.setText(airlinenName);
-        tvTime.setText(groundTime);
-        tvCambainBages.setText(cabinBaggage);
-        tvKg.setText(additionalBaggage);
-        tvCabinClass.setText(bookingClass);
-
-
-        String[] detimeSplit = departureTime.split("T");
-
-        String datDe = detimeSplit[0];
-        String timeD = detimeSplit[1];
-
-        tvDateDeparture.setText("DATE : " + datDe);
-        tvDeparture.setText("Departure : " + timeD);
-
-
-        String[] arrSplit = arrivalTime.split("T");
-        String arrDate = arrSplit[0];
-        String arrTime = arrSplit[1];
-
-        dateArrival.setText("DATE : " + arrDate);
-
-
-        tvArrival.setText("Arrive : " + arrTime);
-
-
     }
 
 
     private void BookingFlight() {
 
-
+        flight_progress.setVisibility(View.VISIBLE);
         Gson gson = new GsonBuilder()
                 .create();
 
@@ -559,17 +442,17 @@ public class FlightsSummary extends AppCompatActivity {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
 
-        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).connectTimeout(100, TimeUnit.SECONDS)
-                .readTimeout(100, TimeUnit.SECONDS).build();
+        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).connectTimeout(0, TimeUnit.SECONDS)
+                .readTimeout(0, TimeUnit.SECONDS).build();
 
         connectAndGetApiData(gson, client);
         FlightApiService flightApiService = retrofit.create(FlightApiService.class);
 
-        final FlightAuthentication[] flightAuthentication = {new FlightAuthentication()};
-        flightAuthentication[0].setUserName(FlightConstants.API_USER_NAME);
-        flightAuthentication[0].setPassword(password);
-        flightAuthentication[0].setBookingMode("API");
-        flightAuthentication[0].setIPAddress("192.168.4.238");
+//        final FlightAuthentication[] flightAuthentication = {new FlightAuthentication()};
+//        flightAuthentication[0].setUserName(FlightConstants.API_USER_NAME);
+//        flightAuthentication[0].setPassword(password);
+//        flightAuthentication[0].setBookingMode("API");
+//        flightAuthentication[0].setIPAddress("192.168.4.238");
 
         //--------------------------------------------------------------
 
@@ -580,19 +463,23 @@ public class FlightsSummary extends AppCompatActivity {
         fareRules.setResultId(resultId);
         fareRules.setTokenId(tokenId);
         fareRules.setTrackingId(trackingId);
-        fareRules.setPointOfSale("AE");
-        fareRules.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
-        fareRules.setIPAddress("192.168.4.238");
-        fareRules.setRequestOrigin("Egypt");
+//        fareRules.setPointOfSale("DOH");
+//        fareRules.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
+//        fareRules.setIPAddress("192.168.4.238");
+//        fareRules.setRequestOrigin("Doha International");
 
         Call<FareRuleResponse> fareRuleResponseCall = flightApiService.getFareRuleResponse("application/json", fareRules);
         fareRuleResponseCall.enqueue(new Callback<FareRuleResponse>() {
             @Override
             public void onResponse(Call<FareRuleResponse> call, Response<FareRuleResponse> response) {
 
-           //     List<FareRule> fareRulesList = response.body().getFareRules().get(0);
+
+                okhttp3.Response raw = response.raw();
+                List<FareRule> fareRulesList = response.body().getFareRules().get(0);
 
 
+                String tokenId = response.body().getTokenId();
+                String trackingId = response.body().getTrackingId();
                 FareQuote fareQuote = new FareQuote();
 
                 fareQuote.setResultId(resultId);
@@ -600,139 +487,259 @@ public class FlightsSummary extends AppCompatActivity {
                 fareQuote.setTrackingId(trackingId);
                 fareQuote.setPointOfSale("AE");
                 fareQuote.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
-                fareQuote.setIPAddress("192.168.4.238");
+                String localIpAddress = getLocalIpAddress();
+
+                fareQuote.setIPAddress(localIpAddress);
                 fareQuote.setRequestOrigin("Egypt");
 
-                Call<FareQuoteRespone> fareQuoteResponeCall = flightApiService.getFareQuote("application/json", fareQuote);
-                fareQuoteResponeCall.enqueue(new Callback<FareQuoteRespone>() {
-                    @Override
-                    public void onResponse(Call<FareQuoteRespone> call, Response<FareQuoteRespone> response) {
+
+                if (response.body().getIsSuccess()) {
 
 
-                        airlineCode = response.body().getResult().get(0).getSegments().get(0).get(0).getAirlineDetails().getAirlineCode();
-                        departureTime = response.body().getResult().get(0).getSegments()
-                                .get(0).get(0).getDepartureTime();
-                        destination = response.body().getResult().get(0).getDestination();
-                        segmentsList = response.body().getResult().get(0).getSegments().get(0);
-                        origin = response.body().getResult().get(0).getOrigin();
-                        Fare fare = response.body().getResult().get(0).getFare();
-                        lastTicketDate = (String) response.body().getResult().get(0).getLastTicketDate();
-                        validatingAirline = response.body().getResult().get(0).getValidatingAirline();
+                    Call<FareQuoteRespone> fareQuoteResponeCall = flightApiService.getFareQuote("application/json", fareQuote);
+                    fareQuoteResponeCall.enqueue(new Callback<FareQuoteRespone>() {
+                        @Override
+                        public void onResponse(Call<FareQuoteRespone> call, Response<FareQuoteRespone> response) {
 
 
-                        BookFlight book = new BookFlight();
-
-                        book.setTrackingId(trackingId);
-                        book.setResultId(resultId);
-                        book.setTokenId(tokenId);
-                        //   book.setIPAddress("192.168.4.238");
-
-                        Itinerary itinerary = new Itinerary();
-                        itinerary.setOrigin(origin);
-                        itinerary.setDestination(destination);
+                            if (response.body().isIsSuccess()) {
 
 
-                        Passenger passenger = new Passenger();
+                                List<Segment> segments = response.body().getResult().get(0).getSegments().get(0);
 
-                        passenger.setFare(fare);
-                        passenger.setAddressLine1("cairo");
-                        passenger.setAddressLine2("cairo");
-                        City city = new City();
-                        city.setCityCode("CAI");
-                        city.setCityName("cairo");
-                        city.setCountryCode("Egypt");
-                        passenger.setCity(city);
-                        Country country = new Country();
-                        country.setCountryCode("EG");
-                        country.setCountryName("Egypt");
-                        passenger.setCountry(country);
-                        passenger.setEmail("abdallah@yahoo.com");
-                        passenger.setFirstName("abdallah");
-                        passenger.setGender(1);
-                        passenger.setIsLeadPax(true);
-                        passenger.setLastName("mohamed");
-                        passenger.setType(1);
-                        passenger.setTitle("MS");
+                                String flightNumber = segments.get(0).getFlightNumber();
+
+                                String airlineCode = segments.get(0).getAirlineDetails().getAirlineCode();
+
+                                String departureTime = segments.get(0).getDepartureTime();
+                                String arrivalTime = segments.get(0).getArrivalTime();
 
 
-                        itinerary.setSegments(segmentsList);
+                                String destination = response.body().getResult().get(0).getDestination();
+                                String origin = response.body().getResult().get(0).getOrigin();
+                                Fare fare = response.body().getResult().get(0).getFare();
+                                Object lastTicketDate = response.body().getResult().get(0).getLastTicketDate();
+                                String validatingAirline = response.body().getResult().get(0).getValidatingAirline();
 
-                        itinerary.setTravelDate("2019-09-09T15:41:03.964386+00:00");
+                                String tokenId1 = response.body().getTokenId();
+                                String trackingId1 = response.body().getTrackingId();
 
-                        itinerary.setDestination(destination);
+                                BookFlight book = new BookFlight();
 
+                                book.setTrackingId(trackingId1);
+                                book.setResultId(resultId);
+                                book.setTokenId(tokenId1);
 
-                     //   itinerary.setFareRules(fareRulesList);
-
-                        itinerary.setValidatingAirlineCode(validatingAirline);
-                        ArrayList<Passenger> passengerList = new ArrayList<>();
-                        passengerList.add(passenger);
-                        itinerary.setPassenger(passengerList);
-                        itinerary.setIsLcc(false);
-                        itinerary.setAirlineCode((String) airlineCode);
-                        book.setItinerary(itinerary);
-
-
-                        Call<GetBookingResponse> flightBookCall = flightApiService.getFlightBook("application/json", book);
+                                String localIpAddress = getLocalIpAddress();
 
 
-                        flightBookCall.enqueue(new Callback<GetBookingResponse>() {
-                            @Override
-                            public void onResponse(Call<GetBookingResponse> call, Response<GetBookingResponse> response) {
+                                book.setiPAddress(localIpAddress);
+                                book.setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
+
+                                Itinerary itinerary = new Itinerary();
+                                itinerary.setOrigin(origin);
+                                itinerary.setDestination(destination);
+
+
+                                Passenger passenger = new Passenger();
+
+                                passenger.setFare(fare);
+                                passenger.setAddressLine1("cairo");
+                                passenger.setAddressLine2("cairo");
+                                City city = new City();
+                                city.setCityCode("CAI");
+                                city.setCityName("cairo");
+                                city.setCountryCode("Egypt");
+                                passenger.setCity(city);
+                                Country country = new Country();
+                                country.setCountryCode("EG");
+                                country.setCountryName("Egypt");
+                                passenger.setCountry(country);
+                                passenger.setEmail("abdallah@yahoo.com");
+                                passenger.setFirstName(firstNameAduld);
+                                passenger.setGender(1);
+                                passenger.setIsLeadPax(true);
+                                passenger.setLastName(lastNameAduld);
+                                passenger.setType(1);
+                                passenger.setTitle(MDataMrmisAdult);
+                                Nationality nationality = new Nationality();
+
+                                nationality.setCountryCode("KW");
+                                nationality.setCountryName("Kuwait");
+                                passenger.setNationality(nationality);
+
+                                passenger.setDateOfBirth(datebirthadult);
+
+                                passenger.setFFNumber(flightNumber);
+                                passenger.setMobile1("");
+                                passenger.setMobile1CountryCode("");
+
+
+                                String passportNo = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportNo");
+                                String passportIssue = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportIssue");
+                                String passportEnd = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportEnd");
+
+                                passenger.setPassportExpiry(passportEnd);
+                                passenger.setPassportIssueCountryCode("2365");
+                                passenger.setPassportIssueDate(passportIssue);
+                                passenger.setPassportNo(passportNo);
+
+
+                                itinerary.setTravelDate(departureTime);
+
+                                itinerary.setTravelDate(arrivalTime);
+
+
+                                itinerary.setAirlineCode(airlineCode);
+                                itinerary.setLastTicketDate((String) lastTicketDate);
+                                itinerary.setValidatingAirlineCode(validatingAirline);
+                                itinerary.setSegments(segments);
+
+                                itinerary.setFareRules(fareRulesList);
+
+                                ArrayList<Passenger> passengerList = new ArrayList<>();
+                                passengerList.add(passenger);
+                                itinerary.setPassenger(passengerList);
+                                itinerary.setIsLcc(false);
+                                book.setItinerary(itinerary);
+
+
+                                Call<GetBookingResponse> flightBookCall = flightApiService.getFlightBook("application/json", book);
+
+
+                                flightBookCall.enqueue(new Callback<GetBookingResponse>() {
+                                    @Override
+                                    public void onResponse(Call<GetBookingResponse> call, Response<GetBookingResponse> response) {
+
+
+                                        Itinerary itinerary1 = response.body().getItinerary();
+
+//
+//
+                                        try {
+                                            if (response.body().getItinerary().getPNR() != null) {
+
+                                                FlightTicket flightTicket = new FlightTicket();
+                                                String localIpAddress = getLocalIpAddress();
+                                                flightTicket.setIPAddress(localIpAddress);
+
+                                                flightTicket.setResultId(resultId);
+                                                flightTicket.setTokenId(tokenId);
+                                                flightTicket.setTrackingId(trackingId);
+                                                flightTicket.setPNR(response.body().getItinerary().getPNR());
+
+                                                flightTicket.setItinerary(itinerary1);
+
+                                                flightApiService.getFlightTicket("application/json", flightTicket).enqueue(new Callback<TicketResponse>() {
+                                                    @Override
+                                                    public void onResponse(Call<TicketResponse> call, Response<TicketResponse> response) {
+
+                                                        try {
+
+                                                            okhttp3.Response raw = response.raw();
+                                                            String pnr2 = response.body().getItinerary().getPNR();
+                                                            String tokenId2 = response.body().getTokenId();
+
+
+                                                            SharedPreferencesManger.SaveData(FlightsSummary.this, "pnr", pnr2);
+                                                            SharedPreferencesManger.SaveData(FlightsSummary.this, "tokenId2", tokenId2);
+                                                            Toast.makeText(FlightsSummary.this, "successful", Toast.LENGTH_SHORT).show();
+
+
+                                                        } catch (Exception e) {
+                                                        }
+                                                        double totalFare = response.body().getItinerary().getPassenger().get(0).getFare().getTotalFare();
+
+                                                        Intent intent = new Intent(FlightsSummary.this, PaymentActivity.class);
+
+                                                        intent.putExtra("totalFare", String.valueOf(totalFare));
+                                                        intent.putExtra("mId", 3);
+
+                                                        startActivity(intent);
+
+
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Call<TicketResponse> call, Throwable t) {
+                                                        flight_progress.setVisibility(View.INVISIBLE);
+
+                                                    }
+                                                });
 
 
 //
-                                response.raw().body();
-                                long status = response.body().getStatus();
-                                String tokenId1 = response.body().getTokenId();
-                                String pnr = response.body().getItinerary().getPNR();
+//                                           Intent intent = new Intent(FlightsSummary.this,PaymentActivity.class);
+//
+//                                           intent.putExtra("totalFare",totalFare);
+//                                           intent.putExtra("mId",3);
+//
+//                                           startActivity(intent);
+                                            }
+                                        }catch (Exception e){
 
+                                            flight_progress.setVisibility(View.INVISIBLE);
+
+                                            Toast.makeText(FlightsSummary.this, "error"+e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                                        }
+
+
+
+
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<GetBookingResponse> call, Throwable t) {
+                                        t.getMessage();
+
+
+                                        flight_progress.setVisibility(View.INVISIBLE);
+
+                                    }
+                                });
+
+                            }else {
+
+
+                                Toast.makeText(FlightsSummary.this, "error", Toast.LENGTH_SHORT).show();
 
                             }
 
-                            @Override
-                            public void onFailure(Call<GetBookingResponse> call, Throwable t) {
-                                t.getMessage();
-                            }
-                        });
+
+                        }
 
 
+                        @Override
+                        public void onFailure(Call<FareQuoteRespone> call, Throwable t) {
+                            flight_progress.setVisibility(View.INVISIBLE);
+
+                            t.getMessage();
+                        }
+                    });
 
 
+                }else {
 
 
+                    Toast.makeText(FlightsSummary.this, "error", Toast.LENGTH_SHORT).show();
 
+                }
 
-
-
-
-
-
-
-                    }
-
-
-                    @Override
-                    public void onFailure(Call<FareQuoteRespone> call, Throwable t) {
-
-                        t.getMessage();
-                    }
-                });
-
-
+//
 
 
             }
 
             @Override
             public void onFailure(Call<FareRuleResponse> call, Throwable t) {
+                flight_progress.setVisibility(View.INVISIBLE);
 
                 t.getMessage();
             }
         });
 
         //-------------------------------------------------------------------
-
 
 
 //
@@ -776,6 +783,13 @@ public class FlightsSummary extends AppCompatActivity {
                     .build();
         }
         return retrofit;
+    }
+
+
+    private String getStringResourceByName(String aString) {
+        String packageName = getPackageName();
+        int resId = getResources().getIdentifier(aString, "string", packageName);
+        return getString(resId);
     }
 
 }

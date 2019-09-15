@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.text.format.Formatter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,10 +35,14 @@ import net.middledleeast.tamm.activities.RecommendedOneWay;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.io.InputStream;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -56,6 +62,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static java.util.Calendar.YEAR;
+import static net.middledleeast.tamm.helper.helperMethod.getLocalIpAddress;
 import static net.middledleeast.tamm.helper.helperMethod.isNetworkConnected;
 
 
@@ -598,21 +605,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
         progressFlight.setVisibility(View.VISIBLE);
 
-//        ListnameLine.clear();
-//        Listduration.clear();
-//        ListdeparuerTime.clear();
-//        ListArriveTime.clear();
-//        listTypeFare.clear();
-//        countryNameDestinationList.clear();
-//        countryNameOriginList.clear();
-//        listCabinBaggage.clear();
-//        listIncludedBaggage.clear();
-//        listTotalFare.clear();
-//        ListairportCode_Origin.clear();
-//        ListairportCode_Distnation.clear();
-//        ListflightNumber.clear();
-//        ListMealType.clear();
-//        ListnoOfSeatAvailable.clear();
+
         ListResult.clear();
 
         Gson gson = new GsonBuilder()
@@ -622,8 +615,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
 
-        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).connectTimeout(100, TimeUnit.SECONDS)
-                .readTimeout(100, TimeUnit.SECONDS).build();
+        OkHttpClient client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).connectTimeout(0, TimeUnit.SECONDS)
+                .readTimeout(0, TimeUnit.SECONDS).build();
 
         connectAndGetApiData(gson, client);
         FlightApiService flightApiService = retrofit.create(FlightApiService.class);
@@ -632,7 +625,15 @@ public class ProceedBeyBeyOriginal extends Fragment {
         flightAuthentication[0].setUserName(FlightConstants.API_USER_NAME);
         flightAuthentication[0].setPassword(password);
         flightAuthentication[0].setBookingMode("API");
-        flightAuthentication[0].setIPAddress("192.168.4.238");
+
+
+        String localIpAddress = getLocalIpAddress();
+
+
+        flightAuthentication[0].setIPAddress("192.169.10.22");
+        FlightAuthentication.Agency ag = null;
+
+        flightAuthentication[0].setAgency(ag);
 
         Call<FlightAuthentication> call = flightApiService.getAuthentication("application/json", flightAuthentication[0]);
 
@@ -643,7 +644,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
                 final SearchFlights[] searchFlights = {new SearchFlights()};
                 //1
-                searchFlights[0].setIPAddress("192.168.4.238");
+                searchFlights[0].setIPAddress(localIpAddress);
 
                 //2
                 // searchFlights[0].setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
@@ -655,7 +656,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 searchFlights[0].setPointOfSale(to);
 
                 //4 test
-                searchFlights[0].setRequestOrigin("Egypt");
+                searchFlights[0].setRequestOrigin(country_selected_from_spinner.getText().toString());
                 //5
                 searchFlights[0].setTokenId(flightAuthentication[0].getTokenId());
                 //6
@@ -678,14 +679,10 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 SearchFlights.Segment segment = new SearchFlights.Segment();
                 SearchFlights.Segment segment2 = new SearchFlights.Segment();
 
-
-
                 //11.1
                 segment.setDestination(to);
                 //11.2
                 segment.setOrigin(from);
-
-
 
                 segment2.setDestination(from);
                 segment2.setOrigin(to);
@@ -716,10 +713,6 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
                 }
 
-
-
-
-
                 searchFlights[0].setSegment(segments);
 
                 Call<SearchFlightsResponse> searchCall = flightApiService.getFlightSearch("application/json", searchFlights[0]);
@@ -742,6 +735,10 @@ public class ProceedBeyBeyOriginal extends Fragment {
                         SharedPreferencesManger.SaveData(getContext(), "trackingId", trackingId);
 
 
+                        SharedPreferencesManger.SaveData(getContext(), "to", to);
+                        SharedPreferencesManger.SaveData(getContext(), "from", from);
+
+
                         SharedPreferencesManger.SaveData(getContext(), "PointOfSale", to);
 
 
@@ -753,80 +750,6 @@ public class ProceedBeyBeyOriginal extends Fragment {
                             List<SearchFlightsResponse.Result> results1 = results.get(0);
 
                             ListResult.addAll(results1);
-
-//                            int size = results1.size();
-
-//
-//                            for (int j = 0; j < results1.size(); j++) {
-//
-//                                String resultId = results1.get(0).getResultId();
-//                                String airlineRemark = results1.get(j).getAirlineRemark();
-//                                String destination = results1.get(j).getDestination();
-//                                String lastTicketDate = results1.get(j).getLastTicketDate();
-//                                String origin = results1.get(j).getOrigin();
-//                                String ticketAdvisory = results1.get(j).getTicketAdvisory();
-//                                String validatingAirline = results1.get(j).getValidatingAirline();
-//
-//                                long journeyType = results1.get(j).getJourneyType();
-//                                double totalFare = results1.get(j).getFare().getTotalFare();
-//                                SearchFlightsResponse.Fare fare = results1.get(j).getFare();
-//
-//
-//                                String fareType = results1.get(j).getFare().getAgentPreferredCurrency();
-//
-//                                listTypeFare.ic_add(fareType);
-//                                listTotalFare.ic_add(totalFare);
-
-
-                            //  List<SearchFlightsResponse.Segment> segments = results1.get(j).getSegments().get(0);
-
-
-//                                 sizeSegments = segments.size();
-                            //
-//                                for (int t = 0; t < segments2.size(); t++) {
-//
-//
-//                                    String airlineName = segments2.get(t).getOrigin().getAirportName();
-//                                    String arrivalTime = segments2.get(t).getArrivalTime();
-//                                    String departureTime = segments2.get(t).getDepartureTime();
-//
-//                                    String countryNameDestination = segments2.get(t).getDestination().getCountryName();
-//                                    String countryNameOrigin = segments2.get(t).getOrigin().getCountryName();
-//
-//
-//                                    String airline = segments2.get(t).getAirline();
-//
-//                                    String airportCode_Origin = segments2.get(t).getOrigin().getAirportCode();
-//
-//                                    String airportCode_Destination = segments2.get(t).getDestination().getAirportCode();
-//                                    String includedBaggage = segments2.get(t).getIncludedBaggage();
-//
-//                                    String cabinBaggage = (String) segments2.get(t).getCabinBaggage();
-//
-//                                    String duration = segments2.get(t).getDuration();
-//                                    String mealType = (String) segments2.get(t).getMealType();
-//                                    long noOfSeatAvailable = segments2.get(t).getNoOfSeatAvailable();
-//
-//
-//                                    ListnoOfSeatAvailable.ic_add(noOfSeatAvailable);
-//
-//                                    ListMealType.ic_add(mealType);
-//
-//                                    String flightNumber = segments2.get(t).getFlightNumber();
-//                                    ListflightNumber.ic_add(flightNumber);
-//
-//                                    ListairportCode_Distnation.ic_add(airportCode_Destination);
-//                                    ListairportCode_Origin.ic_add(airportCode_Origin);
-//                                    ListnameLine.ic_add(airlineName);
-//                                    Listduration.ic_add(duration);
-//                                    ListArriveTime.ic_add(arrivalTime);
-//                                    ListdeparuerTime.ic_add(departureTime);
-//                                    countryNameDestinationList.ic_add(countryNameDestination);
-//                                    countryNameOriginList.ic_add(countryNameOrigin);
-//                                    listCabinBaggage.ic_add(cabinBaggage);
-//                                    listIncludedBaggage.ic_add(includedBaggage);
-//
-//                                }
 
 
                             Intent intent = new Intent(getContext(), RecommendedOneWay.class);
@@ -844,36 +767,6 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
 
                             }
-
-//                            intent.putExtra("size", size);
-                            //   intent.putExtra("sizeSegments", sizeSegments);
-
-//                            intent.putExtra("airlineName", ListnameLine);
-//                            intent.putExtra("Listduration", Listduration);
-//
-//                            intent.putExtra("arrivalTime", ListArriveTime);
-//                            intent.putExtra("departureTime", ListdeparuerTime);
-//
-//                            intent.putExtra("countryNameDestinationList", countryNameDestinationList);
-//                            intent.putExtra("countryNameOriginList", countryNameOriginList);
-//
-//                            intent.putExtra("listCabinBaggage", listCabinBaggage);
-//                            intent.putExtra("listIncludedBaggage", listIncludedBaggage);
-//
-//                            intent.putExtra("listTotalFare", listTotalFare);
-//                            intent.putExtra("listTypeFare", listTypeFare);
-//
-//
-//                            intent.putExtra("ListairportCode_Distnation", ListairportCode_Distnation);
-//                            intent.putExtra("ListairportCode_Origin", ListairportCode_Origin);
-//
-//                            intent.putExtra("ListflightNumber", ListflightNumber);
-//
-//
-//                            intent.putExtra("ListMealType", ListMealType);
-//
-//                            intent.putExtra("ListnoOfSeatAvailable", ListnoOfSeatAvailable);
-
                             SharedPreferencesManger.SaveData(getContext(),"flightCabinClass",flightCabinClass);
 
                             getContext().startActivity(intent);
@@ -969,5 +862,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
         new DatePickerDialog(getActivity(), date, myCalendar.get(YEAR),
                 myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
     }
+
+
+
 
 }

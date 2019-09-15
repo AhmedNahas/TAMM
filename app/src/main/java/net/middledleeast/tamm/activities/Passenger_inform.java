@@ -27,12 +27,15 @@ import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import FlightApi.SearchFlightsResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class Passenger_inform extends AppCompatActivity {
 
@@ -48,8 +51,14 @@ public class Passenger_inform extends AppCompatActivity {
     EditText edFirstNameInfant;
     @BindView(R.id.ed_last_name_infant)
     EditText edLastNameInfant;
+    @BindView(R.id.passport_no)
+    EditText passportNo;
+    @BindView(R.id.tv_issue_Date)
+    TextView tvIssueDate;
+    @BindView(R.id.tv_end_dat)
+    TextView tvEndDat;
     private TextView datebirthadult, datebirthchild, datebirthinfant;
-    private DatePickerDialog.OnDateSetListener mDateSetListener1, mDateSetListener2, mDateSetListener3;
+    private DatePickerDialog.OnDateSetListener mDateSetListener1, mDateSetListener2, mDateSetListener3 , mDateSetListener4 ,mDateSetListener5;
     ArrayAdapter mrmiss1adapter, mrmiss2adapter, mrmiss3adapter;
     ArrayList<String> mrmiss1array, mrmiss2array, mrmiss3array;
     Button confirm;
@@ -59,7 +68,7 @@ public class Passenger_inform extends AppCompatActivity {
     private boolean notFailed;
     private InputStream inputStream;
     private List<String> list_nationalites = new ArrayList<>();
-    private String MDataMrmisAdult   ,  MDataMrmisChild  ,MDataMrmisInfent;
+    private String MDataMrmisAdult, MDataMrmisChild, MDataMrmisInfent;
 
     RelativeLayout relative_back_passenger_inform;
     ImageView iv_booked_passenger_inform;
@@ -71,16 +80,16 @@ public class Passenger_inform extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-        iv_booked_passenger_inform=findViewById(R.id.iv_booked_passenger_inform);
+        iv_booked_passenger_inform = findViewById(R.id.iv_booked_passenger_inform);
         iv_booked_passenger_inform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(Passenger_inform.this,MyBookActivity.class);
+                Intent intent = new Intent(Passenger_inform.this, MyBookActivity.class);
                 startActivity(intent);
             }
         });
 
-        relative_back_passenger_inform=findViewById(R.id.relative_back_passenger_inform);
+        relative_back_passenger_inform = findViewById(R.id.relative_back_passenger_inform);
         relative_back_passenger_inform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,10 +113,10 @@ public class Passenger_inform extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                if (edFirstName.getText().toString().equals("")){
+                if (edFirstName.getText().toString().equals("")) {
                     edFirstName.setError("Invalid First Name");
 
-                }else if (edLastName.getText().toString().equals("")){
+                } else if (edLastName.getText().toString().equals("")) {
 
                     edLastName.setError("Invalid Last Name");
 //                }else if (edFirstNameChild.getText().toString().equals("")) {
@@ -123,7 +132,7 @@ public class Passenger_inform extends AppCompatActivity {
 //
 //                    edLastNameInfant.setError("Invalid Last Name");
 
-                }else if (datebirthadult.getText().toString().equals("DD-MM-YYYY")) {
+                } else if (datebirthadult.getText().toString().equals("DD-MM-YYYY")) {
                     Toast.makeText(Passenger_inform.this, "Invalid DOB", Toast.LENGTH_SHORT).show();
 //
 //                }else if (datebirthchild.getText().toString().equals("DD-MM-YYYY")) {
@@ -134,8 +143,7 @@ public class Passenger_inform extends AppCompatActivity {
 //                    Toast.makeText(Passenger_inform.this, "Invalid DOB", Toast.LENGTH_SHORT).show();
 
 
-
-                    }else if (nationality_adult.getText().toString().equals("")){
+                } else if (nationality_adult.getText().toString().equals("")) {
                     nationality_adult.setError("Invalid Nationality");
 
 //                }else if (nationality_child.getText().toString().equals("")){
@@ -145,39 +153,69 @@ public class Passenger_inform extends AppCompatActivity {
 //                    nationality_adult_infant.setError("Invalid Nationality");
 
 
-                }else {
+                }else if (tvEndDat.getText().toString().equals("")) {
+
+                    tvEndDat.setError("Invalid End Date");
+
+                }else if (tvIssueDate.getText().toString().equals("")) {
+
+                    tvIssueDate.setError("Invalid Issue Date");
+
+                }else if (passportNo.getText().toString().equals("")){
 
 
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"MDataMrmisAdult",MDataMrmisAdult);
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"MDataMrmisChild",MDataMrmisChild);
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"MDataMrmisInfent",MDataMrmisInfent);
+                    passportNo.setError("Invalid Passport Number ");
+
+
+
+                } else {
+
+
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisAdult", MDataMrmisAdult);
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisChild", MDataMrmisChild);
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent", MDataMrmisInfent);
 
                     //first
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"FirstNameAduld",edFirstName.getText().toString());
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"FirstNameChild",edFirstNameChild.getText().toString());
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"FirstNameInfant",edFirstNameInfant.getText().toString());
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "FirstNameAduld", edFirstName.getText().toString());
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "FirstNameChild", edFirstNameChild.getText().toString());
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "FirstNameInfant", edFirstNameInfant.getText().toString());
 
                     //last
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"LastNameAduld",edLastName.getText().toString());
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"LastNameChild",edLastNameChild.getText().toString());
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"LastNameInfant",edLastNameInfant.getText().toString());
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "LastNameAduld", edLastName.getText().toString());
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "LastNameChild", edLastNameChild.getText().toString());
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "LastNameInfant", edLastNameInfant.getText().toString());
 
 
                     //date
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"datebirthadult",datebirthadult.getText().toString());
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"datebirthchild",datebirthchild.getText().toString());
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"datebirthinfant",datebirthinfant.getText().toString());
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "datebirthadult", datebirthadult.getText().toString());
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "datebirthchild", datebirthchild.getText().toString());
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "datebirthinfant", datebirthinfant.getText().toString());
 
                     // nationality
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"nationality_adult",nationality_adult.getText().toString());
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"nationality_child",nationality_child.getText().toString());
-                    SharedPreferencesManger.SaveData(Passenger_inform.this,"nationality_infant",nationality_adult_infant.getText().toString());
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "nationality_adult", nationality_adult.getText().toString());
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "nationality_child", nationality_child.getText().toString());
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "nationality_infant", nationality_adult_infant.getText().toString());
 
 
-                    startActivity(new Intent(Passenger_inform.this, FlightsSummary.class));
+                    //passport info
+
+
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "passportNo", passportNo.getText().toString());
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "passportIssue", tvIssueDate.getText().toString());
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "passportEnd", tvEndDat.getText().toString());
+
+
+
+                    List<SearchFlightsResponse.Segment> segments = (List<SearchFlightsResponse.Segment>) getIntent().getSerializableExtra("segments");
+                    SharedPreferencesManger.SaveData(Passenger_inform.this, "nationality_infant", nationality_adult_infant.getText().toString());
+                    Intent intent = new Intent(Passenger_inform.this, FlightsSummary.class);
+                    intent.putExtra("segments", (Serializable) segments);
+
+                    startActivity(intent);
+
 
                 }
-                    //
+                //
             }
         });
 
@@ -291,7 +329,7 @@ public class Passenger_inform extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                 MDataMrmisAdult = mrmiss1array.get(i);
+                MDataMrmisAdult = mrmiss1array.get(i);
 
 
             }
@@ -313,7 +351,6 @@ public class Passenger_inform extends AppCompatActivity {
                 MDataMrmisChild = mrmiss2array.get(i);
 
 
-
             }
 
             @Override
@@ -331,7 +368,7 @@ public class Passenger_inform extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                MDataMrmisInfent=  mrmiss3array.get(i);
+                MDataMrmisInfent = mrmiss3array.get(i);
 
 
             }
@@ -353,7 +390,7 @@ public class Passenger_inform extends AppCompatActivity {
 
                 DatePickerDialog dialog = new DatePickerDialog(
                         Passenger_inform.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar,
                         mDateSetListener1,
                         year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -383,7 +420,7 @@ public class Passenger_inform extends AppCompatActivity {
 
                 DatePickerDialog dialog = new DatePickerDialog(
                         Passenger_inform.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar,
                         mDateSetListener2,
                         year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -414,7 +451,8 @@ public class Passenger_inform extends AppCompatActivity {
 
                 DatePickerDialog dialog = new DatePickerDialog(
                         Passenger_inform.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
                         mDateSetListener3,
                         year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -434,7 +472,75 @@ public class Passenger_inform extends AppCompatActivity {
         };
 
 
+        tvIssueDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener4,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+        mDateSetListener4 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+
+                String date = month + "/" + day + "/" + year;
+                tvIssueDate.setText(date);
+            }
+        };
+
+
+
+        tvEndDat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener5,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+        mDateSetListener5 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+
+                String date = month + "/" + day + "/" + year;
+                tvEndDat.setText(date);
+            }
+        };
+
     }
+
+
+
+
 
 
 }

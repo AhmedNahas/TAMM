@@ -38,7 +38,7 @@ public class FlightTicket implements Serializable {
     private String iPAddress;
     @SerializedName("Itinerary")
     @Expose
-    private Itinerary itinerary;
+    private FlightApi.Itinerary itinerary;
     @SerializedName("PNR")
     @Expose
     private String pNR;
@@ -66,7 +66,7 @@ public class FlightTicket implements Serializable {
      * @param userData
      * @param resultId
      */
-    public FlightTicket(String resultId, String endUserBrowserAgent, String pointOfSale, String requestOrigin, String userData, String tokenId, String trackingId, String iPAddress, Itinerary itinerary, String pNR, boolean confirmPriceChangeTicket) {
+    public FlightTicket(String resultId, String endUserBrowserAgent, String pointOfSale, String requestOrigin, String userData, String tokenId, String trackingId, String iPAddress, FlightApi.Itinerary itinerary, String pNR, boolean confirmPriceChangeTicket) {
         super();
         this.resultId = resultId;
         this.endUserBrowserAgent = endUserBrowserAgent;
@@ -185,15 +185,15 @@ public class FlightTicket implements Serializable {
         return this;
     }
 
-    public Itinerary getItinerary() {
+    public FlightApi.Itinerary getItinerary() {
         return itinerary;
     }
 
-    public void setItinerary(Itinerary itinerary) {
+    public void setItinerary(FlightApi.Itinerary itinerary) {
         this.itinerary = itinerary;
     }
 
-    public FlightTicket withItinerary(Itinerary itinerary) {
+    public FlightTicket withItinerary(FlightApi.Itinerary itinerary) {
         this.itinerary = itinerary;
         return this;
     }

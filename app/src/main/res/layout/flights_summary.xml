@@ -113,7 +113,6 @@
                 android:id="@+id/tv_bey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BEY"
                 android:textColor="@color/app_color"
                 android:textSize="25sp"
                 android:layout_marginLeft="15dp"
@@ -134,50 +133,49 @@
                 android:id="@+id/tv_dxb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DXB"
                 android:textColor="@color/app_color"
                 android:textSize="25sp"
                 android:layout_toRightOf="@+id/tv_to"
                 />
-            <RelativeLayout
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_width="@dimen/_120sdp"
                 android:layout_height="wrap_content"
                 android:id="@+id/relative_country"
                 android:layout_below="@id/tv_dxb"
-                >
+                />
 
 
 
 
-                <TextView
-                    android:id="@+id/tv_country"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="BEIRUT"
-                    android:textSize="15sp"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="15dp"
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_country"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="BEIRUT"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_marginLeft="15dp"-->
 
-                    />
-                <TextView
-                    android:id="@+id/tv_ccountry"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="DUBAI"
-                    android:textSize="15sp"
-                    android:textColor="#fff"
-                    android:layout_toRightOf="@+id/tv_country"
-                    android:layout_marginLeft="@dimen/_20sdp"
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_ccountry"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="DUBAI"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_toRightOf="@+id/tv_country"-->
+                    <!--android:layout_marginLeft="@dimen/_20sdp"-->
 
-                    />
-            </RelativeLayout>
+                    <!--/>-->
+            <!--</androidx.recyclerview.widget.RecyclerView>-->
 
 
             <TextView
                 android:id="@+id/tv_flight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Flight Nb :T926665"
                 android:textSize="15sp"
                 android:textColor="#fff"
                 android:layout_below="@+id/relative_country"
@@ -201,10 +199,10 @@
                     app:civ_border_color="@color/app_color"
                     app:civ_circle_background_color="@color/app_color" />
                 <TextView
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:id="@+id/tv_airline"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="wrap_content"
-                    android:text="TURKISH Airlines"
                     android:textColor="@color/app_color"
                     android:layout_toRightOf="@+id/iv_icon"
 
@@ -213,7 +211,6 @@
                     android:id="@+id/tv_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="-3 hrs 40 min"
                     android:textColor="#fff"
                     android:layout_below="@+id/tv_airline"
                     android:layout_toRightOf="@+id/iv_icon"
@@ -250,7 +247,6 @@
                     android:id="@+id/tv_kg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="-40 Kg"
                     android:textColor="#fff"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/iv_bag"
@@ -267,7 +263,6 @@
                     android:id="@+id/tv_cambainBages"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="-20 Kg"
                     android:textColor="#fff"
                     android:layout_marginTop="5dp"
                     android:layout_toRightOf="@+id/iv_bag2"
@@ -285,7 +280,6 @@
                     android:id="@+id/tv_cabin_class"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="-Cabin Class :Economy"
                     android:textColor="#fff"
                     android:layout_marginTop="15dp"
                     />
@@ -293,7 +287,6 @@
                     android:id="@+id/tv_departure"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="-Departure: 05:15pm"
                     android:textColor="#fff"
                     android:layout_below="@+id/tv_cabin_class"
                     android:layout_marginTop="10dp"
@@ -302,7 +295,6 @@
                     android:id="@+id/tv_date_departure"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="-Date: Thu,10Nov"
                     android:textColor="#fff"
                     android:layout_below="@+id/tv_departure"
 
@@ -311,7 +303,6 @@
                     android:id="@+id/tv_arrival"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="-Arrival: 08:15pm"
                     android:textColor="#fff"
                     android:layout_below="@+id/tv_date_departure"
                     android:layout_marginTop="10dp"
@@ -320,7 +311,6 @@
                     android:id="@+id/date_arrival"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="-Date: Thu,10Nov"
                     android:textColor="#fff"
                     android:layout_below="@+id/tv_arrival"
                     />
@@ -382,38 +372,14 @@
                 android:textSize="25sp"
                 android:layout_toRightOf="@+id/tv_to2"
                 />
-            <RelativeLayout
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
                 android:id="@+id/relative_country2"
                 android:layout_below="@id/tv_dxb2"
-                >
+                />
 
 
-
-
-                <TextView
-                    android:id="@+id/tv_country2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="BEIRUT"
-                    android:textSize="15sp"
-                    android:textColor="#fff"
-
-
-                    />
-                <TextView
-                    android:id="@+id/tv_ccountry2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="DUBAI"
-                    android:textSize="15sp"
-                    android:textColor="#fff"
-                    android:layout_toRightOf="@+id/tv_country2"
-                    android:layout_marginLeft="@dimen/_20sdp"
-
-                    />
-            </RelativeLayout>
 
 
             <TextView
@@ -581,7 +547,13 @@
         android:background="@drawable/shape"
         android:text="PROCEED"/>
 
-
+    <ProgressBar
+        android:id="@+id/flight_progress"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_centerInParent="true"
+        android:background="@color/float_transparent"
+        />
     <RelativeLayout
         android:id="@+id/relative_img_renew_flight_summary"
         android:layout_width="match_parent"

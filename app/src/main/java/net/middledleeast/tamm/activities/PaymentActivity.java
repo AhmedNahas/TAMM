@@ -11,6 +11,7 @@ import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -65,9 +66,9 @@ public class PaymentActivity extends AppCompatActivity {
     @BindView(R.id.tv_mr_mrs)
     TextView tvMrMrs;
     @BindView(R.id.tv_firstName)
-    TextView tvFirstName;
+    EditText tvFirstName;
     @BindView(R.id.tv_last_name)
-    TextView tvLastName;
+    EditText tvLastName;
     @BindView(R.id.tv_kd)
     TextView tvKd;
     @BindView(R.id.check_box_agerr2)
@@ -240,14 +241,18 @@ public class PaymentActivity extends AppCompatActivity {
 
         }else if (mId==FLIGHT){
 
-            String TotalFare = SharedPreferencesManger.LoadStringData(this, "TotalFare");
-            flightCurrency = SharedPreferencesManger.LoadStringData(this, "typeFare");
+//            String TotalFare = SharedPreferencesManger.LoadStringData(this, "TotalFare");
+//            flightCurrency = SharedPreferencesManger.LoadStringData(this, "typeFare");
+
+            String totalFare = getIntent().getStringExtra("totalFare");
+            String firstNameAduld = SharedPreferencesManger.LoadStringData(PaymentActivity.this, "FirstNameAduld");
+            String lastNameAduld = SharedPreferencesManger.LoadStringData(PaymentActivity.this, "LastNameAduld");
 
 
             tvMrMrs.setText(getString(R.string.mr));
-            tvLastName.setText("");
-            tvFirstName.setText("");
-            tvKd.setText(flightCurrency+" "+ TotalFare);
+            tvLastName.setText(lastNameAduld);
+            tvFirstName.setText(firstNameAduld);
+            tvKd.setText(totalFare);
 
         }else if (mId == 6){
 
