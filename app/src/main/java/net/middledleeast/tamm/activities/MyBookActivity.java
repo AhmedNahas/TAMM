@@ -30,7 +30,7 @@ public class MyBookActivity extends AppCompatActivity {
     private String checkout;
     private String cancellation;
 
-    AppDatabase appDatabase ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class MyBookActivity extends AppCompatActivity {
         });
 
 
-        appDatabase= Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"myBooking").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+        AppDatabase appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,"myBooking").fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
 
         List<RoomCartModel> allData = appDatabase.cartDao().getAllData();

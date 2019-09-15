@@ -1,5 +1,6 @@
 package net.middledleeast.tamm.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,9 +27,11 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.Room.RoomCartModel;
 
 import org.joda.time.DateTime;
@@ -57,6 +60,7 @@ public class BookedAdapter extends RecyclerView.Adapter<BookedAdapter.BookedView
     private String bookingId;
     private String cancellationcharge;
     private String cancelledOn;
+    Activity activity;
 
 
 
@@ -75,6 +79,8 @@ public class BookedAdapter extends RecyclerView.Adapter<BookedAdapter.BookedView
     public BookedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mybook_raw,parent,false);
+        requestQueue = Volley.newRequestQueue(context);
+
         return new BookedViewHolder(view);
 
 
@@ -82,6 +88,8 @@ public class BookedAdapter extends RecyclerView.Adapter<BookedAdapter.BookedView
 
     @Override
     public void onBindViewHolder(@NonNull BookedViewHolder holder, int position) {
+
+
 
 
         RoomCartModel roomCartModel = allData.get(position);
@@ -126,41 +134,57 @@ public class BookedAdapter extends RecyclerView.Adapter<BookedAdapter.BookedView
 
 
             @Override
-            public void onClick(View view) {
+                          public void onClick(View view) {
 
 
-                Calendar calendar = Calendar.getInstance();
+                    Calendar calendar = Calendar.getInstance();
 
-                Date futureDate = calendar.getTime();
-                cancelledOn = new SimpleDateFormat("yyyy-MM-dd").format(futureDate);
-
-
-                try {
+                    Date futureDate = calendar.getTime();
+                    cancelledOn = new SimpleDateFormat("yyyy-MM-dd").format(futureDate);
 
 
-                    service = new BasicHttpBinding_IHotelService1();
-                    service.enableLogging = true;
-                    authenticandata = new AuthenticationData();
-                    authenticandata.UserName = (context.getString(R.string.user_name_tamm));
-                    authenticandata.Password = (context.getString(R.string.passowrd_tamm));
+                    try {
 
-                    connectdatabasecancel();
 
-                    HotelCancelResponse hotelCancelResponse = service.HotelCancel(0, Enums.CancelRequestType.HotelCancel, "Test","5K6RUT" , authenticandata);
+                        service = new BasicHttpBinding_IHotelService1();
+                        service.enableLogging = true;
+                        authenticandata = new AuthenticationData();
+                        authenticandata.UserName = (context.getString(R.string.user_name_tamm));
+                        authenticandata.Password = (context.getString(R.string.passowrd_tamm));
 
-                    int code = hotelCancelResponse.RequestStatus.getCode();
 
-                    BigDecimal cancellationCharge = hotelCancelResponse.CancellationCharge;
-                    cancellationcharge = cancellationCharge.toString();
 
-                    String description = hotelCancelResponse.Status.Description;
+                        HotelCancelResponse hotelCancelResponse = service.HotelCancel(0, Enums.CancelRequestType.HotelCancel, "Test",confirmationNo , authenticandata);
 
-                    Toast.makeText(context, "cod is : "+code+"" +
-                            "   "+description, Toast.LENGTH_LONG).show();
+                        Integer bookingId = hotelCancelResponse.BookingId;
+                        connectdatabasecancel();
 
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                        if (bookingId!=null){
+
+
+                            holder.btn_cancel_booked.setVisibility(View.INVISIBLE);
+
+                            Toast.makeText(context, "Cancellation may take up to 72 hours", Toast.LENGTH_LONG).show();
+
+                        }
+                        int code = hotelCancelResponse.RequestStatus.getCode();
+
+                        BigDecimal cancellationCharge = hotelCancelResponse.CancellationCharge;
+                        cancellationcharge = cancellationCharge.toString();
+
+                        String description = hotelCancelResponse.Status.Description;
+
+
+
+
+
+                        Toast.makeText(context, "cod is : "+code+"" + "   "+description, Toast.LENGTH_LONG).show();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
 
 
             }

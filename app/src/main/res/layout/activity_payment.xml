@@ -109,7 +109,7 @@
 
 
         <RelativeLayout
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_8sdp"
             android:id="@+id/relative_vmk"
@@ -140,8 +140,8 @@
             >
 
             <TextView
-                android:layout_marginTop="@dimen/_18sdp"
-                android:textSize="@dimen/_8ssp"
+
+                android:textSize="@dimen/_10ssp"
                 android:fontFamily="sans-serif-thin"
                 android:backgroundTint="@color/app_color"
                 android:id="@+id/tv_mr_mrs"
@@ -154,9 +154,9 @@
 
                 />
 
-            <EditText
-                android:textSize="@dimen/_8ssp"
-                android:layout_marginTop="@dimen/_8sdp"
+            <TextView
+                android:textSize="@dimen/_10ssp"
+
                 android:layout_width="@dimen/_70sdp"
                 android:fontFamily="sans-serif-thin"
                 android:backgroundTint="@color/app_color"
@@ -167,18 +167,21 @@
                 android:layout_toRightOf="@+id/tv_mr_mrs"
                 android:layout_marginLeft="25dp"
                 android:textColor="@color/white"
+                android:drawableBottom="@drawable/line1"
+
 
 
                 />
 
-            <EditText
-                android:textSize="@dimen/_8ssp"
+            <TextView
+                android:textSize="@dimen/_10ssp"
+                android:drawableBottom="@drawable/line1"
 
                 android:id="@+id/tv_last_name"
                 android:layout_width="@dimen/_70sdp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="45dp"
-                android:layout_marginTop="@dimen/_8sdp"
+
                 android:layout_toRightOf="@+id/tv_firstName"
                 android:backgroundTint="@color/app_color"
                 android:fontFamily="sans-serif-thin"
@@ -188,10 +191,16 @@
 
         </RelativeLayout>
 
+        <WebView
+            android:id="@+id/webview_knet"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scrollbars="none"
 
-
-
-
+            android:layout_below="@+id/relative_mr_mrs"
+            android:layout_margin="@dimen/_5sdp"
+            android:visibility="gone"
+            />
 
         <RelativeLayout
             android:id="@+id/relative_radio_btn"
@@ -199,7 +208,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_above="@+id/proceed_check_out_hotels"
-            android:layout_marginBottom="@dimen/_25sdp">
+            android:layout_marginBottom="@dimen/_15sdp">
 
             <CheckBox
                 android:textSize="@dimen/_10ssp"

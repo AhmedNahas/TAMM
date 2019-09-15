@@ -18,6 +18,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private ImageView imageView;
     private AnimatedCircleLoadingView animatedCircleLoadingView;
+    private String mUsrename;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +27,11 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
-        SharedPreferencesManger.clean(this);
+//        SharedPreferencesManger.clean(this);
 
 
-        String mUsrename =    SharedPreferencesManger.LoadStringData(this, "user_name" );
+//        String mUsrename =    SharedPreferencesManger.LoadStringData(this, "user_name" );
+        mUsrename =    SharedPreferencesManger.LoadStringData(this, "userNameFromSignIn" );
 
 
 

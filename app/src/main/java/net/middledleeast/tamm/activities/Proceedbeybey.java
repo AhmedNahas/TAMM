@@ -67,7 +67,6 @@ public class Proceedbeybey extends AppCompatActivity {
 
             if (accountPlan == 1) {
 
-
                 iv_booked_proceed.setVisibility(View.VISIBLE);
 
             } else if (accountPlan == 0) {

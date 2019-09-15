@@ -6,6 +6,8 @@ ext {
 }
 android {
 
+
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "net.middledleeast.tamm"

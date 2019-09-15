@@ -23,7 +23,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".activities.FlightDetailsActivity"></activity>
+        <activity android:name=".activities.ChattingActivity"></activity>
         <activity android:name=".ActivityToFragment.Activity_Register" />
         <activity android:name=".activities.OffersFlightsDetailsActivity" />
         <activity android:name=".activities.VoiceMessageActivity" />
@@ -35,11 +35,11 @@
         <activity android:name=".activities.MemberCongratsActivity" />
         <activity android:name=".activities.FreeCongratsActivity" />
         <activity android:name=".activities.TermsActivity" />
-        <activity android:name=".activities.KnetActivity">
+        <!--<activity android:name=".activities.KnetActivity">-->
 
-            <!-- android:theme="@android:style/Theme.NoTitleBar" -->
+            <!--&lt;!&ndash; android:theme="@android:style/Theme.NoTitleBar" &ndash;&gt;-->
 
-        </activity>
+        <!--</activity>-->
         <activity
             android:name=".activities.SeatSelection"
             android:screenOrientation="portrait" />
@@ -54,19 +54,13 @@
             android:screenOrientation="portrait" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
         <activity
             android:name=".activities.Proceedbeybey"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.PassengerDeparture"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.Passenger_inform"
-            android:screenOrientation="portrait" ></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.FlightDetails"
             android:screenOrientation="portrait" />
@@ -81,7 +75,15 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.SplashActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".activities.FlightTamm"
             android:screenOrientation="portrait" />
@@ -121,7 +123,11 @@
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.ConfirmBookingRoom"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+
+
+
+        </activity>
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait" />

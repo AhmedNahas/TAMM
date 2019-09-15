@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -41,6 +44,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -107,6 +112,10 @@ public class PaymentActivity extends AppCompatActivity {
     private int isfree=0;
     private String last_name;
     private String first_name;
+    WebView webviewKnet;
+
+    RelativeLayout relative_radio_btn;
+    private String uid;
 
 
     @SuppressLint("SetTextI18n")
@@ -116,11 +125,15 @@ public class PaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_payment);
         ButterKnife.bind(this);
 
+        webviewKnet=findViewById(R.id.webview_knet);
         relativeLayout = findViewById(R.id.relative_back);
         button = findViewById(R.id.proceed_check_out_hotels);
 
         toolbar = findViewById(R.id.welcome_toolbar);
         imageView = findViewById(R.id.back_pressed);
+
+        relative_radio_btn=findViewById(R.id.relative_radio_btn);
+
 
 
         Intent intent = getIntent();
@@ -145,15 +158,15 @@ public class PaymentActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                if (mId==BOOKING_ROOM){
+                if (mId == BOOKING_ROOM) {
 
                     startActivity(new Intent(PaymentActivity.this, ConfirmBookingRoom.class));
 
 
-                }else {
+                } else {
 
 
-                onBackPressed();
+                    onBackPressed();
 
                 }
             }
@@ -171,14 +184,22 @@ public class PaymentActivity extends AppCompatActivity {
             currency = SharedPreferencesManger.LoadStringData(this, "currency");
             last_name = SharedPreferencesManger.LoadStringData(this, "lastName1GustOne");
             first_name = SharedPreferencesManger.LoadStringData(this, "firstName1GustOne");
-
+             uid = SharedPreferencesManger.LoadStringData(this, "uid");
 
 
             tvLastName.setText(last_name);
             tvFirstName.setText(first_name);
 
-            tvKd.setText(currency + " " + roomPrice);
-            BigDecimal amount = new BigDecimal(roomPrice);
+            double v = Double.parseDouble(roomPrice);
+            double sum = v * 0.304380 ;
+
+
+            NumberFormat formatter = new DecimalFormat("#,###.##");
+
+            String formattedNumber = formatter.format(sum);
+
+            tvKd.setText("KD" + " " + formattedNumber);
+            BigDecimal amount = new BigDecimal(formattedNumber);
             PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
             BigDecimal finalAmount = amount;
             String finalCurrency = currency;
@@ -193,7 +214,7 @@ public class PaymentActivity extends AppCompatActivity {
         } else if (mId==RIGISTRATHION){
 
             getmemberfees();
-            tvKd.setText("USD " + msgbody);
+            tvKd.setText("KD " + msgbody);
 
             String last_name = SharedPreferencesManger.LoadStringData(this, "last_name");
             String first_name = SharedPreferencesManger.LoadStringData(this, "first_name");
@@ -214,6 +235,9 @@ public class PaymentActivity extends AppCompatActivity {
              ocupation = intent.getStringExtra("ocupation");
              username = intent.getStringExtra("username");
              pass = intent.getStringExtra("pass");
+
+
+
 
         }else if (mId==FLIGHT){
 
@@ -328,9 +352,11 @@ public class PaymentActivity extends AppCompatActivity {
                 } else if (mId==2){
 
 
+
                     String[] s = tvKd.getText().toString().split(" ");
                     String s2 = s[1];
                     openBankRoom(s2, currency);
+
 
 
 
@@ -338,7 +364,7 @@ public class PaymentActivity extends AppCompatActivity {
 
 
                     String[] s = tvKd.getText().toString().split(" ");
-                    String s2 = s[0];
+                    String s2 = s[1];
                     openbankFlight(s2);
 
 
@@ -369,6 +395,35 @@ public class PaymentActivity extends AppCompatActivity {
 
         }
 
+
+
+
+    private class MyWebViewClient extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+            if (url.contains("CAPTURED")) {
+                showProgressingView();
+                if (mId==1){
+                    startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
+                }else if (mId==2) {
+                    startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
+                }
+            }
+//            else{
+//
+////                Toast.makeText(PaymentActivity.this, "Failed Unknown Error() 2145012114(Json)  ", Toast.LENGTH_SHORT).show();
+//
+//            }
+        }
+    }
+
         private void openbankBestHotel(String usd, String offerActivityprice) {
 
         try {
@@ -383,6 +438,13 @@ public class PaymentActivity extends AppCompatActivity {
                 if (knet){
 
                     sendamount(offerActivityprice);
+                    relative_radio_btn.setVisibility(View.GONE);
+                    button.setVisibility(View.GONE);
+                    webviewKnet.setVisibility(View.VISIBLE);
+                    webviewKnet.setWebViewClient(new MyWebViewClient());
+                    String url = "http://www.egyptgoogle.com/k";
+                    webviewKnet.getSettings().setJavaScriptEnabled(true);
+                    webviewKnet.loadUrl(url); // load a web page in a web vie
                   //  startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
 
                 }else {
@@ -409,13 +471,32 @@ public class PaymentActivity extends AppCompatActivity {
 
         try {
 //
+            BigDecimal amount = new BigDecimal(Price);
+            PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
+            BigDecimal finalAmount = amount;
+            String finalCurrency = flightCurrency;
 
             if (paymentChekd && checkBoxAgerr2.isChecked()) {
 
-
+                if (knet){
                     sendamount(Price);
+                    relative_radio_btn.setVisibility(View.GONE);
+                    button.setVisibility(View.GONE);
+                    webviewKnet.setVisibility(View.VISIBLE);
+                    webviewKnet.setWebViewClient(new MyWebViewClient());
+                    String url = "http://www.egyptgoogle.com/k";
+                    webviewKnet.getSettings().setJavaScriptEnabled(true);
+                    webviewKnet.loadUrl(url); // load a web page in a web vie
+                    //startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
+
+                }else {
+
+                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+                }
 
 
+            } else {
 
                 Toast.makeText(PaymentActivity.this, "Choose Payment Method and agree in Terms and conditions", Toast.LENGTH_SHORT).show();
             }
@@ -442,6 +523,13 @@ public class PaymentActivity extends AppCompatActivity {
                 if (knet){
 
                     sendamount(mSgbody);
+                    relative_radio_btn.setVisibility(View.GONE);
+                    button.setVisibility(View.GONE);
+                    webviewKnet.setVisibility(View.VISIBLE);
+                    webviewKnet.setWebViewClient(new MyWebViewClient());
+                    String url = "http://www.egyptgoogle.com/k";
+                    webviewKnet.getSettings().setJavaScriptEnabled(true);
+                    webviewKnet.loadUrl(url); // load a web page in a web vie
                     sendDataToServer();
 
 //                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
@@ -483,7 +571,15 @@ public class PaymentActivity extends AppCompatActivity {
 
                  if (knet){
 
+
                      sendamount(roomPrice);
+                     relative_radio_btn.setVisibility(View.GONE);
+                     button.setVisibility(View.GONE);
+                     webviewKnet.setVisibility(View.VISIBLE);
+                     webviewKnet.setWebViewClient(new MyWebViewClient());
+                     String url = "http://www.egyptgoogle.com/k";
+                     webviewKnet.getSettings().setJavaScriptEnabled(true);
+                     webviewKnet.loadUrl(url); // load a web page in a web vie
 
 
                  }else {
@@ -513,50 +609,17 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
 
-                Toast.makeText(PaymentActivity.this, ""+response, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(PaymentActivity.this, ""+response, Toast.LENGTH_SHORT).show();
 
-               Intent intent =new Intent(PaymentActivity.this,KnetActivity.class);
-               if (mId==1){
-
-
-                   intent.putExtra("id",1);
-                   startActivity(intent);
-
-               }else if (mId==2){
-
-                   intent.putExtra("id",2);
-                   startActivity(intent);
-
-
-               }else if (mId==3){
-
-
-                    intent.putExtra("id",3);
-                    startActivity(intent);
-
-                }else if (mId==6){
-
-
-                   intent.putExtra("id",6);
-                   startActivity(intent);
-
-               }else if (mId==7){
-
-
-
-                   intent.putExtra("id",7);
-                   startActivity(intent);
-
-               }
-
-
+//               Intent intent =new Intent(PaymentActivity.this,KnetActivity.class);
+//               startActivity(intent);
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(PaymentActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(PaymentActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
 
@@ -565,11 +628,13 @@ public class PaymentActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
                 parameters.put("roomprice",roomPrice_);
+                parameters.put("token",uid);
 
 
                 return parameters;
             }
         };
+
 
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -632,7 +697,7 @@ public class PaymentActivity extends AppCompatActivity {
 
             public void onResponse(String response) {
                 SharedPreferencesManger.SaveData(PaymentActivity.this, "user_name", username);
-                startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
+
                 try {
                     JSONObject jObj = new JSONObject(response);
                     int status = jObj.getInt("status");
@@ -657,10 +722,10 @@ public class PaymentActivity extends AppCompatActivity {
                         // Inserting row in users table
 //                        db.addUser(name, email, uid, created_at);
 
-                        Intent intent =new Intent(PaymentActivity.this,MemberCongratsActivity.class);
+//                        Intent intent =new Intent(PaymentActivity.this,MemberCongratsActivity.class);
                         SharedPreferencesManger.remove(PaymentActivity.this,"gustMode");
 
-                        startActivity(intent);
+//                        startActivity(intent);
                         // Launch login activity
 
 
@@ -843,5 +908,24 @@ public class PaymentActivity extends AppCompatActivity {
             }
         };
         handler.postDelayed(runnable, 1 * 1000);
+    }
+    ViewGroup progressView;
+    protected boolean isProgressShowing = false;
+    public void showProgressingView() {
+
+        if (!isProgressShowing) {
+            isProgressShowing = true;
+            progressView = (ViewGroup) getLayoutInflater().inflate(R.layout.progressbar_layout, null);
+            View v = this.findViewById(android.R.id.content).getRootView();
+            ViewGroup viewGroup = (ViewGroup) v;
+            viewGroup.addView(progressView);
+        }
+    }
+
+    public void hideProgressingView() {
+        View v = this.findViewById(android.R.id.content).getRootView();
+        ViewGroup viewGroup = (ViewGroup) v;
+        viewGroup.removeView(progressView);
+        isProgressShowing = false;
     }
 }

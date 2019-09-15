@@ -77,6 +77,8 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHol
             plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_colored_background));
             plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_black));
             plansViewHolder.txtTitle.setTextColor(Color.BLACK);
+
+
             plansViewHolder.txtDescription.setTextColor(Color.BLACK);
 
         }else {
@@ -85,6 +87,7 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHol
             plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_black_background));
             plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_colored));
             plansViewHolder.txtTitle.setTextColor(context.getResources().getColor(R.color.app_color));
+            plansViewHolder.txtDescription.setText(R.string.plan_details_text_free);
             plansViewHolder.txtDescription.setTextColor(Color.WHITE);
         }
 

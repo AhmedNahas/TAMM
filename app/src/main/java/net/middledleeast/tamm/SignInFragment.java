@@ -282,7 +282,7 @@ try {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Login Response: " + response.toString());
+                Log.d(TAG, "Login Response: " + response);
 
 
                 try {
@@ -297,6 +297,7 @@ try {
 
                         // Now store the user in SQLite
                         String uid = jObj.getString("uid");
+                        SharedPreferencesManger.SaveData(getContext(),"uid",uid);
 
                         JSONObject user = jObj.getJSONObject("user");
 
@@ -311,7 +312,7 @@ try {
                         // Launch main activity
                         Intent intent = new Intent(getContext(),
                                 RenewAccount.class);
-                        SharedPreferencesManger.remove(getContext(),"gustMode");
+                        SharedPreferencesManger.remove(getContext(),"guestMode");
                         startActivity(intent);
 
                     } else {
@@ -331,8 +332,7 @@ try {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Login Error: " + error.getMessage());
-                Toast.makeText(getContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
 
             }
         }) {

@@ -18,7 +18,8 @@
 
     <string name="plans_text">LET’S CHOOSE\nTHE RIGHT PLAN\nFOR YOU NOW!</string>
     <string name="plans_long_text">You can know more about the plans\nby clicking on them</string>
-    <string name="plan_details_text">Details go here, detail go here, detail go here,  detail go here, detail go here, detail go here</string>
+    <string name="plan_details_text">BECOME ONE OF SPECIAL VIP MEMBERSHIP TAMM FAMILY WITH SPECIAL RATES, DESCOUNTS AND GAIN FREE POINTS</string>
+    <string name="plan_details_text_free">YOU CAN TRY WITH BEST OFFERS AND BEST PRICES WITH PROFESSIONAL SERVICES </string>
     <string name="sign_text" translatable="false">Already Have An Account ? <u>Sign in</u></string>
 
     <string name="title_activity_renew_account">RenewAccount</string>
@@ -51,7 +52,9 @@
     <string name="send_email">SEND EMAIL</string>
     <string name="proceed">Proceed</string>
     <string name="the_plans">The Plans</string>
+
     <string name="membership">Membership</string>
+
     <string name="accept">ACCEPT</string>
     <string name="membership_account_plan">MEMBERSHIP ACCOUNT PLAN</string>
     <string name="terms_and_conditions">Terms and conditions</string>

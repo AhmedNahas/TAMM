@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.telephony.TelephonyManager;
@@ -28,6 +29,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
@@ -408,10 +410,7 @@ public class RegisterationActivity extends Fragment {
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog dialog = new DatePickerDialog(getContext(),
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        mDateSetListener,
-                        year, month, day);
+                DatePickerDialog dialog = new DatePickerDialog(getContext(), android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener, year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
@@ -419,16 +418,19 @@ public class RegisterationActivity extends Fragment {
         });
 
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDateSet(DatePicker datePicker, int yea_, int month_, int day_) {
 
+                String s = String.valueOf(Integer.sum(month_,1));
 
-                etDate.setText(" " + day_ + " - " + month_ + " - " + yea_ + " ");
+
+                etDate.setText(" " + day_ + " - " + s + " - " + yea_ + " ");
 
                 day = String.valueOf(day_);
 
                 month = String.valueOf(month_);
-                year = String.valueOf(month_);
+                year = String.valueOf(yea_);
 
 
             }

@@ -293,12 +293,12 @@
 
                     <EditText
                         android:id="@+id/zip_code"
-                        android:layout_width="@dimen/_40sdp"
+                        android:layout_width="@dimen/_60sdp"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_toStartOf="@+id/ed_phone"
                         android:backgroundTint="@android:color/transparent"
-                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
                         android:gravity="center"
                         android:inputType="textCapSentences"
                         android:paddingStart="@dimen/_4sdp"
@@ -306,10 +306,9 @@
                         android:textSize="@dimen/_10ssp" />
 
                     <View
-                        android:layout_width="@dimen/_40sdp"
+                        android:layout_width="@dimen/_60sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_email"
-                        android:layout_marginStart="@dimen/_15sdp"
                         android:layout_toRightOf="@+id/ed_email"
                         android:background="@drawable/line1" />
 

@@ -188,7 +188,7 @@
                     android:id="@+id/tv_12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ROOM DEATILS"
+                    android:text="ROOM DETAILS"
                     android:textColor="@color/app_color"
                     android:layout_marginTop="5dp"
 
