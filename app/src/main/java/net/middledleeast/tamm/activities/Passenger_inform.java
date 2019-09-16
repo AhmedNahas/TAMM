@@ -35,7 +35,6 @@ import java.util.List;
 import FlightApi.SearchFlightsResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class Passenger_inform extends AppCompatActivity {
 
@@ -43,19 +42,19 @@ public class Passenger_inform extends AppCompatActivity {
     EditText edFirstName;
     @BindView(R.id.ed_last_name)
     EditText edLastName;
-    @BindView(R.id.ed_first_name_child)
+    @BindView(R.id.ed_first_name_child1)
     EditText edFirstNameChild;
-    @BindView(R.id.ed_last_name_child)
+    @BindView(R.id.ed_last_name_child1)
     EditText edLastNameChild;
-    @BindView(R.id.ed_first_name_infant)
+    @BindView(R.id.ed_first_name_infant1)
     EditText edFirstNameInfant;
-    @BindView(R.id.ed_last_name_infant)
+    @BindView(R.id.ed_last_name_infant1)
     EditText edLastNameInfant;
-    @BindView(R.id.passport_no)
+    @BindView(R.id.passport_no1)
     EditText passportNo;
-    @BindView(R.id.tv_issue_Date)
+    @BindView(R.id.tv_issue_Date1)
     TextView tvIssueDate;
-    @BindView(R.id.tv_end_dat)
+    @BindView(R.id.tv_end_dat1)
     TextView tvEndDat;
     private TextView datebirthadult, datebirthchild, datebirthinfant;
     private DatePickerDialog.OnDateSetListener mDateSetListener1, mDateSetListener2, mDateSetListener3 , mDateSetListener4 ,mDateSetListener5;
@@ -98,15 +97,15 @@ public class Passenger_inform extends AppCompatActivity {
         });
         nationality_adult = findViewById(R.id.nationality_adult);
         nationality_child = findViewById(R.id.nationality_child);
-        nationality_adult_infant = findViewById(R.id.nationality_adult_infant);
+        nationality_adult_infant = findViewById(R.id.nationality_adult_infant1);
         datebirthadult = findViewById(R.id.date_of_birth_adult);
         datebirthchild = findViewById(R.id.date_of_birth_child);
-        datebirthinfant = findViewById(R.id.date_of_birth_adult_infant);
+        datebirthinfant = findViewById(R.id.date_of_birth_adult_infant1);
 //
         confirm = findViewById(R.id.passenger_btn_info);
         mrmisAdult = findViewById(R.id.mromiss);
-        mrmisChild = findViewById(R.id.mromiss_child);
-        mrmisinfent = findViewById(R.id.mromiss_infant);
+        mrmisChild = findViewById(R.id.mromiss_child1);
+        mrmisinfent = findViewById(R.id.mromiss_infant1);
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
