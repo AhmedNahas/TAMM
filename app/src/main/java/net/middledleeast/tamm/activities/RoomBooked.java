@@ -109,6 +109,9 @@ public class RoomBooked extends AppCompatActivity {
     private String confirmationNo;
     private Integer bookingId;
     private String bookedOn;
+    private String childAgeRoom1;
+    Double childAge1;
+    Double childAge2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,14 +206,32 @@ public class RoomBooked extends AppCompatActivity {
         int noOfAdultRoom2 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom2");
         int noOfAdultRoom3 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom3");
         int noOfAdultRoom4 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom4");
+
         int noOfChildRoom1 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom1");
         int noOfChildRoom2 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom2");
         int noOfChildRoom3 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom3");
         int noOfChildRoom4 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom4");
 
 
-        String childAgeRoom1 = SharedPreferencesManger.LoadStringData(this, "child_countroom1");
-        ArrayList<Integer> childAgeRoom1Array = new Gson().fromJson(childAgeRoom1, ArrayList.class);
+        childAgeRoom1 = SharedPreferencesManger.LoadStringData(this, "child_countroom1");
+
+
+        ArrayList<Double> childAgeRoom1Array = new Gson().fromJson(childAgeRoom1, ArrayList.class);
+
+
+        if (childAgeRoom1Array.size()==1){
+
+             childAge1 = childAgeRoom1Array.get(0);
+
+
+        }else if (childAgeRoom1Array.size()==2) {
+
+            childAge1 = childAgeRoom1Array.get(0);
+
+            childAge2 = childAgeRoom1Array.get(1);
+        }
+
+
         String childAgeRoom2 = SharedPreferencesManger.LoadStringData(this, "child_countroom2");
         ArrayList<Integer> childAgeRoom1Array2 = new Gson().fromJson(childAgeRoom2, ArrayList.class);
 
@@ -909,6 +930,7 @@ public class RoomBooked extends AppCompatActivity {
             child1.Title = getString(R.string.mr);
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
+            child1.Age = (int)Math.round(childAge1);
             child1.LastName = lastName1ChildGustOne;
             child1.GuestInRoom = 1;
             arrayOfGuest.add(child1);
@@ -921,6 +943,7 @@ public class RoomBooked extends AppCompatActivity {
             child2.Title =  getString(R.string.mr);
             child2.FirstName = firstName2ChildGustOne;
             child2.GuestType = Enums.GuestType.Child;
+            child2.Age = (int)Math.round(childAge2);
             child2.LastName = lastName2ChildGustOne;
             child2.GuestInRoom = 1;
 

@@ -203,7 +203,8 @@ public class ChooseBookingDate extends AppCompatActivity {
 
         cityId = getIntent().getStringExtra("cityId");
         noOfRooms = getIntent().getIntExtra("noOfRooms", 1);
-        //roomGuests =getIntent().getStringArrayListExtra("roomGuest");
+
+//        roomGuests =getIntent().getStringArrayListExtra("roomGuest");
         resultIndex = SharedPreferencesManger.LoadIntegerData(this, "resultindex");
 
 
@@ -216,6 +217,7 @@ public class ChooseBookingDate extends AppCompatActivity {
         tv_word.setText(hotel_name_s + " - " + countryName);
 
         tv_date_hotels.setText(startDateS + endDateS);
+
 
 
         try {
