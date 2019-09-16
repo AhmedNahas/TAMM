@@ -19,6 +19,9 @@ public class RoomCartModel {
     @ColumnInfo
     private String FlightNo;
 
+    public String getFlightNo() {
+        return FlightNo;
+    }
 
     @ColumnInfo
     private String Date;

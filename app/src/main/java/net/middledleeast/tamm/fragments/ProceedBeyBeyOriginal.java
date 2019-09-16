@@ -731,19 +731,25 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
 
 
-                        SharedPreferencesManger.SaveData(getContext(), "tokenId", tokenId);
-                        SharedPreferencesManger.SaveData(getContext(), "trackingId", trackingId);
-
-
-                        SharedPreferencesManger.SaveData(getContext(), "to", to);
-                        SharedPreferencesManger.SaveData(getContext(), "from", from);
-
-
-                        SharedPreferencesManger.SaveData(getContext(), "PointOfSale", to);
 
 
                         if (successful && results != null && results.size() > 0) {
 
+
+                            SharedPreferencesManger.SaveData(getContext(), "adult", adult);
+                            SharedPreferencesManger.SaveData(getContext(), "child", child);
+                            SharedPreferencesManger.SaveData(getContext(), "infant", infant);
+
+
+                            SharedPreferencesManger.SaveData(getContext(), "tokenId", tokenId);
+                            SharedPreferencesManger.SaveData(getContext(), "trackingId", trackingId);
+
+
+                            SharedPreferencesManger.SaveData(getContext(), "to", to);
+                            SharedPreferencesManger.SaveData(getContext(), "from", from);
+
+
+                            SharedPreferencesManger.SaveData(getContext(), "PointOfSale", to);
                             progressFlight.setVisibility(View.INVISIBLE);
 
 
