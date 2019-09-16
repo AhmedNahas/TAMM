@@ -43,6 +43,8 @@ public class HotelBooking extends AppCompatActivity {
     private String hotelName_;
     private String country_;
     private String takeoff  , airplane,from_airport,to_airport, priceflight,landing;
+    private String first_name;
+    TextView tv_guest_name;
 
 
     @Override
@@ -52,8 +54,9 @@ public class HotelBooking extends AppCompatActivity {
         backToMain = findViewById(R.id.back_to_main);
         TextView code = findViewById(R.id.tv_code);
         iv_booked_booking=findViewById(R.id.iv_booked_booking);
+        tv_guest_name=findViewById(R.id.tv_guest_name);
 
-
+        first_name = SharedPreferencesManger.LoadStringData(this, "firstName1GustOne");
         country_ = SharedPreferencesManger.LoadStringData(HotelBooking.this, "country_");
         hotelName_ = SharedPreferencesManger.LoadStringData(HotelBooking.this, "hotelName_");
         price = SharedPreferencesManger.LoadStringData(HotelBooking.this, "price");
@@ -65,6 +68,8 @@ public class HotelBooking extends AppCompatActivity {
         priceflight = SharedPreferencesManger.LoadStringData(HotelBooking.this, "price");
         landing = SharedPreferencesManger.LoadStringData(HotelBooking.this, "landing");
         takeoff = SharedPreferencesManger.LoadStringData(HotelBooking.this, "takeoff");
+
+        tv_guest_name.setText(first_name);
 
         sendBestHotelBooked();
         sendBestFlightBooked();

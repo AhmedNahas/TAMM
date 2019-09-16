@@ -22,6 +22,7 @@ import com.Tamm.Hotels.wcf.ArrayOfSupplement;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.Enums;
+import com.Tamm.Hotels.wcf.GenerateInvoiceResponse;
 import com.Tamm.Hotels.wcf.Guest;
 import com.Tamm.Hotels.wcf.HotelBookResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
@@ -114,7 +115,7 @@ public class RoomBooked extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.roombooked);
         ButterKnife.bind(this);
-        requestQueue = Volley.newRequestQueue(this);
+
 
 
         iv_booked_room=findViewById(R.id.iv_booked_room);
@@ -170,6 +171,7 @@ public class RoomBooked extends AppCompatActivity {
         authenticandata = new AuthenticationData();
         authenticandata.UserName = (getString(R.string.user_name_tamm));
         authenticandata.Password = (getString(R.string.passowrd_tamm));
+        requestQueue = Volley.newRequestQueue(this);
         sessionId = SharedPreferencesManger.LoadStringData(this, "session_id");
         noOfRooms = SharedPreferencesManger.LoadIntegerData(this, "noOfRooms");
         resultIndex = SharedPreferencesManger.LoadIntegerData(this, "resultindex");
@@ -268,16 +270,18 @@ public class RoomBooked extends AppCompatActivity {
 
 
 
-        bookingresponse(paymentInfo);
 
-        connectdatabase();
+
         button = findViewById(R.id.get_code);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bookingresponse(paymentInfo);
+                connectdatabase();
                 startActivity(new Intent(RoomBooked.this, HotelBooking.class));
             }
         });
+
     }
 
     private void adult_4_Room4(int noOfAdultRoom4, int noOfChildRoom4) {
@@ -989,6 +993,25 @@ public class RoomBooked extends AppCompatActivity {
 
     }
 
+
+    @OnClick(R.id.relative_img_hotel_booked_tamm)
+    public void onViewClicked() {
+
+//        if (ClickBookedHotel == false) {
+//            assistantLabelCallBookedHotel.setVisibility(View.VISIBLE);
+//            assistantLabelMessageBookedHotel.setVisibility(View.VISIBLE);
+//            assistantLabelVoiceBookedHotel.setVisibility(View.VISIBLE);
+//            ClickBookedHotel = true;
+//
+//        } else {
+//            assistantLabelCallBookedHotel.setVisibility(View.INVISIBLE);
+//            assistantLabelMessageBookedHotel.setVisibility(View.INVISIBLE);
+//            assistantLabelVoiceBookedHotel.setVisibility(View.INVISIBLE);
+//            ClickBookedHotel = false;
+//
+//        }
+
+    }
     private void bookingresponse(PaymentInfo paymentInfo) {
         try {
 
@@ -1042,8 +1065,14 @@ public class RoomBooked extends AppCompatActivity {
                     , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
                     null, true, authenticandata);
 
+
+
             bookingId = hotelBookingResponse.BookingId;
             confirmationNo = hotelBookingResponse.ConfirmationNo;
+
+
+            GenerateInvoiceResponse generateInvoiceResponse = service.GenerateInvoice(bookingId, confirmationNo, paymentInfo, authenticandata);
+            String invoiceNo = generateInvoiceResponse.InvoiceNo;
 
             appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myBooking").fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
@@ -1054,7 +1083,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
 
-                        AmendmentRequestType amendmentRequestType = new AmendmentRequestType();
+            AmendmentRequestType amendmentRequestType = new AmendmentRequestType();
             amendmentRequestType.Type = Enums.AmendmentType.OfflineAmendment;
             AmendInformation amendInformation = new AmendInformation();
 //            amendInformation.CheckIn = new CheckInReq();
@@ -1073,7 +1102,6 @@ public class RoomBooked extends AppCompatActivity {
 
 
 
-
             SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
             SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
             SharedPreferencesManger.SaveData(this, "ConfirmationNo", confirmationNo);
@@ -1082,30 +1110,11 @@ public class RoomBooked extends AppCompatActivity {
 //            AmendmentResponse amendmentResponse = service.Amendment(amendmentRequestType, hotelBookingResponse.BookingId, amendInformation, hotelBookingResponse.ConfirmationNo, authenticandata);
 ////this is to cancel request
 
-           // HotelCancelResponse hotelCancelResponse = service.HotelCancel(hotelBookingResponse.BookingId, Enums.CancelRequestType.HotelCancel, "Test", hotelBookingResponse.ConfirmationNo, authenticandata);
+            // HotelCancelResponse hotelCancelResponse = service.HotelCancel(hotelBookingResponse.BookingId, Enums.CancelRequestType.HotelCancel, "Test", hotelBookingResponse.ConfirmationNo, authenticandata);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @OnClick(R.id.relative_img_hotel_booked_tamm)
-    public void onViewClicked() {
-
-//        if (ClickBookedHotel == false) {
-//            assistantLabelCallBookedHotel.setVisibility(View.VISIBLE);
-//            assistantLabelMessageBookedHotel.setVisibility(View.VISIBLE);
-//            assistantLabelVoiceBookedHotel.setVisibility(View.VISIBLE);
-//            ClickBookedHotel = true;
-//
-//        } else {
-//            assistantLabelCallBookedHotel.setVisibility(View.INVISIBLE);
-//            assistantLabelMessageBookedHotel.setVisibility(View.INVISIBLE);
-//            assistantLabelVoiceBookedHotel.setVisibility(View.INVISIBLE);
-//            ClickBookedHotel = false;
-//
-//        }
-
     }
     private void connectdatabase() {
 
@@ -1127,6 +1136,7 @@ public class RoomBooked extends AppCompatActivity {
 
 
                 }
+
 
             }) {
                 @Override
@@ -1155,6 +1165,8 @@ public class RoomBooked extends AppCompatActivity {
             requestQueue.add(request);
 
         }
+
+
 
 
 }

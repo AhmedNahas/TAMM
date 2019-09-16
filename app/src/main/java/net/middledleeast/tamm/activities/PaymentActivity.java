@@ -11,7 +11,6 @@ import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -66,9 +65,9 @@ public class PaymentActivity extends AppCompatActivity {
     @BindView(R.id.tv_mr_mrs)
     TextView tvMrMrs;
     @BindView(R.id.tv_firstName)
-    EditText tvFirstName;
+    TextView tvFirstName;
     @BindView(R.id.tv_last_name)
-    EditText tvLastName;
+    TextView tvLastName;
     @BindView(R.id.tv_kd)
     TextView tvKd;
     @BindView(R.id.check_box_agerr2)
