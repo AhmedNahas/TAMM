@@ -1,294 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
-    tools:context=".activities.FlightDetailsActivity">
-
+    android:orientation="vertical"
+    android:background="@drawable/bg">
     <RelativeLayout
-        android:id="@+id/tap"
+        android:id="@+id/relative_flights"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        >
+        android:orientation="horizontal"
 
-        <RelativeLayout
-            android:id="@+id/toolbar_back1"
+        >
+        <Button
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@drawable/ic_back_arrow"
+            android:layout_marginTop="15dp"
+            android:layout_centerVertical="true"
+            />
+        <ImageView
+
+            android:layout_centerInParent="true"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/logo"
+            android:layout_marginLeft="145dp"
+
+            />
+        <ImageView
+            android:id="@+id/iv_booked_flight_details"
+            android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true">
-            <ImageView
-                android:id="@+id/toolbar_back_image_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="4dp"
-                android:background="@drawable/ic_back_arrow"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="7dp"
-                android:layout_toEndOf="@+id/toolbar_back_image_back"
-                android:text="@string/back"
-                android:textColor="#ffff"
-                android:textSize="12sp" />
-
-        </RelativeLayout>
-
+            android:background="@drawable/ic_button"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="12dp"
+            />
     </RelativeLayout>
 
-    <TextView
-        android:fontFamily="sans-serif-black"
 
-        android:id="@+id/name_passenger"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/tap"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_14ssp"
-        android:text="NAME OF PASSENGER"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
-
-    <TextView
-        android:id="@+id/NamePassenger"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/name_passenger"
-        android:fontFamily="sans-serif-medium"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_12ssp"
-        android:text="ABDALLAH / MUHAMMED"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
-
-    <TextView
-        android:fontFamily="sans-serif-black"
-
-        android:id="@+id/from"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/NamePassenger"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_14ssp"
-        android:text="FROM : "
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
+    <ImageView
+        android:id="@+id/iv_line"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:src="@drawable/line1"
+        android:layout_below="@+id/relative_flights"
+        android:layout_centerInParent="true"
+        />
 
 
+    <RelativeLayout
+        android:id="@+id/relative_right_flights"
+        android:layout_below="@+id/relative_flights"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true"
+        >
 
-    <TextView
-        android:layout_marginTop="@dimen/_10sdp"
+        <ImageView
+            android:id="@+id/iv_right"
 
-        android:layout_toEndOf="@+id/from"
-        android:id="@+id/From"
-        android:textColor="@color/white"
-        android:layout_below="@+id/NamePassenger"
-        android:fontFamily="sans-serif-medium"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_12ssp"
-        android:text="MOSCOW        /        DME"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/right"
 
-
-    <TextView
-        android:fontFamily="sans-serif-black"
-
-        android:id="@+id/to"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/From"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_14ssp"
-        android:text="TO : "
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
+            />
+        <TextView
+            android:layout_toRightOf="@+id/iv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SUCCESS !"
+            android:textSize="40sp"
+            android:textColor="#fff"
+            android:layout_marginTop="40dp"
 
 
+            />
 
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relative_man_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/relative_right_flights"
+        >
+        <ImageView
 
-    <TextView
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_toEndOf="@+id/from"
-        android:id="@+id/To"
-        android:textColor="@color/white"
-        android:layout_below="@+id/from"
-        android:fontFamily="sans-serif-medium"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_12ssp"
-        android:text="LARNKA         /           LCA"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
-
-
-    <TextView
-        android:id="@+id/FlightNo"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/to"
-        android:padding="@dimen/_5sdp"
-        android:lineHeight="@dimen/_23sdp"
-        android:fontFamily="sans-serif-black"
-
-        android:textSize="@dimen/_16ssp"
-        android:text="FLIGHT   okl018"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_60sdp" />
-
-
-    <TextView
-        android:layout_toEndOf="@id/FlightNo"
-        android:id="@+id/Date"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/to"
-        android:gravity="center"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_16ssp"
-        android:lineHeight="@dimen/_23sdp"
-        android:fontFamily="sans-serif-black"
-
-        android:text="DATE   12/01/1995"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_60sdp" />
-
-
-
-
-    <TextView
-        android:id="@+id/gate"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/FlightNo"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_14ssp"
-        android:text="GATE : "
-        android:fontFamily="sans-serif-black"
-
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
-
-
-    <TextView
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_toEndOf="@+id/gate"
-        android:id="@+id/Gate"
-        android:textColor="@color/white"
-        android:layout_below="@+id/FlightNo"
-        android:fontFamily="sans-serif-medium"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_12ssp"
-        android:text="  47"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
-
-
-
-    <TextView
-        android:id="@+id/hours"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/gate"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_14ssp"
-        android:text="TIME : "
-        android:fontFamily="sans-serif-black"
-
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
-
-
-
-    <TextView
-        android:layout_marginTop="@dimen/_10sdp"
-        android:id="@+id/Hours"
-        android:layout_toEndOf="@+id/hours"
-        android:textColor="@color/white"
-        android:layout_below="@+id/Gate"
-        android:fontFamily="sans-serif-medium"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_12ssp"
-        android:text="11 : 30"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
-
-    <TextView
-        android:layout_toEndOf="@id/FlightNo"
-        android:id="@+id/SEAT"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/Date"
-        android:gravity="center"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_16ssp"
-        android:fontFamily="sans-serif-black"
-
-        android:lineHeight="@dimen/_23sdp"
-        android:text="SEAT        24A"
-        android:layout_width="@dimen/_100sdp"
-        android:layout_height="@dimen/_60sdp" />
-
-
-    <TextView
-        android:id="@+id/TicketNo"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/Hours"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_14ssp"
-        android:fontFamily="sans-serif-black"
-
-        android:text="TicketNo  : 555218948"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
-
-
-    <TextView
-
-        android:id="@+id/have_nice_trip"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:textColor="@color/app_color"
-        android:fontFamily="sans-serif-black"
-        android:layout_below="@+id/TicketNo"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_14ssp"
-        android:text="HAVE A NICE TRIP"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:src="@drawable/mantext"
+            />
+    </RelativeLayout>
 
 
 
     <Button
-        android:id="@+id/myTrip_btn"
-        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:id="@+id/my_trips"
+        android:layout_width="200dp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_below="@+id/relative_man_txt"
+        android:text="FLIGHT DETAILS"
+        android:background="@drawable/shape"
         android:textStyle="bold"
-        android:fontFamily="sans-serif-thin"
-        android:textColor="@color/white"
-        android:padding="@dimen/_5sdp"
-        android:text="go to  your Trip Information"
-        android:background="@color/app_color"
-        android:layout_margin="@dimen/_10sdp"
-        android:layout_below="@+id/have_nice_trip"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_30sdp" />
+        android:layout_marginTop="@dimen/_30sdp"
 
+
+        />
+
+    <ImageView
+        android:id="@+id/line_flights"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:src="@drawable/line1"
+        android:layout_below="@+id/my_trips"
+        />
+
+
+    <Button
+        android:id="@+id/back_to_hotel"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:text="HOME"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:background="@drawable/border2"
+        android:textColor="@color/app_color"
+        android:layout_below="@+id/line_flights"
+        android:layout_centerInParent="true"
+
+
+        />
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        >
+
+
+
+
+        <ImageView
+            android:id="@+id/iv_man1_flights"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/man1"
+
+
+            />
+
+
+        <TextView
+            android:layout_below="@+id/iv_man1_flights"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tap me if you need MY ASSISTANCE "
+            android:textColor="#fff"
+            android:gravity="center"
+
+            />
+    </RelativeLayout>
 
 </RelativeLayout>
+
+
+
+

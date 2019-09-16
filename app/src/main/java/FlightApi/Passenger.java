@@ -99,7 +99,7 @@ public class Passenger {
     private Object paxSeat;
     @SerializedName("Ticket")
     @Expose
-    private Object ticket;
+    private FlightTicket.Ticket ticket;
 
     public Object getPassportIssueCountryCode() {
         return passportIssueCountryCode;
@@ -341,11 +341,11 @@ public class Passenger {
         this.paxSeat = paxSeat;
     }
 
-    public Object getTicket() {
+    public FlightTicket.Ticket getTicket() {
         return ticket;
     }
 
-    public void setTicket(Object ticket) {
+    public void setTicket(FlightTicket.Ticket ticket) {
         this.ticket = ticket;
     }
 

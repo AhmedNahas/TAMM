@@ -2,6 +2,7 @@ package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,8 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.Room.AppDatabase;
 import net.middledleeast.tamm.model.Room.RoomCartModel;
+
+import org.joda.time.Hours;
 
 import java.util.concurrent.TimeUnit;
 
@@ -39,32 +42,39 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static net.middledleeast.tamm.helper.helperMethod.getLocalIpAddress;
 
 public class FlightDetailsActivity extends AppCompatActivity {
-    @BindView(R.id.NamePassenger)
-    TextView NamePassenger;
-    @BindView(R.id.From)
-    TextView From;
-    @BindView(R.id.To)
-    TextView To;
-    @BindView(R.id.FlightNo)
-    TextView FlightNo;
-    @BindView(R.id.Date)
-    TextView Date;
-    @BindView(R.id.Gate)
-    TextView Gate;
-    @BindView(R.id.Hours)
-    TextView Hours;
-    @BindView(R.id.SEAT)
-    TextView SEAT;
-    @BindView(R.id.TicketNo)
-    TextView TicketNo;
-    @BindView(R.id.name_passenger)
-    TextView namePassenger;
-    @BindView(R.id.myTrip_btn)
+
+    @BindView(R.id.my_trips)
     Button myTripBtn;
+    @BindView(R.id.back_to_hotel)
+    Button Home;
     private Retrofit retrofit;
 
     public static final String BASE_URL = "https://xmloutapi.tboair.com/api/v1/";
     private AppDatabase appDatabase;
+    private long adult;
+    private String pnr2;
+    private String firstName;
+    private String lastName,
+
+
+    pnr3,
+            firstName3,
+            lastName3,
+            pnr4,
+            firstName4,
+            lastName4,
+            pnr5,
+            firstName5,
+            lastName5,
+
+
+    FLIGHT_NO,
+            FROM,
+            TO,
+            GROUND_TIME,
+            NAME_PASSENGER,
+            DATE,
+            TICKIT_NO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +82,18 @@ public class FlightDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_flight_details);
         ButterKnife.bind(this);
 
+
+        Home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                startActivity(new Intent(FlightDetailsActivity.this, RenewAccount.class));
+
+            }
+        });
+
+        adult = SharedPreferencesManger.LoadLongData(this, "adult");
 
         FlightGetBooking flightGetBooking = new FlightGetBooking();
         String localIpAddress = getLocalIpAddress();
@@ -100,55 +122,93 @@ public class FlightDetailsActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GetBookingResponse> call, Response<GetBookingResponse> response) {
 
-                String pnr1 = response.body().getItinerary().getPNR();
 
-                Itinerary data = response.body().getItinerary();
-                Segment segment = data.getSegments().get(0);
-                String flightNumber = segment.getFlightNumber();
+                try {
 
-                FlightNo.setText("FLIGHT   " + flightNumber);
-                String countryCode = segment.getOrigin().getCityCode();
-                String countryName = segment.getOrigin().getCityName();
-                String countryCode1 = segment.getDestination().getCityCode();
-                String countryName1 = segment.getDestination().getCityName();
+                    Itinerary data = response.body().getItinerary();
 
 
-                String to = SharedPreferencesManger.LoadStringData(FlightDetailsActivity.this, "to");
-                String from = SharedPreferencesManger.LoadStringData(FlightDetailsActivity.this, "from");
+                    String pnr1 = (String) response.body().getItinerary().getPassenger().get(0).getTicket().getTicketNumber();
 
 
-                for (int i = 0; i < data.getSegments().size(); i++) {
+                    pnr2 = (String) response.body().getItinerary().getPassenger().get(1).getTicket().getTicketNumber();
+
+                    Passenger passenger2 = data.getPassenger().get(1);
+
+                    firstName = passenger2.getFirstName();
+                    lastName = passenger2.getLastName();
 
 
-                    From.setText(countryName + "  /  " + from);
+                    pnr3 = (String) response.body().getItinerary().getPassenger().get(2).getTicket().getTicketNumber();
 
-                    To.setText(data.getSegments().get(i).getDestination().getCityName() + "  /  " + to);
+                    Passenger passenger3 = data.getPassenger().get(2);
 
+                    firstName3 = passenger3.getFirstName();
+                    lastName3 = passenger3.getLastName();
+
+
+                    pnr4 = (String) response.body().getItinerary().getPassenger().get(3).getTicket().getTicketNumber();
+
+                    Passenger passenger4 = data.getPassenger().get(3);
+
+                    firstName4 = passenger4.getFirstName();
+                    lastName4 = passenger4.getLastName();
+
+
+                    pnr5 = (String) response.body().getItinerary().getPassenger().get(4).getTicket().getTicketNumber();
+
+                    Passenger passenger5 = data.getPassenger().get(4);
+
+                    firstName5 = passenger5.getFirstName();
+                    lastName5 = passenger5.getLastName();
+
+                    Segment segment = data.getSegments().get(0);
+                    String flightNumber = segment.getFlightNumber();
+
+                    FLIGHT_NO = "FLIGHT   " + flightNumber;
+
+
+                    String countryCode = segment.getOrigin().getCityCode();
+                    String countryName = segment.getOrigin().getCityName();
+                    String countryCode1 = segment.getDestination().getCityCode();
+                    String countryName1 = segment.getDestination().getCityName();
+
+
+                    String to = SharedPreferencesManger.LoadStringData(FlightDetailsActivity.this, "to");
+                    String from = SharedPreferencesManger.LoadStringData(FlightDetailsActivity.this, "from");
+
+
+                    for (int i = 0; i < data.getSegments().size(); i++) {
+
+
+                        FROM = countryName + "  /  " + from;
+
+                        TO = data.getSegments().get(i).getDestination().getCityName() + "  /  " + to;
+
+                    }
+
+
+                    GROUND_TIME = segment.getAccumulatedDuration();
+
+                    Passenger passenger = data.getPassenger().get(0);
+
+                    String firstName = passenger.getFirstName();
+                    String lastName = passenger.getLastName();
+                    NAME_PASSENGER = firstName + " / " + lastName;
+
+                    String departureTime = segment.getDepartureTime();
+
+
+                    String[] ts = departureTime.split("T");
+                    String t = ts[0];
+                    DATE = "DATE   " + t;
+
+                    TICKIT_NO = "TicketNo  : " + pnr1;
+
+
+                } catch (Exception e) {
                 }
 
-
-//
-//                To.setText(countryName + "  /  " + to);
-//                From.setText(countryName1 + "  /  " + from);
-
-
-                String groundTime = segment.getAccumulatedDuration();
-
-                Hours.setText(groundTime);
-                Passenger passenger = data.getPassenger().get(0);
-
-                String firstName = passenger.getFirstName();
-                String lastName = passenger.getLastName();
-                NamePassenger.setText(firstName + " / " + lastName);
-
-                String departureTime = segment.getDepartureTime();
-
-
-                String[] ts = departureTime.split("T");
-                String t = ts[0];
-                Date.setText("DATE   " + t);
-
-                TicketNo.setText("TicketNo  : " + pnr1);
 
             }
 
@@ -173,20 +233,182 @@ public class FlightDetailsActivity extends AppCompatActivity {
         return retrofit;
     }
 
-    @OnClick(R.id.myTrip_btn)
+    @OnClick(R.id.my_trips)
     public void onViewClicked() {
 
-        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
 
-        RoomCartModel roomTripModel=new RoomCartModel(NamePassenger.getText().toString(),From.getText().toString(),To.getText().toString(),FlightNo.getText().toString(),Date.getText().toString(),Gate.getText().toString(),SEAT.getText().toString(),Hours.getText().toString(),TicketNo.getText().toString());
+        switch ((int) adult) {
 
-        appDatabase.cartDao().addoffer(roomTripModel);
+            case 1:
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
-        Toast.makeText(this, "Add To Your Trips", Toast.LENGTH_SHORT).show();
+                RoomCartModel roomTripModel = new RoomCartModel(NAME_PASSENGER, FROM, TO,
+                        FLIGHT_NO, DATE, "7", "7a", GROUND_TIME, TICKIT_NO);
+
+                appDatabase.cartDao().addoffer(roomTripModel);
 
 
-        startActivity(new Intent(this,MyTripsActivity.class));
+                startActivity(new Intent(this, MyTripsActivity.class));
+
+                break;
+
+            case 2:
+
+
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+                RoomCartModel roomTripModel1 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
+                        FLIGHT_NO, DATE, "7", "7a", GROUND_TIME, TICKIT_NO);
+
+
+                appDatabase.cartDao().addoffer(roomTripModel1);
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+                RoomCartModel roomTripModel2 = new RoomCartModel(firstName + " / " + lastName, FROM, TO
+                        , FLIGHT_NO, DATE, "Gate 7", "SEAT 1A", GROUND_TIME, pnr2);
+
+                appDatabase.cartDao().addoffer(roomTripModel2);
+
+                startActivity(new Intent(this, MyTripsActivity.class));
+
+                break;
+
+            case 3:
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+                RoomCartModel roomTripModel1_3 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
+                        FLIGHT_NO, DATE, "7", "7a", GROUND_TIME, TICKIT_NO);
+
+
+                appDatabase.cartDao().addoffer(roomTripModel1_3);
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+                RoomCartModel roomTripModel2_3 = new RoomCartModel(firstName + " / " + lastName, FROM, TO
+                        , FLIGHT_NO, DATE, "Gate 7", "SEAT 1A", GROUND_TIME, pnr2);
+
+                appDatabase.cartDao().addoffer(roomTripModel2_3);
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+
+                RoomCartModel roomTripModel3_3 = new RoomCartModel(firstName3 + " / " + lastName3, FROM, TO,
+                        FLIGHT_NO
+                        , DATE,
+                        "Gate 15",
+                        "Seat 5A"
+                        , GROUND_TIME,
+                        pnr3);
+                appDatabase.cartDao().addoffer(roomTripModel3_3);
+
+                startActivity(new Intent(this, MyTripsActivity.class));
+
+                break;
+
+
+            case 4:
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+                RoomCartModel roomTripModel1_4 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
+                        FLIGHT_NO, DATE, "7", "7a", GROUND_TIME, TICKIT_NO);
+
+
+                appDatabase.cartDao().addoffer(roomTripModel1_4);
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+                RoomCartModel roomTripModel2_4 = new RoomCartModel(firstName + " / " + lastName, FROM, TO
+                        , FLIGHT_NO, DATE, "Gate 7", "SEAT 1A", GROUND_TIME, pnr2);
+                appDatabase.cartDao().addoffer(roomTripModel2_4);
+
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+                RoomCartModel roomTripModel3_4 = new RoomCartModel(firstName3 + " / " + lastName3, FROM, TO,
+                        FLIGHT_NO
+                        , DATE,
+                        "Gate 15",
+                        "Seat 5A"
+                        , GROUND_TIME,
+                        pnr3);
+                appDatabase.cartDao().addoffer(roomTripModel3_4);
+
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+                RoomCartModel roomTripModel4_4 = new RoomCartModel(firstName4 + " / " + lastName4,
+                        FROM,
+                        TO,
+                        FLIGHT_NO,
+                        DATE,
+                        "Gate 12",
+                        "Seat 1B",
+                        GROUND_TIME,
+                        pnr4);
+                appDatabase.cartDao().addoffer(roomTripModel4_4);
+                startActivity(new Intent(this, MyTripsActivity.class));
+
+                break;
+
+
+            case 5:
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+                RoomCartModel roomTripModel1_5 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
+                        FLIGHT_NO, DATE, "7", "7a", GROUND_TIME, TICKIT_NO);
+
+
+                appDatabase.cartDao().addoffer(roomTripModel1_5);
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+                RoomCartModel roomTripModel2_5 = new RoomCartModel(firstName + " / " + lastName, FROM, TO
+                        , FLIGHT_NO, DATE, "Gate 7", "SEAT 1A", GROUND_TIME, pnr2);
+                appDatabase.cartDao().addoffer(roomTripModel2_5);
+
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+                RoomCartModel roomTripModel3_5 = new RoomCartModel(firstName3 + " / " + lastName3, FROM, TO,
+                        FLIGHT_NO
+                        , DATE,
+                        "Gate 15",
+                        "Seat 5A"
+                        , GROUND_TIME,
+                        pnr3);
+
+                appDatabase.cartDao().addoffer(roomTripModel3_5);
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+
+                RoomCartModel roomTripModel4_5 = new RoomCartModel(firstName4 + " / " + lastName4,
+                        FROM,
+                        TO,
+                        FLIGHT_NO,
+                        DATE,
+                        "Gate 12",
+                        "Seat 1B",
+                        GROUND_TIME,
+                        pnr4);
+
+                appDatabase.cartDao().addoffer(roomTripModel4_5);
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+                RoomCartModel roomTripModel5_5 = new RoomCartModel(firstName5 + " / " + lastName5
+                        , FROM
+                        , TO,
+                        FLIGHT_NO
+                        , DATE,
+                        "Gate 17",
+                        "Seat 4C",
+                        GROUND_TIME,
+                        pnr5);
+
+                appDatabase.cartDao().addoffer(roomTripModel5_5);
+
+                startActivity(new Intent(this, MyTripsActivity.class));
+
+                break;
+
+        }
+
+
+
 
     }
+
+
 }
