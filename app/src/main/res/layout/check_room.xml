@@ -184,130 +184,144 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 >
+
+
+
                 <TextView
-                    android:id="@+id/tv_12"
+                    android:id="@+id/room_details_list"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ROOM DETAILS"
-                    android:textColor="@color/app_color"
-                    android:layout_marginTop="5dp"
+                    android:text="sfgfdgdfgdfdgjhghfgjhfgjhfgjfgjhfgggjhjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
+                    jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjdfgdfh"
+                    android:textColor="@color/white"
 
                     />
-                <TextView
-                    android:id="@+id/tv_13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="- Air conditioning"
-                    android:textColor="#fff"
-                    android:layout_below="@id/tv_12"
-                    />
-                <TextView
-                    android:id="@+id/tv_14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="- Bathrobes"
-                    android:textColor="#fff"
-                    android:layout_below="@id/tv_13"
 
-                    />
-                <TextView
-                    android:id="@+id/tv_15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="- Bathtup or shower"
-                    android:textColor="#fff"
-                    android:layout_below="@id/tv_14"
 
-                    />
-                <TextView
-                    android:id="@+id/tv_16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="- Cable TV service"
-                    android:textColor="#fff"
-                    android:layout_below="@id/tv_15"
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_12"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="ROOM DETAILS"-->
+                    <!--android:textColor="@color/app_color"-->
+                    <!--android:layout_marginTop="5dp"-->
 
-                    />
-                <TextView
-                    android:id="@+id/tv_17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="- Coffee/Tea maker"
-                    android:textColor="#fff"
-                    android:layout_below="@id/tv_16"
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_13"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="- Air conditioning"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_below="@id/tv_12"-->
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_14"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="- Bathrobes"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_below="@id/tv_13"-->
 
-                    />
-                <TextView
-                    android:id="@+id/tv_18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="- Daily housekeeping"
-                    android:textColor="#fff"
-                    android:layout_below="@id/tv_17"
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_15"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="- Bathtup or shower"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_below="@id/tv_14"-->
 
-                    />
-                <TextView
-                    android:id="@+id/tv_19"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="- Desk"
-                    android:textColor="#fff"
-                    android:layout_below="@id/tv_18"
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_16"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="- Cable TV service"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_below="@id/tv_15"-->
 
-                    />
-                <TextView
-                    android:id="@+id/tv_20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="- DVD player"
-                    android:textColor="#fff"
-                    android:layout_below="@id/tv_19"
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_17"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="- Coffee/Tea maker"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_below="@id/tv_16"-->
 
-                    />
-                <TextView
-                    android:id="@+id/tv_21"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="- Free bottled water"
-                    android:textColor="#fff"
-                    android:layout_below="@id/tv_20"
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_18"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="- Daily housekeeping"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_below="@id/tv_17"-->
 
-                    />
-                <TextView
-                    android:id="@+id/tv_22"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="- Free cribs/infant beds"
-                    android:textColor="#fff"
-                    android:layout_below="@id/tv_21"
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_19"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="- Desk"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_below="@id/tv_18"-->
 
-                    />
-                <TextView
-                    android:id="@+id/tv_23"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="- Free newspaper"
-                    android:textColor="#fff"
-                    android:layout_below="@id/tv_22"
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_20"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="- DVD player"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_below="@id/tv_19"-->
 
-                    />
-                <TextView
-                    android:id="@+id/tv_24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="- Free toiletries"
-                    android:textColor="#fff"
-                    android:layout_below="@id/tv_23"
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_21"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="- Free bottled water"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_below="@id/tv_20"-->
 
-                    />
-                <TextView
-                    android:id="@+id/tv_25"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="- Free WiFi"
-                    android:textColor="#fff"
-                    android:layout_below="@id/tv_24"
-                    />
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_22"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="- Free cribs/infant beds"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_below="@id/tv_21"-->
+
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_23"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="- Free newspaper"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_below="@id/tv_22"-->
+
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_24"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="- Free toiletries"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_below="@id/tv_23"-->
+
+                    <!--/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_25"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="- Free WiFi"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:layout_below="@id/tv_24"-->
+                    <!--/>-->
 
 
             </RelativeLayout>

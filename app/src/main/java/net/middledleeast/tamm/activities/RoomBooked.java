@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -13,8 +14,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
-import com.Tamm.Hotels.wcf.AmendInformation;
-import com.Tamm.Hotels.wcf.AmendmentRequestType;
 import com.Tamm.Hotels.wcf.ArrayOfGuest;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
@@ -109,12 +108,16 @@ public class RoomBooked extends AppCompatActivity {
     private String confirmationNo;
     private Integer bookingId;
     private String bookedOn;
+    private String childAgeRoom1;
+    Double childAge1;
+    Double childAge2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.roombooked);
         ButterKnife.bind(this);
+
 
 
 
@@ -203,14 +206,34 @@ public class RoomBooked extends AppCompatActivity {
         int noOfAdultRoom2 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom2");
         int noOfAdultRoom3 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom3");
         int noOfAdultRoom4 = SharedPreferencesManger.LoadIntegerData(this, "no_adultroom4");
+
         int noOfChildRoom1 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom1");
         int noOfChildRoom2 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom2");
         int noOfChildRoom3 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom3");
         int noOfChildRoom4 = SharedPreferencesManger.LoadIntegerData(this, "no_childroom4");
 
 
-        String childAgeRoom1 = SharedPreferencesManger.LoadStringData(this, "child_countroom1");
-        ArrayList<Integer> childAgeRoom1Array = new Gson().fromJson(childAgeRoom1, ArrayList.class);
+        childAgeRoom1 = SharedPreferencesManger.LoadStringData(this, "child_countroom1");
+try {
+
+    ArrayList<Double> childAgeRoom1Array = new Gson().fromJson(childAgeRoom1, ArrayList.class);
+
+
+    if (childAgeRoom1Array.size() == 1) {
+
+        childAge1 = childAgeRoom1Array.get(0);
+
+
+    } else if (childAgeRoom1Array.size() == 2) {
+
+        childAge1 = childAgeRoom1Array.get(0);
+
+        childAge2 = childAgeRoom1Array.get(1);
+    }
+
+}catch (Exception e){
+    e.printStackTrace();
+}
         String childAgeRoom2 = SharedPreferencesManger.LoadStringData(this, "child_countroom2");
         ArrayList<Integer> childAgeRoom1Array2 = new Gson().fromJson(childAgeRoom2, ArrayList.class);
 
@@ -279,6 +302,7 @@ public class RoomBooked extends AppCompatActivity {
                 bookingresponse(paymentInfo);
                 connectdatabase();
                 startActivity(new Intent(RoomBooked.this, HotelBooking.class));
+
             }
         });
 
@@ -893,6 +917,7 @@ public class RoomBooked extends AppCompatActivity {
             child1.Title =  getString(R.string.mr);
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
+            child1.Age = (int)Math.round(childAge1);
             child1.LastName = lastName1ChildGustOne;
             child1.GuestInRoom = 1;
 
@@ -909,6 +934,7 @@ public class RoomBooked extends AppCompatActivity {
             child1.Title = getString(R.string.mr);
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
+            child1.Age = (int)Math.round(childAge1);
             child1.LastName = lastName1ChildGustOne;
             child1.GuestInRoom = 1;
             arrayOfGuest.add(child1);
@@ -921,6 +947,7 @@ public class RoomBooked extends AppCompatActivity {
             child2.Title =  getString(R.string.mr);
             child2.FirstName = firstName2ChildGustOne;
             child2.GuestType = Enums.GuestType.Child;
+            child2.Age = (int)Math.round(childAge2);
             child2.LastName = lastName2ChildGustOne;
             child2.GuestInRoom = 1;
 
@@ -1069,42 +1096,48 @@ public class RoomBooked extends AppCompatActivity {
 
             bookingId = hotelBookingResponse.BookingId;
             confirmationNo = hotelBookingResponse.ConfirmationNo;
+            String statusCode = hotelBookingResponse.Status.StatusCode;
+
+            if( statusCode.contains("01")){
+
+                GenerateInvoiceResponse generateInvoiceResponse = service.GenerateInvoice(bookingId, confirmationNo, paymentInfo, authenticandata);
+                String invoiceNo = generateInvoiceResponse.InvoiceNo;
 
 
-            GenerateInvoiceResponse generateInvoiceResponse = service.GenerateInvoice(bookingId, confirmationNo, paymentInfo, authenticandata);
-            String invoiceNo = generateInvoiceResponse.InvoiceNo;
-
-            appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myBooking").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+                appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myBooking").fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
 
-            String untile = SharedPreferencesManger.LoadStringData(this, "Until");
+                String untile = SharedPreferencesManger.LoadStringData(this, "Until");
 
-            String imgHotelOne = SharedPreferencesManger.LoadStringData(this, "imageHotel");
-
-
-
-            AmendmentRequestType amendmentRequestType = new AmendmentRequestType();
-            amendmentRequestType.Type = Enums.AmendmentType.OfflineAmendment;
-            AmendInformation amendInformation = new AmendInformation();
-//            amendInformation.CheckIn = new CheckInReq();
-//            amendInformation.CheckIn.Date = new DateTime(start_time);
+                String imgHotelOne = SharedPreferencesManger.LoadStringData(this, "imageHotel");
 
 
+                RoomCartModel roomCartModel=new RoomCartModel(untile ,imgHotelOne ,start_time,end_time,String.valueOf(bookingId),confirmationNo,
+                        String.valueOf(resultIndex),hotel_name,bookedOn,"vouched",tripName,fullName,noOfAdultRoom1,name_city_);
 
-            RoomCartModel roomCartModel=new RoomCartModel(untile ,imgHotelOne ,start_time,end_time,String.valueOf(bookingId),confirmationNo,
-                    String.valueOf(resultIndex),hotel_name,bookedOn,"vouched",tripName,fullName,noOfAdultRoom1,name_city_);
+                appDatabase.cartDao().addoffer(roomCartModel);
 
-            appDatabase.cartDao().addoffer(roomCartModel);
-
-            Toast.makeText(RoomBooked.this, "Added To Your Bookings", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RoomBooked.this, "Added To Your Bookings", Toast.LENGTH_SHORT).show();
 
 
 
 
 
-            SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
-            SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
-            SharedPreferencesManger.SaveData(this, "ConfirmationNo", confirmationNo);
+                SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
+                SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
+                SharedPreferencesManger.SaveData(this, "ConfirmationNo", confirmationNo);
+
+
+
+            }else{
+
+                Toast.makeText(this, "Failed"+hotelBookingResponse.Status.Description, Toast.LENGTH_SHORT).show();
+            }
+
+
+
+
+
 
 
 //            AmendmentResponse amendmentResponse = service.Amendment(amendmentRequestType, hotelBookingResponse.BookingId, amendInformation, hotelBookingResponse.ConfirmationNo, authenticandata);
@@ -1165,6 +1198,26 @@ public class RoomBooked extends AppCompatActivity {
             requestQueue.add(request);
 
         }
+    ViewGroup progressView;
+    protected boolean isProgressShowing = false;
+
+    public void showProgressingView() {
+
+        if (!isProgressShowing) {
+            isProgressShowing = true;
+            progressView = (ViewGroup) getLayoutInflater().inflate(R.layout.progressbar_layout, null);
+            View v = this.findViewById(android.R.id.content).getRootView();
+            ViewGroup viewGroup = (ViewGroup) v;
+            viewGroup.addView(progressView);
+        }
+    }
+
+    public void hideProgressingView() {
+        View v = this.findViewById(android.R.id.content).getRootView();
+        ViewGroup viewGroup = (ViewGroup) v;
+        viewGroup.removeView(progressView);
+        isProgressShowing = false;
+    }
 
 
 

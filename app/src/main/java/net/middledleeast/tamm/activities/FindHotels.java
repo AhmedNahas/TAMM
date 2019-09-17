@@ -103,7 +103,7 @@ public class FindHotels extends AppCompatActivity {
 //    TextView assistantLabelMessageFindHotel;
     Spinner chooseRate;
     @BindView(R.id.no_of_rooms)
-    Spinner noOfRooms;
+    TextView noOfRooms;
     private List<String> listName = new ArrayList<>();
     ArrayList<String> addressHotel = new ArrayList<>();
     private List<String> nameCity = new ArrayList<>();
@@ -199,7 +199,8 @@ public class FindHotels extends AppCompatActivity {
         ButterKnife.bind(this);
         auth();
 
-
+        SharedPreferencesManger.remove(this,"ConfirmationNo");
+        SharedPreferencesManger.remove(this,"child_countroom1");
         iv_booked_find_hotels = findViewById(R.id.iv_booked_find_hotels);
 
         iv_booked_find_hotels.setOnClickListener(new View.OnClickListener() {
@@ -295,6 +296,8 @@ public class FindHotels extends AppCompatActivity {
         LayoutInflater inflater = (LayoutInflater) FindHotels.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         room1View = (RelativeLayout) inflater.inflate(R.layout.spinnersfrag2, null);
         frameLayout.addView(room1View);
+        TextView room2 = room1View.findViewById(R.id.no_of_rooms);
+        room2.setText("Room 2");
         Spinner room2Adult = room1View.findViewById(R.id.adilt_count);
         Spinner room2Child = room1View.findViewById(R.id.no_of_childs);
 
@@ -305,21 +308,29 @@ public class FindHotels extends AppCompatActivity {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         room2View = (RelativeLayout) inflater1.inflate(R.layout.spinnersfrag2, null);
         frameLayout1.addView(room2View);
+        TextView room3 = room2View.findViewById(R.id.no_of_rooms);
+        room3.setText("Room 3");
         room3Adult = room2View.findViewById(R.id.adilt_count);
         room3Child = room2View.findViewById(R.id.no_of_childs);
         room3ChildAgeSpinner = room2View.findViewById(R.id.rv_child);
 
+        room3.setVisibility(View.INVISIBLE);
 
         FrameLayout frameLayout2 = findViewById(R.id.frame3);
         LayoutInflater inflater2 = (LayoutInflater) this
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         room3View = (RelativeLayout) inflater2.inflate(R.layout.spinnersfrag2, null);
         frameLayout2.addView(room3View);
+        TextView room4 = room3View.findViewById(R.id.no_of_rooms);
+        room4.setText("Room 4");
         room4Adult = room3View.findViewById(R.id.adilt_count);
         room4Child = room3View.findViewById(R.id.no_of_childs);
+        room4.setVisibility(View.INVISIBLE);
         room4ChildAgeSpinner = room3View.findViewById(R.id.rv_child);
 
-
+        areas = findViewById(R.id.area_spinner);
+        regions = findViewById(R.id.region_spinner);
+        roomCount = findViewById(R.id.no_of_rooms);
         room1Adult = findViewById(R.id.adilt_count);
         childCountRoom1 = findViewById(R.id.no_of_childs);
         chooseNumberOfRoomsSpinner = findViewById(R.id.chooseroom);
@@ -507,10 +518,10 @@ public class FindHotels extends AppCompatActivity {
 
         ArrayAdapter numberOfRoomsAdapter = new ArrayAdapter(this, R.layout.item_spener, noOfROoms);
         numberOfRoomsAdapter.setDropDownViewResource(R.layout.drop_dowen);
-        noOfRooms.setDropDownWidth(420);
-        noOfRooms.setDropDownVerticalOffset(200);
-        noOfRooms.setAdapter(numberOfRoomsAdapter);
-        noOfRooms.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        chooseNumberOfRoomsSpinner.setDropDownWidth(420);
+        chooseNumberOfRoomsSpinner.setDropDownVerticalOffset(200);
+        chooseNumberOfRoomsSpinner.setAdapter(numberOfRoomsAdapter);
+        chooseNumberOfRoomsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -536,22 +547,22 @@ public class FindHotels extends AppCompatActivity {
                         break;
                     case 2:
 //                        listOfAdult.clear();
-//                        noRomes = 3;
+                        noRomes = 3;
 //                        listOfChild.clear();
 //                        list2();
 //                        listOfChildCount2();
                         room1View.setVisibility(View.VISIBLE);
                         room2View.setVisibility(View.VISIBLE);
                         room3View.setVisibility(View.INVISIBLE);
-//                        room3.setVisibility(View.VISIBLE);
+                        room3.setVisibility(View.VISIBLE);
 
                         break;
                     case 3:
                         room1View.setVisibility(View.VISIBLE);
                         room2View.setVisibility(View.VISIBLE);
                         room3View.setVisibility(View.VISIBLE);
-//                        room3.setVisibility(View.VISIBLE);
-//                        room4.setVisibility(View.VISIBLE);
+                        room3.setVisibility(View.VISIBLE);
+                        room4.setVisibility(View.VISIBLE);
                         noRomes = 4;
                         break;
 
@@ -1586,7 +1597,7 @@ public class FindHotels extends AppCompatActivity {
 
 
                 hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
-                        true, 1, "EG", roomguests, null, 0, filters, "true", null,
+                        true, noRomes, "EG", roomguests, null, 0, filters, "true", null,
                         0, authenticationData);
 
 

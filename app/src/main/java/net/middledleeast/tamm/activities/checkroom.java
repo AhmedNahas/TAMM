@@ -64,7 +64,8 @@ public class checkroom extends AppCompatActivity {
     private ArrayOfRequestedRooms arrayOfRooms = new ArrayOfRequestedRooms();
     private float sum;
     private String singlePic;
-
+TextView room_details_list;
+    private String amenties;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -73,6 +74,7 @@ public class checkroom extends AppCompatActivity {
         setContentView(R.layout.check_room);
         ButterKnife.bind(this);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        room_details_list=findViewById(R.id.room_details_list);
 
         StrictMode.setThreadPolicy(policy);
         SharedPreferencesManger.SaveData(this, "noOfTimes", 0);
@@ -98,6 +100,7 @@ public class checkroom extends AppCompatActivity {
 
         Glide.with(this).load(singlePic).into(imgCheckOut);
 
+        room_details_list.setText(amenties);
 
 
 //        if (arrayOfRooms.size()==2){
@@ -240,7 +243,7 @@ public class checkroom extends AppCompatActivity {
 
             HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
 
-
+            amenties = SharedPreferencesManger.LoadStringData(this,"amenties");
 
             String autoCancellationText = cancelPolicies.CancelPolicies.AutoCancellationText;
 

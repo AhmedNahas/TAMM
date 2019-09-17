@@ -63,25 +63,7 @@ public class MyBookActivity extends AppCompatActivity {
         recycler_view_booked.setAdapter(bookedAdapter);
         bookedAdapter.notifyDataSetChanged();
 
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

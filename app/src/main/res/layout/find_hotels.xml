@@ -11,22 +11,21 @@
         android:id="@+id/toolbar_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        >
+        android:layout_margin="10dp">
 
         <RelativeLayout
             android:id="@+id/toolbar_back1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true">
+
             <ImageView
                 android:id="@+id/toolbar_back_image_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/ic_back_arrow"
-                />
+                android:background="@drawable/ic_back_arrow" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -40,7 +39,6 @@
                 android:textSize="12sp" />
 
         </RelativeLayout>
-
 
 
         <ImageView
@@ -121,19 +119,18 @@
         android:gravity="end">
 
         <AutoCompleteTextView
-            android:backgroundTint="@android:color/transparent"
             android:id="@+id/region_spinner"
             android:layout_width="match_parent"
-            android:dropDownWidth="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@android:color/transparent"
             android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+            android:dropDownWidth="wrap_content"
+            android:gravity="center"
             android:hint="@string/country"
             android:textColor="@color/white"
             android:textColorHint="#FFFFFF"
-            android:textSize="@dimen/_10ssp"
-            android:layout_gravity="center"
-            android:gravity="center"/>
-
+            android:textSize="@dimen/_10ssp" />
 
 
         <View
@@ -175,16 +172,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
             android:backgroundTint="@android:color/transparent"
-            android:dropDownWidth="wrap_content"
             android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+            android:dropDownWidth="wrap_content"
+            android:gravity="center"
             android:hint="@string/city"
-            android:textSize="@dimen/_10ssp"
-            android:textColorHint="#FFFFFF"
             android:textColor="@color/white"
-            />
-
+            android:textColorHint="#FFFFFF"
+            android:textSize="@dimen/_10ssp" />
 
 
         <View
@@ -229,13 +224,13 @@
 
 
             <TextView
-                android:text="20"
                 android:id="@+id/startDate_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:fontFamily="sans-serif-thin"
                 android:lines="1"
+                android:text="20"
                 android:textColor="#fff"
                 android:textSize="30sp" />
         </LinearLayout>
@@ -345,12 +340,12 @@
 
 
             <TextView
-                android:layout_gravity="center_vertical"
-                android:text="20"
                 android:id="@+id/endDate_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:fontFamily="sans-serif-thin"
+                android:text="20"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:textSize="30sp" />
@@ -398,16 +393,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_check"
         android:layout_marginTop="20dp"
-        android:background="@android:color/transparent"
-        android:visibility="gone">
+        android:background="@android:color/transparent">
 
         <TextView
-            android:layout_marginStart="@dimen/_4sdp"
             android:id="@+id/texter"
             android:layout_width="84dp"
             android:layout_height="match_parent"
             android:layout_alignBottom="@+id/chooseroom"
             android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/_4sdp"
             android:layout_marginEnd="-84dp"
             android:layout_marginBottom="-10dp"
             android:text="Choose no. of rooms"
@@ -435,160 +429,147 @@
 
 
     <RelativeLayout
-        android:id="@+id/spinner_room_layout"
-        android:layout_width="80dp"
+        android:id="@+id/all_views_relative"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layout_chooseroom"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/icon3"
-        android:background="@android:color/transparent"
-        android:gravity="end">
+        android:layout_below="@+id/layout_chooseroom">
 
 
-        <Spinner
-            android:id="@+id/no_of_rooms"
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:id="@+id/spinner_room_layout"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/app_color"
-            android:gravity="center_horizontal"
-            android:text="Room 1"
-            android:textColor="@color/app_color" />
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/icon3"
+            android:background="@android:color/transparent"
+            android:gravity="end">
 
-        <View
-            android:id="@+id/line"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/no_of_rooms"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/line1" />
+
+            <TextView
+                android:id="@+id/no_of_rooms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/app_color"
+                android:gravity="center_horizontal"
+                android:text="Room 1"
+                android:textColor="@color/app_color" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/no_of_rooms"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/line1" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/icon3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:drawableStart="@drawable/ic_offer" />
+
+
+        <RelativeLayout
+            android:id="@+id/spinner_adult_layout"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/icon4"
+            android:background="@android:color/transparent"
+            android:gravity="end">
+
+
+            <Spinner
+                android:id="@+id/adilt_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/app_color" />
+
+            <View
+                android:id="@+id/line5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/adilt_count"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/line1" />
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/icon4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_toRightOf="@+id/spinner_room_layout"
+            android:drawableStart="@drawable/ic_man_adult_room" />
+
+
+        <RelativeLayout
+            android:id="@+id/spinner_child_layout"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:layout_toRightOf="@+id/icon5"
+            android:background="@android:color/transparent"
+            android:gravity="end">
+
+
+            <Spinner
+                android:id="@+id/no_of_childs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/app_color" />
+
+            <View
+                android:id="@+id/line6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/no_of_childs"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/line1" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/icon5"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_toRightOf="@+id/spinner_adult_layout"
+            android:drawableStart="@drawable/ic_smallman" />
 
     </RelativeLayout>
-
-
-    <TextView
-        android:id="@+id/icon3"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/layout_check"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:drawableStart="@drawable/ic_offer" />
-
-
-    <RelativeLayout
-        android:id="@+id/spinner_adult_layout"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layout_chooseroom"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@+id/icon4"
-        android:background="@android:color/transparent"
-        android:gravity="end">
-
-
-        <Spinner
-            android:id="@+id/adilt_count"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/app_color" />
-
-        <View
-            android:id="@+id/line5"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/adilt_count"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/line1" />
-
-    </RelativeLayout>
-
-
-    <TextView
-        android:id="@+id/icon4"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/layout_check"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_toRightOf="@+id/spinner_room_layout"
-        android:drawableStart="@drawable/ic_man_adult_room" />
-
-
-    <RelativeLayout
-        android:id="@+id/spinner_child_layout"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/layout_chooseroom"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
-        android:layout_toRightOf="@+id/icon5"
-        android:background="@android:color/transparent"
-        android:gravity="end">
-
-
-        <Spinner
-            android:id="@+id/no_of_childs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/app_color" />
-
-        <View
-            android:id="@+id/line6"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/no_of_childs"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/line1" />
-
-    </RelativeLayout>
-
-
-    <TextView
-        android:id="@+id/icon5"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/layout_check_out"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_toRightOf="@+id/spinner_adult_layout"
-        android:drawableStart="@drawable/ic_smallman" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_child"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner_child_layout"
+        android:layout_below="@+id/all_views_relative"
         android:padding="12dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-
-    <Button
-        android:id="@+id/findHotels"
-        android:layout_width="99dp"
-        android:layout_height="@dimen/_25sdp"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginStart="133dp"
-        android:layout_marginEnd="137dp"
-        android:layout_marginBottom="24dp"
-        android:background="@color/app_color"
-        android:layout_below="@+id/rv_child"
-        android:text="@string/find_hotels" />
-
     <ScrollView
         android:id="@+id/roomsscroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/findHotels"
+        android:layout_height="@dimen/_100sdp"
         android:layout_below="@id/rv_child"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -598,6 +579,7 @@
         android:clipToPadding="true"
         android:fillViewport="true"
         android:scrollbarStyle="outsideInset">
+
 
         <LinearLayout
             android:id="@+id/linearLayout_frame"
@@ -622,7 +604,6 @@
                 android:id="@+id/frame2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_below="@id/frame1"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
@@ -645,7 +626,19 @@
             </FrameLayout>
         </LinearLayout>
 
+
     </ScrollView>
+
+    <Button
+        android:id="@+id/findHotels"
+        android:layout_width="99dp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="24dp"
+        android:background="@color/app_color"
+        android:text="@string/find_hotels"
+        android:layout_below="@+id/roomsscroll"
+        />
 
 
     <!--<ProgressBar-->
