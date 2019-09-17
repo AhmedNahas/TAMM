@@ -199,7 +199,8 @@ public class FindHotels extends AppCompatActivity {
         ButterKnife.bind(this);
         auth();
 
-
+        SharedPreferencesManger.remove(this,"ConfirmationNo");
+        SharedPreferencesManger.remove(this,"child_countroom1");
         iv_booked_find_hotels = findViewById(R.id.iv_booked_find_hotels);
 
         iv_booked_find_hotels.setOnClickListener(new View.OnClickListener() {
