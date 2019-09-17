@@ -25,8 +25,7 @@ public class MyTripsActivity extends AppCompatActivity {
     RecyclerView reMyTrips;
 
     MyTripsAdapter myTripsAdapter;
-    @BindView(R.id.delet_all)
-    Button deletAll;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +47,7 @@ public class MyTripsActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.delet_all)
-    public void onViewClicked() {
 
-        AppDatabase appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
-      appDatabase.cartDao().deletAll();
 
-      myTripsAdapter.notifyDataSetChanged();
-
-    }
 }

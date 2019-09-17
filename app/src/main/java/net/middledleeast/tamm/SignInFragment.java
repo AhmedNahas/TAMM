@@ -297,9 +297,36 @@ try {
 
                         // Now store the user in SQLite
                         String uid = jObj.getString("uid");
+
+
+
                         SharedPreferencesManger.SaveData(getContext(),"uid",uid);
 
                         JSONObject user = jObj.getJSONObject("user");
+
+
+
+
+
+
+
+
+                        String country = user.getString("country");
+                        String phone = user.getString("phone");
+                        String email = user.getString("email");
+                        String city = user.getString("city");
+
+
+                        SharedPreferencesManger.SaveData(getContext(),"country",country);
+                        SharedPreferencesManger.SaveData(getContext(),"phone",phone);
+                        SharedPreferencesManger.SaveData(getContext(),"email",email);
+                        SharedPreferencesManger.SaveData(getContext(),"city",city);
+
+
+
+
+
+
 
                         int isfree = user.getInt("isfree");
 

@@ -911,37 +911,42 @@ public class FlightsSummary extends AppCompatActivity {
 
     private Passenger passenger5(Fare fare, String flightNumber) {
 
+
+        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
+        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
+        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
+        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
+
         Passenger passenger = new Passenger();
         passenger.setFare(fare);
-        passenger.setAddressLine1("cairo");
-        passenger.setAddressLine2("cairo");
+        passenger.setAddressLine1(city1);
+        passenger.setAddressLine2(city1);
         City city = new City();
         city.setCityCode("CAI");
-        city.setCityName("cairo");
-        city.setCountryCode("Egypt");
+        city.setCityName(city1);
+        city.setCountryCode(country1);
         passenger.setCity(city);
         Country country = new Country();
         country.setCountryCode("EG");
-        country.setCountryName("Egypt");
+        country.setCountryName(country1);
         passenger.setCountry(country);
-        passenger.setEmail("abdallah@yahoo.com");
+        passenger.setEmail(email);
         passenger.setFirstName(firstNameAduld5);
         passenger.setGender(1);
-        passenger.setIsLeadPax(true);
         passenger.setLastName(lastNameAduld5);
         passenger.setType(1);
         passenger.setTitle(MDataMrmisAdult5);
         Nationality nationality = new Nationality();
 
-        nationality.setCountryCode("KW");
-        nationality.setCountryName("Kuwait");
+        nationality.setCountryCode("EG");
+        nationality.setCountryName(country1);
         passenger.setNationality(nationality);
 
         passenger.setDateOfBirth(datebirthadult5);
 
         passenger.setFFNumber(flightNumber);
-        passenger.setMobile1("");
-        passenger.setMobile1CountryCode("");
+        passenger.setMobile1(phone);
+        passenger.setMobile1CountryCode("12");
 
 
         passenger.setPassportExpiry(passportEnd5);
@@ -954,37 +959,42 @@ public class FlightsSummary extends AppCompatActivity {
 
     private Passenger passenger4(Fare fare, String flightNumber) {
 
+
+        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
+        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
+        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
+        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
+
         Passenger passenger = new Passenger();
         passenger.setFare(fare);
-        passenger.setAddressLine1("cairo");
-        passenger.setAddressLine2("cairo");
+        passenger.setAddressLine1(city1);
+        passenger.setAddressLine2(city1);
         City city = new City();
         city.setCityCode("CAI");
-        city.setCityName("cairo");
-        city.setCountryCode("Egypt");
+        city.setCityName(city1);
+        city.setCountryCode(country1);
         passenger.setCity(city);
         Country country = new Country();
         country.setCountryCode("EG");
-        country.setCountryName("Egypt");
+        country.setCountryName(country1);
         passenger.setCountry(country);
-        passenger.setEmail("abdallah@yahoo.com");
+        passenger.setEmail(email);
         passenger.setFirstName(firstNameAduld4);
         passenger.setGender(1);
-        passenger.setIsLeadPax(true);
         passenger.setLastName(lastNameAduld4);
         passenger.setType(1);
         passenger.setTitle(MDataMrmisAdult4);
         Nationality nationality = new Nationality();
 
-        nationality.setCountryCode("KW");
-        nationality.setCountryName("Kuwait");
+        nationality.setCountryCode("EG");
+        nationality.setCountryName(country1);
         passenger.setNationality(nationality);
 
         passenger.setDateOfBirth(datebirthadult4);
 
         passenger.setFFNumber(flightNumber);
-        passenger.setMobile1("");
-        passenger.setMobile1CountryCode("");
+        passenger.setMobile1(phone);
+        passenger.setMobile1CountryCode("+2");
 
 
         passenger.setPassportExpiry(passportEnd4);
@@ -996,37 +1006,44 @@ public class FlightsSummary extends AppCompatActivity {
     }
 
     private Passenger passenger3(Fare fare, String flightNumber) {
+
+
+        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
+        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
+        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
+        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
+
+
         Passenger passenger = new Passenger();
         passenger.setFare(fare);
-        passenger.setAddressLine1("cairo");
-        passenger.setAddressLine2("cairo");
+        passenger.setAddressLine1(city1);
+        passenger.setAddressLine2(city1);
         City city = new City();
         city.setCityCode("CAI");
-        city.setCityName("cairo");
-        city.setCountryCode("Egypt");
+        city.setCityName(city1);
+        city.setCountryCode(country1);
         passenger.setCity(city);
         Country country = new Country();
         country.setCountryCode("EG");
-        country.setCountryName("Egypt");
+        country.setCountryName(country1);
         passenger.setCountry(country);
-        passenger.setEmail("abdallah@yahoo.com");
+        passenger.setEmail(email);
         passenger.setFirstName(firstNameAduld3);
         passenger.setGender(1);
-        passenger.setIsLeadPax(true);
         passenger.setLastName(lastNameAduld3);
         passenger.setType(1);
         passenger.setTitle(MDataMrmisAdult3);
         Nationality nationality = new Nationality();
 
-        nationality.setCountryCode("KW");
-        nationality.setCountryName("Kuwait");
+        nationality.setCountryCode("EG");
+        nationality.setCountryName(country1);
         passenger.setNationality(nationality);
 
         passenger.setDateOfBirth(datebirthadult3);
 
         passenger.setFFNumber(flightNumber);
-        passenger.setMobile1("");
-        passenger.setMobile1CountryCode("");
+        passenger.setMobile1(phone);
+        passenger.setMobile1CountryCode("+2");
 
 
         passenger.setPassportExpiry(passportEnd3);
@@ -1040,21 +1057,27 @@ public class FlightsSummary extends AppCompatActivity {
 
     private Passenger passenger1(Fare fare, String flightNumber) {
 
+        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
+        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
+        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
+        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
+
+
 
         Passenger passenger = new Passenger();
         passenger.setFare(fare);
-        passenger.setAddressLine1("cairo");
-        passenger.setAddressLine2("cairo");
+        passenger.setAddressLine1(city1);
+        passenger.setAddressLine2(city1);
         City city = new City();
         city.setCityCode("CAI");
-        city.setCityName("cairo");
-        city.setCountryCode("Egypt");
+        city.setCityName(city1);
+        city.setCountryCode("EG");
         passenger.setCity(city);
         Country country = new Country();
         country.setCountryCode("EG");
-        country.setCountryName("Egypt");
+        country.setCountryName(country1);
         passenger.setCountry(country);
-        passenger.setEmail("abdallah@yahoo.com");
+        passenger.setEmail(email);
         passenger.setFirstName(firstNameAduld);
         passenger.setGender(1);
         passenger.setIsLeadPax(true);
@@ -1063,19 +1086,19 @@ public class FlightsSummary extends AppCompatActivity {
         passenger.setTitle(MDataMrmisAdult);
         Nationality nationality = new Nationality();
 
-        nationality.setCountryCode("KW");
-        nationality.setCountryName("Kuwait");
+        nationality.setCountryCode("EG");
+        nationality.setCountryName(country1);
         passenger.setNationality(nationality);
 
         passenger.setDateOfBirth(datebirthadult);
 
         passenger.setFFNumber(flightNumber);
-        passenger.setMobile1("");
-        passenger.setMobile1CountryCode("");
+        passenger.setMobile1(phone);
+        passenger.setMobile1CountryCode("+2");
 
 
         passenger.setPassportExpiry(passportEnd);
-        passenger.setPassportIssueCountryCode("2365");
+        passenger.setPassportIssueCountryCode("123");
         passenger.setPassportIssueDate(passportIssue);
         passenger.setPassportNo(passportNo);
 
@@ -1085,37 +1108,48 @@ public class FlightsSummary extends AppCompatActivity {
 
     private Passenger passenger2(Fare fare, String flightNumber) {
 
+
+
+
+
+        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
+        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
+        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
+        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
+
+
+
+
         Passenger passenger2 = new Passenger();
         passenger2.setFare(fare);
-        passenger2.setAddressLine1("cairo");
-        passenger2.setAddressLine2("cairo");
+        passenger2.setAddressLine1(city1);
+        passenger2.setAddressLine2(city1);
         City city2 = new City();
-        city2.setCityCode("CAI");
-        city2.setCityName("cairo");
-        city2.setCountryCode("Egypt");
+        city2.setCityCode("");
+        city2.setCityName(city1);
+        city2.setCountryCode("");
         passenger2.setCity(city2);
         Country country2 = new Country();
-        country2.setCountryCode("EG");
-        country2.setCountryName("Egypt");
+        country2.setCountryCode("");
+        country2.setCountryName(country1);
         passenger2.setCountry(country2);
-        passenger2.setEmail("abdallah@yahoo.com");
+        passenger2.setEmail(email);
         passenger2.setFirstName(firstNameAduld2);
         passenger2.setGender(1);
-        passenger2.setIsLeadPax(true);
         passenger2.setLastName(lastNameAduld2);
         passenger2.setType(1);
         passenger2.setTitle(MDataMrmisAdult2);
         Nationality nationality2 = new Nationality();
 
-        nationality2.setCountryCode("KW");
-        nationality2.setCountryName("Kuwait");
+        nationality2.setCountryCode("EG");
+        nationality2.setCountryName(country1);
         passenger2.setNationality(nationality2);
 
         passenger2.setDateOfBirth(datebirthadult2);
 
         passenger2.setFFNumber(flightNumber);
-        passenger2.setMobile1("");
-        passenger2.setMobile1CountryCode("");
+        passenger2.setMobile1(phone);
+        passenger2.setMobile1CountryCode("+2");
 
 
         passenger2.setPassportExpiry(passportEnd2);

@@ -90,7 +90,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="150dp"
-            android:src="@drawable/mantext"
+            android:src="@drawable/manok"
             />
     </RelativeLayout>
 
@@ -102,7 +102,7 @@
             android:layout_width="200dp"
             android:layout_height="@dimen/_25sdp"
             android:layout_below="@+id/relative_man_txt"
-            android:text="FLIGHT DETAILS"
+            android:text="GET MY TICKET NOW"
             android:background="@drawable/shape"
             android:textStyle="bold"
             android:layout_marginTop="@dimen/_30sdp"

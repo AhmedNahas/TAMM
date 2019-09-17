@@ -446,7 +446,10 @@ public class Passenger_inform extends AppCompatActivity {
     private boolean notFailed;
     private InputStream inputStream;
     private List<String> list_nationalites = new ArrayList<>();
-    private String MDataMrmisAdult, MDataMrmisChild, MDataMrmisInfent;
+    private String MDataMrmisAdult, MDataMrmisChild, MDataMrmisInfent ,MDataMrmisChild2,
+    MDataMrmisChild3,
+            MDataMrmisChild4,
+    MDataMrmisChild5;
 
     RelativeLayout relative_back_passenger_inform;
     ImageView iv_booked_passenger_inform;
@@ -455,8 +458,17 @@ public class Passenger_inform extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener mDateSetListener8;
     private String MDataMrmisAdult2;
     private DatePickerDialog.OnDateSetListener mDateSetListener9 , mDateSetListener10 , mDateSetListener11 , mDateSetListener12 , mDateSetListener13 , mDateSetListener14 ,
-            mDateSetListener15  , mDateSetListener16 ,  mDateSetListener17;
-    private String MDataMrmisAdult5 , MDataMrmisAdult4 , MDataMrmisAdult3 ;
+            mDateSetListener15  , mDateSetListener16 ,  mDateSetListener17  ,   mDateSetListener18,
+    mDateSetListener19,
+            mDateSetListener20,
+    mDateSetListener21   ,    mDateSetListener22,
+    mDateSetListener23,
+            mDateSetListener24,
+    mDateSetListener25;
+    private String MDataMrmisAdult5 , MDataMrmisAdult4 , MDataMrmisAdult3  ,  MDataMrmisInfent2,
+    MDataMrmisInfent3,
+            MDataMrmisInfent4,
+    MDataMrmisInfent5 ;
 
     @SuppressLint("StaticFieldLeak")
     @Override
@@ -995,10 +1007,206 @@ public class Passenger_inform extends AppCompatActivity {
 
 
 
+        dateOfBirthChild2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                openAdultAge(mDateSetListener18);
+
+            }
+        });
+
+        mDateSetListener18 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+
+                String date = month + "/" + day + "/" + year;
+                dateOfBirthChild2.setText(date);
+
+
+
+            }
+
+        };
+        dateOfBirthAdult3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAdultAge(mDateSetListener19);
+
+
+            }
+        });
+
+
+        mDateSetListener19 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+
+                String date = month + "/" + day + "/" + year;
+                dateOfBirthChild3.setText(date);
+
+
+
+            }
+
+        };
+
+        dateOfBirthAdult4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                openAdultAge(mDateSetListener20);
+
+            }
+        });
+
+        mDateSetListener20 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+
+                String date = month + "/" + day + "/" + year;
+                dateOfBirthChild4.setText(date);
+
+
+
+            }
+
+        };
+        dateOfBirthAdult5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAdultAge(mDateSetListener21);
+
+
+            }
+        });
+
+        mDateSetListener21 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+
+                String date = month + "/" + day + "/" + year;
+                dateOfBirthChild5.setText(date);
+
+
+
+            }
+
+        };
 
 
 
 
+
+
+
+
+        dateOfBirthAdultInfant2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAdultAge(mDateSetListener22);
+
+
+            }
+        });
+
+        mDateSetListener22 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+
+                String date = month + "/" + day + "/" + year;
+                dateOfBirthAdultInfant2.setText(date);
+
+
+
+            }
+
+        };
+
+
+
+        dateOfBirthAdultInfant3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAdultAge(mDateSetListener23);
+
+
+            }
+        });
+        mDateSetListener23 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+
+                String date = month + "/" + day + "/" + year;
+                dateOfBirthAdultInfant3.setText(date);
+
+
+
+            }
+
+        };
+
+
+
+        dateOfBirthAdultInfant4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAdultAge(mDateSetListener24);
+
+
+            }
+        });
+
+
+        mDateSetListener24 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+
+                String date = month + "/" + day + "/" + year;
+                dateOfBirthAdultInfant4.setText(date);
+
+
+
+            }
+
+        };
+
+
+        dateOfBirthAdultInfant5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAdultAge(mDateSetListener25);
+
+
+            }
+        });
+
+
+        mDateSetListener25 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                dateOfBirthAdultInfant5.setText(date);
+
+            }
+
+        };
 
 
         confirm.setOnClickListener(new View.OnClickListener() {
@@ -1336,7 +1544,6 @@ public class Passenger_inform extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
 
-                String nationalite = list_nationalites.get(adapter3.getPosition(adapter3.getItem(position)));
 
 
             }
@@ -1361,6 +1568,124 @@ public class Passenger_inform extends AppCompatActivity {
 
 
         });
+
+
+
+
+
+        nationalityChild2.setAdapter(adapter4);
+        nationalityChild2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
+
+
+            }
+
+
+        });
+
+
+        nationalityChild3.setAdapter(adapter4);
+        nationalityChild3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
+
+
+            }
+
+
+        });
+
+
+
+        nationalityChild4.setAdapter(adapter4);
+        nationalityChild4.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
+
+
+            }
+
+
+        });
+
+
+
+        nationalityChild5.setAdapter(adapter4);
+        nationalityChild5.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
+            }
+
+
+        });
+
+
+        nationalityAdultInfant2.setAdapter(adapter4);
+        nationalityAdultInfant2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
+            }
+
+
+        });
+
+
+
+
+
+        nationalityAdultInfant3.setAdapter(adapter4);
+        nationalityAdultInfant3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
+            }
+
+
+        });
+
+
+        nationalityAdultInfant4.setAdapter(adapter4);
+        nationalityAdultInfant4.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
+            }
+
+
+        });
+
+
+
+
+        nationalityAdultInfant5.setAdapter(adapter4);
+        nationalityAdultInfant5.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
+            }
+        });
+
+
+
+
+
+
+
+
 
 
         mrmiss1array = new ArrayList<>();
@@ -1483,11 +1808,152 @@ public class Passenger_inform extends AppCompatActivity {
 
 
 
+        mrmisChild.setAdapter(adapterChild);
+        mrmisChild.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                MDataMrmisChild = mrmiss2array.get(i);
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
 
 
+        mromissChild2.setAdapter(adapterChild);
+        mromissChild2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                MDataMrmisChild2 = mrmiss2array.get(i);
 
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
+
+        mromissChild3.setAdapter(adapterChild);
+        mromissChild3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                MDataMrmisChild3 = mrmiss2array.get(i);
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        mromissChild4.setAdapter(adapterChild);
+        mromissChild4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                MDataMrmisChild4 = mrmiss2array.get(i);
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        mromissChild5.setAdapter(adapterChild);
+        mromissChild5.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                MDataMrmisChild5 = mrmiss2array.get(i);
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        mromissInfant2.setAdapter(adapterChild);
+        mromissInfant2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                MDataMrmisInfent2 = mrmiss2array.get(i);
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        mromissInfant3.setAdapter(adapterChild);
+        mromissInfant3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                MDataMrmisInfent3 = mrmiss2array.get(i);
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
+        mromissInfant4.setAdapter(adapterChild);
+        mromissInfant4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                MDataMrmisInfent4 = mrmiss2array.get(i);
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        mromissInfant5.setAdapter(adapterChild);
+        mromissInfant5.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                MDataMrmisInfent5 = mrmiss2array.get(i);
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
 
