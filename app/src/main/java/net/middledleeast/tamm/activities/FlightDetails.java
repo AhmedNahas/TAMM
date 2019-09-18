@@ -102,6 +102,10 @@ public class FlightDetails extends AppCompatActivity  {
         setContentView(R.layout.flight_details);
         ButterKnife.bind(this);
 
+ SharedPreferencesManger.remove(this, "to");
+      SharedPreferencesManger.remove(this, "from");
+
+
 
 
     }
@@ -132,6 +136,11 @@ public class FlightDetails extends AppCompatActivity  {
     }
 
     private void getTecjit() {
+
+
+        int journyTipe = SharedPreferencesManger.LoadIntegerData(this, "journyTipe");
+
+
 
         adult = SharedPreferencesManger.LoadLongData(this, "adult");
 
@@ -185,16 +194,15 @@ public class FlightDetails extends AppCompatActivity  {
                 String email = data.getPassenger().get(0).getEmail();
 
 
-                String to = SharedPreferencesManger.LoadStringData(FlightDetails.this, "to");
-                String from = SharedPreferencesManger.LoadStringData(FlightDetails.this, "from");
+
 
 
                 for (int i = 0; i < data.getSegments().size(); i++) {
 
 
-                    FROM = countryName + "  /  " + from;
+                    FROM = countryName + "  /  ";
 
-                    TO = data.getSegments().get(i).getDestination().getCityName() + "  /  " + to;
+                    TO = data.getSegments().get(i).getDestination().getCityName() + "  /  ";
 
 
 
@@ -217,12 +225,15 @@ public class FlightDetails extends AppCompatActivity  {
                         String lastName= passenger1.getLastName();
                         NAME_PASSENGER = firstName + " / " + lastName;
 
+
                         String teckit1 = (String) response.body().getItinerary().getPassenger().get(0).getTicket().getTicketNumber();
 
                         TICKIT_NO = "TicketNo  : " + teckit1;
 
+
+                        String airlineCode = segment.getAirline();
                         RoomCartModel roomTripModel = new RoomCartModel(NAME_PASSENGER, FROM, TO,
-                                FLIGHT_NO, DATE, "7", "7A", GROUND_TIME, TICKIT_NO);
+                                FLIGHT_NO, DATE, airlineCode, airlineCode , GROUND_TIME, TICKIT_NO);
 
                         appDatabase.cartDao().addoffer(roomTripModel);
 
@@ -230,7 +241,44 @@ public class FlightDetails extends AppCompatActivity  {
                                 "To :" +TO +"                             "+FLIGHT_NO
                                 +"                    "+DATE +"                   " +TICKIT_NO;
 
-                        sendDataToEMail(email,body);
+
+                        if (journyTipe==2){
+
+
+                            Segment segmentReturn = data.getSegments().get(1);
+
+                            String airlineCodeReturn = segmentReturn.getAirline();
+
+                            String flightNumberReturn = segmentReturn.getFlightNumber();
+                            String departureTimeReturn = segmentReturn.getDepartureTime();
+
+
+                            String[] tsReturn = departureTimeReturn.split("T");
+                            String tReturn = tsReturn[0];
+                            String DateReturn = "DATE   " + tReturn;
+
+                            String timeReturn = segmentReturn.getAccumulatedDuration();
+
+
+                            RoomCartModel roomCartModelReturn = new RoomCartModel(airlineCodeReturn,airlineCodeReturn,FROM,TO,flightNumberReturn,DateReturn
+                                    ,timeReturn);
+
+
+                            appDatabase.cartDao().addoffer(roomCartModelReturn);
+
+
+                            sendDataToEMail(email, body+ "RETURN INFORMATION IS : "+ airlineCodeReturn+airlineCodeReturn+FROM+TO+flightNumberReturn+DateReturn
+                                    +timeReturn );
+
+                        }else {
+
+                            sendDataToEMail(email,body);
+
+
+
+                        }
+
+
 
                         break;
 
@@ -258,15 +306,16 @@ public class FlightDetails extends AppCompatActivity  {
 
                         firstName2 = passenger2.getFirstName();
                         lastName2 = passenger2.getLastName();
+                         airlineCode = segment.getAirline();
 
                         RoomCartModel roomTripModel1 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
-                                FLIGHT_NO, DATE, "7", "7A", GROUND_TIME, TICKIT_NO);
+                                FLIGHT_NO, DATE,airlineCode , airlineCode, GROUND_TIME, TICKIT_NO);
 
 
                         appDatabase.cartDao().addoffer(roomTripModel1);
 
                         RoomCartModel roomTripModel2 = new RoomCartModel(firstName2 + " / " + lastName2, FROM, TO
-                                , FLIGHT_NO, DATE, "Gate 7", "SEAT 1A", GROUND_TIME, pnr2);
+                                , FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, pnr2);
 
                         appDatabase.cartDao().addoffer(roomTripModel2);
 
@@ -320,14 +369,18 @@ public class FlightDetails extends AppCompatActivity  {
                         firstName3 = passenger3.getFirstName();
                         lastName3 = passenger3.getLastName();
 
+                        airlineCode = segment.getAirline();
+
+
+
                         RoomCartModel roomTripModel1_3 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
-                                FLIGHT_NO, DATE, "7", "7A", GROUND_TIME, TICKIT_NO);
+                                FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, TICKIT_NO);
 
 
                         appDatabase.cartDao().addoffer(roomTripModel1_3);
 
                         RoomCartModel roomTripModel2_3 = new RoomCartModel(firstName2 + " / " + lastName2, FROM, TO
-                                , FLIGHT_NO, DATE, "Gate 7", "SEAT 1A", GROUND_TIME, pnr2);
+                                , FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, pnr2);
 
                         appDatabase.cartDao().addoffer(roomTripModel2_3);
 
@@ -335,8 +388,8 @@ public class FlightDetails extends AppCompatActivity  {
                         RoomCartModel roomTripModel3_3 = new RoomCartModel(firstName3 + " / " + lastName3, FROM, TO,
                                 FLIGHT_NO
                                 , DATE,
-                                "Gate 15",
-                                "Seat 5A"
+                                airlineCode,
+                                airlineCode
                                 , GROUND_TIME,
                                 pnr3);
                         appDatabase.cartDao().addoffer(roomTripModel3_3);
@@ -371,6 +424,7 @@ public class FlightDetails extends AppCompatActivity  {
 
                     case 4:
 
+                        airlineCode = segment.getAirline();
 
 
                         Passenger passenger_4 = data.getPassenger().get(0);
@@ -416,21 +470,21 @@ public class FlightDetails extends AppCompatActivity  {
                         firstName4 = passenger4_4.getFirstName();
                         lastName4 = passenger4_4.getLastName();
                         RoomCartModel roomTripModel1_4 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
-                                FLIGHT_NO, DATE, "7", "7A", GROUND_TIME, TICKIT_NO);
+                                FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, TICKIT_NO);
 
 
                         appDatabase.cartDao().addoffer(roomTripModel1_4);
 
                         RoomCartModel roomTripModel2_4 = new RoomCartModel(firstName2 + " / " + lastName2, FROM, TO
-                                , FLIGHT_NO, DATE, "Gate 7", "SEAT 1A", GROUND_TIME, pnr2);
+                                , FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, pnr2);
                         appDatabase.cartDao().addoffer(roomTripModel2_4);
 
 
                         RoomCartModel roomTripModel3_4 = new RoomCartModel(firstName3 + " / " + lastName3, FROM, TO,
                                 FLIGHT_NO
                                 , DATE,
-                                "Gate 15",
-                                "Seat 5A"
+                                airlineCode,
+                                airlineCode
                                 , GROUND_TIME,
                                 pnr3);
                         appDatabase.cartDao().addoffer(roomTripModel3_4);
@@ -441,8 +495,8 @@ public class FlightDetails extends AppCompatActivity  {
                                 TO,
                                 FLIGHT_NO,
                                 DATE,
-                                "Gate 12",
-                                "Seat 1B",
+                                airlineCode,
+                                airlineCode,
                                 GROUND_TIME,
                                 pnr4);
                         appDatabase.cartDao().addoffer(roomTripModel4_4);
@@ -491,7 +545,7 @@ public class FlightDetails extends AppCompatActivity  {
 
 
 
-
+                        airlineCode = segment.getAirline();
                         Passenger passenger_5 = data.getPassenger().get(0);
 
                         String firstName_5 = passenger_5.getFirstName();
@@ -552,21 +606,21 @@ public class FlightDetails extends AppCompatActivity  {
 
 
                         RoomCartModel roomTripModel1_5 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
-                                FLIGHT_NO, DATE, "7", "7A", GROUND_TIME, TICKIT_NO);
+                                FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, TICKIT_NO);
 
 
                         appDatabase.cartDao().addoffer(roomTripModel1_5);
 
                         RoomCartModel roomTripModel2_5 = new RoomCartModel(firstName2 + " / " + lastName2, FROM, TO
-                                , FLIGHT_NO, DATE, "Gate 7", "SEAT 1A", GROUND_TIME, pnr2);
+                                , FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, pnr2);
                         appDatabase.cartDao().addoffer(roomTripModel2_5);
 
 
                         RoomCartModel roomTripModel3_5 = new RoomCartModel(firstName3 + " / " + lastName3, FROM, TO,
                                 FLIGHT_NO
                                 , DATE,
-                                "Gate 15",
-                                "Seat 5A"
+                                airlineCode,
+                                airlineCode
                                 , GROUND_TIME,
                                 pnr3);
 
@@ -578,8 +632,8 @@ public class FlightDetails extends AppCompatActivity  {
                                 TO,
                                 FLIGHT_NO,
                                 DATE,
-                                "Gate 12",
-                                "Seat 1B",
+                                airlineCode,
+                                airlineCode,
                                 GROUND_TIME,
                                 pnr4);
 
@@ -589,8 +643,8 @@ public class FlightDetails extends AppCompatActivity  {
                                 , TO,
                                 FLIGHT_NO
                                 , DATE,
-                                "Gate 17",
-                                "Seat 4C",
+                                airlineCode,
+                                airlineCode,
                                 GROUND_TIME,
                                 pnr5);
 

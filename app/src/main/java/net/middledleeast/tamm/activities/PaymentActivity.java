@@ -152,8 +152,6 @@ public class PaymentActivity extends AppCompatActivity {
         }
 
 
-        // just for test
-       // mId=BOOKING_ROOM;
         relativeLayout.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -168,7 +166,6 @@ public class PaymentActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 if (mId == BOOKING_ROOM) {
 

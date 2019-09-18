@@ -9,7 +9,7 @@
     <TextView
         android:gravity="center"
         android:id="@+id/NamePassenger"
-        android:textColor="@color/white"
+        android:textColor="@color/app_color"
         android:fontFamily="sans-serif-medium"
         android:padding="@dimen/_5sdp"
         android:textSize="@dimen/_12ssp"
@@ -25,7 +25,7 @@
         android:textColor="@color/white"
         android:layout_below="@+id/NamePassenger"
         android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_14ssp"
+        android:textSize="@dimen/_10ssp"
         android:text="FROM : "
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_30sdp" />
@@ -40,10 +40,38 @@
         android:layout_below="@+id/NamePassenger"
         android:fontFamily="sans-serif-medium"
         android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_12ssp"
-        android:text="MOSCOW        /        DME"
+        android:textSize="@dimen/_9ssp"
+        android:text="MOSCOW   /"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_30sdp" />
+
+
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_below="@+id/NamePassenger"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/photo_ticket"
+        android:layout_alignParentEnd="true"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        app:civ_border_width="2dp"
+        app:civ_border_color="@color/app_color"
+        app:civ_circle_background_color="@color/app_color" />
+
+    <TextView
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:textColor="@color/app_color"
+        android:layout_below="@+id/photo_ticket"
+        android:text="Egypt AirLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 
 
     <TextView
@@ -54,7 +82,7 @@
         android:textColor="@color/white"
         android:layout_below="@+id/From"
         android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_14ssp"
+        android:textSize="@dimen/_10ssp"
         android:text="TO : "
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_30sdp" />
@@ -69,8 +97,8 @@
         android:layout_below="@+id/from"
         android:fontFamily="sans-serif-medium"
         android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_12ssp"
-        android:text="LARNKA         /           LCA"
+        android:textSize="@dimen/_9ssp"
+        android:text="LARNKA  /"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_30sdp" />
 
@@ -84,7 +112,7 @@
         android:lineHeight="@dimen/_23sdp"
         android:fontFamily="sans-serif-black"
 
-        android:textSize="@dimen/_16ssp"
+        android:textSize="@dimen/_10ssp"
         android:text="FLIGHT   okl018"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -98,7 +126,7 @@
         android:layout_below="@+id/to"
         android:gravity="center"
         android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_16ssp"
+        android:textSize="@dimen/_10ssp"
         android:lineHeight="@dimen/_23sdp"
         android:fontFamily="sans-serif-black"
 
@@ -109,31 +137,7 @@
 
 
 
-    <TextView
-        android:id="@+id/gate"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/FlightNo"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_14ssp"
-        android:text="GATE : "
-        android:fontFamily="sans-serif-black"
 
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
-
-
-    <TextView
-        android:layout_toEndOf="@+id/gate"
-        android:id="@+id/Gate"
-        android:textColor="@color/white"
-        android:layout_below="@+id/FlightNo"
-        android:fontFamily="sans-serif-medium"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_12ssp"
-        android:text="  47"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
 
 
 
@@ -141,9 +145,9 @@
         android:id="@+id/hours"
         android:layout_marginStart="@dimen/_5sdp"
         android:textColor="@color/white"
-        android:layout_below="@+id/gate"
+        android:layout_below="@+id/FlightNo"
         android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_14ssp"
+        android:textSize="@dimen/_10ssp"
         android:text="TIME : "
         android:fontFamily="sans-serif-black"
 
@@ -156,7 +160,7 @@
         android:id="@+id/Hours"
         android:layout_toEndOf="@+id/hours"
         android:textColor="@color/white"
-        android:layout_below="@+id/Gate"
+        android:layout_below="@+id/FlightNo"
         android:fontFamily="sans-serif-medium"
         android:padding="@dimen/_5sdp"
         android:textSize="@dimen/_12ssp"
@@ -164,31 +168,15 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_30sdp" />
 
-    <TextView
-        android:layout_toEndOf="@id/FlightNo"
-        android:id="@+id/SEAT"
-        android:layout_marginStart="@dimen/_5sdp"
-        android:textColor="@color/white"
-        android:layout_below="@+id/Date"
-        android:gravity="center"
-        android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_16ssp"
-        android:fontFamily="sans-serif-black"
-
-        android:lineHeight="@dimen/_23sdp"
-        android:text="SEAT        24A"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
 
     <TextView
         android:layout_marginStart="@dimen/_30sdp"
-        android:layout_toEndOf="@+id/Gate"
+        android:layout_toEndOf="@+id/FlightNo"
         android:id="@+id/TicketNo"
         android:textColor="@color/white"
-        android:layout_below="@+id/gate"
+        android:layout_below="@+id/FlightNo"
         android:padding="@dimen/_5sdp"
-        android:textSize="@dimen/_14ssp"
+        android:textSize="@dimen/_10ssp"
         android:fontFamily="sans-serif-black"
 
         android:text="TicketNo  : 555218948"
@@ -197,9 +185,194 @@
 
 
 
+    <RelativeLayout
+        android:layout_below="@+id/TicketNo"
+        android:id="@+id/relative_Return_ticket"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/NamePassenger_Return"
+            android:textColor="@color/app_color"
+            android:fontFamily="sans-serif-medium"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/_12ssp"
+            android:text="RETURN INFORMATION"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp" />
+
+        <TextView
+            android:fontFamily="sans-serif-black"
+
+            android:id="@+id/from_Return"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/NamePassenger_Return"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/_10ssp"
+            android:text="FROM : "
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp" />
+
+
+
+        <TextView
+
+            android:layout_toEndOf="@+id/from_Return"
+            android:id="@+id/From_Return"
+            android:textColor="@color/white"
+            android:layout_below="@+id/NamePassenger_Return"
+            android:fontFamily="sans-serif-medium"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/_9ssp"
+            android:text="MOSCOW   /"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp" />
+
+
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_below="@+id/NamePassenger_Return"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/photo_ticket_Return"
+            android:layout_alignParentEnd="true"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/app_color"
+            app:civ_circle_background_color="@color/app_color" />
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:id="@+id/AirLineName"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:textColor="@color/app_color"
+            android:layout_below="@+id/photo_ticket_Return"
+            android:text="Egypt AirLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:fontFamily="sans-serif-black"
+
+            android:id="@+id/to_Return"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/From_Return"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/_10ssp"
+            android:text="TO : "
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp" />
+
+
+
+
+        <TextView
+            android:layout_toEndOf="@+id/from_Return"
+            android:id="@+id/To_Return"
+            android:textColor="@color/white"
+            android:layout_below="@+id/from_Return"
+            android:fontFamily="sans-serif-medium"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/_9ssp"
+            android:text="LARNKA  /"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp" />
+
+
+        <TextView
+            android:id="@+id/FlightNo_Return"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/to_Return"
+            android:padding="@dimen/_5sdp"
+            android:lineHeight="@dimen/_23sdp"
+            android:fontFamily="sans-serif-black"
+
+            android:textSize="@dimen/_10ssp"
+            android:text="FLIGHT   okl018"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:layout_toEndOf="@id/FlightNo_Return"
+            android:id="@+id/Date_Return"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/to_Return"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/_10ssp"
+            android:lineHeight="@dimen/_23sdp"
+            android:fontFamily="sans-serif-black"
+
+            android:text="  /  DATE   12/01/1995"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+
+
+
+
+
+        <TextView
+            android:id="@+id/hours_Return"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/FlightNo_Return"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/_10ssp"
+            android:text="TIME : "
+            android:fontFamily="sans-serif-black"
+
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp" />
+
+
+
+        <TextView
+
+            android:id="@+id/Hours_Return"
+            android:layout_toEndOf="@+id/hours_Return"
+            android:textColor="@color/white"
+            android:layout_below="@+id/FlightNo_Return"
+            android:fontFamily="sans-serif-medium"
+            android:padding="@dimen/_5sdp"
+            android:textSize="@dimen/_12ssp"
+            android:text="11 : 30"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp" />
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
 
     <View
-        android:layout_below="@+id/TicketNo"
+        android:layout_below="@+id/relative_Return_ticket"
         android:background="@color/app_color"
         android:layout_width="match_parent"
         android:layout_height="2dp"/>

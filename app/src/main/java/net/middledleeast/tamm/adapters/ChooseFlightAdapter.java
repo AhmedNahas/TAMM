@@ -424,108 +424,356 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
 
 
 
-//
-//        int journyTipe = SharedPreferencesManger.LoadIntegerData(context, "journyTipe");
-//
-//
-//        if (journyTipe == 2) {
-//            holder.relativeReturn.setVisibility(View.VISIBLE);
-//
-//
-//            List<SearchFlightsResponse.Segment> segmentsReturn = result.getSegments().get(1);
-//
-//             sizeReturn = segmentsReturn.size();
-//
-//            if (sizeReturn == 1) {
-//
-//                flightNumberSize1Return = segmentsReturn.get(0).getFlightNumber();
-//
-//                 airlineCode_return = "a" + segmentsReturn.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
-//                bookingClassReturn = segmentsReturn.get(0).getBookingClass();
-//
-//
-//                holder.ivIconReturn.setImageResource(context.getResources().getIdentifier(airlineCode_return, "drawable", context.getPackageName()));
-//
-//
-//                holder.tvTransitReturn.setText("Direct");
-//
-//                holder.tvTransitReturn.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_trending_flat, 0, 0, 0);
-//
+
+
+
+
+
+
+
+        int journyTipe = SharedPreferencesManger.LoadIntegerData(context, "journyTipe");
+
+
+
+
+
+
+
+
+        if (journyTipe == 2) {
+            holder.relativeReturn.setVisibility(View.VISIBLE);
+
+
+            List<SearchFlightsResponse.Segment> segmentsReturn = result.getSegments().get(1);
+
+           int  sizeReturn = segmentsReturn.size();
+
+            if (sizeReturn == 1) {
+
+              String  flightNumberSize1Return = segmentsReturn.get(0).getFlightNumber();
+
+                String airlineCode_return = "a" + segmentsReturn.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
+                String   bookingClassReturn = segmentsReturn.get(0).getBookingClass();
+
+
+                holder.ivIconReturn.setImageResource(context.getResources().getIdentifier(airlineCode_return, "drawable", context.getPackageName()));
+
+
+                holder.tvTransitReturn.setText("Direct");
+
+                holder.tvTransitReturn.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_trending_flat, 0, 0, 0);
+
+
+
+
+                String     CityNameOrogin1Return = segmentsReturn.get(0).getOrigin().getCityName();
+                String    CityNameDestination1Return = segmentsReturn.get(0).getDestination().getCityName();
+
+
+
+                holder.fromReturn.setText(CityNameOrogin1Return);
+                holder.toReturn.setText(CityNameDestination1Return);
+
+
+
+
+                String    airlineReturn = "A"+segmentsReturn.get(0).getAirlineDetails().getAirlineCode();
+
+
+                String    stringResourceByNameReturn = getStringResourceByName(airlineReturn);
+
+                holder.tvAirlineReturn.setText(stringResourceByNameReturn);
+
+
+                String    arrivalTimeReturn = segmentsReturn.get(0).getArrivalTime();
+                String  departureTimeReturn = segmentsReturn.get(0).getDepartureTime();
+
+
+                String[] ts = departureTimeReturn.split("T");
+                String  departureTime_Return = ts[1];
+
+                String[] ts1 = arrivalTimeReturn.split("T");
+                String      arrivalTime_Return = ts1[1];
+                holder.tvTimeOneReturn.setText(departureTime_Return + " ");
+                holder.tvTimeTwoReturn.setText(" " + arrivalTime_Return);
+
+                String  groundTimeReturn = segmentsReturn.get(0).getGroundTime();
+                holder.tvTimeReturn.setText(groundTimeReturn);
+
+                holder.tvTotalFareReturn.setVisibility(View.GONE);
+
+
+                String    cabinBaggageReturn = (String) segmentsReturn.get(0).getCabinBaggage();
+                String    additionalBaggageReturn = (String) segmentsReturn.get(0).getAdditionalBaggage();
+
+
+                holder.from2Return.setVisibility(View.GONE);
+                holder.to2Return.setVisibility(View.GONE);
+                holder.from3Return.setVisibility(View.GONE);
+                holder.to3Return.setVisibility(View.GONE);
+
+                holder.fromt4Return.setVisibility(View.GONE);
+                holder.to4Return.setVisibility(View.GONE);
+
+
+
+
+            }else if (sizeReturn==2){
+
+
+                String  flightNumberSize1Return = segmentsReturn.get(0).getFlightNumber();
+
+                String airlineCode_return = "a" + segmentsReturn.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
+                String   bookingClassReturn = segmentsReturn.get(0).getBookingClass();
+
+
+                holder.ivIconReturn.setImageResource(context.getResources().getIdentifier(airlineCode_return, "drawable", context.getPackageName()));
+
+
+                holder.tvTransitReturn.setText("Transit 1");
+
+                holder.tvTransitReturn.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_trending_flat, 0, 0, 0);
+
+
+
+                String     CityNameOrogin1Return = segmentsReturn.get(0).getOrigin().getCityName();
+                String    CityNameDestination1Return = segmentsReturn.get(0).getDestination().getCityName();
+
+
+
+                holder.fromReturn.setText(CityNameOrogin1Return);
+                holder.toReturn.setText(CityNameDestination1Return);
+
+
+
+                String    airlineReturn = "A"+segmentsReturn.get(0).getAirlineDetails().getAirlineCode();
+
+
+                String    stringResourceByNameReturn = getStringResourceByName(airlineReturn);
+
+                holder.tvAirlineReturn.setText(stringResourceByNameReturn);
+
+
+                String    arrivalTimeReturn = segmentsReturn.get(0).getArrivalTime();
+                String  departureTimeReturn = segmentsReturn.get(0).getDepartureTime();
+
+
+                String[] ts = departureTimeReturn.split("T");
+                String  departureTime_Return = ts[1];
+
+                String[] ts1 = arrivalTimeReturn.split("T");
+                String      arrivalTime_Return = ts1[1];
+                holder.tvTimeOneReturn.setText(departureTime_Return + " ");
+                holder.tvTimeTwoReturn.setText(" " + arrivalTime_Return);
+
+                String  groundTimeReturn = segmentsReturn.get(0).getGroundTime();
+                holder.tvTimeReturn.setText(groundTimeReturn);
+
+                holder.tvTotalFareReturn.setVisibility(View.GONE);
+
+
+                String    cabinBaggageReturn = (String) segmentsReturn.get(0).getCabinBaggage();
+                String    additionalBaggageReturn = (String) segmentsReturn.get(0).getAdditionalBaggage();
+
+                holder.tvKgReturn.setText(additionalBaggageReturn);
+                holder.tvKiloG2Return.setText(cabinBaggageReturn);
+
+                String cityName = segmentsReturn.get(1).getOrigin().getCityName();
+                String cityName1 = segmentsReturn.get(1).getDestination().getCityName();
+
+                holder.from2Return.setText(cityName);
+                holder.to2Return.setText(cityName1);
+
+
+
+                holder.from3Return.setVisibility(View.GONE);
+                holder.to3Return.setVisibility(View.GONE);
+
+                holder.fromt4Return.setVisibility(View.GONE);
+                holder.to4Return.setVisibility(View.GONE);
+
+
+
+            }else if (sizeReturn==3){
+
+
+                String  flightNumberSize1Return = segmentsReturn.get(0).getFlightNumber();
+
+                String airlineCode_return = "a" + segmentsReturn.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
+                String   bookingClassReturn = segmentsReturn.get(0).getBookingClass();
+
+
+                holder.ivIconReturn.setImageResource(context.getResources().getIdentifier(airlineCode_return, "drawable", context.getPackageName()));
+
+
+                holder.tvTransitReturn.setText("Transit 2");
+
+                holder.tvTransitReturn.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_trending_flat, 0, 0, 0);
+
 //                holder.from2Return.setVisibility(View.GONE);
 //                holder.to2Return.setVisibility(View.GONE);
 //                holder.from3Return.setVisibility(View.GONE);
 //                holder.to3Return.setVisibility(View.GONE);
-//
-//                holder.fromt4Return.setVisibility(View.GONE);
-//                holder.to4Return.setVisibility(View.GONE);
-//
-//
-//                CityNameOrogin1Return = segmentsReturn.get(0).getOrigin().getCityName();
-//                  CityNameDestination1Return = segmentsReturn.get(0).getDestination().getCityName();
-//
-//
-//
-//                holder.fromReturn.setText(CityNameOrogin1Return);
-//                holder.toReturn.setText(CityNameDestination1Return);
-//
-//
-//
-//                airlineReturn = "A"+segmentsReturn.get(0).getAirlineDetails().getAirlineCode();
-//
-//
-//                 stringResourceByNameReturn = getStringResourceByName(airlineReturn);
-//
-//                holder.tvAirlineReturn.setText(stringResourceByName);
-//
-//
-//                  arrivalTimeReturn = segmentsReturn.get(0).getArrivalTime();
-//                 departureTimeReturn = segmentsReturn.get(0).getDepartureTime();
-//
-//
-//                String[] ts = departureTimeReturn.split("T");
-//                 departureTime_Return = ts[1];
-//
-//                String[] ts1 = arrivalTimeReturn.split("T");
-//                   arrivalTime_Return = ts1[1];
-//                holder.tvTimeOneReturn.setText(departureTime_Return + " ");
-//                holder.tvTimeTwoReturn.setText(" " + arrivalTime_Return);
-//
-//                groundTimeReturn = segmentsReturn.get(0).getGroundTime();
-//                holder.tvTimeReturn.setText(groundTimeReturn);
-//
-//                holder.tvTotalFareReturn.setVisibility(View.GONE);
-//
-//
-//                cabinBaggageReturn = (String) segmentsReturn.get(0).getCabinBaggage();
-//                additionalBaggageReturn = (String) segmentsReturn.get(0).getAdditionalBaggage();
-//
-//                holder.tvKgReturn.setText(additionalBaggageReturn);
-//                holder.tvKiloG2Return.setText(cabinBaggageReturn);
-//
-//
-//
-//                countryCodeOrigin1Return = segmentsReturn.get(0).getOrigin().getCountryCode();
-//
-//                countryCodeDestnation1Return = segmentsReturn.get(0).getDestination().getCountryCode();
-//
-//                countryNameOrogin1Return = segmentsReturn.get(0).getOrigin().getCountryName();
-//
-//                countryNameDestination1Return = segmentsReturn.get(0).getDestination().getCountryName();
-//
-//
-//
-//            }else if (sizeReturn==2){
-//
-//
-//
-//            }
-//
-//
-//        }
-//
-//
-//
-//
+
+                holder.fromt4Return.setVisibility(View.GONE);
+                holder.to4Return.setVisibility(View.GONE);
+
+
+                String     CityNameOrogin1Return = segmentsReturn.get(0).getOrigin().getCityName();
+                String    CityNameDestination1Return = segmentsReturn.get(0).getDestination().getCityName();
+
+
+
+                holder.fromReturn.setText(CityNameOrogin1Return);
+                holder.toReturn.setText(CityNameDestination1Return);
+
+
+
+                String    airlineReturn = "A"+segmentsReturn.get(0).getAirlineDetails().getAirlineCode();
+
+
+                String    stringResourceByNameReturn = getStringResourceByName(airlineReturn);
+
+                holder.tvAirlineReturn.setText(stringResourceByNameReturn);
+
+
+                String    arrivalTimeReturn = segmentsReturn.get(0).getArrivalTime();
+                String  departureTimeReturn = segmentsReturn.get(0).getDepartureTime();
+
+
+                String[] ts = departureTimeReturn.split("T");
+                String  departureTime_Return = ts[1];
+
+                String[] ts1 = arrivalTimeReturn.split("T");
+                String      arrivalTime_Return = ts1[1];
+                holder.tvTimeOneReturn.setText(departureTime_Return + " ");
+                holder.tvTimeTwoReturn.setText(" " + arrivalTime_Return);
+
+                String  groundTimeReturn = segmentsReturn.get(0).getGroundTime();
+                holder.tvTimeReturn.setText(groundTimeReturn);
+
+                holder.tvTotalFareReturn.setVisibility(View.GONE);
+
+
+                String    cabinBaggageReturn = (String) segmentsReturn.get(0).getCabinBaggage();
+                String    additionalBaggageReturn = (String) segmentsReturn.get(0).getAdditionalBaggage();
+
+                holder.tvKgReturn.setText(additionalBaggageReturn);
+                holder.tvKiloG2Return.setText(cabinBaggageReturn);
+
+                String cityName = segmentsReturn.get(1).getOrigin().getCityName();
+                String cityName1 = segmentsReturn.get(1).getDestination().getCityName();
+
+                holder.from2Return.setText(cityName);
+                holder.to2Return.setText(cityName1);
+
+
+                String cityName3 = segmentsReturn.get(2).getOrigin().getCityName();
+                String cityName13 = segmentsReturn.get(2).getDestination().getCityName();
+
+                holder.from3Return.setText(cityName3);
+                holder.to3Return.setText(cityName13);
+
+
+            }else if (sizeReturn==4){
+
+
+
+                String  flightNumberSize1Return = segmentsReturn.get(0).getFlightNumber();
+
+                String airlineCode_return = "a" + segmentsReturn.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
+                String   bookingClassReturn = segmentsReturn.get(0).getBookingClass();
+
+
+                holder.ivIconReturn.setImageResource(context.getResources().getIdentifier(airlineCode_return, "drawable", context.getPackageName()));
+
+
+                holder.tvTransitReturn.setText("Transit 3");
+
+                holder.tvTransitReturn.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_trending_flat, 0, 0, 0);
+
+//                holder.from2Return.setVisibility(View.GONE);
+//                holder.to2Return.setVisibility(View.GONE);
+//                holder.from3Return.setVisibility(View.GONE);
+//                holder.to3Return.setVisibility(View.GONE);
+
+
+                String     CityNameOrogin1Return = segmentsReturn.get(0).getOrigin().getCityName();
+                String    CityNameDestination1Return = segmentsReturn.get(0).getDestination().getCityName();
+
+
+
+                holder.fromReturn.setText(CityNameOrogin1Return);
+                holder.toReturn.setText(CityNameDestination1Return);
+
+
+
+                String    airlineReturn = "A"+segmentsReturn.get(0).getAirlineDetails().getAirlineCode();
+
+
+                String    stringResourceByNameReturn = getStringResourceByName(airlineReturn);
+
+                holder.tvAirlineReturn.setText(stringResourceByNameReturn);
+
+
+                String    arrivalTimeReturn = segmentsReturn.get(0).getArrivalTime();
+                String  departureTimeReturn = segmentsReturn.get(0).getDepartureTime();
+
+
+                String[] ts = departureTimeReturn.split("T");
+                String  departureTime_Return = ts[1];
+
+                String[] ts1 = arrivalTimeReturn.split("T");
+                String      arrivalTime_Return = ts1[1];
+                holder.tvTimeOneReturn.setText(departureTime_Return + " ");
+                holder.tvTimeTwoReturn.setText(" " + arrivalTime_Return);
+
+                String  groundTimeReturn = segmentsReturn.get(0).getGroundTime();
+                holder.tvTimeReturn.setText(groundTimeReturn);
+
+                holder.tvTotalFareReturn.setVisibility(View.GONE);
+
+
+                String    cabinBaggageReturn = (String) segmentsReturn.get(0).getCabinBaggage();
+                String    additionalBaggageReturn = (String) segmentsReturn.get(0).getAdditionalBaggage();
+
+                holder.tvKgReturn.setText(additionalBaggageReturn);
+                holder.tvKiloG2Return.setText(cabinBaggageReturn);
+
+                String cityName = segmentsReturn.get(1).getOrigin().getCityName();
+                String cityName1 = segmentsReturn.get(1).getDestination().getCityName();
+
+                holder.from2Return.setText(cityName);
+                holder.to2Return.setText(cityName1);
+
+
+                String cityName3 = segmentsReturn.get(2).getOrigin().getCityName();
+                String cityName13 = segmentsReturn.get(2).getDestination().getCityName();
+
+                holder.from3Return.setText(cityName3);
+                holder.to3Return.setText(cityName13);
+
+
+                String cityName4 = segmentsReturn.get(2).getOrigin().getCityName();
+                String cityName14 = segmentsReturn.get(2).getDestination().getCityName();
+
+                holder.fromt4Return.setText(cityName4);
+                holder.to4Return.setText(cityName14);
+
+
+
+            }else if (sizeReturn==5){
+
+
+                Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
+
+
+
+
 //        int size = segments.size();
 //
 //        if (size == 1) {
@@ -869,7 +1117,12 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
                 Intent intent = new Intent(context, Passenger_inform.class);
 
                 intent.putExtra("segments", (Serializable) segments);
+if (journyTipe==2){
 
+    intent.putExtra("segmentsReturn", (Serializable) result.getSegments().get(1));
+
+
+}
                 SharedPreferencesManger.SaveData(context, "resultId", resultId);
                 SharedPreferencesManger.SaveData(context, "baseFare", String.valueOf(baseFare));
                 SharedPreferencesManger.SaveData(context, "tax", String.valueOf(tax));
@@ -1310,7 +1563,7 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
     }
 
 
-    private String getStringResourceByName(String aString) {
+   private String getStringResourceByName(String aString) {
         String packageName = context.getPackageName();
         int resId = context.getResources().getIdentifier(aString, "string", packageName);
         return context.getString(resId);

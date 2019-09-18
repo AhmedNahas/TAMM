@@ -139,6 +139,12 @@ public class ProceedBeyBeyOriginal extends Fragment {
         View view = inflater.inflate(R.layout.fragment_proceed_bey_bey_original, container, false);
         password = "App02072019";
 
+
+
+        SharedPreferencesManger.remove(getContext(), "to");
+        SharedPreferencesManger.remove(getContext(), "from");
+
+
         royalClass = view.findViewById(R.id.royal_class);
         firstClass = view.findViewById(R.id.first_class);
         businessClass = view.findViewById(R.id.business_class);

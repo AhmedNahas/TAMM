@@ -10,6 +10,7 @@ import androidx.room.Room;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.MyTripsAdapter;
+import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.Room.AppDatabase;
 import net.middledleeast.tamm.model.Room.RoomCartModel;
 
@@ -34,12 +35,15 @@ public class MyTripsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
+        int journyTipe = SharedPreferencesManger.LoadIntegerData(this, "journyTipe");
+
+
         AppDatabase appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
         List<RoomCartModel> allData = appDatabase.cartDao().getAllData();
 
 
-        myTripsAdapter = new MyTripsAdapter(MyTripsActivity.this, allData);
+        myTripsAdapter = new MyTripsAdapter(MyTripsActivity.this, allData , journyTipe);
         reMyTrips.setLayoutManager(new LinearLayoutManager(MyTripsActivity.this));
         reMyTrips.setAdapter(myTripsAdapter);
         myTripsAdapter.notifyDataSetChanged();

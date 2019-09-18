@@ -431,6 +431,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Direct"
+                    android:id="@+id/tvDirect2"
                     android:textColor="#fff"
                     android:drawableLeft="@drawable/ic_trending_flat"
                     android:layout_toRightOf="@+id/iv_icon2"
@@ -470,6 +471,7 @@
                     android:layout_toRightOf="@+id/tv_kg2"
                     />
                 <TextView
+                    android:id="@+id/tvCambainBages2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="20 Kg"

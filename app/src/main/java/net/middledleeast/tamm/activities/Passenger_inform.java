@@ -476,6 +476,15 @@ public class Passenger_inform extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.passenger_inform);
         ButterKnife.bind(this);
+        List<SearchFlightsResponse.Segment> segments = (List<SearchFlightsResponse.Segment>) getIntent().getSerializableExtra("segments");
+
+
+        int journyTipe = SharedPreferencesManger.LoadIntegerData(this, "journyTipe");
+
+
+
+
+
 
 
         iv_booked_passenger_inform = findViewById(R.id.iv_booked_passenger_inform);
@@ -1416,9 +1425,15 @@ public class Passenger_inform extends AppCompatActivity {
                     }
 
 
-                    List<SearchFlightsResponse.Segment> segments = (List<SearchFlightsResponse.Segment>) getIntent().getSerializableExtra("segments");
                     Intent intent = new Intent(Passenger_inform.this, FlightsSummary.class);
                     intent.putExtra("segments", (Serializable) segments);
+
+                    if (journyTipe==2){
+
+                        List<SearchFlightsResponse.Segment> segmentsReturn = (List<SearchFlightsResponse.Segment>) getIntent().getSerializableExtra("segmentsReturn");
+
+                        intent.putExtra("segmentsReturn", (Serializable) segmentsReturn);
+                    }
 
                     startActivity(intent);
 
