@@ -47,6 +47,7 @@ import net.middledleeast.tamm.model.Room.RoomCartModel;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -111,6 +112,9 @@ public class RoomBooked extends AppCompatActivity {
     private String childAgeRoom1;
     Double childAge1;
     Double childAge2;
+    private String email;
+    private String userNameFromSignIn;
+    private String Until;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -185,6 +189,9 @@ public class RoomBooked extends AppCompatActivity {
         nights = SharedPreferencesManger.LoadLongData(this, "nights");
         roomType = SharedPreferencesManger.LoadStringData(this, "roomType");
         bookedOn = SharedPreferencesManger.LoadStringData(this, "bookedOn");
+        email = SharedPreferencesManger.LoadStringData(this, "email");
+        userNameFromSignIn = SharedPreferencesManger.LoadStringData(this, "userNameFromSignIn");
+        Until = SharedPreferencesManger.LoadStringData(this, "Until");
 
         arrayOfGuest = new ArrayOfGuest();
 
@@ -301,6 +308,10 @@ try {
             public void onClick(View view) {
                 bookingresponse(paymentInfo);
                 connectdatabase();
+                sendDataToEMail(email,"Dear Mr." + userNameFromSignIn + ", This is your Confirmation No." + (confirmationNo) + " , for booking "
+                        + hotel_name + "  in " + name_city_ + ", check in date is : " +
+                        start_time + " and check out date is : " + end_time + " , No. of Rooms booked is : "
+                        + noOfRooms +  " , your last cancellation date is : " + Until);
                 startActivity(new Intent(RoomBooked.this, HotelBooking.class));
 
             }
@@ -1219,7 +1230,56 @@ try {
         isProgressShowing = false;
     }
 
+    public void sendDataToEMail(String Email ,String body){
 
+        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SENT_TO_EMAIL, new com.android.volley.Response.Listener<String>() {
+
+            @Override
+
+            public void onResponse(String response) {
+
+
+
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    int status = jObj.getInt("msg");
+                    String msg = jObj.getString("success");
+
+                    Toast.makeText(RoomBooked.this, ""+msg, Toast.LENGTH_SHORT).show();
+
+                }catch (Exception  e){}
+
+
+
+            }
+
+        }, new com.android.volley.Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                int statusCode = error.networkResponse.statusCode;
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("mail_to", Email);
+                parameters.put("body",body );
+
+
+
+                return parameters;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
+
+
+
+    }
 
 
 }
