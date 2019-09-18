@@ -16,6 +16,143 @@ public class RoomCartModel {
     @ColumnInfo
     private String To;
 
+
+
+    @ColumnInfo
+    private String AirLinePhoto;
+
+
+    public String getAirLinePhoto() {
+        return AirLinePhoto;
+    }
+
+    public void setAirLinePhoto(String airLinePhoto) {
+        AirLinePhoto = airLinePhoto;
+    }
+
+    public String getAirLineName() {
+        return AirLineName;
+    }
+
+    public void setAirLineName(String airLineName) {
+        AirLineName = airLineName;
+    }
+
+    public String getAirLinePhotoReturn() {
+        return AirLinePhotoReturn;
+    }
+
+    public void setAirLinePhotoReturn(String airLinePhotoReturn) {
+        AirLinePhotoReturn = airLinePhotoReturn;
+    }
+
+    public String getAirLineNAmeReturn() {
+        return AirLineNAmeReturn;
+    }
+
+    public void setAirLineNAmeReturn(String airLineNAmeReturn) {
+        AirLineNAmeReturn = airLineNAmeReturn;
+    }
+
+    public String getToReturn() {
+        return ToReturn;
+    }
+
+    public void setToReturn(String toReturn) {
+        ToReturn = toReturn;
+    }
+
+    public String getFromReturn() {
+        return FromReturn;
+    }
+
+    public void setFromReturn(String fromReturn) {
+        FromReturn = fromReturn;
+    }
+
+    public String getFLghtNoReturn() {
+        return FLghtNoReturn;
+    }
+
+    public void setFLghtNoReturn(String FLghtNoReturn) {
+        this.FLghtNoReturn = FLghtNoReturn;
+    }
+
+    public String getDateReturn() {
+        return DateReturn;
+    }
+
+    public void setDateReturn(String dateReturn) {
+        DateReturn = dateReturn;
+    }
+
+    public String getTimeReturn() {
+        return TimeReturn;
+    }
+
+    public void setTimeReturn(String timeReturn) {
+        TimeReturn = timeReturn;
+    }
+
+
+
+
+    @ColumnInfo
+    private String AirLineName;
+
+
+    public RoomCartModel(String airLinePhotoReturn, String airLineNAmeReturn, String toReturn, String fromReturn, String FLghtNoReturn, String dateReturn, String
+            timeReturn) {
+        AirLinePhotoReturn = airLinePhotoReturn;
+        AirLineNAmeReturn = airLineNAmeReturn;
+        ToReturn = toReturn;
+        FromReturn = fromReturn;
+        this.FLghtNoReturn = FLghtNoReturn;
+        DateReturn = dateReturn;
+        TimeReturn = timeReturn;
+    }
+
+    @ColumnInfo
+    private String AirLinePhotoReturn;
+
+
+    @ColumnInfo
+    private String AirLineNAmeReturn;
+
+
+    @ColumnInfo
+    private String ToReturn;
+
+
+    @ColumnInfo
+    private String FromReturn;
+
+
+    @ColumnInfo
+    private String FLghtNoReturn;
+
+
+    @ColumnInfo
+    private String DateReturn;
+
+
+
+    @ColumnInfo
+    private String TimeReturn;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @ColumnInfo
     private String FlightNo;
 
@@ -78,7 +215,6 @@ public class RoomCartModel {
     private String imageRoom;
 
 
-
     @ColumnInfo
     private String checkIn;
 
@@ -116,7 +252,7 @@ public class RoomCartModel {
     @ColumnInfo
     private String resultIndex;
 
-    public RoomCartModel( String country, String image, String namehotel, String price, String city) {
+    public RoomCartModel(String country, String image, String namehotel, String price, String city) {
 
         this.Country = country;
         this.Image = image;
@@ -154,20 +290,17 @@ public class RoomCartModel {
     }
 
 
-    public RoomCartModel(String namePassenger, String from, String to, String flightNo, String date, String gate, String seat, String time, String ticketNo) {
+    public RoomCartModel(String namePassenger, String from, String to, String flightNo, String date, String AirlinePhoto, String AirlineName, String time, String ticketNo) {
         NamePassenger = namePassenger;
         From = from;
         To = to;
         FlightNo = flightNo;
         Date = date;
-        Gate = gate;
-        Seat = seat;
+       this.AirLineName = AirlineName;
+       this.AirLinePhoto = AirlinePhoto;
         Time = time;
         TicketNo = ticketNo;
     }
-
-
-
 
 
     public String getNamePassenger() {
@@ -305,7 +438,6 @@ public class RoomCartModel {
     }
 
 
-
     public int getId() {
         return id;
     }
@@ -313,7 +445,6 @@ public class RoomCartModel {
     public void setId(int id) {
         this.id = id;
     }
-
 
 
     public String getHotel_name() {
@@ -339,7 +470,6 @@ public class RoomCartModel {
     public void setConfirmationNo(String confirmationNo) {
         ConfirmationNo = confirmationNo;
     }
-
 
 
     public String getUntile() {
@@ -383,9 +513,6 @@ public class RoomCartModel {
     }
 
 
-
-
-
     public String getCountry() {
         return Country;
     }
@@ -425,8 +552,6 @@ public class RoomCartModel {
     public void setCity(String city) {
         City = city;
     }
-
-
 
 
 }

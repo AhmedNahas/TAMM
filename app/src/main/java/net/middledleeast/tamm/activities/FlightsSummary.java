@@ -151,6 +151,10 @@ public class FlightsSummary extends AppCompatActivity {
     TextView tvCambainBages;
     @BindView(R.id.tvDirect_)
     TextView tvDirect;
+    @BindView(R.id.tvDirect2)
+    TextView tvDirect2;
+    @BindView(R.id.tvCambainBages2)
+    TextView tvCambainBages2;
     private long flightCabinClass;
     private Retrofit retrofit;
     private String password;
@@ -225,7 +229,7 @@ public class FlightsSummary extends AppCompatActivity {
     TextView assistantLabelCallRenewHotel;
     TextView assistantLabelMessageRenewHotel;
     private boolean ClickRenewHotel = false;
-    FlightTransitAdapter flightTransitAdapter;
+
     ProgressBar flight_progress;
 
 
@@ -237,9 +241,135 @@ public class FlightsSummary extends AppCompatActivity {
         ButterKnife.bind(this);
         password = getString(R.string.passowrd_flight);
 
+        List<SearchFlightsResponse.Segment> segments = (List<SearchFlightsResponse.Segment>) getIntent().getSerializableExtra("segments");
+        List<SearchFlightsResponse.Segment> segments2 = (List<SearchFlightsResponse.Segment>) getIntent().getSerializableExtra("segments");
 
+        int journyTipe = SharedPreferencesManger.LoadIntegerData(this, "journyTipe");
+
+        closure.setVisibility(View.GONE);
+
+
+        if (journyTipe == 2) {
+
+
+            closure.setVisibility(View.VISIBLE);
+
+            List<SearchFlightsResponse.Segment> segmentsReturn = (List<SearchFlightsResponse.Segment>) getIntent().getSerializableExtra("segmentsReturn");
+            List<SearchFlightsResponse.Segment> segmentsReturn2 = (List<SearchFlightsResponse.Segment>) getIntent().getSerializableExtra("segmentsReturn");
+
+
+            relativeCountry2.setLayoutManager(new LinearLayoutManager(this));
+            FlightTransitAdapter flightTransitAdapter = new FlightTransitAdapter(this, segmentsReturn2);
+            relativeCountry2.setAdapter(flightTransitAdapter);
+            flightTransitAdapter.notifyDataSetChanged();
+
+
+            String flightNumber = segmentsReturn2.get(0).getFlightNumber();
+
+
+            String cabinBaggage = (String) segmentsReturn2.get(0).getCabinBaggage();
+
+            tvFlight2.setText("Flight Nb: " + flightNumber);
+
+            String accumulatedDuration = segmentsReturn2.get(0).getGroundTime();
+            String additionalBaggage = (String) segmentsReturn2.get(0).getAdditionalBaggage();
+
+
+            String airline = "A" + segmentsReturn2.get(0).getAirlineDetails().getAirlineCode();
+            String stringResourceByName = getStringResourceByName(airline);
+
+            tvAirline2.setText(stringResourceByName);
+
+            String bookingClass = segmentsReturn2.get(0).getBookingClass();
+            String airlineCode_ = "a" + segmentsReturn2.get(0).getAirlineDetails().getAirlineCode().toLowerCase();
+            ivIcon2.setImageResource(getResources().getIdentifier(airlineCode_, "drawable", getPackageName()));
+
+            tvTime2.setText(accumulatedDuration);
+            tvCambainBages2.setText(cabinBaggage);
+            tvKg2.setText(additionalBaggage);
+            tvCabinClass2.setText("Booking Class is : " + bookingClass);
+
+            String departureTime = segmentsReturn2.get(0).getDepartureTime();
+            String[] detimeSplit = departureTime.split("T");
+
+            String datDe = detimeSplit[0];
+            String timeD = detimeSplit[1];
+
+            tvDateDeparture2.setText("DATE : " + datDe);
+            tvDeparture2.setText("Departure : " + timeD);
+
+            String arrivalTime = segmentsReturn2.get(0).getArrivalTime();
+            String[] arrSplit = arrivalTime.split("T");
+            String arrDate = arrSplit[0];
+            String arrTime = arrSplit[1];
+
+            dateArrival2.setText("DATE : " + arrDate);
+
+
+            tvArrival2.setText("Arrive : " + arrTime);
+
+
+            String to = SharedPreferencesManger.LoadStringData(this, "to");
+            String from = SharedPreferencesManger.LoadStringData(this, "from");
+
+
+            tvBey2.setText(to);
+            tvDxb2.setText(from);
+
+
+            if (segmentsReturn.size() > 1) {
+                tvDirect2.setText("Transit");
+
+                tvDirect2.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.transit, 0, 0, 0);
+
+
+            }
+
+
+            flightCabinClass = SharedPreferencesManger.LoadLongData(this, "flightCabinClass");
+
+            switch ((int) flightCabinClass) {
+
+                case 1:
+//                All
+
+                    tvCabinClass2.setText("Cabin Class : All");
+                    break;
+                case 2:
+                    tvCabinClass2.setText("Cabin Class : Economy");
+//
+                    break;
+                case 3:
+                    break;
+                case 4:
+
+                    tvCabinClass2.setText("Cabin Class : Business");
+
+//
+                    break;
+
+                case 5:
+                    tvCabinClass2.setText("Cabin Class : Royal");
+
+//
+                    break;
+                case 6:
+                    tvCabinClass2.setText("Cabin Class : First");
+
+
+                    break;
+            }
+
+
+        }
+
+        relativeCountry.setLayoutManager(new LinearLayoutManager(this));
+
+        FlightTransitAdapter flightTransitAdapter = new FlightTransitAdapter(this, segments2);
+        relativeCountry.setAdapter(flightTransitAdapter);
+        flightTransitAdapter.notifyDataSetChanged();
+        flightTransitAdapter.onDetachedFromRecyclerView(relativeCountry);
         flight_progress = findViewById(R.id.flight_progress);
-
 
         flight_progress.setVisibility(View.INVISIBLE);
 
@@ -332,18 +462,6 @@ public class FlightsSummary extends AppCompatActivity {
 
 
         getAllDataPassengers();
-
-
-        closure.setVisibility(View.GONE);
-
-
-        List<SearchFlightsResponse.Segment> segments = (List<SearchFlightsResponse.Segment>) getIntent().getSerializableExtra("segments");
-
-        relativeCountry.setLayoutManager(new LinearLayoutManager(this));
-
-        flightTransitAdapter = new FlightTransitAdapter(this, segments);
-        relativeCountry.setAdapter(flightTransitAdapter);
-        flightTransitAdapter.notifyDataSetChanged();
 
 
         String airlineName = segments.get(0).getAirlineName();
@@ -635,6 +753,10 @@ public class FlightsSummary extends AppCompatActivity {
 
                                 List<Segment> segments = response.body().getResult().get(0).getSegments().get(0);
 
+
+
+
+
                                 String flightNumber = segments.get(0).getFlightNumber();
 
                                 String airlineCode = segments.get(0).getAirlineDetails().getAirlineCode();
@@ -685,7 +807,25 @@ public class FlightsSummary extends AppCompatActivity {
                                 itinerary.setAirlineCode(airlineCode);
                                 itinerary.setLastTicketDate((String) lastTicketDate);
                                 itinerary.setValidatingAirlineCode(validatingAirline);
-                                itinerary.setSegments(segments);
+
+                                int journyTipe = SharedPreferencesManger.LoadIntegerData(FlightsSummary.this, "journyTipe");
+
+                                if (journyTipe==2){
+
+
+                                    List<Segment> segments1Return = response.body().getResult().get(0).getSegments().get(1);
+
+                                    segments.addAll(1,segments1Return);
+
+                                    itinerary.setSegments(segments);
+
+
+                                }else {
+                                    itinerary.setSegments(segments);
+
+                                }
+
+
 
                                 itinerary.setFareRules(fareRulesList);
 
@@ -1063,7 +1203,6 @@ public class FlightsSummary extends AppCompatActivity {
         String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
 
 
-
         Passenger passenger = new Passenger();
         passenger.setFare(fare);
         passenger.setAddressLine1(city1);
@@ -1109,15 +1248,10 @@ public class FlightsSummary extends AppCompatActivity {
     private Passenger passenger2(Fare fare, String flightNumber) {
 
 
-
-
-
         String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
         String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
         String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
         String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
-
-
 
 
         Passenger passenger2 = new Passenger();
