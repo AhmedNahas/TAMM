@@ -23,14 +23,17 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:icon">
-        <activity android:name=".activities.MyTripsActivity"
-            android:launchMode = "singleInstance"
-
+        <activity android:name=".KnetPaymentDelails"
+            android:launchMode="singleInstance"
             >
 
 
 
+
         </activity>
+        <activity
+            android:name=".activities.MyTripsActivity"
+            android:launchMode="singleInstance"></activity>
         <activity android:name=".activities.ChattingActivity" />
         <activity android:name=".ActivityToFragment.Activity_Register" />
         <activity android:name=".activities.OffersFlightsDetailsActivity" />
@@ -59,33 +62,24 @@
             android:screenOrientation="portrait" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
         <activity
             android:name=".activities.Proceedbeybey"
-            android:launchMode = "singleInstance"
-
-            android:screenOrientation="portrait">
-
-
-        </activity>
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.PassengerDeparture"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.Passenger_inform"
-            android:screenOrientation="portrait" >
-
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activities.FlightDetails"
-            android:launchMode = "singleInstance"
-
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.PassengerInformation"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.FlightsSummary"
-            android:launchMode = "singleInstance"
-
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.PaymentFlights"
@@ -93,30 +87,25 @@
         <activity
             android:name=".activities.SplashActivity"
             android:screenOrientation="portrait">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
         <activity
             android:name=".activities.FlightTamm"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.PaymentActivity"
-            android:launchMode = "singleInstance"
-
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.HotelBooking"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.RoomBooked"
-            android:launchMode = "singleInstance"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.checkroom"
@@ -125,10 +114,8 @@
             android:name=".activities.ChooseBookingDate"
             android:screenOrientation="portrait" />
         <activity
-
             android:name=".activities.HotelDetails"
-            android:launchMode = "singleInstance"
-
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ChooseHotelActivity"
@@ -148,7 +135,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ConfirmBookingRoom"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="portrait" />
@@ -163,9 +150,6 @@
         <activity android:name=".activities.FavoriteActivity" />
         <activity android:name=".activities.MyBookActivity" />
         <activity android:name=".activities.FlightDetailsActivity" />
-
-
-
 
         <service
             android:name=".sevice.MyService"

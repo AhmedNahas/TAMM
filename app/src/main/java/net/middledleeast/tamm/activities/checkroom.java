@@ -354,6 +354,7 @@ TextView room_details_list;
         roomPrice = getIntent().getStringExtra("roomPrice");
 
 
+
         description = getIntent().getStringExtra("description");
         sessionId = SharedPreferencesManger.LoadStringData(this, "session_id");
         mHotelCode = getIntent().getStringExtra("hotelCode");

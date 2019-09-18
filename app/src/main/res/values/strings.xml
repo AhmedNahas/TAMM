@@ -109,7 +109,7 @@
     <string name="mastercard">MASTERCARD</string>
     <string name="knet">KNET</string>
     <string name="success">SUCCESS !</string>
-    <string name="get_reservition_code">GET RESERVITION CODE</string>
+    <string name="get_reservition_code">GET RESERVATION CODE</string>
     <string name="reserve_flight">RESERVE FLIGHT</string>
     <string name="tap_me_if_you_need_my_assistance">Tap me if you need MY ASSISTANCE</string>
     <string name="total_amount_kd_105_00">TOTAl AMOUNT : KD 105.00</string>

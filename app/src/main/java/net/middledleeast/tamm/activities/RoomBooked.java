@@ -17,6 +17,7 @@ import androidx.room.Room;
 import com.Tamm.Hotels.wcf.ArrayOfGuest;
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
 import com.Tamm.Hotels.wcf.ArrayOfRoomGuest;
+import com.Tamm.Hotels.wcf.ArrayOfSpecialRequest;
 import com.Tamm.Hotels.wcf.ArrayOfSupplement;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
@@ -27,6 +28,7 @@ import com.Tamm.Hotels.wcf.HotelBookResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.PaymentInfo;
 import com.Tamm.Hotels.wcf.RequestedRooms;
+import com.Tamm.Hotels.wcf.SpecialRequest;
 import com.Tamm.Hotels.wcf.SuppInfo;
 import com.Tamm.Hotels.wcf.Supplement;
 import com.android.volley.AuthFailureError;
@@ -115,6 +117,10 @@ public class RoomBooked extends AppCompatActivity {
     private String email;
     private String userNameFromSignIn;
     private String Until;
+    private String specialRequest;
+    private String amount_;
+    private String transaction_;
+    private String result_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +129,9 @@ public class RoomBooked extends AppCompatActivity {
         ButterKnife.bind(this);
 
 
-
+        amount_ = SharedPreferencesManger.LoadStringData(context, "amount_");
+        transaction_ = SharedPreferencesManger.LoadStringData(context, "transaction_");
+         result_ = SharedPreferencesManger.LoadStringData(context, "result_");
 
         iv_booked_room=findViewById(R.id.iv_booked_room);
         iv_booked_room.setOnClickListener(new View.OnClickListener() {
@@ -192,6 +200,8 @@ public class RoomBooked extends AppCompatActivity {
         email = SharedPreferencesManger.LoadStringData(this, "email");
         userNameFromSignIn = SharedPreferencesManger.LoadStringData(this, "userNameFromSignIn");
         Until = SharedPreferencesManger.LoadStringData(this, "Until");
+        specialRequest = SharedPreferencesManger.LoadStringData(this, "specs");
+
 
         arrayOfGuest = new ArrayOfGuest();
 
@@ -259,6 +269,7 @@ try {
                 adult_1_Room1(noOfAdultRoom1, noOfChildRoom1);
 
 
+
                 break;
 
             case 2:
@@ -295,23 +306,29 @@ try {
         paymentInfo.PaymentModeType = Enums.PaymentModeType.Limit;
 
 
+
+
 //        paymentInfo.CvvNumber="500";
-
-
-
-
 
 
         button = findViewById(R.id.get_code);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgressingView();
                 bookingresponse(paymentInfo);
                 connectdatabase();
-                sendDataToEMail(email,"Dear Mr." + userNameFromSignIn + ", This is your Confirmation No." + (confirmationNo) + " , for booking "
-                        + hotel_name + "  in " + name_city_ + ", check in date is : " +
-                        start_time + " and check out date is : " + end_time + " , No. of Rooms booked is : "
-                        + noOfRooms +  " , your last cancellation date is : " + Until);
+                sendDataToEMail(email,"Dear Mr." + userNameFromSignIn
+                        + " , This is your Confirmation No." + confirmationNo
+                        + " , Your Transaction  : " + transaction_
+                        + " , Has been : " +result_
+                        + " , With Total Amount of : " +amount_ +"KD"
+                        + " , for booking " + hotel_name
+                        + "  in " + name_city_
+                        + " , check in date is : " + start_time
+                        + " and check out date is : " + end_time
+                        + " , No. of Rooms booked is : " + noOfRooms
+                        +  " , your last cancellation date is : " + Until );
                 startActivity(new Intent(RoomBooked.this, HotelBooking.class));
 
             }
@@ -1097,10 +1114,15 @@ try {
 
             //   SharedPreferencesManger.SaveData(this, "arrayOfroomsreq", null);
 
+            ArrayOfSpecialRequest specialRequests = new ArrayOfSpecialRequest();
+            SpecialRequest specialReques = new SpecialRequest();
+            specialReques.RequestType = specialRequest;
+            specialRequests.add(specialReques);
+
             String clientReferenceNo = dtStr + "#TAMM";
             HotelBookResponse hotelBookingResponse = service.HotelBook(start_time, end_time,
                     clientReferenceNo, "EG", arrayOfGuest, null, paymentInfo
-                    , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, null,
+                    , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, specialRequests,
                     null, true, authenticandata);
 
 
@@ -1155,6 +1177,7 @@ try {
 ////this is to cancel request
 
             // HotelCancelResponse hotelCancelResponse = service.HotelCancel(hotelBookingResponse.BookingId, Enums.CancelRequestType.HotelCancel, "Test", hotelBookingResponse.ConfirmationNo, authenticandata);
+
 
         } catch (Exception e) {
             e.printStackTrace();

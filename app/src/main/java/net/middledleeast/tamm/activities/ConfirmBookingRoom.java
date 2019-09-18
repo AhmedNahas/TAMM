@@ -313,6 +313,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
     private int child_countroom4, child_countroom3, child_countroom2, child_countroom1;
     ImageView iv_booked_conf_booking;
     private String bookedOn;
+    private String mSpecification;
 
 
     @Override
@@ -440,8 +441,10 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         confirmRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mSpecification = specification.getText().toString();
 
                 SharedPreferencesManger.SaveData(ConfirmBookingRoom.this,"bookedOn",bookedOn);
+                SharedPreferencesManger.SaveData(ConfirmBookingRoom.this,"specs",mSpecification);
                 if (firstName1GustOne.getText().toString().equals("") || lastName1GustOne.getText().toString().equals("")) {
                     SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(ConfirmBookingRoom.this);
                     sweetAlertDialog.setConfirmButton("Ok", null);
@@ -544,10 +547,8 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         s3.setAdapter(mrOrMissAdapter);
 
 
-        String mSpecification = specification.getText().toString();
 
 
-        setSpecification(mSpecification);
 
 
     }

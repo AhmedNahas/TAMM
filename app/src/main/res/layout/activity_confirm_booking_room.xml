@@ -115,7 +115,7 @@
                     <TextView
                         android:textColor="@color/white"
                         android:gravity="center"
-                        android:text="Gust Names"
+                        android:text="Guest Names"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 

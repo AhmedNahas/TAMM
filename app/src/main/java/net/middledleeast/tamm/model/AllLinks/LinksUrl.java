@@ -31,6 +31,9 @@ public class LinksUrl {
 
     public static String URL_LOGIN = "http://egyptgoogle.com/backend/android_login_api/login.php";
 
+    public static String URL_PAYMENT = "http://egyptgoogle.com/k/showknetinfo.php";
+
+
 
     // FRAGMENT.....................
 

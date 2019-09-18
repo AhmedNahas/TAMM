@@ -32,6 +32,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.wirecard.ecom.Client;
 
+import net.middledleeast.tamm.KnetPaymentDelails;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterPayment;
 import net.middledleeast.tamm.fragments.TermsFragment;
@@ -77,6 +78,7 @@ public class PaymentActivity extends AppCompatActivity {
 //    @BindView(R.id.sp_convert_to)
 //    Spinner spConvertTo;
     private Button button;
+    private String bookedOn;
     private RelativeLayout relativeLayout;
     private AuthenticationData authenticandata;
     private BasicHttpBinding_IHotelService1 service;
@@ -134,6 +136,10 @@ public class PaymentActivity extends AppCompatActivity {
         relative_radio_btn=findViewById(R.id.relative_radio_btn);
 
 
+        Calendar calendar = Calendar.getInstance();
+
+        Date futureDate = calendar.getTime();
+        bookedOn = new SimpleDateFormat("yyyy-MM-dd").format(futureDate);
 
         Intent intent = getIntent();
         mId = intent.getIntExtra("mId", 0);
@@ -169,10 +175,14 @@ public class PaymentActivity extends AppCompatActivity {
                     startActivity(new Intent(PaymentActivity.this, ConfirmBookingRoom.class));
 
 
-                } else {
+                } else if (mId==1){
 
 
                     onBackPressed();
+
+                }else if (mId==3){
+
+                    startActivity(new Intent(PaymentActivity.this, Proceedbeybey.class));
 
                 }
             }
@@ -301,16 +311,16 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         spinnerTitles.add(getString(R.string.payment_method));
-//        spinnerTitles.ic_add(getString(R.string.visa_));
-//        spinnerTitles.ic_add(getString(R.string.master));
+        spinnerTitles.add(getString(R.string.visa_));
+        spinnerTitles.add(getString(R.string.master));
 
 
         spinnerTitles.add(getString(R.string.knet));
 
         spinnerImages.add(0);
 
-//        spinnerImages.ic_add(R.drawable.wd_ecom_visa);
-//        spinnerImages.ic_add(R.drawable.wd_ecom_mastercard);
+        spinnerImages.add(R.drawable.wd_ecom_visa);
+        spinnerImages.add(R.drawable.wd_ecom_mastercard);
         spinnerImages.add(R.drawable.ic_knet);
 
 
@@ -425,17 +435,22 @@ public class PaymentActivity extends AppCompatActivity {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
+
             if (url.contains("CAPTURED")) {
                 showProgressingView();
-                if (mId==1){
-                    startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
-                }else if (mId==2) {
-                    startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
-                }else if (mId==3){
 
-                    startActivity(new Intent(PaymentActivity.this, FlightDetails.class));
+                startActivity(new Intent(PaymentActivity.this, KnetPaymentDelails.class));
 
-                }
+//                if (mId==1){
+//                    startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
+//                }else if (mId==2) {
+//
+//                    startActivity(new Intent(PaymentActivity.this, KnetPaymentDelails.class));
+//                }else if (mId==3){
+//
+//                    startActivity(new Intent(PaymentActivity.this, FlightDetails.class));
+//
+//                }
             }
 //            else{
 //
@@ -556,8 +571,8 @@ public class PaymentActivity extends AppCompatActivity {
 //                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
                 }else {
 
-//                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-//                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
 
                 }
 
@@ -605,8 +620,8 @@ public class PaymentActivity extends AppCompatActivity {
 
                  }else {
 
-//                     Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-//                     client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+                     Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                     client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
                  }
 
 
@@ -797,7 +812,7 @@ public class PaymentActivity extends AppCompatActivity {
                 parameters.put("password", pass);
                 parameters.put("birthdate"," " + day+ " - " + month+ " - " + year + " ");
 
-
+                parameters.put("subscriptiondate", bookedOn);
 
 
 
@@ -877,7 +892,12 @@ public class PaymentActivity extends AppCompatActivity {
             startActivity(new Intent(PaymentActivity.this, ConfirmBookingRoom.class));
 
 
-        }else {
+        }else if (mId==3){
+
+            startActivity(new Intent(PaymentActivity.this, Proceedbeybey.class));
+
+
+        }else if (mId==1){
 
 
 
