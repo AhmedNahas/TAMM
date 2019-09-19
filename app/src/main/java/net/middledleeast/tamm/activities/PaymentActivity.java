@@ -623,8 +623,11 @@ public class PaymentActivity extends AppCompatActivity {
                 showProgressingView();
 
                 Intent intent=new Intent(PaymentActivity.this, KnetPaymentDelails.class);
-intent.putExtra("knetmid",mId);
-startActivity(intent);
+                intent.putExtra("knetmid",mId);
+                startActivity(intent);
+
+                finish();
+
 //                if (mId==1){
 //                    startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
 //                }else if (mId==2) {
@@ -643,6 +646,9 @@ startActivity(intent);
 ////                Toast.makeText(PaymentActivity.this, "Failed Unknown Error() 2145012114(Json)  ", Toast.LENGTH_SHORT).show();
 //
 //            }
+
+
+
         }
     }
 
@@ -666,7 +672,7 @@ startActivity(intent);
                     webviewKnet.setWebViewClient(new MyWebViewClient());
                     String url = "http://www.egyptgoogle.com/k";
                     webviewKnet.getSettings().setJavaScriptEnabled(true);
-                    webviewKnet.loadUrl(url); // load a web page in a web vie
+                    webviewKnet.loadUrl( url); // load a web page in a web vie
                   //  startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
 
                 }else {

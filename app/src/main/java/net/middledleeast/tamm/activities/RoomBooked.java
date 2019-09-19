@@ -350,6 +350,7 @@ try {
 
 
                 startActivity(new Intent(RoomBooked.this, HotelBooking.class));
+                finish();
 
             }
         });

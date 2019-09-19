@@ -95,6 +95,8 @@ public class HotelBooking extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(HotelBooking.this, RenewAccount.class));
+                finish();
+
             }
         });
         service = new BasicHttpBinding_IHotelService1();

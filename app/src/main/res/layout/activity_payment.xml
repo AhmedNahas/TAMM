@@ -11,37 +11,37 @@
         android:id="@+id/welcome_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize">
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/relative_back"
-    >
-
-
-
-        <ImageView
-            android:id="@+id/back_pressed"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_back_arrow"
-           />
+            android:id="@+id/relative_back"
+            >
 
 
-        <TextView
-            android:id="@+id/back_payment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Back"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_15sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_toRightOf="@id/back_pressed"
+
+            <ImageView
+                android:id="@+id/back_pressed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_back_arrow"
+                />
 
 
-            />
+            <TextView
+                android:id="@+id/back_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_toRightOf="@id/back_pressed"
 
 
-</RelativeLayout>
+                />
+
+
+        </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
 
 
@@ -254,7 +254,7 @@
             android:foregroundGravity="center"
             android:text="@string/proceed_to_checkout"
             android:textColor="#FFF"
-android:layout_marginBottom="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_25sdp"
             />
 
 
