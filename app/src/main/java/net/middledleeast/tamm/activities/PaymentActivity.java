@@ -431,7 +431,7 @@ public class PaymentActivity extends AppCompatActivity {
                 }else if (mId==3){
 
                     startActivity(new Intent(PaymentActivity.this, FlightDetails.class));
-
+finish();
                 }
             }
 //            else{

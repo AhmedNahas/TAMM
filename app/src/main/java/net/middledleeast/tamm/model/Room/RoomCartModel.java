@@ -102,7 +102,11 @@ public class RoomCartModel {
 
 
     public RoomCartModel(String airLinePhotoReturn, String airLineNAmeReturn, String toReturn, String fromReturn, String FLghtNoReturn, String dateReturn, String
-            timeReturn) {
+            timeReturn,
+
+    String namePassenger, String from, String to, String flightNo, String date, String AirlinePhoto, String AirlineName, String time, String ticketNo
+
+    ) {
         AirLinePhotoReturn = airLinePhotoReturn;
         AirLineNAmeReturn = airLineNAmeReturn;
         ToReturn = toReturn;
@@ -110,6 +114,16 @@ public class RoomCartModel {
         this.FLghtNoReturn = FLghtNoReturn;
         DateReturn = dateReturn;
         TimeReturn = timeReturn;
+        NamePassenger = namePassenger;
+        From = from;
+        To = to;
+        FlightNo = flightNo;
+        Date = date;
+        this.AirLineName = AirlineName;
+        this.AirLinePhoto = AirlinePhoto;
+        Time = time;
+        TicketNo = ticketNo;
+
     }
 
     @ColumnInfo

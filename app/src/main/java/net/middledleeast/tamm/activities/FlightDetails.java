@@ -261,14 +261,15 @@ public class FlightDetails extends AppCompatActivity  {
 
 
                             RoomCartModel roomCartModelReturn = new RoomCartModel(airlineCodeReturn,airlineCodeReturn,FROM,TO,flightNumberReturn,DateReturn
-                                    ,timeReturn);
+                                    ,timeReturn,NAME_PASSENGER, FROM, TO,
+                                    FLIGHT_NO, DATE, airlineCode, airlineCode , GROUND_TIME, TICKIT_NO);
 
 
                             appDatabase.cartDao().addoffer(roomCartModelReturn);
 
 
-                            sendDataToEMail(email, body+ "RETURN INFORMATION IS : "+ airlineCodeReturn+airlineCodeReturn+FROM+TO+flightNumberReturn+DateReturn
-                                    +timeReturn );
+                            sendDataToEMail(email, body+ " : RETURN INFORMATION IS : "+ airlineCodeReturn.toString()+airlineCodeReturn.toString()+FROM.toString()+TO.toString()+flightNumberReturn.toString()+DateReturn.toString()
+                                    +timeReturn.toString() );
 
                         }else {
 
@@ -743,7 +744,6 @@ startActivity(new Intent(FlightDetails.this,FlightDetailsActivity.class));
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                int statusCode = error.networkResponse.statusCode;
 
             }
         }) {
