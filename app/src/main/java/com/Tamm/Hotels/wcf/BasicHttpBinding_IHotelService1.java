@@ -26,7 +26,7 @@ public class BasicHttpBinding_IHotelService1 {
     public List<HeaderProperty> httpHeaders = new ArrayList<HeaderProperty>();
     String url = "https://api.tbotechnology.in/HotelAPI_V7/HotelService.svc/basic";
 
-    int timeOut = 60000;
+    int timeOut = 0;
 
     public BasicHttpBinding_IHotelService1() {
     }
@@ -489,7 +489,12 @@ public class BasicHttpBinding_IHotelService1 {
     }
 
     public HotelBookResponse HotelBook(final String CheckInDate,
-                                       final String CheckOutDate, final String ClientReferenceNumber, final String GuestNationality, final ArrayOfGuest Guests, final AddressInfo AddressInfo, final PaymentInfo PaymentInfo, final String SessionId, final FlightInfo FlightInfo, final Integer NoOfRooms, final Integer ResultIndex, final String HotelCode, final String HotelName, final ArrayOfRequestedRooms HotelRooms, final ArrayOfSpecialRequest SpecialRequests, final String AgencyReferenceNumber, final Boolean RestrictDuplicateBooking, final AuthenticationData Credentials) throws java.lang.Exception {
+                                       final String CheckOutDate, final String ClientReferenceNumber, final String GuestNationality,
+                                       final ArrayOfGuest Guests, final AddressInfo AddressInfo, final PaymentInfo PaymentInfo,
+                                       final String SessionId, final FlightInfo FlightInfo, final Integer NoOfRooms,
+                                       final Integer ResultIndex, final String HotelCode, final String HotelName,
+                                       final ArrayOfRequestedRooms HotelRooms, final ArrayOfSpecialRequest SpecialRequests,
+                                       final String AgencyReferenceNumber, final Boolean RestrictDuplicateBooking, final AuthenticationData Credentials) throws java.lang.Exception {
         com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile __profile = new com.easywsdl.exksoap2.ws_specifications.profile.WS_Profile();
         return (HotelBookResponse) execute(new IWcfMethod() {
             @Override

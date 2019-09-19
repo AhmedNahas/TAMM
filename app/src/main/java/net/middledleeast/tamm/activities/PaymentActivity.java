@@ -31,7 +31,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.wirecard.ecom.Client;
+import com.wirecard.ecom.model.out.PaymentResponse;
 
+import net.middledleeast.tamm.KnetPaymentDelails;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AdapterPayment;
 import net.middledleeast.tamm.fragments.TermsFragment;
@@ -42,6 +44,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -57,6 +60,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import payments.PaymentObjectProvider;
+import payments.ResponseHelper;
 
 public class PaymentActivity extends AppCompatActivity {
 
@@ -77,6 +81,7 @@ public class PaymentActivity extends AppCompatActivity {
 //    @BindView(R.id.sp_convert_to)
 //    Spinner spConvertTo;
     private Button button;
+    private String bookedOn;
     private RelativeLayout relativeLayout;
     private AuthenticationData authenticandata;
     private BasicHttpBinding_IHotelService1 service;
@@ -134,9 +139,14 @@ public class PaymentActivity extends AppCompatActivity {
         relative_radio_btn=findViewById(R.id.relative_radio_btn);
 
 
+        Calendar calendar = Calendar.getInstance();
+
+        Date futureDate = calendar.getTime();
+        bookedOn = new SimpleDateFormat("yyyy-MM-dd").format(futureDate);
 
         Intent intent = getIntent();
         mId = intent.getIntExtra("mId", 0);
+
         uid = SharedPreferencesManger.LoadStringData(this, "uid");
 
 
@@ -166,10 +176,14 @@ public class PaymentActivity extends AppCompatActivity {
                     startActivity(new Intent(PaymentActivity.this, ConfirmBookingRoom.class));
 
 
-                } else {
+                } else if (mId==1){
 
 
                     onBackPressed();
+
+                }else if (mId==3){
+
+                    startActivity(new Intent(PaymentActivity.this, Proceedbeybey.class));
 
                 }
             }
@@ -298,16 +312,16 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         spinnerTitles.add(getString(R.string.payment_method));
-//        spinnerTitles.ic_add(getString(R.string.visa_));
-//        spinnerTitles.ic_add(getString(R.string.master));
+        spinnerTitles.add(getString(R.string.visa_));
+        spinnerTitles.add(getString(R.string.master));
 
 
         spinnerTitles.add(getString(R.string.knet));
 
         spinnerImages.add(0);
 
-//        spinnerImages.ic_add(R.drawable.wd_ecom_visa);
-//        spinnerImages.ic_add(R.drawable.wd_ecom_mastercard);
+        spinnerImages.add(R.drawable.wd_ecom_visa);
+        spinnerImages.add(R.drawable.wd_ecom_mastercard);
         spinnerImages.add(R.drawable.ic_knet);
 
 
@@ -422,14 +436,24 @@ public class PaymentActivity extends AppCompatActivity {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
+
             if (url.contains("CAPTURED")) {
                 showProgressingView();
-                if (mId==1){
-                    startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
-                }else if (mId==2) {
-                    startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
-                }else if (mId==3){
 
+                Intent intent=new Intent(PaymentActivity.this, KnetPaymentDelails.class);
+intent.putExtra("knetmid",mId);
+startActivity(intent);
+//                if (mId==1){
+//                    startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
+//                }else if (mId==2) {
+//
+//                    startActivity(new Intent(PaymentActivity.this, KnetPaymentDelails.class));
+
+//                }else if (mId==3){
+//
+//                    startActivity(new Intent(PaymentActivity.this, FlightDetails.class));
+//
+//                }
                     startActivity(new Intent(PaymentActivity.this, FlightDetails.class));
 finish();
                 }
@@ -467,8 +491,8 @@ finish();
 
                 }else {
 
-//                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-//                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
                 }
 
 
@@ -553,8 +577,8 @@ finish();
 //                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
                 }else {
 
-//                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-//                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
 
                 }
 
@@ -602,8 +626,8 @@ finish();
 
                  }else {
 
-//                     Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-//                     client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+                     Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                     client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
                  }
 
 
@@ -662,49 +686,44 @@ finish();
             }
 
 
-//         @Override
-//         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        Serializable paymentSdkResponse = data.getSerializableExtra(Client.EXTRA_PAYMENT_SDK_RESPONSE);
-//        if (paymentSdkResponse instanceof PaymentResponse) {
-//            String formattedResponse = ResponseHelper.getFormattedResponse((PaymentResponse) paymentSdkResponse);
-//
-//
-//        }
-//        if (resultCode == RESULT_OK) {
-//            Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
-//
-//
-//            if (mId == BOOKING_ROOM) {
-//                startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
-//            } else if (mId==1){
-//
-//                sendDataToServer();
-//                Toast.makeText(this, "Welcome", Toast.LENGTH_LONG).show();
-//
-//
-//
-//
-//
-//            }else if (mId==3){
-//
-//                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
-//
-//                startActivity(new Intent(PaymentActivity.this,FlightDetails.class));
-//            }else if (mId==6){
-//
-//
-//                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
-//
-//                startActivity(new Intent(PaymentActivity.this,HotelBooking.class));
-//            }
-//
-//        }else {
-//            Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
-//
-//
-//                    }
-//    }
+         @Override
+         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Serializable paymentSdkResponse = data.getSerializableExtra(Client.EXTRA_PAYMENT_SDK_RESPONSE);
+        if (paymentSdkResponse instanceof PaymentResponse) {
+            String formattedResponse = ResponseHelper.getFormattedResponse((PaymentResponse) paymentSdkResponse);
+
+
+        }
+            Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+
+
+            if (mId == BOOKING_ROOM) {
+                startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
+            } else if (mId==1){
+
+                sendDataToServer();
+                Toast.makeText(this, "Welcome", Toast.LENGTH_LONG).show();
+
+
+
+
+
+            }else if (mId==3){
+
+                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(PaymentActivity.this,FlightDetails.class));
+            }else if (mId==6){
+
+
+                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(PaymentActivity.this,HotelBooking.class));
+            }
+
+
+    }
 
     private void sendDataToServer() {
 
@@ -794,7 +813,7 @@ finish();
                 parameters.put("password", pass);
                 parameters.put("birthdate"," " + day+ " - " + month+ " - " + year + " ");
 
-
+                parameters.put("subscriptiondate", bookedOn);
 
 
 
@@ -874,7 +893,12 @@ finish();
             startActivity(new Intent(PaymentActivity.this, ConfirmBookingRoom.class));
 
 
-        }else {
+        }else if (mId==3){
+
+            startActivity(new Intent(PaymentActivity.this, Proceedbeybey.class));
+
+
+        }else if (mId==1){
 
 
 

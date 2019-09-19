@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".KnetPaymentDelails">
+
+    <RelativeLayout
+        android:id="@+id/toolbar_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:id="@+id/toolbar_back1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true">
+
+            <ImageView
+                android:id="@+id/toolbar_back_image_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/ic_back_arrow" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="7dp"
+                android:layout_toEndOf="@+id/toolbar_back_image_back"
+                android:text="@string/back"
+                android:textColor="#ffff"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/logo" />
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_booked_find_hotels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_button" />
+
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/toolbar_back"
+        android:background="@drawable/line1" />
+
+
+    <RelativeLayout
+        android:id="@+id/relative_payments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        android:layout_marginTop="@dimen/_10sdp"
+
+        >
+
+        <RelativeLayout
+            android:id="@+id/relative_payment_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp">
+
+            <TextView
+                android:id="@+id/tv_paymentd_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment ID : "
+                android:textColor="@color/white"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_pay_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_paymentd_id"
+                android:text="ID "
+                android:textColor="@color/white"
+
+                />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relative_result_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_payment_id"
+            android:layout_marginStart="@dimen/_10sdp"
+
+
+            >
+
+            <TextView
+                android:id="@+id/tv_result_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Result Code : "
+                android:textColor="@color/white"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_result_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_result_code"
+                android:text="Code "
+                android:textColor="@color/white"
+
+                />
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/relative_transaction_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_result_code"
+            android:layout_marginStart="@dimen/_10sdp"
+
+
+            >
+
+            <TextView
+                android:id="@+id/tv_transaction_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transaction ID : "
+                android:textColor="@color/white"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_transaction_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_transaction_id"
+                android:text="Transaction "
+                android:textColor="@color/white"
+
+                />
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/relative_auth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_transaction_id"
+            android:layout_marginStart="@dimen/_10sdp"
+
+
+            >
+
+            <TextView
+                android:id="@+id/tv_auth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Auth: "
+                android:textColor="@color/white"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_auth_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_auth"
+                android:text="Number Of Auth "
+                android:textColor="@color/white"
+
+                />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relative_track_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_auth"
+            android:layout_marginStart="@dimen/_10sdp"
+
+
+            >
+
+            <TextView
+                android:id="@+id/tv_track_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Track ID: "
+                android:textColor="@color/white"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_track_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_track_id"
+                android:text="Track Number"
+                android:textColor="@color/white"
+
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relative_reference_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_track_id"
+            android:layout_marginStart="@dimen/_10sdp"
+
+
+            >
+
+            <TextView
+                android:id="@+id/tv_reference_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reference Number : "
+                android:textColor="@color/white"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_reference_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_reference_number"
+                android:text="reference"
+                android:textColor="@color/white"
+
+                />
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/relative_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_reference_number"
+            android:layout_marginStart="@dimen/_10sdp"
+
+
+            >
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount : "
+                android:textColor="@color/white"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_amount_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_amount"
+                android:text="amount count"
+                android:textColor="@color/white"
+
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relative_udf_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_amount"
+            android:layout_marginStart="@dimen/_10sdp"
+
+
+            >
+
+            <TextView
+                android:id="@+id/tv_udf_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Udf 1 : "
+                android:textColor="@color/white"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_udf_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_udf_1"
+                android:text="udf"
+                android:textColor="@color/white"
+
+                />
+
+        </RelativeLayout>
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/relative_udf_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_udf_1"
+            android:layout_marginStart="@dimen/_10sdp"
+
+
+            >
+
+            <TextView
+                android:id="@+id/tv_udf_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Udf 2 : "
+                android:textColor="@color/white"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_udf_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_udf_2"
+                android:text="udf"
+                android:textColor="@color/white"
+
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_udf_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_udf_2"
+            android:layout_marginStart="@dimen/_10sdp"
+
+
+            >
+
+            <TextView
+                android:id="@+id/tv_udf_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Udf 3 : "
+                android:textColor="@color/white"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_udf_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_udf_3"
+                android:text="udf"
+                android:textColor="@color/white"
+
+                />
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/relative_udf_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_udf_3"
+            android:layout_marginStart="@dimen/_10sdp"
+
+
+            >
+
+            <TextView
+                android:id="@+id/tv_udf_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Udf 4 : "
+                android:textColor="@color/white"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_udf_four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_udf_4"
+                android:text="udf"
+                android:textColor="@color/white"
+
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relative_udf_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_udf_4"
+            android:layout_marginStart="@dimen/_10sdp"
+
+
+            >
+
+            <TextView
+                android:id="@+id/tv_udf_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Udf 5 : "
+                android:textColor="@color/white"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_udf_five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_udf_5"
+                android:text="udf"
+                android:textColor="@color/white"
+
+                />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relative_post_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_udf_5"
+            android:layout_marginStart="@dimen/_10sdp"
+
+
+            >
+
+            <TextView
+                android:id="@+id/tv_post_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Post Code : "
+                android:textColor="@color/white"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tv_post_code"
+                android:text="code post"
+                android:textColor="@color/white"
+
+                />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_25sdp"
+        android:text="Confirm"
+        android:textColor="@color/black"
+        android:layout_below="@+id/relative_payments"
+        android:layout_centerInParent="true"
+        android:background="@color/shape"
+        android:layout_marginTop="@dimen/_10sdp"
+
+        />
+
+
+</RelativeLayout>

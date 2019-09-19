@@ -532,7 +532,7 @@ public class RegisterationActivity extends Fragment {
                     parameters.put("email", email);
                     parameters.put("password", password);
                     parameters.put("birthdate"," " + day+ " - " + month+ " - " + year + " ");
-
+                    parameters.put("subscriptiondate", bookedOn);
 
 
 
