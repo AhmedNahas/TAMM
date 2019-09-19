@@ -340,7 +340,7 @@ try {
                         + " , Your Payment Details for Transaction No.  : " + transaction_
                         + " , Date / Time : " + bookedOn
                         + " , Status : " + "Success"
-                        + " , Amount : " +amount_
+                        + " , Amount : " +amount_ + " KD "
                         + " , Reference ID : " +refno_
                         + " , Payment ID : " +paymentid_
                         + " , Merchant Track ID : " +trackid_
