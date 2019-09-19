@@ -31,6 +31,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.wirecard.ecom.Client;
+import com.wirecard.ecom.model.out.PaymentResponse;
 
 import net.middledleeast.tamm.KnetPaymentDelails;
 import net.middledleeast.tamm.R;
@@ -43,6 +44,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -58,6 +60,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import payments.PaymentObjectProvider;
+import payments.ResponseHelper;
 
 public class PaymentActivity extends AppCompatActivity {
 
@@ -143,6 +146,7 @@ public class PaymentActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         mId = intent.getIntExtra("mId", 0);
+
         uid = SharedPreferencesManger.LoadStringData(this, "uid");
 
 
@@ -436,13 +440,15 @@ public class PaymentActivity extends AppCompatActivity {
             if (url.contains("CAPTURED")) {
                 showProgressingView();
 
-                startActivity(new Intent(PaymentActivity.this, KnetPaymentDelails.class));
-
+                Intent intent=new Intent(PaymentActivity.this, KnetPaymentDelails.class);
+intent.putExtra("knetmid",mId);
+startActivity(intent);
 //                if (mId==1){
 //                    startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
 //                }else if (mId==2) {
 //
 //                    startActivity(new Intent(PaymentActivity.this, KnetPaymentDelails.class));
+
 //                }else if (mId==3){
 //
 //                    startActivity(new Intent(PaymentActivity.this, FlightDetails.class));
@@ -482,8 +488,8 @@ public class PaymentActivity extends AppCompatActivity {
 
                 }else {
 
-//                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
-//                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
+                    Client client = new Client(PaymentActivity.this, "https://api-test.wirecard.com");
+                    client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
                 }
 
 
@@ -677,49 +683,44 @@ public class PaymentActivity extends AppCompatActivity {
             }
 
 
-//         @Override
-//         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        Serializable paymentSdkResponse = data.getSerializableExtra(Client.EXTRA_PAYMENT_SDK_RESPONSE);
-//        if (paymentSdkResponse instanceof PaymentResponse) {
-//            String formattedResponse = ResponseHelper.getFormattedResponse((PaymentResponse) paymentSdkResponse);
-//
-//
-//        }
-//        if (resultCode == RESULT_OK) {
-//            Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
-//
-//
-//            if (mId == BOOKING_ROOM) {
-//                startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
-//            } else if (mId==1){
-//
-//                sendDataToServer();
-//                Toast.makeText(this, "Welcome", Toast.LENGTH_LONG).show();
-//
-//
-//
-//
-//
-//            }else if (mId==3){
-//
-//                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
-//
-//                startActivity(new Intent(PaymentActivity.this,FlightDetails.class));
-//            }else if (mId==6){
-//
-//
-//                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
-//
-//                startActivity(new Intent(PaymentActivity.this,HotelBooking.class));
-//            }
-//
-//        }else {
-//            Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
-//
-//
-//                    }
-//    }
+         @Override
+         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Serializable paymentSdkResponse = data.getSerializableExtra(Client.EXTRA_PAYMENT_SDK_RESPONSE);
+        if (paymentSdkResponse instanceof PaymentResponse) {
+            String formattedResponse = ResponseHelper.getFormattedResponse((PaymentResponse) paymentSdkResponse);
+
+
+        }
+            Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+
+
+            if (mId == BOOKING_ROOM) {
+                startActivity(new Intent(PaymentActivity.this, RoomBooked.class));
+            } else if (mId==1){
+
+                sendDataToServer();
+                Toast.makeText(this, "Welcome", Toast.LENGTH_LONG).show();
+
+
+
+
+
+            }else if (mId==3){
+
+                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(PaymentActivity.this,FlightDetails.class));
+            }else if (mId==6){
+
+
+                Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
+
+                startActivity(new Intent(PaymentActivity.this,HotelBooking.class));
+            }
+
+
+    }
 
     private void sendDataToServer() {
 

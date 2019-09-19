@@ -15,6 +15,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import net.middledleeast.tamm.activities.ConfirmBookingRoom;
+import net.middledleeast.tamm.activities.FlightDetails;
+import net.middledleeast.tamm.activities.MemberCongratsActivity;
+import net.middledleeast.tamm.activities.PaymentActivity;
+import net.middledleeast.tamm.activities.Proceedbeybey;
 import net.middledleeast.tamm.activities.RoomBooked;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.AllLinks.LinksUrl;
@@ -28,6 +33,8 @@ public class KnetPaymentDelails extends AppCompatActivity {
     TextView tv_pay_number,tv_result_number,tv_transaction_number,tv_auth_number,tv_track_number,tv_reference_,tv_amount_,tv_udf_one,tv_udf_two,tv_udf_three,tv_udf_four,tv_udf_five,tv_post;
 
 Button btn_confirm;
+    private String resultcode;
+    private int mId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,35 +58,104 @@ Button btn_confirm;
 
         btn_confirm=findViewById(R.id.btn_confirm);
 
+        Intent intent = getIntent();
+        mId = intent.getIntExtra("knetmid", 0);
+
         getpaymentresult();
 
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//                if (LinksUrl.URL_PAYMENT.contains("CAPTURED")){
-
-                    Intent intent =new Intent(KnetPaymentDelails.this, RoomBooked.class);
-                    startActivity(intent);
-//
-//                }else {
-//
-//                    Intent intent =new Intent(KnetPaymentDelails.this, ConfirmBookingRoom.class);
-//                    startActivity(intent);
-//                }
+                if (mId == 1) {
 
 
+
+                    if (resultcode.contains("CAPTURED")){
+
+                        startActivity(new Intent(KnetPaymentDelails.this, MemberCongratsActivity.class));
+
+
+                    }else if(resultcode.contains("NOT CAPTURED")) {
+
+                        Intent intent =new Intent(KnetPaymentDelails.this, PaymentActivity.class);
+                        startActivity(intent);
+
+                    }
+
+
+                } else if (mId==2){
+
+
+                    if (resultcode.contains("CAPTURED")){
+
+                        Intent intent =new Intent(KnetPaymentDelails.this, RoomBooked.class);
+                        startActivity(intent);
+
+
+                    }else if(resultcode.contains("NOT CAPTURED")) {
+
+                        Intent intent =new Intent(KnetPaymentDelails.this, ConfirmBookingRoom.class);
+                        startActivity(intent);
+
+                    }
+
+
+                }else if(mId==3){
+
+
+                    if (resultcode.contains("CAPTURED")){
+
+                        Intent intent =new Intent(KnetPaymentDelails.this, FlightDetails.class);
+                        startActivity(intent);
+
+
+                    }else if(resultcode.contains("NOT CAPTURED")) {
+
+                        Intent intent =new Intent(KnetPaymentDelails.this, Proceedbeybey.class);
+                        startActivity(intent);
+
+                    }
+
+
+
+                }else if(mId==6){
+
+                    if (resultcode.contains("CAPTURED")){
+
+                        Intent intent =new Intent(KnetPaymentDelails.this, RoomBooked.class);
+                        startActivity(intent);
+
+
+                    }else if(resultcode.contains("NOT CAPTURED")) {
+
+                        Intent intent =new Intent(KnetPaymentDelails.this, ConfirmBookingRoom.class);
+                        startActivity(intent);
+
+                    }
+
+
+
+                }else if(mId==7){
+
+                    if (resultcode.contains("CAPTURED")){
+
+                        Intent intent =new Intent(KnetPaymentDelails.this, FlightDetails.class);
+                        startActivity(intent);
+
+
+                    }else if(resultcode.contains("NOT CAPTURED")) {
+
+                        Intent intent =new Intent(KnetPaymentDelails.this, Proceedbeybey.class);
+                        startActivity(intent);
+
+                    }
+
+
+                }
 
 
             }
         });
-
-
-
-
-
-
-
 
 
 
@@ -97,7 +173,7 @@ Button btn_confirm;
                         JSONObject ob=array.getJSONObject(i);
                          String id = ob.getString("id");
                          String paymentid = ob.getString("paymentid");
-                         String resultcode = ob.getString("resultcode");
+                         resultcode = ob.getString("resultcode");
                          String transactionid = ob.getString("transactionid");
                          String auth = ob.getString("auth");
                          String trackid = ob.getString("trackid");
