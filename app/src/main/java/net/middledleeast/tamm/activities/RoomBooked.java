@@ -121,6 +121,10 @@ public class RoomBooked extends AppCompatActivity {
     private String amount_;
     private String transaction_;
     private String result_;
+    private String refno_;
+    private String postcode_;
+    private String paymentid_;
+    private String trackid_;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,7 +135,11 @@ public class RoomBooked extends AppCompatActivity {
 
         amount_ = SharedPreferencesManger.LoadStringData(context, "amount_");
         transaction_ = SharedPreferencesManger.LoadStringData(context, "transaction_");
-         result_ = SharedPreferencesManger.LoadStringData(context, "result_");
+        result_ = SharedPreferencesManger.LoadStringData(context, "result_");
+        refno_ = SharedPreferencesManger.LoadStringData(context, "refno_");
+        trackid_ = SharedPreferencesManger.LoadStringData(context, "trackid_");
+        paymentid_ = SharedPreferencesManger.LoadStringData(context, "paymentid_");
+
 
         iv_booked_room=findViewById(R.id.iv_booked_room);
         iv_booked_room.setOnClickListener(new View.OnClickListener() {
@@ -320,15 +328,27 @@ try {
                 connectdatabase();
                 sendDataToEMail(email,"Dear Mr." + userNameFromSignIn
                         + " , This is your Confirmation No." + confirmationNo
-                        + " , Your Transaction  : " + transaction_
-                        + " , Has been : " +result_
-                        + " , With Total Amount of : " +amount_ +"KD"
                         + " , for booking " + hotel_name
                         + "  in " + name_city_
                         + " , check in date is : " + start_time
                         + " and check out date is : " + end_time
                         + " , No. of Rooms booked is : " + noOfRooms
                         +  " , your last cancellation date is : " + Until );
+
+                senddataknettoemail(email,"Dear Mr." + "Amr"
+
+                        + " , Your Payment Details for Transaction No.  : " + transaction_
+                        + " , Date / Time : " + bookedOn
+                        + " , Status : " + "Success"
+                        + " , Amount : " +amount_
+                        + " , Reference ID : " +refno_
+                        + " , Payment ID : " +paymentid_
+                        + " , Merchant Track ID : " +trackid_
+
+                        );
+
+
+
                 startActivity(new Intent(RoomBooked.this, HotelBooking.class));
 
             }
@@ -1303,6 +1323,62 @@ try {
 
 
     }
+
+
+    public void senddataknettoemail(String Email ,String body){
+
+        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SENT_TO_EMAIL, new com.android.volley.Response.Listener<String>() {
+
+            @Override
+
+            public void onResponse(String response) {
+
+
+
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    int status = jObj.getInt("msg");
+                    String msg = jObj.getString("success");
+
+                    Toast.makeText(RoomBooked.this, ""+msg, Toast.LENGTH_SHORT).show();
+
+                }catch (Exception  e){}
+
+
+
+            }
+
+        }, new com.android.volley.Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                int statusCode = error.networkResponse.statusCode;
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("mail_to", Email);
+                parameters.put("body",body );
+
+
+
+                return parameters;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
+
+
+
+    }
+
+
+
+
 
 
 }

@@ -91,7 +91,8 @@ public class ChooseBookingDate extends AppCompatActivity {
         toolbar_back1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                startActivity(new Intent(ChooseBookingDate.this,HotelDetails.class));
+
             }
         });
 

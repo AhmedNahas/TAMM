@@ -336,7 +336,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
 
         Date futureDate = calendar.getTime();
-        bookedOn = new SimpleDateFormat("yyyy-MM-dd").format(futureDate);
+        bookedOn = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(futureDate);
 
         back = findViewById(R.id.toolbar_back1);
         back.setOnClickListener(new View.OnClickListener() {

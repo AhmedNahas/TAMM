@@ -205,8 +205,10 @@ Button btn_confirm;
                         SharedPreferencesManger.SaveData(KnetPaymentDelails.this,"amount_",amount);
                         SharedPreferencesManger.SaveData(KnetPaymentDelails.this,"transaction_",transactionid);
                         SharedPreferencesManger.SaveData(KnetPaymentDelails.this,"result_",resultcode);
+                        SharedPreferencesManger.SaveData(KnetPaymentDelails.this,"refno_",refno);
+                        SharedPreferencesManger.SaveData(KnetPaymentDelails.this,"trackid_",trackid);
+                        SharedPreferencesManger.SaveData(KnetPaymentDelails.this,"paymentid_",paymentid);
 
-////
 
                     }
                 } catch (JSONException e) {

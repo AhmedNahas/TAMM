@@ -77,7 +77,8 @@ public class ReserveRoom extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                startActivity(new Intent(ReserveRoom.this,RenewAccount.class));
+
             }
         });
 

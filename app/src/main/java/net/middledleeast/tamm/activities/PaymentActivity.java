@@ -714,9 +714,11 @@ startActivity(intent);
             }else if (mId==6){
 
 
+
                 Toast.makeText(this, "your payment is successful", Toast.LENGTH_SHORT).show();
 
                 startActivity(new Intent(PaymentActivity.this,HotelBooking.class));
+
             }
 
 
