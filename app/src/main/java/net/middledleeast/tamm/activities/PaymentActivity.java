@@ -2,6 +2,7 @@ package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -17,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -78,8 +81,8 @@ public class PaymentActivity extends AppCompatActivity {
     CheckBox checkBoxAgerr2;
     @BindView(R.id.terms_conditions_tv2)
     TextView termsConditionsTv2;
-//    @BindView(R.id.sp_convert_to)
-//    Spinner spConvertTo;
+    @BindView(R.id.sp_convert_to)
+    Spinner spConvertTo;
     private Button button;
     private String bookedOn;
     private RelativeLayout relativeLayout;
@@ -165,6 +168,161 @@ public class PaymentActivity extends AppCompatActivity {
 
         }
         });
+
+
+
+
+
+
+
+
+
+
+        List<String> listTypeMony = new ArrayList<>();
+
+
+        listTypeMony.add(getString(R.string.usd));
+        listTypeMony.add(getString(R.string.euro));
+        listTypeMony.add(getString(R.string.eg_pound));
+        listTypeMony.add(getString(R.string.kd));
+
+        ArrayAdapter adapter = new ArrayAdapter(PaymentActivity.this, R.layout.item_spener, listTypeMony);
+        adapter.setDropDownViewResource(R.layout.drop_dowen_convert);
+
+        spConvertTo.setAdapter(adapter);
+
+        spConvertTo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                DecimalFormat df = new DecimalFormat("###.###");
+
+                if (mId==2){
+
+
+                    if (roomPrice.equals("")){
+
+
+                    }else {
+
+                        final   double priceDouble = Double.parseDouble(roomPrice);
+
+                        if (i == 3) {
+
+                            double convirtKD = priceDouble * 0.30;
+
+                            tvKd.setText("KD " + convirtKD);
+                            currency = "KD";
+
+                        } else if (i == 2) {
+
+                            double convirtEG = priceDouble * 16.58;
+
+                            tvKd.setText("EG " + convirtEG);
+                            currency = "EG";
+                        } else if (i == 1) {
+
+                            double convirtEU = priceDouble * 0.90;
+
+                            tvKd.setText("EURO " + convirtEU);
+
+                            currency = "EURO";
+
+
+                        } else {
+
+
+
+                            tvKd.setText("USD " + roomPrice);
+                            currency = "USD";
+
+                        }
+
+                    }
+
+
+                }else if (mId==1){
+
+
+                    if (!msgbody.equals("")){
+
+                        final   double priceDouble = Double.parseDouble(msgbody);
+
+
+                        if (i == 3) {
+
+                            double convirtKD = priceDouble * 0.30;
+
+                            tvKd.setText("KD " +convirtKD);
+                            currency = "KD";
+
+                        } else if (i == 2) {
+
+                            double convirtEG = priceDouble * 16.58;
+                            tvKd.setText("EG " +df.format(convirtEG));
+
+                            currency = "EG";
+                        } else if (i == 1) {
+
+                            double convirtEU = priceDouble * 0.90;
+
+                            tvKd.setText("EURO " + convirtEU);
+
+                            currency = "EURO";
+
+
+                        } else {
+
+
+                            tvKd.setText("USD " + msgbody);
+                            currency = "USD";
+
+                        }
+
+
+
+                    }else if (mId==3) {
+
+
+
+                    }
+
+
+
+                }
+
+
+
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         imageView.setOnClickListener(new View.OnClickListener() {
