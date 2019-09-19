@@ -334,20 +334,44 @@ public class PaymentActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-                if (i == 0) {
+//                if (i == 0) {
+//
+//                    paymentChekd = false;
+//                } else {
+//
+//                    paymentChekd = true;
+//                    String s = spinnerTitles.get(i);
+//                    if (s.equals(getString(R.string.knet))){
+//
+//
+//                        knet = true ;
+//
+//                    }else {
+//
+//                        knet = false;
+//
+//                    }
+//                }
 
+
+                String s = spinnerTitles.get(i);
+                if (s.equals(getString(R.string.knet))){
+                    knet = true ;
+
+
+                }else {
+
+                    knet = false ;
+
+                }
+
+                if (i==0){
                     paymentChekd = false;
-                } else {
 
+                }else {
 
-                    String s = spinnerTitles.get(i);
-                    if (s.equals(getString(R.string.knet))){
-
-
-                        knet = true ;
-
-                    }
                     paymentChekd = true;
+
                 }
 
 
@@ -454,9 +478,7 @@ startActivity(intent);
 //                    startActivity(new Intent(PaymentActivity.this, FlightDetails.class));
 //
 //                }
-                    startActivity(new Intent(PaymentActivity.this, FlightDetails.class));
-finish();
-                }
+
             }
 //            else{
 //
@@ -516,7 +538,7 @@ finish();
             BigDecimal amount = new BigDecimal(Price);
             PaymentObjectProvider mPaymentObjectProvider = new PaymentObjectProvider();
             BigDecimal finalAmount = amount;
-            String finalCurrency = flightCurrency;
+            String finalCurrency = "KD";
 
             if (paymentChekd && checkBoxAgerr2.isChecked()) {
 

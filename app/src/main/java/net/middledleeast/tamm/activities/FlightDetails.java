@@ -197,18 +197,18 @@ public class FlightDetails extends AppCompatActivity  {
 
 
 
-                for (int i = 0; i < data.getSegments().size(); i++) {
+//                for (int i = 0; i < data.getSegments().size(); i++) {
 
 
                     FROM = countryName + "  /  ";
 
-                    TO = data.getSegments().get(i).getDestination().getCityName() + "  /  ";
+                    TO = data.getSegments().get(0).getDestination().getCityName() + "  /  ";
 
 
 
 
 
-                }
+//                }
 
                 appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
@@ -268,7 +268,7 @@ public class FlightDetails extends AppCompatActivity  {
                             appDatabase.cartDao().addoffer(roomCartModelReturn);
 
 
-                            sendDataToEMail(email, body+ " : RETURN INFORMATION IS : "+ airlineCodeReturn.toString()+airlineCodeReturn.toString()+FROM.toString()+TO.toString()+flightNumberReturn.toString()+DateReturn.toString()
+                            sendDataToEMail(email, body+ " : RETURN INFORMATION IS : "+ " "+"/".toString()+FROM.toString()+TO.toString()+flightNumberReturn.toString()+DateReturn.toString()
                                     +timeReturn.toString() );
 
                         }else {

@@ -51,6 +51,14 @@ int jurnyTipe ;
     public void onBindViewHolder(@NonNull BookedViewHolder holder, int position) {
 
 
+
+         if (holder.FromReturn.getText().toString().equals("")){
+
+
+
+             holder.relativeReturnTicket.setVisibility(View.GONE);
+         }
+
         RoomCartModel data = allData.get(position);
 
 
@@ -105,7 +113,9 @@ try {
             holder.FlightNoReturn.setText(fLghtNoReturn);
             holder.DateReturn.setText(dateReturn);
             holder.HoursReturn.setText(timeReturn);
+            String airlineCode = "a" + data.getAirLinePhotoReturn().toLowerCase();
 
+            holder.photoTicketReturn.setImageResource(context.getResources().getIdentifier(airlineCode, "drawable", context.getPackageName()));
         }else {
 
 
