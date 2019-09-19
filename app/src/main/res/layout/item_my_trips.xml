@@ -68,7 +68,6 @@
         android:layout_marginEnd="@dimen/_15sdp"
         android:textColor="@color/app_color"
         android:layout_below="@+id/photo_ticket"
-        android:text="Egypt AirLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -256,7 +255,6 @@
             android:layout_marginEnd="@dimen/_15sdp"
             android:textColor="@color/app_color"
             android:layout_below="@+id/photo_ticket_Return"
-            android:text="Egypt AirLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

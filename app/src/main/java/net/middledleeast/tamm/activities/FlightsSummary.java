@@ -317,7 +317,7 @@ public class FlightsSummary extends AppCompatActivity {
             tvDxb2.setText(from);
 
 
-            if (segmentsReturn.size() > 1) {
+            if (segmentsReturn2.size() > 1) {
                 tvDirect2.setText("Transit");
 
                 tvDirect2.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.transit, 0, 0, 0);
