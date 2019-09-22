@@ -105,7 +105,8 @@ private RecyclerView recyclerView;
         relative_back_recommend_one_way.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                Intent intent = new Intent(RecommendedOneWay.this, Proceedbeybey.class);
+                startActivity(intent);
             }
         });
                 }

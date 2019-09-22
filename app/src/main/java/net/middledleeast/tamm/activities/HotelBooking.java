@@ -103,6 +103,7 @@ public class HotelBooking extends AppCompatActivity {
         service.enableLogging = true;
         authenticandata = new AuthenticationData();
         authenticandata.UserName = (getString(R.string.user_name_tamm));
+
         authenticandata.Password = (getString(R.string.passowrd_tamm));
         int BookingId = SharedPreferencesManger.LoadIntegerData(this, "BookingID");
         String clientReferenceNo = SharedPreferencesManger.LoadStringData(this, "ClientRef");

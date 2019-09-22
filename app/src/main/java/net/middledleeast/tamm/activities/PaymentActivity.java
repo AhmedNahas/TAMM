@@ -197,7 +197,7 @@ public class PaymentActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-                DecimalFormat df = new DecimalFormat("###.###");
+                DecimalFormat df = new DecimalFormat("#,###.##");
 
                 if (mId==2){
 
@@ -209,30 +209,32 @@ public class PaymentActivity extends AppCompatActivity {
 
                         final   double priceDouble = Double.parseDouble(roomPrice);
 
+
+
                         if (i == 3) {
 
                             double convirtKD = priceDouble * 0.30;
 
-                            tvKd.setText("KD " + convirtKD);
+                            tvKd.setText("KD " + df.format(convirtKD));
                             currency = "KD";
 
                         } else if (i == 2) {
 
                             double convirtEG = priceDouble * 16.58;
 
-                            tvKd.setText("EG " + convirtEG);
+                            tvKd.setText("EG " + df.format(convirtEG));
                             currency = "EG";
+
                         } else if (i == 1) {
 
                             double convirtEU = priceDouble * 0.90;
 
-                            tvKd.setText("EURO " + convirtEU);
+                            tvKd.setText("EURO " + df.format(convirtEU));
 
                             currency = "EURO";
 
 
                         } else {
-
 
 
                             tvKd.setText("USD " + roomPrice);
@@ -255,7 +257,7 @@ public class PaymentActivity extends AppCompatActivity {
 
                             double convirtKD = priceDouble * 0.30;
 
-                            tvKd.setText("KD " +convirtKD);
+                            tvKd.setText("KD " +df.format(convirtKD));
                             currency = "KD";
 
                         } else if (i == 2) {
@@ -268,7 +270,7 @@ public class PaymentActivity extends AppCompatActivity {
 
                             double convirtEU = priceDouble * 0.90;
 
-                            tvKd.setText("EURO " + convirtEU);
+                            tvKd.setText("EURO " +df.format(convirtEU));
 
                             currency = "EURO";
 
@@ -281,22 +283,11 @@ public class PaymentActivity extends AppCompatActivity {
 
                         }
 
-
-
                     }else if (mId==3) {
-
-
 
                     }
 
-
-
                 }
-
-
-
-
-
 
             }
 
@@ -305,21 +296,6 @@ public class PaymentActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -365,6 +341,7 @@ public class PaymentActivity extends AppCompatActivity {
             tvFirstName.setText(first_name);
 
             double v = Double.parseDouble(roomPrice);
+
             double sum = v * 0.304380 ;
 
 
@@ -441,26 +418,18 @@ public class PaymentActivity extends AppCompatActivity {
             tvFirstName.setText(firstNameAduld);
             tvKd.setText("KD "+formattedNumber);
 
+
         }else if (mId == 6){
 
-
-
-             pricepffers = SharedPreferencesManger.LoadStringData(this, "pricepffers");
-
-
+            pricepffers = SharedPreferencesManger.LoadStringData(this, "pricepffers");
 
             tvLastName.setText(last_name);
             tvFirstName.setText(first_name);
-
             tvKd.setText("USD" + " " + pricepffers);
 
         }else if (mId == 7){
 
-
-
             priceFligt = SharedPreferencesManger.LoadStringData(this, "priceflight");
-
-
 
             tvLastName.setText(last_name);
             tvFirstName.setText(first_name);
@@ -472,8 +441,6 @@ public class PaymentActivity extends AppCompatActivity {
         spinnerTitles.add(getString(R.string.payment_method));
         spinnerTitles.add(getString(R.string.visa_));
         spinnerTitles.add(getString(R.string.master));
-
-
         spinnerTitles.add(getString(R.string.knet));
 
         spinnerImages.add(0);
@@ -547,8 +514,6 @@ public class PaymentActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (mId == 1) {
-
-
 
                     String[] s = tvKd.getText().toString().split(" ");
                     String s1 = s[0];

@@ -174,12 +174,13 @@ public class FlightsSummary extends AppCompatActivity {
             datebirthinfant,
             nationality_adult,
             nationality_child,
-            nationality_infant, resultId,
+            nationality_infant,
+            resultId,
             tokenId,
             trackingId,
 
 
-    firstNameAduld2,
+            firstNameAduld2,
             lastNameAduld2, MDataMrmisAdult2,
             datebirthadult2,
             nationality_adult2,
@@ -189,7 +190,7 @@ public class FlightsSummary extends AppCompatActivity {
             passportIssue,
             passportEnd,
 
-    firstNameAduld3,
+            firstNameAduld3,
             lastNameAduld3,
             MDataMrmisAdult3,
             datebirthadult3,
@@ -197,6 +198,7 @@ public class FlightsSummary extends AppCompatActivity {
             passportNo3,
             passportIssue3,
             passportEnd3,
+
             firstNameAduld4,
             lastNameAduld4,
             MDataMrmisAdult4,
@@ -205,17 +207,17 @@ public class FlightsSummary extends AppCompatActivity {
             passportNo4,
             passportIssue4,
             passportEnd4,
+
             firstNameAduld5,
             lastNameAduld5,
             MDataMrmisAdult5,
             datebirthadult5,
             nationality_adult5,
             passportNo5,
-
-    passportIssue5,
+            passportIssue5,
             passportEnd5;
 
-    long adult,
+            long adult,
             child,
             infant;
 
@@ -390,9 +392,11 @@ public class FlightsSummary extends AppCompatActivity {
         relative_back_flight_summary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                Intent intent = new Intent(FlightsSummary.this, Passenger_inform.class);
+                startActivity(intent);
             }
         });
+
 
         proccedBtn = findViewById(R.id.procced_btn);
         assistantLabelVoiceRenewHotel = findViewById(R.id.assistant_label_voice_renew_flight_summary);

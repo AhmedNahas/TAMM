@@ -326,6 +326,7 @@ try {
                 showProgressingView();
                 bookingresponse(paymentInfo);
                 connectdatabase();
+
                 sendDataToEMail(email,"Dear Mr." + userNameFromSignIn
                         + " , This is your Confirmation No." + confirmationNo
                         + " , for booking " + hotel_name
