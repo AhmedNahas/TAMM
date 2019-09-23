@@ -327,14 +327,16 @@ try {
                 bookingresponse(paymentInfo);
                 connectdatabase();
 
-                sendDataToEMail(email,"Dear Mr." + userNameFromSignIn
-                        + " , This is your Confirmation No." + confirmationNo
-                        + " , for booking " + hotel_name
-                        + "  in " + name_city_
-                        + " , check in date is : " + start_time
-                        + " and check out date is : " + end_time
-                        + " , No. of Rooms booked is : " + noOfRooms
-                        +  " , your last cancellation date is : " + Until );
+                sendDataToEMail();
+
+//                sendDataToEMail(email,"Dear Mr." + userNameFromSignIn
+//                        + " , This is your Confirmation No." + confirmationNo
+//                        + " , for booking " + hotel_name
+//                        + "  in " + name_city_
+//                        + " , check in date is : " + start_time
+//                        + " and check out date is : " + end_time
+//                        + " , No. of Rooms booked is : " + noOfRooms
+//                        +  " , your last cancellation date is : " + Until );
 
                 senddataknettoemail(email,"Dear Mr." + "Amr"
 
@@ -1275,7 +1277,7 @@ try {
         isProgressShowing = false;
     }
 
-    public void sendDataToEMail(String Email ,String body){
+    public void sendDataToEMail(){
 
         StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SENT_TO_EMAIL, new com.android.volley.Response.Listener<String>() {
 
@@ -1311,8 +1313,15 @@ try {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("mail_to", Email);
-                parameters.put("body",body );
+                parameters.put("mail_to", email);
+                parameters.put("name",fullName );
+                parameters.put("confno",confirmationNo );
+                parameters.put("hotelname",hotel_name );
+                parameters.put("cityname",name_city_ );
+                parameters.put("checkin", start_time);
+                parameters.put("checkout", end_time);
+                parameters.put("canceldate", Until);
+
 
 
 
@@ -1329,7 +1338,7 @@ try {
 
     public void senddataknettoemail(String Email ,String body){
 
-        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SENT_TO_EMAIL, new com.android.volley.Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SENT_KNET_TO_EMAIL, new com.android.volley.Response.Listener<String>() {
 
             @Override
 
@@ -1363,8 +1372,15 @@ try {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("mail_to", Email);
-                parameters.put("body",body );
+                parameters.put("mail_to", email);
+                parameters.put("name", fullName);
+                parameters.put("transid", transaction_);
+                parameters.put("cityname", name_city_);
+                parameters.put("amount", amount_);
+                parameters.put("refno", refno_);
+                parameters.put("paymentid", paymentid_);
+                parameters.put("trackid", trackid_);
+                parameters.put("time", bookedOn);
 
 
 
