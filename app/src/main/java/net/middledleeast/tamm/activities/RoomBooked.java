@@ -328,6 +328,7 @@ try {
                 connectdatabase();
 
                 sendDataToEMail();
+                senddataknettoemail();
 
 //                sendDataToEMail(email,"Dear Mr." + userNameFromSignIn
 //                        + " , This is your Confirmation No." + confirmationNo
@@ -338,17 +339,17 @@ try {
 //                        + " , No. of Rooms booked is : " + noOfRooms
 //                        +  " , your last cancellation date is : " + Until );
 
-                senddataknettoemail(email,"Dear Mr." + userNameFromSignIn
-
-                        + " , Your Payment Details for Transaction No.  : " + transaction_
-                        + " , Date / Time : " + bookedOn
-                        + " , Status : " + "Success"
-                        + " , Amount : " +amount_ + " KD "
-                        + " , Reference ID : " +refno_
-                        + " , Payment ID : " +paymentid_
-                        + " , Merchant Track ID : " +trackid_
-
-                        );
+//                senddataknettoemail(email,"Dear Mr." + userNameFromSignIn
+//
+//                        + " , Your Payment Details for Transaction No.  : " + transaction_
+//                        + " , Date / Time : " + bookedOn
+//                        + " , Status : " + "Success"
+//                        + " , Amount : " +amount_ + " KD "
+//                        + " , Reference ID : " +refno_
+//                        + " , Payment ID : " +paymentid_
+//                        + " , Merchant Track ID : " +trackid_
+//
+//                        );
 
 
 
@@ -1309,6 +1310,7 @@ try {
                 int statusCode = error.networkResponse.statusCode;
 
             }
+
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -1331,12 +1333,10 @@ try {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
 
-
-
     }
 
 
-    public void senddataknettoemail(String Email ,String body){
+    public void senddataknettoemail(){
 
         StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SENT_KNET_TO_EMAIL, new com.android.volley.Response.Listener<String>() {
 
@@ -1356,9 +1356,8 @@ try {
 
                 }catch (Exception  e){}
 
-
-
             }
+
 
         }, new com.android.volley.Response.ErrorListener() {
 
