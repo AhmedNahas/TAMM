@@ -148,7 +148,9 @@ public class PaymentActivity extends AppCompatActivity {
         bookedOn = new SimpleDateFormat("yyyy-MM-dd").format(futureDate);
 
         Intent intent = getIntent();
-        mId = intent.getIntExtra("mId", 0);
+
+        mId = SharedPreferencesManger.LoadIntegerData(PaymentActivity.this,"mId");
+
 
         uid = SharedPreferencesManger.LoadStringData(this, "uid");
 
@@ -623,7 +625,8 @@ public class PaymentActivity extends AppCompatActivity {
                 showProgressingView();
 
                 Intent intent=new Intent(PaymentActivity.this, KnetPaymentDelails.class);
-                intent.putExtra("knetmid",mId);
+                SharedPreferencesManger.SaveData(PaymentActivity.this,"mId",mId);
+
                 startActivity(intent);
 
                 finish();
