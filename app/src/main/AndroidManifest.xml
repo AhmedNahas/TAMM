@@ -59,7 +59,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityToFragment.PaymentActivityFragment"
-            android:screenOrientation="portrait" /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance"
+            /> <!-- <activity android:name=".activities.UsersFree"></activity> -->
         <activity
             android:name=".activities.Proceedbeybey"
             android:launchMode="singleInstance"

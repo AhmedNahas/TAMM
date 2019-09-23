@@ -58,8 +58,10 @@ Button btn_confirm;
 
         btn_confirm=findViewById(R.id.btn_confirm);
 
-        Intent intent = getIntent();
-        mId = intent.getIntExtra("knetmid", 0);
+        mId = SharedPreferencesManger.LoadIntegerData(KnetPaymentDelails.this, "mId");
+
+
+
 
         getpaymentresult();
 

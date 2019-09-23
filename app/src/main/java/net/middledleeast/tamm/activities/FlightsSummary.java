@@ -933,7 +933,7 @@ public class FlightsSummary extends AppCompatActivity {
                                                         Intent intent = new Intent(FlightsSummary.this, PaymentActivity.class);
 
                                                         intent.putExtra("totalFare", String.valueOf(totalFare));
-                                                        intent.putExtra("mId", 3);
+                                                        SharedPreferencesManger.SaveData(FlightsSummary.this,"mId",3);
 
                                                         startActivity(intent);
 
