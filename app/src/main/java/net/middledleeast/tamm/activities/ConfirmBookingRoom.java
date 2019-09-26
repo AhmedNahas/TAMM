@@ -489,7 +489,7 @@ public class ConfirmBookingRoom extends AppCompatActivity {
 
                     if(firstName(firstName1GustOne.getText().toString())==true){
                         Intent intent1 = new Intent(ConfirmBookingRoom.this, PaymentActivity.class);
-                        intent1.putExtra("mId", 2);
+                        SharedPreferencesManger.SaveData(ConfirmBookingRoom.this,"mId",2);
                         startActivity(intent1);
 
 

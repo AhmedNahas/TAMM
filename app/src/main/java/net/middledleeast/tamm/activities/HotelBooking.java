@@ -94,6 +94,58 @@ public class HotelBooking extends AppCompatActivity {
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                SharedPreferencesManger.remove(HotelBooking.this,"noOfTimes");
+//                SharedPreferencesManger.remove(HotelBooking.this,"roomIndexArray");
+//                SharedPreferencesManger.remove(HotelBooking.this,"Until");
+//                SharedPreferencesManger.remove(HotelBooking.this,"finalpriceRoom");
+//                SharedPreferencesManger.remove(HotelBooking.this,"amenties");
+//                SharedPreferencesManger.remove(HotelBooking.this,"roomAvailability");
+//                SharedPreferencesManger.remove(HotelBooking.this,"bookedOn");
+//                SharedPreferencesManger.remove(HotelBooking.this,"specs");
+//                SharedPreferencesManger.remove(HotelBooking.this,"mId");
+//                SharedPreferencesManger.remove(HotelBooking.this,"today_date");
+//                SharedPreferencesManger.remove(HotelBooking.this,"no_adultroom1");
+//                SharedPreferencesManger.remove(HotelBooking.this,"no_adultroom2");
+//                SharedPreferencesManger.remove(HotelBooking.this,"no_adultroom3");
+//                SharedPreferencesManger.remove(HotelBooking.this,"no_adultroom4");
+//                SharedPreferencesManger.remove(HotelBooking.this,"no_childroom1");
+//                SharedPreferencesManger.remove(HotelBooking.this,"no_childroom2");
+//                SharedPreferencesManger.remove(HotelBooking.this,"no_childroom3");
+//                SharedPreferencesManger.remove(HotelBooking.this,"no_childroom4");
+//                SharedPreferencesManger.remove(HotelBooking.this,"nameCountry_");
+//                SharedPreferencesManger.remove(HotelBooking.this,"name_city_");
+//                SharedPreferencesManger.remove(HotelBooking.this,"startDateS");
+//                SharedPreferencesManger.remove(HotelBooking.this,"startDateSyear");
+//                SharedPreferencesManger.remove(HotelBooking.this,"startDateSday");
+//                SharedPreferencesManger.remove(HotelBooking.this,"startDateSmonth");
+//                SharedPreferencesManger.remove(HotelBooking.this,"endDateS");
+//                SharedPreferencesManger.remove(HotelBooking.this,"endDateSyear");
+//                SharedPreferencesManger.remove(HotelBooking.this,"endDateSday");
+//                SharedPreferencesManger.remove(HotelBooking.this,"endDateSmonth");
+//                SharedPreferencesManger.remove(HotelBooking.this,"endDateSnights");
+//                SharedPreferencesManger.remove(HotelBooking.this,"start_date");
+//                SharedPreferencesManger.remove(HotelBooking.this,"no_room");
+//                SharedPreferencesManger.remove(HotelBooking.this,"end_date");
+//                SharedPreferencesManger.remove(HotelBooking.this,"roomGuests");
+//                SharedPreferencesManger.remove(HotelBooking.this,"session_id");
+//                SharedPreferencesManger.remove(HotelBooking.this,"noOfRooms");
+//                SharedPreferencesManger.remove(HotelBooking.this,"noOfTimes");
+//                SharedPreferencesManger.remove(HotelBooking.this,"RoomComb");
+//                SharedPreferencesManger.remove(HotelBooking.this,"arrayOfroomsreq");
+//                SharedPreferencesManger.remove(HotelBooking.this,"hotel_name_s");
+//                SharedPreferencesManger.remove(HotelBooking.this,"country_name_s");
+//                SharedPreferencesManger.remove(HotelBooking.this,"resultindex");
+//                SharedPreferencesManger.remove(HotelBooking.this,"roomIndexArray");
+//                SharedPreferencesManger.remove(HotelBooking.this,"ClientRef");
+//                SharedPreferencesManger.remove(HotelBooking.this,"BookingID");
+//                SharedPreferencesManger.remove(HotelBooking.this,"ConfirmationNo");
+//                SharedPreferencesManger.remove(HotelBooking.this,"mHotel_code");
+//                SharedPreferencesManger.remove(HotelBooking.this,"amount_");
+//                SharedPreferencesManger.remove(HotelBooking.this,"transaction_");
+//                SharedPreferencesManger.remove(HotelBooking.this,"result_");
+//                SharedPreferencesManger.remove(HotelBooking.this,"refno_");
+//                SharedPreferencesManger.remove(HotelBooking.this,"trackid_");
+//                SharedPreferencesManger.remove(HotelBooking.this,"paymentid_");
                 startActivity(new Intent(HotelBooking.this, RenewAccount.class));
                 finish();
 
@@ -103,6 +155,7 @@ public class HotelBooking extends AppCompatActivity {
         service.enableLogging = true;
         authenticandata = new AuthenticationData();
         authenticandata.UserName = (getString(R.string.user_name_tamm));
+
         authenticandata.Password = (getString(R.string.passowrd_tamm));
         int BookingId = SharedPreferencesManger.LoadIntegerData(this, "BookingID");
         String clientReferenceNo = SharedPreferencesManger.LoadStringData(this, "ClientRef");
