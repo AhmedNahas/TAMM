@@ -47,4 +47,5 @@ public class LinksUrl {
     public static final String URL_USER_APP ="http://egyptgoogle.com/freeusers/listusers.php" ;
 
     public static String URL_SENT_TO_EMAIL = "http://egyptgoogle.com/backend/sendmail/send_mail.php";
+    public static String URL_SENT_TO_EMAIL_FLIGHT = "http://egyptgoogle.com/backend/sendmail/flightdetail.php";
 }

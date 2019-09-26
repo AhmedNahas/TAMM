@@ -193,8 +193,7 @@ public class FlightDetails extends AppCompatActivity  {
 
                 String email = data.getPassenger().get(0).getEmail();
 
-
-
+                Double price = data.getPassenger().get(0).getFare().getTotalFare();
 
 
 //                for (int i = 0; i < data.getSegments().size(); i++) {
@@ -237,47 +236,44 @@ public class FlightDetails extends AppCompatActivity  {
 
                         appDatabase.cartDao().addoffer(roomTripModel);
 
-                        String body = "Dear " + NAME_PASSENGER +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +TICKIT_NO;
 
 
-                        if (journyTipe==2){
+//                        if (journyTipe==2){
+//
+//
+//                            Segment segmentReturn = data.getSegments().get(1);
+//
+//                            String airlineCodeReturn = segmentReturn.getAirline();
+//
+//                            String flightNumberReturn = segmentReturn.getFlightNumber();
+//                            String departureTimeReturn = segmentReturn.getDepartureTime();
+//
+//
+//                            String[] tsReturn = departureTimeReturn.split("T");
+//                            String tReturn = tsReturn[0];
+//                            String DateReturn = "DATE   " + tReturn;
+//
+//                            String timeReturn = segmentReturn.getAccumulatedDuration();
+//
+//
+//                            RoomCartModel roomCartModelReturn = new RoomCartModel(airlineCodeReturn,airlineCodeReturn,FROM,TO,flightNumberReturn,DateReturn
+//                                    ,timeReturn,NAME_PASSENGER, FROM, TO,
+//                                    FLIGHT_NO, DATE, airlineCode, airlineCode , GROUND_TIME, TICKIT_NO);
+//
+//
+//                            appDatabase.cartDao().addoffer(roomCartModelReturn);
+//
+//
+////                            sendDataToEMail(email, body+ " : RETURN INFORMATION IS : "+ " "+"/".toString()+FROM.toString()+TO.toString()+flightNumberReturn.toString()+DateReturn.toString()
+////                                    +timeReturn.toString() );
+//
+//                        }else {
 
-
-                            Segment segmentReturn = data.getSegments().get(1);
-
-                            String airlineCodeReturn = segmentReturn.getAirline();
-
-                            String flightNumberReturn = segmentReturn.getFlightNumber();
-                            String departureTimeReturn = segmentReturn.getDepartureTime();
-
-
-                            String[] tsReturn = departureTimeReturn.split("T");
-                            String tReturn = tsReturn[0];
-                            String DateReturn = "DATE   " + tReturn;
-
-                            String timeReturn = segmentReturn.getAccumulatedDuration();
-
-
-                            RoomCartModel roomCartModelReturn = new RoomCartModel(airlineCodeReturn,airlineCodeReturn,FROM,TO,flightNumberReturn,DateReturn
-                                    ,timeReturn,NAME_PASSENGER, FROM, TO,
-                                    FLIGHT_NO, DATE, airlineCode, airlineCode , GROUND_TIME, TICKIT_NO);
-
-
-                            appDatabase.cartDao().addoffer(roomCartModelReturn);
-
-
-                            sendDataToEMail(email, body+ " : RETURN INFORMATION IS : "+ " "+"/".toString()+FROM.toString()+TO.toString()+flightNumberReturn.toString()+DateReturn.toString()
-                                    +timeReturn.toString() );
-
-                        }else {
-
-                            sendDataToEMail(email,body);
+                            sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email);
 
 
 
-                        }
+//                        }
 
 
 
@@ -320,16 +316,18 @@ public class FlightDetails extends AppCompatActivity  {
 
                         appDatabase.cartDao().addoffer(roomTripModel2);
 
-                        String body2 = "Dear " + NAME_PASSENGER +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +TICKIT_NO;
+//                        String body2 = "Dear " + NAME_PASSENGER +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
+//                                "To :" +TO +"                             "+FLIGHT_NO
+//                                +"                    "+DATE +"                   " +TICKIT_NO;
+//
+//
+//                        String body2_2 = "                        Dear " + firstName2 + " / " + lastName2 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
+//                                "To :" +TO +"                             "+FLIGHT_NO
+//                                +"                    "+DATE +"                   " +pnr2;
 
+                        sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email);
+                        sendDataToEMail(firstName2 + " / " + lastName2 ,FROM,TO,FLIGHT_NO,DATE,pnr2, String.valueOf(price),email);
 
-                        String body2_2 = "                        Dear " + firstName2 + " / " + lastName2 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +pnr2;
-
-                        sendDataToEMail(email,body2+body2_2);
 
                         break;
 
@@ -395,29 +393,31 @@ public class FlightDetails extends AppCompatActivity  {
                                 pnr3);
                         appDatabase.cartDao().addoffer(roomTripModel3_3);
 
-                        String body_3 = "Dear " + NAME_PASSENGER +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +TICKIT_NO;
-
-
-                        String body2_3 = "                   Dear " + firstName2 + " / " + lastName2 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +pnr2;
-
-
-
-
-                        String body2_4 = "                    Dear " + firstName3 + " / " + lastName3 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +pnr3;
-
-
-
-                        sendDataToEMail(email,body_3+body2_3+body2_4);
+//                        String body_3 = "Dear " + NAME_PASSENGER +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
+//                                "To :" +TO +"                             "+FLIGHT_NO
+//                                +"                    "+DATE +"                   " +TICKIT_NO;
+//
+//
+//                        String body2_3 = "                   Dear " + firstName2 + " / " + lastName2 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
+//                                "To :" +TO +"                             "+FLIGHT_NO
+//                                +"                    "+DATE +"                   " +pnr2;
+//
+//
+//
+//
+//                        String body2_4 = "                    Dear " + firstName3 + " / " + lastName3 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
+//                                "To :" +TO +"                             "+FLIGHT_NO
+//                                +"                    "+DATE +"                   " +pnr3;
 
 
 
+//                        sendDataToEMail(email,body_3+body2_3+body2_4);
 
+
+
+                        sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email);
+                        sendDataToEMail(firstName2 + " / " + lastName2 ,FROM,TO,FLIGHT_NO,DATE,pnr2, String.valueOf(price),email);
+                        sendDataToEMail(firstName3 + " / " + lastName3 ,FROM,TO,FLIGHT_NO,DATE,pnr3, String.valueOf(price),email);
 
 
                         break;
@@ -507,32 +507,37 @@ public class FlightDetails extends AppCompatActivity  {
 
 
 
-                        String body_4 = "Dear " + NAME_PASSENGER +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +TICKIT_NO;
+//                        String body_4 = "Dear " + NAME_PASSENGER +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
+//                                "To :" +TO +"                             "+FLIGHT_NO
+//                                +"                    "+DATE +"                   " +TICKIT_NO;
+//
+//
+//                        String body2_4_2 = "                       Dear " + firstName2 + " / " + lastName2 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
+//                                "To :" +TO +"                             "+FLIGHT_NO
+//                                +"                    "+DATE +"                   " +pnr2;
+//
+//
+//
+//
+//                        String body2_4_ = "                       Dear " + firstName3 + " / " + lastName3 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
+//                                "To :" +TO +"                             "+FLIGHT_NO
+//                                +"                    "+DATE +"                   " +pnr3;
+//
+//
+//
+//                        String body2_4_4 = "                       Dear " + firstName4 + " / " + lastName4 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
+//                                "To :" +TO +"                             "+FLIGHT_NO
+//                                +"                    "+DATE +"                   " +pnr4;
+//
 
 
-                        String body2_4_2 = "                       Dear " + firstName2 + " / " + lastName2 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +pnr2;
+                        sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email);
+                        sendDataToEMail(firstName2 + " / " + lastName2 ,FROM,TO,FLIGHT_NO,DATE,pnr2, String.valueOf(price),email);
+                        sendDataToEMail(firstName3 + " / " + lastName3 ,FROM,TO,FLIGHT_NO,DATE,pnr3, String.valueOf(price),email);
+                        sendDataToEMail(firstName4 + " / " + lastName4 ,FROM,TO,FLIGHT_NO,DATE,pnr4, String.valueOf(price),email);
 
 
-
-
-                        String body2_4_ = "                       Dear " + firstName3 + " / " + lastName3 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +pnr3;
-
-
-
-                        String body2_4_4 = "                       Dear " + firstName4 + " / " + lastName4 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +pnr4;
-
-
-
-
-                        sendDataToEMail(email,body_4+body2_4_2+body2_4_+body2_4_4);
+//                        sendDataToEMail(email,body_4+body2_4_2+body2_4_+body2_4_4);
 
 
 
@@ -654,36 +659,42 @@ public class FlightDetails extends AppCompatActivity  {
 
 
 
+//
+//
+//                        String body_4_5 = "Dear " + NAME_PASSENGER +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
+//                                "To :" +TO +"                             "+FLIGHT_NO
+//                                +"                    "+DATE +"                   " +TICKIT_NO;
+//
+//
+//                        String body2_4_2_5 = "                         Dear " + firstName2 + " / " + lastName2 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
+//                                "To :" +TO +"                             "+FLIGHT_NO
+//                                +"                    "+DATE +"                   " +pnr2;
+//
+//
+//
+//
+//                        String body2_4_5 = "                           Dear " + firstName3 + " / " + lastName3 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
+//                                "To :" +TO +"                             "+FLIGHT_NO
+//                                +"                    "+DATE +"                   " +pnr3;
+//
+//
+//
+//                        String body2_4_4_5 = "                         Dear " + firstName4 + " / " + lastName4 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
+//                                "To :" +TO +"                             "+FLIGHT_NO
+//                                +"                    "+DATE +"                   " +pnr4;
+//
+//                        String body2_4_4_5_ =  "                        Dear " + firstName5 + " / " + lastName5 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
+//                                "To :" +TO +"                             "+FLIGHT_NO
+//                                +"                    "+DATE +"                   " +pnr5;
 
 
-                        String body_4_5 = "Dear " + NAME_PASSENGER +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +TICKIT_NO;
+//                        sendDataToEMail(email,body_4_5+body2_4_2_5+body2_4_5+body2_4_4_5+body2_4_4_5_);
 
-
-                        String body2_4_2_5 = "                         Dear " + firstName2 + " / " + lastName2 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +pnr2;
-
-
-
-
-                        String body2_4_5 = "                           Dear " + firstName3 + " / " + lastName3 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +pnr3;
-
-
-
-                        String body2_4_4_5 = "                         Dear " + firstName4 + " / " + lastName4 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +pnr4;
-
-                        String body2_4_4_5_ =  "                        Dear " + firstName5 + " / " + lastName5 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-                                "To :" +TO +"                             "+FLIGHT_NO
-                                +"                    "+DATE +"                   " +pnr5;
-
-
-                        sendDataToEMail(email,body_4_5+body2_4_2_5+body2_4_5+body2_4_4_5+body2_4_4_5_);
+                        sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email);
+                        sendDataToEMail(firstName2 + " / " + lastName2 ,FROM,TO,FLIGHT_NO,DATE,pnr2, String.valueOf(price),email);
+                        sendDataToEMail(firstName3 + " / " + lastName3 ,FROM,TO,FLIGHT_NO,DATE,pnr3, String.valueOf(price),email);
+                        sendDataToEMail(firstName4 + " / " + lastName4 ,FROM,TO,FLIGHT_NO,DATE,pnr4, String.valueOf(price),email);
+                        sendDataToEMail(firstName5 + " / " + lastName5 ,FROM,TO,FLIGHT_NO,DATE,pnr5, String.valueOf(price),email);
 
 
                         break;
@@ -715,9 +726,9 @@ public class FlightDetails extends AppCompatActivity  {
 
 
 
-  public void sendDataToEMail(String Email ,String body){
+  public void sendDataToEMail(String name ,String from , String to ,String flightno ,String date ,String ticketno ,String price, String mail_to){
 
-        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SENT_TO_EMAIL, new com.android.volley.Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SENT_TO_EMAIL_FLIGHT, new com.android.volley.Response.Listener<String>() {
 
             @Override
 
@@ -750,11 +761,14 @@ startActivity(new Intent(FlightDetails.this,FlightDetailsActivity.class));
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("mail_to", Email);
-                parameters.put("body",body );
-
-
-
+                parameters.put("name", name);
+                parameters.put("from",from );
+                parameters.put("to", to);
+                parameters.put("flightno",flightno );
+                parameters.put("date", date);
+                parameters.put("ticketno",ticketno );
+                parameters.put("price", price);
+                parameters.put("mail_to",mail_to );
                 return parameters;
             }
         };

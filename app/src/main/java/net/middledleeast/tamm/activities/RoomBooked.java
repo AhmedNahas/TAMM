@@ -1152,7 +1152,7 @@ try {
             confirmationNo = hotelBookingResponse.ConfirmationNo;
             String statusCode = hotelBookingResponse.Status.StatusCode;
 
-            if( statusCode.contains("01")){
+            if( statusCode.equals("01")){
 
                 GenerateInvoiceResponse generateInvoiceResponse = service.GenerateInvoice(bookingId, confirmationNo, paymentInfo, authenticandata);
                 String invoiceNo = generateInvoiceResponse.InvoiceNo;

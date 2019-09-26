@@ -673,6 +673,13 @@ public class FlightsSummary extends AppCompatActivity {
         passportEnd5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportEnd5");
 
 
+
+
+
+
+
+
+
     }
 
 
@@ -833,6 +840,8 @@ public class FlightsSummary extends AppCompatActivity {
                                 ArrayList<Passenger> passengerList = new ArrayList<>();
 
 
+
+
                                 switch ((int) adult) {
 
                                     case 1:
@@ -869,6 +878,7 @@ public class FlightsSummary extends AppCompatActivity {
 
                                         break;
                                 }
+
 
                                 itinerary.setPassenger(passengerList);
                                 itinerary.setIsLcc(false);
