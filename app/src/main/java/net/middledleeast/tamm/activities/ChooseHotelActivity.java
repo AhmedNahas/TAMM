@@ -165,6 +165,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
         });
 
 
+
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {

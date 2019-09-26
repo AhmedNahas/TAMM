@@ -636,7 +636,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
         String localIpAddress = getLocalIpAddress();
 
 
-        flightAuthentication[0].setIPAddress("192.169.10.22");
+        flightAuthentication[0].setIPAddress(localIpAddress);
         FlightAuthentication.Agency ag = null;
 
         flightAuthentication[0].setAgency(ag);

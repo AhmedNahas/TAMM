@@ -9,8 +9,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.model.Room.AppDatabase;
 import net.middledleeast.tamm.model.Room.RoomCartModel;
 
 import java.util.List;
@@ -113,14 +115,34 @@ try {
             holder.FlightNoReturn.setText(fLghtNoReturn);
             holder.DateReturn.setText(dateReturn);
             holder.HoursReturn.setText(timeReturn);
-            String airlineCode = "a" + data.getAirLinePhotoReturn().toLowerCase();
 
-            holder.photoTicketReturn.setImageResource(context.getResources().getIdentifier(airlineCode, "drawable", context.getPackageName()));
+            String airlineCode = null;
+            try {
+                airlineCode = "a" + data.getAirLinePhotoReturn().toLowerCase();
+                holder.photoTicketReturn.setImageResource(context.getResources().getIdentifier(airlineCode, "drawable", context.getPackageName()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
         }else {
 
 
             holder.relativeReturnTicket.setVisibility(View.GONE);
 
+
+        }
+
+
+
+
+        if (position>4){
+
+
+
+            AppDatabase appDatabase = Room.databaseBuilder(context, AppDatabase.class, "myTrips").fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+           appDatabase.cartDao().deletAll();
 
         }
 
