@@ -185,26 +185,21 @@
                 android:id="@+id/relative_until"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
-               android:layout_centerHorizontal="true"
-                >
-                <TextView
-                android:id="@+id/tv_8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Free Cancellation"
-                android:layout_marginTop="10dp"
-                android:textColor="#fff"
-
-                />
+                android:layout_centerHorizontal="true">
 
                 <TextView
-                android:id="@+id/tv_9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Until :"
-                android:textColor="@color/app_color"
-                    android:layout_below="@id/tv_8"
-                />
+
+                    android:padding="@dimen/_5sdp"
+                    android:background="@drawable/shape3"
+                    android:id="@+id/tv_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Cancellation Policy"
+                    android:textColor="@color/app_color"
+                    android:textStyle="italic"
+                    />
+
 
 
 

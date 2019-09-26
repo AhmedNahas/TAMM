@@ -22,7 +22,6 @@ import com.Tamm.Hotels.wcf.ArrayOfSupplement;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.Enums;
-import com.Tamm.Hotels.wcf.GenerateInvoiceResponse;
 import com.Tamm.Hotels.wcf.Guest;
 import com.Tamm.Hotels.wcf.HotelBookResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
@@ -108,8 +107,6 @@ public class RoomBooked extends AppCompatActivity {
     private String fullName;
     private Integer noOfAdultRoom1;
     private String tripName;
-    private String confirmationNo;
-    private Integer bookingId;
     private String bookedOn;
     private String childAgeRoom1;
     Double childAge1;
@@ -323,11 +320,12 @@ try {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 showProgressingView();
                 bookingresponse(paymentInfo);
-                connectdatabase();
 
-                sendDataToEMail();
+
                 senddataknettoemail();
 
 //                sendDataToEMail(email,"Dear Mr." + userNameFromSignIn
@@ -1145,21 +1143,26 @@ try {
             specialRequests.add(specialReques);
 
             String clientReferenceNo = dtStr + "#TAMM";
+            SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
+            String nationality = SharedPreferencesManger.LoadStringData(RoomBooked.this,"nationality");
+
             HotelBookResponse hotelBookingResponse = service.HotelBook(start_time, end_time,
-                    clientReferenceNo, "EG", arrayOfGuest, null, paymentInfo
+                    clientReferenceNo, nationality, arrayOfGuest, null, paymentInfo
                     , sessionId, null, noOfRooms, resultIndex, mHOtelCode, hotel_name, arrayOfRooms, specialRequests,
                     null, true, authenticandata);
 
 
 
-            bookingId = hotelBookingResponse.BookingId;
-            confirmationNo = hotelBookingResponse.ConfirmationNo;
+            int bookingId = hotelBookingResponse.BookingId;
+            String confirmationNo = hotelBookingResponse.ConfirmationNo;
             String statusCode = hotelBookingResponse.Status.StatusCode;
 
             if( statusCode.contains("01")){
+                connectdatabase(confirmationNo,bookingId);
+                sendDataToEMail(confirmationNo);
 
-                GenerateInvoiceResponse generateInvoiceResponse = service.GenerateInvoice(bookingId, confirmationNo, paymentInfo, authenticandata);
-                String invoiceNo = generateInvoiceResponse.InvoiceNo;
+//                GenerateInvoiceResponse generateInvoiceResponse = service.GenerateInvoice(bookingId, confirmationNo, paymentInfo, authenticandata);
+//                String invoiceNo = generateInvoiceResponse.InvoiceNo;
 
 
                 appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "myBooking").fallbackToDestructiveMigration().allowMainThreadQueries().build();
@@ -1181,7 +1184,6 @@ try {
 
 
 
-                SharedPreferencesManger.SaveData(this, "ClientRef", clientReferenceNo);
                 SharedPreferencesManger.SaveData(this, "BookingID", hotelBookingResponse.BookingId);
                 SharedPreferencesManger.SaveData(this, "ConfirmationNo", confirmationNo);
 
@@ -1208,7 +1210,7 @@ try {
             e.printStackTrace();
         }
     }
-    private void connectdatabase() {
+    private void connectdatabase(String confirmationNo, int bookingId) {
 
             StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SEND_BOOKED_HOTEL, new Response.Listener<String>() {
 
@@ -1278,7 +1280,7 @@ try {
         isProgressShowing = false;
     }
 
-    public void sendDataToEMail(){
+    public void sendDataToEMail(String confirmationNo){
 
         StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SENT_TO_EMAIL, new com.android.volley.Response.Listener<String>() {
 
@@ -1307,7 +1309,6 @@ try {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                int statusCode = error.networkResponse.statusCode;
 
             }
 

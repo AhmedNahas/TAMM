@@ -526,20 +526,22 @@ public class RegisterationActivity extends Fragment {
                     parameters.put("lastname", lastName);
                     parameters.put("country", counTry);
                     parameters.put("city", cityUser);
-                    parameters.put("phone",phoneM );
+                    parameters.put("phone",phoneM);
                     parameters.put("isfree",String.valueOf(isfree));
                     parameters.put("occupation",occup);
                     parameters.put("email", email);
                     parameters.put("password", password);
                     parameters.put("birthdate"," " + day+ " - " + month+ " - " + year + " ");
                     parameters.put("subscriptiondate", bookedOn);
+                    parameters.put("nationality", idCountry);
 
 
 
 
 
 
-                  //  parameters.put("tokenid",tokenId );
+
+                    //  parameters.put("tokenid",tokenId );
 
 
                     return parameters;

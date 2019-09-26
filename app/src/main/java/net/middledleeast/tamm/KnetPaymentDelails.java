@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,6 +37,7 @@ Button btn_confirm;
     private String resultcode;
     private int mId;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,11 +50,11 @@ Button btn_confirm;
         tv_track_number=findViewById(R.id.tv_track_number);
         tv_reference_=findViewById(R.id.tv_reference_);
         tv_amount_=findViewById(R.id.tv_amount_);
-        tv_udf_one=findViewById(R.id.tv_udf_one);
-        tv_udf_two=findViewById(R.id.tv_udf_two);
-        tv_udf_three=findViewById(R.id.tv_udf_three);
-        tv_udf_four=findViewById(R.id.tv_udf_four);
-        tv_udf_five=findViewById(R.id.tv_udf_five);
+//        tv_udf_one=findViewById(R.id.tv_udf_one);
+//        tv_udf_two=findViewById(R.id.tv_udf_two);
+//        tv_udf_three=findViewById(R.id.tv_udf_three);
+//        tv_udf_four=findViewById(R.id.tv_udf_four);
+//        tv_udf_five=findViewById(R.id.tv_udf_five);
         tv_post=findViewById(R.id.tv_post);
 
 
@@ -69,6 +71,7 @@ Button btn_confirm;
             @Override
             public void onClick(View v) {
                 if (mId == 1) {
+
 
 
 
@@ -153,6 +156,10 @@ Button btn_confirm;
                     }
 
 
+                }else {
+
+
+                    Toast.makeText(KnetPaymentDelails.this, "fuck", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -196,11 +203,11 @@ Button btn_confirm;
                         tv_track_number.setText(trackid);
                         tv_reference_.setText(refno);
                         tv_amount_.setText(amount);
-                        tv_udf_one.setText(udf1);
-                        tv_udf_two.setText(udf2);
-                        tv_udf_three.setText(udf3);
-                        tv_udf_four.setText(udf4);
-                        tv_udf_five.setText(udf5);
+//                        tv_udf_one.setText(udf1);
+//                        tv_udf_two.setText(udf2);
+//                        tv_udf_three.setText(udf3);
+//                        tv_udf_four.setText(udf4);
+//                        tv_udf_five.setText(udf5);
                         tv_post.setText(postcode);
 
 
@@ -229,4 +236,6 @@ Button btn_confirm;
 
 
     }
+
+
 }

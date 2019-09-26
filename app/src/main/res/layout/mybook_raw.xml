@@ -168,6 +168,19 @@
 
             />
 
+        <TextView
+            android:id="@+id/tv_in_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_cancel_booked"
+            android:textColor="@color/white"
+            android:layout_toEndOf="@+id/roundCorner"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:text="Cancellation in Progress"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:visibility="gone"/>
+
 
 
 

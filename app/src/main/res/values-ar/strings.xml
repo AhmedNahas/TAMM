@@ -3,7 +3,7 @@
     <string name="app_name">TAMM</string>
     <string name="welcome_to">مرحبا بك </string>
 
-    <string name="select_lang"> من فضلك اختار  \nYour <font fgcolor='#FFFFFF'>اللغه :</font></string>
+    <string name="select_lang"> من فضلك  \n <font fgcolor='#FFFFFF'>اختر اللغه :</font></string>
     <string name="english">انجليزي</string>
     <string name="arabic">عربي</string>
     <string name="continue_">متابعة</string>
@@ -20,7 +20,7 @@
     <string name="sign_in_as_a_guest">تسجيل الدخول كضيف</string>
 
     <string name="username">اسم المستخدم</string>
-    <string name="password">الباسورد</string>
+    <string name="password">كلمة الدخول</string>
     <string name="enter">دخول</string>
     <string name="sorgot_password">هل نسيت كلمة المرور؟</string>
 
@@ -34,13 +34,14 @@
 
     <string name="plans_text">دعنا نختار الخطة المناسبة لك الآن!</string>
     <string name="plans_long_text">يمكنك معرفة المزيد عن الخطط من خلال النقر عليها</string>
-    <string name="plan_details_text">التفاصيل تذهب هنا ، التفاصيل تذهب هنا ، التفاصيل تذهب هنا ، التفاصيل تذهب هنا ، التفاصيل تذهب هنا ، التفاصيل تذهب هنا</string>
+    <string name="plan_details_text_free">يمكنك تجربة أفضل العروض وأفضل الأسعار مع الخدمات الممتازة</string>
+    <string name="plan_details_text">كن فردا من عائلة tamm المميزة , بخطط أسعار أفضل و خصومات واحصل علي نقاط اضافية</string>
     <string name="the_plans">الخطط</string>
-    <string name="membership">عضوية</string>
+    <string name="membership">عضوية متميزة</string>
     <string name="accept"> موافق</string>
     <string name="membership_account_plan">خطة حساب العضوية</string>
     <string name="terms_and_conditions">الأحكام والشروط</string>
-    <string name="please_read_ncarefully_what_s_n_below_before_n_proceeding">يرجى قراءة بعناية ما أدناه قبل المضي قدما!</string>
+    <string name="please_read_ncarefully_what_s_n_below_before_n_proceeding">يرجى قراءة  ما أدناه بعناية قبل المضي قدما!</string>
     <string name="free_account_plan">خطة حساب مجانية</string>
     <string name="by_choosing_this_plan_n_you_will_have_free_account_for_tamm_n_from_you_account">باختيار هذه الخطة ، سيكون لديك حساب مجاني لحساب tamm منك</string>
     <string name="get_this_plan">الحصول على هذه الخطة</string>

@@ -51,13 +51,14 @@ public class PlansFragment extends Fragment {
         member=view.findViewById(R.id.plan_title);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
         init();
         plansAdapter = new PlansAdapter(getContext(), planModelList );
         recyclerView.setAdapter(plansAdapter);
 
         toolbar = view.findViewById(R.id.welcome_toolbar);
         imageView = view.findViewById(R.id.back_pressed);
-
 
 
 
@@ -92,8 +93,8 @@ public class PlansFragment extends Fragment {
     }
 
     private void init() {
-        planModelList.add(new PlanModel("Membership", ""));
-        planModelList.add(new PlanModel("Free Account", ""));
+        planModelList.add(new PlanModel(getString(R.string.membership), ""));
+        planModelList.add(new PlanModel(getString(R.string.free_account_plan), ""));
     }
 
 

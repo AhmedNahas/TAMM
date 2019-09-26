@@ -488,10 +488,14 @@ public class ConfirmBookingRoom extends AppCompatActivity {
                 if (isInternetAvailable()){
 
                     if(firstName(firstName1GustOne.getText().toString())==true){
-                        Intent intent1 = new Intent(ConfirmBookingRoom.this, PaymentActivity.class);
-                        SharedPreferencesManger.SaveData(ConfirmBookingRoom.this,"mId",2);
-                        startActivity(intent1);
 
+                        if (firstName1GustOne.getText().toString() == firstName2GustOne.getText().toString() && lastName1GustOne.getText().toString() == lastName2GustOne.getText().toString()){
+                            Toast.makeText(ConfirmBookingRoom.this, "Guest Names cannot be the same ", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Intent intent1 = new Intent(ConfirmBookingRoom.this, PaymentActivity.class);
+                            SharedPreferencesManger.SaveData(ConfirmBookingRoom.this, "mId", 2);
+                            startActivity(intent1);
+                        }
 
                     }else {
 
