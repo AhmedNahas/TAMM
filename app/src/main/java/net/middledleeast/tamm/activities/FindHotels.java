@@ -189,6 +189,7 @@ public class FindHotels extends AppCompatActivity {
     private Integer accountPlan;
 
 
+
 //    private boolean saved ;
 
     @SuppressLint("StaticFieldLeak")
@@ -1339,8 +1340,18 @@ public class FindHotels extends AppCompatActivity {
         };
 
 
-        new DatePickerDialog(FindHotels.this, date, myCalendar.get(YEAR),
-                myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+        DatePickerDialog dialoge = new DatePickerDialog(FindHotels.this,
+                date,
+                myCalendar.get(YEAR),
+                myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH));
+
+
+        dialoge.getDatePicker().setMinDate(System.currentTimeMillis() - 2000);
+
+        dialoge.show();
+//         new DatePickerDialog(FindHotels.this, date, myCalendar.get(YEAR),myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
 
     }
 
@@ -1418,8 +1429,11 @@ public class FindHotels extends AppCompatActivity {
         };
 
 
-        new DatePickerDialog(FindHotels.this, date, myCalendar.get(YEAR),
-                myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+      DatePickerDialog datePickerDialog = new DatePickerDialog(FindHotels.this, date, myCalendar.get(YEAR),
+                myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH));
+
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-2000);
+        datePickerDialog.show();
 
     }
 
@@ -1599,6 +1613,8 @@ public class FindHotels extends AppCompatActivity {
                 hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
                         true, noRomes, nationality, roomguests, null, 0, filters, "true", null,
                         0, authenticationData);
+
+
 
 
 //            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
