@@ -91,7 +91,7 @@
     <ScrollView
         android:id="@+id/scroll_passenger_inform"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_350sdp"
         android:layout_below="@+id/PassengerText">
 
 
@@ -3659,18 +3659,17 @@
 
 
     <Button
+        android:layout_marginTop="@dimen/_10sdp"
         android:id="@+id/passenger_btn_info"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/scroll_passenger_inform"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_60sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
         android:background="@drawable/shape"
         android:text="CONFIRM"
-        android:textStyle="bold"
-        android:layout_marginBottom="@dimen/_15sdp"
-        />
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

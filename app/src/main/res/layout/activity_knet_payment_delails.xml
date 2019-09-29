@@ -306,178 +306,178 @@
         </RelativeLayout>
 
 
-        <RelativeLayout
-            android:id="@+id/relative_udf_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/relative_amount"
-            android:layout_marginStart="@dimen/_10sdp"
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/relative_udf_1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/relative_amount"-->
+            <!--android:layout_marginStart="@dimen/_10sdp"-->
 
 
-            >
+            <!--&gt;-->
 
-            <TextView
-                android:id="@+id/tv_udf_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Udf 1 : "
-                android:textColor="@color/white"
-
-
-                />
-
-            <TextView
-                android:id="@+id/tv_udf_one"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/tv_udf_1"
-                android:text="udf"
-                android:textColor="@color/white"
-
-                />
-
-        </RelativeLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/tv_udf_1"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Udf 1 : "-->
+                <!--android:textColor="@color/white"-->
 
 
+                <!--/>-->
 
+            <!--<TextView-->
+                <!--android:id="@+id/tv_udf_one"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_toEndOf="@+id/tv_udf_1"-->
+                <!--android:text="udf"-->
+                <!--android:textColor="@color/white"-->
 
-        <RelativeLayout
-            android:id="@+id/relative_udf_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/relative_udf_1"
-            android:layout_marginStart="@dimen/_10sdp"
+                <!--/>-->
 
-
-            >
-
-            <TextView
-                android:id="@+id/tv_udf_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Udf 2 : "
-                android:textColor="@color/white"
-
-
-                />
-
-            <TextView
-                android:id="@+id/tv_udf_two"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/tv_udf_2"
-                android:text="udf"
-                android:textColor="@color/white"
-
-                />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/relative_udf_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/relative_udf_2"
-            android:layout_marginStart="@dimen/_10sdp"
-
-
-            >
-
-            <TextView
-                android:id="@+id/tv_udf_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Udf 3 : "
-                android:textColor="@color/white"
-
-
-                />
-
-            <TextView
-                android:id="@+id/tv_udf_three"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/tv_udf_3"
-                android:text="udf"
-                android:textColor="@color/white"
-
-                />
-
-        </RelativeLayout>
+        <!--</RelativeLayout>-->
 
 
 
-        <RelativeLayout
-            android:id="@+id/relative_udf_4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/relative_udf_3"
-            android:layout_marginStart="@dimen/_10sdp"
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/relative_udf_2"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/relative_udf_1"-->
+            <!--android:layout_marginStart="@dimen/_10sdp"-->
 
 
-            >
+            <!--&gt;-->
 
-            <TextView
-                android:id="@+id/tv_udf_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Udf 4 : "
-                android:textColor="@color/white"
-
-
-                />
-
-            <TextView
-                android:id="@+id/tv_udf_four"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/tv_udf_4"
-                android:text="udf"
-                android:textColor="@color/white"
-
-                />
-
-        </RelativeLayout>
+            <!--<TextView-->
+                <!--android:id="@+id/tv_udf_2"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Udf 2 : "-->
+                <!--android:textColor="@color/white"-->
 
 
-        <RelativeLayout
-            android:id="@+id/relative_udf_5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/relative_udf_4"
-            android:layout_marginStart="@dimen/_10sdp"
+                <!--/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_udf_two"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_toEndOf="@+id/tv_udf_2"-->
+                <!--android:text="udf"-->
+                <!--android:textColor="@color/white"-->
+
+                <!--/>-->
+
+        <!--</RelativeLayout>-->
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/relative_udf_3"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/relative_udf_2"-->
+            <!--android:layout_marginStart="@dimen/_10sdp"-->
 
 
-            >
+            <!--&gt;-->
 
-            <TextView
-                android:id="@+id/tv_udf_5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Udf 5 : "
-                android:textColor="@color/white"
+            <!--<TextView-->
+                <!--android:id="@+id/tv_udf_3"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Udf 3 : "-->
+                <!--android:textColor="@color/white"-->
 
 
-                />
+                <!--/>-->
 
-            <TextView
-                android:id="@+id/tv_udf_five"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/tv_udf_5"
-                android:text="udf"
-                android:textColor="@color/white"
+            <!--<TextView-->
+                <!--android:id="@+id/tv_udf_three"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_toEndOf="@+id/tv_udf_3"-->
+                <!--android:text="udf"-->
+                <!--android:textColor="@color/white"-->
 
-                />
+                <!--/>-->
 
-        </RelativeLayout>
+        <!--</RelativeLayout>-->
+
+
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/relative_udf_4"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/relative_udf_3"-->
+            <!--android:layout_marginStart="@dimen/_10sdp"-->
+
+
+            <!--&gt;-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_udf_4"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Udf 4 : "-->
+                <!--android:textColor="@color/white"-->
+
+
+                <!--/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_udf_four"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_toEndOf="@+id/tv_udf_4"-->
+                <!--android:text="udf"-->
+                <!--android:textColor="@color/white"-->
+
+                <!--/>-->
+
+        <!--</RelativeLayout>-->
+
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/relative_udf_5"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/relative_udf_4"-->
+            <!--android:layout_marginStart="@dimen/_10sdp"-->
+
+
+            <!--&gt;-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_udf_5"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Udf 5 : "-->
+                <!--android:textColor="@color/white"-->
+
+
+                <!--/>-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/tv_udf_five"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_toEndOf="@+id/tv_udf_5"-->
+                <!--android:text="udf"-->
+                <!--android:textColor="@color/white"-->
+
+                <!--/>-->
+
+        <!--</RelativeLayout>-->
 
 
         <RelativeLayout
             android:id="@+id/relative_post_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/relative_udf_5"
+            android:layout_below="@+id/relative_amount"
             android:layout_marginStart="@dimen/_10sdp"
 
 

@@ -31,7 +31,6 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.Room.RoomCartModel;
 
 import org.joda.time.DateTime;
@@ -134,7 +133,7 @@ public class BookedAdapter extends RecyclerView.Adapter<BookedAdapter.BookedView
 
 
             @Override
-                          public void onClick(View view) {
+            public void onClick(View view) {
 
 
                     Calendar calendar = Calendar.getInstance();
@@ -157,14 +156,18 @@ public class BookedAdapter extends RecyclerView.Adapter<BookedAdapter.BookedView
                         HotelCancelResponse hotelCancelResponse = service.HotelCancel(0, Enums.CancelRequestType.HotelCancel, "Test",confirmationNo , authenticandata);
 
                         Integer bookingId = hotelCancelResponse.BookingId;
+                        String description1 = hotelCancelResponse.Status.Description;
+
                         connectdatabasecancel();
 
                         if (bookingId!=null){
 
 
                             holder.btn_cancel_booked.setVisibility(View.INVISIBLE);
+                            holder.tv_in_progress.setVisibility(View.VISIBLE);
+                            holder.tv_in_progress.setText(description1);
 
-                            Toast.makeText(context, "Cancellation may take up to 72 hours", Toast.LENGTH_LONG).show();
+
 
                         }
                         int code = hotelCancelResponse.RequestStatus.getCode();
@@ -212,7 +215,7 @@ public class BookedAdapter extends RecyclerView.Adapter<BookedAdapter.BookedView
     public class BookedViewHolder extends RecyclerView.ViewHolder {
 
         ImageView iv_image_booked;
-        TextView  tv_name_hotel_booked,tv_checkin_booked,tv_checkout_booked,tv_cancellation,tv_checkin_txt,tv_checkout_txt,tv_cancellation_policy;
+        TextView  tv_name_hotel_booked,tv_checkin_booked,tv_checkout_booked,tv_cancellation,tv_checkin_txt,tv_checkout_txt,tv_cancellation_policy,tv_in_progress;
         Button btn_edit,btn_cancel_booked;
 
 
@@ -235,6 +238,7 @@ public class BookedAdapter extends RecyclerView.Adapter<BookedAdapter.BookedView
             btn_edit=itemView.findViewById(R.id.btn_edit);
             btn_cancel_booked=itemView.findViewById(R.id.btn_cancel_booked);
 
+            tv_in_progress=itemView.findViewById(R.id.tv_in_progress);
 
 
 

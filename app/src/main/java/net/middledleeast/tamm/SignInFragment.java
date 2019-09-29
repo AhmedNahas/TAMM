@@ -310,6 +310,7 @@ try {
 
 
 
+                        String nationality = user.getString("nationality");
 
                         String country = user.getString("country");
                         String phone = user.getString("phone");
@@ -321,6 +322,7 @@ try {
                         SharedPreferencesManger.SaveData(getContext(),"phone",phone);
                         SharedPreferencesManger.SaveData(getContext(),"email",email);
                         SharedPreferencesManger.SaveData(getContext(),"city",city);
+                        SharedPreferencesManger.SaveData(getContext(),"nationality",nationality);
 
 
 

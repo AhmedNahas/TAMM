@@ -590,11 +590,9 @@ public class PaymentActivity extends AppCompatActivity {
                 showProgressingView();
 
                 Intent intent=new Intent(PaymentActivity.this, KnetPaymentDelails.class);
-                SharedPreferencesManger.SaveData(PaymentActivity.this,"mId",mId);
 
                 startActivity(intent);
 
-                finish();
 
 //                if (mId==1){
 //                    startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
@@ -637,10 +635,11 @@ public class PaymentActivity extends AppCompatActivity {
                     relative_radio_btn.setVisibility(View.GONE);
                     button.setVisibility(View.GONE);
                     webviewKnet.setVisibility(View.VISIBLE);
-                    webviewKnet.setWebViewClient(new MyWebViewClient());
                     String url = "http://www.egyptgoogle.com/k";
                     webviewKnet.getSettings().setJavaScriptEnabled(true);
                     webviewKnet.loadUrl( url); // load a web page in a web vie
+                    webviewKnet.setWebViewClient(new MyWebViewClient());
+
                   //  startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
 
                 }else {
@@ -679,10 +678,11 @@ public class PaymentActivity extends AppCompatActivity {
                     relative_radio_btn.setVisibility(View.GONE);
                     button.setVisibility(View.GONE);
                     webviewKnet.setVisibility(View.VISIBLE);
-                    webviewKnet.setWebViewClient(new MyWebViewClient());
                     String url = "http://www.egyptgoogle.com/k";
                     webviewKnet.getSettings().setJavaScriptEnabled(true);
                     webviewKnet.loadUrl(url); // load a web page in a web vie
+                    webviewKnet.setWebViewClient(new MyWebViewClient());
+
                     //startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
 
                 }else {
@@ -772,10 +772,11 @@ public class PaymentActivity extends AppCompatActivity {
                      relative_radio_btn.setVisibility(View.GONE);
                      button.setVisibility(View.GONE);
                      webviewKnet.setVisibility(View.VISIBLE);
-                     webviewKnet.setWebViewClient(new MyWebViewClient());
                      String url = "http://www.egyptgoogle.com/k";
                      webviewKnet.getSettings().setJavaScriptEnabled(true);
                      webviewKnet.loadUrl(url); // load a web page in a web vie
+                     webviewKnet.setWebViewClient(new MyWebViewClient());
+
 
 
                  }else {

@@ -481,11 +481,6 @@ public class Passenger_inform extends AppCompatActivity {
         int journyTipe = SharedPreferencesManger.LoadIntegerData(this, "journyTipe");
 
 
-
-
-
-
-
         iv_booked_passenger_inform = findViewById(R.id.iv_booked_passenger_inform);
         iv_booked_passenger_inform.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -511,15 +506,17 @@ public class Passenger_inform extends AppCompatActivity {
         datebirthchild = findViewById(R.id.date_of_birth_child1);
         datebirthinfant = findViewById(R.id.date_of_birth_adult_infant1);
 //
+
         confirm = findViewById(R.id.passenger_btn_info);
         mrmisAdult = findViewById(R.id.mromiss1);
         mrmisChild = findViewById(R.id.mromiss_child1);
         mrmisinfent = findViewById(R.id.mromiss_infant1);
 
 
-        long adult = SharedPreferencesManger.LoadLongData(this, "adult");
+    long adult = SharedPreferencesManger.LoadLongData(this, "adult");
         long child = SharedPreferencesManger.LoadLongData(this, "child");
         long infant = SharedPreferencesManger.LoadLongData(this, "infant");
+
 
 
         dateOfBirthAdult2.setOnClickListener(new View.OnClickListener() {
