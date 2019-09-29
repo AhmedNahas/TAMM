@@ -93,14 +93,17 @@
             android:layout_width="139dp"
             android:layout_height="106dp"
             android:src="@drawable/jet"
+
             />
 
         <ImageView
             android:id="@+id/imageView10"
             android:layout_width="136dp"
             android:layout_height="106dp"
-           android:layout_toRightOf="@+id/imageView9"
-            app:srcCompat="@drawable/bed" />
+            android:layout_toEndOf="@+id/imageView9"
+            app:srcCompat="@drawable/bed"
+            />
+
     </RelativeLayout>
 
 

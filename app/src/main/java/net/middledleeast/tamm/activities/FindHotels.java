@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -1309,7 +1310,6 @@ public class FindHotels extends AppCompatActivity {
                 time1 = myCalendar.getTime();
                 mstartTime = start.format(myCalendar.getTime());
                 //  startDate.setText(mstartTime);
-
                 long time = time1.getTime();
                 long timedev = formatTimeForEvent(time);
 
@@ -1330,17 +1330,22 @@ public class FindHotels extends AppCompatActivity {
                 startDateMonth.setText(monthString);
                 startDateYear.setText(dayOfTheWeek);
 
-
                 endDateDay.setText(day2);
                 endDateMonth.setText(monthString);
                 endDateYear.setText(dayOfTheWeek);
-
             }
         };
 
+        Locale locale = new Locale("EN");
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getApplicationContext().getResources().updateConfiguration(config, null);
 
         new DatePickerDialog(FindHotels.this, date, myCalendar.get(YEAR),
                 myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+
 
     }
 
@@ -1416,7 +1421,7 @@ public class FindHotels extends AppCompatActivity {
 
             }
         };
-
+        
 
         new DatePickerDialog(FindHotels.this, date, myCalendar.get(YEAR),
                 myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
@@ -1724,6 +1729,9 @@ public class FindHotels extends AppCompatActivity {
 
     }
 
+
+
+
     ViewGroup progressView;
     protected boolean isProgressShowing = false;
 
@@ -1749,6 +1757,9 @@ public class FindHotels extends AppCompatActivity {
         return (pacificTime + TimeZone.getTimeZone("America/Los_Angeles").getOffset(pacificTime))
                 - TimeZone.getDefault().getOffset(pacificTime);
     }
+
+
+
 
 }
 

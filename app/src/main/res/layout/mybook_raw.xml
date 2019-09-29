@@ -55,7 +55,7 @@
             android:text="Check In :"
             android:textColor="@color/app_color"
             android:layout_below="@+id/tv_name_hotel_booked"
-            android:layout_toRightOf="@+id/roundCorner"
+            android:layout_toEndOf="@+id/roundCorner"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_5sdp"
             />
@@ -70,7 +70,7 @@
             android:textColor="@color/white"
             android:layout_below="@+id/tv_name_hotel_booked"
             android:layout_marginStart="@dimen/_5sdp"
-            android:layout_toRightOf="@+id/tv_checkin_txt"
+            android:layout_toEndOf="@+id/tv_checkin_txt"
             android:layout_marginTop="@dimen/_10sdp"
             />
 
@@ -84,7 +84,7 @@
             android:text="Check Out :"
             android:textColor="@color/app_color"
             android:layout_below="@+id/tv_name_hotel_booked"
-            android:layout_toRightOf="@+id/tv_checkin_booked"
+            android:layout_toEndOf="@+id/tv_checkin_booked"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_5sdp"
             />
@@ -100,7 +100,7 @@
             android:textColor="@color/white"
             android:layout_below="@+id/tv_name_hotel_booked"
             android:layout_marginStart="@dimen/_5sdp"
-            android:layout_toRightOf="@+id/tv_checkout_txt"
+            android:layout_toEndOf="@+id/tv_checkout_txt"
             android:layout_marginTop="@dimen/_10sdp"
 
             />
@@ -114,7 +114,7 @@
             android:text="Cancellation Policy :"
             android:textColor="@color/app_color"
             android:layout_below="@+id/tv_checkout_booked"
-            android:layout_toRightOf="@+id/roundCorner"
+            android:layout_toEndOf="@+id/roundCorner"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_5sdp"
             />
@@ -131,7 +131,7 @@
             android:gravity="center"
             android:layout_below="@+id/tv_checkin_booked"
             android:layout_marginTop="@dimen/_10sdp"
-            android:layout_toRightOf="@+id/tv_cancellation_policy"
+            android:layout_toEndOf="@+id/tv_cancellation_policy"
             android:layout_marginStart="@dimen/_5sdp"
 
             />
@@ -144,7 +144,7 @@
             android:text="Edit"
             android:background="@drawable/shape"
             android:layout_below="@+id/tv_cancellation"
-            android:layout_toRightOf="@+id/roundCorner"
+            android:layout_toEndOf="@+id/roundCorner"
             android:layout_marginStart="@dimen/_30sdp"
             android:layout_marginTop="@dimen/_15sdp"
 
@@ -161,16 +161,12 @@
             android:text="Cancel"
             android:background="@drawable/shape"
             android:layout_below="@+id/tv_cancellation"
-            android:layout_toRightOf="@+id/btn_edit"
+            android:layout_toEndOf="@+id/btn_edit"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_15sdp"
 
 
             />
-
-
-
-
 
 
 

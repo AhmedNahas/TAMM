@@ -66,7 +66,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SETTINGS"
+            android:text="@string/settings"
             android:textColor="@color/app_color"
             android:textSize="@dimen/_20ssp"
             android:fontFamily="sans-serif-light"
@@ -93,7 +93,7 @@
         android:id="@+id/tv_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Languages"
+        android:text="@string/languages"
         android:textColor="@color/app_color"
         android:textSize="@dimen/_15sdp"
         android:layout_marginStart="@dimen/_50sdp"
@@ -116,7 +116,7 @@
             android:id="@+id/btn_english"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
-            android:text="ENGLISH"
+            android:text="@string/english"
             android:textSize="@dimen/_15sdp"
             android:textColor="@color/app_color"
             android:fontFamily="sans-serif-light"
@@ -128,7 +128,7 @@
         <!--<View-->
             <!--android:layout_width="1dp"-->
             <!--android:layout_height="@dimen/_30sdp"-->
-            <!--android:layout_toRightOf="@+id/tv_english"-->
+            <!--android:layout_toEndOf="@+id/btn_english"-->
             <!--android:background="@color/app_color"-->
             <!--android:layout_marginStart="@dimen/_9sdp"-->
 
@@ -139,12 +139,12 @@
             android:id="@+id/btn_arabic"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
-            android:text="ARABIC"
+            android:text="@string/arabic"
             android:textSize="@dimen/_15sdp"
             android:textColor="@color/app_color"
             android:fontFamily="sans-serif-light"
             android:background="@drawable/shapecontact"
-            android:layout_toRightOf="@+id/btn_english"
+            android:layout_toEndOf="@+id/btn_english"
 
             />
 

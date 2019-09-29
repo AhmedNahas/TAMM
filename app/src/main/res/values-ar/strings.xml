@@ -86,7 +86,7 @@
     <string name="checkout">حجز</string>
 
 
-    <string name="guest_s_information">ضيف (ق) المعلومات</string>
+    <string name="guest_s_information">ضيف(ق)المعلومات</string>
     <string name="adult">الافراد</string>
     <string name="request">الطلب :</string>
     <string name="write_your_room_specification">اكتب مواصفات غرفتك</string>
@@ -114,6 +114,35 @@
 
 
     <string name="mr" translatable="true">ألسيد</string>
+    <string name="choose_no_of_rooms">أختار عدد الغرف</string>
+    <string name="room_1">غرفة 1</string>
+    <string name="_1_child">طفل 1</string>
+    <string name="_2_adults">فرد 1</string>
+    <string name="_1_room">غرفة 1</string>
+    <string name="languages">اللغة</string>
+    <string name="settings">الاعدادات</string>
+    <string name="free_cancellation">الغاء بدون رسوم</string>
+    <string name="until">حتي : </string>
+    <string name="i_agree_to_the">انا أوافق علي </string>
+    <string name="terms_amp_conditions">الشروط والاحكام</string>
+    <string name="mr_mrs">السيدة/السيد</string>
+    <string name="your_room_has_n_been_booked_n_n_check_your_email_n_for_further_details_n_good_luck">تم حجز\n غرفتك! تحقق من بريدك الإلكتروني لمزيد من التفاصيل \nحظا سعيدا!</string>
+    <string name="tap_me_if_you_need_my_assistance2">اضغط هنا إذا كنت بحاجة إلى مساعدتي</string>
+    <string name="_20">29</string>
+    <string name="next">التالي</string>
+    <string name="map">الخريطة</string>
+    <string name="payment_id">رقم الحجز : </string>
+    <string name="id"> رقم </string>
+    <string name="result_code">نتيجة الدفع : </string>
+    <string name="transaction_id">رقم عملية التحويل : </string>
+    <string name="auth">رمز التحقق : </string>
+    <string name="track_id">كود المتابعة : </string>
+    <string name="reference_number">رقم المرجعي : </string>
+    <string name="amount">السعر : </string>
+    <string name="post_code">رمز الأرسال : </string>
+
+    <string name="visa_">فيزا</string>
+    <string name="master">ماستر كارد</string>
 
 
 </resources>

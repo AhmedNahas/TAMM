@@ -28,7 +28,7 @@
                 android:id="@+id/back_pressed_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BACK"
+                android:text="@string/back"
                 android:textColor="@color/white"
                 android:layout_marginStart="@dimen/_25sdp"/>
 
@@ -113,7 +113,7 @@
                 android:id="@+id/endDate2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_below="@+id/tv_checkout"
                 android:hint="22  July  Friday"
                 android:textColor="#fff"
@@ -136,7 +136,7 @@
                 android:id="@+id/no_room"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="1 Room"
+                android:hint="@string/_1_room"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:textSize="15sp"
@@ -148,7 +148,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:hint="2 Adults"
+            android:hint="@string/_2_adults"
             android:textColor="#fff"
             android:textColorHint="#fff"
             android:textSize="15sp" />
@@ -161,8 +161,8 @@
                 android:id="@+id/no_child2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:hint="1 Child"
+                android:layout_alignParentEnd="true"
+                android:hint="@string/_1_child"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:textSize="15sp" />
@@ -189,24 +189,24 @@
             android:layout_height="wrap_content"
             android:text="1 Year"
             android:textColor="@color/app_color"
-            android:layout_toRightOf="@+id/tv_age"/>
+            android:layout_toEndOf="@+id/tv_age"/>
 
         <TextView
             android:id="@+id/tv_child"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tv_year"
+            android:layout_toEndOf="@+id/tv_year"
             android:text="Children 2 Age :  "
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:textColor="#fff" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2 Years"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:textColor="@color/app_color"
-            android:layout_toRightOf="@+id/tv_child"/>
+            android:layout_toEndOf="@+id/tv_child"/>
         <TextView
             android:id="@+id/tv_child3"
             android:layout_width="wrap_content"
@@ -274,11 +274,13 @@
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_20sdp"
         android:layout_marginEnd="10dp"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:background="@drawable/shape"
         android:text="@string/change_search"
         android:textSize="@dimen/_7sdp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="@dimen/_4sdp"

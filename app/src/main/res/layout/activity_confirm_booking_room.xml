@@ -47,7 +47,7 @@
             android:id="@+id/iv_booked_conf_booking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="15dp"
             android:background="@drawable/ic_button"/>
     </RelativeLayout>
@@ -79,7 +79,7 @@
         android:text="@string/adult"
         android:textColor="#ffff"
         android:layout_below="@+id/tv_guest"
-        android:drawableLeft="@drawable/ic_person_black_24dp"/>
+        android:drawableStart="@drawable/ic_person_black_24dp"/>
 
     <ImageView
         android:id="@+id/img_linee2"
@@ -140,7 +140,7 @@
                         android:hint="@string/first_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss1" />
+                        android:layout_toEndOf="@+id/mromiss1" />
 
                     <EditText
                         android:inputType="textPersonName"
@@ -150,8 +150,8 @@
                         android:id="@+id/lastName_1_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        android:layout_toRightOf="@+id/first_name_1_gust_one"
+                        android:layout_marginStart="40dp"
+                        android:layout_toEndOf="@+id/first_name_1_gust_one"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color" />
@@ -182,7 +182,7 @@
                         android:hint="FIRST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss2"
+                        android:layout_toEndOf="@+id/mromiss2"
 
                         />
                     <EditText
@@ -193,8 +193,8 @@
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_2_gust_one"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_2_gust_one"
+                        android:layout_marginStart="40dp"
                         />
 
                 </RelativeLayout>
@@ -223,7 +223,7 @@
                         android:hint="FIRST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss3"
+                        android:layout_toEndOf="@+id/mromiss3"
 
                         />
                     <EditText
@@ -234,8 +234,8 @@
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_3_gust_one"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_3_gust_one"
+                        android:layout_marginStart="40dp"
                         />
 
 
@@ -280,8 +280,8 @@
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_4_gust_one"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_4_gust_one"
+                        android:layout_marginStart="40dp"
                         />
                 </RelativeLayout>
 
@@ -325,20 +325,20 @@
                         android:hint="@string/first_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss5"
+                        android:layout_toEndOf="@+id/mromiss5"
 
                         />
                     <EditText
                         android:layout_marginTop="@dimen/_13sdp"
                         android:textSize="@dimen/_9ssp"
-android:id="@+id/last_name_1_child_gust_one"
+                        android:id="@+id/last_name_1_child_gust_one"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_1_child_gust_one"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_1_child_gust_one"
+                        android:layout_marginStart="40dp"
                         />
 
 
@@ -371,7 +371,7 @@ android:id="@+id/last_name_1_child_gust_one"
                         android:hint="@string/first_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss6"
+                        android:layout_toEndOf="@+id/mromiss6"
 
                         />
                     <EditText
@@ -383,8 +383,8 @@ android:id="@+id/last_name_1_child_gust_one"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_2_child_gust_one"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_2_child_gust_one"
+                        android:layout_marginStart="40dp"
                         />
 
 
@@ -399,7 +399,7 @@ android:id="@+id/last_name_1_child_gust_one"
 
             <RelativeLayout
                 android:visibility="gone"
-android:layout_below="@+id/relative_names_1"
+                android:layout_below="@+id/relative_names_1"
                 android:id="@+id/relative_namesR_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -438,7 +438,7 @@ android:layout_below="@+id/relative_names_1"
                         android:hint="@string/first_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss1R_2" />
+                        android:layout_toEndOf="@+id/mromiss1R_2" />
 
                     <EditText
 
@@ -447,8 +447,8 @@ android:layout_below="@+id/relative_names_1"
                         android:id="@+id/last_name_1_gust_2"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        android:layout_toRightOf="@+id/first_name_1_gust_2"
+                        android:layout_marginStart="40dp"
+                        android:layout_toEndOf="@+id/first_name_1_gust_2"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color" />
@@ -479,19 +479,19 @@ android:layout_below="@+id/relative_names_1"
                         android:hint="FIRST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss2R_2"
+                        android:layout_toEndOf="@+id/mromiss2R_2"
 
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
-android:id="@+id/last_name_2_gust_2"
+                        android:id="@+id/last_name_2_gust_2"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_2_gust_2"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_2_gust_2"
+                        android:layout_marginStart="40dp"
                         />
 
                 </RelativeLayout>
@@ -519,7 +519,7 @@ android:id="@+id/last_name_2_gust_2"
                         android:hint="FIRST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss3R_2"
+                        android:layout_toEndOf="@+id/mromiss3R_2"
 
                         />
                     <EditText
@@ -531,8 +531,8 @@ android:id="@+id/last_name_2_gust_2"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_3_gust_2"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_3_gust_2"
+                        android:layout_marginStart="40dp"
                         />
 
 
@@ -566,19 +566,19 @@ android:id="@+id/last_name_2_gust_2"
                         android:hint="FIRST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss4R_2"
+                        android:layout_toEndOf="@+id/mromiss4R_2"
 
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
-android:id="@+id/last_name_4_gust_2"
+                        android:id="@+id/last_name_4_gust_2"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_4_gust_2"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_4_gust_2"
+                        android:layout_marginStart="40dp"
                         />
                 </RelativeLayout>
 
@@ -622,7 +622,7 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="@string/first_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss5R_2"
+                        android:layout_toEndOf="@+id/mromiss5R_2"
 
                         />
                     <EditText
@@ -635,8 +635,8 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_1_child_gust_2"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_1_child_gust_2"
+                        android:layout_marginStart="40dp"
                         />
 
 
@@ -669,20 +669,19 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="@string/first_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss6R_2"
+                        android:layout_toEndOf="@+id/mromiss6R_2"
 
                         />
                     <EditText
                         android:textSize="@dimen/_9ssp"
                         android:id="@+id/last_name_2_child_gust_2"
-
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_2_child_gust_2"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_2_child_gust_2"
+                        android:layout_marginStart="40dp"
                         />
 
 
@@ -736,7 +735,7 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="@string/first_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss1R_3" />
+                        android:layout_toEndOf="@+id/mromiss1R_3" />
 
                     <EditText
 
@@ -747,8 +746,8 @@ android:id="@+id/last_name_4_gust_2"
                         android:id="@+id/last_name_1_gust_3"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        android:layout_toRightOf="@+id/first_name_1_gust_3"
+                        android:layout_marginStart="40dp"
+                        android:layout_toEndOf="@+id/first_name_1_gust_3"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color" />
@@ -779,7 +778,7 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="FIRST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss2R_3"
+                        android:layout_toEndOf="@+id/mromiss2R_3"
 
                         />
                     <EditText
@@ -790,8 +789,8 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_2_gust_3"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_2_gust_3"
+                        android:layout_marginStart="40dp"
                         />
 
                 </RelativeLayout>
@@ -819,7 +818,7 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="FIRST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss3R_3"
+                        android:layout_toEndOf="@+id/mromiss3R_3"
 
                         />
                     <EditText
@@ -831,8 +830,8 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_3_gust_3"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_3_gust_3"
+                        android:layout_marginStart="40dp"
                         />
 
 
@@ -866,7 +865,7 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="FIRST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss4R_3"
+                        android:layout_toEndOf="@+id/mromiss4R_3"
 
                         />
                     <EditText
@@ -878,8 +877,8 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_4_gust_3"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_4_gust_3"
+                        android:layout_marginStart="40dp"
                         />
                 </RelativeLayout>
 
@@ -922,7 +921,7 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="@string/first_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss5R_3"
+                        android:layout_toEndOf="@+id/mromiss5R_3"
 
                         />
                     <EditText
@@ -935,8 +934,8 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_1_child_gust_3"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_1_child_gust_3"
+                        android:layout_marginStart="40dp"
                         />
 
 
@@ -968,7 +967,7 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="@string/first_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss6R_3"
+                        android:layout_toEndOf="@+id/mromiss6R_3"
 
                         />
                     <EditText
@@ -980,8 +979,8 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_2_child_gust_3"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_2_child_gust_3"
+                        android:layout_marginStart="40dp"
                         />
 
 
@@ -1036,7 +1035,7 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="@string/first_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss1R_4" />
+                        android:layout_toEndOf="@+id/mromiss1R_4" />
 
                     <EditText
 
@@ -1047,8 +1046,8 @@ android:id="@+id/last_name_4_gust_2"
                         android:id="@+id/last_name_1_gust_4"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        android:layout_toRightOf="@+id/first_name_1_gust_4"
+                        android:layout_marginStart="40dp"
+                        android:layout_toEndOf="@+id/first_name_1_gust_4"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color" />
@@ -1079,7 +1078,7 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="FIRST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss2R_4"
+                        android:layout_toEndOf="@+id/mromiss2R_4"
 
                         />
                     <EditText
@@ -1091,8 +1090,8 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_2_gust_4"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_2_gust_4"
+                        android:layout_marginStart="40dp"
                         />
 
                 </RelativeLayout>
@@ -1121,7 +1120,7 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="FIRST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss3R_4"
+                        android:layout_toEndOf="@+id/mromiss3R_4"
 
                         />
                     <EditText
@@ -1133,8 +1132,8 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_3_gust_4"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_3_gust_4"
+                        android:layout_marginStart="40dp"
                         />
 
 
@@ -1168,7 +1167,7 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="FIRST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss4R_4"
+                        android:layout_toEndOf="@+id/mromiss4R_4"
 
                         />
                     <EditText
@@ -1180,8 +1179,8 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="LAST NAME"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_4_gust_4"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_4_gust_4"
+                        android:layout_marginStart="40dp"
                         />
                 </RelativeLayout>
 
@@ -1225,7 +1224,7 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="@string/first_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss5R_4"
+                        android:layout_toEndOf="@+id/mromiss5R_4"
 
                         />
                     <EditText
@@ -1238,8 +1237,8 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_1_child_gust_4"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_1_child_gust_4"
+                        android:layout_marginStart="40dp"
                         />
 
 
@@ -1272,7 +1271,7 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="@string/first_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/mromiss6R_4"
+                        android:layout_toEndOf="@+id/mromiss6R_4"
 
                         />
                     <EditText
@@ -1284,8 +1283,8 @@ android:id="@+id/last_name_4_gust_2"
                         android:hint="@string/last_name"
                         android:textColor="@color/white"
                         android:textColorHint="@color/app_color"
-                        android:layout_toRightOf="@+id/first_name_2_child_gust_4"
-                        android:layout_marginLeft="40dp"
+                        android:layout_toEndOf="@+id/first_name_2_child_gust_4"
+                        android:layout_marginStart="40dp"
                         />
 
 

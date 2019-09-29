@@ -30,9 +30,9 @@
                 android:id="@+id/back_pressed_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginTop="15dp"
-                android:text="BACK"
+                android:text="@string/back"
                 android:textColor="@color/white" />
         </LinearLayout>
 
@@ -46,7 +46,7 @@
             android:id="@+id/iv_booked_reserve"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="15dp"
             android:background="@drawable/ic_button" />
 

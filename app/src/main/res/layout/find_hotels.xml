@@ -114,7 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_country"
         android:layout_marginTop="8dp"
-        android:layout_toRightOf="@+id/icon"
+        android:layout_toEndOf="@+id/icon"
         android:background="@android:color/transparent"
         android:gravity="end">
 
@@ -151,7 +151,7 @@
         android:layout_below="@+id/tv_city"
         android:layout_marginStart="50dp"
         android:layout_marginTop="@dimen/_15sdp"
-        android:layout_toRightOf="@+id/spinner_layout"
+        android:layout_toEndOf="@+id/spinner_layout"
         android:drawableStart="@drawable/ic_map" />
 
     <RelativeLayout
@@ -232,7 +232,7 @@
                 android:layout_marginTop="4dp"
                 android:fontFamily="sans-serif-thin"
                 android:lines="1"
-                android:text="20"
+                android:text="@string/_20"
                 android:textColor="#fff"
                 android:textSize="30sp" />
         </LinearLayout>
@@ -347,7 +347,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:fontFamily="sans-serif-thin"
-                android:text="20"
+                android:text="@string/_20"
                 android:textColor="#fff"
                 android:textColorHint="#fff"
                 android:textSize="30sp" />
@@ -406,7 +406,7 @@
             android:layout_marginStart="@dimen/_4sdp"
             android:layout_marginEnd="-84dp"
             android:layout_marginBottom="-10dp"
-            android:text="Choose no. of rooms"
+            android:text="@string/choose_no_of_rooms"
             android:textColor="@color/app_color" />
 
         <Spinner
@@ -414,8 +414,8 @@
             android:layout_width="500dp"
             android:layout_height="38dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="124dp"
-            android:layout_toRightOf="@+id/texter"
+            android:layout_marginStart="124dp"
+            android:layout_toEndOf="@+id/texter"
             android:backgroundTint="@color/app_color" />
 
         <View
@@ -442,7 +442,7 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/icon3"
+            android:layout_toEndOf="@+id/icon3"
             android:background="@android:color/transparent"
             android:gravity="end">
 
@@ -454,7 +454,7 @@
                 android:layout_gravity="center"
                 android:backgroundTint="@color/app_color"
                 android:gravity="center_horizontal"
-                android:text="Room 1"
+                android:text="@string/room_1"
                 android:textColor="@color/app_color" />
 
             <View
@@ -484,7 +484,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/icon4"
+            android:layout_toEndOf="@+id/icon4"
             android:background="@android:color/transparent"
             android:gravity="end">
 
@@ -512,9 +512,9 @@
             android:id="@+id/icon4"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginLeft="14dp"
+            android:layout_marginEnd="14dp"
             android:layout_marginTop="@dimen/_20sdp"
-            android:layout_toRightOf="@+id/spinner_room_layout"
+            android:layout_toEndOf="@+id/spinner_room_layout"
             android:drawableStart="@drawable/ic_man_adult_room" />
 
 
@@ -525,7 +525,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="30dp"
-            android:layout_toRightOf="@+id/icon5"
+            android:layout_toEndOf="@+id/icon5"
             android:background="@android:color/transparent"
             android:gravity="end">
 
@@ -552,9 +552,9 @@
             android:id="@+id/icon5"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="@dimen/_20sdp"
-            android:layout_toRightOf="@+id/spinner_adult_layout"
+            android:layout_toEndOf="@+id/spinner_adult_layout"
             android:drawableStart="@drawable/ic_smallman" />
 
     </RelativeLayout>

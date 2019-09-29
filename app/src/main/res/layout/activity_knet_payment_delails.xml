@@ -88,7 +88,7 @@
                 android:id="@+id/tv_paymentd_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Payment ID : "
+                android:text="@string/payment_id"
                 android:textColor="@color/white"
 
 
@@ -98,8 +98,8 @@
                 android:id="@+id/tv_pay_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_paymentd_id"
-                android:text="ID "
+                android:layout_toEndOf="@+id/tv_paymentd_id"
+                android:text="id"
                 android:textColor="@color/white"
 
                 />
@@ -122,7 +122,7 @@
                 android:id="@+id/tv_result_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Result Code : "
+                android:text="@string/result_code"
                 android:textColor="@color/white"
 
 
@@ -132,7 +132,7 @@
                 android:id="@+id/tv_result_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_result_code"
+                android:layout_toEndOf="@+id/tv_result_code"
                 android:text="Code "
                 android:textColor="@color/white"
 
@@ -155,7 +155,7 @@
                 android:id="@+id/tv_transaction_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Transaction ID : "
+                android:text="@string/transaction_id"
                 android:textColor="@color/white"
 
 
@@ -165,7 +165,7 @@
                 android:id="@+id/tv_transaction_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_transaction_id"
+                android:layout_toEndOf="@+id/tv_transaction_id"
                 android:text="Transaction "
                 android:textColor="@color/white"
 
@@ -188,7 +188,7 @@
                 android:id="@+id/tv_auth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Auth: "
+                android:text="@string/auth"
                 android:textColor="@color/white"
 
 
@@ -198,7 +198,7 @@
                 android:id="@+id/tv_auth_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_auth"
+                android:layout_toEndOf="@+id/tv_auth"
                 android:text="Number Of Auth "
                 android:textColor="@color/white"
 
@@ -220,7 +220,7 @@
                 android:id="@+id/tv_track_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Track ID: "
+                android:text="@string/track_id"
                 android:textColor="@color/white"
 
 
@@ -230,7 +230,7 @@
                 android:id="@+id/tv_track_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_track_id"
+                android:layout_toEndOf="@+id/tv_track_id"
                 android:text="Track Number"
                 android:textColor="@color/white"
 
@@ -253,7 +253,7 @@
                 android:id="@+id/tv_reference_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reference Number : "
+                android:text="@string/reference_number"
                 android:textColor="@color/white"
 
 
@@ -263,7 +263,7 @@
                 android:id="@+id/tv_reference_"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_reference_number"
+                android:layout_toEndOf="@+id/tv_reference_number"
                 android:text="reference"
                 android:textColor="@color/white"
 
@@ -287,7 +287,7 @@
                 android:id="@+id/tv_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Amount : "
+                android:text="@string/amount"
                 android:textColor="@color/white"
 
 
@@ -297,7 +297,7 @@
                 android:id="@+id/tv_amount_"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_amount"
+                android:layout_toEndOf="@+id/tv_amount"
                 android:text="amount count"
                 android:textColor="@color/white"
 
@@ -330,7 +330,7 @@
                 android:id="@+id/tv_udf_one"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_udf_1"
+                android:layout_toEndOf="@+id/tv_udf_1"
                 android:text="udf"
                 android:textColor="@color/white"
 
@@ -365,7 +365,7 @@
                 android:id="@+id/tv_udf_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_udf_2"
+                android:layout_toEndOf="@+id/tv_udf_2"
                 android:text="udf"
                 android:textColor="@color/white"
 
@@ -397,7 +397,7 @@
                 android:id="@+id/tv_udf_three"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_udf_3"
+                android:layout_toEndOf="@+id/tv_udf_3"
                 android:text="udf"
                 android:textColor="@color/white"
 
@@ -431,7 +431,7 @@
                 android:id="@+id/tv_udf_four"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_udf_4"
+                android:layout_toEndOf="@+id/tv_udf_4"
                 android:text="udf"
                 android:textColor="@color/white"
 
@@ -464,7 +464,7 @@
                 android:id="@+id/tv_udf_five"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_udf_5"
+                android:layout_toEndOf="@+id/tv_udf_5"
                 android:text="udf"
                 android:textColor="@color/white"
 
@@ -487,7 +487,7 @@
                 android:id="@+id/tv_post_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Post Code : "
+                android:text="@string/post_code"
                 android:textColor="@color/white"
 
 
@@ -497,7 +497,7 @@
                 android:id="@+id/tv_post"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tv_post_code"
+                android:layout_toEndOf="@+id/tv_post_code"
                 android:text="code post"
                 android:textColor="@color/white"
 

@@ -1299,7 +1299,6 @@ try {
                 }catch (Exception  e){}
 
 
-
             }
 
         }, new com.android.volley.Response.ErrorListener() {
