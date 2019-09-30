@@ -340,10 +340,10 @@
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="user_name_tamm" translatable="false">Tammtest</string>
     <string name="passowrd_tamm" translatable="false">Tam@18418756</string>
-    <string name="mr" translatable="true">Mr.</string>
-    <string name="mrs">Mrs.</string>
-    <string name="male">Male.</string>
-    <string name="female">Female</string>
+    <string name="mr" translatable="false">Mr.</string>
+    <string name="mrs" translatable="false">Mrs.</string>
+    <string name="male" translatable="false">Male.</string>
+    <string name="female" translatable="false">Female</string>
     <string name="children">Children</string>
     <string name="room">room</string>
     <string name="passowrd_flight" translatable="false">App02072019</string>
@@ -1379,6 +1379,9 @@
     <string name="reference_number">Reference Number :</string>
     <string name="amount">Amount :</string>
     <string name="post_code">Post Code :</string>
+    <string name="BestFlights">Best Flights</string>
+    <string name="BestHotels">Best Hotels</string>
+    <string name="BestDeals">Best Deals</string>
 
 
 </resources>

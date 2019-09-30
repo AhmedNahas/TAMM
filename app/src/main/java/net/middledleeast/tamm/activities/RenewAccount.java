@@ -138,9 +138,9 @@ public class  RenewAccount extends AppCompatActivity
 
 
         }catch (Exception e){}
-        adapter.AddFragment(new BestFlights(), "Best Flights");
-        adapter.AddFragment(new BestHotels(), "Best Hotels");
-        adapter.AddFragment(new BestDeals(), "Best Deals");
+        adapter.AddFragment(new BestFlights(), getString(R.string.BestFlights));
+        adapter.AddFragment(new BestHotels(), getString(R.string.BestHotels));
+        adapter.AddFragment(new BestDeals(), getString(R.string.BestDeals));
 
 
         viewPager.setAdapter(adapter);
