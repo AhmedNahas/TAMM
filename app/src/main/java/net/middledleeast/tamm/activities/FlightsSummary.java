@@ -21,6 +21,7 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.FlightTransitAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -159,63 +160,13 @@ public class FlightsSummary extends AppCompatActivity {
     private Retrofit retrofit;
     private String password;
     public static final String BASE_URL = "https://xmloutapi.tboair.com/api/v1/";
-    private String a_deTime;
-    private String MDataMrmisAdult,
-            MDataMrmisChild,
-            MDataMrmisInfent,
-            firstNameAduld,
-            firstNameChild,
-            firstNameInfant,
-            lastNameAduld,
-            lastNameChild,
-            lastNameInfant,
-            datebirthadult,
-            datebirthchild,
-            datebirthinfant,
-            nationality_adult,
-            nationality_child,
-            nationality_infant,
+    private String
+
             resultId,
             tokenId,
-            trackingId,
+            trackingId;
 
 
-            firstNameAduld2,
-            lastNameAduld2, MDataMrmisAdult2,
-            datebirthadult2,
-            nationality_adult2,
-            passportNo2,
-            passportIssue2,
-            passportEnd2, passportNo,
-            passportIssue,
-            passportEnd,
-
-            firstNameAduld3,
-            lastNameAduld3,
-            MDataMrmisAdult3,
-            datebirthadult3,
-            nationality_adult3,
-            passportNo3,
-            passportIssue3,
-            passportEnd3,
-
-            firstNameAduld4,
-            lastNameAduld4,
-            MDataMrmisAdult4,
-            datebirthadult4,
-            nationality_adult4,
-            passportNo4,
-            passportIssue4,
-            passportEnd4,
-
-            firstNameAduld5,
-            lastNameAduld5,
-            MDataMrmisAdult5,
-            datebirthadult5,
-            nationality_adult5,
-            passportNo5,
-            passportIssue5,
-            passportEnd5;
 
             long adult,
             child,
@@ -465,7 +416,7 @@ public class FlightsSummary extends AppCompatActivity {
         infant = SharedPreferencesManger.LoadLongData(FlightsSummary.this, "infant");
 
 
-        getAllDataPassengers();
+//        getAllDataPassengers();
 
 
         String airlineName = segments.get(0).getAirlineName();
@@ -575,116 +526,116 @@ public class FlightsSummary extends AppCompatActivity {
 
     }
 
-    private void getAllDataPassengers() {
-
-
-        MDataMrmisAdult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult");
-        MDataMrmisChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisChild");
-        MDataMrmisInfent = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisInfent");
-
-        //first
-        firstNameAduld = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld");
-        firstNameChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameChild");
-        firstNameInfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameInfant");
-
-        //last
-        lastNameAduld = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld");
-        lastNameChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameChild");
-        lastNameInfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameInfant");
-
-
-        //date
-        datebirthadult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult");
-        datebirthchild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthchild");
-        datebirthinfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthinfant");
-
-        // nationality
-        nationality_adult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult");
-        nationality_child = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_child");
-        nationality_infant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_infant");
-
-        passportNo = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportNo");
-        passportIssue = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportIssue");
-        passportEnd = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportEnd");
-
-        //adult 2
-        firstNameAduld2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld2");
-
-        lastNameAduld2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld2");
-        MDataMrmisAdult2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult2");
-
-
-        datebirthadult2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult2");
-
-        nationality_adult2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult2");
-
-
-        passportNo2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportNo2");
-        passportIssue2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportIssue2");
-        passportEnd2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportEnd2");
-
-        //adult 3
-
-
-        firstNameAduld3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld3");
-
-        lastNameAduld3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld3");
-        MDataMrmisAdult3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult3");
-
-
-        datebirthadult3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult3");
-
-        nationality_adult3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult3");
-
-
-        passportNo3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportNo3");
-        passportIssue3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportIssue3");
-        passportEnd3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportEnd3");
-
-        //adult 4
-
-
-        firstNameAduld4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld4");
-
-        lastNameAduld4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld4");
-        MDataMrmisAdult4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult4");
-
-
-        datebirthadult4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult4");
-
-        nationality_adult4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult4");
-
-
-        passportNo4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportNo4");
-        passportIssue4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportIssue4");
-        passportEnd4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportEnd4");
-
-
-        //adult 5
-        firstNameAduld5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld5");
-
-        lastNameAduld5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld5");
-        MDataMrmisAdult5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult5");
-
-
-        datebirthadult5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult5");
-
-        nationality_adult5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult5");
-
-
-        passportNo5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportNo5");
-        passportIssue5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportIssue5");
-        passportEnd5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportEnd5");
-
-
-
-
-
-
-
-
-
-    }
+//    private void getAllDataPassengers() {
+//
+//
+//        MDataMrmisAdult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult");
+//        MDataMrmisChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisChild");
+//        MDataMrmisInfent = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisInfent");
+//
+//        //first
+//        firstNameAduld = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld");
+//        firstNameChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameChild");
+//        firstNameInfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameInfant");
+//
+//        //last
+//        lastNameAduld = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld");
+//        lastNameChild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameChild");
+//        lastNameInfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameInfant");
+//
+//
+//        //date
+//        datebirthadult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult");
+//        datebirthchild = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthchild");
+//        datebirthinfant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthinfant");
+//
+//        // nationality
+//        nationality_adult = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult");
+//        nationality_child = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_child");
+//        nationality_infant = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_infant");
+//
+//        passportNo = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportNo");
+//        passportIssue = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportIssue");
+//        passportEnd = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportEnd");
+//
+//        //adult 2
+//        firstNameAduld2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld2");
+//
+//        lastNameAduld2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld2");
+//        MDataMrmisAdult2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult2");
+//
+//
+//        datebirthadult2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult2");
+//
+//        nationality_adult2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult2");
+//
+//
+//        passportNo2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportNo2");
+//        passportIssue2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportIssue2");
+//        passportEnd2 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportEnd2");
+//
+//        //adult 3
+//
+//
+//        firstNameAduld3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld3");
+//
+//        lastNameAduld3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld3");
+//        MDataMrmisAdult3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult3");
+//
+//
+//        datebirthadult3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult3");
+//
+//        nationality_adult3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult3");
+//
+//
+//        passportNo3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportNo3");
+//        passportIssue3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportIssue3");
+//        passportEnd3 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportEnd3");
+//
+//        //adult 4
+//
+//
+//        firstNameAduld4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld4");
+//
+//        lastNameAduld4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld4");
+//        MDataMrmisAdult4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult4");
+//
+//
+//        datebirthadult4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult4");
+//
+//        nationality_adult4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult4");
+//
+//
+//        passportNo4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportNo4");
+//        passportIssue4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportIssue4");
+//        passportEnd4 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportEnd4");
+//
+//
+//        //adult 5
+//        firstNameAduld5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "FirstNameAduld5");
+//
+//        lastNameAduld5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "LastNameAduld5");
+//        MDataMrmisAdult5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "MDataMrmisAdult5");
+//
+//
+//        datebirthadult5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "datebirthadult5");
+//
+//        nationality_adult5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "nationality_adult5");
+//
+//
+//        passportNo5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportNo5");
+//        passportIssue5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportIssue5");
+//        passportEnd5 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "passportEnd5");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//    }
 
 
     private void BookingFlight() {
@@ -766,8 +717,6 @@ public class FlightsSummary extends AppCompatActivity {
 
 
 
-
-
                                 String flightNumber = segments.get(0).getFlightNumber();
 
                                 String airlineCode = segments.get(0).getAirlineDetails().getAirlineCode();
@@ -803,11 +752,11 @@ public class FlightsSummary extends AppCompatActivity {
 
 
                                 // passenger information by method
-                                Passenger passenger2 = passenger2(fare, flightNumber);
-                                Passenger passenger = passenger1(fare, flightNumber);
-                                Passenger passenger3 = passenger3(fare, flightNumber);
-                                Passenger passenger4 = passenger4(fare, flightNumber);
-                                Passenger passenger5 = passenger5(fare, flightNumber);
+//                                Passenger passenger2 = passenger2(fare, flightNumber);
+//                                Passenger passenger = passenger1(fare, flightNumber);
+//                                Passenger passenger3 = passenger3(fare, flightNumber);
+//                                Passenger passenger4 = passenger4(fare, flightNumber);
+//                                Passenger passenger5 = passenger5(fare, flightNumber);
 
 
                                 itinerary.setTravelDate(departureTime);
@@ -841,47 +790,57 @@ public class FlightsSummary extends AppCompatActivity {
                                 itinerary.setFareRules(fareRulesList);
 
 
-                                ArrayList<Passenger> passengerList = new ArrayList<>();
+//                                ArrayList<Passenger> passengerList = new ArrayList<>();
+
+
+                                List<Passenger> passengerList = (List<Passenger>) getIntent().getSerializableExtra("passengerList");
+
+
+                                for (int i = 0; i < passengerList.size(); i++) {
 
 
 
+                                    passengerList.get(i).setFare(fare);
+                                    passengerList.get(i).setFFNumber(flightNumber);
 
-                                switch ((int) adult) {
-
-                                    case 1:
-                                        passengerList.add(passenger);
-                                        break;
-
-                                    case 2:
-                                        passengerList.add(passenger);
-                                        passengerList.add(passenger2);
-                                        break;
-
-
-                                    case 3:
-                                        passengerList.add(passenger);
-                                        passengerList.add(passenger2);
-                                        passengerList.add(passenger3);
-
-                                        break;
-
-                                    case 4:
-                                        passengerList.add(passenger);
-                                        passengerList.add(passenger2);
-                                        passengerList.add(passenger3);
-                                        passengerList.add(passenger4);
-
-                                        break;
-
-                                    case 5:
-                                        passengerList.add(passenger);
-                                        passengerList.add(passenger2);
-                                        passengerList.add(passenger3);
-                                        passengerList.add(passenger4);
-                                        passengerList.add(passenger5);
-
-                                        break;
                                 }
+//
+//                                switch ((int) adult) {
+//
+//                                    case 1:
+//                                        passengerList.add(passenger);
+//                                        break;
+//
+//                                    case 2:
+//                                        passengerList.add(passenger);
+//                                        passengerList.add(passenger2);
+//                                        break;
+//
+//
+//                                    case 3:
+//                                        passengerList.add(passenger);
+//                                        passengerList.add(passenger2);
+//                                        passengerList.add(passenger3);
+//
+//                                        break;
+//
+//                                    case 4:
+//                                        passengerList.add(passenger);
+//                                        passengerList.add(passenger2);
+//                                        passengerList.add(passenger3);
+//                                        passengerList.add(passenger4);
+//
+//                                        break;
+//
+//                                    case 5:
+//                                        passengerList.add(passenger);
+//                                        passengerList.add(passenger2);
+//                                        passengerList.add(passenger3);
+//                                        passengerList.add(passenger4);
+//                                        passengerList.add(passenger5);
+//
+//                                        break;
+//                                }
 
 
                                 itinerary.setPassenger(passengerList);
@@ -897,11 +856,13 @@ public class FlightsSummary extends AppCompatActivity {
                                     public void onResponse(Call<GetBookingResponse> call, Response<GetBookingResponse> response) {
 
 
-                                        Itinerary itinerary1 = response.body().getItinerary();
 
-//
-//
-                                        try {
+
+
+                                        if (response.isSuccessful()){
+
+
+
                                             if (response.body().getItinerary().getPNR() != null) {
                                                 Toast.makeText(FlightsSummary.this, "Please Wait", Toast.LENGTH_SHORT).show();
 
@@ -913,16 +874,17 @@ public class FlightsSummary extends AppCompatActivity {
                                                 flightTicket.setTokenId(tokenId);
                                                 flightTicket.setTrackingId(trackingId);
                                                 flightTicket.setPNR(response.body().getItinerary().getPNR());
-
+                                                Itinerary itinerary1 = response.body().getItinerary();
                                                 flightTicket.setItinerary(itinerary1);
 
                                                 flightApiService.getFlightTicket("application/json", flightTicket).enqueue(new Callback<TicketResponse>() {
                                                     @Override
                                                     public void onResponse(Call<TicketResponse> call, Response<TicketResponse> response) {
 
-                                                        try {
 
-                                                            okhttp3.Response raw = response.raw();
+                                                        if (response.isSuccessful()) {
+
+
 
                                                             String pnr2 = response.body().getItinerary().getPNR();
                                                             String tokenId2 = response.body().getTokenId();
@@ -932,20 +894,28 @@ public class FlightsSummary extends AppCompatActivity {
                                                             SharedPreferencesManger.SaveData(FlightsSummary.this, "tokenId2", tokenId2);
 
 
-                                                        } catch (Exception e) {
 
-                                                            flight_progress.setVisibility(View.INVISIBLE);
+                                                            double totalFare = response.body().getItinerary().getPassenger().get(0).getFare().getTotalFare();
+
+                                                            Intent intent = new Intent(FlightsSummary.this, PaymentActivity.class);
+
+                                                            intent.putExtra("totalFare", String.valueOf(totalFare));
+                                                            SharedPreferencesManger.SaveData(FlightsSummary.this,"mId",3);
+                                                            startActivity(intent);
 
 
+
+                                                        }else {
+
+
+                                                            try {
+                                                                flight_progress.setVisibility(View.INVISIBLE);
+
+                                                                Toast.makeText(FlightsSummary.this, ""+response.errorBody().string(), Toast.LENGTH_SHORT).show();
+                                                            } catch (IOException e) {
+                                                                e.printStackTrace();
+                                                            }
                                                         }
-                                                        double totalFare = response.body().getItinerary().getPassenger().get(0).getFare().getTotalFare();
-
-                                                        Intent intent = new Intent(FlightsSummary.this, PaymentActivity.class);
-
-                                                        intent.putExtra("totalFare", String.valueOf(totalFare));
-                                                        SharedPreferencesManger.SaveData(FlightsSummary.this,"mId",3);
-
-                                                        startActivity(intent);
 
 
                                                     }
@@ -953,6 +923,7 @@ public class FlightsSummary extends AppCompatActivity {
                                                     @Override
                                                     public void onFailure(Call<TicketResponse> call, Throwable t) {
                                                         flight_progress.setVisibility(View.INVISIBLE);
+                                                        Toast.makeText(FlightsSummary.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
 
                                                     }
                                                 });
@@ -965,14 +936,22 @@ public class FlightsSummary extends AppCompatActivity {
 //                                           intent.putExtra("mId",3);
 //
 //                                           startActivity(intent);
+                                            }else {
+                                                flight_progress.setVisibility(View.INVISIBLE);
+                                                Toast.makeText(FlightsSummary.this, "Try Again", Toast.LENGTH_SHORT).show();
+
                                             }
-                                        } catch (Exception e) {
+
+                                        }else {
 
                                             flight_progress.setVisibility(View.INVISIBLE);
 
-                                            Toast.makeText(FlightsSummary.this, "error" + e.getMessage(), Toast.LENGTH_SHORT).show();
-
+                                            Toast.makeText(FlightsSummary.this, "error"+response.errorBody().toString(), Toast.LENGTH_SHORT).show();
                                         }
+//
+
+
+//
 
 
                                     }
@@ -981,6 +960,7 @@ public class FlightsSummary extends AppCompatActivity {
                                     public void onFailure(Call<GetBookingResponse> call, Throwable t) {
                                         t.getMessage();
 
+                                        Toast.makeText(FlightsSummary.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
 
                                         flight_progress.setVisibility(View.INVISIBLE);
 
@@ -991,7 +971,18 @@ public class FlightsSummary extends AppCompatActivity {
 
                                 flight_progress.setVisibility(View.INVISIBLE);
 
-                                Toast.makeText(FlightsSummary.this, "error", Toast.LENGTH_SHORT).show();
+
+                                try {
+                                    flight_progress.setVisibility(View.INVISIBLE);
+
+                                    Toast.makeText(FlightsSummary.this, response.errorBody().string(), Toast.LENGTH_SHORT).show();
+                                } catch (IOException e) {
+                                    flight_progress.setVisibility(View.INVISIBLE);
+
+                                    Toast.makeText(FlightsSummary.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                                }
 
                             }
 
@@ -1002,6 +993,7 @@ public class FlightsSummary extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<FareQuoteRespone> call, Throwable t) {
                             flight_progress.setVisibility(View.INVISIBLE);
+                            Toast.makeText(FlightsSummary.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
 
                             t.getMessage();
                         }
@@ -1012,7 +1004,17 @@ public class FlightsSummary extends AppCompatActivity {
 
                     flight_progress.setVisibility(View.INVISIBLE);
 
-                    Toast.makeText(FlightsSummary.this, "error", Toast.LENGTH_SHORT).show();
+                    try {
+                        flight_progress.setVisibility(View.INVISIBLE);
+
+                        Toast.makeText(FlightsSummary.this, response.errorBody().string(), Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        flight_progress.setVisibility(View.INVISIBLE);
+
+                        Toast.makeText(FlightsSummary.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                    }
 
                 }
 
@@ -1024,8 +1026,8 @@ public class FlightsSummary extends AppCompatActivity {
             @Override
             public void onFailure(Call<FareRuleResponse> call, Throwable t) {
                 flight_progress.setVisibility(View.INVISIBLE);
+                Toast.makeText(FlightsSummary.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
 
-                t.getMessage();
             }
         });
 
@@ -1062,251 +1064,251 @@ public class FlightsSummary extends AppCompatActivity {
 
         //--------------------------------------------------------------------------
     }
-
-    private Passenger passenger5(Fare fare, String flightNumber) {
-
-
-        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
-        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
-        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
-        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
-
-        Passenger passenger = new Passenger();
-        passenger.setFare(fare);
-        passenger.setAddressLine1(city1);
-        passenger.setAddressLine2(city1);
-        City city = new City();
-        city.setCityCode("CAI");
-        city.setCityName(city1);
-        city.setCountryCode(country1);
-        passenger.setCity(city);
-        Country country = new Country();
-        country.setCountryCode("EG");
-        country.setCountryName(country1);
-        passenger.setCountry(country);
-        passenger.setEmail(email);
-        passenger.setFirstName(firstNameAduld5);
-        passenger.setGender(1);
-        passenger.setLastName(lastNameAduld5);
-        passenger.setType(1);
-        passenger.setTitle(MDataMrmisAdult5);
-        Nationality nationality = new Nationality();
-
-        nationality.setCountryCode("EG");
-        nationality.setCountryName(country1);
-        passenger.setNationality(nationality);
-
-        passenger.setDateOfBirth(datebirthadult5);
-
-        passenger.setFFNumber(flightNumber);
-        passenger.setMobile1(phone);
-        passenger.setMobile1CountryCode("12");
-
-
-        passenger.setPassportExpiry(passportEnd5);
-        passenger.setPassportIssueCountryCode("2365");
-        passenger.setPassportIssueDate(passportIssue5);
-        passenger.setPassportNo(passportNo5);
-
-        return passenger;
-    }
-
-    private Passenger passenger4(Fare fare, String flightNumber) {
-
-
-        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
-        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
-        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
-        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
-
-        Passenger passenger = new Passenger();
-        passenger.setFare(fare);
-        passenger.setAddressLine1(city1);
-        passenger.setAddressLine2(city1);
-        City city = new City();
-        city.setCityCode("CAI");
-        city.setCityName(city1);
-        city.setCountryCode(country1);
-        passenger.setCity(city);
-        Country country = new Country();
-        country.setCountryCode("EG");
-        country.setCountryName(country1);
-        passenger.setCountry(country);
-        passenger.setEmail(email);
-        passenger.setFirstName(firstNameAduld4);
-        passenger.setGender(1);
-        passenger.setLastName(lastNameAduld4);
-        passenger.setType(1);
-        passenger.setTitle(MDataMrmisAdult4);
-        Nationality nationality = new Nationality();
-
-        nationality.setCountryCode("EG");
-        nationality.setCountryName(country1);
-        passenger.setNationality(nationality);
-
-        passenger.setDateOfBirth(datebirthadult4);
-
-        passenger.setFFNumber(flightNumber);
-        passenger.setMobile1(phone);
-        passenger.setMobile1CountryCode("+2");
-
-
-        passenger.setPassportExpiry(passportEnd4);
-        passenger.setPassportIssueCountryCode("2365");
-        passenger.setPassportIssueDate(passportIssue4);
-        passenger.setPassportNo(passportNo4);
-
-        return passenger;
-    }
-
-    private Passenger passenger3(Fare fare, String flightNumber) {
-
-
-        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
-        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
-        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
-        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
-
-
-        Passenger passenger = new Passenger();
-        passenger.setFare(fare);
-        passenger.setAddressLine1(city1);
-        passenger.setAddressLine2(city1);
-        City city = new City();
-        city.setCityCode("CAI");
-        city.setCityName(city1);
-        city.setCountryCode(country1);
-        passenger.setCity(city);
-        Country country = new Country();
-        country.setCountryCode("EG");
-        country.setCountryName(country1);
-        passenger.setCountry(country);
-        passenger.setEmail(email);
-        passenger.setFirstName(firstNameAduld3);
-        passenger.setGender(1);
-        passenger.setLastName(lastNameAduld3);
-        passenger.setType(1);
-        passenger.setTitle(MDataMrmisAdult3);
-        Nationality nationality = new Nationality();
-
-        nationality.setCountryCode("EG");
-        nationality.setCountryName(country1);
-        passenger.setNationality(nationality);
-
-        passenger.setDateOfBirth(datebirthadult3);
-
-        passenger.setFFNumber(flightNumber);
-        passenger.setMobile1(phone);
-        passenger.setMobile1CountryCode("+2");
-
-
-        passenger.setPassportExpiry(passportEnd3);
-        passenger.setPassportIssueCountryCode("2365");
-        passenger.setPassportIssueDate(passportIssue3);
-        passenger.setPassportNo(passportNo3);
-
-        return passenger;
-
-    }
-
-    private Passenger passenger1(Fare fare, String flightNumber) {
-
-        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
-        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
-        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
-        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
-
-
-        Passenger passenger = new Passenger();
-        passenger.setFare(fare);
-        passenger.setAddressLine1(city1);
-        passenger.setAddressLine2(city1);
-        City city = new City();
-        city.setCityCode("CAI");
-        city.setCityName(city1);
-        city.setCountryCode("EG");
-        passenger.setCity(city);
-        Country country = new Country();
-        country.setCountryCode("EG");
-        country.setCountryName(country1);
-        passenger.setCountry(country);
-        passenger.setEmail(email);
-        passenger.setFirstName(firstNameAduld);
-        passenger.setGender(1);
-        passenger.setIsLeadPax(true);
-        passenger.setLastName(lastNameAduld);
-        passenger.setType(1);
-        passenger.setTitle(MDataMrmisAdult);
-        Nationality nationality = new Nationality();
-
-        nationality.setCountryCode("EG");
-        nationality.setCountryName(country1);
-        passenger.setNationality(nationality);
-
-        passenger.setDateOfBirth(datebirthadult);
-
-        passenger.setFFNumber(flightNumber);
-        passenger.setMobile1(phone);
-        passenger.setMobile1CountryCode("+2");
-
-
-        passenger.setPassportExpiry(passportEnd);
-        passenger.setPassportIssueCountryCode("123");
-        passenger.setPassportIssueDate(passportIssue);
-        passenger.setPassportNo(passportNo);
-
-        return passenger;
-
-    }
-
-    private Passenger passenger2(Fare fare, String flightNumber) {
-
-
-        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
-        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
-        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
-        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
-
-
-        Passenger passenger2 = new Passenger();
-        passenger2.setFare(fare);
-        passenger2.setAddressLine1(city1);
-        passenger2.setAddressLine2(city1);
-        City city2 = new City();
-        city2.setCityCode("");
-        city2.setCityName(city1);
-        city2.setCountryCode("");
-        passenger2.setCity(city2);
-        Country country2 = new Country();
-        country2.setCountryCode("");
-        country2.setCountryName(country1);
-        passenger2.setCountry(country2);
-        passenger2.setEmail(email);
-        passenger2.setFirstName(firstNameAduld2);
-        passenger2.setGender(1);
-        passenger2.setLastName(lastNameAduld2);
-        passenger2.setType(1);
-        passenger2.setTitle(MDataMrmisAdult2);
-        Nationality nationality2 = new Nationality();
-
-        nationality2.setCountryCode("EG");
-        nationality2.setCountryName(country1);
-        passenger2.setNationality(nationality2);
-
-        passenger2.setDateOfBirth(datebirthadult2);
-
-        passenger2.setFFNumber(flightNumber);
-        passenger2.setMobile1(phone);
-        passenger2.setMobile1CountryCode("+2");
-
-
-        passenger2.setPassportExpiry(passportEnd2);
-        passenger2.setPassportIssueCountryCode("2365");
-        passenger2.setPassportIssueDate(passportIssue2);
-        passenger2.setPassportNo(passportNo2);
-
-        return passenger2;
-    }
+//
+//    private Passenger passenger5(Fare fare, String flightNumber) {
+//
+//
+//        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
+//        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
+//        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
+//        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
+//
+//        Passenger passenger = new Passenger();
+//        passenger.setFare(fare);
+//        passenger.setAddressLine1(city1);
+//        passenger.setAddressLine2(city1);
+//        City city = new City();
+//        city.setCityCode("CAI");
+//        city.setCityName(city1);
+//        city.setCountryCode(country1);
+//        passenger.setCity(city);
+//        Country country = new Country();
+//        country.setCountryCode("EG");
+//        country.setCountryName(country1);
+//        passenger.setCountry(country);
+//        passenger.setEmail(email);
+//        passenger.setFirstName(firstNameAduld5);
+//        passenger.setGender(1);
+//        passenger.setLastName(lastNameAduld5);
+//        passenger.setType(1);
+//        passenger.setTitle(MDataMrmisAdult5);
+//        Nationality nationality = new Nationality();
+//
+//        nationality.setCountryCode("EG");
+//        nationality.setCountryName(country1);
+//        passenger.setNationality(nationality);
+//
+//        passenger.setDateOfBirth(datebirthadult5);
+//
+//        passenger.setFFNumber(flightNumber);
+//        passenger.setMobile1(phone);
+//        passenger.setMobile1CountryCode("12");
+//
+//
+//        passenger.setPassportExpiry(passportEnd5);
+//        passenger.setPassportIssueCountryCode("2365");
+//        passenger.setPassportIssueDate(passportIssue5);
+//        passenger.setPassportNo(passportNo5);
+//
+//        return passenger;
+//    }
+//
+//    private Passenger passenger4(Fare fare, String flightNumber) {
+//
+//
+//        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
+//        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
+//        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
+//        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
+//
+//        Passenger passenger = new Passenger();
+//        passenger.setFare(fare);
+//        passenger.setAddressLine1(city1);
+//        passenger.setAddressLine2(city1);
+//        City city = new City();
+//        city.setCityCode("CAI");
+//        city.setCityName(city1);
+//        city.setCountryCode(country1);
+//        passenger.setCity(city);
+//        Country country = new Country();
+//        country.setCountryCode("EG");
+//        country.setCountryName(country1);
+//        passenger.setCountry(country);
+//        passenger.setEmail(email);
+//        passenger.setFirstName(firstNameAduld4);
+//        passenger.setGender(1);
+//        passenger.setLastName(lastNameAduld4);
+//        passenger.setType(1);
+//        passenger.setTitle(MDataMrmisAdult4);
+//        Nationality nationality = new Nationality();
+//
+//        nationality.setCountryCode("EG");
+//        nationality.setCountryName(country1);
+//        passenger.setNationality(nationality);
+//
+//        passenger.setDateOfBirth(datebirthadult4);
+//
+//        passenger.setFFNumber(flightNumber);
+//        passenger.setMobile1(phone);
+//        passenger.setMobile1CountryCode("+2");
+//
+//
+//        passenger.setPassportExpiry(passportEnd4);
+//        passenger.setPassportIssueCountryCode("2365");
+//        passenger.setPassportIssueDate(passportIssue4);
+//        passenger.setPassportNo(passportNo4);
+//
+//        return passenger;
+//    }
+//
+//    private Passenger passenger3(Fare fare, String flightNumber) {
+//
+//
+//        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
+//        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
+//        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
+//        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
+//
+//
+//        Passenger passenger = new Passenger();
+//        passenger.setFare(fare);
+//        passenger.setAddressLine1(city1);
+//        passenger.setAddressLine2(city1);
+//        City city = new City();
+//        city.setCityCode("CAI");
+//        city.setCityName(city1);
+//        city.setCountryCode(country1);
+//        passenger.setCity(city);
+//        Country country = new Country();
+//        country.setCountryCode("EG");
+//        country.setCountryName(country1);
+//        passenger.setCountry(country);
+//        passenger.setEmail(email);
+//        passenger.setFirstName(firstNameAduld3);
+//        passenger.setGender(1);
+//        passenger.setLastName(lastNameAduld3);
+//        passenger.setType(1);
+//        passenger.setTitle(MDataMrmisAdult3);
+//        Nationality nationality = new Nationality();
+//
+//        nationality.setCountryCode("EG");
+//        nationality.setCountryName(country1);
+//        passenger.setNationality(nationality);
+//
+//        passenger.setDateOfBirth(datebirthadult3);
+//
+//        passenger.setFFNumber(flightNumber);
+//        passenger.setMobile1(phone);
+//        passenger.setMobile1CountryCode("+2");
+//
+//
+//        passenger.setPassportExpiry(passportEnd3);
+//        passenger.setPassportIssueCountryCode("2365");
+//        passenger.setPassportIssueDate(passportIssue3);
+//        passenger.setPassportNo(passportNo3);
+//
+//        return passenger;
+//
+//    }
+//
+//    private Passenger passenger1(Fare fare, String flightNumber) {
+//
+//        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
+//        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
+//        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
+//        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
+//
+//
+//        Passenger passenger = new Passenger();
+//        passenger.setFare(fare);
+//        passenger.setAddressLine1(city1);
+//        passenger.setAddressLine2(city1);
+//        City city = new City();
+//        city.setCityCode("CAI");
+//        city.setCityName(city1);
+//        city.setCountryCode("EG");
+//        passenger.setCity(city);
+//        Country country = new Country();
+//        country.setCountryCode("EG");
+//        country.setCountryName(country1);
+//        passenger.setCountry(country);
+//        passenger.setEmail(email);
+//        passenger.setFirstName(firstNameAduld);
+//        passenger.setGender(1);
+//        passenger.setIsLeadPax(true);
+//        passenger.setLastName(lastNameAduld);
+//        passenger.setType(1);
+//        passenger.setTitle(MDataMrmisAdult);
+//        Nationality nationality = new Nationality();
+//
+//        nationality.setCountryCode("EG");
+//        nationality.setCountryName(country1);
+//        passenger.setNationality(nationality);
+//
+//        passenger.setDateOfBirth(datebirthadult);
+//
+//        passenger.setFFNumber(flightNumber);
+//        passenger.setMobile1(phone);
+//        passenger.setMobile1CountryCode("+2");
+//
+//
+//        passenger.setPassportExpiry(passportEnd);
+//        passenger.setPassportIssueCountryCode("123");
+//        passenger.setPassportIssueDate(passportIssue);
+//        passenger.setPassportNo(passportNo);
+//
+//        return passenger;
+//
+//    }
+//
+//    private Passenger passenger2(Fare fare, String flightNumber) {
+//
+//
+//        String country1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "country");
+//        String phone = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "phone");
+//        String email = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "email");
+//        String city1 = SharedPreferencesManger.LoadStringData(FlightsSummary.this, "city");
+//
+//
+//        Passenger passenger2 = new Passenger();
+//        passenger2.setFare(fare);
+//        passenger2.setAddressLine1(city1);
+//        passenger2.setAddressLine2(city1);
+//        City city2 = new City();
+//        city2.setCityCode("");
+//        city2.setCityName(city1);
+//        city2.setCountryCode("");
+//        passenger2.setCity(city2);
+//        Country country2 = new Country();
+//        country2.setCountryCode("");
+//        country2.setCountryName(country1);
+//        passenger2.setCountry(country2);
+//        passenger2.setEmail(email);
+//        passenger2.setFirstName(firstNameAduld2);
+//        passenger2.setGender(1);
+//        passenger2.setLastName(lastNameAduld2);
+//        passenger2.setType(1);
+//        passenger2.setTitle(MDataMrmisAdult2);
+//        Nationality nationality2 = new Nationality();
+//
+//        nationality2.setCountryCode("EG");
+//        nationality2.setCountryName(country1);
+//        passenger2.setNationality(nationality2);
+//
+//        passenger2.setDateOfBirth(datebirthadult2);
+//
+//        passenger2.setFFNumber(flightNumber);
+//        passenger2.setMobile1(phone);
+//        passenger2.setMobile1CountryCode("+2");
+//
+//
+//        passenger2.setPassportExpiry(passportEnd2);
+//        passenger2.setPassportIssueCountryCode("2365");
+//        passenger2.setPassportIssueDate(passportIssue2);
+//        passenger2.setPassportNo(passportNo2);
+//
+//        return passenger2;
+//    }
 
 
     public Retrofit connectAndGetApiData(Gson gson, OkHttpClient client) {

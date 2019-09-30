@@ -4,7 +4,9 @@ package FlightApi;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Nationality {
+import java.io.Serializable;
+
+public class Nationality  implements Serializable {
 
     @SerializedName("CountryCode")
     @Expose
