@@ -77,7 +77,7 @@ public class PlansAdapter extends RecyclerView.Adapter<PlansAdapter.PlansViewHol
             plansViewHolder.imgBackground.setImageDrawable(context.getDrawable(R.drawable.plans_card_colored_background));
             plansViewHolder.imgLogo.setImageDrawable(context.getDrawable(R.drawable.logo_black));
             plansViewHolder.txtTitle.setTextColor(Color.BLACK);
-
+            plansViewHolder.txtTitle.setText(R.string.membership);
 
             plansViewHolder.txtDescription.setTextColor(Color.BLACK);
 

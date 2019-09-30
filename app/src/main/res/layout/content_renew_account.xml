@@ -93,14 +93,17 @@
             android:layout_width="139dp"
             android:layout_height="106dp"
             android:src="@drawable/jet"
+
             />
 
         <ImageView
             android:id="@+id/imageView10"
             android:layout_width="136dp"
             android:layout_height="106dp"
-           android:layout_toRightOf="@+id/imageView9"
-            app:srcCompat="@drawable/bed" />
+            android:layout_toEndOf="@+id/imageView9"
+            app:srcCompat="@drawable/bed"
+            />
+
     </RelativeLayout>
 
 
@@ -178,7 +181,7 @@
         android:id="@+id/tv_tab_me_renew_hotels"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tap me if you need MY ASSISTANCE "
+        android:text="@string/tap_me_if_you_need_my_assistance"
         android:textColor="#fff"
         android:gravity="center"
 

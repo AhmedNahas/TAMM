@@ -32,8 +32,6 @@ import java.util.Map;
 
 public class HotelBooking extends AppCompatActivity {
 
-    private AuthenticationData authenticandata;
-    private BasicHttpBinding_IHotelService1 service;
     private Button backToMain;
     private RelativeLayout backButton;
     ImageView iv_booked_booking;
@@ -151,6 +149,11 @@ public class HotelBooking extends AppCompatActivity {
 
             }
         });
+
+         AuthenticationData authenticandata;
+
+         BasicHttpBinding_IHotelService1 service;
+
         service = new BasicHttpBinding_IHotelService1();
         service.enableLogging = true;
         authenticandata = new AuthenticationData();
@@ -172,6 +175,7 @@ public class HotelBooking extends AppCompatActivity {
             String confirmationNo1 = hotelBookingDetailResponse.BookingDetail.ConfirmationNo;
 
             code.setText(confirmationNo1);
+            SharedPreferencesManger.remove(this,"ConfirmationNo");
         } catch (Exception e) {
             e.printStackTrace();
         }

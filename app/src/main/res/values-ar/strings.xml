@@ -3,7 +3,7 @@
     <string name="app_name">TAMM</string>
     <string name="welcome_to">مرحبا بك </string>
 
-    <string name="select_lang"> من فضلك اختار  \nYour <font fgcolor='#FFFFFF'>اللغه :</font></string>
+    <string name="select_lang"> من فضلك  \n <font fgcolor='#FFFFFF'>اختر اللغه :</font></string>
     <string name="english">انجليزي</string>
     <string name="arabic">عربي</string>
     <string name="continue_">متابعة</string>
@@ -20,7 +20,7 @@
     <string name="sign_in_as_a_guest">تسجيل الدخول كضيف</string>
 
     <string name="username">اسم المستخدم</string>
-    <string name="password">الباسورد</string>
+    <string name="password">كلمة الدخول</string>
     <string name="enter">دخول</string>
     <string name="sorgot_password">هل نسيت كلمة المرور؟</string>
 
@@ -34,13 +34,14 @@
 
     <string name="plans_text">دعنا نختار الخطة المناسبة لك الآن!</string>
     <string name="plans_long_text">يمكنك معرفة المزيد عن الخطط من خلال النقر عليها</string>
-    <string name="plan_details_text">التفاصيل تذهب هنا ، التفاصيل تذهب هنا ، التفاصيل تذهب هنا ، التفاصيل تذهب هنا ، التفاصيل تذهب هنا ، التفاصيل تذهب هنا</string>
+    <string name="plan_details_text_free">يمكنك تجربة أفضل العروض وأفضل الأسعار مع الخدمات الممتازة</string>
+    <string name="plan_details_text">كن فردا من عائلة tamm المميزة , بخطط أسعار أفضل و خصومات واحصل علي نقاط اضافية</string>
     <string name="the_plans">الخطط</string>
-    <string name="membership">عضوية</string>
+    <string name="membership">عضوية متميزة</string>
     <string name="accept"> موافق</string>
     <string name="membership_account_plan">خطة حساب العضوية</string>
     <string name="terms_and_conditions">الأحكام والشروط</string>
-    <string name="please_read_ncarefully_what_s_n_below_before_n_proceeding">يرجى قراءة بعناية ما أدناه قبل المضي قدما!</string>
+    <string name="please_read_ncarefully_what_s_n_below_before_n_proceeding">يرجى قراءة  ما أدناه بعناية قبل المضي قدما!</string>
     <string name="free_account_plan">خطة حساب مجانية</string>
     <string name="by_choosing_this_plan_n_you_will_have_free_account_for_tamm_n_from_you_account">باختيار هذه الخطة ، سيكون لديك حساب مجاني لحساب tamm منك</string>
     <string name="get_this_plan">الحصول على هذه الخطة</string>
@@ -86,7 +87,7 @@
     <string name="checkout">حجز</string>
 
 
-    <string name="guest_s_information">ضيف (ق) المعلومات</string>
+    <string name="guest_s_information">ضيف(ق)المعلومات</string>
     <string name="adult">الافراد</string>
     <string name="request">الطلب :</string>
     <string name="write_your_room_specification">اكتب مواصفات غرفتك</string>
@@ -105,15 +106,47 @@
     <string name="thank_you_for_using">شكرا لأستخدامك</string>
     <string name="tamm_app">تطبيق TAMM</string>
     <string name="hotel_booking">حجز الفندق</string>
-    <string name="dear_mr">عزيزي    ,</string>
+    <string name="dear_mr">عزيزي    </string>
     <string name="your_hotel_code_is">رمز الفندق الخاص بك هو</string>
-    <string name="code">الكود</string>
+    <string name="code">CODE</string>
     <string name="for_further_information">لمزيد من المعلومات</string>
     <string name="please_check_your_e_mail">من فضلك تفقد بريدك الالكتروني.</string>
     <string name="back_to_home_page">العودة إلى الصفحة الرئيسية</string>
 
 
-    <string name="mr" translatable="true">ألسيد</string>
+
+    <string name="choose_no_of_rooms">أختار عدد الغرف</string>
+    <string name="room_1">غرفة 1</string>
+    <string name="_1_child">طفل 1</string>
+    <string name="_2_adults">فرد 1</string>
+    <string name="_1_room">غرفة 1</string>
+    <string name="languages">اللغة</string>
+    <string name="settings">الاعدادات</string>
+    <string name="free_cancellation">الغاء بدون رسوم</string>
+    <string name="until">حتي : </string>
+    <string name="i_agree_to_the">انا أوافق علي </string>
+    <string name="terms_amp_conditions">الشروط والاحكام</string>
+
+    <string name="your_room_has_n_been_booked_n_n_check_your_email_n_for_further_details_n_good_luck">تم حجز\n غرفتك! تحقق من بريدك الإلكتروني لمزيد من التفاصيل \nحظا سعيدا!</string>
+    <string name="tap_me_if_you_need_my_assistance2">اضغط هنا إذا كنت بحاجة إلى مساعدتي</string>
+    <string name="_20">29</string>
+    <string name="next">التالي</string>
+    <string name="map">الخريطة</string>
+    <string name="payment_id">رقم الحجز : </string>
+    <string name="id"> رقم </string>
+    <string name="result_code">نتيجة الدفع : </string>
+    <string name="transaction_id">رقم عملية التحويل : </string>
+    <string name="auth">رمز التحقق : </string>
+    <string name="track_id">كود المتابعة : </string>
+    <string name="reference_number">رقم المرجعي : </string>
+    <string name="amount">السعر : </string>
+    <string name="post_code">رمز الأرسال : </string>
+
+    <string name="visa_">فيزا</string>
+    <string name="master">ماستر كارد</string>
+    <string name="BestFlights">افضل عروض الطيران</string>
+    <string name="BestHotels">افضل فنادق</string>
+    <string name="BestDeals">افضل العروض</string>
 
 
 </resources>

@@ -340,10 +340,10 @@
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="user_name_tamm" translatable="false">Tammtest</string>
     <string name="passowrd_tamm" translatable="false">Tam@18418756</string>
-    <string name="mr" translatable="true">Mr.</string>
-    <string name="mrs">Mrs.</string>
-    <string name="male">Male.</string>
-    <string name="female">Female</string>
+    <string name="mr" translatable="false">Mr.</string>
+    <string name="mrs" translatable="false">Mrs.</string>
+    <string name="male" translatable="false">Male.</string>
+    <string name="female" translatable="false">Female</string>
     <string name="children">Children</string>
     <string name="room">room</string>
     <string name="passowrd_flight" translatable="false">App02072019</string>
@@ -1353,6 +1353,35 @@
     <string name="AO2" translatable="false">JET AIR</string>
     <string name="AO5" translatable="false">COMORES AVIATION INTL</string>
     <string name="AO6" translatable="false">Avianca Brasil</string>
+    <string name="choose_no_of_rooms">Choose no. of rooms</string>
+    <string name="room_1">Room 1</string>
+    <string name="_1_child">1 Child</string>
+    <string name="_2_adults">2 Adults</string>
+    <string name="_1_room">1 Room</string>
+    <string name="languages">Languages</string>
+    <string name="settings">SETTINGS</string>
+    <string name="free_cancellation">Free Cancellation</string>
+    <string name="until">Until :</string>
+    <string name="i_agree_to_the">I agree to the</string>
+    <string name="terms_amp_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="mr_mrs">Mr /Mrs</string>
+    <string name="your_room_has_n_been_booked_n_n_check_your_email_n_for_further_details_n_good_luck">Your Room has \n  been Booked! \n \n   Check your email   for further details \n  Good luck!</string>
+    <string name="tap_me_if_you_need_my_assistance2">Tap me if you need MY ASSISTANCE</string>
+    <string name="_20">20</string>
+    <string name="next">Next</string>
+    <string name="map">Map</string>
+    <string name="payment_id">Payment ID :</string>
+    <string name="id">ID</string>
+    <string name="result_code">Result Code :</string>
+    <string name="transaction_id">Transaction ID :</string>
+    <string name="auth">Auth:</string>
+    <string name="track_id">Track ID:</string>
+    <string name="reference_number">Reference Number :</string>
+    <string name="amount">Amount :</string>
+    <string name="post_code">Post Code :</string>
+    <string name="BestFlights">Best Flights</string>
+    <string name="BestHotels">Best Hotels</string>
+    <string name="BestDeals">Best Deals</string>
 
 
 </resources>

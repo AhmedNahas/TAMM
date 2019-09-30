@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -11,7 +12,6 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -189,6 +189,7 @@ public class FindHotels extends AppCompatActivity {
     private Integer accountPlan;
 
 
+
 //    private boolean saved ;
 
     @SuppressLint("StaticFieldLeak")
@@ -289,8 +290,8 @@ public class FindHotels extends AppCompatActivity {
         }
 
 
-//        simpleProgressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
-//        simpleProgressBar.setVisibility(View.INVISIBLE);
+        simpleProgressBar = (ProgressBar) findViewById(R.id.simpleProgressBar);
+        simpleProgressBar.setVisibility(View.INVISIBLE);
         FrameLayout frameLayout = findViewById(R.id.frame1);
 
         LayoutInflater inflater = (LayoutInflater) FindHotels.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -1309,7 +1310,6 @@ public class FindHotels extends AppCompatActivity {
                 time1 = myCalendar.getTime();
                 mstartTime = start.format(myCalendar.getTime());
                 //  startDate.setText(mstartTime);
-
                 long time = time1.getTime();
                 long timedev = formatTimeForEvent(time);
 
@@ -1330,17 +1330,32 @@ public class FindHotels extends AppCompatActivity {
                 startDateMonth.setText(monthString);
                 startDateYear.setText(dayOfTheWeek);
 
-
                 endDateDay.setText(day2);
                 endDateMonth.setText(monthString);
                 endDateYear.setText(dayOfTheWeek);
-
             }
         };
 
+        Locale locale = new Locale("EN");
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getApplicationContext().getResources().updateConfiguration(config, null);
 
-        new DatePickerDialog(FindHotels.this, date, myCalendar.get(YEAR),
-                myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+        DatePickerDialog dialoge = new DatePickerDialog(FindHotels.this,
+                date,
+                myCalendar.get(YEAR),
+                myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH));
+
+
+        dialoge.getDatePicker().setMinDate(System.currentTimeMillis() - 2000);
+
+        dialoge.show();
+//         new DatePickerDialog(FindHotels.this, date, myCalendar.get(YEAR),myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+
+
 
     }
 
@@ -1416,10 +1431,13 @@ public class FindHotels extends AppCompatActivity {
 
             }
         };
+        
 
+      DatePickerDialog datePickerDialog = new DatePickerDialog(FindHotels.this, date, myCalendar.get(YEAR),
+                myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH));
 
-        new DatePickerDialog(FindHotels.this, date, myCalendar.get(YEAR),
-                myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-2000);
+        datePickerDialog.show();
 
     }
 
@@ -1460,7 +1478,7 @@ public class FindHotels extends AppCompatActivity {
     public void onViewClicked() {
 
 
-        //    simpleProgressBar.setVisibility(View.VISIBLE);
+            simpleProgressBar.setVisibility(View.VISIBLE);
 
         if (isInternetAvailable()) {
 
@@ -1510,7 +1528,7 @@ public class FindHotels extends AppCompatActivity {
 
 
             Toast.makeText(this, "no internet", Toast.LENGTH_SHORT).show();
-            hideProgressingView();
+//            hideProgressingView();
         }
 
 
@@ -1529,8 +1547,8 @@ public class FindHotels extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-//            simpleProgressBar.setVisibility(View.VISIBLE);
-            showProgressingView();
+            simpleProgressBar.setVisibility(View.VISIBLE);
+//            showProgressingView();
         }
 
         @Override
@@ -1595,10 +1613,12 @@ public class FindHotels extends AppCompatActivity {
 
                 //HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), Integer.parseInt(ctyId), 1, roomguests, "EG", authenticationData);
 
-
+               String nationality = SharedPreferencesManger.LoadStringData(FindHotels.this,"nationality");
                 hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
-                        true, noRomes, "EG", roomguests, null, 0, filters, "true", null,
+                        true, noRomes, nationality, roomguests, null, 0, filters, "true", null,
                         0, authenticationData);
+
+
 
 
 //            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
@@ -1690,21 +1710,23 @@ public class FindHotels extends AppCompatActivity {
                         startActivity(intent);
 
 
-//                        simpleProgressBar.setVisibility(View.GONE);
-                        hideProgressingView();
+                        simpleProgressBar.setVisibility(View.GONE);
+//                        hideProgressingView();
 
 
                     }
                 } else {
 
-                    hideProgressingView();
-                    Toast.makeText(FindHotels.this, "no result found", Toast.LENGTH_SHORT).show();
+//                    hideProgressingView();
+                    simpleProgressBar.setVisibility(View.GONE);
+
+                    Toast.makeText(FindHotels.this, "No Result Found", Toast.LENGTH_SHORT).show();
                 }
 
             } catch (Exception e) {
 
-//                simpleProgressBar.setVisibility(View.GONE);
-                hideProgressingView();
+                simpleProgressBar.setVisibility(View.GONE);
+//                hideProgressingView();
 
                 new SweetAlertDialog(FindHotels.this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Please Enter All Data First")
@@ -1724,31 +1746,37 @@ public class FindHotels extends AppCompatActivity {
 
     }
 
-    ViewGroup progressView;
-    protected boolean isProgressShowing = false;
 
-    public void showProgressingView() {
 
-        if (!isProgressShowing) {
-            isProgressShowing = true;
-            progressView = (ViewGroup) getLayoutInflater().inflate(R.layout.progressbar_layout, null);
-            View v = this.findViewById(android.R.id.content).getRootView();
-            ViewGroup viewGroup = (ViewGroup) v;
-            viewGroup.addView(progressView);
-        }
-    }
 
-    public void hideProgressingView() {
-        View v = this.findViewById(android.R.id.content).getRootView();
-        ViewGroup viewGroup = (ViewGroup) v;
-        viewGroup.removeView(progressView);
-        isProgressShowing = false;
-    }
+//    ViewGroup progressView;
+//    protected boolean isProgressShowing = false;
+
+//    public void showProgressingView() {
+//
+//        if (!isProgressShowing) {
+//            isProgressShowing = true;
+//            progressView = (ViewGroup) getLayoutInflater().inflate(R.layout.progressbar_layout, null);
+//            View v = this.findViewById(android.R.id.content).getRootView();
+//            ViewGroup viewGroup = (ViewGroup) v;
+//            viewGroup.addView(progressView);
+//        }
+//    }
+//
+//    public void hideProgressingView() {
+//        View v = this.findViewById(android.R.id.content).getRootView();
+//        ViewGroup viewGroup = (ViewGroup) v;
+//        viewGroup.removeView(progressView);
+//        isProgressShowing = false;
+//    }
 
     public static long formatTimeForEvent(long pacificTime) {
         return (pacificTime + TimeZone.getTimeZone("America/Los_Angeles").getOffset(pacificTime))
                 - TimeZone.getDefault().getOffset(pacificTime);
     }
+
+
+
 
 }
 

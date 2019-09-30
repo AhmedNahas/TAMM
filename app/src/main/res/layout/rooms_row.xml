@@ -21,7 +21,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
-        android:layout_toRightOf="@+id/room_image"
+        android:layout_toEndOf="@+id/room_image"
         android:padding="5dp"
         android:textColor="@color/white"
         android:textSize="15sp" />
@@ -29,7 +29,7 @@
         <View
             android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
-            android:layout_toRightOf="@+id/room_image"
+            android:layout_toEndOf="@+id/room_image"
             android:id="@+id/lin7"
             android:background="@drawable/line1"
             android:layout_below="@+id/nametext_room"
@@ -49,7 +49,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
-        android:layout_toRightOf="@+id/room_image"
+        android:layout_toEndOf="@+id/room_image"
         tools:ignore="UnknownId" />
 
     <Button
@@ -59,7 +59,7 @@
         android:textColor="@color/black"
         android:layout_marginTop="8dp"
         android:background="@drawable/shape"
-        android:layout_toRightOf="@+id/room_image"
+        android:layout_toEndOf="@+id/room_image"
         android:layout_below="@+id/room_price"
         android:layout_width="65dp"
         android:layout_height="28dp" />

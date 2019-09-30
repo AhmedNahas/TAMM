@@ -1,5 +1,6 @@
 package net.middledleeast.tamm.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
@@ -26,6 +28,7 @@ import com.google.gson.Gson;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -35,18 +38,18 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class checkroom extends AppCompatActivity {
-    @BindView(R.id.tv_9)
-    TextView deadLine_tv;
+
 
     @BindView(R.id.check_room_close)
     ImageView checkRoomClose;
     @BindView(R.id.img_check_out)
     ImageView imgCheckOut;
+    @BindView(R.id.tv_8)
+    TextView tv8;
 
     private Button checkRoom, back;
     @BindView(R.id.tv_total_mount)
     TextView tvTotalMount;
-
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
     private String sessionId;
@@ -64,8 +67,11 @@ public class checkroom extends AppCompatActivity {
     private ArrayOfRequestedRooms arrayOfRooms = new ArrayOfRequestedRooms();
     private float sum;
     private String singlePic;
-TextView room_details_list;
+    TextView room_details_list,cancellation_fees;
     private String amenties;
+    private String untile;
+    private String fromDate;
+    private BigDecimal autoCancellationText;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -74,8 +80,7 @@ TextView room_details_list;
         setContentView(R.layout.check_room);
         ButterKnife.bind(this);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        room_details_list=findViewById(R.id.room_details_list);
-
+        room_details_list = findViewById(R.id.room_details_list);
         StrictMode.setThreadPolicy(policy);
         SharedPreferencesManger.SaveData(this, "noOfTimes", 0);
         auth();
@@ -88,6 +93,39 @@ TextView room_details_list;
             }
         });
 
+        tv8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(checkroom.this,R.style.alert_dialog_dark);
+
+                builder.setNegativeButton("OKAY",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User cancelled the dialog
+                            }
+                        });
+                View root =getLayoutInflater().inflate((R.layout.activity_cancellation_plicy_details),null);
+                builder.setView(root);
+                builder.setTitle("Cancellation Policy");
+
+
+//
+
+                AlertDialog dialog = builder.create();
+                cancellation_fees=root.findViewById(R.id.cancellation_fees);
+                cancellation_fees.setText("For Cancellation on Or After " + fromDate + " You Would be Charged " +autoCancellationText + " USD. ");
+
+                TextView deadLine_tv =root.findViewById(R.id.tv_9);
+                deadLine_tv.setText(untile);
+                dialog.show();
+
+
+            }
+        });
+
+
         Gson gson1 = new Gson();
         String reqRoomString = SharedPreferencesManger.LoadStringData(this, "arrayOfroomsreq");
 
@@ -96,117 +134,118 @@ TextView room_details_list;
         currency = SharedPreferencesManger.LoadStringData(this, "currency");
         singlePic = SharedPreferencesManger.LoadStringData(this, "singlePic");
 
-        tvTotalMount.setText("  TOTAl AMOUNT :                          " + roomPrice);
 
         Glide.with(this).load(singlePic).into(imgCheckOut);
 
-        room_details_list.setText(amenties);
+
+        if (arrayOfRooms.size()==2){
+
+            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
+            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
+            String price = totalFare.toString();
 
 
-//        if (arrayOfRooms.size()==2){
-//
-//            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
-//            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
-//            String price = totalFare.toString();
-//
-//
-//
-//            String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
-//            BigDecimal totalFare2 = arrayOfRooms.get(1).RoomRate.TotalFare;
-//            String price2 = totalFare.toString();
-//
-//
-//
-//            float finalPrice1 = Float.parseFloat(price);
-//            float finalPrice2 = Float.parseFloat(price2);
-//       sum = Float.sum(finalPrice1, finalPrice2);
-//
-//
-/////
-//        }else if (arrayOfRooms.size()==3){
-//
-//
-//
-//            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
-//            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
-//            String price = totalFare.toString();
-//
-//
-//
-//            String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
-//            BigDecimal totalFare2 = arrayOfRooms.get(1).RoomRate.TotalFare;
-//            String price2 = totalFare.toString();
-//
-//
-//            float finalPrice1 = Float.parseFloat(price);
-//            float finalPrice2 = Float.parseFloat(price2);
-//          float  sum_ = Float.sum(finalPrice1, finalPrice2);
-//
-//
-//            String roomTypeName3= arrayOfRooms.get(3).RoomTypeName;
-//            BigDecimal totalFare3 = arrayOfRooms.get(3).RoomRate.TotalFare;
-//            String price3 = totalFare.toString();
-//            float finalPrice3 = Float.parseFloat(price3);
-//
-//
-//
-//            sum = Float.sum(sum_,finalPrice3);
-//
-//
-//        }else if (arrayOfRooms.size()==4){
-//
-//            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
-//            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
-//            String price = totalFare.toString();
-//
-//
-//
-//            String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
-//            BigDecimal totalFare2 = arrayOfRooms.get(1).RoomRate.TotalFare;
-//            String price2 = totalFare.toString();
-//
-//
-//            float finalPrice1 = Float.parseFloat(price);
-//            float finalPrice2 = Float.parseFloat(price2);
-//            float  sum_ = Float.sum(finalPrice1, finalPrice2);
-//
-//
-//            String roomTypeName3= arrayOfRooms.get(3).RoomTypeName;
-//            BigDecimal totalFare3 = arrayOfRooms.get(3).RoomRate.TotalFare;
-//            String price3 = totalFare.toString();
-//            float finalPrice3 = Float.parseFloat(price3);
-//
-//
-//
-//           float sum_4 = Float.sum(sum_,finalPrice3);
-//
-//
-//            String roomTypeName4= arrayOfRooms.get(4).RoomTypeName;
-//            BigDecimal totalFare4 = arrayOfRooms.get(4).RoomRate.TotalFare;
-//            String price4 = totalFare.toString();
-//            float finalPrice4 = Float.parseFloat(price4);
-//
-//
-//
-//            sum = Float.sum(finalPrice4,sum_4);
-//
-//
-//        }else if (arrayOfRooms.size()==1){
-//
-//            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
-//            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
-//            String price = totalFare.toString();
-//
-//            float finalPrice = Float.parseFloat(price);
-//
-//
-//            sum = finalPrice;
-//
-//
-//        }
-//
-//
-//
+
+            String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
+            BigDecimal totalFare2 = arrayOfRooms.get(1).RoomRate.TotalFare;
+            String price2 = totalFare2.toString();
+
+
+
+            float finalPrice1 = Float.parseFloat(price);
+            float finalPrice2 = Float.parseFloat(price2);
+       sum = Float.sum(finalPrice1, finalPrice2);
+
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
+
+///
+        }else if (arrayOfRooms.size()==3){
+
+
+
+            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
+            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
+            String price = totalFare.toString();
+
+
+
+            String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
+            BigDecimal totalFare2 = arrayOfRooms.get(1).RoomRate.TotalFare;
+            String price2 = totalFare2.toString();
+
+
+            float finalPrice1 = Float.parseFloat(price);
+            float finalPrice2 = Float.parseFloat(price2);
+          float  sum_ = Float.sum(finalPrice1, finalPrice2);
+
+
+            String roomTypeName3= arrayOfRooms.get(3).RoomTypeName;
+            BigDecimal totalFare3 = arrayOfRooms.get(3).RoomRate.TotalFare;
+            String price3 = totalFare3.toString();
+            float finalPrice3 = Float.parseFloat(price3);
+
+
+
+            sum = Float.sum(sum_,finalPrice3);
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
+
+
+        }else if (arrayOfRooms.size()==4){
+
+            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
+            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
+            String price = totalFare.toString();
+
+
+
+            String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
+            BigDecimal totalFare2 = arrayOfRooms.get(1).RoomRate.TotalFare;
+            String price2 = totalFare2.toString();
+
+
+            float finalPrice1 = Float.parseFloat(price);
+            float finalPrice2 = Float.parseFloat(price2);
+            float  sum_ = Float.sum(finalPrice1, finalPrice2);
+
+
+            String roomTypeName3= arrayOfRooms.get(3).RoomTypeName;
+            BigDecimal totalFare3 = arrayOfRooms.get(3).RoomRate.TotalFare;
+            String price3 = totalFare3.toString();
+            float finalPrice3 = Float.parseFloat(price3);
+
+
+
+           float sum_4 = Float.sum(sum_,finalPrice3);
+
+
+            String roomTypeName4= arrayOfRooms.get(4).RoomTypeName;
+            BigDecimal totalFare4 = arrayOfRooms.get(4).RoomRate.TotalFare;
+            String price4 = totalFare4.toString();
+            float finalPrice4 = Float.parseFloat(price4);
+
+
+
+            sum = Float.sum(finalPrice4,sum_4);
+
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
+
+
+
+        }else if (arrayOfRooms.size()==1){
+
+            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
+            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
+            String price = totalFare.toString();
+
+            float finalPrice = Float.parseFloat(price);
+
+
+            sum = finalPrice;
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
+
+
+        }
+
 
 
 
@@ -219,53 +258,56 @@ TextView room_details_list;
 
 
             // TODO: 31/07/2019  error
-            roomIndexArray = gson.fromJson(roomIndexArrayStr,ArrayList.class);
+            roomIndexArray = gson.fromJson(roomIndexArrayStr, ArrayList.class);
             ArrayList<Integer> roomIndexArrayInt = new ArrayList<>();
             for (double aDouble : roomIndexArray) {
-                roomIndexArrayInt.add((int)aDouble);
+                roomIndexArrayInt.add((int) aDouble);
             }
 
             Collections.sort(roomIndexArrayInt);
 
 
-
 // FIXME: 29/07/19 booking options according to correct
 
 
-        BookingOptions bookingOptions = new BookingOptions();
-        bookingOptions.RoomCombination = new ArrayList<>();
-        RoomCombination roomCombination = new RoomCombination();
-        roomCombination.RoomIndex = new ArrayList<>();
-        roomCombination.RoomIndex = new ArrayList<>(roomIndexArrayInt);
-        bookingOptions.RoomCombination.add(roomCombination);
-        SharedPreferencesManger.SaveData(this,"roomIndexArray",null);
-        try {
+            BookingOptions bookingOptions = new BookingOptions();
+            bookingOptions.RoomCombination = new ArrayList<>();
+            RoomCombination roomCombination = new RoomCombination();
+            roomCombination.RoomIndex = new ArrayList<>();
+            roomCombination.RoomIndex = new ArrayList<>(roomIndexArrayInt);
+            bookingOptions.RoomCombination.add(roomCombination);
+            SharedPreferencesManger.SaveData(this, "roomIndexArray", null);
+            try {
 
-            HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
-
-            amenties = SharedPreferencesManger.LoadStringData(this,"amenties");
-
-            String autoCancellationText = cancelPolicies.CancelPolicies.AutoCancellationText;
+                HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
 
 
-            AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, bookingOptions, authenticationData);
 
-            String deadline = availabilityAndPricingResponse.HotelCancellationPolicies.CancelPolicies.LastCancellationDeadline.toString();
 
-            String[] arrOfStr = deadline.split("T");
+                AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, bookingOptions, authenticationData);
 
-            deadLine_tv.setText("Until : " + arrOfStr[0]);
+                autoCancellationText = availabilityAndPricingResponse.HotelCancellationPolicies.CancelPolicies.CancelPolicy.get(0).CancellationCharge;
+                fromDate = availabilityAndPricingResponse.HotelCancellationPolicies.CancelPolicies.CancelPolicy.get(0).FromDate;
 
-            String untile = deadLine_tv.getText().toString();
-            SharedPreferencesManger.SaveData(this, "Until", untile);
 
+                String deadline = availabilityAndPricingResponse.HotelCancellationPolicies.CancelPolicies.LastCancellationDeadline.toString();
+                String s = availabilityAndPricingResponse.HotelCancellationPolicies.HotelNorms.toString();
+
+
+                room_details_list.setText(s);
+
+                String[] arrOfStr = deadline.split("T");
+
+
+                untile = "Until : " + arrOfStr[0];
+                SharedPreferencesManger.SaveData(this, "Until", untile);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        }catch (Exception e){
-
 
 
         }
@@ -324,11 +366,7 @@ TextView room_details_list;
         checkRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String[] s = roomPrice.split(" ");
-                String s1 = s[0];
-                String s2 = s[1];
-                SharedPreferencesManger.SaveData(checkroom.this, "finalpriceRoom",s2);
+          SharedPreferencesManger.SaveData(checkroom.this, "finalpriceRoom", String.valueOf(sum));
 
                 startActivity(new Intent(checkroom.this, ConfirmBookingRoom.class));
 
@@ -352,7 +390,6 @@ TextView room_details_list;
 
         roomTybe = getIntent().getStringExtra("roomTybe");
         roomPrice = getIntent().getStringExtra("roomPrice");
-
 
 
         description = getIntent().getStringExtra("description");
@@ -379,6 +416,8 @@ TextView room_details_list;
         startActivity(new Intent(checkroom.this, ChooseBookingDate.class));
     }
 
+
+
     public static class transferClass {
 
         public static ArrayOfRequestedRooms arrayOfRequestedRooms;
@@ -402,4 +441,5 @@ TextView room_details_list;
         startActivity(new Intent(checkroom.this, ChooseBookingDate.class));
 
     }
+
 }
