@@ -139,7 +139,20 @@ public class AdapterPassengerInfo extends RecyclerView.Adapter<AdapterPassengerI
                         country.setCountryName(country1);
                         passenger.setCountry(country);
                         passenger.setGender(1);
-                        passenger.setType(1);
+                        String type = passengerType.get(position).getType();
+                        if (type.equals("Adult")){
+
+                            passenger.setType(1);
+
+                        }else if (type.equals("Child")){
+                            passenger.setType(2);
+
+
+                        }else if (type.equals("Infant")){
+                            passenger.setType(3);
+
+
+                        }
                         passenger.setEmail(email);
                         passenger.setMobile1(phone);
                         if (position==0){

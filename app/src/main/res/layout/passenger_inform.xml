@@ -94,7 +94,7 @@
         android:layout_below="@+id/PassengerText"
         android:id="@+id/rc_passenger_info"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="@dimen/_350sdp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
