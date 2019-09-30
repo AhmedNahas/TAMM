@@ -194,6 +194,19 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, HotelDetails.class);
+
+                intent.removeExtra("selected_hotel_name");
+                intent.removeExtra("selected_hotel_rate");
+                intent.removeExtra("hotelCode");
+                intent.removeExtra("checkInDate");
+                intent.removeExtra("checkOutDate");
+                intent.removeExtra("countryName");
+                intent.removeExtra("cityName");
+                intent.removeExtra("cityId");
+                intent.removeExtra("noOfRooms");
+                intent.removeExtra("roomGuest");
+                intent.removeExtra("resultIndex");
+
                 mHotelCode = listCodeHotels.get(position);
                 name = listnameHotel.get(position);
                 photos = listPhotoHotel.get(position);

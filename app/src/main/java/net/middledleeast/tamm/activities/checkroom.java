@@ -19,7 +19,6 @@ import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.BookingOptions;
-import com.Tamm.Hotels.wcf.CancelPolicy;
 import com.Tamm.Hotels.wcf.HotelCancellationPolicyResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.RoomCombination;
@@ -135,115 +134,120 @@ public class checkroom extends AppCompatActivity {
         currency = SharedPreferencesManger.LoadStringData(this, "currency");
         singlePic = SharedPreferencesManger.LoadStringData(this, "singlePic");
 
-        tvTotalMount.setText("  TOTAl AMOUNT :                          " + roomPrice);
 
         Glide.with(this).load(singlePic).into(imgCheckOut);
 
 
-//        if (arrayOfRooms.size()==2){
-//
-//            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
-//            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
-//            String price = totalFare.toString();
-//
-//
-//
-//            String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
-//            BigDecimal totalFare2 = arrayOfRooms.get(1).RoomRate.TotalFare;
-//            String price2 = totalFare.toString();
-//
-//
-//
-//            float finalPrice1 = Float.parseFloat(price);
-//            float finalPrice2 = Float.parseFloat(price2);
-//       sum = Float.sum(finalPrice1, finalPrice2);
-//
-//
-/////
-//        }else if (arrayOfRooms.size()==3){
-//
-//
-//
-//            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
-//            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
-//            String price = totalFare.toString();
-//
-//
-//
-//            String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
-//            BigDecimal totalFare2 = arrayOfRooms.get(1).RoomRate.TotalFare;
-//            String price2 = totalFare.toString();
-//
-//
-//            float finalPrice1 = Float.parseFloat(price);
-//            float finalPrice2 = Float.parseFloat(price2);
-//          float  sum_ = Float.sum(finalPrice1, finalPrice2);
-//
-//
-//            String roomTypeName3= arrayOfRooms.get(3).RoomTypeName;
-//            BigDecimal totalFare3 = arrayOfRooms.get(3).RoomRate.TotalFare;
-//            String price3 = totalFare.toString();
-//            float finalPrice3 = Float.parseFloat(price3);
-//
-//
-//
-//            sum = Float.sum(sum_,finalPrice3);
-//
-//
-//        }else if (arrayOfRooms.size()==4){
-//
-//            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
-//            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
-//            String price = totalFare.toString();
-//
-//
-//
-//            String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
-//            BigDecimal totalFare2 = arrayOfRooms.get(1).RoomRate.TotalFare;
-//            String price2 = totalFare.toString();
-//
-//
-//            float finalPrice1 = Float.parseFloat(price);
-//            float finalPrice2 = Float.parseFloat(price2);
-//            float  sum_ = Float.sum(finalPrice1, finalPrice2);
-//
-//
-//            String roomTypeName3= arrayOfRooms.get(3).RoomTypeName;
-//            BigDecimal totalFare3 = arrayOfRooms.get(3).RoomRate.TotalFare;
-//            String price3 = totalFare.toString();
-//            float finalPrice3 = Float.parseFloat(price3);
-//
-//
-//
-//           float sum_4 = Float.sum(sum_,finalPrice3);
-//
-//
-//            String roomTypeName4= arrayOfRooms.get(4).RoomTypeName;
-//            BigDecimal totalFare4 = arrayOfRooms.get(4).RoomRate.TotalFare;
-//            String price4 = totalFare.toString();
-//            float finalPrice4 = Float.parseFloat(price4);
-//
-//
-//
-//            sum = Float.sum(finalPrice4,sum_4);
-//
-//
-//        }else if (arrayOfRooms.size()==1){
-//
-//            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
-//            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
-//            String price = totalFare.toString();
-//
-//            float finalPrice = Float.parseFloat(price);
-//
-//
-//            sum = finalPrice;
-//
-//
-//        }
-//
-//
-//
+        if (arrayOfRooms.size()==2){
+
+            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
+            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
+            String price = totalFare.toString();
+
+
+
+            String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
+            BigDecimal totalFare2 = arrayOfRooms.get(1).RoomRate.TotalFare;
+            String price2 = totalFare2.toString();
+
+
+
+            float finalPrice1 = Float.parseFloat(price);
+            float finalPrice2 = Float.parseFloat(price2);
+       sum = Float.sum(finalPrice1, finalPrice2);
+
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
+
+///
+        }else if (arrayOfRooms.size()==3){
+
+
+
+            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
+            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
+            String price = totalFare.toString();
+
+
+
+            String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
+            BigDecimal totalFare2 = arrayOfRooms.get(1).RoomRate.TotalFare;
+            String price2 = totalFare2.toString();
+
+
+            float finalPrice1 = Float.parseFloat(price);
+            float finalPrice2 = Float.parseFloat(price2);
+          float  sum_ = Float.sum(finalPrice1, finalPrice2);
+
+
+            String roomTypeName3= arrayOfRooms.get(3).RoomTypeName;
+            BigDecimal totalFare3 = arrayOfRooms.get(3).RoomRate.TotalFare;
+            String price3 = totalFare3.toString();
+            float finalPrice3 = Float.parseFloat(price3);
+
+
+
+            sum = Float.sum(sum_,finalPrice3);
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
+
+
+        }else if (arrayOfRooms.size()==4){
+
+            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
+            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
+            String price = totalFare.toString();
+
+
+
+            String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
+            BigDecimal totalFare2 = arrayOfRooms.get(1).RoomRate.TotalFare;
+            String price2 = totalFare2.toString();
+
+
+            float finalPrice1 = Float.parseFloat(price);
+            float finalPrice2 = Float.parseFloat(price2);
+            float  sum_ = Float.sum(finalPrice1, finalPrice2);
+
+
+            String roomTypeName3= arrayOfRooms.get(3).RoomTypeName;
+            BigDecimal totalFare3 = arrayOfRooms.get(3).RoomRate.TotalFare;
+            String price3 = totalFare3.toString();
+            float finalPrice3 = Float.parseFloat(price3);
+
+
+
+           float sum_4 = Float.sum(sum_,finalPrice3);
+
+
+            String roomTypeName4= arrayOfRooms.get(4).RoomTypeName;
+            BigDecimal totalFare4 = arrayOfRooms.get(4).RoomRate.TotalFare;
+            String price4 = totalFare4.toString();
+            float finalPrice4 = Float.parseFloat(price4);
+
+
+
+            sum = Float.sum(finalPrice4,sum_4);
+
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
+
+
+
+        }else if (arrayOfRooms.size()==1){
+
+            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
+            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
+            String price = totalFare.toString();
+
+            float finalPrice = Float.parseFloat(price);
+
+
+            sum = finalPrice;
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
+
+
+        }
+
+
+
 
 
         String roomIndexArrayStr = SharedPreferencesManger.LoadStringData(this, "roomIndexArray");
@@ -288,9 +292,9 @@ public class checkroom extends AppCompatActivity {
 
                 String deadline = availabilityAndPricingResponse.HotelCancellationPolicies.CancelPolicies.LastCancellationDeadline.toString();
                 String s = availabilityAndPricingResponse.HotelCancellationPolicies.HotelNorms.toString();
-                CancelPolicy cancelPolicy = availabilityAndPricingResponse.HotelCancellationPolicies.CancelPolicies.CancelPolicy.get(0);
 
-                room_details_list.setText(s + cancelPolicy.toString());
+
+                room_details_list.setText(s);
 
                 String[] arrOfStr = deadline.split("T");
 
@@ -362,11 +366,7 @@ public class checkroom extends AppCompatActivity {
         checkRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String[] s = roomPrice.split(" ");
-                String s1 = s[0];
-                String s2 = s[1];
-                SharedPreferencesManger.SaveData(checkroom.this, "finalpriceRoom", s2);
+          SharedPreferencesManger.SaveData(checkroom.this, "finalpriceRoom", String.valueOf(sum));
 
                 startActivity(new Intent(checkroom.this, ConfirmBookingRoom.class));
 

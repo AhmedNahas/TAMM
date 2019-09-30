@@ -12,7 +12,6 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -1719,7 +1718,9 @@ public class FindHotels extends AppCompatActivity {
                 } else {
 
 //                    hideProgressingView();
-                    Toast.makeText(FindHotels.this, "no result found", Toast.LENGTH_SHORT).show();
+                    simpleProgressBar.setVisibility(View.GONE);
+
+                    Toast.makeText(FindHotels.this, "No Result Found", Toast.LENGTH_SHORT).show();
                 }
 
             } catch (Exception e) {
@@ -1748,8 +1749,8 @@ public class FindHotels extends AppCompatActivity {
 
 
 
-    ViewGroup progressView;
-    protected boolean isProgressShowing = false;
+//    ViewGroup progressView;
+//    protected boolean isProgressShowing = false;
 
 //    public void showProgressingView() {
 //
