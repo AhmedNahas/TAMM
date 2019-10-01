@@ -1379,6 +1379,8 @@
     <string name="reference_number">Reference Number :</string>
     <string name="amount">Amount :</string>
     <string name="post_code">Post Code :</string>
+    <string name="basic_amenities">Main Amenities</string>
+    <string name="not_available">Not Available</string>
 
 
 </resources>

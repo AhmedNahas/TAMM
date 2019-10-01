@@ -19,6 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.Tamm.Hotels.wcf.ArrayOfImageUrlDetails;
 import com.Tamm.Hotels.wcf.ArrayOfRoomInfo;
+import com.Tamm.Hotels.wcf.ArrayOfString4;
 import com.Tamm.Hotels.wcf.ArrayOfString5;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
@@ -87,6 +88,7 @@ public class HotelDetails extends AppCompatActivity {
     ImageView iv_booked_hotel_details;
     private boolean ClickDetailsHotel=false;
     private Integer accountPlan;
+    TextView basic_amenities_details;
 
 
     @SuppressLint("SetTextI18n")
@@ -100,6 +102,7 @@ public class HotelDetails extends AppCompatActivity {
 
 
         toolbar_back1=findViewById(R.id.toolbar_back1);
+        basic_amenities_details=findViewById(R.id.basic_amenities_details);
 
         toolbar_back1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,7 +198,9 @@ public class HotelDetails extends AppCompatActivity {
             HotelDetailsResponse hotelDetailsResponse = service.HotelDetails(resultIndex, sessionId, mHotelCode, "EN", authenticationData);
 
 
+            ArrayOfString4 description = hotelDetailsResponse.HotelDetails.HotelFacilities;
 
+            basic_amenities_details.setText(description.toString());
 
             ArrayOfImageUrlDetails imageUrls = hotelDetailsResponse.HotelDetails.ImageUrls;
             for (int i = 0; i < imageUrls.size(); i++) {
