@@ -33,7 +33,6 @@ import com.google.gson.GsonBuilder;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.RecommendedOneWay;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
-import net.middledleeast.tamm.model.CountPassengerAndType;
 
 import java.io.InputStream;
 import java.net.InetAddress;
@@ -117,6 +116,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
     ArrayList<Long> ListnoOfSeatAvailable = new ArrayList<>();
 
 
+
     private InputStream inputStream;
     private long JourneyType = 1;
     private String mReturnTime;
@@ -138,6 +138,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_proceed_bey_bey_original, container, false);
         password = "App02072019";
+
 
 
         SharedPreferencesManger.remove(getContext(), "to");
@@ -169,6 +170,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
         return_passe = view.findViewById(R.id.return_passe);
         multi_cities = view.findViewById(R.id.multi_cities);
         progressFlight = view.findViewById(R.id.circle_loading_view_flight);
+
+
 
 
         progressFlight.setVisibility(View.INVISIBLE);
@@ -573,7 +576,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 myCalendar.set(Calendar.MONTH, month);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                String myFormat = "yyyy-MM-dd' T'00:00:00";
+                String myFormat ="yyyy-MM-dd' T'00:00:00";
                 SimpleDateFormat start = new SimpleDateFormat(myFormat, Locale.US);
                 time2 = myCalendar.getTime();
                 mReturnTime = start.format(myCalendar.getTime());
@@ -584,6 +587,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 String dayOfTheWeek = (String) DateFormat.format("EEE", time); // Thursday
                 String day = (String) DateFormat.format("dd", time); // Thursday
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
+
+
 
 
                 daDepartureTimeyR = (String) DateFormat.format(myFormat, time);
@@ -691,6 +696,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 //11.3    // "2019-09-20 T00:00:00" 2019-09-20 T18:56:17
 
 
+
                 segment.setPreferredDepartureTime(daDepartureTimeyO);
                 segment.setPreferredArrivalTime(daDepartureTimeyO);
 
@@ -699,14 +705,15 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 //  11.4
 
 
-                // segment.setPreferredArrivalTime(mReturnTime);
+
+               // segment.setPreferredArrivalTime(mReturnTime);
                 // ic_add segments
 
 
-                if (JourneyType == 1) {
+                if (JourneyType==1){
 
                     segments.add(segment);
-                } else {
+                }else {
                     segments.add(segment);
                     segments.add(segment2);
 
@@ -726,6 +733,10 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
                         String tokenId = response.body().getTokenId();
                         List<List<SearchFlightsResponse.Result>> results = response.body().getResults();
+
+
+
+
 
 
                         if (successful && results != null && results.size() > 0) {
@@ -752,51 +763,23 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
                             ListResult.addAll(results1);
 
-                            List<CountPassengerAndType> as = new ArrayList<>();
 
-
-                            for (long i = 0; i < adult; i++) {
-
-
-                                as.add(new CountPassengerAndType("Adult", (int) adult));
-
-                            }
-                            if (child!=0){
-                                for (long i = 0; i < child; i++) {
-
-                                    as.add(new CountPassengerAndType("Child", (int) child));
-
-                                }
-
-
-                            }
-                            if (infant!=0){
-                                for (long i = 0; i < infant; i++) {
-                                    as.add(new CountPassengerAndType("Infant", (int) infant));
-
-
-                                }
-
-                            }
-
-                             ArrayList<CountPassengerAndType> countPassengerAndTypes = new ArrayList<>();
-                             countPassengerAndTypes.addAll(as);
                             Intent intent = new Intent(getContext(), RecommendedOneWay.class);
 
                             intent.putExtra("ListResult", ListResult);
-                            intent.putExtra("passenger_type", countPassengerAndTypes);
 
 
-                            if (JourneyType == 1) {
 
-                                SharedPreferencesManger.SaveData(getContext(), "journyTipe", 1);
+                            if (JourneyType==1){
 
-                            } else {
-                                SharedPreferencesManger.SaveData(getContext(), "journyTipe", 2);
+                                SharedPreferencesManger.SaveData(getContext(),"journyTipe", 1);
+
+                            }else {
+                                SharedPreferencesManger.SaveData(getContext(),"journyTipe", 2);
 
 
                             }
-                            SharedPreferencesManger.SaveData(getContext(), "flightCabinClass", flightCabinClass);
+                            SharedPreferencesManger.SaveData(getContext(),"flightCabinClass",flightCabinClass);
 
                             getContext().startActivity(intent);
 
@@ -866,9 +849,9 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 myCalendar.set(Calendar.MONTH, month);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                String myFormat = "yyyy-MM-dd' T'00:00:00"; //In which you need put here
+                String myFormat ="yyyy-MM-dd' T'00:00:00"; //In which you need put here
 //                SimpleDateFormat start = new SimpleDateFormat(myFormat, Locale.US);
-                //  mstartTime = start.format(myCalendar.getTime());
+              //  mstartTime = start.format(myCalendar.getTime());
                 //  startDate.setText(mstartTime);
                 time1 = myCalendar.getTime();
 
@@ -878,8 +861,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 String day = (String) DateFormat.format("dd", time); // Thursday
                 String monthString = (String) DateFormat.format("MMM", time); // Thursday
 
-                daDepartureTimeyO = (String) DateFormat.format(myFormat, time); // 019-09-20 T00:00:00
-                SharedPreferencesManger.SaveData(getActivity(), "A_startDateS", dayOfTheWeek + " " + day + " " + monthString);
+                 daDepartureTimeyO = (String) DateFormat.format(myFormat, time); // 019-09-20 T00:00:00
+                SharedPreferencesManger.SaveData(getActivity(), "A_startDateS", dayOfTheWeek + " " + day + " " + monthString );
 
 // 2019-09-20 T00:00:00
                 departure.setText(dayOfTheWeek + "," + day + " " + monthString);
@@ -891,6 +874,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
         new DatePickerDialog(getActivity(), date, myCalendar.get(YEAR),
                 myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
     }
+
+
 
 
 }

@@ -19,12 +19,10 @@ import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.activities.FlightsSummary;
 import net.middledleeast.tamm.activities.Passenger_inform;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
-import net.middledleeast.tamm.model.CountPassengerAndType;
 
 import java.io.InputStream;
 import java.io.Serializable;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import FlightApi.SearchFlightsResponse;
@@ -39,15 +37,13 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
     private Context context;
 
     List<SearchFlightsResponse.Result> ListResult;
-    List<CountPassengerAndType> passenger_type;
 
 
 
-    public ChooseFlightAdapter(Context context, List<SearchFlightsResponse.Result> ListResult,
-                               ArrayList<CountPassengerAndType> passenger_type) {
+    public ChooseFlightAdapter(Context context, List<SearchFlightsResponse.Result> ListResult
+    ) {
         this.context = context;
         this.ListResult = ListResult;
-        this.passenger_type = passenger_type;
 
     }
 
@@ -1121,8 +1117,6 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
                 Intent intent = new Intent(context, Passenger_inform.class);
 
                 intent.putExtra("segments", (Serializable) segments);
-                intent.putExtra("passenger_type", (Serializable) passenger_type);
-
 if (journyTipe==2){
 
     intent.putExtra("segmentsReturn", (Serializable) result.getSegments().get(1));
@@ -1153,7 +1147,303 @@ if (journyTipe==2){
 
 
 
+//                SharedPreferencesManger.SaveData(context, "size", size);
+//                SharedPreferencesManger.SaveData(context, "sizeReturn", sizeReturn);
 
+
+//                if (size == 1||sizeReturn==1) {
+//
+//                    SharedPreferencesManger.SaveData(context, "bookingClass", bookingClass);
+//
+//                    SharedPreferencesManger.SaveData(context, "logoOneWaySize1", airlineCode);
+//
+//                    SharedPreferencesManger.SaveData(context, "airline", stringResourceByName);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameOrogin1", countryNameOrogin1);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameDestination1", countryNameDestination1);
+//
+//                    SharedPreferencesManger.SaveData(context, "cabinBaggage", cabinBaggage);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameDestination1", CityNameDestination1);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameOrogin1", CityNameOrogin1);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "groundTime", groundTime);
+//
+//                    SharedPreferencesManger.SaveData(context, "direct", "Direct");
+//
+//                    SharedPreferencesManger.SaveData(context, "additionalBaggage", additionalBaggage);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "flightNumberSize1", flightNumberSize1);
+//
+//                    SharedPreferencesManger.SaveData(context, "departureTime", departureTime);
+//
+//                    SharedPreferencesManger.SaveData(context, "arrivalTime", arrivalTime);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryCodeDestnation1", countryCodeDestnation1);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryCodeOrigin1", countryCodeOrigin1);
+//
+//
+/////
+//                    SharedPreferencesManger.SaveData(context, "countryNameOrogin1Return", countryNameOrogin1Return);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameDestination1Return", countryNameDestination1Return);
+//
+//                    SharedPreferencesManger.SaveData(context, "cabinBaggageReturn", cabinBaggageReturn);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameDestination1Return", CityNameDestination1Return);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameOrogin1Return", CityNameOrogin1Return);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "groundTimeReturn", groundTimeReturn);
+//
+//                    SharedPreferencesManger.SaveData(context, "directReturn", "Direct");
+//
+//                    SharedPreferencesManger.SaveData(context, "additionalBaggageReturn", additionalBaggageReturn);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "flightNumberSize1Return", flightNumberSize1Return);
+//
+//                    SharedPreferencesManger.SaveData(context, "departureTimeReturn", departureTimeReturn);
+//
+//                    SharedPreferencesManger.SaveData(context, "arrivalTimeReturn", arrivalTimeReturn);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryCodeDestnation1Return", countryCodeDestnation1Return);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryCodeOrigin1Return", countryCodeOrigin1Return);
+//
+//                    SharedPreferencesManger.SaveData(context, "airlineReturn", stringResourceByNameReturn);
+//                    SharedPreferencesManger.SaveData(context, "bookingClassReturn", bookingClassReturn);
+//                    SharedPreferencesManger.SaveData(context, "airlineCode_return", airlineCode_return);
+//
+//
+//
+//
+//
+//                } else if (size == 2||sizeReturn==2) {
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameOroginSize2_1", countryNameOroginSize2_1);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameDestinationSize2_1", countryNameDestinationSize2_1);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameOroginSize2_2", countryNameOroginSize2_2);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameDestinationSize2_2", countryNameDestinationSize2_2);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameDestinationSize2_1", CityNameDestinationSize2_1);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameOroginSize2_1", CityNameOroginSize2_1);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameDestinationSize2_2", CityNameDestinationSize2_2);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameOroginSize2_2", CityNameOroginSize2_2);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "cabinBaggageSize2", cabinBaggageSize2);
+//
+//                    SharedPreferencesManger.SaveData(context, "direct", "Transit");
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "groundTimeSiz2", groundTimeSiz2);
+//
+//                    SharedPreferencesManger.SaveData(context, "flightNumberSize2_1", flightNumberSize2_1);
+//                    SharedPreferencesManger.SaveData(context, "flightNumberSize2_1", flightNumberSize2_2);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "departureTimeSize2", departureTimeSize2);
+//
+//                    SharedPreferencesManger.SaveData(context, "arrivalTimeSize2", arrivalTimeSize2);
+//
+////                    code country
+//                    SharedPreferencesManger.SaveData(context, "countryCodeDestnationSize2_1", countryCodeDestnationSize2_1);
+//                    SharedPreferencesManger.SaveData(context, "countryCodeOriginSize2_1", countryCodeOriginSize2_1);
+//                    SharedPreferencesManger.SaveData(context, "countryCodeDestnationSize2_2", countryCodeDestnationSize2_2);
+//                    SharedPreferencesManger.SaveData(context, "countryCodeOriginSize2_2", countryCodeOriginSize2_2);
+//                    SharedPreferencesManger.SaveData(context, "additionalBaggageSiz2", additionalBaggageSiz2);
+//
+//                } else if (size == 3) {
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameOroginSize3_1", countryNameOroginSize3_1);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameDestinationSize3_1", countryNameDestinationSize3_1);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameOroginSize3_2", countryNameOroginSize3_2);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameDestinationSize3_2", countryNameDestinationSize3_2);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameOroginSize3_3", countryNameOroginSize3_3);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameDestinationSize3_3", countryNameDestinationSize3_3);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameDestinationSize3_1", CityNameDestinationSize3_1);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameOroginSize3_1", CityNameOroginSize3_1);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameDestination3_2", CityNameDestination3_2);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameOroginSiz3_2", CityNameOroginSiz3_2);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameDestinationSize3_3", CityNameDestinationSize3_3);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameOroginsize3_3", CityNameOroginsize3_3);
+//
+//                    SharedPreferencesManger.SaveData(context, "cabinBaggageSize3", cabinBaggageSize3);
+//
+//                    SharedPreferencesManger.SaveData(context, "direct", "Transit");
+//                    SharedPreferencesManger.SaveData(context, "flightNumberSize2_1", flightNumberSize3_1);
+//                    SharedPreferencesManger.SaveData(context, "flightNumberSize2_1", flightNumberSize3_2);
+//                    SharedPreferencesManger.SaveData(context, "flightNumberSize2_1", flightNumberSize3_3);
+//                    SharedPreferencesManger.SaveData(context, "groundTimeSiz3", groundTimeSiz3);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "departureTimeAll3", departureTimeAll3);
+//                    SharedPreferencesManger.SaveData(context, "arrivalTimeAll3", arrivalTimeAll3);
+//
+//
+////                    code country
+//                    SharedPreferencesManger.SaveData(context, "countryCodeDestnationSize3_1", countryCodeDestnationSize3_1);
+//                    SharedPreferencesManger.SaveData(context, "countryCodeOriginSize3_1", countryCodeOriginSize3_1);
+//                    SharedPreferencesManger.SaveData(context, "countryCodeDestnationSize3_2", countryCodeDestnationSize3_2);
+//                    SharedPreferencesManger.SaveData(context, "countryCodeOriginSize3_2", countryCodeOriginSize3_2);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryCodeDestnationSize3_2", countryCodeDestnationSize3_3);
+//                    SharedPreferencesManger.SaveData(context, "countryCodeOriginSize3_2", countryCodeOriginSize3_3);
+//                    SharedPreferencesManger.SaveData(context, "additionalBaggageSize3", additionalBaggageSize3);
+//
+//
+//                } else if (size == 4) {
+//                    SharedPreferencesManger.SaveData(context, "groundTimeSiz4", groundTimeSiz4);
+//
+//                    SharedPreferencesManger.SaveData(context, "flightNumberSize2_1", flightNumberSize4_1);
+//                    SharedPreferencesManger.SaveData(context, "flightNumberSize2_1", flightNumberSize4_2);
+//                    SharedPreferencesManger.SaveData(context, "flightNumberSize2_1", flightNumberSize4_3);
+//                    SharedPreferencesManger.SaveData(context, "flightNumberSize2_1", flightNumberSize4_4);
+//
+//                    SharedPreferencesManger.SaveData(context, "direct", "Transit");
+//
+//                    SharedPreferencesManger.SaveData(context, "departureTimeAll4", departureTimeAll4);
+//
+//                    SharedPreferencesManger.SaveData(context, "arrivalTimeAll4", arrivalTimeAll4);
+//                    SharedPreferencesManger.SaveData(context, "cabinBaggageSiz4_4", cabinBaggageSiz4_4);
+//
+//                    SharedPreferencesManger.SaveData(context, "additionalBaggageSiz4_4", additionalBaggageSiz4_4);
+//
+//
+////                    code country
+//                    SharedPreferencesManger.SaveData(context, "countryCodeDestnationSize4_1", countryCodeDestnationSize4_1);
+//                    SharedPreferencesManger.SaveData(context, "countryCodeOriginSize4_1", countryCodeOriginSize4_1);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryCodeDestnationSize4_2", countryCodeDestnationSize4_2);
+//                    SharedPreferencesManger.SaveData(context, "countryCodeOriginSize4_2", countryCodeOriginSize4_2);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryCodeDestnationSize4_3", countryCodeDestnationSize4_3);
+//                    SharedPreferencesManger.SaveData(context, "countryCodeOriginSize4_3", countryCodeOriginSize4_3);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryCodeDestnationSize4_3", countryCodeDestnationSize4_4);
+//                    SharedPreferencesManger.SaveData(context, "countryCodeOriginSize4_3", countryCodeOriginSize4_4);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameDestinationSiz4_1", CityNameDestinationSiz4_1);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameOroginSiz4_1", CityNameOroginSiz4_1);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameDestinationSiz4_2", CityNameDestinationSiz4_2);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameOroginSiz4_2", CityNameOroginSiz4_2);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameDestinationSiz4_3", CityNameDestinationSiz4_3);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameOroginSiz4_3", CityNameOroginSiz4_3);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameDestinationSiz4_4", CityNameDestinationSiz4_4);
+//
+//                    SharedPreferencesManger.SaveData(context, "CityNameOroginSiz4_4", CityNameOroginSiz4_4);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameOroginSize4_1", countryNameOroginSize4_1);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameDestinationSize4_1", countryNameDestinationSize4_1);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameOroginSize4_2", countryNameOroginSize4_2);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameDestinationSize4_2", countryNameDestinationSize4_2);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameOroginSize4_3", countryNameOroginSize4_3);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameDestinationSize4_3", countryNameDestinationSize4_3);
+//
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameOroginSize4_4", countryNameOroginSize4_4);
+//
+//                    SharedPreferencesManger.SaveData(context, "countryNameDestinationSize4_4", countryNameDestinationSize4_4);
+//
+//
+//                }
+//
+//
+////                SharedPreferencesManger.SaveData(context, "Distnation", Distnation);
+////                SharedPreferencesManger.SaveData(context, "Origin", Origin);
+////
+////                SharedPreferencesManger.SaveData(context, "depuruerTime", t);
+////                SharedPreferencesManger.SaveData(context, "arriveTime", s);
+////
+////
+////                SharedPreferencesManger.SaveData(context, "A_TotalFare", df.format(totlalPrice));
+////                SharedPreferencesManger.SaveData(context, "A_typeFare", typeFare);
+////
+////                SharedPreferencesManger.SaveData(context, "A_airlin_name", airlin_name);
+////                SharedPreferencesManger.SaveData(context, "A_duration", duration);
+////
+////                //
+////                SharedPreferencesManger.SaveData(context, "A_CabinBaggage", CabinBaggage);
+////                SharedPreferencesManger.SaveData(context, "A_IncludedBaggage", IncludedBaggage);
+////
+////                SharedPreferencesManger.SaveData(context, "A_deTime", deTime);
+////                SharedPreferencesManger.SaveData(context, "A_arrTime", arrTime);
+////
+////                SharedPreferencesManger.SaveData(context, "A_destination", destination);
+////                SharedPreferencesManger.SaveData(context, "A_origin", origin);
+////
+////                SharedPreferencesManger.SaveData(context, "flightNumber", flightNumber);
+////                SharedPreferencesManger.SaveData(context, "noOfSetAvaliable", noOfSetAvaliable);
+////                SharedPreferencesManger.SaveData(context, "TotalFare", df.format(totlalPrice));
+////                SharedPreferencesManger.SaveData(context, "typeFare", typeFare);
+//
+//
+//                if (size == 1) {
+//
+//                    context.startActivity(intent);
+//
+//                } else {
+//
+//
+//                    Toast.makeText(context, "Flight Available Just For Direct New ", Toast.LENGTH_SHORT).show();
+//                }
+
+
+//                 intent to payment use it later
+//                Intent intent = new Intent(context, PaymentActivity.class);
+//                intent.putExtra("mId", 3);
+
+
+                // context.startActivity(intent);
 
             }
         });
