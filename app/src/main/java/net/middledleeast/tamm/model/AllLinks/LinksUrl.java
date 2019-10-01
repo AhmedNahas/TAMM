@@ -38,7 +38,7 @@ public class LinksUrl {
     // FRAGMENT.....................
 
 
-    public static String URL_BEST_FLIGHT = "http://egyptgoogle.com/bestflight/bestflightjson.php";
+    public static String URL_BEST_FLIGHT = "http://egyptgoogle.com/backend/bestflight/bestflightjson.php";
 
     public static String URL_BEST_HOTEL = "http://egyptgoogle.com/backend/besthotels/besthotels.php";
 
