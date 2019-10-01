@@ -4,7 +4,9 @@ package FlightApi;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Fare {
+import java.io.Serializable;
+
+public class Fare implements Serializable {
 
     @SerializedName("TotalFare")
     @Expose
