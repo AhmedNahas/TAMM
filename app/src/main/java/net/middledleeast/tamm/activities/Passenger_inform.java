@@ -434,8 +434,68 @@ public class Passenger_inform extends AppCompatActivity {
     RelativeLayout relativeInfant5;
     @BindView(R.id.scroll_passenger_inform)
     ScrollView scrollPassengerInform;
+    @BindView(R.id.passport_child_no1)
+    EditText passportChildNo1;
+    @BindView(R.id.tv_issue_Date_child_1)
+    TextView tvIssueDateChild1;
+    @BindView(R.id.tv_end_date_child_1)
+    TextView tvEndDateChild1;
+    @BindView(R.id.passport_child_no2)
+    EditText passportChildNo2;
+    @BindView(R.id.tv_issue_Date_child_2)
+    TextView tvIssueDateChild2;
+    @BindView(R.id.tv_end_date_child_2)
+    TextView tvEndDateChild2;
+    @BindView(R.id.passport_child_no3)
+    EditText passportChildNo3;
+    @BindView(R.id.tv_issue_Date_child_3)
+    TextView tvIssueDateChild3;
+    @BindView(R.id.tv_end_date_child_3)
+    TextView tvEndDateChild3;
+    @BindView(R.id.passport_child_no4)
+    EditText passportChildNo4;
+    @BindView(R.id.tv_issue_Date_child_4)
+    TextView tvIssueDateChild4;
+    @BindView(R.id.tv_end_date_child_4)
+    TextView tvEndDateChild4;
+    @BindView(R.id.passport_child_no5)
+    EditText passportChildNo5;
+    @BindView(R.id.tv_issue_Date_child_5)
+    TextView tvIssueDateChild5;
+    @BindView(R.id.tv_end_date_child_5)
+    TextView tvEndDateChild5;
+    @BindView(R.id.passport_infant_no1)
+    EditText passportInfantNo1;
+    @BindView(R.id.tv_issue_Date_infant_1)
+    TextView tvIssueDateInfant1;
+    @BindView(R.id.tv_end_date_infant_1)
+    TextView tvEndDateInfant1;
+    @BindView(R.id.passport_infant_no2)
+    EditText passportInfantNo2;
+    @BindView(R.id.tv_issue_Date_infant_2)
+    TextView tvIssueDateInfant2;
+    @BindView(R.id.tv_end_date_infant_2)
+    TextView tvEndDateInfant2;
+    @BindView(R.id.passport_infant_no3)
+    EditText passportInfantNo3;
+    @BindView(R.id.tv_issue_Date_infant_3)
+    TextView tvIssueDateInfant3;
+    @BindView(R.id.tv_end_date_infant_3)
+    TextView tvEndDateInfant3;
+    @BindView(R.id.passport_infant_no4)
+    EditText passportInfantNo4;
+    @BindView(R.id.tv_issue_Date_infant_4)
+    TextView tvIssueDateInfant4;
+    @BindView(R.id.tv_end_date_infant_4)
+    TextView tvEndDateInfant4;
+    @BindView(R.id.passport_infant_no5)
+    EditText passportInfantNo5;
+    @BindView(R.id.tv_issue_Date_infant_5)
+    TextView tvIssueDateInfant5;
+    @BindView(R.id.tv_end_date_infant_5)
+    TextView tvEndDateInfant5;
     private TextView datebirthadult, datebirthchild, datebirthinfant;
-    private DatePickerDialog.OnDateSetListener mDateSetListener1, mDateSetListener2, mDateSetListener3, mDateSetListener4, mDateSetListener5 ,mDateSetListener6 ;
+    private DatePickerDialog.OnDateSetListener mDateSetListener1, mDateSetListener2, mDateSetListener3, mDateSetListener4, mDateSetListener5, mDateSetListener6;
     ArrayAdapter mrmiss1adapter, mrmiss2adapter, mrmiss3adapter;
     ArrayList<String> mrmiss1array, mrmiss2array, mrmiss3array;
     Button confirm;
@@ -445,10 +505,10 @@ public class Passenger_inform extends AppCompatActivity {
     private boolean notFailed;
     private InputStream inputStream;
     private List<String> list_nationalites = new ArrayList<>();
-    private String MDataMrmisAdult, MDataMrmisChild, MDataMrmisInfent ,MDataMrmisChild2,
-    MDataMrmisChild3,
+    private String MDataMrmisAdult, MDataMrmisChild, MDataMrmisInfent, MDataMrmisChild2,
+            MDataMrmisChild3,
             MDataMrmisChild4,
-    MDataMrmisChild5;
+            MDataMrmisChild5;
 
     RelativeLayout relative_back_passenger_inform;
     ImageView iv_booked_passenger_inform;
@@ -456,18 +516,18 @@ public class Passenger_inform extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener mDateSetListener7;
     private DatePickerDialog.OnDateSetListener mDateSetListener8;
     private String MDataMrmisAdult2;
-    private DatePickerDialog.OnDateSetListener mDateSetListener9 , mDateSetListener10 , mDateSetListener11 , mDateSetListener12 , mDateSetListener13 , mDateSetListener14 ,
-            mDateSetListener15  , mDateSetListener16 ,  mDateSetListener17  ,   mDateSetListener18,
-    mDateSetListener19,
+    private DatePickerDialog.OnDateSetListener mDateSetListener9, mDateSetListener10, mDateSetListener11, mDateSetListener12, mDateSetListener13, mDateSetListener14,
+            mDateSetListener15, mDateSetListener16, mDateSetListener17, mDateSetListener18,
+            mDateSetListener19,
             mDateSetListener20,
-    mDateSetListener21   ,    mDateSetListener22,
-    mDateSetListener23,
+            mDateSetListener21, mDateSetListener22,
+            mDateSetListener23,
             mDateSetListener24,
-    mDateSetListener25;
-    private String MDataMrmisAdult5 , MDataMrmisAdult4 , MDataMrmisAdult3  ,  MDataMrmisInfent2,
-    MDataMrmisInfent3,
+            mDateSetListener25;
+    private String MDataMrmisAdult5, MDataMrmisAdult4, MDataMrmisAdult3, MDataMrmisInfent2,
+            MDataMrmisInfent3,
             MDataMrmisInfent4,
-    MDataMrmisInfent5 ;
+            MDataMrmisInfent5;
 
     @SuppressLint("StaticFieldLeak")
     @Override
@@ -513,10 +573,9 @@ public class Passenger_inform extends AppCompatActivity {
         mrmisinfent = findViewById(R.id.mromiss_infant1);
 
 
-    long adult = SharedPreferencesManger.LoadLongData(this, "adult");
+        long adult = SharedPreferencesManger.LoadLongData(this, "adult");
         long child = SharedPreferencesManger.LoadLongData(this, "child");
         long infant = SharedPreferencesManger.LoadLongData(this, "infant");
-
 
 
         dateOfBirthAdult2.setOnClickListener(new View.OnClickListener() {
@@ -574,7 +633,6 @@ public class Passenger_inform extends AppCompatActivity {
                 dialog.show();
 
 
-
             }
         });
         mDateSetListener7 = new DatePickerDialog.OnDateSetListener() {
@@ -585,7 +643,6 @@ public class Passenger_inform extends AppCompatActivity {
 
                 String date = month + "/" + day + "/" + year;
                 tvIssueDate2.setText(date);
-
 
 
             }
@@ -611,9 +668,6 @@ public class Passenger_inform extends AppCompatActivity {
                 dialog.show();
 
 
-
-
-
             }
         });
         mDateSetListener8 = new DatePickerDialog.OnDateSetListener() {
@@ -624,7 +678,6 @@ public class Passenger_inform extends AppCompatActivity {
 
                 String date = month + "/" + day + "/" + year;
                 tvEndDat2.setText(date);
-
 
 
             }
@@ -924,7 +977,6 @@ public class Passenger_inform extends AppCompatActivity {
                 tvIssueDate5.setText(date);
 
 
-
             }
 
         };
@@ -948,12 +1000,9 @@ public class Passenger_inform extends AppCompatActivity {
                 tvEndDat3.setText(date);
 
 
-
             }
 
         };
-
-
 
 
         tvEndDat4.setOnClickListener(new View.OnClickListener() {
@@ -973,11 +1022,9 @@ public class Passenger_inform extends AppCompatActivity {
                 tvEndDat4.setText(date);
 
 
-
             }
 
         };
-
 
 
         tvEndDat5.setOnClickListener(new View.OnClickListener() {
@@ -987,7 +1034,6 @@ public class Passenger_inform extends AppCompatActivity {
 
             }
         });
-
 
 
         mDateSetListener17 = new DatePickerDialog.OnDateSetListener() {
@@ -1000,18 +1046,9 @@ public class Passenger_inform extends AppCompatActivity {
                 tvEndDat5.setText(date);
 
 
-
             }
 
         };
-
-
-
-
-
-
-
-
 
 
         dateOfBirthChild2.setOnClickListener(new View.OnClickListener() {
@@ -1031,7 +1068,6 @@ public class Passenger_inform extends AppCompatActivity {
 
                 String date = month + "/" + day + "/" + year;
                 dateOfBirthChild2.setText(date);
-
 
 
             }
@@ -1057,7 +1093,6 @@ public class Passenger_inform extends AppCompatActivity {
                 dateOfBirthChild3.setText(date);
 
 
-
             }
 
         };
@@ -1079,7 +1114,6 @@ public class Passenger_inform extends AppCompatActivity {
 
                 String date = month + "/" + day + "/" + year;
                 dateOfBirthChild4.setText(date);
-
 
 
             }
@@ -1104,16 +1138,9 @@ public class Passenger_inform extends AppCompatActivity {
                 dateOfBirthChild5.setText(date);
 
 
-
             }
 
         };
-
-
-
-
-
-
 
 
         dateOfBirthAdultInfant2.setOnClickListener(new View.OnClickListener() {
@@ -1135,11 +1162,9 @@ public class Passenger_inform extends AppCompatActivity {
                 dateOfBirthAdultInfant2.setText(date);
 
 
-
             }
 
         };
-
 
 
         dateOfBirthAdultInfant3.setOnClickListener(new View.OnClickListener() {
@@ -1160,11 +1185,9 @@ public class Passenger_inform extends AppCompatActivity {
                 dateOfBirthAdultInfant3.setText(date);
 
 
-
             }
 
         };
-
 
 
         dateOfBirthAdultInfant4.setOnClickListener(new View.OnClickListener() {
@@ -1185,7 +1208,6 @@ public class Passenger_inform extends AppCompatActivity {
 
                 String date = month + "/" + day + "/" + year;
                 dateOfBirthAdultInfant4.setText(date);
-
 
 
             }
@@ -1426,7 +1448,7 @@ public class Passenger_inform extends AppCompatActivity {
                     Intent intent = new Intent(Passenger_inform.this, FlightsSummary.class);
                     intent.putExtra("segments", (Serializable) segments);
 
-                    if (journyTipe==2){
+                    if (journyTipe == 2) {
 
                         List<SearchFlightsResponse.Segment> segmentsReturn = (List<SearchFlightsResponse.Segment>) getIntent().getSerializableExtra("segmentsReturn");
 
@@ -1500,8 +1522,6 @@ public class Passenger_inform extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
 
-
-
             }
 
 
@@ -1511,8 +1531,6 @@ public class Passenger_inform extends AppCompatActivity {
         nationalityAdult3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
-
 
 
             }
@@ -1527,8 +1545,6 @@ public class Passenger_inform extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
 
-
-
             }
 
 
@@ -1538,8 +1554,6 @@ public class Passenger_inform extends AppCompatActivity {
         nationalityAdult5.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
-
 
 
             }
@@ -1555,8 +1569,6 @@ public class Passenger_inform extends AppCompatActivity {
         nationality_child.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
-
 
 
             }
@@ -1583,15 +1595,10 @@ public class Passenger_inform extends AppCompatActivity {
         });
 
 
-
-
-
         nationalityChild2.setAdapter(adapter4);
         nationalityChild2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
-
 
 
             }
@@ -1606,13 +1613,10 @@ public class Passenger_inform extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
 
-
-
             }
 
 
         });
-
 
 
         nationalityChild4.setAdapter(adapter4);
@@ -1621,13 +1625,10 @@ public class Passenger_inform extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
 
-
-
             }
 
 
         });
-
 
 
         nationalityChild5.setAdapter(adapter4);
@@ -1654,9 +1655,6 @@ public class Passenger_inform extends AppCompatActivity {
         });
 
 
-
-
-
         nationalityAdultInfant3.setAdapter(adapter4);
         nationalityAdultInfant3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -1681,8 +1679,6 @@ public class Passenger_inform extends AppCompatActivity {
         });
 
 
-
-
         nationalityAdultInfant5.setAdapter(adapter4);
         nationalityAdultInfant5.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -1691,14 +1687,6 @@ public class Passenger_inform extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
-
-
-
 
 
         mrmiss1array = new ArrayList<>();
@@ -1819,8 +1807,6 @@ public class Passenger_inform extends AppCompatActivity {
         });
 
 
-
-
         mrmisChild.setAdapter(adapterChild);
         mrmisChild.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -1837,8 +1823,6 @@ public class Passenger_inform extends AppCompatActivity {
         });
 
 
-
-
         mromissChild2.setAdapter(adapterChild);
         mromissChild2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -1853,8 +1837,6 @@ public class Passenger_inform extends AppCompatActivity {
 
             }
         });
-
-
 
 
         mromissChild3.setAdapter(adapterChild);
@@ -1936,7 +1918,6 @@ public class Passenger_inform extends AppCompatActivity {
         });
 
 
-
         mromissInfant4.setAdapter(adapterChild);
         mromissInfant4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -1967,7 +1948,6 @@ public class Passenger_inform extends AppCompatActivity {
 
             }
         });
-
 
 
         ArrayAdapter adapteinfent = new ArrayAdapter(this, R.layout.item_spener, mrmiss2array);
@@ -2164,8 +2144,6 @@ public class Passenger_inform extends AppCompatActivity {
     }
 
 
-
-
     private void infprmationChild2() {
         SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisChild2", MDataMrmisChild2);
 
@@ -2307,7 +2285,7 @@ public class Passenger_inform extends AppCompatActivity {
     private void informationAdult1() {
 
 
-         SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisAdult", MDataMrmisAdult);
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisAdult", MDataMrmisAdult);
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "FirstNameAduld", edFirstName.getText().toString());
 
@@ -2363,7 +2341,7 @@ public class Passenger_inform extends AppCompatActivity {
     private void informationInfant2() {
 
 
-             SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent2", MDataMrmisInfent2);
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent2", MDataMrmisInfent2);
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "FirstNameInfant2", edFirstNameInfant2.getText().toString());
 
@@ -2379,7 +2357,7 @@ public class Passenger_inform extends AppCompatActivity {
     private void informationInfant3() {
 
 
-             SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent3", MDataMrmisInfent3);
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent3", MDataMrmisInfent3);
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "FirstNameInfant3", edFirstNameInfant3.getText().toString());
 
@@ -2396,7 +2374,7 @@ public class Passenger_inform extends AppCompatActivity {
     private void informationInfant4() {
 
 
-             SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent4", MDataMrmisInfent4);
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent4", MDataMrmisInfent4);
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "FirstNameInfant4", edFirstNameInfant4.getText().toString());
 
@@ -2413,7 +2391,7 @@ public class Passenger_inform extends AppCompatActivity {
     private void informationInfant5() {
 
 
-             SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent5", MDataMrmisInfent5);
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent5", MDataMrmisInfent5);
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "FirstNameInfant5", edFirstNameInfant5.getText().toString());
 
@@ -2446,7 +2424,7 @@ public class Passenger_inform extends AppCompatActivity {
     }
 
 
-    public void openAdultAge(DatePickerDialog.OnDateSetListener mDateSetListener  ) {
+    public void openAdultAge(DatePickerDialog.OnDateSetListener mDateSetListener) {
 
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
@@ -2462,10 +2440,7 @@ public class Passenger_inform extends AppCompatActivity {
         dialog.show();
 
 
-
     }
-
-
 
 
 }

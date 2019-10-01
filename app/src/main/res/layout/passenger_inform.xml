@@ -1683,7 +1683,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_adult_5"
-                android:visibility="gone">
+                android:visibility="gone"
+                >
 
                 <TextView
                     android:id="@+id/childtText1"
@@ -1871,6 +1872,125 @@
 
                 </RelativeLayout>
 
+                <EditText
+                    android:id="@+id/passport_child_no1"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_date_child1"
+                    android:backgroundTint="@color/float_transparent"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="PASSPORT NO OR CID"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_Passport_child_1"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/passport_child_no1"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/issue_child_1"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_1"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="ISSUE DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_child_1"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/issue_child_1"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_issue_Date_child_1"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_1"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/issue_child_1"
+                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_1_child"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_issue_Date_child_1"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/issue_child_1"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/end_date_child_1"
+
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_1"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_child_1"
+                    android:fontFamily="sans-serif-light"
+                    android:text="END DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_end_child_1"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/end_date_child_1"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_child_1"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_end_date_child_1"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_1"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/end_date_child_1"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+                <View
+                    android:id="@+id/view_issue_end_1_child"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_end_date_child_1"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/end_date_child_1"
+                    android:background="@drawable/line1" />
+
+
+
 
             </RelativeLayout>
 
@@ -1881,7 +2001,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_child_1"
-                android:visibility="gone">
+                android:visibility="gone"
+                >
 
                 <TextView
                     android:id="@+id/childtText2"
@@ -2069,6 +2190,123 @@
 
                 </RelativeLayout>
 
+                <EditText
+                    android:id="@+id/passport_child_no2"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_date_child2"
+                    android:backgroundTint="@color/float_transparent"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="PASSPORT NO OR CID"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_Passport_child_2"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/passport_child_no2"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/issue_child_2"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_2"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="ISSUE DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_child_2"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/issue_child_2"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_issue_Date_child_2"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_2"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/issue_child_2"
+                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_2_child"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_issue_Date_child_2"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/issue_child_2"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/end_date_child_2"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_2"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_child_2"
+                    android:fontFamily="sans-serif-light"
+                    android:text="END DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_end_child_2"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/end_date_child_2"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_child_2"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_end_date_child_2"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_2"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/end_date_child_2"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+                <View
+                    android:id="@+id/view_issue_end_2_child"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_end_date_child_2"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/end_date_child_2"
+                    android:background="@drawable/line1" />
+
+
 
             </RelativeLayout>
 
@@ -2079,7 +2317,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_child_2"
-                android:visibility="gone">
+                android:visibility="gone"
+                >
 
                 <TextView
                     android:id="@+id/childtText3"
@@ -2267,6 +2506,125 @@
 
                 </RelativeLayout>
 
+                <EditText
+                    android:id="@+id/passport_child_no3"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_date_child3"
+                    android:backgroundTint="@color/float_transparent"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="PASSPORT NO OR CID"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_Passport_child_3"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/passport_child_no3"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/issue_child_3"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_3"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="ISSUE DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_child_3"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/issue_child_3"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_issue_Date_child_3"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_3"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/issue_child_3"
+                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_3_child"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_issue_Date_child_3"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/issue_child_3"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/end_date_child_3"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_3"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_child_3"
+                    android:fontFamily="sans-serif-light"
+                    android:text="END DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_end_child_3"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/end_date_child_3"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_child_3"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_end_date_child_3"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_3"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/end_date_child_3"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+                <View
+                    android:id="@+id/view_issue_end_3_child"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_end_date_child_3"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/end_date_child_3"
+                    android:background="@drawable/line1" />
+
+
+
+
 
             </RelativeLayout>
 
@@ -2280,7 +2638,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_child_3"
                 android:visibility="gone"
-
                 >
 
                 <TextView
@@ -2469,6 +2826,122 @@
 
                 </RelativeLayout>
 
+                <EditText
+                    android:id="@+id/passport_child_no4"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_date_child4"
+                    android:backgroundTint="@color/float_transparent"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="PASSPORT NO OR CID"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_Passport_child_4"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/passport_child_no4"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/issue_child_4"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_4"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="ISSUE DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_child_4"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/issue_child_4"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_issue_Date_child_4"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_4"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/issue_child_4"
+                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_4_child"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_issue_Date_child_4"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/issue_child_4"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/end_date_child_4"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_4"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_child_4"
+                    android:fontFamily="sans-serif-light"
+                    android:text="END DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_end_child_4"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/end_date_child_4"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_child_4"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_end_date_child_4"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_4"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/end_date_child_4"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+                <View
+                    android:id="@+id/view_issue_end_4_child"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_end_date_child_4"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/end_date_child_4"
+                    android:background="@drawable/line1" />
+
 
             </RelativeLayout>
 
@@ -2481,7 +2954,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_child_4"
-                android:visibility="gone">
+                android:visibility="gone"
+                >
 
                 <TextView
                     android:id="@+id/childtText5"
@@ -2668,6 +3142,122 @@
 
 
                 </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/passport_child_no5"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_date_child5"
+                    android:backgroundTint="@color/float_transparent"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="PASSPORT NO OR CID"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_Passport_child_5"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/passport_child_no5"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/issue_child_5"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_5"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="ISSUE DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_child_5"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/issue_child_5"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_issue_Date_child_5"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_5"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/issue_child_5"
+                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_5_child"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_issue_Date_child_5"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/issue_child_5"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/end_date_child_5"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_5"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_child_5"
+                    android:fontFamily="sans-serif-light"
+                    android:text="END DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_end_child_5"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/end_date_child_5"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_child_5"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_end_date_child_5"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_child_5"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/end_date_child_5"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+                <View
+                    android:id="@+id/view_issue_end_5_child"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_end_date_child_5"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/end_date_child_5"
+                    android:background="@drawable/line1" />
 
 
             </RelativeLayout>
@@ -2869,6 +3459,128 @@
 
 
                 </RelativeLayout>
+
+
+                <EditText
+                    android:id="@+id/passport_infant_no1"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_date_infant1"
+                    android:backgroundTint="@color/float_transparent"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="PASSPORT NO OR CID"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_Passport_infant_1"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/passport_infant_no1"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/issue_infant_1"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_1"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="ISSUE DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_infant_1"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/issue_infant_1"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_issue_Date_infant_1"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_1"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/issue_infant_1"
+                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_1_infant"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_issue_Date_infant_1"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/issue_infant_1"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/end_date_infant_1"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_1"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_infant_1"
+                    android:fontFamily="sans-serif-light"
+                    android:text="END DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_end_infant_1"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/end_date_infant_1"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_infant_1"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_end_date_infant_1"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_1"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/end_date_infant_1"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+                <View
+                    android:id="@+id/view_issue_end_1_infant"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_end_date_infant_1"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/end_date_infant_1"
+                    android:background="@drawable/line1" />
+
+
+
+
+
             </RelativeLayout>
 
             <!--RELATIVE_INFANT_2-->
@@ -2879,7 +3591,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_infant_1"
                 android:visibility="gone"
-
                 >
 
                 <TextView
@@ -3066,6 +3777,124 @@
 
 
                 </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/passport_infant_no2"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_date_infant2"
+                    android:backgroundTint="@color/float_transparent"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="PASSPORT NO OR CID"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_Passport_infant_2"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/passport_infant_no2"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/issue_infant_2"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_2"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="ISSUE DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_infant_2"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/issue_infant_2"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_issue_Date_infant_2"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_2"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/issue_infant_2"
+                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_2_infant"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_issue_Date_infant_2"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/issue_infant_2"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/end_date_infant_2"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_2"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_infant_2"
+                    android:fontFamily="sans-serif-light"
+                    android:text="END DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_end_infant_2"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/end_date_infant_2"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_infant_2"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_end_date_infant_2"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_2"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/end_date_infant_2"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+                <View
+                    android:id="@+id/view_issue_end_2_infant"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_end_date_infant_2"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/end_date_infant_2"
+                    android:background="@drawable/line1" />
+
+
             </RelativeLayout>
 
             <!--RELATIVE_INFANT_3-->
@@ -3262,6 +4091,125 @@
 
 
                 </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/passport_infant_no3"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_date_infant3"
+                    android:backgroundTint="@color/float_transparent"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="PASSPORT NO OR CID"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_Passport_infant_3"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/passport_infant_no3"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/issue_infant_3"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_3"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="ISSUE DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_infant_3"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/issue_infant_3"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_issue_Date_infant_3"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_3"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/issue_infant_3"
+                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_3_infant"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_issue_Date_infant_3"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/issue_infant_3"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/end_date_infant_3"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_3"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_infant_3"
+                    android:fontFamily="sans-serif-light"
+                    android:text="END DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_end_infant_3"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/end_date_infant_3"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_infant_3"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_end_date_infant_3"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_3"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/end_date_infant_3"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+                <View
+                    android:id="@+id/view_issue_end_3_infant"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_end_date_infant_3"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/end_date_infant_3"
+                    android:background="@drawable/line1" />
+
+
+
             </RelativeLayout>
 
 
@@ -3274,7 +4222,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_infant_3"
                 android:visibility="gone"
-
                 >
 
                 <TextView
@@ -3455,6 +4402,126 @@
                         android:textColorHint="#FFFFFF"
                         android:textSize="@dimen/_10ssp" />
                 </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/passport_infant_no4"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_date_infant4"
+                    android:backgroundTint="@color/float_transparent"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="PASSPORT NO OR CID"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_Passport_infant_4"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/passport_infant_no4"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/issue_infant_4"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_4"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="ISSUE DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_infant_4"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/issue_infant_4"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_issue_Date_infant_4"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_4"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/issue_infant_4"
+                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_4_infant"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_issue_Date_infant_4"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/issue_infant_4"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/end_date_infant_4"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_4"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_infant_4"
+                    android:fontFamily="sans-serif-light"
+                    android:text="END DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_end_infant_4"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/end_date_infant_4"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_infant_4"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_end_date_infant_4"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_4"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/end_date_infant_4"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+                <View
+                    android:id="@+id/view_issue_end_4_infant"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_end_date_infant_4"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/end_date_infant_4"
+                    android:background="@drawable/line1" />
+
+
+
+
             </RelativeLayout>
 
 
@@ -3465,7 +4532,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_infant_4"
-                android:visibility="gone">
+
+                >
 
                 <TextView
 
@@ -3650,6 +4718,123 @@
 
 
                 </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/passport_infant_no5"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relative_date_infant5"
+                    android:backgroundTint="@color/float_transparent"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="PASSPORT NO OR CID"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_Passport_infant_5"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/passport_infant_no5"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/issue_infant_5"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_5"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="ISSUE DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_infant_5"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/issue_infant_5"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_issue_Date_infant_5"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_5"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/issue_infant_5"
+                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_5_infant"
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_issue_Date_infant_5"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/issue_infant_5"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/end_date_infant_5"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_5"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_infant_5"
+                    android:fontFamily="sans-serif-light"
+                    android:text="END DATE"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+
+                <View
+                    android:id="@+id/view_issue_end_infant_5"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/end_date_infant_5"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/tv_issue_Date_infant_5"
+                    android:background="@drawable/line1" />
+
+
+                <TextView
+                    android:id="@+id/tv_end_date_infant_5"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/view_Passport_infant_5"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/end_date_infant_5"
+                    android:fontFamily="sans-serif-light"
+                    android:text="15/15/2015"
+                    android:textColor="@color/white"
+                    android:textColorHint="#FFFFFF"
+                    android:textSize="@dimen/_10ssp" />
+
+                <View
+                    android:id="@+id/view_issue_end_5_infant"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tv_end_date_infant_5"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_toEndOf="@+id/end_date_infant_5"
+                    android:background="@drawable/line1" />
+
             </RelativeLayout>
 
 
