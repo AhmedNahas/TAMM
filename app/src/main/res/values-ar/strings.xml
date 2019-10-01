@@ -106,15 +106,15 @@
     <string name="thank_you_for_using">شكرا لأستخدامك</string>
     <string name="tamm_app">تطبيق TAMM</string>
     <string name="hotel_booking">حجز الفندق</string>
-    <string name="dear_mr">عزيزي    </string>
+    <string name="dear_mr">عزيزي    ,</string>
     <string name="your_hotel_code_is">رمز الفندق الخاص بك هو</string>
-    <string name="code">CODE</string>
+    <string name="code">الكود</string>
     <string name="for_further_information">لمزيد من المعلومات</string>
     <string name="please_check_your_e_mail">من فضلك تفقد بريدك الالكتروني.</string>
     <string name="back_to_home_page">العودة إلى الصفحة الرئيسية</string>
 
 
-
+    <string name="mr" translatable="true">ألسيد</string>
     <string name="choose_no_of_rooms">أختار عدد الغرف</string>
     <string name="room_1">غرفة 1</string>
     <string name="_1_child">طفل 1</string>
@@ -126,7 +126,7 @@
     <string name="until">حتي : </string>
     <string name="i_agree_to_the">انا أوافق علي </string>
     <string name="terms_amp_conditions">الشروط والاحكام</string>
-
+    <string name="mr_mrs">السيدة/السيد</string>
     <string name="your_room_has_n_been_booked_n_n_check_your_email_n_for_further_details_n_good_luck">تم حجز\n غرفتك! تحقق من بريدك الإلكتروني لمزيد من التفاصيل \nحظا سعيدا!</string>
     <string name="tap_me_if_you_need_my_assistance2">اضغط هنا إذا كنت بحاجة إلى مساعدتي</string>
     <string name="_20">29</string>
@@ -144,9 +144,6 @@
 
     <string name="visa_">فيزا</string>
     <string name="master">ماستر كارد</string>
-    <string name="BestFlights">افضل عروض الطيران</string>
-    <string name="BestHotels">افضل فنادق</string>
-    <string name="BestDeals">افضل العروض</string>
 
 
 </resources>

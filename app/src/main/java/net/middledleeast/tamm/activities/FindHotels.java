@@ -476,6 +476,7 @@ public class FindHotels extends AppCompatActivity {
         for (int i = 0; i < 19; i++) {
             listOfChildAgeRoom2.add(i);
         }
+
         room1ChildAgeSpinner = new AdapterChildCount(this, listChildernCount, listOfChildAge, this, 1);
         adapterChildCountRoom2 = new AdapterChildCount(this, listChildernCountRoom2, listOfChildAge, this, 2);
         adapterChildCountRoom3 = new AdapterChildCount(this, listChildernCountRoom3, listOfChildAge, this, 3);
@@ -678,6 +679,8 @@ public class FindHotels extends AppCompatActivity {
 
         ArrayAdapter adapterchild = new ArrayAdapter(FindHotels.this, R.layout.item_spener, listOfChild);
 
+
+
         adapterchild.setDropDownViewResource(R.layout.drop_dowen);
         childCountRoom1.setDropDownWidth(420);
         childCountRoom1.setDropDownVerticalOffset(200);
@@ -685,6 +688,8 @@ public class FindHotels extends AppCompatActivity {
         childCountRoom1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+
 
                 if (i != 0) {
 

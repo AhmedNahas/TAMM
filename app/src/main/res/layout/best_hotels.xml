@@ -15,9 +15,7 @@
         android:layout_marginBottom="@dimen/_4sdp"
         android:background="@drawable/border2"
         android:nestedScrollingEnabled="false"
-        android:padding=".5dp">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:padding=".5dp"></androidx.recyclerview.widget.RecyclerView>
 
 
     <ImageView

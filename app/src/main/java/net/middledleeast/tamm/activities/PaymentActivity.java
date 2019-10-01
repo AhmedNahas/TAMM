@@ -123,7 +123,6 @@ public class PaymentActivity extends AppCompatActivity {
 
     RelativeLayout relative_radio_btn;
     private String uid;
-    private String totalFare;
 
 
     @SuppressLint("SetTextI18n")
@@ -288,39 +287,6 @@ public class PaymentActivity extends AppCompatActivity {
 
                     }else if (mId==3) {
 
-
-//                        final   double priceDouble = Double.parseDouble(totalFare);
-//
-//                        if (i == 3) {
-//
-//                            double convirtKD = priceDouble * 0.30;
-//
-//                            tvKd.setText("KD " +df.format(convirtKD));
-//                            currency = "KD";
-//
-//                        } else if (i == 2) {
-//
-//                            double convirtEG = priceDouble * 16.58;
-//                            tvKd.setText("EG " +df.format(convirtEG));
-//
-//                            currency = "EG";
-//                        } else if (i == 1) {
-//
-//                            double convirtEU = priceDouble * 0.90;
-//
-//                            tvKd.setText("EURO " +df.format(convirtEU));
-//
-//                            currency = "EURO";
-//
-//
-//                        } else {
-//
-//
-//                            tvKd.setText("USD " + totalFare);
-//                            currency = "USD";
-//
-//                        }
-
                     }
 
                 }
@@ -435,7 +401,7 @@ public class PaymentActivity extends AppCompatActivity {
 //            String TotalFare = SharedPreferencesManger.LoadStringData(this, "TotalFare");
 //            flightCurrency = SharedPreferencesManger.LoadStringData(this, "typeFare");
 
-             totalFare = getIntent().getStringExtra("totalFare");
+            String totalFare = getIntent().getStringExtra("totalFare");
             String firstNameAduld = SharedPreferencesManger.LoadStringData(PaymentActivity.this, "FirstNameAduld");
             String lastNameAduld = SharedPreferencesManger.LoadStringData(PaymentActivity.this, "LastNameAduld");
 

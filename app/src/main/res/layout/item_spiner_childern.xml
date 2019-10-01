@@ -31,7 +31,9 @@ android:layout_marginTop="4dp"
             android:id="@+id/spinner_no_Child"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:backgroundTint="@color/app_color"
+            />
 
 
         <View
