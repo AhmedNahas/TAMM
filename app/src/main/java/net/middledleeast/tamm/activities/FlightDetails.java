@@ -201,7 +201,14 @@ public class FlightDetails extends AppCompatActivity  {
 
                     FROM = countryName + "  /  ";
 
-                    TO = data.getSegments().get(0).getDestination().getCityName() + "  /  ";
+
+                for (int i = 0; i < data.getSegments().size(); i++) {
+
+                    TO = data.getSegments().get(i).getDestination().getCityName() + "  /  ";
+
+                }
+
+
 
 
 

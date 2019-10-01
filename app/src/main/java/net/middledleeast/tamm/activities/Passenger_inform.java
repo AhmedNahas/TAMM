@@ -494,8 +494,9 @@ public class Passenger_inform extends AppCompatActivity {
     TextView tvIssueDateInfant5;
     @BindView(R.id.tv_end_date_infant_5)
     TextView tvEndDateInfant5;
+
     private TextView datebirthadult, datebirthchild, datebirthinfant;
-    private DatePickerDialog.OnDateSetListener mDateSetListener1, mDateSetListener2, mDateSetListener3, mDateSetListener4, mDateSetListener5, mDateSetListener6;
+    private DatePickerDialog.OnDateSetListener mDateSetListener1, mDateSetListener2, mDateSetListener3, mDateSetListener4, mDateSetListener5 ,mDateSetListener6 ;
     ArrayAdapter mrmiss1adapter, mrmiss2adapter, mrmiss3adapter;
     ArrayList<String> mrmiss1array, mrmiss2array, mrmiss3array;
     Button confirm;
@@ -505,10 +506,10 @@ public class Passenger_inform extends AppCompatActivity {
     private boolean notFailed;
     private InputStream inputStream;
     private List<String> list_nationalites = new ArrayList<>();
-    private String MDataMrmisAdult, MDataMrmisChild, MDataMrmisInfent, MDataMrmisChild2,
-            MDataMrmisChild3,
+    private String MDataMrmisAdult, MDataMrmisChild, MDataMrmisInfent ,MDataMrmisChild2,
+    MDataMrmisChild3,
             MDataMrmisChild4,
-            MDataMrmisChild5;
+    MDataMrmisChild5;
 
     RelativeLayout relative_back_passenger_inform;
     ImageView iv_booked_passenger_inform;
@@ -516,18 +517,20 @@ public class Passenger_inform extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener mDateSetListener7;
     private DatePickerDialog.OnDateSetListener mDateSetListener8;
     private String MDataMrmisAdult2;
-    private DatePickerDialog.OnDateSetListener mDateSetListener9, mDateSetListener10, mDateSetListener11, mDateSetListener12, mDateSetListener13, mDateSetListener14,
-            mDateSetListener15, mDateSetListener16, mDateSetListener17, mDateSetListener18,
-            mDateSetListener19,
+    private DatePickerDialog.OnDateSetListener mDateSetListener9 , mDateSetListener10 , mDateSetListener11 , mDateSetListener12 , mDateSetListener13 , mDateSetListener14 ,
+            mDateSetListener15  , mDateSetListener16 ,  mDateSetListener17  ,   mDateSetListener18,
+    mDateSetListener19,
             mDateSetListener20,
-            mDateSetListener21, mDateSetListener22,
-            mDateSetListener23,
+    mDateSetListener21   ,    mDateSetListener22,
+    mDateSetListener23,
             mDateSetListener24,
-            mDateSetListener25;
-    private String MDataMrmisAdult5, MDataMrmisAdult4, MDataMrmisAdult3, MDataMrmisInfent2,
-            MDataMrmisInfent3,
+    mDateSetListener25;
+    private String MDataMrmisAdult5 , MDataMrmisAdult4 , MDataMrmisAdult3  ,  MDataMrmisInfent2,
+    MDataMrmisInfent3,
             MDataMrmisInfent4,
-            MDataMrmisInfent5;
+    MDataMrmisInfent5 ;
+    private DatePickerDialog.OnDateSetListener mDateSetListener26,mDateSetListener27 ,mDateSetListener28 , mDateSetListener29 , mDateSetListener30, mDateSetListener31  , mDateSetListener32 , mDateSetListener33,mDateSetListener34
+            ,mDateSetListener35,mDateSetListener36,mDateSetListener37,mDateSetListener38,mDateSetListener39,mDateSetListener40 , mDateSetListener41,mDateSetListener42,mDateSetListener43,mDateSetListener44,mDateSetListener45;
 
     @SuppressLint("StaticFieldLeak")
     @Override
@@ -573,9 +576,10 @@ public class Passenger_inform extends AppCompatActivity {
         mrmisinfent = findViewById(R.id.mromiss_infant1);
 
 
-        long adult = SharedPreferencesManger.LoadLongData(this, "adult");
+    long adult = SharedPreferencesManger.LoadLongData(this, "adult");
         long child = SharedPreferencesManger.LoadLongData(this, "child");
         long infant = SharedPreferencesManger.LoadLongData(this, "infant");
+
 
 
         dateOfBirthAdult2.setOnClickListener(new View.OnClickListener() {
@@ -633,6 +637,7 @@ public class Passenger_inform extends AppCompatActivity {
                 dialog.show();
 
 
+
             }
         });
         mDateSetListener7 = new DatePickerDialog.OnDateSetListener() {
@@ -645,9 +650,756 @@ public class Passenger_inform extends AppCompatActivity {
                 tvIssueDate2.setText(date);
 
 
+
             }
 
         };
+
+
+
+
+
+        tvIssueDateChild1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener26,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener26 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+
+                String date = month + "/" + day + "/" + year;
+                tvIssueDateChild1.setText(date);
+
+
+
+            }
+
+        };
+
+
+
+        tvIssueDateChild2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener27,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener27 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+
+                String date = month + "/" + day + "/" + year;
+                tvIssueDateChild2.setText(date);
+
+
+
+            }
+
+        };
+
+
+          tvIssueDateChild3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener28,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener28 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+
+                String date = month + "/" + day + "/" + year;
+                tvIssueDateChild3.setText(date);
+
+
+
+            }
+
+        };
+
+
+
+
+
+
+
+          tvIssueDateChild4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener29,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener29 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+
+                String date = month + "/" + day + "/" + year;
+                tvIssueDateChild4.setText(date);
+
+
+
+            }
+
+        };
+         tvIssueDateChild5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener30,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener30 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvIssueDateChild5.setText(date);
+
+
+
+            }
+
+        };
+
+
+
+        tvIssueDateInfant1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener31,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener31 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvIssueDateInfant1.setText(date);
+
+
+
+            }
+
+        }; tvIssueDateInfant2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener32,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener32 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvIssueDateInfant2.setText(date);
+
+
+
+            }
+
+        };
+        tvIssueDateInfant3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener33,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener33 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvIssueDateInfant3.setText(date);
+
+
+
+            }
+
+        }; tvIssueDateInfant4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener34,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener34 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvIssueDateInfant4.setText(date);
+
+
+
+            }
+
+        };
+
+        tvIssueDateInfant5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener35,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener35 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvIssueDateInfant5.setText(date);
+
+
+
+            }
+
+        };
+
+        tvEndDateChild1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener36,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener36 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvEndDateChild1.setText(date);
+
+
+
+            }
+
+        }; tvEndDateChild2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener37,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener37 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvEndDateChild2.setText(date);
+
+
+
+            }
+
+        }; tvEndDateChild3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener38,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener38 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvEndDateChild3.setText(date);
+
+
+
+            }
+
+        };
+        tvEndDateChild4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener39,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener39 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvEndDateChild4.setText(date);
+
+
+
+            }
+
+        };tvEndDateChild5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener40,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener40 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvEndDateChild5.setText(date);
+
+
+
+            }
+
+        };
+        tvEndDateInfant1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener41,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener41 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvEndDateInfant1.setText(date);
+
+
+
+            }
+
+        };
+
+         tvEndDateInfant2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener42,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener42 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvEndDateInfant2.setText(date);
+
+
+
+            }
+
+        };
+
+         tvEndDateInfant3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener43,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener43 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvEndDateInfant3.setText(date);
+
+
+
+            }
+
+        };
+
+
+        tvEndDateInfant4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener44,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener44 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvEndDateInfant4.setText(date);
+
+            }
+
+        };
+        tvEndDateInfant5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        Passenger_inform.this,
+                        android.R.style.Theme_Holo_Wallpaper_NoTitleBar
+                        ,
+                        mDateSetListener45,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+
+
+            }
+        });
+        mDateSetListener45 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+
+                String date = month + "/" + day + "/" + year;
+                tvEndDateInfant5.setText(date);
+
+            }
+
+        };
+
+
+
+
+
 
         tvEndDat2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -668,6 +1420,9 @@ public class Passenger_inform extends AppCompatActivity {
                 dialog.show();
 
 
+
+
+
             }
         });
         mDateSetListener8 = new DatePickerDialog.OnDateSetListener() {
@@ -678,6 +1433,7 @@ public class Passenger_inform extends AppCompatActivity {
 
                 String date = month + "/" + day + "/" + year;
                 tvEndDat2.setText(date);
+
 
 
             }
@@ -977,6 +1733,7 @@ public class Passenger_inform extends AppCompatActivity {
                 tvIssueDate5.setText(date);
 
 
+
             }
 
         };
@@ -1000,9 +1757,12 @@ public class Passenger_inform extends AppCompatActivity {
                 tvEndDat3.setText(date);
 
 
+
             }
 
         };
+
+
 
 
         tvEndDat4.setOnClickListener(new View.OnClickListener() {
@@ -1022,9 +1782,11 @@ public class Passenger_inform extends AppCompatActivity {
                 tvEndDat4.setText(date);
 
 
+
             }
 
         };
+
 
 
         tvEndDat5.setOnClickListener(new View.OnClickListener() {
@@ -1034,6 +1796,7 @@ public class Passenger_inform extends AppCompatActivity {
 
             }
         });
+
 
 
         mDateSetListener17 = new DatePickerDialog.OnDateSetListener() {
@@ -1046,9 +1809,18 @@ public class Passenger_inform extends AppCompatActivity {
                 tvEndDat5.setText(date);
 
 
+
             }
 
         };
+
+
+
+
+
+
+
+
 
 
         dateOfBirthChild2.setOnClickListener(new View.OnClickListener() {
@@ -1068,6 +1840,7 @@ public class Passenger_inform extends AppCompatActivity {
 
                 String date = month + "/" + day + "/" + year;
                 dateOfBirthChild2.setText(date);
+
 
 
             }
@@ -1093,6 +1866,7 @@ public class Passenger_inform extends AppCompatActivity {
                 dateOfBirthChild3.setText(date);
 
 
+
             }
 
         };
@@ -1114,6 +1888,7 @@ public class Passenger_inform extends AppCompatActivity {
 
                 String date = month + "/" + day + "/" + year;
                 dateOfBirthChild4.setText(date);
+
 
 
             }
@@ -1138,9 +1913,16 @@ public class Passenger_inform extends AppCompatActivity {
                 dateOfBirthChild5.setText(date);
 
 
+
             }
 
         };
+
+
+
+
+
+
 
 
         dateOfBirthAdultInfant2.setOnClickListener(new View.OnClickListener() {
@@ -1162,9 +1944,11 @@ public class Passenger_inform extends AppCompatActivity {
                 dateOfBirthAdultInfant2.setText(date);
 
 
+
             }
 
         };
+
 
 
         dateOfBirthAdultInfant3.setOnClickListener(new View.OnClickListener() {
@@ -1185,9 +1969,11 @@ public class Passenger_inform extends AppCompatActivity {
                 dateOfBirthAdultInfant3.setText(date);
 
 
+
             }
 
         };
+
 
 
         dateOfBirthAdultInfant4.setOnClickListener(new View.OnClickListener() {
@@ -1208,6 +1994,7 @@ public class Passenger_inform extends AppCompatActivity {
 
                 String date = month + "/" + day + "/" + year;
                 dateOfBirthAdultInfant4.setText(date);
+
 
 
             }
@@ -1448,7 +2235,7 @@ public class Passenger_inform extends AppCompatActivity {
                     Intent intent = new Intent(Passenger_inform.this, FlightsSummary.class);
                     intent.putExtra("segments", (Serializable) segments);
 
-                    if (journyTipe == 2) {
+                    if (journyTipe==2){
 
                         List<SearchFlightsResponse.Segment> segmentsReturn = (List<SearchFlightsResponse.Segment>) getIntent().getSerializableExtra("segmentsReturn");
 
@@ -1522,6 +2309,8 @@ public class Passenger_inform extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
 
+
+
             }
 
 
@@ -1531,6 +2320,8 @@ public class Passenger_inform extends AppCompatActivity {
         nationalityAdult3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
 
 
             }
@@ -1545,6 +2336,8 @@ public class Passenger_inform extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
 
+
+
             }
 
 
@@ -1554,6 +2347,8 @@ public class Passenger_inform extends AppCompatActivity {
         nationalityAdult5.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
 
 
             }
@@ -1569,6 +2364,8 @@ public class Passenger_inform extends AppCompatActivity {
         nationality_child.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
 
 
             }
@@ -1595,10 +2392,15 @@ public class Passenger_inform extends AppCompatActivity {
         });
 
 
+
+
+
         nationalityChild2.setAdapter(adapter4);
         nationalityChild2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+
 
 
             }
@@ -1613,10 +2415,13 @@ public class Passenger_inform extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
 
+
+
             }
 
 
         });
+
 
 
         nationalityChild4.setAdapter(adapter4);
@@ -1625,10 +2430,13 @@ public class Passenger_inform extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
 
+
+
             }
 
 
         });
+
 
 
         nationalityChild5.setAdapter(adapter4);
@@ -1655,6 +2463,9 @@ public class Passenger_inform extends AppCompatActivity {
         });
 
 
+
+
+
         nationalityAdultInfant3.setAdapter(adapter4);
         nationalityAdultInfant3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -1679,6 +2490,8 @@ public class Passenger_inform extends AppCompatActivity {
         });
 
 
+
+
         nationalityAdultInfant5.setAdapter(adapter4);
         nationalityAdultInfant5.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -1687,6 +2500,14 @@ public class Passenger_inform extends AppCompatActivity {
 
             }
         });
+
+
+
+
+
+
+
+
 
 
         mrmiss1array = new ArrayList<>();
@@ -1807,6 +2628,8 @@ public class Passenger_inform extends AppCompatActivity {
         });
 
 
+
+
         mrmisChild.setAdapter(adapterChild);
         mrmisChild.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -1823,6 +2646,8 @@ public class Passenger_inform extends AppCompatActivity {
         });
 
 
+
+
         mromissChild2.setAdapter(adapterChild);
         mromissChild2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -1837,6 +2662,8 @@ public class Passenger_inform extends AppCompatActivity {
 
             }
         });
+
+
 
 
         mromissChild3.setAdapter(adapterChild);
@@ -1918,6 +2745,7 @@ public class Passenger_inform extends AppCompatActivity {
         });
 
 
+
         mromissInfant4.setAdapter(adapterChild);
         mromissInfant4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -1948,6 +2776,7 @@ public class Passenger_inform extends AppCompatActivity {
 
             }
         });
+
 
 
         ArrayAdapter adapteinfent = new ArrayAdapter(this, R.layout.item_spener, mrmiss2array);
@@ -2144,7 +2973,16 @@ public class Passenger_inform extends AppCompatActivity {
     }
 
 
+
+
     private void infprmationChild2() {
+
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvEndDateChild2",tvEndDateChild2.getText().toString());
+
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "passportChildNo2", passportChildNo2.getText().toString());
+
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvIssueDateChild2",tvIssueDateChild2.getText().toString());
+
         SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisChild2", MDataMrmisChild2);
 
 
@@ -2161,6 +2999,10 @@ public class Passenger_inform extends AppCompatActivity {
 
     private void infprmationChild3() {
 
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvIssueDateChild3",tvIssueDateChild3.getText().toString());
+
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "passportChildNo3", passportChildNo3.getText().toString());
+
         SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisChild3", MDataMrmisChild3);
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "FirstNameChild3", edFirstNameChild3.getText().toString());
@@ -2170,14 +3012,21 @@ public class Passenger_inform extends AppCompatActivity {
         SharedPreferencesManger.SaveData(Passenger_inform.this, "datebirthchild3", dateOfBirthChild3.getText().toString());
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "nationality_child3", nationalityChild3.getText().toString());
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvEndDateChild3",tvEndDateChild3.getText().toString());
 
     }
 
 
     private void infprmationChild4() {
 
+
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvEndDateChild4",tvEndDateChild4.getText().toString());
+
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvIssueDateChild4",tvIssueDateChild4.getText().toString());
+
         SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisChild4", MDataMrmisChild4);
 
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "passportChildNo4", passportChildNo4.getText().toString());
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "FirstNameChild4", edFirstNameChild4.getText().toString());
 
@@ -2191,6 +3040,16 @@ public class Passenger_inform extends AppCompatActivity {
 
 
     private void infprmationChild5() {
+
+
+
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvIssueDateChild5",tvIssueDateChild5.getText().toString());
+
+
+
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvEndDateChild5",tvEndDateChild5.getText().toString());
+
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "passportChildNo5", passportChildNo5.getText().toString());
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisChild5", MDataMrmisChild5);
 
@@ -2285,7 +3144,7 @@ public class Passenger_inform extends AppCompatActivity {
     private void informationAdult1() {
 
 
-        SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisAdult", MDataMrmisAdult);
+         SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisAdult", MDataMrmisAdult);
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "FirstNameAduld", edFirstName.getText().toString());
 
@@ -2309,6 +3168,13 @@ public class Passenger_inform extends AppCompatActivity {
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisChild", MDataMrmisChild);
 
+
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "passportChildNo1", passportChildNo1.getText().toString());
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvIssueDateChild1",tvIssueDateChild1.getText().toString());
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvEndDateChild1",tvEndDateChild1.getText().toString());
+
+
+
         SharedPreferencesManger.SaveData(Passenger_inform.this, "FirstNameChild", edFirstNameChild.getText().toString());
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "LastNameChild", edLastNameChild.getText().toString());
@@ -2322,6 +3188,11 @@ public class Passenger_inform extends AppCompatActivity {
 
 
     private void informationInfant1() {
+
+
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "passportInfantNo1", passportInfantNo1.getText().toString());
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvIssueDateInfant1",tvIssueDateInfant1.getText().toString());
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvEndDateInfant1",tvEndDateInfant1.getText().toString());
 
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent", MDataMrmisInfent);
@@ -2339,9 +3210,11 @@ public class Passenger_inform extends AppCompatActivity {
 
 
     private void informationInfant2() {
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "passportInfantNo2", passportInfantNo2.getText().toString());
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvIssueDateInfant2",tvIssueDateInfant2.getText().toString());
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvEndDateInfant2",tvEndDateInfant2.getText().toString());
 
-
-        SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent2", MDataMrmisInfent2);
+             SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent2", MDataMrmisInfent2);
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "FirstNameInfant2", edFirstNameInfant2.getText().toString());
 
@@ -2356,8 +3229,12 @@ public class Passenger_inform extends AppCompatActivity {
 
     private void informationInfant3() {
 
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "passportInfantNo3", passportInfantNo3.getText().toString());
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvIssueDateInfant3",tvIssueDateInfant3.getText().toString());
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvEndDateInfant3",tvEndDateInfant3.getText().toString());
 
-        SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent3", MDataMrmisInfent3);
+
+             SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent3", MDataMrmisInfent3);
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "FirstNameInfant3", edFirstNameInfant3.getText().toString());
 
@@ -2372,6 +3249,13 @@ public class Passenger_inform extends AppCompatActivity {
 
 
     private void informationInfant4() {
+
+
+
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "passportInfantNo4", passportInfantNo4.getText().toString());
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvIssueDateInfant4",tvIssueDateInfant4.getText().toString());
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvEndDateInfant4",tvEndDateInfant4.getText().toString());
+
 
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent4", MDataMrmisInfent4);
@@ -2389,6 +3273,14 @@ public class Passenger_inform extends AppCompatActivity {
 
 
     private void informationInfant5() {
+
+
+
+
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "passportInfantNo5", passportInfantNo5.getText().toString());
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvIssueDateInfant5",tvIssueDateInfant5.getText().toString());
+        SharedPreferencesManger.SaveData(Passenger_inform.this, "tvEndDateInfant5",tvEndDateInfant5.getText().toString());
+
 
 
         SharedPreferencesManger.SaveData(Passenger_inform.this, "MDataMrmisInfent5", MDataMrmisInfent5);
@@ -2424,7 +3316,7 @@ public class Passenger_inform extends AppCompatActivity {
     }
 
 
-    public void openAdultAge(DatePickerDialog.OnDateSetListener mDateSetListener) {
+    public void openAdultAge(DatePickerDialog.OnDateSetListener mDateSetListener  ) {
 
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
@@ -2440,7 +3332,10 @@ public class Passenger_inform extends AppCompatActivity {
         dialog.show();
 
 
+
     }
+
+
 
 
 }
