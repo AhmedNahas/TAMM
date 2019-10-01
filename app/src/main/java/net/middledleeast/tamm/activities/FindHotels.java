@@ -114,6 +114,7 @@ public class FindHotels extends AppCompatActivity {
     private List<String> lisNameHotels = new ArrayList<>();
     private String idCountry;
     ArrayList<String> nameHotel = new ArrayList<>();
+    ArrayList<String> tripAdvisorURL = new ArrayList<>();
     Calendar myCalendar;
     ArrayList<String> photoHotel = new ArrayList<>();
     ArrayList<String> listcodeHotel = new ArrayList<>();
@@ -187,7 +188,7 @@ public class FindHotels extends AppCompatActivity {
     private Filters filters;
     private boolean counttryCheked = false;
     private Integer accountPlan;
-
+    private String tripAdvisorReviewURL;
 
 
 //    private boolean saved ;
@@ -1648,6 +1649,7 @@ public class FindHotels extends AppCompatActivity {
             listPrice.clear();
             ratrHotel.clear();
             nameHotel.clear();
+            tripAdvisorURL.clear();
             photoHotel.clear();
             listcodeHotel.clear();
             addressHotel.clear();
@@ -1672,6 +1674,7 @@ public class FindHotels extends AppCompatActivity {
                         // todo
                         hotelAddress = hotelInfo.HotelAddress;
                         hotelName = hotelInfo.HotelName;
+                        tripAdvisorReviewURL = hotelInfo.TripAdvisorReviewURL;
                         hotelPicture = hotelInfo.HotelPicture;
                         int code = hotelInfo.Rating.getCode();
 
@@ -1683,6 +1686,7 @@ public class FindHotels extends AppCompatActivity {
                         listcodeHotel.add(hotelCode);
 
                         nameHotel.add(hotelName);
+                        tripAdvisorURL.add(tripAdvisorReviewURL);
                         ratrHotel.add(code);
                         photoHotel.add(hotelPicture);
                         addressHotel.add(hotelAddress);
@@ -1690,6 +1694,7 @@ public class FindHotels extends AppCompatActivity {
 
                         Intent intent = new Intent(FindHotels.this, ChooseHotelActivity.class);
                         intent.putExtra("hotelName", nameHotel);
+                        intent.putExtra("hotelTripAdvisorURL", tripAdvisorURL);
                         intent.putExtra("hotelrat", ratrHotel);
                         intent.putExtra("hotelPhoto", photoHotel);
                         intent.putExtra("hotelCode", listcodeHotel);

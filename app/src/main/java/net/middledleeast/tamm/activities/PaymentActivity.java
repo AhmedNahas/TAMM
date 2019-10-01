@@ -153,12 +153,12 @@ public class PaymentActivity extends AppCompatActivity {
         mId = SharedPreferencesManger.LoadIntegerData(PaymentActivity.this,"mId");
 
 
+
         uid = SharedPreferencesManger.LoadStringData(this, "uid");
 
 
         if (uid==null){
 
-            Toast.makeText(this, "fadi", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -398,7 +398,7 @@ public class PaymentActivity extends AppCompatActivity {
 //               client.startPayment(mPaymentObjectProvider.getCardPayment(true, finalAmount, finalCurrency));
 
 
-        } else if (mId==RIGISTRATHION){
+        } else if (mId==1){
 
 
 
@@ -414,18 +414,18 @@ public class PaymentActivity extends AppCompatActivity {
             tvLastName.setText(last_name);
             tvFirstName.setText(first_name);
 
-             first_name1 = intent.getStringExtra("first_name");
-             last_name1 = intent.getStringExtra("last_name");
-             day = intent.getStringExtra("day");
+            first_name1 = intent.getStringExtra("first_name");
+            last_name1 = intent.getStringExtra("last_name");
+            day = intent.getStringExtra("day");
             month = intent.getStringExtra("month");
             year = intent.getStringExtra("year");
-             country = intent.getStringExtra("country");
-             city = intent.getStringExtra("city");
-             email = intent.getStringExtra("mail");
-             phone = intent.getStringExtra("phone");
-             ocupation = intent.getStringExtra("ocupation");
-             username = intent.getStringExtra("username");
-             pass = intent.getStringExtra("pass");
+            country = intent.getStringExtra("country");
+            city = intent.getStringExtra("city");
+            email = intent.getStringExtra("mail");
+            phone = intent.getStringExtra("phone");
+            ocupation = intent.getStringExtra("ocupation");
+            username = intent.getStringExtra("username");
+            pass = intent.getStringExtra("pass");
 
 
 
@@ -756,11 +756,14 @@ public class PaymentActivity extends AppCompatActivity {
                     relative_radio_btn.setVisibility(View.GONE);
                     button.setVisibility(View.GONE);
                     webviewKnet.setVisibility(View.VISIBLE);
-                    webviewKnet.setWebViewClient(new MyWebViewClient());
                     String url = "http://www.egyptgoogle.com/k";
                     webviewKnet.getSettings().setJavaScriptEnabled(true);
                     webviewKnet.loadUrl(url); // load a web page in a web vie
+
+                    webviewKnet.setWebViewClient(new MyWebViewClient());
+
                     sendDataToServer();
+
 
 //                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
                 }else {

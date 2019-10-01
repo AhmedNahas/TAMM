@@ -68,6 +68,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
     private ArrayList<Integer> list;
     ImageView iv_booked_choose_hotel;
     private Integer accountPlan;
+    private ArrayList<String> hotelTripAdvisorURL;
 
 
     @Override
@@ -149,7 +150,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
                         nameTemp.add(hotelName.get(y));
 
                         adapterHotelInfo = new AdapterHotelInfo(ChooseHotelActivity.this, nameTemp, hotelrat, hotelphoto, ChooseHotelActivity.this, onHotelListener, hotelAddress, hotelCode, session_id,
-                                mstartTime, mendTime, countryName, cityName, cityId, noOfRooms, roomGuests, resultIndex, list_price);
+                                mstartTime, mendTime, countryName, cityName, cityId, noOfRooms, roomGuests, resultIndex, list_price,hotelTripAdvisorURL);
                         reInfoHotels.setAdapter(adapterHotelInfo);
                         adapterHotelInfo.notifyDataSetChanged();
 
@@ -171,6 +172,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
 
                 ArrayList<String> hotelNameTemp = new ArrayList<>();
+                ArrayList<String> advisorURLTemp = new ArrayList<>();
                 ArrayList<Integer> hotelRateTemp = new ArrayList<>();
                 ArrayList<String> hotelPhotoTemp = new ArrayList<>();
                 ArrayList<String> hotelAddressTemp = new ArrayList<>();
@@ -182,6 +184,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
                 for (int i = 0; i < hotelrat.size(); i++) {
                     if (hotelrat.get(i) == (int) v) {
                         hotelNameTemp.add(hotelName.get(i));
+                        advisorURLTemp.add(hotelTripAdvisorURL.get(i));
                         hotelRateTemp.add(hotelrat.get(i));
                         hotelPhotoTemp.add(hotelphoto.get(i));
                         hotelAddressTemp.add(hotelAddress.get(i));
@@ -205,7 +208,8 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
                                 noOfRooms,
                                 roomGuests,
                                 resultIndexTemp,
-                                hotelPriceTemp);
+                                hotelPriceTemp,
+                                hotelTripAdvisorURL);
 
 
                         reInfoHotels.setAdapter(adapterHotelInfo);
@@ -271,6 +275,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
 
 
         list_price = (ArrayList<String>) getIntent().getSerializableExtra("list_price");
+        hotelTripAdvisorURL = (ArrayList<String>) getIntent().getSerializableExtra("hotelTripAdvisorURL");
 
         hotelAddress = (ArrayList<String>) getIntent().getSerializableExtra("hotelAddress");
         hotelName = (ArrayList<String>) getIntent().getSerializableExtra("hotelName");
@@ -289,7 +294,7 @@ public class ChooseHotelActivity extends AppCompatActivity implements HotelsActi
         session_id = SharedPreferencesManger.LoadStringData(this, "session_id");
         reInfoHotels.setLayoutManager(new LinearLayoutManager(this));
         adapterHotelInfo = new AdapterHotelInfo(ChooseHotelActivity.this, hotelName, hotelrat, hotelphoto, this, onHotelListener, hotelAddress, hotelCode, session_id,
-                mstartTime, mendTime, countryName, cityName, cityId, noOfRooms, roomGuests, resultIndex, list_price);
+                mstartTime, mendTime, countryName, cityName, cityId, noOfRooms, roomGuests, resultIndex, list_price,hotelTripAdvisorURL);
         reInfoHotels.setAdapter(adapterHotelInfo);
         adapterHotelInfo.notifyDataSetChanged();
 

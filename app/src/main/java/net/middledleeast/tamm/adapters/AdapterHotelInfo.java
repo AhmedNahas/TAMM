@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -28,6 +30,7 @@ import java.util.Collections;
 public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.SingleView>{
 
     ArrayList<String> listnameHotel;
+    ArrayList<String> advisorURLList;
     ArrayList<Integer> listrat;
     ArrayList<String> listPhotoHotel;
     ArrayList<String> listAddressHotel;
@@ -58,7 +61,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
     public AdapterHotelInfo(Activity activity, ArrayList<String> listnameHotel, ArrayList<Integer> hotelrat, ArrayList<String> listPhotoHotel,
                             Context context, onHotelListener onHotelListener, ArrayList<String> listAddressHotel, ArrayList<String> hotelCode,
                             String sessionId, String mstartTime, String mendTime, String countryName, String cityName, String cityId,
-                            int noOfRooms, ArrayList<String> roomGuests, ArrayList<Integer> resultINdex , ArrayList<String> listprice) {
+                            int noOfRooms, ArrayList<String> roomGuests, ArrayList<Integer> resultINdex , ArrayList<String> listprice,ArrayList<String> advisorURLList) {
         this.listnameHotel = listnameHotel;
         this.listPhotoHotel = listPhotoHotel;
         this.listrat = hotelrat;
@@ -77,7 +80,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         this.resultINdex = resultINdex;
         this.activity = activity;
         this.listprice = listprice;
-
+        this.advisorURLList = advisorURLList;
         notifyDataSetChanged();
 
     }
@@ -165,27 +168,29 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
 
         mHotelCode = listCodeHotels.get(position);
         name = listnameHotel.get(position);
+        final String advisorURL = advisorURLList.get(position);
         photos = listPhotoHotel.get(position);
         rat = listrat.get(position);
 
         holder.name.setText(name);
         holder.rat.setText(rat+"");
+        holder.URLTripAdvisor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                if (advisorURL!= null) {
+                    i.setData(Uri.parse(advisorURL));
+                    context.startActivity(i);
+                }else {
+                    Toast.makeText(context, "URL Not Available for this Hotel", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 
         Collections.sort(listrat);
         Collections.reverse(listrat);
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -206,6 +211,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
                 intent.removeExtra("noOfRooms");
                 intent.removeExtra("roomGuest");
                 intent.removeExtra("resultIndex");
+                intent.removeExtra("hotelTripAdvisorURL");
 
                 mHotelCode = listCodeHotels.get(position);
                 name = listnameHotel.get(position);
@@ -251,13 +257,14 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
     public class SingleView extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name, rat , hotelPrice,recommended ;
-        ImageView photoHotel ;
+        ImageView photoHotel , URLTripAdvisor;
         onHotelListener onHotelListener;
         RelativeLayout parentLayout;
 
         public SingleView(@NonNull View itemView, onHotelListener onHotelListener) {
             super(itemView);
             name = itemView.findViewById(R.id.hotel_name);
+            URLTripAdvisor=itemView.findViewById(R.id.trip_advisor_URL);
             rat = itemView.findViewById(R.id.shape_rat);
             photoHotel = itemView.findViewById(R.id.hotel_image);
             parentLayout = itemView.findViewById(R.id.linear);
