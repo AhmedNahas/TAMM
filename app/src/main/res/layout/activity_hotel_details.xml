@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/black"
+    android:background="@drawable/manlap"
     tools:context=".activities.HotelDetails">
     <RelativeLayout
         android:id="@+id/relative_hotel_detail"
@@ -69,7 +69,7 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:id="@+id/view_pager_details"
         android:layout_width="@dimen/_300sdp"
-        android:layout_height="@dimen/_120sdp"
+        android:layout_height="@dimen/_130sdp"
         android:layout_below="@+id/img_linee"
         android:layout_centerHorizontal="true"
         android:background="@drawable/border2"
@@ -104,7 +104,7 @@
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="@dimen/_12ssp"
-        android:text="@string/not_available"
+        android:text="fdgfdgfhhhhhhhhhhhhhhhhhhhhhhhhhfg"
         android:id="@+id/hotel_name_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -118,14 +118,14 @@
         android:textStyle="normal"
         android:lineHeight="@dimen/_20sdp"
         android:gravity="center"
-        android:text="@string/not_available"
+        android:text="fgdfdgfdgdfjgjfdjgdfjkgffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
         android:layout_below="@+id/hotel_name_detail"
         android:id="@+id/hotel_desc_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="#ffff"
-       android:layout_marginTop="@dimen/_5sdp"
+        android:layout_margin="20dp"
         tools:targetApi="p" />
 
 
@@ -136,14 +136,14 @@
         android:layout_below="@+id/hotel_desc_detail"
         android:layout_marginEnd="2dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_40sdp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_margin="@dimen/_12sdp"
             android:id="@+id/hotel_detils_rat"
             android:layout_width="40dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/shape3"

@@ -96,21 +96,21 @@
         android:layout_marginTop="@dimen/_15sdp"
         android:src="@drawable/manok"
 
-
         />
 
 
     <TextView
-        android:layout_width="@dimen/_150sdp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/iv_mantxt"
+        android:layout_marginStart="@dimen/_160sdp"
+        android:layout_marginTop="@dimen/_34sdp"
+        android:layout_marginEnd="@dimen/_3sdp"
         android:layout_marginBottom="@dimen/_30sdp"
         android:gravity="center"
         android:text="@string/your_room_has_n_been_booked_n_n_check_your_email_n_for_further_details_n_good_luck"
         android:textColor="#FFF"
-        android:textSize="@dimen/_13ssp"
-        android:layout_alignParentRight="true"
-        />
+        android:textSize="@dimen/_13ssp" />
 
 
     <ImageView

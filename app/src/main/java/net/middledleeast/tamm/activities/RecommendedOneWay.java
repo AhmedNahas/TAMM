@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.ChooseFlightAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
-import net.middledleeast.tamm.model.CountPassengerAndType;
 
 import java.util.ArrayList;
 
@@ -183,10 +182,9 @@ private RecyclerView recyclerView;
 
 
         ArrayList<SearchFlightsResponse.Result> ListResult = (ArrayList<SearchFlightsResponse.Result>) getIntent().getSerializableExtra("ListResult");
-        ArrayList<CountPassengerAndType> passenger_type = (ArrayList<CountPassengerAndType>) getIntent().getSerializableExtra("passenger_type");
 
 
-        ChooseFlightAdapter chooseFlightAdapter  = new ChooseFlightAdapter(this,ListResult,passenger_type);
+        ChooseFlightAdapter chooseFlightAdapter  = new ChooseFlightAdapter(this,ListResult);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(chooseFlightAdapter);
         chooseFlightAdapter.notifyDataSetChanged();
