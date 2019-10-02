@@ -353,7 +353,8 @@ public class RegisterationActivity extends Fragment {
                         intent.putExtra("ocupation",ocupation.getText().toString());
                         intent.putExtra("username",etUserName.getText().toString());
                         intent.putExtra("pass",etPassword.getText().toString());
-                        intent.putExtra("mId",1);
+                        SharedPreferencesManger.SaveData(getContext(),"mId",1);
+
 
                         startActivity(intent);
 

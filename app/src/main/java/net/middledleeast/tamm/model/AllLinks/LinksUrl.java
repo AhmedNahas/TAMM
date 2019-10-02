@@ -15,7 +15,6 @@ public class LinksUrl {
 
     public static String SEND_BEST_FLIGHT_DATA = "http://egyptgoogle.com/backend/bestflightbooking/insertflightbooking.php";
 
-    public static String URL_KNET="http://www.egyptgoogle.com/k";
 
     public static String URL_BEST_OFFER = "http://egyptgoogle.com/backend/hotels/bestdeals.php";
 

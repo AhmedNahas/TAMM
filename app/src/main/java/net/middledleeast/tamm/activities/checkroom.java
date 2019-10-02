@@ -67,11 +67,17 @@ public class checkroom extends AppCompatActivity {
     private ArrayOfRequestedRooms arrayOfRooms = new ArrayOfRequestedRooms();
     private float sum;
     private String singlePic;
-    TextView room_details_list,cancellation_fees;
+    TextView room_details_list, cancellation_fees;
     private String amenties;
     private String untile;
     private String fromDate;
     private BigDecimal autoCancellationText;
+    private String s1;
+    private String feesFree;
+    private String feesMember;
+    private String roomMarkUpSt;
+    private int roomMarkUp;
+    private int roomCount;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -98,7 +104,7 @@ public class checkroom extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(checkroom.this,R.style.alert_dialog_dark);
+                AlertDialog.Builder builder = new AlertDialog.Builder(checkroom.this, R.style.alert_dialog_dark);
 
                 builder.setNegativeButton("OKAY",
                         new DialogInterface.OnClickListener() {
@@ -106,7 +112,7 @@ public class checkroom extends AppCompatActivity {
                                 // User cancelled the dialog
                             }
                         });
-                View root =getLayoutInflater().inflate((R.layout.activity_cancellation_plicy_details),null);
+                View root = getLayoutInflater().inflate((R.layout.activity_cancellation_plicy_details), null);
                 builder.setView(root);
                 builder.setTitle("Cancellation Policy");
 
@@ -114,10 +120,10 @@ public class checkroom extends AppCompatActivity {
 //
 
                 AlertDialog dialog = builder.create();
-                cancellation_fees=root.findViewById(R.id.cancellation_fees);
-                cancellation_fees.setText("For Cancellation on Or After " + fromDate + " You Would be Charged " +autoCancellationText + " USD. ");
+                cancellation_fees = root.findViewById(R.id.cancellation_fees);
+                cancellation_fees.setText("For Cancellation on Or After " + fromDate + " You Would be Charged " + autoCancellationText + " USD. ");
 
-                TextView deadLine_tv =root.findViewById(R.id.tv_9);
+                TextView deadLine_tv = root.findViewById(R.id.tv_9);
                 deadLine_tv.setText(untile);
                 dialog.show();
 
@@ -134,11 +140,22 @@ public class checkroom extends AppCompatActivity {
         currency = SharedPreferencesManger.LoadStringData(this, "currency");
         singlePic = SharedPreferencesManger.LoadStringData(this, "singlePic");
 
+        feesFree = SharedPreferencesManger.LoadStringData(this, "feesFree");
+        feesMember = SharedPreferencesManger.LoadStringData(this, "feesMember");
 
+        if (feesFree!=null){
+            roomMarkUpSt = feesFree;
+        }else {
+            roomMarkUpSt = feesMember;
+        }
+
+        roomMarkUp = Integer.parseInt(roomMarkUpSt);
         Glide.with(this).load(singlePic).into(imgCheckOut);
 
 
-        if (arrayOfRooms.size()==2){
+        if (arrayOfRooms.size() == 2) {
+
+            roomCount = 2 * roomMarkUp;
 
             String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
             BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
@@ -153,20 +170,20 @@ public class checkroom extends AppCompatActivity {
 
 
             float finalPrice1 = Float.parseFloat(price);
+
             float finalPrice2 = Float.parseFloat(price2);
-       sum = Float.sum(finalPrice1, finalPrice2);
+            sum = Float.sum(finalPrice1, finalPrice2);
 
-            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
-
-///
-        }else if (arrayOfRooms.size()==3){
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + "USD " + (sum +roomCount));
 
 
+        } else if (arrayOfRooms.size() == 3) {
+
+            roomCount = 3 * roomMarkUp;
 
             String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
             BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
             String price = totalFare.toString();
-
 
 
             String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
@@ -176,26 +193,25 @@ public class checkroom extends AppCompatActivity {
 
             float finalPrice1 = Float.parseFloat(price);
             float finalPrice2 = Float.parseFloat(price2);
-          float  sum_ = Float.sum(finalPrice1, finalPrice2);
+            float sum_ = Float.sum(finalPrice1, finalPrice2);
 
 
-            String roomTypeName3= arrayOfRooms.get(3).RoomTypeName;
-            BigDecimal totalFare3 = arrayOfRooms.get(3).RoomRate.TotalFare;
+            String roomTypeName3 = arrayOfRooms.get(2).RoomTypeName;
+            BigDecimal totalFare3 = arrayOfRooms.get(2).RoomRate.TotalFare;
             String price3 = totalFare3.toString();
             float finalPrice3 = Float.parseFloat(price3);
 
 
+            sum = Float.sum(sum_, finalPrice3);
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + (sum +roomCount));
 
-            sum = Float.sum(sum_,finalPrice3);
-            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
 
-
-        }else if (arrayOfRooms.size()==4){
+        } else if (arrayOfRooms.size() == 4) {
+            roomCount = 4 * roomMarkUp;
 
             String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
             BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
             String price = totalFare.toString();
-
 
 
             String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
@@ -205,33 +221,31 @@ public class checkroom extends AppCompatActivity {
 
             float finalPrice1 = Float.parseFloat(price);
             float finalPrice2 = Float.parseFloat(price2);
-            float  sum_ = Float.sum(finalPrice1, finalPrice2);
+            float sum_ = Float.sum(finalPrice1, finalPrice2);
 
 
-            String roomTypeName3= arrayOfRooms.get(3).RoomTypeName;
-            BigDecimal totalFare3 = arrayOfRooms.get(3).RoomRate.TotalFare;
+            String roomTypeName3 = arrayOfRooms.get(2).RoomTypeName;
+            BigDecimal totalFare3 = arrayOfRooms.get(2).RoomRate.TotalFare;
             String price3 = totalFare3.toString();
             float finalPrice3 = Float.parseFloat(price3);
 
 
+            float sum_4 = Float.sum(sum_, finalPrice3);
 
-           float sum_4 = Float.sum(sum_,finalPrice3);
 
-
-            String roomTypeName4= arrayOfRooms.get(4).RoomTypeName;
-            BigDecimal totalFare4 = arrayOfRooms.get(4).RoomRate.TotalFare;
+            String roomTypeName4 = arrayOfRooms.get(3).RoomTypeName;
+            BigDecimal totalFare4 = arrayOfRooms.get(3).RoomRate.TotalFare;
             String price4 = totalFare4.toString();
             float finalPrice4 = Float.parseFloat(price4);
 
 
+            sum = Float.sum(finalPrice4, sum_4);
 
-            sum = Float.sum(finalPrice4,sum_4);
-
-            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
-
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + (sum +roomCount));
 
 
-        }else if (arrayOfRooms.size()==1){
+        } else if (arrayOfRooms.size() == 1) {
+            roomCount = 1 * roomMarkUp;
 
             String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
             BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
@@ -241,13 +255,10 @@ public class checkroom extends AppCompatActivity {
 
 
             sum = finalPrice;
-            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + (sum +roomCount));
 
 
         }
-
-
-
 
 
         String roomIndexArrayStr = SharedPreferencesManger.LoadStringData(this, "roomIndexArray");
@@ -280,8 +291,6 @@ public class checkroom extends AppCompatActivity {
             try {
 
                 HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
-
-
 
 
                 AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, bookingOptions, authenticationData);
@@ -366,7 +375,7 @@ public class checkroom extends AppCompatActivity {
         checkRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-          SharedPreferencesManger.SaveData(checkroom.this, "finalpriceRoom", String.valueOf(sum));
+                SharedPreferencesManger.SaveData(checkroom.this, "finalpriceRoom", String.valueOf(sum+roomCount));
 
                 startActivity(new Intent(checkroom.this, ConfirmBookingRoom.class));
 
@@ -390,6 +399,8 @@ public class checkroom extends AppCompatActivity {
 
         roomTybe = getIntent().getStringExtra("roomTybe");
         roomPrice = getIntent().getStringExtra("roomPrice");
+        String[] s = roomPrice.split(" ");
+        s1 = s[1];
 
 
         description = getIntent().getStringExtra("description");
@@ -415,7 +426,6 @@ public class checkroom extends AppCompatActivity {
 
         startActivity(new Intent(checkroom.this, ChooseBookingDate.class));
     }
-
 
 
     public static class transferClass {

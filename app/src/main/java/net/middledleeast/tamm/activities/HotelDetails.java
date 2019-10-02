@@ -3,6 +3,7 @@ package net.middledleeast.tamm.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -11,22 +12,23 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.Tamm.Hotels.wcf.ArrayOfImageUrlDetails;
-import com.Tamm.Hotels.wcf.ArrayOfRoomInfo;
 import com.Tamm.Hotels.wcf.ArrayOfString4;
-import com.Tamm.Hotels.wcf.ArrayOfString5;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.HotelDetailsResponse;
 import com.Tamm.Hotels.wcf.ImageUrlDetails;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.adapters.AmenitiesAdapter;
 import net.middledleeast.tamm.adapters.adapterPhotoHotels;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
@@ -82,15 +84,18 @@ public class HotelDetails extends AppCompatActivity {
     private String part1;
     private String part2;
     private String map;
+    private RecyclerView amenitiesRecycler;
+
 
     RelativeLayout toolbar_back1;
 
     ImageView iv_booked_hotel_details;
     private boolean ClickDetailsHotel=false;
     private Integer accountPlan;
-    TextView basic_amenities_details;
+    private AmenitiesAdapter amenitiesAdapter;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +107,8 @@ public class HotelDetails extends AppCompatActivity {
 
 
         toolbar_back1=findViewById(R.id.toolbar_back1);
-        basic_amenities_details=findViewById(R.id.basic_amenities_details);
+        amenitiesRecycler=findViewById(R.id.amnities_recycler);
+
 
         toolbar_back1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,7 +206,26 @@ public class HotelDetails extends AppCompatActivity {
 
             ArrayOfString4 description = hotelDetailsResponse.HotelDetails.HotelFacilities;
 
-            basic_amenities_details.setText(description.toString());
+
+            ArrayList<String>  listDetails = new ArrayList<>();
+            String[] split = description.toString().split(",");
+
+
+
+
+
+            for (int i = 0; i < split.length; i++) {
+
+                listDetails.add(split[i]);
+                amenitiesRecycler.setLayoutManager(new GridLayoutManager(this,2));
+
+                amenitiesAdapter = new AmenitiesAdapter(this,listDetails);
+                amenitiesRecycler.setAdapter(amenitiesAdapter);
+                amenitiesAdapter.notifyDataSetChanged();
+            }
+
+
+
 
             ArrayOfImageUrlDetails imageUrls = hotelDetailsResponse.HotelDetails.ImageUrls;
             for (int i = 0; i < imageUrls.size(); i++) {
@@ -223,13 +248,7 @@ public class HotelDetails extends AppCompatActivity {
             hotelDescDetail.setText(address + "\n" + phoneNumber);
 
 
-            ArrayOfRoomInfo arrayOfRoomInfo = hotelDetailsResponse.HotelDetails.RoomInfo;
-            if (arrayOfRoomInfo != null) {
-                ArrayOfString5 images = arrayOfRoomInfo.get(0).Images;
-                int s = hotelDetailsResponse.HotelDetails.RoomInfo.get(1).Images.size();
 
-                Toast.makeText(this, "size is : " + s, Toast.LENGTH_SHORT).show();
-            }
             map = hotelDetailsResponse.HotelDetails.Map;
 
             String[] parts = map.split("\\|", 2);
@@ -302,7 +321,7 @@ public class HotelDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                
+
                 Intent intent = new Intent(HotelDetails.this, ChooseBookingDate.class);
                 intent.putExtra("checkInDate", mstartTime);
                 intent.putExtra("checkOutDate", mendTime);

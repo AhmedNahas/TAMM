@@ -22,7 +22,6 @@ import com.Tamm.Hotels.wcf.ArrayOfSupplement;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.Enums;
-import com.Tamm.Hotels.wcf.GenerateInvoiceResponse;
 import com.Tamm.Hotels.wcf.Guest;
 import com.Tamm.Hotels.wcf.HotelBookResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
@@ -327,7 +326,7 @@ try {
                 bookingresponse(paymentInfo);
 
 
-                senddataknettoemail();
+//                senddataknettoemail();
 
 //                sendDataToEMail(email,"Dear Mr." + userNameFromSignIn
 //                        + " , This is your Confirmation No." + confirmationNo
@@ -374,6 +373,7 @@ try {
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
+            guest.GuestInRoom = 4;
             arrayOfGuest.add(guest);
 
 
@@ -390,6 +390,7 @@ try {
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
+            guest.GuestInRoom = 4;
             arrayOfGuest.add(guest);
 
 
@@ -400,6 +401,7 @@ try {
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
+            guest.GuestInRoom = 4;
             arrayOfGuest.add(guest2);
 
 
@@ -413,6 +415,7 @@ try {
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
+            guest.GuestInRoom = 4;
             arrayOfGuest.add(guest);
 
 
@@ -423,6 +426,7 @@ try {
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
+            guest.GuestInRoom = 4;
             arrayOfGuest.add(guest2);
 
 
@@ -433,6 +437,7 @@ try {
             guest3.FirstName = firstName3GustOne;
             guest3.GuestType = Enums.GuestType.Adult;
             guest3.LastName = lastName3GustOne;
+            guest.GuestInRoom = 4;
             arrayOfGuest.add(guest3);
 
         } else if (noOfAdultRoom4 == 4) {
@@ -445,6 +450,7 @@ try {
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
+            guest.GuestInRoom = 4;
             arrayOfGuest.add(guest);
 
 
@@ -455,6 +461,7 @@ try {
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
+            guest.GuestInRoom = 4;
             arrayOfGuest.add(guest2);
 
 
@@ -465,6 +472,7 @@ try {
             guest3.FirstName = firstName3GustOne;
             guest3.GuestType = Enums.GuestType.Adult;
             guest3.LastName = lastName3GustOne;
+            guest.GuestInRoom = 4;
             arrayOfGuest.add(guest3);
 
             String firstName4Gust2 = SharedPreferencesManger.LoadStringData(this, "firstName4Gust4");
@@ -474,6 +482,7 @@ try {
             guest4.FirstName = firstName4Gust2;
             guest4.GuestType = Enums.GuestType.Adult;
             guest4.LastName = lastName4Gust2;
+            guest.GuestInRoom = 4;
             arrayOfGuest.add(guest4);
 
 
@@ -488,6 +497,7 @@ try {
             child1.Title =  getString(R.string.mr);
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
+            child1.GuestInRoom = 4;
             child1.LastName = lastName1ChildGustOne;
             arrayOfGuest.add(child1);
 
@@ -503,6 +513,7 @@ try {
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
+            child1.GuestInRoom = 4;
             arrayOfGuest.add(child1);
 
 
@@ -514,6 +525,7 @@ try {
             child2.FirstName = firstName2ChildGustOne;
             child2.GuestType = Enums.GuestType.Child;
             child2.LastName = lastName2ChildGustOne;
+            child1.GuestInRoom = 4;
             arrayOfGuest.add(child2);
 
 
@@ -538,6 +550,7 @@ try {
             guest.Title =  getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
+            guest.GuestInRoom = 3;
             guest.LastName = lastName1GustOne;
             arrayOfGuest.add(guest);
 
@@ -552,6 +565,7 @@ try {
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
+            guest.GuestInRoom = 3;
             arrayOfGuest.add(guest);
 
 
@@ -562,6 +576,7 @@ try {
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
+            guest.GuestInRoom = 3;
             arrayOfGuest.add(guest2);
 
 
@@ -574,6 +589,7 @@ try {
             guest.Title =  getString(R.string.mr);
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
+            guest.GuestInRoom = 3;
             guest.LastName = lastName1GustOne;
             arrayOfGuest.add(guest);
 
@@ -585,6 +601,7 @@ try {
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
+            guest.GuestInRoom = 3;
             arrayOfGuest.add(guest2);
 
 
@@ -594,6 +611,7 @@ try {
             guest3.Title =  getString(R.string.mr);
             guest3.FirstName = firstName3GustOne;
             guest3.GuestType = Enums.GuestType.Adult;
+            guest.GuestInRoom = 3;
             guest3.LastName = lastName3GustOne;
             arrayOfGuest.add(guest3);
 
@@ -607,6 +625,7 @@ try {
             guest.FirstName = firstName1GustOne;
             guest.GuestType = Enums.GuestType.Adult;
             guest.LastName = lastName1GustOne;
+            guest.GuestInRoom = 3;
             arrayOfGuest.add(guest);
 
 
@@ -617,6 +636,7 @@ try {
             guest2.FirstName = firstName2GustOne;
             guest2.GuestType = Enums.GuestType.Adult;
             guest2.LastName = lastName2GustOne;
+            guest.GuestInRoom = 3;
             arrayOfGuest.add(guest2);
 
 
@@ -627,6 +647,7 @@ try {
             guest3.FirstName = firstName3GustOne;
             guest3.GuestType = Enums.GuestType.Adult;
             guest3.LastName = lastName3GustOne;
+            guest.GuestInRoom = 3;
             arrayOfGuest.add(guest3);
 
             String firstName4Gust2 = SharedPreferencesManger.LoadStringData(this, "firstName4Gust3");
@@ -636,6 +657,7 @@ try {
             guest4.FirstName = firstName4Gust2;
             guest4.GuestType = Enums.GuestType.Adult;
             guest4.LastName = lastName4Gust2;
+            guest.GuestInRoom = 3;
             arrayOfGuest.add(guest4);
 
 
@@ -651,6 +673,7 @@ try {
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
+            child1.GuestInRoom = 3;
             arrayOfGuest.add(child1);
 
 
@@ -665,6 +688,7 @@ try {
             child1.FirstName = firstName1ChildGustOne;
             child1.GuestType = Enums.GuestType.Child;
             child1.LastName = lastName1ChildGustOne;
+            child1.GuestInRoom = 3;
             arrayOfGuest.add(child1);
 
 
@@ -676,6 +700,7 @@ try {
             child2.FirstName = firstName2ChildGustOne;
             child2.GuestType = Enums.GuestType.Child;
             child2.LastName = lastName2ChildGustOne;
+            child1.GuestInRoom = 3;
             arrayOfGuest.add(child2);
 
 
@@ -1037,7 +1062,6 @@ try {
         guest1.LastName = lastName1GustOne;
         guest1.GuestInRoom = 1;
 
-        guest1.GuestInRoom = 1;
 
         arrayOfGuest.add(guest1);
 
@@ -1337,62 +1361,62 @@ try {
     }
 
 
-    public void senddataknettoemail(){
-
-        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SENT_KNET_TO_EMAIL, new com.android.volley.Response.Listener<String>() {
-
-            @Override
-
-            public void onResponse(String response) {
-
-
-
-
-                try {
-                    JSONObject jObj = new JSONObject(response);
-                    int status = jObj.getInt("msg");
-                    String msg = jObj.getString("success");
-
-                    Toast.makeText(RoomBooked.this, ""+msg, Toast.LENGTH_SHORT).show();
-
-                }catch (Exception  e){}
-
-            }
-
-
-        }, new com.android.volley.Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                int statusCode = error.networkResponse.statusCode;
-
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("mail_to", email);
-                parameters.put("name", fullName);
-                parameters.put("transid", transaction_);
-                parameters.put("cityname", name_city_);
-                parameters.put("amount", amount_);
-                parameters.put("refno", refno_);
-                parameters.put("paymentid", paymentid_);
-                parameters.put("trackid", trackid_);
-                parameters.put("time", bookedOn);
-
-
-
-                return parameters;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(request);
-
-
-
-    }
+//    public void senddataknettoemail(){
+//
+//        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SENT_KNET_TO_EMAIL, new com.android.volley.Response.Listener<String>() {
+//
+//            @Override
+//
+//            public void onResponse(String response) {
+//
+//
+//
+//
+//                try {
+//                    JSONObject jObj = new JSONObject(response);
+//                    int status = jObj.getInt("msg");
+//                    String msg = jObj.getString("success");
+//
+//                    Toast.makeText(RoomBooked.this, ""+msg, Toast.LENGTH_SHORT).show();
+//
+//                }catch (Exception  e){}
+//
+//            }
+//
+//
+//        }, new com.android.volley.Response.ErrorListener() {
+//
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//                int statusCode = error.networkResponse.statusCode;
+//
+//            }
+//        }) {
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> parameters = new HashMap<String, String>();
+//                parameters.put("mail_to", email);
+//                parameters.put("name", fullName);
+//                parameters.put("transid", transaction_);
+//                parameters.put("cityname", name_city_);
+//                parameters.put("amount", amount_);
+//                parameters.put("refno", refno_);
+//                parameters.put("paymentid", paymentid_);
+//                parameters.put("trackid", trackid_);
+//                parameters.put("time", bookedOn);
+//
+//
+//
+//                return parameters;
+//            }
+//        };
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        requestQueue.add(request);
+//
+//
+//
+//    }
 
 
 
