@@ -79,7 +79,7 @@ public class RegisterationActivity extends Fragment {
     private EditText etPassword;
     private TextView etDate;
     private AutoCompleteTextView country, city, ocupation;
-    private EditText zip_code;
+    private TextView zip_code;
     private BasicHttpBinding_IHotelService1 service;
     private AuthenticationData authenticationData;
     private static final String TAG = RegisterationActivity.class.getSimpleName();
