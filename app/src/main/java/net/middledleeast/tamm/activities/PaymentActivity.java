@@ -775,7 +775,7 @@ public class PaymentActivity extends AppCompatActivity {
                      relative_radio_btn.setVisibility(View.GONE);
                      button.setVisibility(View.GONE);
                      webviewKnet.setVisibility(View.VISIBLE);
-                     String url = "http://www.egyptgoogle.com/k";
+                     String url = "http://egyptgoogle.com/k";
                      webviewKnet.getSettings().setJavaScriptEnabled(true);
                      webviewKnet.loadUrl(url); // load a web page in a web vie
                      webviewKnet.setWebViewClient(new MyWebViewClient());

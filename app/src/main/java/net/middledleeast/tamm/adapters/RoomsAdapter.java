@@ -337,7 +337,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                          arrayOfRooms.add(requestedRooms);
 
                                                          String requestedRoomsString = gson.toJson(arrayOfRooms);
-                                                         SharedPreferencesManger.SaveData((Activity) context, "arrayOfroomsreq", requestedRoomsString);
+                                                         SharedPreferencesManger.SaveData(context, "arrayOfroomsreq", requestedRoomsString);
 
                                                          AlertDialog.Builder alert = new AlertDialog.Builder(context);
                                                          alert.setMessage("Please select next room");

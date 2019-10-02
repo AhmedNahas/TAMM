@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -29,6 +30,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class KnetPaymentDelails extends AppCompatActivity {
 
     TextView tv_pay_number,tv_result_number,tv_transaction_number,tv_auth_number,tv_track_number,tv_reference_,tv_amount_,tv_udf_one,tv_udf_two,tv_udf_three,tv_udf_four,tv_udf_five,tv_post;
@@ -36,6 +40,20 @@ public class KnetPaymentDelails extends AppCompatActivity {
 Button btn_confirm;
     private String resultcode;
     private int mId;
+
+    private String fullName;
+
+    private String bookedOn;
+
+
+    private String name_city_;
+
+    private String email;
+    private String transactionid;
+    private String amount;
+    private String refno;
+    private String paymentid;
+    private String trackid;
 
 
     @Override
@@ -65,11 +83,28 @@ Button btn_confirm;
 
 
 
+
+        name_city_ = SharedPreferencesManger.LoadStringData(this, "name_city_");
+
+        bookedOn = SharedPreferencesManger.LoadStringData(this, "bookedOn");
+
+        email = SharedPreferencesManger.LoadStringData(this, "email");
+        String firstName1GustOne = SharedPreferencesManger.LoadStringData(this, "firstName1GustOne");
+        String lastName1GustOne = SharedPreferencesManger.LoadStringData(this, "lastName1GustOne");
+        fullName = firstName1GustOne + " "+lastName1GustOne ;
+
+
+
+
+
         getpaymentresult();
 
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                senddataknettoemail();
                 if (mId == 1) {
 
 
@@ -181,13 +216,13 @@ Button btn_confirm;
                     for (int i=0; i<array.length(); i++ ){
                         JSONObject ob=array.getJSONObject(i);
                          String id = ob.getString("id");
-                         String paymentid = ob.getString("paymentid");
+                         paymentid = ob.getString("paymentid");
                          resultcode = ob.getString("resultcode");
-                         String transactionid = ob.getString("transactionid");
+                         transactionid = ob.getString("transactionid");
                          String auth = ob.getString("auth");
-                         String trackid = ob.getString("trackid");
-                         String refno = ob.getString("refno");
-                         String amount = ob.getString("amount");
+                         trackid = ob.getString("trackid");
+                         refno = ob.getString("refno");
+                         amount = ob.getString("amount");
                          String udf1 = ob.getString("udf1");
                          String udf2 = ob.getString("udf2");
                          String udf3 = ob.getString("udf3");
@@ -236,6 +271,64 @@ Button btn_confirm;
 
 
     }
+    public void senddataknettoemail(){
+
+        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SENT_KNET_TO_EMAIL, new com.android.volley.Response.Listener<String>() {
+
+            @Override
+
+            public void onResponse(String response) {
+
+
+
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    int status = jObj.getInt("msg");
+                    String msg = jObj.getString("success");
+
+                    Toast.makeText(KnetPaymentDelails.this, ""+msg, Toast.LENGTH_SHORT).show();
+
+                }catch (Exception  e){}
+
+            }
+
+
+        }, new com.android.volley.Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                int statusCode = error.networkResponse.statusCode;
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("mail_to", email);
+                parameters.put("name", fullName);
+                parameters.put("transid", transactionid);
+                parameters.put("cityname", name_city_);
+                parameters.put("amount", amount);
+                parameters.put("refno", refno);
+                parameters.put("paymentid", paymentid);
+                parameters.put("trackid", trackid);
+                parameters.put("time", bookedOn);
+                parameters.put("resultcode", resultcode);
+
+
+
+                return parameters;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
+
+
+
+    }
+
 
 
 }

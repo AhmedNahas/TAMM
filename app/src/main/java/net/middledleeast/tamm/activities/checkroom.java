@@ -73,6 +73,11 @@ public class checkroom extends AppCompatActivity {
     private String fromDate;
     private BigDecimal autoCancellationText;
     private String s1;
+    private String feesFree;
+    private String feesMember;
+    private String roomMarkUpSt;
+    private int roomMarkUp;
+    private int roomCount;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -135,34 +140,46 @@ public class checkroom extends AppCompatActivity {
         currency = SharedPreferencesManger.LoadStringData(this, "currency");
         singlePic = SharedPreferencesManger.LoadStringData(this, "singlePic");
 
+        feesFree = SharedPreferencesManger.LoadStringData(this, "feesFree");
+        feesMember = SharedPreferencesManger.LoadStringData(this, "feesMember");
 
+        if (feesFree!=null){
+            roomMarkUpSt = feesFree;
+        }else {
+            roomMarkUpSt = feesMember;
+        }
+
+        roomMarkUp = Integer.parseInt(roomMarkUpSt);
         Glide.with(this).load(singlePic).into(imgCheckOut);
 
 
         if (arrayOfRooms.size() == 2) {
 
-//            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
-//            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
-//            String price = totalFare.toString();
-//
-//
-//
-//            String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
-//            BigDecimal totalFare2 = arrayOfRooms.get(1).RoomRate.TotalFare;
-//            String price2 = totalFare2.toString();
-//
-//
-//
-            float finalPrice1 = Float.parseFloat(s1);
+            roomCount = 2 * roomMarkUp;
 
-//            float finalPrice2 = Float.parseFloat(price2);
-            sum = Float.sum(finalPrice1, finalPrice1);
+            String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
+            BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
+            String price = totalFare.toString();
 
-            tvTotalMount.setText("  TOTAl AMOUNT :                          " + "USD " + sum);
 
-///
+
+            String roomTypeName2 = arrayOfRooms.get(1).RoomTypeName;
+            BigDecimal totalFare2 = arrayOfRooms.get(1).RoomRate.TotalFare;
+            String price2 = totalFare2.toString();
+
+
+
+            float finalPrice1 = Float.parseFloat(price);
+
+            float finalPrice2 = Float.parseFloat(price2);
+            sum = Float.sum(finalPrice1, finalPrice2);
+
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + "USD " + (sum +roomCount));
+
+
         } else if (arrayOfRooms.size() == 3) {
 
+            roomCount = 3 * roomMarkUp;
 
             String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
             BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
@@ -179,17 +196,18 @@ public class checkroom extends AppCompatActivity {
             float sum_ = Float.sum(finalPrice1, finalPrice2);
 
 
-            String roomTypeName3 = arrayOfRooms.get(3).RoomTypeName;
-            BigDecimal totalFare3 = arrayOfRooms.get(3).RoomRate.TotalFare;
+            String roomTypeName3 = arrayOfRooms.get(2).RoomTypeName;
+            BigDecimal totalFare3 = arrayOfRooms.get(2).RoomRate.TotalFare;
             String price3 = totalFare3.toString();
             float finalPrice3 = Float.parseFloat(price3);
 
 
             sum = Float.sum(sum_, finalPrice3);
-            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + (sum +roomCount));
 
 
         } else if (arrayOfRooms.size() == 4) {
+            roomCount = 4 * roomMarkUp;
 
             String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
             BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
@@ -206,8 +224,8 @@ public class checkroom extends AppCompatActivity {
             float sum_ = Float.sum(finalPrice1, finalPrice2);
 
 
-            String roomTypeName3 = arrayOfRooms.get(3).RoomTypeName;
-            BigDecimal totalFare3 = arrayOfRooms.get(3).RoomRate.TotalFare;
+            String roomTypeName3 = arrayOfRooms.get(2).RoomTypeName;
+            BigDecimal totalFare3 = arrayOfRooms.get(2).RoomRate.TotalFare;
             String price3 = totalFare3.toString();
             float finalPrice3 = Float.parseFloat(price3);
 
@@ -215,18 +233,19 @@ public class checkroom extends AppCompatActivity {
             float sum_4 = Float.sum(sum_, finalPrice3);
 
 
-            String roomTypeName4 = arrayOfRooms.get(4).RoomTypeName;
-            BigDecimal totalFare4 = arrayOfRooms.get(4).RoomRate.TotalFare;
+            String roomTypeName4 = arrayOfRooms.get(3).RoomTypeName;
+            BigDecimal totalFare4 = arrayOfRooms.get(3).RoomRate.TotalFare;
             String price4 = totalFare4.toString();
             float finalPrice4 = Float.parseFloat(price4);
 
 
             sum = Float.sum(finalPrice4, sum_4);
 
-            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + (sum +roomCount));
 
 
         } else if (arrayOfRooms.size() == 1) {
+            roomCount = 1 * roomMarkUp;
 
             String roomTypeName = arrayOfRooms.get(0).RoomTypeName;
             BigDecimal totalFare = arrayOfRooms.get(0).RoomRate.TotalFare;
@@ -236,7 +255,7 @@ public class checkroom extends AppCompatActivity {
 
 
             sum = finalPrice;
-            tvTotalMount.setText("  TOTAl AMOUNT :                          " + sum);
+            tvTotalMount.setText("  TOTAl AMOUNT :                          " + (sum +roomCount));
 
 
         }
@@ -356,7 +375,7 @@ public class checkroom extends AppCompatActivity {
         checkRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferencesManger.SaveData(checkroom.this, "finalpriceRoom", String.valueOf(sum));
+                SharedPreferencesManger.SaveData(checkroom.this, "finalpriceRoom", String.valueOf(sum+roomCount));
 
                 startActivity(new Intent(checkroom.this, ConfirmBookingRoom.class));
 
