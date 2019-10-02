@@ -221,66 +221,45 @@ public class FlightDetails extends AppCompatActivity  {
 
                 switch ((int) adult){
 
-
-
                     case 1:
-
                         Passenger passenger1 = data.getPassenger().get(0);
 
                         String firstName = passenger1.getFirstName();
                         String lastName= passenger1.getLastName();
                         NAME_PASSENGER = firstName + " / " + lastName;
-
-
                         String teckit1 = (String) response.body().getItinerary().getPassenger().get(0).getTicket().getTicketNumber();
 
                         TICKIT_NO = "TicketNo  : " + teckit1;
+                                String airlineCode = segment.getAirline();
+
+                        if (journyTipe==2){
 
 
-                        String airlineCode = segment.getAirline();
-                        RoomCartModel roomTripModel = new RoomCartModel(NAME_PASSENGER, FROM, TO,
-                                FLIGHT_NO, DATE, airlineCode, airlineCode , GROUND_TIME, TICKIT_NO);
+                            Segment segmentReturn = data.getSegments().get(1);
 
-                        appDatabase.cartDao().addoffer(roomTripModel);
+                            String airlineCodeReturn = segmentReturn.getAirline();
 
-
-
-//                        if (journyTipe==2){
-//
-//
-//                            Segment segmentReturn = data.getSegments().get(1);
-//
-//                            String airlineCodeReturn = segmentReturn.getAirline();
-//
-//                            String flightNumberReturn = segmentReturn.getFlightNumber();
-//                            String departureTimeReturn = segmentReturn.getDepartureTime();
-//
-//
-//                            String[] tsReturn = departureTimeReturn.split("T");
-//                            String tReturn = tsReturn[0];
-//                            String DateReturn = "DATE   " + tReturn;
-//
-//                            String timeReturn = segmentReturn.getAccumulatedDuration();
-//
-//
-//                            RoomCartModel roomCartModelReturn = new RoomCartModel(airlineCodeReturn,airlineCodeReturn,FROM,TO,flightNumberReturn,DateReturn
-//                                    ,timeReturn,NAME_PASSENGER, FROM, TO,
-//                                    FLIGHT_NO, DATE, airlineCode, airlineCode , GROUND_TIME, TICKIT_NO);
-//
-//
-//                            appDatabase.cartDao().addoffer(roomCartModelReturn);
-//
-//
-////                            sendDataToEMail(email, body+ " : RETURN INFORMATION IS : "+ " "+"/".toString()+FROM.toString()+TO.toString()+flightNumberReturn.toString()+DateReturn.toString()
-////                                    +timeReturn.toString() );
-//
-//                        }else {
-
-                            sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email);
+                            String flightNumberReturn = segmentReturn.getFlightNumber();
+                            String departureTimeReturn = segmentReturn.getDepartureTime();
 
 
+                            String[] tsReturn = departureTimeReturn.split("T");
+                            String tReturn = tsReturn[0];
+                            String DateReturn = "DATE   " + tReturn;
 
-//                        }
+                            String timeReturn = segmentReturn.getAccumulatedDuration();
+
+                            sendDataToEMailReturn(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email , data.getSegments().get(0).getAirlineName(),TO,FROM,flightNumberReturn,DateReturn,data.getSegments().get(1).getAirlineName());
+//
+
+                        }else {
+                            RoomCartModel roomTripModel = new RoomCartModel(NAME_PASSENGER, FROM, TO,
+                                    FLIGHT_NO, DATE, airlineCode, airlineCode , GROUND_TIME, TICKIT_NO);
+
+                            appDatabase.cartDao().addoffer(roomTripModel);
+                            sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email , data.getSegments().get(0).getAirlineName());
+
+                        }
 
 
 
@@ -290,7 +269,6 @@ public class FlightDetails extends AppCompatActivity  {
 
 
                         Passenger passenger1_2 = data.getPassenger().get(0);
-
                         String firstName_2 = passenger1_2.getFirstName();
                         String lastName_2= passenger1_2.getLastName();
                         NAME_PASSENGER = firstName_2 + " / " + lastName_2;
@@ -310,30 +288,56 @@ public class FlightDetails extends AppCompatActivity  {
 
                         firstName2 = passenger2.getFirstName();
                         lastName2 = passenger2.getLastName();
-                         airlineCode = segment.getAirline();
-
-                        RoomCartModel roomTripModel1 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
-                                FLIGHT_NO, DATE,airlineCode , airlineCode, GROUND_TIME, TICKIT_NO);
+                        airlineCode = segment.getAirline();
 
 
-                        appDatabase.cartDao().addoffer(roomTripModel1);
 
-                        RoomCartModel roomTripModel2 = new RoomCartModel(firstName2 + " / " + lastName2, FROM, TO
-                                , FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, pnr2);
 
-                        appDatabase.cartDao().addoffer(roomTripModel2);
 
-//                        String body2 = "Dear " + NAME_PASSENGER +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-//                                "To :" +TO +"                             "+FLIGHT_NO
-//                                +"                    "+DATE +"                   " +TICKIT_NO;
+
+                        if (journyTipe==2) {
+
+
+                            Segment segmentReturn = data.getSegments().get(1);
+
+                            String airlineCodeReturn = segmentReturn.getAirline();
+
+                            String flightNumberReturn = segmentReturn.getFlightNumber();
+                            String departureTimeReturn = segmentReturn.getDepartureTime();
+
+
+                            String[] tsReturn = departureTimeReturn.split("T");
+                            String tReturn = tsReturn[0];
+                            String DateReturn = "DATE   " + tReturn;
+
+                            String timeReturn = segmentReturn.getAccumulatedDuration();
+
+
+                            sendDataToEMailReturn(NAME_PASSENGER, FROM, TO, FLIGHT_NO, DATE, TICKIT_NO, String.valueOf(price), email, data.getSegments().get(0).getAirlineName(), TO, FROM, flightNumberReturn, DateReturn, data.getSegments().get(1).getAirlineName());
+                            sendDataToEMailReturn(firstName2 + " / " + lastName2 ,FROM,TO,FLIGHT_NO,DATE,pnr2, String.valueOf(price),email,data.getSegments().get(0).getAirlineName(),
+                                    TO, FROM, flightNumberReturn, DateReturn, data.getSegments().get(1).getAirlineName());
+
 //
-//
-//                        String body2_2 = "                        Dear " + firstName2 + " / " + lastName2 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-//                                "To :" +TO +"                             "+FLIGHT_NO
-//                                +"                    "+DATE +"                   " +pnr2;
+                        }else {
 
-                        sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email);
-                        sendDataToEMail(firstName2 + " / " + lastName2 ,FROM,TO,FLIGHT_NO,DATE,pnr2, String.valueOf(price),email);
+
+                            RoomCartModel roomTripModel1 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
+                                    FLIGHT_NO, DATE,airlineCode , airlineCode, GROUND_TIME, TICKIT_NO);
+                            appDatabase.cartDao().addoffer(roomTripModel1);
+
+                            RoomCartModel roomTripModel2 = new RoomCartModel(firstName2 + " / " + lastName2, FROM, TO
+                                    , FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, pnr2);
+
+                            appDatabase.cartDao().addoffer(roomTripModel2);
+                            sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
+                            sendDataToEMail(firstName2 + " / " + lastName2 ,FROM,TO,FLIGHT_NO,DATE,pnr2, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
+
+
+                        }
+
+
+
+
 
 
                         break;
@@ -379,62 +383,88 @@ public class FlightDetails extends AppCompatActivity  {
 
 
 
-                        RoomCartModel roomTripModel1_3 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
-                                FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, TICKIT_NO);
-
-
-                        appDatabase.cartDao().addoffer(roomTripModel1_3);
-
-                        RoomCartModel roomTripModel2_3 = new RoomCartModel(firstName2 + " / " + lastName2, FROM, TO
-                                , FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, pnr2);
-
-                        appDatabase.cartDao().addoffer(roomTripModel2_3);
-
-
-                        RoomCartModel roomTripModel3_3 = new RoomCartModel(firstName3 + " / " + lastName3, FROM, TO,
-                                FLIGHT_NO
-                                , DATE,
-                                airlineCode,
-                                airlineCode
-                                , GROUND_TIME,
-                                pnr3);
-                        appDatabase.cartDao().addoffer(roomTripModel3_3);
-
-//                        String body_3 = "Dear " + NAME_PASSENGER +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-//                                "To :" +TO +"                             "+FLIGHT_NO
-//                                +"                    "+DATE +"                   " +TICKIT_NO;
-//
-//
-//                        String body2_3 = "                   Dear " + firstName2 + " / " + lastName2 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-//                                "To :" +TO +"                             "+FLIGHT_NO
-//                                +"                    "+DATE +"                   " +pnr2;
-//
-//
-//
-//
-//                        String body2_4 = "                    Dear " + firstName3 + " / " + lastName3 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-//                                "To :" +TO +"                             "+FLIGHT_NO
-//                                +"                    "+DATE +"                   " +pnr3;
 
 
 
-//                        sendDataToEMail(email,body_3+body2_3+body2_4);
+
+                        if (journyTipe==2) {
+
+
+                            Segment segmentReturn = data.getSegments().get(1);
+
+                            String airlineCodeReturn = segmentReturn.getAirline();
+
+                            String flightNumberReturn = segmentReturn.getFlightNumber();
+                            String departureTimeReturn = segmentReturn.getDepartureTime();
+
+
+                            String[] tsReturn = departureTimeReturn.split("T");
+                            String tReturn = tsReturn[0];
+                            String DateReturn = "DATE   " + tReturn;
+
+                            String timeReturn = segmentReturn.getAccumulatedDuration();
+
+
+                            sendDataToEMailReturn(NAME_PASSENGER, FROM, TO, FLIGHT_NO, DATE, TICKIT_NO, String.valueOf(price), email, data.getSegments().get(0).getAirlineName(),
+                                    TO, FROM, flightNumberReturn, DateReturn, data.getSegments().get(1).getAirlineName());
+                            sendDataToEMailReturn(firstName2 + " / " + lastName2, FROM, TO, FLIGHT_NO, DATE, pnr2, String.valueOf(price), email, data.getSegments().get(0).getAirlineName(),
+                                    TO, FROM, flightNumberReturn, DateReturn, data.getSegments().get(1).getAirlineName());
+                            sendDataToEMailReturn(firstName3 + " / " + lastName3, FROM, TO, FLIGHT_NO, DATE, pnr3, String.valueOf(price), email, data.getSegments().get(0).getAirlineName(),
+                                    TO, FROM, flightNumberReturn, DateReturn, data.getSegments().get(1).getAirlineName());
+
+
+                        }else {
+
+
+                            RoomCartModel roomTripModel1_3 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
+                                    FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, TICKIT_NO);
+
+
+                            appDatabase.cartDao().addoffer(roomTripModel1_3);
+
+                            RoomCartModel roomTripModel2_3 = new RoomCartModel(firstName2 + " / " + lastName2, FROM, TO
+                                    , FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, pnr2);
+
+                            appDatabase.cartDao().addoffer(roomTripModel2_3);
+
+
+                            RoomCartModel roomTripModel3_3 = new RoomCartModel(firstName3 + " / " + lastName3, FROM, TO,
+                                    FLIGHT_NO
+                                    , DATE,
+                                    airlineCode,
+                                    airlineCode
+                                    , GROUND_TIME,
+                                    pnr3);
+                            appDatabase.cartDao().addoffer(roomTripModel3_3);
+
+
+                            sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
+                            sendDataToEMail(firstName2 + " / " + lastName2 ,FROM,TO,FLIGHT_NO,DATE,pnr2, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
+                            sendDataToEMail(firstName3 + " / " + lastName3 ,FROM,TO,FLIGHT_NO,DATE,pnr3, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
+
+
+                        }
 
 
 
-                        sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email);
-                        sendDataToEMail(firstName2 + " / " + lastName2 ,FROM,TO,FLIGHT_NO,DATE,pnr2, String.valueOf(price),email);
-                        sendDataToEMail(firstName3 + " / " + lastName3 ,FROM,TO,FLIGHT_NO,DATE,pnr3, String.valueOf(price),email);
 
 
-                        break;
+
+
+                            break;
 
 
                     case 4:
 
+
+
+
+
+
+
+
+
                         airlineCode = segment.getAirline();
-
-
                         Passenger passenger_4 = data.getPassenger().get(0);
 
                         String firstName_4 = passenger_4.getFirstName();
@@ -477,74 +507,100 @@ public class FlightDetails extends AppCompatActivity  {
 
                         firstName4 = passenger4_4.getFirstName();
                         lastName4 = passenger4_4.getLastName();
-                        RoomCartModel roomTripModel1_4 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
-                                FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, TICKIT_NO);
-
-
-                        appDatabase.cartDao().addoffer(roomTripModel1_4);
-
-                        RoomCartModel roomTripModel2_4 = new RoomCartModel(firstName2 + " / " + lastName2, FROM, TO
-                                , FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, pnr2);
-                        appDatabase.cartDao().addoffer(roomTripModel2_4);
-
-
-                        RoomCartModel roomTripModel3_4 = new RoomCartModel(firstName3 + " / " + lastName3, FROM, TO,
-                                FLIGHT_NO
-                                , DATE,
-                                airlineCode,
-                                airlineCode
-                                , GROUND_TIME,
-                                pnr3);
-                        appDatabase.cartDao().addoffer(roomTripModel3_4);
-
-
-                        RoomCartModel roomTripModel4_4 = new RoomCartModel(firstName4 + " / " + lastName4,
-                                FROM,
-                                TO,
-                                FLIGHT_NO,
-                                DATE,
-                                airlineCode,
-                                airlineCode,
-                                GROUND_TIME,
-                                pnr4);
-                        appDatabase.cartDao().addoffer(roomTripModel4_4);
 
 
 
 
 
 
-//                        String body_4 = "Dear " + NAME_PASSENGER +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-//                                "To :" +TO +"                             "+FLIGHT_NO
-//                                +"                    "+DATE +"                   " +TICKIT_NO;
-//
-//
-//                        String body2_4_2 = "                       Dear " + firstName2 + " / " + lastName2 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-//                                "To :" +TO +"                             "+FLIGHT_NO
-//                                +"                    "+DATE +"                   " +pnr2;
-//
-//
-//
-//
-//                        String body2_4_ = "                       Dear " + firstName3 + " / " + lastName3 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-//                                "To :" +TO +"                             "+FLIGHT_NO
-//                                +"                    "+DATE +"                   " +pnr3;
-//
-//
-//
-//                        String body2_4_4 = "                       Dear " + firstName4 + " / " + lastName4 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-//                                "To :" +TO +"                             "+FLIGHT_NO
-//                                +"                    "+DATE +"                   " +pnr4;
-//
+                        if (journyTipe==2) {
 
 
-                        sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email);
-                        sendDataToEMail(firstName2 + " / " + lastName2 ,FROM,TO,FLIGHT_NO,DATE,pnr2, String.valueOf(price),email);
-                        sendDataToEMail(firstName3 + " / " + lastName3 ,FROM,TO,FLIGHT_NO,DATE,pnr3, String.valueOf(price),email);
-                        sendDataToEMail(firstName4 + " / " + lastName4 ,FROM,TO,FLIGHT_NO,DATE,pnr4, String.valueOf(price),email);
+                            Segment segmentReturn = data.getSegments().get(1);
+
+                            String airlineCodeReturn = segmentReturn.getAirline();
+
+                            String flightNumberReturn = segmentReturn.getFlightNumber();
+                            String departureTimeReturn = segmentReturn.getDepartureTime();
 
 
-//                        sendDataToEMail(email,body_4+body2_4_2+body2_4_+body2_4_4);
+                            String[] tsReturn = departureTimeReturn.split("T");
+                            String tReturn = tsReturn[0];
+                            String DateReturn = "DATE   " + tReturn;
+
+                            String timeReturn = segmentReturn.getAccumulatedDuration();
+
+
+                            sendDataToEMailReturn(NAME_PASSENGER, FROM, TO, FLIGHT_NO, DATE, TICKIT_NO, String.valueOf(price), email, data.getSegments().get(0).getAirlineName(),
+                                    TO, FROM, flightNumberReturn, DateReturn, data.getSegments().get(1).getAirlineName());
+                            sendDataToEMailReturn(firstName2 + " / " + lastName2, FROM, TO, FLIGHT_NO, DATE, pnr2, String.valueOf(price), email, data.getSegments().get(0).getAirlineName(),
+                                    TO, FROM, flightNumberReturn, DateReturn, data.getSegments().get(1).getAirlineName());
+                            sendDataToEMailReturn(firstName4 + " / " + lastName4 ,FROM,TO,FLIGHT_NO,DATE,pnr4, String.valueOf(price), email, data.getSegments().get(0).getAirlineName(),
+                                    TO, FROM, flightNumberReturn, DateReturn, data.getSegments().get(1).getAirlineName()); sendDataToEMailReturn(firstName3 + " / " + lastName3, FROM, TO, FLIGHT_NO, DATE, pnr3, String.valueOf(price), email, data.getSegments().get(0).getAirlineName(),
+                                    TO, FROM, flightNumberReturn, DateReturn, data.getSegments().get(1).getAirlineName());
+
+
+
+                        }else {
+
+                            RoomCartModel roomTripModel1_4 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
+                                    FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, TICKIT_NO);
+
+
+                            appDatabase.cartDao().addoffer(roomTripModel1_4);
+
+                            RoomCartModel roomTripModel2_4 = new RoomCartModel(firstName2 + " / " + lastName2, FROM, TO
+                                    , FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, pnr2);
+                            appDatabase.cartDao().addoffer(roomTripModel2_4);
+
+
+                            RoomCartModel roomTripModel3_4 = new RoomCartModel(firstName3 + " / " + lastName3, FROM, TO,
+                                    FLIGHT_NO
+                                    , DATE,
+                                    airlineCode,
+                                    airlineCode
+                                    , GROUND_TIME,
+                                    pnr3);
+                            appDatabase.cartDao().addoffer(roomTripModel3_4);
+
+
+                            RoomCartModel roomTripModel4_4 = new RoomCartModel(firstName4 + " / " + lastName4,
+                                    FROM,
+                                    TO,
+                                    FLIGHT_NO,
+                                    DATE,
+                                    airlineCode,
+                                    airlineCode,
+                                    GROUND_TIME,
+                                    pnr4);
+                            appDatabase.cartDao().addoffer(roomTripModel4_4);
+
+
+                            sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
+                            sendDataToEMail(firstName2 + " / " + lastName2 ,FROM,TO,FLIGHT_NO,DATE,pnr2, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
+                            sendDataToEMail(firstName3 + " / " + lastName3 ,FROM,TO,FLIGHT_NO,DATE,pnr3, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
+                            sendDataToEMail(firstName4 + " / " + lastName4 ,FROM,TO,FLIGHT_NO,DATE,pnr4, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
+
+
+
+
+
+
+                        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -618,93 +674,104 @@ public class FlightDetails extends AppCompatActivity  {
                         lastName5 = passenger5_5.getLastName();
 
 
-                        RoomCartModel roomTripModel1_5 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
-                                FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, TICKIT_NO);
-
-
-                        appDatabase.cartDao().addoffer(roomTripModel1_5);
-
-                        RoomCartModel roomTripModel2_5 = new RoomCartModel(firstName2 + " / " + lastName2, FROM, TO
-                                , FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, pnr2);
-                        appDatabase.cartDao().addoffer(roomTripModel2_5);
-
-
-                        RoomCartModel roomTripModel3_5 = new RoomCartModel(firstName3 + " / " + lastName3, FROM, TO,
-                                FLIGHT_NO
-                                , DATE,
-                                airlineCode,
-                                airlineCode
-                                , GROUND_TIME,
-                                pnr3);
-
-                        appDatabase.cartDao().addoffer(roomTripModel3_5);
-
-
-                        RoomCartModel roomTripModel4_5 = new RoomCartModel(firstName4 + " / " + lastName4,
-                                FROM,
-                                TO,
-                                FLIGHT_NO,
-                                DATE,
-                                airlineCode,
-                                airlineCode,
-                                GROUND_TIME,
-                                pnr4);
-
-                        appDatabase.cartDao().addoffer(roomTripModel4_5);
-                        RoomCartModel roomTripModel5_5 = new RoomCartModel(firstName5 + " / " + lastName5
-                                , FROM
-                                , TO,
-                                FLIGHT_NO
-                                , DATE,
-                                airlineCode,
-                                airlineCode,
-                                GROUND_TIME,
-                                pnr5);
-
-                        appDatabase.cartDao().addoffer(roomTripModel5_5);
 
 
 
-
-//
-//
-//                        String body_4_5 = "Dear " + NAME_PASSENGER +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-//                                "To :" +TO +"                             "+FLIGHT_NO
-//                                +"                    "+DATE +"                   " +TICKIT_NO;
-//
-//
-//                        String body2_4_2_5 = "                         Dear " + firstName2 + " / " + lastName2 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-//                                "To :" +TO +"                             "+FLIGHT_NO
-//                                +"                    "+DATE +"                   " +pnr2;
-//
-//
-//
-//
-//                        String body2_4_5 = "                           Dear " + firstName3 + " / " + lastName3 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-//                                "To :" +TO +"                             "+FLIGHT_NO
-//                                +"                    "+DATE +"                   " +pnr3;
-//
-//
-//
-//                        String body2_4_4_5 = "                         Dear " + firstName4 + " / " + lastName4 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-//                                "To :" +TO +"                             "+FLIGHT_NO
-//                                +"                    "+DATE +"                   " +pnr4;
-//
-//                        String body2_4_4_5_ =  "                        Dear " + firstName5 + " / " + lastName5 +"                " + "This is your Ticket Information .                             " + "From :"+ FROM +"                    "+
-//                                "To :" +TO +"                             "+FLIGHT_NO
-//                                +"                    "+DATE +"                   " +pnr5;
+                        if (journyTipe==2) {
 
 
-//                        sendDataToEMail(email,body_4_5+body2_4_2_5+body2_4_5+body2_4_4_5+body2_4_4_5_);
+                            Segment segmentReturn = data.getSegments().get(1);
 
-                        sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email);
-                        sendDataToEMail(firstName2 + " / " + lastName2 ,FROM,TO,FLIGHT_NO,DATE,pnr2, String.valueOf(price),email);
-                        sendDataToEMail(firstName3 + " / " + lastName3 ,FROM,TO,FLIGHT_NO,DATE,pnr3, String.valueOf(price),email);
-                        sendDataToEMail(firstName4 + " / " + lastName4 ,FROM,TO,FLIGHT_NO,DATE,pnr4, String.valueOf(price),email);
-                        sendDataToEMail(firstName5 + " / " + lastName5 ,FROM,TO,FLIGHT_NO,DATE,pnr5, String.valueOf(price),email);
+                            String airlineCodeReturn = segmentReturn.getAirline();
+
+                            String flightNumberReturn = segmentReturn.getFlightNumber();
+                            String departureTimeReturn = segmentReturn.getDepartureTime();
 
 
-                        break;
+                            String[] tsReturn = departureTimeReturn.split("T");
+                            String tReturn = tsReturn[0];
+                            String DateReturn = "DATE   " + tReturn;
+
+                            String timeReturn = segmentReturn.getAccumulatedDuration();
+
+
+                            sendDataToEMailReturn(NAME_PASSENGER, FROM, TO, FLIGHT_NO, DATE, TICKIT_NO, String.valueOf(price), email, data.getSegments().get(0).getAirlineName(),
+                                    TO, FROM, flightNumberReturn, DateReturn, data.getSegments().get(1).getAirlineName());
+                            sendDataToEMailReturn(firstName2 + " / " + lastName2, FROM, TO, FLIGHT_NO, DATE, pnr2, String.valueOf(price), email, data.getSegments().get(0).getAirlineName(),
+                                    TO, FROM, flightNumberReturn, DateReturn, data.getSegments().get(1).getAirlineName());
+                            sendDataToEMailReturn(firstName4 + " / " + lastName4, FROM, TO, FLIGHT_NO, DATE, pnr4, String.valueOf(price), email, data.getSegments().get(0).getAirlineName(),
+                                    TO, FROM, flightNumberReturn, DateReturn, data.getSegments().get(1).getAirlineName());
+                            sendDataToEMailReturn(firstName3 + " / " + lastName3, FROM, TO, FLIGHT_NO, DATE, pnr3, String.valueOf(price), email, data.getSegments().get(0).getAirlineName(),
+                                    TO, FROM, flightNumberReturn, DateReturn, data.getSegments().get(1).getAirlineName());
+                            sendDataToEMailReturn(firstName5 + " / " + lastName5 ,FROM, TO, FLIGHT_NO, DATE, pnr5, String.valueOf(price), email, data.getSegments().get(0).getAirlineName(),
+                                    TO, FROM, flightNumberReturn, DateReturn, data.getSegments().get(1).getAirlineName());
+
+
+                        }else {
+
+                            RoomCartModel roomTripModel1_5 = new RoomCartModel(NAME_PASSENGER, FROM, TO,
+                                    FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, TICKIT_NO);
+
+
+                            appDatabase.cartDao().addoffer(roomTripModel1_5);
+
+                            RoomCartModel roomTripModel2_5 = new RoomCartModel(firstName2 + " / " + lastName2, FROM, TO
+                                    , FLIGHT_NO, DATE, airlineCode, airlineCode, GROUND_TIME, pnr2);
+                            appDatabase.cartDao().addoffer(roomTripModel2_5);
+
+
+                            RoomCartModel roomTripModel3_5 = new RoomCartModel(firstName3 + " / " + lastName3, FROM, TO,
+                                    FLIGHT_NO
+                                    , DATE,
+                                    airlineCode,
+                                    airlineCode
+                                    , GROUND_TIME,
+                                    pnr3);
+
+                            appDatabase.cartDao().addoffer(roomTripModel3_5);
+
+
+                            RoomCartModel roomTripModel4_5 = new RoomCartModel(firstName4 + " / " + lastName4,
+                                    FROM,
+                                    TO,
+                                    FLIGHT_NO,
+                                    DATE,
+                                    airlineCode,
+                                    airlineCode,
+                                    GROUND_TIME,
+                                    pnr4);
+
+                            appDatabase.cartDao().addoffer(roomTripModel4_5);
+                            RoomCartModel roomTripModel5_5 = new RoomCartModel(firstName5 + " / " + lastName5
+                                    , FROM
+                                    , TO,
+                                    FLIGHT_NO
+                                    , DATE,
+                                    airlineCode,
+                                    airlineCode,
+                                    GROUND_TIME,
+                                    pnr5);
+
+                            appDatabase.cartDao().addoffer(roomTripModel5_5);
+
+
+
+                            sendDataToEMail(NAME_PASSENGER ,FROM,TO,FLIGHT_NO,DATE,TICKIT_NO, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
+                            sendDataToEMail(firstName2 + " / " + lastName2 ,FROM,TO,FLIGHT_NO,DATE,pnr2, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
+                            sendDataToEMail(firstName3 + " / " + lastName3 ,FROM,TO,FLIGHT_NO,DATE,pnr3, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
+                            sendDataToEMail(firstName4 + " / " + lastName4 ,FROM,TO,FLIGHT_NO,DATE,pnr4, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
+                            sendDataToEMail(firstName5 + " / " + lastName5 ,FROM,TO,FLIGHT_NO,DATE,pnr5, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
+
+
+
+
+
+
+                        }
+
+
+
+                            break;
                 }
 
 
@@ -717,6 +784,72 @@ public class FlightDetails extends AppCompatActivity  {
 
             }
         });
+
+    }
+
+    private void sendDataToEMailReturn(String name_passenger, String from, String to, String flight_no, String date, String tickit_no, String price, String email, String airlineName, String fromR, String toR, String flightNumberReturn, String dateReturn
+    ,String airplanenameR
+    ) {
+
+
+
+        StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SENT_TO_EMAIL_FLIGHT_RETURN, new com.android.volley.Response.Listener<String>() {
+
+            @Override
+
+            public void onResponse(String response) {
+
+                startActivity(new Intent(FlightDetails.this,FlightDetailsActivity.class));
+
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    int status = jObj.getInt("msg");
+                    String msg = jObj.getString("success");
+
+                    Toast.makeText(FlightDetails.this, ""+msg, Toast.LENGTH_SHORT).show();
+
+                }catch (Exception  e){}
+
+
+
+            }
+
+        }, new com.android.volley.Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameters = new HashMap<String, String>();
+                parameters.put("name", name_passenger);
+                parameters.put("from",from );
+                parameters.put("to", to);
+                parameters.put("flightnumber",flight_no );
+                parameters.put("date", date);
+                parameters.put("ticketnumber",tickit_no );
+                parameters.put("price", price);
+                parameters.put("mail_to",email );
+                parameters.put("airportname",airlineName );
+
+                parameters.put("fromR",fromR );
+                parameters.put("toR",toR );
+                parameters.put("flightnumberR",flightNumberReturn );
+                parameters.put("dateR",dateReturn );
+                parameters.put("ticketnumberR",tickit_no );
+                parameters.put("priceR",price );
+                parameters.put("airportnameR",airplanenameR );
+                return parameters;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
+
+
 
     }
 
@@ -733,7 +866,7 @@ public class FlightDetails extends AppCompatActivity  {
 
 
 
-  public void sendDataToEMail(String name ,String from , String to ,String flightno ,String date ,String ticketno ,String price, String mail_to){
+  public void sendDataToEMail(String name ,String from , String to ,String flightno ,String date ,String ticketno ,String price, String mail_to , String AirlineNam){
 
         StringRequest request = new StringRequest(Request.Method.POST, LinksUrl.URL_SENT_TO_EMAIL_FLIGHT, new com.android.volley.Response.Listener<String>() {
 
@@ -776,6 +909,7 @@ startActivity(new Intent(FlightDetails.this,FlightDetailsActivity.class));
                 parameters.put("ticketno",ticketno );
                 parameters.put("price", price);
                 parameters.put("mail_to",mail_to );
+                parameters.put("airplanename",AirlineNam );
                 return parameters;
             }
         };

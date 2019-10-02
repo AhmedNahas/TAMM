@@ -23,6 +23,7 @@ import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import FlightApi.BookFlight;
@@ -45,6 +46,7 @@ import FlightApi.fare_rules.FareRule;
 import FlightApi.fare_rules.FareRuleResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -1269,64 +1271,89 @@ MDataMrmisInfent2= SharedPreferencesManger.LoadStringData(FlightsSummary.this, "
 
 
 
-                                        Itinerary itinerary1 = response.body().getItinerary();
-
-//
-                                        try {
-                                            if (response.body().getItinerary().getPNR() != null) {
-                                                Toast.makeText(FlightsSummary.this, "Please Wait", Toast.LENGTH_SHORT).show();
-
-                                                FlightTicket flightTicket = new FlightTicket();
-                                                String localIpAddress = getLocalIpAddress();
-                                                flightTicket.setIPAddress(localIpAddress);
-
-                                                flightTicket.setResultId(resultId);
-                                                flightTicket.setTokenId(tokenId);
-                                                flightTicket.setTrackingId(trackingId);
-                                                flightTicket.setPNR(response.body().getItinerary().getPNR());
-
-                                                flightTicket.setItinerary(itinerary1);
-
-                                                flightApiService.getFlightTicket("application/json", flightTicket).enqueue(new Callback<TicketResponse>() {
-                                                    @Override
-                                                    public void onResponse(Call<TicketResponse> call, Response<TicketResponse> response) {
-
-                                                        try {
-
-                                                            okhttp3.Response raw = response.raw();
-
-                                                            String pnr2 = response.body().getItinerary().getPNR();
-                                                            String tokenId2 = response.body().getTokenId();
+                                        if (response.body().getStatus()!=0){
 
 
-                                                            SharedPreferencesManger.SaveData(FlightsSummary.this, "pnr", pnr2);
-                                                            SharedPreferencesManger.SaveData(FlightsSummary.this, "tokenId2", tokenId2);
+                                            Itinerary itinerary1 = response.body().getItinerary();
+
+                                            Toast.makeText(FlightsSummary.this, "Please Wait", Toast.LENGTH_SHORT).show();
+
+                                            FlightTicket flightTicket = new FlightTicket();
+                                            String localIpAddress = getLocalIpAddress();
+                                            flightTicket.setIPAddress(localIpAddress);
+
+                                            flightTicket.setResultId(resultId);
+                                            flightTicket.setTokenId(tokenId);
+                                            flightTicket.setTrackingId(trackingId);
+                                            flightTicket.setPNR(response.body().getItinerary().getPNR());
+
+                                            flightTicket.setItinerary(itinerary1);
+
+                                            flightApiService.getFlightTicket("application/json", flightTicket).enqueue(new Callback<TicketResponse>() {
+                                                @Override
+                                                public void onResponse(Call<TicketResponse> call, Response<TicketResponse> response) {
+
+                                                    try {
+
+                                                        okhttp3.Response raw = response.raw();
+
+                                                        String pnr2 = response.body().getItinerary().getPNR();
+                                                        String tokenId2 = response.body().getTokenId();
 
 
-                                                        } catch (Exception e) {
 
-                                                            flight_progress.setVisibility(View.INVISIBLE);
-
-
-                                                        }
-                                                        double totalFare = response.body().getItinerary().getPassenger().get(0).getFare().getTotalFare();
-
-                                                        Intent intent = new Intent(FlightsSummary.this, PaymentActivity.class);
-
-                                                        intent.putExtra("totalFare", String.valueOf(totalFare));
-                                                        SharedPreferencesManger.SaveData(FlightsSummary.this,"mId",3);
-
-                                                        startActivity(intent);
+                                                        SharedPreferencesManger.SaveData(FlightsSummary.this, "pnr", pnr2);
+                                                        SharedPreferencesManger.SaveData(FlightsSummary.this, "tokenId2", tokenId2);
 
 
-                                                    }
+                                                    } catch (Exception e) {
 
-                                                    @Override
-                                                    public void onFailure(Call<TicketResponse> call, Throwable t) {
                                                         flight_progress.setVisibility(View.INVISIBLE);
 
+
                                                     }
-                                                });
+                                                    double totalFare = response.body().getItinerary().getPassenger().get(0).getFare().getTotalFare();
+
+                                                    Intent intent = new Intent(FlightsSummary.this, PaymentActivity.class);
+
+                                                    intent.putExtra("totalFare", String.valueOf(totalFare));
+                                                    SharedPreferencesManger.SaveData(FlightsSummary.this,"mId",3);
+
+                                                    startActivity(intent);
+
+
+                                                }
+
+                                                @Override
+                                                public void onFailure(Call<TicketResponse> call, Throwable t) {
+                                                    Toast.makeText(FlightsSummary.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                                                    flight_progress.setVisibility(View.INVISIBLE);
+
+                                                }
+                                            });
+
+
+
+
+                                        }else {
+                                            flight_progress.setVisibility(View.INVISIBLE);
+
+                                            new SweetAlertDialog(FlightsSummary.this, SweetAlertDialog.WARNING_TYPE)
+                                                    .setTitleText(response.body().getErrors().get(0).getUserMessage())
+                                                    .setConfirmText("Go  Back")
+                                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                        @Override
+                                                        public void onClick(SweetAlertDialog sDialog) {
+                                                            sDialog.dismissWithAnimation();
+                                                            onBackPressed();
+                                                        }
+                                                    })
+                                                    .show();
+
+                                        }
+
+
+
 
 
 //
@@ -1336,22 +1363,13 @@ MDataMrmisInfent2= SharedPreferencesManger.LoadStringData(FlightsSummary.this, "
 //                                           intent.putExtra("mId",3);
 //
 //                                           startActivity(intent);
-                                            }
-                                        } catch (Exception e) {
 
-                                            flight_progress.setVisibility(View.INVISIBLE);
-
-                                            Toast.makeText(FlightsSummary.this, "error" + e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                                        }
 
 
                                     }
 
                                     @Override
                                     public void onFailure(Call<GetBookingResponse> call, Throwable t) {
-                                        Toast.makeText(FlightsSummary.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();;
-
 
                                         flight_progress.setVisibility(View.INVISIBLE);
 
@@ -1362,7 +1380,17 @@ MDataMrmisInfent2= SharedPreferencesManger.LoadStringData(FlightsSummary.this, "
 
                                 flight_progress.setVisibility(View.INVISIBLE);
 
-                                Toast.makeText(FlightsSummary.this, "error", Toast.LENGTH_SHORT).show();
+                                 new SweetAlertDialog(FlightsSummary.this, SweetAlertDialog.WARNING_TYPE)
+                                        .setTitleText(response.body().getErrors().get(0).getUserMessage())
+                                        .setConfirmText("Go  Back")
+                                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                            @Override
+                                            public void onClick(SweetAlertDialog sDialog) {
+                                                sDialog.dismissWithAnimation();
+                                                onBackPressed();
+                                            }
+                                        })
+                                        .show();
 
                             }
 
@@ -1373,7 +1401,7 @@ MDataMrmisInfent2= SharedPreferencesManger.LoadStringData(FlightsSummary.this, "
                         @Override
                         public void onFailure(Call<FareQuoteRespone> call, Throwable t) {
                             flight_progress.setVisibility(View.INVISIBLE);
-
+                            Toast.makeText(FlightsSummary.this, ""+response.body().getErrors().get(0).getUserMessage(), Toast.LENGTH_SHORT).show();
                             t.getMessage();
                         }
                     });
@@ -1383,7 +1411,20 @@ MDataMrmisInfent2= SharedPreferencesManger.LoadStringData(FlightsSummary.this, "
 
                     flight_progress.setVisibility(View.INVISIBLE);
 
-                    Toast.makeText(FlightsSummary.this, "error", Toast.LENGTH_SHORT).show();
+
+
+                    new SweetAlertDialog(FlightsSummary.this, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText(response.body().getErrors().get(0).getUserMessage())
+                            .setConfirmText("Go  Back")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    sDialog.dismissWithAnimation();
+                                    onBackPressed();
+                                }
+                            })
+                            .show();
+
 
                 }
 
@@ -1395,8 +1436,8 @@ MDataMrmisInfent2= SharedPreferencesManger.LoadStringData(FlightsSummary.this, "
             @Override
             public void onFailure(Call<FareRuleResponse> call, Throwable t) {
                 flight_progress.setVisibility(View.INVISIBLE);
+                Toast.makeText(FlightsSummary.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
 
-                t.getMessage();
             }
         });
 

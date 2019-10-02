@@ -26,7 +26,7 @@ public class FareQuoteRespone implements Serializable {
     private boolean isSuccess;
     @SerializedName("Errors")
     @Expose
-    private List<Object> errors = new ArrayList<Object>();
+    private List<Error_> errors = new ArrayList<Error_>();
     @SerializedName("Alerts")
     @Expose
     private List<Object> alerts = new ArrayList<Object>();
@@ -53,7 +53,7 @@ public class FareQuoteRespone implements Serializable {
      * @param isPriceChanged
      * @param isSuccess
      */
-    public FareQuoteRespone(long status, boolean isPriceChanged, List<Result> result, boolean isSuccess, List<Object> errors, List<Object> alerts, String tokenId, String trackingId) {
+    public FareQuoteRespone(long status, boolean isPriceChanged, List<Result> result, boolean isSuccess, List<Error_> errors, List<Object> alerts, String tokenId, String trackingId) {
         super();
         this.status = status;
         this.isPriceChanged = isPriceChanged;
@@ -117,15 +117,15 @@ public class FareQuoteRespone implements Serializable {
         return this;
     }
 
-    public List<Object> getErrors() {
+    public List<Error_> getErrors() {
         return errors;
     }
 
-    public void setErrors(List<Object> errors) {
+    public void setErrors(List<Error_> errors) {
         this.errors = errors;
     }
 
-    public FareQuoteRespone withErrors(List<Object> errors) {
+    public FareQuoteRespone withErrors(List<Error_> errors) {
         this.errors = errors;
         return this;
     }

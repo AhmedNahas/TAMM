@@ -25,7 +25,7 @@ public class GetBookingResponse implements Serializable {
     private boolean isSuccess;
     @SerializedName("Errors")
     @Expose
-    private List<Object> errors = new ArrayList<Object>();
+    private List<Error_> errors = new ArrayList<Error_>();
     @SerializedName("Alerts")
     @Expose
     private List<Object> alerts = new ArrayList<Object>();
@@ -52,7 +52,7 @@ public class GetBookingResponse implements Serializable {
      * @param isSuccess
      * @param showFailedReason
      */
-    public GetBookingResponse(Itinerary itinerary, long status, boolean showFailedReason, boolean isSuccess, List<Object> errors, List<Object> alerts, String tokenId, String trackingId) {
+    public GetBookingResponse(Itinerary itinerary, long status, boolean showFailedReason, boolean isSuccess, List<Error_> errors, List<Object> alerts, String tokenId, String trackingId) {
         super();
         this.itinerary = itinerary;
         this.status = status;
@@ -116,15 +116,15 @@ public class GetBookingResponse implements Serializable {
         return this;
     }
 
-    public List<Object> getErrors() {
+    public List<Error_> getErrors() {
         return errors;
     }
 
-    public void setErrors(List<Object> errors) {
+    public void setErrors(List<Error_> errors) {
         this.errors = errors;
     }
 
-    public GetBookingResponse withErrors(List<Object> errors) {
+    public GetBookingResponse withErrors(List<Error_> errors) {
         this.errors = errors;
         return this;
     }

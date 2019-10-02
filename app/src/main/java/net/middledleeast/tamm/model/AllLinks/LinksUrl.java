@@ -52,6 +52,7 @@ public class LinksUrl {
 
 
     public static String URL_SENT_TO_EMAIL_FLIGHT = "http://egyptgoogle.com/backend/sendmail/flightdetail.php";
+    public static String URL_SENT_TO_EMAIL_FLIGHT_RETURN = "http://egyptgoogle.com/backend/sendmail/ticket_twoway.php";
 
 
 

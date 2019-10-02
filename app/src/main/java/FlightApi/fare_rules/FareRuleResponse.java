@@ -5,6 +5,8 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import FlightApi.Error_;
+
 public class FareRuleResponse {
 
     @SerializedName("FareRules")
@@ -15,7 +17,7 @@ public class FareRuleResponse {
     private Boolean isSuccess;
     @SerializedName("Errors")
     @Expose
-    private List<Object> errors = null;
+    private List<Error_> errors = null;
     @SerializedName("Alerts")
     @Expose
     private List<Object> alerts = null;
@@ -42,11 +44,11 @@ public class FareRuleResponse {
         this.isSuccess = isSuccess;
     }
 
-    public List<Object> getErrors() {
+    public List<Error_> getErrors() {
         return errors;
     }
 
-    public void setErrors(List<Object> errors) {
+    public void setErrors(List<Error_> errors) {
         this.errors = errors;
     }
 
