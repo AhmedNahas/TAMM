@@ -108,17 +108,17 @@ Button btn_confirm;
                 if (mId == 1) {
 
 
-
-
                     if (resultcode.contains("CAPTURED")){
 
                         startActivity(new Intent(KnetPaymentDelails.this, MemberCongratsActivity.class));
 
+                        finish();
 
                     }else if(resultcode.contains("NOT CAPTURED")) {
 
                         Intent intent =new Intent(KnetPaymentDelails.this, PaymentActivity.class);
                         startActivity(intent);
+                        finish();
 
                     }
 
@@ -130,13 +130,14 @@ Button btn_confirm;
 
                         Intent intent =new Intent(KnetPaymentDelails.this, RoomBooked.class);
                         startActivity(intent);
+                        finish();
 
 
                     }else if(resultcode.contains("NOT CAPTURED")) {
 
                         Intent intent =new Intent(KnetPaymentDelails.this, ConfirmBookingRoom.class);
                         startActivity(intent);
-
+                        finish();
                     }
 
 
@@ -147,13 +148,13 @@ Button btn_confirm;
 
                         Intent intent =new Intent(KnetPaymentDelails.this, FlightDetails.class);
                         startActivity(intent);
-
+                        finish();
 
                     }else if(resultcode.contains("NOT CAPTURED")) {
 
                         Intent intent =new Intent(KnetPaymentDelails.this, Proceedbeybey.class);
                         startActivity(intent);
-
+                        finish();
                     }
 
 
@@ -164,12 +165,14 @@ Button btn_confirm;
 
                         Intent intent =new Intent(KnetPaymentDelails.this, RoomBooked.class);
                         startActivity(intent);
+                        finish();
 
 
                     }else if(resultcode.contains("NOT CAPTURED")) {
 
                         Intent intent =new Intent(KnetPaymentDelails.this, ConfirmBookingRoom.class);
                         startActivity(intent);
+                        finish();
 
                     }
 
@@ -181,20 +184,19 @@ Button btn_confirm;
 
                         Intent intent =new Intent(KnetPaymentDelails.this, FlightDetails.class);
                         startActivity(intent);
-
+finish();
 
                     }else if(resultcode.contains("NOT CAPTURED")) {
 
                         Intent intent =new Intent(KnetPaymentDelails.this, Proceedbeybey.class);
                         startActivity(intent);
 
+                        finish();
                     }
 
 
                 }else {
 
-
-                    Toast.makeText(KnetPaymentDelails.this, "fuck", Toast.LENGTH_SHORT).show();
                 }
 
 

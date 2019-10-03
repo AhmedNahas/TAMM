@@ -588,10 +588,11 @@ public class PaymentActivity extends AppCompatActivity {
 
             if (url.contains("CAPTURED")) {
                 showProgressingView();
-
                 Intent intent=new Intent(PaymentActivity.this, KnetPaymentDelails.class);
-
                 startActivity(intent);
+                hideProgressingView();
+                webviewKnet.destroy();
+                finish();
 
 
 //                if (mId==1){
@@ -779,6 +780,7 @@ public class PaymentActivity extends AppCompatActivity {
                      webviewKnet.getSettings().setJavaScriptEnabled(true);
                      webviewKnet.loadUrl(url); // load a web page in a web vie
                      webviewKnet.setWebViewClient(new MyWebViewClient());
+
 
 
 

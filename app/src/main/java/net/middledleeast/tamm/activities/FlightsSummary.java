@@ -23,7 +23,6 @@ import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import FlightApi.BookFlight;
@@ -1293,7 +1292,10 @@ MDataMrmisInfent2= SharedPreferencesManger.LoadStringData(FlightsSummary.this, "
                                                 @Override
                                                 public void onResponse(Call<TicketResponse> call, Response<TicketResponse> response) {
 
-                                                    try {
+
+
+                                                    if (response.isSuccessful()&&response.body().getStatus()!=0){
+
 
                                                         okhttp3.Response raw = response.raw();
 
@@ -1306,20 +1308,38 @@ MDataMrmisInfent2= SharedPreferencesManger.LoadStringData(FlightsSummary.this, "
                                                         SharedPreferencesManger.SaveData(FlightsSummary.this, "tokenId2", tokenId2);
 
 
-                                                    } catch (Exception e) {
+
+                                                        double totalFare = response.body().getItinerary().getPassenger().get(0).getFare().getTotalFare();
+
+                                                        Intent intent = new Intent(FlightsSummary.this, PaymentActivity.class);
+
+                                                        intent.putExtra("totalFare", String.valueOf(totalFare));
+                                                        SharedPreferencesManger.SaveData(FlightsSummary.this,"mId",3);
+
+                                                        startActivity(intent);
+
+                                                    }else {
 
                                                         flight_progress.setVisibility(View.INVISIBLE);
 
+                                                        new SweetAlertDialog(FlightsSummary.this, SweetAlertDialog.WARNING_TYPE)
+                                                                .setTitleText(response.body().getErrors().get(0).getUserMessage())
+                                                                .setConfirmText("Go  Back")
+                                                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                                    @Override
+                                                                    public void onClick(SweetAlertDialog sDialog) {
+                                                                        sDialog.dismissWithAnimation();
+                                                                        onBackPressed();
+                                                                    }
+                                                                })
+                                                                .show();
+
 
                                                     }
-                                                    double totalFare = response.body().getItinerary().getPassenger().get(0).getFare().getTotalFare();
 
-                                                    Intent intent = new Intent(FlightsSummary.this, PaymentActivity.class);
 
-                                                    intent.putExtra("totalFare", String.valueOf(totalFare));
-                                                    SharedPreferencesManger.SaveData(FlightsSummary.this,"mId",3);
 
-                                                    startActivity(intent);
+
 
 
                                                 }
