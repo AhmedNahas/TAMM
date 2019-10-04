@@ -6,15 +6,20 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
+import com.Tamm.Hotels.wcf.ArrayOfString2;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
@@ -26,6 +31,7 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.adapters.AmenitiesAdapter;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.math.BigDecimal;
@@ -67,7 +73,9 @@ public class checkroom extends AppCompatActivity {
     private ArrayOfRequestedRooms arrayOfRooms = new ArrayOfRequestedRooms();
     private float sum;
     private String singlePic;
-    TextView room_details_list, cancellation_fees;
+    TextView  cancellation_fees;
+
+    RecyclerView room_details_list ;
     private String amenties;
     private String untile;
     private String fromDate;
@@ -78,6 +86,7 @@ public class checkroom extends AppCompatActivity {
     private String roomMarkUpSt;
     private int roomMarkUp;
     private int roomCount;
+    private AmenitiesAdapter amenitiesAdapter;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -300,10 +309,26 @@ public class checkroom extends AppCompatActivity {
 
 
                 String deadline = availabilityAndPricingResponse.HotelCancellationPolicies.CancelPolicies.LastCancellationDeadline.toString();
-                String s = availabilityAndPricingResponse.HotelCancellationPolicies.HotelNorms.toString();
+                ArrayOfString2 hotelNorms = availabilityAndPricingResponse.HotelCancellationPolicies.HotelNorms;
+                ArrayList<String>  listHotelNormis = new ArrayList<>();
+
+                String[] split = hotelNorms.toString().split(",");
+
+                for (int i = 0; i < split.length; i++) {
+
+                    listHotelNormis.add(split[i]);
+                    room_details_list.setLayoutManager(new GridLayoutManager(this,2));
+
+                    amenitiesAdapter = new AmenitiesAdapter(checkroom.this,listHotelNormis);
+                    room_details_list.setAdapter(amenitiesAdapter);
+                    amenitiesAdapter.notifyDataSetChanged();
+                }
 
 
-                room_details_list.setText(s);
+
+
+
+
 
                 String[] arrOfStr = deadline.split("T");
 

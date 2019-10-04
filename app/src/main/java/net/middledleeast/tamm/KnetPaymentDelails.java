@@ -103,19 +103,15 @@ Button btn_confirm;
             @Override
             public void onClick(View v) {
 
-
-                senddataknettoemail();
                 if (mId == 1) {
 
-
-
-
-                    if (resultcode.contains("CAPTURED")){
+                    if (resultcode.equals("CAPTURED")){
+                        senddataknettoemail();
 
                         startActivity(new Intent(KnetPaymentDelails.this, MemberCongratsActivity.class));
 
 
-                    }else if(resultcode.contains("NOT CAPTURED")) {
+                    }else if(resultcode.equals("NOT CAPTURED")) {
 
                         Intent intent =new Intent(KnetPaymentDelails.this, PaymentActivity.class);
                         startActivity(intent);
@@ -126,13 +122,14 @@ Button btn_confirm;
                 } else if (mId==2){
 
 
-                    if (resultcode.contains("CAPTURED")){
+                    if (resultcode.equals("CAPTURED")){
+                        senddataknettoemail();
 
                         Intent intent =new Intent(KnetPaymentDelails.this, RoomBooked.class);
                         startActivity(intent);
 
 
-                    }else if(resultcode.contains("NOT CAPTURED")) {
+                    }else if(resultcode.equals("NOT CAPTURED")) {
 
                         Intent intent =new Intent(KnetPaymentDelails.this, ConfirmBookingRoom.class);
                         startActivity(intent);
@@ -143,13 +140,14 @@ Button btn_confirm;
                 }else if(mId==3){
 
 
-                    if (resultcode.contains("CAPTURED")){
+                    if (resultcode.equals("CAPTURED")){
+                        senddataknettoemail();
 
                         Intent intent =new Intent(KnetPaymentDelails.this, FlightDetails.class);
                         startActivity(intent);
 
 
-                    }else if(resultcode.contains("NOT CAPTURED")) {
+                    }else if(resultcode.equals("NOT CAPTURED")) {
 
                         Intent intent =new Intent(KnetPaymentDelails.this, Proceedbeybey.class);
                         startActivity(intent);
@@ -160,13 +158,14 @@ Button btn_confirm;
 
                 }else if(mId==6){
 
-                    if (resultcode.contains("CAPTURED")){
+                    if (resultcode.equals("CAPTURED")){
+                        senddataknettoemail();
 
                         Intent intent =new Intent(KnetPaymentDelails.this, RoomBooked.class);
                         startActivity(intent);
 
 
-                    }else if(resultcode.contains("NOT CAPTURED")) {
+                    }else if(resultcode.equals("NOT CAPTURED")) {
 
                         Intent intent =new Intent(KnetPaymentDelails.this, ConfirmBookingRoom.class);
                         startActivity(intent);
@@ -177,13 +176,14 @@ Button btn_confirm;
 
                 }else if(mId==7){
 
-                    if (resultcode.contains("CAPTURED")){
+                    if (resultcode.equals("CAPTURED")){
+                        senddataknettoemail();
 
                         Intent intent =new Intent(KnetPaymentDelails.this, FlightDetails.class);
                         startActivity(intent);
 
 
-                    }else if(resultcode.contains("NOT CAPTURED")) {
+                    }else if(resultcode.equals("NOT CAPTURED")) {
 
                         Intent intent =new Intent(KnetPaymentDelails.this, Proceedbeybey.class);
                         startActivity(intent);
@@ -194,7 +194,6 @@ Button btn_confirm;
                 }else {
 
 
-                    Toast.makeText(KnetPaymentDelails.this, "fuck", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -268,8 +267,6 @@ Button btn_confirm;
         });
         RequestQueue requestQueue= Volley.newRequestQueue(KnetPaymentDelails.this);
         requestQueue.add(stringRequest);
-
-
     }
     public void senddataknettoemail(){
 
@@ -279,15 +276,10 @@ Button btn_confirm;
 
             public void onResponse(String response) {
 
-
-
-
                 try {
                     JSONObject jObj = new JSONObject(response);
                     int status = jObj.getInt("msg");
                     String msg = jObj.getString("success");
-
-                    Toast.makeText(KnetPaymentDelails.this, ""+msg, Toast.LENGTH_SHORT).show();
 
                 }catch (Exception  e){}
 

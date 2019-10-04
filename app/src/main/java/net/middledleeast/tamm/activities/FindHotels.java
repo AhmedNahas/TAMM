@@ -1146,144 +1146,7 @@ public class FindHotels extends AppCompatActivity {
     private void gethotelsInfo(String ctyId) {
 
 
-//        Calendar cal1 = Calendar.getInstance();
-//        cal1.set(Calendar.DAY_OF_MONTH, 22);
-//        Calendar cal2 = Calendar.getInstance();
-//        cal2.set(Calendar.DAY_OF_MONTH, 23);
-//        DateTime date1 = DateTime.parse(mstartTime);
-//        DateTime date2 = DateTime.parse(mendTime);
-////        date1 = date1.plusDays(4);
-////        date2 = date2.plusDays(7);
-//
-//        ArrayOfRoomGuest roomguests = new ArrayOfRoomGuest();
-//
-//        service.enableLogging = true;
-//        ArrayList<String> childAgeStringArray = new ArrayList<>();
-//        childAgeStringArray.ic_add(SharedPreferencesManger.LoadStringData(this, "child_countroom1"));
-//        childAgeStringArray.ic_add(SharedPreferencesManger.LoadStringData(this, "child_countroom2"));
-//        childAgeStringArray.ic_add(SharedPreferencesManger.LoadStringData(this, "child_countroom3"));
-//        childAgeStringArray.ic_add(SharedPreferencesManger.LoadStringData(this, "child_countroom4"));
-//
-//        ArrayList<Integer> adultCountArray = new ArrayList<>();
-//        adultCountArray.ic_add(nom_adultRoom1);
-//        adultCountArray.ic_add(nom_adultRoom2);
-//        adultCountArray.ic_add(nom_adultRoom3);
-//        adultCountArray.ic_add(nom_adultRoom4);
-//        ArrayList<Integer> childCountArray = new ArrayList<>();
-//        childCountArray.ic_add(mChildCountRoom1);
-//        childCountArray.ic_add(mChildCountRoom2);
-//        childCountArray.ic_add(mChildCountRoom3);
-//        childCountArray.ic_add(mChildCountRoom4);
-//
-//        for (int i = 0; i < noRomes; i++) {
-//
-//            RoomGuest roomGuest = new RoomGuest();
-//            roomGuest.AdultCount = adultCountArray.get(i);
-//            roomGuest.ChildCount = childCountArray.get(i);
-//            roomGuest.ChildAge = new ArrayOfInt();
-//            if (roomGuest.ChildCount == 0) {
-//                roomGuest.ChildAge = null;
-//            } else {
-//                String child_count = childAgeStringArray.get(i);
-//                child_count= child_count.replace("[", "");
-//                child_count = child_count.replace("]", "");
-//                StringTokenizer st = new StringTokenizer(child_count.trim(), ",");
-//
-//                while (st.hasMoreTokens()) {
-//
-//                    // child age count
-//                    String ageChildCount = st.nextToken().trim();
-//                    roomGuest.ChildAge.ic_add(Integer.parseInt(ageChildCount));
-//
-//                }
-//            }
-//            roomguests.ic_add(roomGuest);
-//
-//            SharedPreferencesManger.SaveData(this, "roomGuests", new Gson().toJson(roomguests));
-//        }
-//
-//
-//        try {
-//            //HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), Integer.parseInt(ctyId), 1, roomguests, "EG", authenticationData);
-//
-//
-//            hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
-//                    true, noRomes, "EG", roomguests, null, 100, filters, "true", null,
-//                    10000, authenticationData);
-//
-//
-//
-//
-////            HotelSearchWithRoomsResponse hotelSearchWithRoomsResponse = service.HotelSearchWithRooms(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry,name_city,Integer.parseInt(ctyId),
-////                    true, noRomes, "EG", roomguests, null, 100, null, null, false, authenticationData);
-//
-//
-//            listPrice.clear();
-//            ratrHotel.clear();
-//            nameHotel.clear();
-//            photoHotel.clear();
-//            listcodeHotel.clear();
-//            addressHotel.clear();
-//            arrayOfResultIndex.clear();
-//
-//
-//            if (hotelSearchResponse.HotelResultList != null) {
-//                for (int i = 0; i < hotelSearchResponse.HotelResultList.size(); i++) {
-//
-//                    Hotel_Result hotel_result = hotelSearchResponse.HotelResultList.get(i);
-//                    MinHotelPrice minHotelPrice = hotelSearchResponse.HotelResultList.get(i).MinHotelPrice;
-//                    String currency = minHotelPrice.OriginalPrice.toString();
-//                    String currency1 = minHotelPrice.Currency;
-//                    listPrice.ic_add(currency1 + " " + currency);
-//                    HotelInfo hotelInfo = hotel_result.HotelInfo;
-//                    sessionId = hotelSearchResponse.SessionId;
-//                    hotelAddress = hotelInfo.HotelAddress;
-//                    hotelName = hotelInfo.HotelName;
-//                    hotelPicture = hotelInfo.HotelPicture;
-//                    int code = hotelInfo.Rating.getCode();
-//
-//
-//                    arrayOfResultIndex.ic_add(hotel_result.ResultIndex);
-//
-//                    String hotelCode = hotelInfo.HotelCode;
-//
-//                    listcodeHotel.ic_add(hotelCode);
-//
-//                    nameHotel.ic_add(hotelName);
-//                    ratrHotel.ic_add(code);
-//                    photoHotel.ic_add(hotelPicture);
-//                    addressHotel.ic_add(hotelAddress);
-//
-//                }
-//            }
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//
-//        Intent intent = new Intent(FindHotels.this, ChooseHotelActivity.class);
-//        intent.putExtra("hotelName", nameHotel);
-//        intent.putExtra("hotelrat", ratrHotel);
-//        intent.putExtra("hotelPhoto", photoHotel);
-//        intent.putExtra("hotelCode", listcodeHotel);
-//        intent.putExtra("hotelAddress", addressHotel);
-//        intent.putExtra("checkInDate", mstartTime);
-//        intent.putExtra("checkOutDate", mendTime);
-//        intent.putExtra("countryName", nameCountry);
-//        intent.putExtra("cityName", name_city);
-//        intent.putExtra("cityId", ctyId);
-//        intent.putExtra("noOfRooms", noRomes);
-//        intent.putExtra("list_price", listPrice);
-//        SharedPreferencesManger.SaveData(this, "noOfRooms", noRomes);
-//        intent.putExtra("resultIndex", arrayOfResultIndex);
-//
-//
-//        // intent.putExtra("roomGuest",roomguests);
-//        startActivity(intent);
-//
-//
-//
+
 
         DoSomeTask task = new DoSomeTask();
         task.execute();
@@ -1620,6 +1483,12 @@ public class FindHotels extends AppCompatActivity {
                 //HotelSearchResponse hotelSearchResponse = service.HotelSearch1(date1.toDateTimeISO(), date2.toDateTimeISO(), Integer.parseInt(ctyId), 1, roomguests, "EG", authenticationData);
 
                String nationality = SharedPreferencesManger.LoadStringData(FindHotels.this,"nationality");
+               String gust = SharedPreferencesManger.LoadStringData(FindHotels.this,"guestMode");
+
+                if (gust==null){
+
+                    nationality = "EG";
+                }
                 hotelSearchResponse = service.HotelSearch(date1.toString("yyyy-MM-dd"), date2.toString("yyyy-MM-dd"), nameCountry, name_city, Integer.parseInt(ctyId),
                         true, noRomes, nationality, roomguests, null, 0, filters, "true", null,
                         0, authenticationData);

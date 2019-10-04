@@ -762,11 +762,6 @@ public class FlightDetails extends AppCompatActivity  {
                             sendDataToEMail(firstName4 + " / " + lastName4 ,FROM,TO,FLIGHT_NO,DATE,pnr4, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
                             sendDataToEMail(firstName5 + " / " + lastName5 ,FROM,TO,FLIGHT_NO,DATE,pnr5, String.valueOf(price),email,data.getSegments().get(0).getAirlineName());
 
-
-
-
-
-
                         }
 
 
