@@ -34,7 +34,7 @@ public class TicketResponse implements Serializable {
     private boolean isSuccess;
     @SerializedName("Errors")
     @Expose
-    private List<Object> errors = new ArrayList<Object>();
+    private List<Error_> errors = new ArrayList<Error_>();
     @SerializedName("Alerts")
     @Expose
     private List<Object> alerts = new ArrayList<Object>();
@@ -64,7 +64,7 @@ public class TicketResponse implements Serializable {
      * @param paymentStatus
      * @param isSuccess
      */
-    public TicketResponse(String pNR, long status, Object changeInItinerary, String paymentStatus, long walletAction, Itinerary itinerary, boolean isSuccess, List<Object> errors, List<Object> alerts, String tokenId, String trackingId) {
+    public TicketResponse(String pNR, long status, Object changeInItinerary, String paymentStatus, long walletAction, Itinerary itinerary, boolean isSuccess, List<Error_> errors, List<Object> alerts, String tokenId, String trackingId) {
         super();
         this.pNR = pNR;
         this.status = status;
@@ -170,15 +170,15 @@ public class TicketResponse implements Serializable {
         return this;
     }
 
-    public List<Object> getErrors() {
+    public List<Error_> getErrors() {
         return errors;
     }
 
-    public void setErrors(List<Object> errors) {
+    public void setErrors(List<Error_> errors) {
         this.errors = errors;
     }
 
-    public TicketResponse withErrors(List<Object> errors) {
+    public TicketResponse withErrors(List<Error_> errors) {
         this.errors = errors;
         return this;
     }
