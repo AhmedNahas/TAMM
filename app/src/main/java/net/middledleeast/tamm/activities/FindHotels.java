@@ -158,6 +158,7 @@ public class FindHotels extends AppCompatActivity {
     private HotelSearchResponse hotelSearchResponse;
     private CountryList countryList;
     ArrayList<String> listPrice = new ArrayList<>();
+    ArrayList<String> listAddress = new ArrayList<>();
     Spinner chooseNumberOfRoomsSpinner;
     private TextView roomCount;
     RelativeLayout room1View;
@@ -1521,6 +1522,7 @@ public class FindHotels extends AppCompatActivity {
 
 
             listPrice.clear();
+            listAddress.clear();
             ratrHotel.clear();
             nameHotel.clear();
             tripAdvisorURL.clear();

@@ -172,7 +172,7 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
         photos = listPhotoHotel.get(position);
         rat = listrat.get(position);
 
-        holder.name.setText(name);
+        holder.name.setText(name+"\n"+listAddressHotel.get(position));
         holder.rat.setText(rat+"");
         holder.URLTripAdvisor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,6 +191,9 @@ public class AdapterHotelInfo  extends RecyclerView.Adapter<AdapterHotelInfo.Sin
 
         Collections.sort(listrat);
         Collections.reverse(listrat);
+
+
+
 
 
 

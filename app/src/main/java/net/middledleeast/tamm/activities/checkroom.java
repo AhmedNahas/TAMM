@@ -327,9 +327,6 @@ public class checkroom extends AppCompatActivity {
 
 
 
-
-
-
                 String[] arrOfStr = deadline.split("T");
 
 

@@ -42,18 +42,18 @@
             android:layout_below="@+id/img_check_out"
             android:layout_centerHorizontal="true"
             />
-        <!--<TextView-->
-            <!--android:id="@+id/tv_feet"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:gravity="center"-->
-            <!--android:text="431 sq feet (40 sq meters)"-->
-            <!--android:textColor="#fff"-->
-            <!--android:textSize="15dp"-->
-            <!--android:layout_below="@+id/room_Tybe"-->
-            <!--android:layout_centerHorizontal="true"-->
+<!--        <TextView-->
+<!--            android:id="@+id/tv_address"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Address"-->
+<!--            android:textColor="#fff"-->
+<!--            android:textSize="15dp"-->
+<!--            android:layout_below="@+id/room_Tybe"-->
+<!--            android:layout_centerHorizontal="true"-->
 
-            <!--/>-->
+<!--            />-->
 
 
         <RelativeLayout
