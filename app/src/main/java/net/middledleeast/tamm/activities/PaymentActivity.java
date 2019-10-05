@@ -401,7 +401,9 @@ public class PaymentActivity extends AppCompatActivity {
 //            String TotalFare = SharedPreferencesManger.LoadStringData(this, "TotalFare");
 //            flightCurrency = SharedPreferencesManger.LoadStringData(this, "typeFare");
 
-            String totalFare = getIntent().getStringExtra("totalFare");
+//            String totalFare = getIntent().getStringExtra("totalFare");
+            String totalFare = SharedPreferencesManger.LoadStringData(PaymentActivity.this, "totalFare");
+
             String firstNameAduld = SharedPreferencesManger.LoadStringData(PaymentActivity.this, "FirstNameAduld");
             String lastNameAduld = SharedPreferencesManger.LoadStringData(PaymentActivity.this, "LastNameAduld");
 

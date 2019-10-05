@@ -1313,7 +1313,9 @@ MDataMrmisInfent2= SharedPreferencesManger.LoadStringData(FlightsSummary.this, "
 
                                                         Intent intent = new Intent(FlightsSummary.this, PaymentActivity.class);
 
-                                                        intent.putExtra("totalFare", String.valueOf(totalFare));
+//                                                        intent.putExtra("totalFare", String.valueOf(totalFare));
+
+                                                        SharedPreferencesManger.SaveData(FlightsSummary.this,"totalFare",String.valueOf(totalFare));
                                                         SharedPreferencesManger.SaveData(FlightsSummary.this,"mId",3);
 
                                                         startActivity(intent);

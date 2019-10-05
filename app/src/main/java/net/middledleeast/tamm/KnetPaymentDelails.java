@@ -22,6 +22,7 @@ import net.middledleeast.tamm.activities.FlightDetails;
 import net.middledleeast.tamm.activities.MemberCongratsActivity;
 import net.middledleeast.tamm.activities.PaymentActivity;
 import net.middledleeast.tamm.activities.Proceedbeybey;
+import net.middledleeast.tamm.activities.RenewAccount;
 import net.middledleeast.tamm.activities.RoomBooked;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.AllLinks.LinksUrl;
@@ -112,6 +113,7 @@ Button btn_confirm;
 
 
                     }else if(resultcode.equals("NOT CAPTURED")) {
+                        senddataknettoemail();
 
                         Intent intent =new Intent(KnetPaymentDelails.this, PaymentActivity.class);
                         startActivity(intent);
@@ -130,6 +132,7 @@ Button btn_confirm;
 
 
                     }else if(resultcode.equals("NOT CAPTURED")) {
+                        senddataknettoemail();
 
                         Intent intent =new Intent(KnetPaymentDelails.this, ConfirmBookingRoom.class);
                         startActivity(intent);
@@ -148,6 +151,7 @@ Button btn_confirm;
 
 
                     }else if(resultcode.equals("NOT CAPTURED")) {
+                        senddataknettoemail();
 
                         Intent intent =new Intent(KnetPaymentDelails.this, Proceedbeybey.class);
                         startActivity(intent);
@@ -166,6 +170,7 @@ Button btn_confirm;
 
 
                     }else if(resultcode.equals("NOT CAPTURED")) {
+                        senddataknettoemail();
 
                         Intent intent =new Intent(KnetPaymentDelails.this, ConfirmBookingRoom.class);
                         startActivity(intent);
@@ -184,10 +189,11 @@ Button btn_confirm;
 
 
                     }else if(resultcode.equals("NOT CAPTURED")) {
+                        senddataknettoemail();
 
-                        Intent intent =new Intent(KnetPaymentDelails.this, Proceedbeybey.class);
+
+                        Intent intent =new Intent(KnetPaymentDelails.this, RenewAccount.class);
                         startActivity(intent);
-
                     }
 
 
@@ -284,7 +290,6 @@ Button btn_confirm;
                 }catch (Exception  e){}
 
             }
-
 
         }, new com.android.volley.Response.ErrorListener() {
 
