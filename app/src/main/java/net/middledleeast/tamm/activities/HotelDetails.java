@@ -26,6 +26,7 @@ import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.HotelDetailsResponse;
 import com.Tamm.Hotels.wcf.ImageUrlDetails;
+import com.google.gson.Gson;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.adapters.AmenitiesAdapter;
@@ -101,6 +102,7 @@ public class HotelDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel_details);
+        getWindow().setBackgroundDrawable(null);
         ViewPager viewPager = findViewById(R.id.hotel_image_detail);
         sliderDotspanel = findViewById(R.id.SliderDots);
         ButterKnife.bind(this);
@@ -225,6 +227,9 @@ public class HotelDetails extends AppCompatActivity {
             }
 
 
+            Gson  gson = new Gson();
+            String facility = gson.toJson(split);
+            SharedPreferencesManger.SaveData(this,"facility",facility);
 
 
             ArrayOfImageUrlDetails imageUrls = hotelDetailsResponse.HotelDetails.ImageUrls;

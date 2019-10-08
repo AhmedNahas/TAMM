@@ -332,6 +332,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/relative_until"
                 android:text=""
+                android:layout_marginTop="@dimen/_5sdp"
                 android:textColor="@color/white" />
 
 
@@ -435,15 +436,39 @@
 
             <!--</RelativeLayout>-->
         </RelativeLayout>
-        <TextView
-            android:id="@+id/inclusion"
-            android:gravity="center"
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/tv_total_mount"
-            android:layout_marginTop="@dimen/_8ssp"
-            android:text="No Inclusion"
-            android:textColor="@color/white" />
+            android:layout_below="@+id/room_details"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:id="@+id/dead_line"
+                android:gravity="start"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8ssp"
+                android:text=""
+                android:textColor="@color/white" />
+            <TextView
+                android:layout_weight="1"
+                android:drawableStart="@drawable/ic_local_dining_black_24dp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:id="@+id/inclusion"
+                android:gravity="start"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8ssp"
+                android:text=""
+                android:textColor="@color/white"
+                android:layout_toEndOf="@+id/dead_line"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_total_mount"
@@ -451,7 +476,7 @@
             android:layout_height="35dp"
             android:layout_below="@id/room_details"
             android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_100sdp"
             android:background="@drawable/full_border"
             android:gravity="center"
             android:paddingTop="7dp"

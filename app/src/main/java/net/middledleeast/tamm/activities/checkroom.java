@@ -6,10 +6,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
@@ -19,14 +17,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
-import com.Tamm.Hotels.wcf.ArrayOfRoomInfo;
-import com.Tamm.Hotels.wcf.ArrayOfString2;
 import com.Tamm.Hotels.wcf.ArrayOfString6;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
 import com.Tamm.Hotels.wcf.BookingOptions;
-import com.Tamm.Hotels.wcf.HotelCancellationPolicyResponse;
 import com.Tamm.Hotels.wcf.Hotel_Room;
 import com.Tamm.Hotels.wcf.RoomCombination;
 import com.bumptech.glide.Glide;
@@ -90,7 +85,7 @@ public class checkroom extends AppCompatActivity {
     private int roomCount;
     private AmenitiesAdapter amenitiesAdapter;
 
-    TextView inclusion ;
+    TextView inclusion , dead_line ;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +93,10 @@ public class checkroom extends AppCompatActivity {
         setContentView(R.layout.check_room);
         ButterKnife.bind(this);
         inclusion = findViewById(R.id.inclusion);
+        dead_line = findViewById(R.id.dead_line);
+
         String inclusion_ = SharedPreferencesManger.LoadStringData(this, "inclusion");
-        inclusion.setText("Inclusion :"+inclusion_);
+        inclusion.setText(inclusion_ + " Included ");
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         room_details_list = findViewById(R.id.room_details_list);
         StrictMode.setThreadPolicy(policy);
@@ -278,7 +275,23 @@ public class checkroom extends AppCompatActivity {
 
         String roomIndexArrayStr = SharedPreferencesManger.LoadStringData(this, "roomIndexArray");
         Gson gson = new Gson();
+        ArrayList<String>  listHotelNormis = new ArrayList<>();
 
+
+        String facility = SharedPreferencesManger.LoadStringData(this, "facility");
+        Gson gson2 = new Gson();
+        List<String> facilityList = gson2.fromJson(facility, ArrayList.class);
+
+        for (int i = 0; i < facilityList.size(); i++) {
+
+            listHotelNormis.add(facilityList.get(i));
+
+        }
+        room_details_list.setLayoutManager(new GridLayoutManager(this,2));
+
+        amenitiesAdapter = new AmenitiesAdapter(checkroom.this,listHotelNormis);
+        room_details_list.setAdapter(amenitiesAdapter);
+        amenitiesAdapter.notifyDataSetChanged();
 
         try {
 
@@ -303,11 +316,6 @@ public class checkroom extends AppCompatActivity {
             roomCombination.RoomIndex = new ArrayList<>(roomIndexArrayInt);
             bookingOptions.RoomCombination.add(roomCombination);
             SharedPreferencesManger.SaveData(this, "roomIndexArray", null);
-            try {
-
-                HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
-
-
 
 
                 AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, bookingOptions, authenticationData);
@@ -318,21 +326,11 @@ public class checkroom extends AppCompatActivity {
 
                 String deadline = availabilityAndPricingResponse.HotelCancellationPolicies.CancelPolicies.LastCancellationDeadline.toString();
                 ArrayOfString6 roomFacilities = availabilityAndPricingResponse.HotelDetails.RoomFacilities;
-                ArrayList<String>  listHotelNormis = new ArrayList<>();
+            dead_line.setText("Free Cancellation \n until " + fromDate);
 
 
                 String[] split = roomFacilities.toString().split(",");
 
-                for (int i = 0; i < split.length; i++) {
-
-                    listHotelNormis.add(split[i]);
-
-                }
-                room_details_list.setLayoutManager(new GridLayoutManager(this,2));
-
-                amenitiesAdapter = new AmenitiesAdapter(checkroom.this,listHotelNormis);
-                room_details_list.setAdapter(amenitiesAdapter);
-                amenitiesAdapter.notifyDataSetChanged();
 
                 String[] arrOfStr = deadline.split("T");
 
@@ -344,10 +342,7 @@ public class checkroom extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-        } catch (Exception e) {
 
-
-        }
         checkRoom = findViewById(R.id.checkOutRoom);
         roomTyben = findViewById(R.id.room_Tybe);
         roomTyben.setText(roomTybe);
