@@ -138,9 +138,9 @@ public class  RenewAccount extends AppCompatActivity
 
 
         }catch (Exception e){}
-        adapter.AddFragment(new BestFlights(), "Best Flights");
-        adapter.AddFragment(new BestHotels(), "Best Hotels");
-        adapter.AddFragment(new BestDeals(), "Best Deals");
+        adapter.AddFragment(new BestFlights(), getString(R.string.bestflight));
+        adapter.AddFragment(new BestHotels(), getString(R.string.besthotel));
+        adapter.AddFragment(new BestDeals(), getString(R.string.bestdeals));
 
 
         viewPager.setAdapter(adapter);
@@ -386,6 +386,8 @@ public class  RenewAccount extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
     }
+
+
 
     @Override
     public void onBackPressed() {

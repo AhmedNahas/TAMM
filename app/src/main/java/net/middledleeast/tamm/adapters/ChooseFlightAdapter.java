@@ -3,6 +3,7 @@ package net.middledleeast.tamm.adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,20 +17,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.activities.FlightsSummary;
 import net.middledleeast.tamm.activities.Passenger_inform;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
-import java.io.InputStream;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Locale;
 
 import FlightApi.SearchFlightsResponse;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
-import retrofit2.Retrofit;
 
 public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapter.ChooseFlightViewHolder> {
 
@@ -191,14 +190,16 @@ public class ChooseFlightAdapter extends RecyclerView.Adapter<ChooseFlightAdapte
             DecimalFormat df = new DecimalFormat("###.###");
             String format = df.format(totalFare);
 
+            Locale locale = new Locale("EN");
+            Locale.setDefault(locale);
+            Configuration config = new Configuration();
+            config.locale = locale;
+            context.getResources().updateConfiguration(config, null);
+
             holder.tvTotalFare.setText(format + " " + agentPreferredCurrency);
 
 
             // one way
-
-
-
-
 
 
             String  airline = "A" + segments.get(0).getAirlineDetails().getAirlineCode();

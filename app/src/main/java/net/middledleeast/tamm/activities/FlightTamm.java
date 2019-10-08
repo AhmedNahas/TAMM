@@ -6,8 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,12 +20,12 @@ public class FlightTamm extends AppCompatActivity {
 
     @BindView(R.id.relative_img_flight_tamm)
     RelativeLayout relativeImgFlightTamm;
-    @BindView(R.id.fragment_assistant_label_voice)
-    TextView fragmentAssistantLabelVoice;
-    @BindView(R.id.fragment_assistant_label_call)
-    TextView fragmentAssistantLabelCall;
-    @BindView(R.id.fragment_assistant_label_message)
-    TextView fragmentAssistantLabelMessage;
+//    @BindView(R.id.fragment_assistant_label_voice)
+//    TextView fragmentAssistantLabelVoice;
+//    @BindView(R.id.fragment_assistant_label_call)
+//    TextView fragmentAssistantLabelCall;
+//    @BindView(R.id.fragment_assistant_label_message)
+//    TextView fragmentAssistantLabelMessage;
     private Button button;
     private RelativeLayout toolbar_back;
 
@@ -92,15 +90,15 @@ public class FlightTamm extends AppCompatActivity {
     public void onViewClicked() {
 
         if (Click == false) {
-            fragmentAssistantLabelCall.setVisibility(View.VISIBLE);
-            fragmentAssistantLabelMessage.setVisibility(View.VISIBLE);
-            fragmentAssistantLabelVoice.setVisibility(View.VISIBLE);
+//            fragmentAssistantLabelCall.setVisibility(View.VISIBLE);
+//            fragmentAssistantLabelMessage.setVisibility(View.VISIBLE);
+//            fragmentAssistantLabelVoice.setVisibility(View.VISIBLE);
             Click = true;
 
         } else {
-            fragmentAssistantLabelCall.setVisibility(View.INVISIBLE);
-            fragmentAssistantLabelMessage.setVisibility(View.INVISIBLE);
-            fragmentAssistantLabelVoice.setVisibility(View.INVISIBLE);
+//            fragmentAssistantLabelCall.setVisibility(View.INVISIBLE);
+//            fragmentAssistantLabelMessage.setVisibility(View.INVISIBLE);
+//            fragmentAssistantLabelVoice.setVisibility(View.INVISIBLE);
             Click = false;
 
         }
@@ -108,21 +106,21 @@ public class FlightTamm extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.fragment_assistant_label_voice, R.id.fragment_assistant_label_call, R.id.fragment_assistant_label_message})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.fragment_assistant_label_voice:
-
-                Toast.makeText(this, "voice", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.fragment_assistant_label_call:
-                Toast.makeText(this, "call", Toast.LENGTH_SHORT).show();
-
-                break;
-            case R.id.fragment_assistant_label_message:
-                Toast.makeText(this, "message", Toast.LENGTH_SHORT).show();
-
-                break;
-        }
-    }
+//    @OnClick({R.id.fragment_assistant_label_voice, R.id.fragment_assistant_label_call, R.id.fragment_assistant_label_message})
+//    public void onViewClicked(View view) {
+//        switch (view.getId()) {
+//            case R.id.fragment_assistant_label_voice:
+//
+//                Toast.makeText(this, "voice", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.fragment_assistant_label_call:
+//                Toast.makeText(this, "call", Toast.LENGTH_SHORT).show();
+//
+//                break;
+//            case R.id.fragment_assistant_label_message:
+//                Toast.makeText(this, "message", Toast.LENGTH_SHORT).show();
+//
+//                break;
+//        }
+//    }
 }

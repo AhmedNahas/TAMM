@@ -181,7 +181,7 @@
         android:id="@+id/tv_tab_me_renew_hotels"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tap me if you need MY ASSISTANCE "
+        android:text="@string/tap_me_if_you_need_my_assistance2"
         android:textColor="#fff"
         android:gravity="center"
 

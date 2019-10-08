@@ -4,11 +4,10 @@ package net.middledleeast.tamm.fragments;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.text.format.Formatter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -35,14 +34,10 @@ import net.middledleeast.tamm.activities.RecommendedOneWay;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
 import java.io.InputStream;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -867,9 +862,15 @@ public class ProceedBeyBeyOriginal extends Fragment {
 // 2019-09-20 T00:00:00
                 departure.setText(dayOfTheWeek + "," + day + " " + monthString);
 
+
             }
         };
 
+        Locale locale = new Locale("EN");
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        ProceedBeyBeyOriginal.this.getResources().updateConfiguration(config, null);
 
         new DatePickerDialog(getActivity(), date, myCalendar.get(YEAR),
                 myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
