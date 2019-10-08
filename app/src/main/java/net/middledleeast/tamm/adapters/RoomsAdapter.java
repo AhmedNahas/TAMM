@@ -49,7 +49,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> {
 
     private final Context context;
@@ -79,6 +78,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
     private Integer accountPlan;
     private String feesFree;
     private String feesMember;
+    private String inclusion;
 
 
     public RoomsAdapter(ArrayList<Integer> roomCombs, Activity activity, AuthenticationData data, BasicHttpBinding_IHotelService1 service,
@@ -153,6 +153,12 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         SharedPreferencesManger.SaveData(context, "RoomComb", new Gson().toJson(possibleCombinations, fooType));
 
 
+        try {
+             inclusion = rooms.get(position).Inclusion;
+            SharedPreferencesManger.SaveData(context,"inclusion",inclusion);
+        }catch (Exception e){}
+
+
 //        Hotel_Room hotel_room1 = rooms.get(1);
         String mealType = rooms.get(position).MealType;
         String instructions = rooms.get(position).RoomInstructions;
@@ -206,6 +212,13 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
         roomInformation = rooms.get(position).RoomAdditionalInfo;
 //        BigDecimal price = rooms.get(position).Supplements.get(position).Price;
+        if (rooms.get(position).Inclusion!=null){
+            holder.mName.setText(roomType+"\n"+"Inclusion :" +  inclusion);
+
+
+        }
+
+
         holder.mName.setText(roomType);
 //        holder.roomPrice.setText((CharSequence) price);
 
