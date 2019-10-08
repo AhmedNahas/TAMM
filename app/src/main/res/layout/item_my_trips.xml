@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/black"
 
     android:orientation="vertical" android:layout_width="match_parent"
@@ -19,16 +20,16 @@
 
     <TextView
         android:fontFamily="sans-serif-black"
-
         android:id="@+id/from"
         android:layout_marginStart="@dimen/_5sdp"
         android:textColor="@color/white"
         android:layout_below="@+id/NamePassenger"
         android:padding="@dimen/_5sdp"
         android:textSize="@dimen/_10ssp"
-        android:text="FROM : "
+        android:text="@string/from_"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp" />
+        android:layout_height="@dimen/_30sdp"
+         />
 
 
 
@@ -82,7 +83,7 @@
         android:layout_below="@+id/From"
         android:padding="@dimen/_5sdp"
         android:textSize="@dimen/_10ssp"
-        android:text="TO : "
+        android:text="@string/to_"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_30sdp" />
 
@@ -147,7 +148,7 @@
         android:layout_below="@+id/FlightNo"
         android:padding="@dimen/_5sdp"
         android:textSize="@dimen/_10ssp"
-        android:text="TIME : "
+        android:text="@string/time"
         android:fontFamily="sans-serif-black"
 
         android:layout_width="wrap_content"
@@ -199,7 +200,7 @@
             android:fontFamily="sans-serif-medium"
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/_12ssp"
-            android:text="RETURN INFORMATION"
+            android:text="@string/return_information"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp" />
 
@@ -212,7 +213,7 @@
             android:layout_below="@+id/NamePassenger_Return"
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/_10ssp"
-            android:text="FROM : "
+            android:text="@string/from_"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_30sdp" />
 
@@ -268,7 +269,7 @@
             android:layout_below="@+id/From_Return"
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/_10ssp"
-            android:text="TO : "
+            android:text="@string/to_"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_30sdp" />
 
@@ -333,7 +334,7 @@
             android:layout_below="@+id/FlightNo_Return"
             android:padding="@dimen/_5sdp"
             android:textSize="@dimen/_10ssp"
-            android:text="TIME : "
+            android:text="@string/time"
             android:fontFamily="sans-serif-black"
 
             android:layout_width="wrap_content"

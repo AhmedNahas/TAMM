@@ -65,14 +65,14 @@ public class ChattingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (idAssistant == 1) {
 
-                    String Dial = "+955748162678558";
+                    String Dial = "+96522205555";
                     Intent intent = new Intent(Intent.ACTION_DIAL);
                     intent.setData(Uri.parse("tel:" + Dial));
                     startActivity(intent);
 
                 } else if (idAssistant == 2) {
 
-                    String Dial = "95574856778510";
+                    String Dial = "+96522205555";
                     Intent intent = new Intent(Intent.ACTION_DIAL);
                     intent.setData(Uri.parse("tel:" + Dial));
                     startActivity(intent);
@@ -80,7 +80,7 @@ public class ChattingActivity extends AppCompatActivity {
 
                 } else if (idAssistant == 3) {
 
-                    String Dial = "955748162672013";
+                    String Dial = "+96522205555";
                     Intent intent = new Intent(Intent.ACTION_DIAL);
                     intent.setData(Uri.parse("tel:" + Dial));
                     startActivity(intent);

@@ -53,7 +53,7 @@
             android:id="@+id/iv_booked_flight_tamm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/_15sdp"
             android:background="@drawable/ic_button" />
     </RelativeLayout>
@@ -96,7 +96,7 @@
         android:id="@+id/txt_hotels"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FLIGHT&amp;PRIVATE JETS"
+        android:text="@string/flight_amp_private_jets"
         android:textSize="20dp"
         android:textColor="@color/app_color"
         android:layout_below="@+id/txt_tamm"
@@ -117,7 +117,7 @@
         android:id="@+id/txt_best"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BEST FLIGHT DEALS"
+        android:text="@string/best_flight_deals"
         android:textColor="@color/app_color"
         android:textSize="@dimen/_20ssp"
         android:layout_centerInParent="true"
@@ -128,7 +128,7 @@
         android:id="@+id/txt_special"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WITH SPECIAL ASSISTANCE"
+        android:text="@string/with_special_assistance"
         android:textColor="#fff"
         android:textSize="20dp"
         android:layout_below="@+id/txt_best"
@@ -148,7 +148,7 @@
             android:id="@+id/txt_anywhere"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="anywhere"
+            android:text="@string/anywhere"
             android:textSize="20dp"
             android:textColor="#fff"
 
@@ -157,10 +157,10 @@
             android:id="@+id/txt_anytime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=", anytime"
+            android:text="@string/anytime"
             android:textSize="20dp"
             android:textColor="#fff"
-            android:layout_toRightOf="@+id/txt_anywhere"
+            android:layout_toEndOf="@+id/txt_anywhere"
             />
 
 
@@ -177,7 +177,7 @@
         android:id="@+id/btn_reserve_user"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:text="RESERVE FLIGHT"
+        android:text="@string/reserve_flight"
         android:textColor="#FFF"
         android:background="@drawable/border"
         android:layout_centerInParent="true"
@@ -197,58 +197,58 @@
         android:background="@drawable/man1"
         >
 
-        <TextView
-            android:id="@+id/fragment_assistant_label_voice"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_assistant_voice"
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:text="SEND VOICE NOTE TO AGENT"
-            android:textColor="@color/app_color"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            android:visibility="gone"
-            tools:visibility="visible"/>
+        <!--<TextView-->
+            <!--android:id="@+id/fragment_assistant_label_voice"-->
+            <!--android:layout_width="@dimen/_130sdp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:drawablePadding="8dp"-->
+            <!--android:drawableStart="@drawable/ic_assistant_voice"-->
+            <!--android:fontFamily="sans-serif"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:text="SEND VOICE NOTE TO AGENT"-->
+            <!--android:textColor="@color/app_color"-->
+            <!--android:textSize="13sp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:visibility="gone"-->
+            <!--tools:visibility="visible"/>-->
 
 
-        <TextView
-            android:id="@+id/fragment_assistant_label_call"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_assistant_call"
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:text="CALL AGENT"
-            android:textStyle="bold"
-            android:textColor="@color/app_color"
-            android:textSize="13sp"
-            android:visibility="gone"
-            tools:visibility="visible"
-            android:layout_below="@+id/fragment_assistant_label_voice"
-            />
+        <!--<TextView-->
+            <!--android:id="@+id/fragment_assistant_label_call"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:drawablePadding="8dp"-->
+            <!--android:drawableStart="@drawable/ic_assistant_call"-->
+            <!--android:fontFamily="sans-serif"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:text="CALL AGENT"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textColor="@color/app_color"-->
+            <!--android:textSize="13sp"-->
+            <!--android:visibility="gone"-->
+            <!--tools:visibility="visible"-->
+            <!--android:layout_below="@+id/fragment_assistant_label_voice"-->
+            <!--/>-->
 
 
-        <TextView
-            android:id="@+id/fragment_assistant_label_message"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_weight="38"
-            android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_assistant_message"
-            android:fontFamily="sans-serif"
-            android:text="SEND MESSAGE TO AGENT"
-            android:textColor="@color/app_color"
-            android:textSize="13sp"
-            android:visibility="gone"
-            tools:visibility="visible"
-            android:layout_alignParentRight="true"/>
+        <!--<TextView-->
+            <!--android:id="@+id/fragment_assistant_label_message"-->
+            <!--android:layout_width="@dimen/_130sdp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_weight="38"-->
+            <!--android:drawablePadding="8dp"-->
+            <!--android:drawableStart="@drawable/ic_assistant_message"-->
+            <!--android:fontFamily="sans-serif"-->
+            <!--android:text="SEND MESSAGE TO AGENT"-->
+            <!--android:textColor="@color/app_color"-->
+            <!--android:textSize="13sp"-->
+            <!--android:visibility="gone"-->
+            <!--tools:visibility="visible"-->
+            <!--android:layout_alignParentEnd="true"/>-->
 
 
 
@@ -265,7 +265,7 @@
         android:id="@+id/tv_tab_me_flights"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tap me if you need MY ASSISTANCE "
+        android:text="@string/tap_me_if_you_need_my_assistance"
         android:textColor="#fff"
         android:gravity="center"
         android:layout_alignParentBottom="true"

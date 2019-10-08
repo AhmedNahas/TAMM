@@ -24,16 +24,16 @@
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_30sdp"
             android:src="@drawable/logo"
-            android:layout_marginLeft="145dp"
+            android:layout_marginStart="145dp"
 
             />
         <ImageView
             android:id="@+id/iv_booked_flight_details"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_button"
-            android:layout_marginLeft="100dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="12dp"
             />
     </RelativeLayout>
@@ -67,10 +67,10 @@
 
             />
         <TextView
-            android:layout_toRightOf="@+id/iv_right"
+            android:layout_toEndOf="@+id/iv_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SUCCESS !"
+            android:text="@string/success"
             android:textSize="40sp"
             android:textColor="#fff"
             android:layout_marginTop="40dp"
@@ -102,7 +102,7 @@
             android:layout_width="200dp"
             android:layout_height="@dimen/_25sdp"
             android:layout_below="@+id/relative_man_txt"
-            android:text="GET MY TICKET NOW"
+            android:text="@string/get_my_ticket_now"
             android:background="@drawable/shape"
             android:textStyle="bold"
             android:layout_marginTop="@dimen/_30sdp"
@@ -114,7 +114,7 @@
             android:id="@+id/line_flights"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/_25sdp"
             android:src="@drawable/line1"
             android:layout_below="@+id/get_code"
@@ -125,7 +125,7 @@
             android:id="@+id/back_to_hotel"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_20sdp"
-            android:text="BOOK HOTEL"
+            android:text="@string/book_hotel"
             android:layout_marginTop="@dimen/_25sdp"
             android:background="@drawable/border2"
             android:textColor="@color/app_color"
@@ -161,7 +161,7 @@
         android:layout_below="@+id/iv_man1_flights"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tap me if you need MY ASSISTANCE "
+        android:text="@string/tap_me_if_you_need_my_assistance"
         android:textColor="#fff"
         android:gravity="center"
 
