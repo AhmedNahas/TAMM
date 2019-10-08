@@ -220,14 +220,10 @@ public class ChooseBookingDate extends AppCompatActivity {
         tv_date_hotels.setText(startDateS + endDateS);
 
 
-
         try {
-
             service.enableLogging = true;
             HotelRoomAvailabilityResponse response = service.AvailableHotelRooms(sessionId, resultIndex, mHotelCode, 0,
                     true, authenticationData);
-
-
 
 
             Gson gson = new Gson();
@@ -240,7 +236,10 @@ public class ChooseBookingDate extends AppCompatActivity {
 // TODO: 13/07/19 remove
 
             Hotel_Room hotel_room = rooms.get(0);
+            for (int i = 0; i < rooms.size(); i++) {
 
+                 hotel_room = rooms.get(i);
+            }
 
 
 //
@@ -305,9 +304,9 @@ public class ChooseBookingDate extends AppCompatActivity {
                     }
                     Collections.sort(roomCombsInt);
 
-                        roomAdapter = new RoomsAdapter(roomCombsInt, ChooseBookingDate.this, authenticationData,
-                                service, response, rooms, hotel_room, start_time, end_time, noOfRooms, resultIndex,
-                                mHotelCode, authenticationData, sessionId, ChooseBookingDate.this);
+                    roomAdapter = new RoomsAdapter(roomCombsInt, ChooseBookingDate.this, authenticationData,
+                            service, response, rooms, hotel_room, start_time, end_time, noOfRooms, resultIndex,
+                            mHotelCode, authenticationData, sessionId, ChooseBookingDate.this);
 
 
                 }

@@ -21,7 +21,6 @@ import java.util.Hashtable;
 
 public class SuppInfo extends AttributeContainer implements KvmSerializable {
 
-
     public Integer SuppID = 0;
 
     public Enums.SuppChargeType SuppChargeType = Enums.SuppChargeType.Included;

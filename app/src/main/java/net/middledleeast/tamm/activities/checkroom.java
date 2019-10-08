@@ -19,7 +19,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Tamm.Hotels.wcf.ArrayOfRequestedRooms;
+import com.Tamm.Hotels.wcf.ArrayOfRoomInfo;
 import com.Tamm.Hotels.wcf.ArrayOfString2;
+import com.Tamm.Hotels.wcf.ArrayOfString6;
 import com.Tamm.Hotels.wcf.AuthenticationData;
 import com.Tamm.Hotels.wcf.AvailabilityAndPricingResponse;
 import com.Tamm.Hotels.wcf.BasicHttpBinding_IHotelService1;
@@ -88,12 +90,16 @@ public class checkroom extends AppCompatActivity {
     private int roomCount;
     private AmenitiesAdapter amenitiesAdapter;
 
+    TextView inclusion ;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.check_room);
         ButterKnife.bind(this);
+        inclusion = findViewById(R.id.inclusion);
+        String inclusion_ = SharedPreferencesManger.LoadStringData(this, "inclusion");
+        inclusion.setText("Inclusion :"+inclusion_);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         room_details_list = findViewById(R.id.room_details_list);
         StrictMode.setThreadPolicy(policy);
@@ -302,6 +308,8 @@ public class checkroom extends AppCompatActivity {
                 HotelCancellationPolicyResponse cancelPolicies = service.HotelCancellationPolicy(resultIndex, sessionId, bookingOptions, authenticationData);
 
 
+
+
                 AvailabilityAndPricingResponse availabilityAndPricingResponse = service.AvailabilityAndPricing(resultIndex, sessionId, bookingOptions, authenticationData);
 
                 autoCancellationText = availabilityAndPricingResponse.HotelCancellationPolicies.CancelPolicies.CancelPolicy.get(0).CancellationCharge;
@@ -309,26 +317,24 @@ public class checkroom extends AppCompatActivity {
 
 
                 String deadline = availabilityAndPricingResponse.HotelCancellationPolicies.CancelPolicies.LastCancellationDeadline.toString();
-                ArrayOfString2 hotelNorms = availabilityAndPricingResponse.HotelCancellationPolicies.HotelNorms;
+                ArrayOfString6 roomFacilities = availabilityAndPricingResponse.HotelDetails.RoomFacilities;
                 ArrayList<String>  listHotelNormis = new ArrayList<>();
 
-                String[] split = hotelNorms.toString().split(",");
+
+                String[] split = roomFacilities.toString().split(",");
 
                 for (int i = 0; i < split.length; i++) {
 
                     listHotelNormis.add(split[i]);
-                    room_details_list.setLayoutManager(new GridLayoutManager(this,2));
 
-                    amenitiesAdapter = new AmenitiesAdapter(checkroom.this,listHotelNormis);
-                    room_details_list.setAdapter(amenitiesAdapter);
-                    amenitiesAdapter.notifyDataSetChanged();
                 }
+                room_details_list.setLayoutManager(new GridLayoutManager(this,2));
 
-
-
+                amenitiesAdapter = new AmenitiesAdapter(checkroom.this,listHotelNormis);
+                room_details_list.setAdapter(amenitiesAdapter);
+                amenitiesAdapter.notifyDataSetChanged();
 
                 String[] arrOfStr = deadline.split("T");
-
 
                 untile = "Until : " + arrOfStr[0];
                 SharedPreferencesManger.SaveData(this, "Until", untile);
