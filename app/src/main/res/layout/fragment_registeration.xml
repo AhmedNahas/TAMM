@@ -29,7 +29,7 @@
                 android:id="@+id/back_pressed_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BACK"
+                android:text="@string/back"
                 android:textColor="@color/white"
                 android:layout_marginTop="15dp"
                 android:layout_marginStart="@dimen/_15sdp"/>
@@ -102,7 +102,8 @@
                         android:id="@+id/ed_first_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss"
+                        android:paddingStart="@dimen/_30sdp"
+                        android:layout_toEndOf="@+id/mromiss"
                         android:backgroundTint="@android:color/transparent"
                         android:hint="@string/first_name"
                         android:inputType="textCapSentences"
@@ -116,18 +117,18 @@
                     <View
                         android:id="@+id/line_first_name"
                         android:layout_width="@dimen/_120sdp"
-                        android:layout_height="0.5dp"
+                        android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name"
-                        android:layout_toRightOf="@+id/mromiss"
+                        android:layout_toEndOf="@+id/mromiss"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name"
-
+                        android:paddingStart="@dimen/_15sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="70dp"
-                        android:layout_toRightOf="@+id/ed_first_name"
+                        android:layout_marginStart="@dimen/_70sdp"
+                        android:layout_toEndOf="@+id/ed_first_name"
                         android:backgroundTint="@android:color/transparent"
                         android:hint="@string/last_name"
                         android:inputType="textCapSentences"
@@ -138,9 +139,9 @@
 
                     <View
                         android:layout_width="@dimen/_120sdp"
-                        android:layout_height="0.5dp"
+                        android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name"
-                        android:layout_toRightOf="@+id/line_first_name"
+                        android:layout_toEndOf="@+id/line_first_name"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -150,7 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/relative_first_last"
-                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginTop="@dimen/_10sdp">
 
                     <TextView
@@ -171,7 +172,7 @@
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/tv_dob">
+                        android:layout_toEndOf="@+id/tv_dob">
 
                         <TextView
                             android:id="@+id/ed_Date"
@@ -204,7 +205,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/relative_dmy"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="@dimen/_20sdp">
 
 
@@ -228,6 +229,7 @@
                             android:textSize="@dimen/_10ssp" />
 
                         <View
+                            android:id="@+id/line_country"
                             android:layout_width="@dimen/_120sdp"
                             android:layout_height="1.5dp"
                             android:layout_below="@+id/country"
@@ -253,7 +255,7 @@
                             android:layout_height="1dp"
                             android:layout_below="@+id/ed_city"
                             android:background="@drawable/line1"
-                            android:layout_toEndOf="@+id/country"
+                            android:layout_toEndOf="@+id/line_country"
                             android:layout_marginStart="@dimen/_15sdp"
                             />
                     </RelativeLayout>
@@ -269,7 +271,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/relative_country"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="@dimen/_10sdp">
 
                     <EditText
@@ -308,7 +310,7 @@
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_email"
-                        android:layout_toRightOf="@+id/ed_email"
+                        android:layout_toEndOf="@+id/ed_email"
                         android:background="@drawable/line1" />
 
                     <EditText
@@ -316,7 +318,7 @@
 
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="@dimen/_35sdp"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:backgroundTint="@android:color/transparent"
                         android:gravity="center"
                         android:hint="@string/phone_number"
@@ -330,7 +332,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_email"
                         android:layout_marginStart="@dimen/_20sdp"
-                        android:layout_toRightOf="@+id/zip_code"
+                        android:layout_toEndOf="@+id/zip_code"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -340,7 +342,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/relative_email_phone"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="@dimen/_10sdp">
 
                     <RelativeLayout
@@ -373,9 +375,9 @@
                     <RadioGroup
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_centerInParent="true"
-                        android:layout_marginRight="@dimen/_35sdp">
+                        android:layout_marginEnd="@dimen/_35sdp">
 
                         <RadioButton
                             android:id="@+id/special"
@@ -399,7 +401,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/relative_occupation"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="@dimen/_10sdp">
 
                     <EditText
@@ -407,7 +409,7 @@
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@android:color/transparent"
-                        android:hint="USERNAME"
+                        android:hint="@string/username"
                         android:textColor="#fff"
                         android:textColorHint="#FFFFFF"
                         android:textSize="@dimen/_10ssp"
@@ -423,12 +425,11 @@
 
                     <EditText
                         android:id="@+id/ed_password"
-
                         android:layout_width="160dp"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:backgroundTint="@android:color/transparent"
-                        android:hint="PASSWORD"
+                        android:hint="@string/password"
                         android:inputType="textPassword"
                         android:textColor="#fff"
                         android:textColorHint="#FFFFFF"
@@ -438,7 +439,7 @@
                         android:layout_width="160dp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_password"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:background="@drawable/line1" />
 
 
@@ -461,7 +462,7 @@
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="wrap_content"-->
                 <!--android:layout_below="@+id/relative_user_pass"-->
-                <!--android:layout_marginLeft="10dp">-->
+                <!--android:layout_marginStart="10dp">-->
 
 
                 <!--<Spinner-->
@@ -494,7 +495,7 @@
                         android:id="@+id/check_box_agerr"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="I agree to the "
+                        android:text="@string/i_agree_to_the_terms_amp_condition"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_10ssp"
                         app:buttonTint="@color/white" />
@@ -506,9 +507,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_4sdp"
                         android:layout_marginTop="@dimen/_6sdp"
-                        android:layout_toRightOf="@+id/check_box_agerr"
+                        android:paddingStart="@dimen/_20sdp"
+                        android:layout_toEndOf="@+id/check_box_agerr"
                         android:drawableBottom="@drawable/line1"
-                        android:text="Terms &amp; Conditions"
+                        android:text="@string/terms_amp_conditions"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp" />
 
@@ -525,7 +527,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:background="@drawable/border"
-                    android:text="@string/proceed_to_checkout"
+                    android:text="@string/confirm"
                     android:textColor="#FFF"
                     android:textSize="@dimen/_20ssp" />
 
