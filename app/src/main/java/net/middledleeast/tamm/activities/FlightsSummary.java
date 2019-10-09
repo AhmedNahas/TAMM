@@ -278,10 +278,10 @@ public class FlightsSummary extends AppCompatActivity {
     ImageView iv_booked_flight_summary;
 
 
-    TextView assistantLabelVoiceRenewHotel;
+//    TextView assistantLabelVoiceRenewHotel;
     RelativeLayout relativeImgRenewHotelTamm;
-    TextView assistantLabelCallRenewHotel;
-    TextView assistantLabelMessageRenewHotel;
+//    TextView assistantLabelCallRenewHotel;
+//    TextView assistantLabelMessageRenewHotel;
     private boolean ClickRenewHotel = false;
 
     ProgressBar flight_progress;
@@ -481,56 +481,56 @@ public class FlightsSummary extends AppCompatActivity {
 
 
         proccedBtn = findViewById(R.id.procced_btn);
-        assistantLabelVoiceRenewHotel = findViewById(R.id.assistant_label_voice_renew_flight_summary);
+//        assistantLabelVoiceRenewHotel = findViewById(R.id.assistant_label_voice_renew_flight_summary);
         relativeImgRenewHotelTamm = findViewById(R.id.relative_img_renew_flight_summary);
-        assistantLabelCallRenewHotel = findViewById(R.id.assistant_label_call_renew_flight_summary);
-        assistantLabelMessageRenewHotel = findViewById(R.id.assistant_label_message_renew_flight_summary);
+//        assistantLabelCallRenewHotel = findViewById(R.id.assistant_label_call_renew_flight_summary);
+//        assistantLabelMessageRenewHotel = findViewById(R.id.assistant_label_message_renew_flight_summary);
         relativeImgRenewHotelTamm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (ClickRenewHotel == false) {
-                    assistantLabelCallRenewHotel.setVisibility(View.VISIBLE);
-                    assistantLabelMessageRenewHotel.setVisibility(View.VISIBLE);
-                    assistantLabelVoiceRenewHotel.setVisibility(View.VISIBLE);
+//                    assistantLabelCallRenewHotel.setVisibility(View.VISIBLE);
+//                    assistantLabelMessageRenewHotel.setVisibility(View.VISIBLE);
+//                    assistantLabelVoiceRenewHotel.setVisibility(View.VISIBLE);
                     ClickRenewHotel = true;
 
                 } else {
-                    assistantLabelCallRenewHotel.setVisibility(View.INVISIBLE);
-                    assistantLabelMessageRenewHotel.setVisibility(View.INVISIBLE);
-                    assistantLabelVoiceRenewHotel.setVisibility(View.INVISIBLE);
+//                    assistantLabelCallRenewHotel.setVisibility(View.INVISIBLE);
+//                    assistantLabelMessageRenewHotel.setVisibility(View.INVISIBLE);
+//                    assistantLabelVoiceRenewHotel.setVisibility(View.INVISIBLE);
                     ClickRenewHotel = false;
 
                 }
             }
         });
-        assistantLabelVoiceRenewHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FlightsSummary.this, VoiceMessageActivity.class);
-                startActivity(intent);
-                Toast.makeText(FlightsSummary.this, "Voice", Toast.LENGTH_SHORT).show();
-            }
-        });
-        assistantLabelCallRenewHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(FlightsSummary.this, AssistantActivity.class);
-                startActivity(intent);
-
-                Toast.makeText(FlightsSummary.this, "Call", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        assistantLabelMessageRenewHotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(FlightsSummary.this, ContactUs.class);
-                startActivity(intent);
-
-                Toast.makeText(FlightsSummary.this, "Message", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        assistantLabelVoiceRenewHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(FlightsSummary.this, VoiceMessageActivity.class);
+//                startActivity(intent);
+//                Toast.makeText(FlightsSummary.this, "Voice", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        assistantLabelCallRenewHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(FlightsSummary.this, AssistantActivity.class);
+//                startActivity(intent);
+//
+//                Toast.makeText(FlightsSummary.this, "Call", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        assistantLabelMessageRenewHotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent = new Intent(FlightsSummary.this, ContactUs.class);
+//                startActivity(intent);
+//
+//                Toast.makeText(FlightsSummary.this, "Message", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         proccedBtn.setOnClickListener(new View.OnClickListener() {
             @Override

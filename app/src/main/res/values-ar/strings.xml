@@ -144,6 +144,62 @@
 
     <string name="visa_">فيزا</string>
     <string name="master">ماستر كارد</string>
+    <string name="flight_amp_private_jets"><![CDATA[الطيران & رحلات خاصة]]></string>
+    <string name="best_flight_deals">افضل عروض الطيران</string>
+
+
+    <string name="passenger_airplane">طائرة الركاب</string>
+    <string name="one_way">اتجاه واحد</string>
+    <string name="multicities">مدن متعددة</string>
+    <string name="departure">رحيل</string>
+    <string name="returndate">العودة</string>
+    <string name="passengers">الركاب</string>
+    <string name="cabin_class">فئة المقصورة</string>
+    <string name="royal">ملكي</string>
+    <string name="first">اولي</string>
+    <string name="business">رجال اعمال</string>
+    <string name="economy">اقتصادي</string>
+    <string name="returnway">العودة</string>
+    <string name="from">من</string>
+    <string name="to">الي</string>
+    <string name="select_flight">اختر الرحلة</string>
+    <string name="dobdd">ت.م</string>
+    <string name="nationality">الجنسية</string>
+    <string name="passport_no_or_cid">رقم الباسبور</string>
+    <string name="issue_date">تاريخ الانشاء</string>
+    <string name="end_date">تاريخ الانتهاء</string>
+    <string name="passenger_s_information">معلومات الراكب</string>
+    <string name="dd_mm_yyyy">يوم-شهر-سنة</string>
+    <string name="adult1">الفرد 1</string>
+    <string name="adult_2">الفرد 2</string>
+    <string name="adult_3">الفرد 3</string>
+    <string name="adult_4">الفرد 4</string>
+    <string name="adult_5">الفرد 5</string>
+    <string name="child">الطفل 1</string>
+    <string name="child_2">الطفل 2</string>
+    <string name="child_3">الطفل 3</string>
+    <string name="child_4">الطفل 4</string>
+    <string name="child_5">الطفل 5</string>
+    <string name="infant">رضيع 1</string>
+    <string name="infant_2">رضيع 2</string>
+    <string name="infant_3">رضيع 3</string>
+    <string name="infant_4">رضيع 4</string>
+    <string name="infant_5">رضيع 5</string>
+    <string name="price_summary">تفاصيل الرحلة</string>
+    <string name="flight_nb_t926665">T926665 : رقم الرحلة</string>
+    <string name="direct">مباشر</string>
+    <string name="get_my_ticket_now">الحصول علي التذكرة</string>
+    <string name="book_hotel">حجز الفندق </string>
+    <string name="check_your_email_now">اذهب الي ايميلك الان</string>
+    <string name="my_trips">الرحلات الخاصة بي</string>
+    <string name="home">الصفحة الرئيسية</string>
+    <string name="from_">من : </string>
+    <string name="to_">الي : </string>
+    <string name="time">الوقت : </string>
+    <string name="return_information">معلومات العودة </string>
+    <string name="bestflight">افضل طيران</string>
+    <string name="besthotel">افضل الفنادق</string>
+    <string name="bestdeals">افضل العروض</string>
 
 
 </resources>

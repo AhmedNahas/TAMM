@@ -42,8 +42,6 @@ import net.middledleeast.tamm.activities.WelcomeActivity;
 import net.middledleeast.tamm.activities.checkroom;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
-import org.joda.time.DateTime;
-
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -153,22 +151,21 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
         SharedPreferencesManger.SaveData(context, "RoomComb", new Gson().toJson(possibleCombinations, fooType));
 
 
-        try {
-             inclusion = rooms.get(position).Inclusion;
-            SharedPreferencesManger.SaveData(context,"inclusion",inclusion);
-        }catch (Exception e){}
+
+
 
 
 //        Hotel_Room hotel_room1 = rooms.get(1);
         String mealType = rooms.get(position).MealType;
-        String instructions = rooms.get(position).RoomInstructions;
-        String amneties = rooms.get(position).Amenities;
-        String essentialInfo = rooms.get(position).RoomEssentialInfo;
+        inclusion = rooms.get(position).Inclusion;
+
+
+
+
+        SharedPreferencesManger.SaveData(context, "inclusion", mealType);
+
         String currency = rooms.get(position).RoomRate.Currency;
         CancelPolicies cancelPolicies = rooms.get(position).CancelPolicies;
-        if (cancelPolicies != null) {
-            DateTime deadLine = cancelPolicies.LastCancellationDeadline;
-        }
 
         String gustMode = SharedPreferencesManger.LoadStringData(context, "guestMode");
 
@@ -212,8 +209,8 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
         roomInformation = rooms.get(position).RoomAdditionalInfo;
 //        BigDecimal price = rooms.get(position).Supplements.get(position).Price;
-        if (rooms.get(position).Inclusion!=null){
-            holder.mName.setText(roomType+"\n"+"Inclusion :" +  inclusion);
+        if (rooms.get(position).Inclusion != null) {
+            holder.mName.setText(roomType + "\n" + "Inclusion :" + inclusion);
 
 
         }
@@ -243,10 +240,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
 
             holder.img_photo_hotel.setImageResource(R.drawable.no_image_available);
 
-
         }
-
-
         holder.roomBooken.setOnClickListener(new View.OnClickListener() {
                                                  @Override
                                                  public void onClick(View v) {
@@ -285,11 +279,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                                  possibleCombinations.remove(possibleCombination);
                                                              }
                                                          }
-
-
                                                      }
-
-
                                                      possiblerooms = new ArrayList<>();
                                                      possiblerooms.clear();
                                                      for (RoomCombination roomCombination : possibleCombinations) {
@@ -297,8 +287,6 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                          possiblerooms.addAll(roomCombination.RoomIndex);
 
                                                      }
-
-
                                                      roomIndices.add(rooms.get(position).RoomIndex);
 
                                                      for (Integer roomIndex : roomIndices) {
@@ -306,8 +294,6 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                              possiblerooms.remove(roomIndex);
                                                          }
                                                      }
-
-
                                                      // TODO: 28/07/19 open new activity using possiblerooms
                                                      int noOfRooms = SharedPreferencesManger.LoadIntegerData(context, "noOfRooms");
                                                      // FIXME: 29/07/19 more tha two rooms
@@ -341,6 +327,8 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                                  requestedRooms.Supplements.add(suppInfo);
                                                              }
                                                          }
+
+                                                                                                                           
                                                          requestedRooms.RoomRate.RoomFare = rooms.get(position).RoomRate.RoomFare;
                                                          requestedRooms.RoomRate.RoomTax = rooms.get(position).RoomRate.RoomTax;
                                                          requestedRooms.RoomRate.TotalFare = rooms.get(position).RoomRate.TotalFare;
@@ -371,10 +359,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                      } else {
 
                                                          Intent intent = new Intent(context, checkroom.class);
-//                intent.putExtra("arrayOfRooms", new Gson().toJson(arrayOfRooms));
-//                intent.putExtra("rooms", new Gson().toJson(rooms));
-//                intent.putExtra("hotel_room(xxhdpi)", new Gson().toJson(hotel_room(xxhdpi)));
-                                                         // intent.putExtra("sessionId", sessionId);
+
                                                          intent.putExtra("noOfRooms", noOfRooms);
                                                          intent.putExtra("resultIndex", resultIndex);
                                                          intent.putExtra("date1", date1);
@@ -437,29 +422,7 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.ViewHolder> 
                                                          requestedRooms.RoomRate.TotalFare = rooms.get(position).RoomRate.TotalFare;
                                                          requestedRooms.RoomTypeCode = rooms.get(position).RoomTypeCode;
                                                          arrayOfRooms.add(requestedRooms);
-//                    RequestedRooms requestedRooms1 = new RequestedRooms();
-//                requestedRooms1.RatePlanCode = hotel_room1.RatePlanCode;
-//                // TODO: 22/07/19 temp fox
-//                requestedRooms1.RoomIndex = hotel_room1.RoomIndex;
-//                requestedRooms1.RoomRate = new Rate();
-//                if (hotel_room1.Supplements != null) {
-//                    requestedRooms1.Supplements = new ArrayOfSuppInfo();
-//                    for (Supplement supplement : hotel_room1.Supplements) {
-//                        SuppInfo suppInfo = new SuppInfo();
-//                        suppInfo.SuppChargeType = Enums.SuppChargeType.valueOf(supplement.SuppChargeType.name());
-//                        suppInfo.Price = supplement.Price;
-//                        if (supplement.SuppIsMandatory) {
-//                            suppInfo.SuppIsSelected = true;
-//
-//                        }
-//                        requestedRooms1.Supplements.ic_add(suppInfo);
-//                    }
-//                }
-//                requestedRooms1.RoomRate.RoomFare = hotel_room1.RoomRate.RoomFare;
-//                requestedRooms1.RoomRate.RoomTax = hotel_room1.RoomRate.RoomTax;
-//                requestedRooms1.RoomRate.TotalFare = hotel_room1.RoomRate.TotalFare;
-//                requestedRooms1.RoomTypeCode = hotel_room1.RoomTypeCode;
-//                arrayOfRooms.ic_add(requestedRooms1);
+
                                                          String requestedRoomsString = gson.toJson(arrayOfRooms);
                                                          SharedPreferencesManger.SaveData((Activity) context, "arrayOfroomsreq", requestedRoomsString);
                                                          SharedPreferencesManger.SaveData(context, "RoomComb", null);

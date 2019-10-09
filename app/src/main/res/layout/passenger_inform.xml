@@ -34,10 +34,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@+id/toolbar_back1"
-                android:text="BACK"
+                android:text="@string/back"
                 android:textColor="#ffff"
                 android:textSize="12sp" />
 
@@ -84,7 +84,7 @@
         android:layout_below="@+id/line1"
         android:layout_margin="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_15sdp"
-        android:text="Passenger(s) Information"
+        android:text="@string/passenger_s_information"
         android:textColor="@color/white"
         android:textSize="@dimen/_15ssp" />
 
@@ -118,7 +118,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="Adult"
+                    android:text="@string/adult1"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -173,7 +173,7 @@
                         android:id="@+id/ed_first_name1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_layout1"
+                        android:layout_toEndOf="@+id/mromiss_layout1"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -190,7 +190,7 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name1"
-                        android:layout_toRightOf="@+id/mromiss_layout1"
+                        android:layout_toEndOf="@+id/mromiss_layout1"
                         android:background="@drawable/line1" />
 
                     <EditText
@@ -198,7 +198,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_80sdp"
-                        android:layout_toRightOf="@+id/ed_first_name1"
+                        android:layout_toEndOf="@+id/ed_first_name1"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -212,7 +212,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name1"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name1"
+                        android:layout_toEndOf="@+id/line_first_name1"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -231,7 +231,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -241,9 +241,9 @@
                     <View
                         android:layout_width="@dimen/_30sdp"
                         android:layout_height="1dp"
-                        android:layout_below="@+id/tv_dob"
                         android:layout_marginTop="@dimen/_4sdp"
                         android:background="@drawable/line1"
+                        android:layout_below="@+id/tv_dob1"
 
                         />
 
@@ -253,11 +253,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob1"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob1"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -269,7 +269,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_adult1"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob1"
+                        android:layout_toEndOf="@+id/tv_dob1"
                         android:background="@drawable/line1"
 
 
@@ -287,7 +287,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -304,7 +304,7 @@
                     android:layout_below="@+id/relative_date1"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -325,7 +325,7 @@
                     android:layout_below="@+id/view_Passport1"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -347,7 +347,7 @@
                     android:layout_below="@+id/view_Passport1"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_1"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -375,7 +375,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date1"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -436,7 +436,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="Adult  2"
+                    android:text="@string/adult_2"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -488,7 +488,7 @@
                         android:id="@+id/ed_first_name2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_layout2"
+                        android:layout_toEndOf="@+id/mromiss_layout2"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -505,15 +505,15 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name2"
-                        android:layout_toRightOf="@+id/mromiss_layout2"
+                        android:layout_toEndOf="@+id/mromiss_layout2"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toRightOf="@+id/ed_first_name2"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/ed_first_name2"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -527,7 +527,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name2"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name2"
+                        android:layout_toEndOf="@+id/line_first_name2"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -546,7 +546,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -568,11 +568,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob2"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob2"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -584,7 +584,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_adult2"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob2"
+                        android:layout_toEndOf="@+id/tv_dob2"
                         android:background="@drawable/line1"
 
 
@@ -602,7 +602,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -619,7 +619,7 @@
                     android:layout_below="@+id/relative_date2"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -640,7 +640,7 @@
                     android:layout_below="@+id/view_Passport2"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -662,7 +662,7 @@
                     android:layout_below="@+id/view_Passport2"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_2"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -689,7 +689,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date2"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -750,7 +750,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="Adult  3"
+                    android:text="@string/adult_3"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -802,7 +802,7 @@
                         android:id="@+id/ed_first_name3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_layout3"
+                        android:layout_toEndOf="@+id/mromiss_layout3"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -819,15 +819,15 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name3"
-                        android:layout_toRightOf="@+id/mromiss_layout3"
+                        android:layout_toEndOf="@+id/mromiss_layout3"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toRightOf="@+id/ed_first_name3"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/ed_first_name3"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -841,7 +841,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name3"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name3"
+                        android:layout_toEndOf="@+id/line_first_name3"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -860,7 +860,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -882,11 +882,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob3"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob3"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -898,7 +898,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_adult3"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob3"
+                        android:layout_toEndOf="@+id/tv_dob3"
                         android:background="@drawable/line1"
 
 
@@ -916,7 +916,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -933,7 +933,7 @@
                     android:layout_below="@+id/relative_date3"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -954,7 +954,7 @@
                     android:layout_below="@+id/view_Passport3"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -976,7 +976,7 @@
                     android:layout_below="@+id/view_Passport3"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_3"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -1004,7 +1004,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date3"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -1065,7 +1065,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="Adult  4"
+                    android:text="@string/adult_4"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -1117,7 +1117,7 @@
                         android:id="@+id/ed_first_name4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_layout4"
+                        android:layout_toEndOf="@+id/mromiss_layout4"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -1134,15 +1134,15 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name4"
-                        android:layout_toRightOf="@+id/mromiss_layout4"
+                        android:layout_toEndOf="@+id/mromiss_layout4"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toRightOf="@+id/ed_first_name4"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/ed_first_name4"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -1156,7 +1156,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name4"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name4"
+                        android:layout_toEndOf="@+id/line_first_name4"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -1175,7 +1175,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -1197,11 +1197,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob4"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob4"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -1213,7 +1213,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_adult4"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob4"
+                        android:layout_toEndOf="@+id/tv_dob4"
                         android:background="@drawable/line1"
 
 
@@ -1231,7 +1231,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -1248,7 +1248,7 @@
                     android:layout_below="@+id/relative_date4"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -1269,7 +1269,7 @@
                     android:layout_below="@+id/view_Passport4"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -1291,7 +1291,7 @@
                     android:layout_below="@+id/view_Passport4"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_4"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -1319,7 +1319,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date4"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -1380,7 +1380,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="Adult  5"
+                    android:text="@string/adult_5"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -1432,7 +1432,7 @@
                         android:id="@+id/ed_first_name5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_layout5"
+                        android:layout_toEndOf="@+id/mromiss_layout5"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -1449,15 +1449,15 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name5"
-                        android:layout_toRightOf="@+id/mromiss_layout5"
+                        android:layout_toEndOf="@+id/mromiss_layout5"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toRightOf="@+id/ed_first_name5"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/ed_first_name5"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -1471,7 +1471,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name5"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name5"
+                        android:layout_toEndOf="@+id/line_first_name5"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -1490,7 +1490,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -1512,11 +1512,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob5"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob5"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -1528,7 +1528,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_adult5"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob5"
+                        android:layout_toEndOf="@+id/tv_dob5"
                         android:background="@drawable/line1"
 
 
@@ -1546,7 +1546,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -1563,7 +1563,7 @@
                     android:layout_below="@+id/relative_date5"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -1584,7 +1584,7 @@
                     android:layout_below="@+id/view_Passport5"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -1606,7 +1606,7 @@
                     android:layout_below="@+id/view_Passport5"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_5"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -1634,7 +1634,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date5"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -1683,8 +1683,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_adult_5"
-                android:visibility="gone"
-                >
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/childtText1"
@@ -1694,7 +1693,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="Child"
+                    android:text="@string/child"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -1749,7 +1748,7 @@
                         android:id="@+id/ed_first_name_child1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_child_layout1"
+                        android:layout_toEndOf="@+id/mromiss_child_layout1"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -1766,15 +1765,15 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name_child1"
-                        android:layout_toRightOf="@+id/mromiss_child_layout1"
+                        android:layout_toEndOf="@+id/mromiss_child_layout1"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name_child1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toRightOf="@+id/ed_first_name_child1"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/ed_first_name_child1"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -1788,7 +1787,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name_child1"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name_child1"
+                        android:layout_toEndOf="@+id/line_first_name_child1"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -1807,7 +1806,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -1829,11 +1828,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_child1"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob_child1"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -1845,7 +1844,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_child1"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_child1"
+                        android:layout_toEndOf="@+id/tv_dob_child1"
                         android:background="@drawable/line1"
 
 
@@ -1863,7 +1862,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -1879,7 +1878,7 @@
                     android:layout_below="@+id/relative_date_child1"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -1900,7 +1899,7 @@
                     android:layout_below="@+id/view_Passport_child_1"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -1922,7 +1921,7 @@
                     android:layout_below="@+id/view_Passport_child_1"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_child_1"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -1950,7 +1949,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date_child_1"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -1990,8 +1989,6 @@
                     android:background="@drawable/line1" />
 
 
-
-
             </RelativeLayout>
 
             <!--RELATIVE_CHILD_2-->
@@ -2001,8 +1998,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_child_1"
-                android:visibility="gone"
-                >
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/childtText2"
@@ -2012,7 +2008,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="Child  2"
+                    android:text="@string/child_2"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -2067,7 +2063,7 @@
                         android:id="@+id/ed_first_name_child2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_child_layout2"
+                        android:layout_toEndOf="@+id/mromiss_child_layout2"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -2084,15 +2080,15 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name_child2"
-                        android:layout_toRightOf="@+id/mromiss_child_layout2"
+                        android:layout_toEndOf="@+id/mromiss_child_layout2"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name_child2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toRightOf="@+id/ed_first_name_child2"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/ed_first_name_child2"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -2106,7 +2102,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name_child2"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name_child2"
+                        android:layout_toEndOf="@+id/line_first_name_child2"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -2125,7 +2121,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -2147,11 +2143,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_child2"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob_child2"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -2163,7 +2159,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_child2"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_child2"
+                        android:layout_toEndOf="@+id/tv_dob_child2"
                         android:background="@drawable/line1"
 
 
@@ -2181,7 +2177,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -2197,7 +2193,7 @@
                     android:layout_below="@+id/relative_date_child2"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -2218,7 +2214,7 @@
                     android:layout_below="@+id/view_Passport_child_2"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -2240,7 +2236,7 @@
                     android:layout_below="@+id/view_Passport_child_2"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_child_2"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -2267,7 +2263,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date_child_2"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -2307,7 +2303,6 @@
                     android:background="@drawable/line1" />
 
 
-
             </RelativeLayout>
 
             <!--RELATIVE_CHILD_3-->
@@ -2317,8 +2312,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_child_2"
-                android:visibility="gone"
-                >
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/childtText3"
@@ -2328,7 +2322,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="Child  3"
+                    android:text="@string/child_3"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -2383,7 +2377,7 @@
                         android:id="@+id/ed_first_name_child3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_child_layout3"
+                        android:layout_toEndOf="@+id/mromiss_child_layout3"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -2400,15 +2394,15 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name_child3"
-                        android:layout_toRightOf="@+id/mromiss_child_layout3"
+                        android:layout_toEndOf="@+id/mromiss_child_layout3"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name_child3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toRightOf="@+id/ed_first_name_child3"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/ed_first_name_child3"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -2422,7 +2416,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name_child3"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name_child3"
+                        android:layout_toEndOf="@+id/line_first_name_child3"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -2441,7 +2435,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -2463,11 +2457,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_child3"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob_child3"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -2479,7 +2473,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_child3"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_child3"
+                        android:layout_toEndOf="@+id/tv_dob_child3"
                         android:background="@drawable/line1"
 
 
@@ -2497,7 +2491,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -2513,7 +2507,7 @@
                     android:layout_below="@+id/relative_date_child3"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -2534,7 +2528,7 @@
                     android:layout_below="@+id/view_Passport_child_3"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -2556,7 +2550,7 @@
                     android:layout_below="@+id/view_Passport_child_3"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_child_3"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -2583,7 +2577,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date_child_3"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -2623,9 +2617,6 @@
                     android:background="@drawable/line1" />
 
 
-
-
-
             </RelativeLayout>
 
 
@@ -2637,8 +2628,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_child_3"
-                android:visibility="gone"
-                >
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/childtText4"
@@ -2648,7 +2638,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="Child  4"
+                    android:text="@string/child_4"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -2703,7 +2693,7 @@
                         android:id="@+id/ed_first_name_child4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_child_layout4"
+                        android:layout_toEndOf="@+id/mromiss_child_layout4"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -2720,15 +2710,15 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name_child4"
-                        android:layout_toRightOf="@+id/mromiss_child_layout4"
+                        android:layout_toEndOf="@+id/mromiss_child_layout4"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name_child4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toRightOf="@+id/ed_first_name_child4"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/ed_first_name_child4"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -2742,7 +2732,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name_child4"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name_child4"
+                        android:layout_toEndOf="@+id/line_first_name_child4"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -2761,7 +2751,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -2783,11 +2773,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_child4"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob_child4"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -2799,7 +2789,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_child4"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_child4"
+                        android:layout_toEndOf="@+id/tv_dob_child4"
                         android:background="@drawable/line1"
 
 
@@ -2817,7 +2807,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -2833,7 +2823,7 @@
                     android:layout_below="@+id/relative_date_child4"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -2854,7 +2844,7 @@
                     android:layout_below="@+id/view_Passport_child_4"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -2876,7 +2866,7 @@
                     android:layout_below="@+id/view_Passport_child_4"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_child_4"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -2903,7 +2893,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date_child_4"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -2954,8 +2944,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_child_4"
-                android:visibility="gone"
-                >
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/childtText5"
@@ -2965,7 +2954,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="Child  5"
+                    android:text="@string/child_5"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -3020,7 +3009,7 @@
                         android:id="@+id/ed_first_name_child5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_child_layout5"
+                        android:layout_toEndOf="@+id/mromiss_child_layout5"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -3037,15 +3026,15 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name_child5"
-                        android:layout_toRightOf="@+id/mromiss_child_layout5"
+                        android:layout_toEndOf="@+id/mromiss_child_layout5"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name_child5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toRightOf="@+id/ed_first_name_child5"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/ed_first_name_child5"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -3059,7 +3048,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name_child5"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name_child5"
+                        android:layout_toEndOf="@+id/line_first_name_child5"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -3078,7 +3067,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -3100,11 +3089,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_child5"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob_child5"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -3116,7 +3105,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_child5"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_child5"
+                        android:layout_toEndOf="@+id/tv_dob_child5"
                         android:background="@drawable/line1"
 
 
@@ -3134,7 +3123,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -3150,7 +3139,7 @@
                     android:layout_below="@+id/relative_date_child5"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -3171,7 +3160,7 @@
                     android:layout_below="@+id/view_Passport_child_5"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -3193,7 +3182,7 @@
                     android:layout_below="@+id/view_Passport_child_5"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_child_5"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -3220,7 +3209,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date_child_5"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -3284,7 +3273,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="infant"
+                    android:text="@string/infant"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -3336,7 +3325,7 @@
                         android:id="@+id/ed_first_name_infant1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_infant_layout1"
+                        android:layout_toEndOf="@+id/mromiss_infant_layout1"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -3353,15 +3342,15 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name_infant1"
-                        android:layout_toRightOf="@+id/mromiss_infant_layout1"
+                        android:layout_toEndOf="@+id/mromiss_infant_layout1"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name_infant1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toRightOf="@+id/ed_first_name_infant1"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/ed_first_name_infant1"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -3376,7 +3365,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name_infant1"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name_infant1"
+                        android:layout_toEndOf="@+id/line_first_name_infant1"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -3395,7 +3384,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -3417,11 +3406,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_infant1"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob_infant1"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -3433,7 +3422,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_adult_infant1"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_infant1"
+                        android:layout_toEndOf="@+id/tv_dob_infant1"
                         android:background="@drawable/line1"
 
 
@@ -3451,7 +3440,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -3468,7 +3457,7 @@
                     android:layout_below="@+id/relative_date_infant1"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -3489,7 +3478,7 @@
                     android:layout_below="@+id/view_Passport_infant_1"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -3511,7 +3500,7 @@
                     android:layout_below="@+id/view_Passport_infant_1"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_infant_1"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -3538,7 +3527,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date_infant_1"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -3578,9 +3567,6 @@
                     android:background="@drawable/line1" />
 
 
-
-
-
             </RelativeLayout>
 
             <!--RELATIVE_INFANT_2-->
@@ -3590,8 +3576,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_infant_1"
-                android:visibility="gone"
-                >
+                android:visibility="gone">
 
                 <TextView
 
@@ -3602,7 +3587,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="infant  2"
+                    android:text="@string/infant_2"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -3654,7 +3639,7 @@
                         android:id="@+id/ed_first_name_infant2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_infant_layout2"
+                        android:layout_toEndOf="@+id/mromiss_infant_layout2"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -3671,15 +3656,15 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name_infant2"
-                        android:layout_toRightOf="@+id/mromiss_infant_layout2"
+                        android:layout_toEndOf="@+id/mromiss_infant_layout2"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name_infant2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toRightOf="@+id/ed_first_name_infant2"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/ed_first_name_infant2"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -3694,7 +3679,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name_infant2"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name_infant2"
+                        android:layout_toEndOf="@+id/line_first_name_infant2"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -3713,7 +3698,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -3735,11 +3720,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_infant2"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob_infant2"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -3751,7 +3736,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_adult_infant2"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_infant2"
+                        android:layout_toEndOf="@+id/tv_dob_infant2"
                         android:background="@drawable/line1"
 
 
@@ -3769,7 +3754,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -3785,7 +3770,7 @@
                     android:layout_below="@+id/relative_date_infant2"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -3806,7 +3791,7 @@
                     android:layout_below="@+id/view_Passport_infant_2"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -3828,7 +3813,7 @@
                     android:layout_below="@+id/view_Passport_infant_2"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_infant_2"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -3855,7 +3840,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date_infant_2"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -3917,7 +3902,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="infant  3"
+                    android:text="@string/infant_3"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -3969,7 +3954,7 @@
                         android:id="@+id/ed_first_name_infant3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_infant_layout3"
+                        android:layout_toEndOf="@+id/mromiss_infant_layout3"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -3986,15 +3971,15 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name_infant3"
-                        android:layout_toRightOf="@+id/mromiss_infant_layout3"
+                        android:layout_toEndOf="@+id/mromiss_infant_layout3"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name_infant3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toRightOf="@+id/ed_first_name_infant3"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/ed_first_name_infant3"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -4008,7 +3993,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name_infant3"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name_infant3"
+                        android:layout_toEndOf="@+id/line_first_name_infant3"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -4027,7 +4012,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -4049,11 +4034,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_infant3"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob_infant3"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -4065,7 +4050,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_adult_infant3"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_infant3"
+                        android:layout_toEndOf="@+id/tv_dob_infant3"
                         android:background="@drawable/line1"
 
 
@@ -4083,7 +4068,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -4099,7 +4084,7 @@
                     android:layout_below="@+id/relative_date_infant3"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -4120,7 +4105,7 @@
                     android:layout_below="@+id/view_Passport_infant_3"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -4142,7 +4127,7 @@
                     android:layout_below="@+id/view_Passport_infant_3"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_infant_3"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -4169,7 +4154,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date_infant_3"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -4209,7 +4194,6 @@
                     android:background="@drawable/line1" />
 
 
-
             </RelativeLayout>
 
 
@@ -4221,8 +4205,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_infant_3"
-                android:visibility="gone"
-                >
+                android:visibility="gone">
 
                 <TextView
 
@@ -4233,7 +4216,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="infant  4"
+                    android:text="@string/infant_4"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -4285,7 +4268,7 @@
                         android:id="@+id/ed_first_name_infant4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_infant_layout4"
+                        android:layout_toEndOf="@+id/mromiss_infant_layout4"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -4302,15 +4285,15 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name_infant4"
-                        android:layout_toRightOf="@+id/mromiss_infant_layout4"
+                        android:layout_toEndOf="@+id/mromiss_infant_layout4"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name_infant4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toRightOf="@+id/ed_first_name_infant4"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/ed_first_name_infant4"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -4324,7 +4307,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name_infant4"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name_infant4"
+                        android:layout_toEndOf="@+id/line_first_name_infant4"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -4343,7 +4326,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -4365,11 +4348,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_infant4"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob_infant4"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -4381,10 +4364,11 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_adult_infant4"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_infant4"
+                        android:layout_toEndOf="@+id/tv_dob_infant4"
                         android:background="@drawable/line1"
 
                         />
+
                     <AutoCompleteTextView
                         android:id="@+id/nationality_adult_infant4"
                         android:layout_width="@dimen/_120sdp"
@@ -4396,7 +4380,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -4410,7 +4394,7 @@
                     android:layout_below="@+id/relative_date_infant4"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -4431,7 +4415,7 @@
                     android:layout_below="@+id/view_Passport_infant_4"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -4453,7 +4437,7 @@
                     android:layout_below="@+id/view_Passport_infant_4"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_infant_4"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -4480,7 +4464,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date_infant_4"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -4520,8 +4504,6 @@
                     android:background="@drawable/line1" />
 
 
-
-
             </RelativeLayout>
 
 
@@ -4531,8 +4513,8 @@
                 android:id="@+id/relative_infant_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:layout_below="@+id/relative_infant_4"
+                android:visibility="gone"
 
                 >
 
@@ -4545,7 +4527,7 @@
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="@dimen/_4sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="infant  5"
+                    android:text="@string/infant_5"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_15ssp" />
 
@@ -4597,7 +4579,7 @@
                         android:id="@+id/ed_first_name_infant5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/mromiss_infant_layout5"
+                        android:layout_toEndOf="@+id/mromiss_infant_layout5"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/first_name"
@@ -4614,15 +4596,15 @@
                         android:layout_width="@dimen/_120sdp"
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_first_name_infant5"
-                        android:layout_toRightOf="@+id/mromiss_infant_layout5"
+                        android:layout_toEndOf="@+id/mromiss_infant_layout5"
                         android:background="@drawable/line1" />
 
                     <EditText
                         android:id="@+id/ed_last_name_infant5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="80dp"
-                        android:layout_toRightOf="@+id/ed_first_name_infant5"
+                        android:layout_marginStart="80dp"
+                        android:layout_toEndOf="@+id/ed_first_name_infant5"
                         android:backgroundTint="@android:color/transparent"
                         android:fontFamily="sans-serif-light"
                         android:hint="@string/last_name"
@@ -4636,7 +4618,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/ed_last_name_infant5"
                         android:layout_marginStart="@dimen/_8sdp"
-                        android:layout_toRightOf="@+id/line_first_name_infant5"
+                        android:layout_toEndOf="@+id/line_first_name_infant5"
                         android:background="@drawable/line1" />
 
                 </RelativeLayout>
@@ -4655,7 +4637,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="DOB"
+                        android:text="@string/dobdd"
                         android:textColor="#fff"
                         android:textSize="@dimen/_10ssp"
 
@@ -4677,11 +4659,11 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_infant5"
-                        android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_toEndOf="@+id/tv_dob_infant5"
+                        android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                         android:fontFamily="sans-serif-light"
                         android:orientation="vertical"
-                        android:text="DD-MM-YYYY"
+                        android:text="@string/dd_mm_yyyy"
                         android:textColor="@color/app_color"
                         android:textSize="@dimen/_10ssp"
 
@@ -4693,7 +4675,7 @@
                         android:layout_height="1dp"
                         android:layout_below="@+id/date_of_birth_adult_infant5"
                         android:layout_marginStart="@dimen/_30sdp"
-                        android:layout_toRightOf="@+id/tv_dob_infant5"
+                        android:layout_toEndOf="@+id/tv_dob_infant5"
                         android:background="@drawable/line1"
 
 
@@ -4711,7 +4693,7 @@
                         android:drawablePadding="@dimen/_10ssp"
                         android:drawableTint="@color/app_color"
                         android:fontFamily="sans-serif-light"
-                        android:hint="NATIONALITY"
+                        android:hint="@string/nationality"
                         android:inputType="textPersonName"
                         android:textColor="@color/white"
                         android:textColorHint="#FFFFFF"
@@ -4727,7 +4709,7 @@
                     android:layout_below="@+id/relative_date_infant5"
                     android:backgroundTint="@color/float_transparent"
                     android:fontFamily="sans-serif-light"
-                    android:hint="PASSPORT NO OR CID"
+                    android:hint="@string/passport_no_or_cid"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -4748,7 +4730,7 @@
                     android:layout_below="@+id/view_Passport_infant_5"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="sans-serif-light"
-                    android:text="ISSUE DATE"
+                    android:text="@string/issue_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -4770,7 +4752,7 @@
                     android:layout_below="@+id/view_Passport_infant_5"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/issue_infant_5"
-                    android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="15/15/2015"
                     android:textColor="@color/white"
@@ -4797,7 +4779,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_toEndOf="@+id/tv_issue_Date_infant_5"
                     android:fontFamily="sans-serif-light"
-                    android:text="END DATE"
+                    android:text="@string/end_date"
                     android:textColor="@color/white"
                     android:textColorHint="#FFFFFF"
                     android:textSize="@dimen/_10ssp" />
@@ -4845,16 +4827,16 @@
 
 
     <Button
-        android:layout_marginTop="@dimen/_10sdp"
         android:id="@+id/passenger_btn_info"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/scroll_passenger_inform"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_15sdp"
         android:background="@drawable/shape"
-        android:text="CONFIRM"
+        android:text="@string/confirm"
         android:textStyle="bold" />
 
 

@@ -34,10 +34,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@+id/toolbar_back1"
-                android:text="BACK"
+                android:text="@string/back"
                 android:textColor="#ffff"
                 android:textSize="12sp" />
 
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center"
-            android:layout_marginLeft="100dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/ic_button" />
@@ -63,7 +63,7 @@
             android:layout_height="@dimen/_30sdp"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_marginLeft="100dp"
+            android:layout_marginStart="100dp"
             android:background="@drawable/logo" />
 
 
@@ -81,12 +81,12 @@
         android:id="@+id/tv_price_summary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Price Summary"
+        android:text="@string/price_summary"
         android:textColor="#fff"
         android:textStyle="bold"
         android:textSize="20sp"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_15sdp"
         android:layout_below="@+id/line1"
         />
 
@@ -96,7 +96,7 @@
         android:layout_height="2dp"
         android:layout_below="@+id/tv_price_summary"
         android:background="@drawable/line1"
-        android:layout_marginLeft="@dimen/_15sdp"/>
+        android:layout_marginStart="@dimen/_15sdp"/>
 
     <RelativeLayout
         android:id="@+id/relative_all"
@@ -115,17 +115,17 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/app_color"
                 android:textSize="25sp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
 
                 />
             <TextView
                 android:id="@+id/tv_to"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="to"
+                android:text="@string/to"
                 android:textColor="#fff"
                 android:textSize="15sp"
-                android:layout_toRightOf="@+id/tv_bey"
+                android:layout_toEndOf="@+id/tv_bey"
                 android:layout_margin="@dimen/_5sdp"
 
                 />
@@ -135,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/app_color"
                 android:textSize="25sp"
-                android:layout_toRightOf="@+id/tv_to"
+                android:layout_toEndOf="@+id/tv_to"
                 />
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginStart="@dimen/_12sdp"
@@ -179,14 +179,14 @@
                 android:textSize="15sp"
                 android:textColor="#fff"
                 android:layout_below="@+id/relative_country"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 />
             <RelativeLayout
                 android:id="@+id/relative_airline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_flight"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 >
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -204,7 +204,7 @@
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/app_color"
-                    android:layout_toRightOf="@+id/iv_icon"
+                    android:layout_toEndOf="@+id/iv_icon"
 
                     />
                 <TextView
@@ -213,17 +213,17 @@
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
                     android:layout_below="@+id/tv_airline"
-                    android:layout_toRightOf="@+id/iv_icon"
+                    android:layout_toEndOf="@+id/iv_icon"
                     />
 
                 <TextView
                     android:id="@+id/tvDirect_"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Direct"
+                    android:text="@string/direct"
                     android:textColor="#fff"
-                    android:drawableLeft="@drawable/ic_trending_flat"
-                    android:layout_toRightOf="@+id/iv_icon"
+                    android:drawableStart="@drawable/ic_trending_flat"
+                    android:layout_toEndOf="@+id/iv_icon"
                     android:layout_below="@+id/tv_time"
 
                     />
@@ -234,7 +234,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_airline"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 >
 
                 <ImageView
@@ -249,7 +249,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
                     android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@+id/iv_bag"
+                    android:layout_toEndOf="@+id/iv_bag"
                     />
 
                 <ImageView
@@ -257,7 +257,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/bag2"
-                    android:layout_toRightOf="@+id/tv_kg"
+                    android:layout_toEndOf="@+id/tv_kg"
                     />
                 <TextView
                     android:id="@+id/tv_cambainBages"
@@ -265,7 +265,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="#fff"
                     android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@+id/iv_bag2"
+                    android:layout_toEndOf="@+id/iv_bag2"
                     />
 
             </RelativeLayout>
@@ -273,7 +273,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/relative_package"
-                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 >
 
                 <TextView
@@ -341,7 +341,7 @@
             android:id="@+id/closure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             >
             <TextView
                 android:id="@+id/tv_bey2"
@@ -356,10 +356,10 @@
                 android:id="@+id/tv_to2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="to"
+                android:text="@string/to"
                 android:textColor="#fff"
                 android:textSize="15sp"
-                android:layout_toRightOf="@+id/tv_bey2"
+                android:layout_toEndOf="@+id/tv_bey2"
                 android:layout_margin="@dimen/_5sdp"
 
                 />
@@ -370,7 +370,7 @@
                 android:text="DXB"
                 android:textColor="@color/app_color"
                 android:textSize="25sp"
-                android:layout_toRightOf="@+id/tv_to2"
+                android:layout_toEndOf="@+id/tv_to2"
                 />
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="@dimen/_100sdp"
@@ -386,7 +386,7 @@
                 android:id="@+id/tv_flight2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Flight Nb :T926665"
+                android:text="@string/flight_nb_t926665"
                 android:textSize="15sp"
                 android:textColor="#fff"
                 android:layout_below="@+id/relative_country2"
@@ -414,7 +414,7 @@
                     android:layout_height="wrap_content"
                     android:text="TURKISH Airlines"
                     android:textColor="@color/app_color"
-                    android:layout_toRightOf="@+id/iv_icon2"
+                    android:layout_toEndOf="@+id/iv_icon2"
 
                     />
                 <TextView
@@ -424,17 +424,17 @@
                     android:text="3 hrs 40 min"
                     android:textColor="#fff"
                     android:layout_below="@+id/tv_airline2"
-                    android:layout_toRightOf="@+id/iv_icon2"
+                    android:layout_toEndOf="@+id/iv_icon2"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Direct"
+                    android:text="@string/direct"
                     android:id="@+id/tvDirect2"
                     android:textColor="#fff"
-                    android:drawableLeft="@drawable/ic_trending_flat"
-                    android:layout_toRightOf="@+id/iv_icon2"
+                    android:drawableStart="@drawable/ic_trending_flat"
+                    android:layout_toEndOf="@+id/iv_icon2"
                     android:layout_below="@+id/tv_time2"
 
                     />
@@ -460,7 +460,7 @@
                     android:text="40 Kg"
                     android:textColor="#fff"
                     android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@+id/iv_bag21"
+                    android:layout_toEndOf="@+id/iv_bag21"
                     />
 
                 <ImageView
@@ -468,7 +468,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/bag2"
-                    android:layout_toRightOf="@+id/tv_kg2"
+                    android:layout_toEndOf="@+id/tv_kg2"
                     />
                 <TextView
                     android:id="@+id/tvCambainBages2"
@@ -477,7 +477,7 @@
                     android:text="20 Kg"
                     android:textColor="#fff"
                     android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@+id/iv_bag22"
+                    android:layout_toEndOf="@+id/iv_bag22"
                     />
 
             </RelativeLayout>
@@ -547,7 +547,7 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/_15sdp"
         android:background="@drawable/shape"
-        android:text="PROCEED"/>
+        android:text="@string/proceed"/>
 
     <ProgressBar
         android:id="@+id/flight_progress"
@@ -566,59 +566,59 @@
         android:layout_above="@+id/tv_tab_me_renew_hotels"
         >
 
-        <TextView
-            android:id="@+id/assistant_label_voice_renew_flight_summary"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:drawablePadding="8dp"
-            android:layout_marginStart="8dp"
-            android:drawableStart="@drawable/ic_assistant_voice"
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:text="SEND VOICE NOTE TO AGENT"
-            android:textColor="@color/app_color"
-            android:textSize="@dimen/_7ssp"
-            android:textStyle="bold"
-            android:visibility="gone"
-            tools:visibility="visible"/>
+        <!--<TextView-->
+            <!--android:id="@+id/assistant_label_voice_renew_flight_summary"-->
+            <!--android:layout_width="@dimen/_130sdp"-->
+            <!--android:layout_height="@dimen/_40sdp"-->
+            <!--android:drawablePadding="8dp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:drawableStart="@drawable/ic_assistant_voice"-->
+            <!--android:fontFamily="sans-serif"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:text="SEND VOICE NOTE TO AGENT"-->
+            <!--android:textColor="@color/app_color"-->
+            <!--android:textSize="@dimen/_7ssp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:visibility="gone"-->
+            <!--tools:visibility="visible"/>-->
 
 
-        <TextView
-            android:id="@+id/assistant_label_call_renew_flight_summary"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginStart="8dp"
-            android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_assistant_call"
-            android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
-            android:text="CALL AGENT"
-            android:textStyle="bold"
-            android:textColor="@color/app_color"
-            android:textSize="@dimen/_7ssp"
-            android:visibility="gone"
-            tools:visibility="visible"
-            android:layout_below="@+id/assistant_label_voice_renew_flight_summary"
-            />
+        <!--<TextView-->
+            <!--android:id="@+id/assistant_label_call_renew_flight_summary"-->
+            <!--android:layout_width="@dimen/_130sdp"-->
+            <!--android:layout_height="@dimen/_40sdp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:drawablePadding="8dp"-->
+            <!--android:drawableStart="@drawable/ic_assistant_call"-->
+            <!--android:fontFamily="sans-serif"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:text="CALL AGENT"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textColor="@color/app_color"-->
+            <!--android:textSize="@dimen/_7ssp"-->
+            <!--android:visibility="gone"-->
+            <!--tools:visibility="visible"-->
+            <!--android:layout_below="@+id/assistant_label_voice_renew_flight_summary"-->
+            <!--/>-->
 
 
-        <TextView
-            android:paddingStart="@dimen/_9ssp"
-            android:id="@+id/assistant_label_message_renew_flight_summary"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginStart="8dp"
-            android:layout_weight="38"
-            android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_assistant_message"
-            android:fontFamily="sans-serif"
-            android:text="SEND MESSAGE TO AGENT"
-            android:textColor="@color/app_color"
-            android:textSize="@dimen/_7ssp"
-            android:gravity="center"
-            android:visibility="gone"
-            tools:visibility="visible"
-            android:layout_alignParentRight="true"/>
+        <!--<TextView-->
+            <!--android:paddingStart="@dimen/_9ssp"-->
+            <!--android:id="@+id/assistant_label_message_renew_flight_summary"-->
+            <!--android:layout_width="@dimen/_130sdp"-->
+            <!--android:layout_height="@dimen/_40sdp"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_weight="38"-->
+            <!--android:drawablePadding="8dp"-->
+            <!--android:drawableStart="@drawable/ic_assistant_message"-->
+            <!--android:fontFamily="sans-serif"-->
+            <!--android:text="SEND MESSAGE TO AGENT"-->
+            <!--android:textColor="@color/app_color"-->
+            <!--android:textSize="@dimen/_7ssp"-->
+            <!--android:gravity="center"-->
+            <!--android:visibility="gone"-->
+            <!--tools:visibility="visible"-->
+            <!--android:layout_alignParentRight="true"/>-->
 
 
 
@@ -631,7 +631,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:text="Tap me if you need MY ASSISTANCE "
+        android:text="@string/tap_me_if_you_need_my_assistance"
         android:textColor="#fff" />
 
 </RelativeLayout>

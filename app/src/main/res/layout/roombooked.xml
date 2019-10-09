@@ -134,6 +134,12 @@
         android:background="@color/shape"
         android:text="@string/get_reservition_code"
         android:textStyle="bold" />
+    <ProgressBar
+        android:id="@+id/room_booked_prog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/get_code"
+        android:layout_centerHorizontal="true"/>
 
     <ImageView
         android:id="@+id/iv_lines"

@@ -2,17 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
 
+>
 
     <TextView
         android:id="@+id/from_country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rel2_checked"
-        android:layout_marginLeft="@dimen/_50sdp"
+        android:layout_marginStart="@dimen/_50sdp"
         android:layout_marginTop="@dimen/_20sdp"
-        android:text="From"
+        android:text="@string/from"
         android:textAllCaps="false"
         android:textColor="@color/white" />
 
@@ -21,10 +22,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rel2_checked"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginRight="@dimen/_70sdp"
-        android:text="To"
+        android:layout_marginEnd="@dimen/_70sdp"
+        android:text="@string/to"
         android:textAllCaps="false"
         android:textColor="@color/white" />
 
@@ -38,8 +39,8 @@
             android:id="@+id/country_from_textview"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:drawableLeft="@drawable/ic_arrow_drop_down_black_24dp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:drawableStart="@drawable/ic_arrow_drop_down_black_24dp"
             android:gravity="center"
             android:text="BEY"
             android:textColor="@color/app_color"
@@ -49,16 +50,16 @@
             android:id="@+id/view_blo4"
             android:layout_width="@dimen/_10sdp"
             android:layout_height="1dp"
-            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_30sdp"
-            android:layout_toRightOf="@+id/country_from_textview"
+            android:layout_toEndOf="@+id/country_from_textview"
             android:background="@color/white" />
 
         <View
             android:id="@+id/view_blo5"
             android:layout_width="90dp"
             android:layout_height="82dp"
-            android:layout_toRightOf="@+id/view_blo4"
+            android:layout_toEndOf="@+id/view_blo4"
             android:background="@drawable/jetplane" />
 
         <View
@@ -66,16 +67,16 @@
             android:layout_width="@dimen/_10sdp"
             android:layout_height="1dp"
             android:layout_marginTop="@dimen/_30sdp"
-            android:layout_toRightOf="@+id/view_blo5"
+            android:layout_toEndOf="@+id/view_blo5"
             android:background="@color/white" />
 
         <TextView
             android:id="@+id/country_to_textview"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:layout_toRightOf="@+id/view_blo6"
-            android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_toEndOf="@+id/view_blo6"
+            android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
             android:gravity="center"
             android:text="DXB"
             android:textColor="@color/app_color"
@@ -86,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/country_from_textview"
-            android:layout_marginLeft="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_40sdp"
             android:text="BEIRUT"
             android:textColor="@color/white"
             android:textSize="@dimen/_15ssp" />
@@ -96,8 +97,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/country_from_textview"
-            android:layout_marginLeft="@dimen/_130sdp"
-            android:layout_toRightOf="@+id/country_selected_from_spinner"
+            android:layout_marginStart="@dimen/_130sdp"
+            android:layout_toEndOf="@+id/country_selected_from_spinner"
             android:text="DUBAI"
             android:textColor="@color/white"
             android:textSize="@dimen/_15ssp" />
@@ -127,7 +128,7 @@
                 android:id="@+id/departure_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Departure"
+                android:text="@string/departure"
                 android:textColor="@color/app_color"
                 android:textSize="@dimen/_15ssp" />
 
@@ -135,9 +136,9 @@
                 android:id="@+id/return_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_80sdp"
-                android:layout_toRightOf="@+id/departure_date"
-                android:text="Return"
+                android:layout_marginStart="@dimen/_80sdp"
+                android:layout_toEndOf="@+id/departure_date"
+                android:text="@string/returndate"
                 android:textColor="@color/app_color"
                 android:textSize="@dimen/_15ssp" />
 
@@ -163,7 +164,7 @@
                 android:id="@+id/departure_spinner"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/icon"
+                android:layout_toEndOf="@+id/icon"
                 android:backgroundTint="@color/app_color"
                 android:spinnerMode="dropdown" />
 
@@ -173,15 +174,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_country"
-                android:layout_marginLeft="@dimen/_15sdp"
-                android:layout_toRightOf="@+id/departure_spinner"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_toEndOf="@+id/departure_spinner"
                 android:drawableStart="@drawable/ic_date_range_black_24dp" />
 
             <Spinner
                 android:id="@+id/return_spinner"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/icon2"
+                android:layout_toEndOf="@+id/icon2"
                 android:backgroundTint="@color/app_color"
                 android:spinnerMode="dropdown" />
 
@@ -192,14 +193,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/spinner_depar_return"
-            android:layout_marginLeft="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_15sdp">
 
             <TextView
                 android:id="@+id/passengers_on"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Passengers"
+                android:text="@string/passengers"
                 android:textColor="@color/app_color"
                 android:textSize="@dimen/_15ssp"
 
@@ -227,7 +228,7 @@
                 android:id="@+id/adult_spinner"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/icon8"
+                android:layout_toEndOf="@+id/icon8"
                 android:backgroundTint="@color/app_color"
                 android:spinnerMode="dropdown" />
 
@@ -236,15 +237,15 @@
                 android:id="@+id/icon9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_15sdp"
-                android:layout_toRightOf="@+id/adult_spinner"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_toEndOf="@+id/adult_spinner"
                 android:drawableStart="@drawable/ic_smallman" />
 
             <Spinner
                 android:id="@+id/child_spinner"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/icon9"
+                android:layout_toEndOf="@+id/icon9"
                 android:backgroundTint="@color/app_color"
                 android:spinnerMode="dropdown" />
 
@@ -256,7 +257,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative_adult_child"
-            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_15sdp"
             android:layout_marginTop="@dimen/_5sdp">
 
             <TextView
@@ -270,7 +271,7 @@
                 android:id="@+id/infant_spinner"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/icon10"
+                android:layout_toEndOf="@+id/icon10"
                 android:backgroundTint="@color/app_color"
                 android:spinnerMode="dropdown" />
 
@@ -281,14 +282,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative_infant"
-            android:layout_marginLeft="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_45sdp"
             android:layout_marginTop="@dimen/_15sdp">
 
             <TextView
                 android:id="@+id/cabin_class"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cabin Class"
+                android:text="@string/cabin_class"
                 android:textColor="@color/app_color"
                 android:textSize="@dimen/_15ssp" />
 
@@ -308,10 +309,10 @@
                 android:id="@+id/royal_class"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:background="@drawable/shapepassenger"
                 android:padding="@dimen/_5sdp"
-                android:text="Royal"
+                android:text="@string/royal"
                 android:textColor="@color/white"
                 android:textIsSelectable="true" />
 
@@ -319,11 +320,11 @@
                 android:id="@+id/first_class"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_15sdp"
-                android:layout_toRightOf="@+id/royal_class"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_toEndOf="@+id/royal_class"
                 android:background="@drawable/shapepassenger"
                 android:padding="@dimen/_5sdp"
-                android:text="First"
+                android:text="@string/first"
                 android:textColor="@color/app_color"
                 android:textIsSelectable="true" />
 
@@ -331,11 +332,11 @@
                 android:id="@+id/business_class"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_15sdp"
-                android:layout_toRightOf="@+id/first_class"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_toEndOf="@+id/first_class"
                 android:background="@drawable/shapepassenger"
                 android:padding="@dimen/_5sdp"
-                android:text="Business"
+                android:text="@string/business"
                 android:textColor="@color/app_color"
                 android:textIsSelectable="true" />
 
@@ -343,11 +344,11 @@
                 android:id="@+id/economy_class"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_15sdp"
-                android:layout_toRightOf="@+id/business_class"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_toEndOf="@+id/business_class"
                 android:background="@drawable/shapepassenger"
                 android:padding="@dimen/_5sdp"
-                android:text="Economy"
+                android:text="@string/economy"
                 android:textColor="@color/app_color"
                 android:textIsSelectable="true" />
 
@@ -363,7 +364,7 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/_15sdp"
         android:background="@drawable/shape"
-        android:text="PROCEED"
+        android:text="@string/proceed"
 
         />
 

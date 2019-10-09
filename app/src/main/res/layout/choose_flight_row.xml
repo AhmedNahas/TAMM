@@ -11,8 +11,8 @@
         android:id="@+id/relative_country1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_4sdp"
-        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
        >
 
 
@@ -30,7 +30,7 @@
             android:id="@+id/tv_airline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/iv_icon"
+            android:layout_toEndOf="@+id/iv_icon"
             android:text="TURKISH Airlines"
             android:textColor="@color/app_color"
 
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_airline"
-            android:layout_toRightOf="@+id/iv_icon"
+            android:layout_toEndOf="@+id/iv_icon"
             android:text="7:00 PM "
             android:textColor="#fff"
 
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_airline"
-            android:layout_toRightOf="@+id/tv_time_one"
+            android:layout_toEndOf="@+id/tv_time_one"
             android:text="-"
             android:textColor="#fff"
 
@@ -63,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_airline"
-            android:layout_toRightOf="@+id/tv_text"
+            android:layout_toEndOf="@+id/tv_text"
             android:text="10:45 PM "
             android:textColor="#fff"
 
@@ -75,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_time_two"
-            android:layout_toRightOf="@+id/iv_icon"
+            android:layout_toEndOf="@+id/iv_icon"
             android:text="Beirut "
             android:textColor="@color/app_color"
 
@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_time_two"
-            android:layout_toRightOf="@+id/tv_beirut"
+            android:layout_toEndOf="@+id/tv_beirut"
             android:text=" - "
             android:textColor="@color/app_color"
 
@@ -97,7 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_time_two"
-            android:layout_toRightOf="@+id/tv_text2"
+            android:layout_toEndOf="@+id/tv_text2"
             android:text=" yhvyhy"
             android:textColor="@color/app_color"
 
@@ -108,7 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_beirut"
-            android:layout_toRightOf="@+id/iv_icon"
+            android:layout_toEndOf="@+id/iv_icon"
             android:text="Kuwait "
             android:textColor="@color/app_color"
 
@@ -120,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/iv_icon"
-            android:layout_toRightOf="@+id/tv_kuwait2"
+            android:layout_toEndOf="@+id/tv_kuwait2"
             android:text=" - "
             android:textColor="@color/app_color"
 
@@ -131,7 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_beirut"
-            android:layout_toRightOf="@+id/tv_text3"
+            android:layout_toEndOf="@+id/tv_text3"
             android:text="ybhythybhy"
             android:textColor="@color/app_color"
 
@@ -142,7 +142,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_bubai"
-            android:layout_toRightOf="@+id/tv_kuwait3"
+            android:layout_toEndOf="@+id/tv_kuwait3"
             android:text="ybhythybhy"
             android:textColor="@color/app_color"
 
@@ -154,7 +154,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_kuwait2"
-            android:layout_toRightOf="@+id/iv_icon"
+            android:layout_toEndOf="@+id/iv_icon"
             android:text="Kuwait - "
             android:textColor="@color/app_color"
 
@@ -166,7 +166,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_kuwait3"
-            android:layout_toRightOf="@+id/iv_icon"
+            android:layout_toEndOf="@+id/iv_icon"
             android:text="Kuwait"
             android:textColor="@color/app_color"
 
@@ -178,7 +178,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_bubai2"
-            android:layout_toRightOf="@+id/tv_kuwait3"
+            android:layout_toEndOf="@+id/tv_kuwait3"
             android:text="ybhythybhy"
             android:textColor="@color/app_color"
 
@@ -190,7 +190,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_kuwait4"
-            android:layout_toRightOf="@+id/iv_icon"
+            android:layout_toEndOf="@+id/iv_icon"
 
             >
 
@@ -205,7 +205,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@+id/iv_bag"
+                android:layout_toEndOf="@+id/iv_bag"
                 android:text="40 Kg"
                 android:textColor="#fff"
                 android:textSize="@dimen/_8ssp" />
@@ -216,7 +216,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative_bag"
-            android:layout_toRightOf="@+id/iv_icon"
+            android:layout_toEndOf="@+id/iv_icon"
 
             >
 
@@ -233,7 +233,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@+id/iv_bag2"
+                android:layout_toEndOf="@+id/iv_bag2"
                 android:text="20 Kg"
                 android:textColor="#fff"
                 android:textSize="@dimen/_8ssp" />
@@ -245,14 +245,14 @@
             android:id="@+id/iv_star"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:src="@drawable/star" />
 
         <TextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/iv_star"
+            android:layout_toStartOf="@+id/iv_star"
             android:text="3 hrs 40 min"
             android:textColor="#fff" />
 
@@ -261,8 +261,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_time"
-            android:layout_toLeftOf="@+id/iv_star"
-            android:drawableLeft="@drawable/transit"
+            android:layout_toStartOf="@+id/iv_star"
+            android:drawableStart="@drawable/transit"
             android:textColor="#fff" />
 
 
@@ -271,10 +271,10 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_transit"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/_4sdp"
-            android:layout_toLeftOf="@+id/spinner_dollar"
-            android:gravity="end"
+            android:layout_toStartOf="@+id/spinner_dollar"
+            android:gravity="center"
             android:text="246 grgrgg"
             android:textColor="@color/app_color"
 
@@ -285,11 +285,10 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_20sdp"
             android:layout_below="@+id/relative_bag"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/_15sdp"
             android:background="@drawable/shape"
-            android:text="Select Flight"
-
+            android:text="@string/select_flight"
             android:textSize="@dimen/_8ssp"
 
             />
@@ -313,8 +312,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_below="@+id/relative_country1"
-        android:layout_marginLeft="@dimen/_4sdp"
-        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
         >
 
 
@@ -333,7 +332,7 @@
             android:id="@+id/tv_airline_return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/iv_icon_return"
+            android:layout_toEndOf="@+id/iv_icon_return"
             android:text="TURKISH Airlines"
             android:textColor="@color/app_color"
 
@@ -344,7 +343,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_airline_return"
-            android:layout_toRightOf="@+id/iv_icon_return"
+            android:layout_toEndOf="@+id/iv_icon_return"
             android:text="7:00 PM "
             android:textColor="#fff"
 
@@ -355,7 +354,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_airline_return"
-            android:layout_toRightOf="@+id/tv_time_one_return"
+            android:layout_toEndOf="@+id/tv_time_one_return"
             android:text="-"
             android:textColor="#fff"
 
@@ -366,7 +365,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_airline_return"
-            android:layout_toRightOf="@+id/tv_text_return"
+            android:layout_toEndOf="@+id/tv_text_return"
             android:text="10:45 PM "
             android:textColor="#fff"
 
@@ -378,7 +377,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_time_two_return"
-            android:layout_toRightOf="@+id/iv_icon_return"
+            android:layout_toEndOf="@+id/iv_icon_return"
             android:text="Beirut "
             android:textColor="@color/app_color"
 
@@ -389,7 +388,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_time_two_return"
-            android:layout_toRightOf="@+id/tv_beirut_return"
+            android:layout_toEndOf="@+id/tv_beirut_return"
             android:text=" - "
             android:textColor="@color/app_color"
 
@@ -400,7 +399,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_time_two_return"
-            android:layout_toRightOf="@+id/tv_text2_return"
+            android:layout_toEndOf="@+id/tv_text2_return"
             android:text=" yhvyhy"
             android:textColor="@color/app_color"
 
@@ -411,7 +410,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_beirut_return"
-            android:layout_toRightOf="@+id/iv_icon_return"
+            android:layout_toEndOf="@+id/iv_icon_return"
             android:text="Kuwait "
             android:textColor="@color/app_color"
 
@@ -422,7 +421,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/iv_icon_return"
-            android:layout_toRightOf="@+id/tv_kuwait2_return"
+            android:layout_toEndOf="@+id/tv_kuwait2_return"
             android:text=" - "
             android:textColor="@color/app_color"
 
@@ -444,7 +443,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_bubai_return"
-            android:layout_toRightOf="@+id/tv_kuwait3_return"
+            android:layout_toEndOf="@+id/tv_kuwait3_return"
             android:text="ybhythybhy"
             android:textColor="@color/app_color"
 
@@ -456,7 +455,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_kuwait2_return"
-            android:layout_toRightOf="@+id/iv_icon_return"
+            android:layout_toEndOf="@+id/iv_icon_return"
             android:text="Kuwait - "
             android:textColor="@color/app_color"
 
@@ -468,7 +467,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_kuwait3_return"
-            android:layout_toRightOf="@+id/iv_icon_return"
+            android:layout_toEndOf="@+id/iv_icon_return"
             android:text="Kuwait"
             android:textColor="@color/app_color"
 
@@ -480,7 +479,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_bubai2_return"
-            android:layout_toRightOf="@+id/tv_kuwait3_return"
+            android:layout_toEndOf="@+id/tv_kuwait3_return"
             android:text="ybhythybhy"
             android:textColor="@color/app_color"
 
@@ -492,7 +491,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_kuwait4_return"
-            android:layout_toRightOf="@+id/iv_icon_return"
+            android:layout_toEndOf="@+id/iv_icon_return"
 
             >
 
@@ -507,7 +506,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@+id/iv_bag_return"
+                android:layout_toEndOf="@+id/iv_bag_return"
                 android:text="40 Kg"
                 android:textColor="#fff"
                 android:textSize="@dimen/_8ssp" />
@@ -518,7 +517,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relative_bag_return"
-            android:layout_toRightOf="@+id/iv_icon_return"
+            android:layout_toEndOf="@+id/iv_icon_return"
 
             >
 
@@ -535,7 +534,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_toRightOf="@+id/iv_bag2_return"
+                android:layout_toEndOf="@+id/iv_bag2_return"
                 android:text="20 Kg"
                 android:textColor="#fff"
                 android:textSize="@dimen/_8ssp" />
@@ -547,14 +546,14 @@
             android:id="@+id/iv_star_return"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:src="@drawable/star" />
 
         <TextView
             android:id="@+id/tv_time_return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/iv_star_return"
+            android:layout_toStartOf="@+id/iv_star_return"
             android:text="3 hrs 40 min"
             android:textColor="#fff" />
 
@@ -563,8 +562,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_time_return"
-            android:layout_toLeftOf="@+id/iv_star_return"
-            android:drawableLeft="@drawable/transit"
+            android:layout_toStartOf="@+id/iv_star_return"
+            android:drawableStart="@drawable/transit"
             android:textColor="#fff" />
 
 
@@ -573,9 +572,9 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_transit_return"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/_4sdp"
-            android:layout_toLeftOf="@+id/spinner_dollar"
+            android:layout_toStartOf="@+id/spinner_dollar"
             android:gravity="end"
             android:text="246 grgrgg"
             android:textColor="@color/app_color"
@@ -602,7 +601,7 @@
         android:layout_height="2dp"
         android:layout_below="@+id/relative_country1_return"
         android:layout_marginTop="@dimen/_5sdp"
-        android:layout_toRightOf="@+id/line2"
+        android:layout_toEndOf="@+id/line2"
         android:background="@drawable/line1" />
 
 

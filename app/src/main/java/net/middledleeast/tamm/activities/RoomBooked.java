@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -122,13 +122,15 @@ public class RoomBooked extends AppCompatActivity {
     private String postcode_;
     private String paymentid_;
     private String trackid_;
+    ProgressBar room_booked_prog ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.roombooked);
         ButterKnife.bind(this);
-
+        room_booked_prog=findViewById(R.id.room_booked_prog);
+        room_booked_prog.setVisibility(View.INVISIBLE);
 
         amount_ = SharedPreferencesManger.LoadStringData(context, "amount_");
         transaction_ = SharedPreferencesManger.LoadStringData(context, "transaction_");
@@ -322,7 +324,7 @@ try {
             public void onClick(View view) {
 
 
-                showProgressingView();
+                room_booked_prog.setVisibility(View.VISIBLE);
                 bookingresponse(paymentInfo);
 
 
@@ -1284,26 +1286,7 @@ try {
             requestQueue.add(request);
 
         }
-    ViewGroup progressView;
-    protected boolean isProgressShowing = false;
 
-    public void showProgressingView() {
-
-        if (!isProgressShowing) {
-            isProgressShowing = true;
-            progressView = (ViewGroup) getLayoutInflater().inflate(R.layout.progressbar_layout, null);
-            View v = this.findViewById(android.R.id.content).getRootView();
-            ViewGroup viewGroup = (ViewGroup) v;
-            viewGroup.addView(progressView);
-        }
-    }
-
-    public void hideProgressingView() {
-        View v = this.findViewById(android.R.id.content).getRootView();
-        ViewGroup viewGroup = (ViewGroup) v;
-        viewGroup.removeView(progressView);
-        isProgressShowing = false;
-    }
 
     public void sendDataToEMail(String confirmationNo){
 

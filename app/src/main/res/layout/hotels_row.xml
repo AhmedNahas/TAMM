@@ -127,7 +127,6 @@
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:textSize="14sp"
-
             android:layout_marginStart="-45dp"
             android:rotation="-90"
             android:text="  Recommended  " />
