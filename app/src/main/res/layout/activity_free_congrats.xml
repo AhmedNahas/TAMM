@@ -62,11 +62,10 @@
 
         <ImageView
             android:id="@+id/iv_theman2"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_160sdp"
             android:layout_height="@dimen/_150sdp"
             android:src="@drawable/man_pic_in_congratulations"
             android:layout_below="@+id/tv_community"
-            android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/_15sdp"
             />
 

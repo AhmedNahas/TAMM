@@ -114,7 +114,6 @@ Button btn_confirm;
 
                     }else if(resultcode.equals("NOT CAPTURED")) {
                         senddataknettoemail();
-
                         Intent intent =new Intent(KnetPaymentDelails.this, PaymentActivity.class);
                         startActivity(intent);
 
@@ -296,7 +295,7 @@ Button btn_confirm;
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                int statusCode = error.networkResponse.statusCode;
+//                int statusCode = error.networkResponse.statusCode;
 
             }
         }) {
@@ -313,9 +312,6 @@ Button btn_confirm;
                 parameters.put("trackid", trackid);
                 parameters.put("time", bookedOn);
                 parameters.put("resultcode", resultcode);
-
-
-
                 return parameters;
             }
         };
