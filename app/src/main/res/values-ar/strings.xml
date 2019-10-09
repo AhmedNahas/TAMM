@@ -113,9 +113,11 @@
     <string name="please_check_your_e_mail">من فضلك تفقد بريدك الالكتروني.</string>
     <string name="back_to_home_page">العودة إلى الصفحة الرئيسية</string>
 
-
-    <string name="mr" translatable="true">ألسيد</string>
-    <string name="choose_no_of_rooms">أختار عدد الغرف</string>
+    <string name="usd">دولار أمريكي</string>
+    <string name="euro">يورو</string>
+    <string name="eg_pound">كنيه مصري</string>
+    <string name="kd" >دينار كويتي</string>
+    <string name="choose_no_of_rooms">أختر عدد الغرف</string>
     <string name="room_1">غرفة 1</string>
     <string name="_1_child">طفل 1</string>
     <string name="_2_adults">فرد 1</string>
@@ -146,8 +148,15 @@
     <string name="master">ماستر كارد</string>
     <string name="flight_amp_private_jets"><![CDATA[الطيران & رحلات خاصة]]></string>
     <string name="best_flight_deals">افضل عروض الطيران</string>
+    <string name="tamm">تـــم</string>
 
-
+    <string name="offers">العروض</string>
+    <string name="favorites">المفضلة</string>
+    <string name="conversation">محادثة</string>
+    <string name="setting">الضبط</string>
+    <string name="about_us">عنا</string>
+    <string name="contacts_us">اتصل بنا</string>
+    <string name="log_out">الخروج</string>
     <string name="passenger_airplane">طائرة الركاب</string>
     <string name="one_way">اتجاه واحد</string>
     <string name="multicities">مدن متعددة</string>

@@ -1486,7 +1486,7 @@ public class FindHotels extends AppCompatActivity {
                String nationality = SharedPreferencesManger.LoadStringData(FindHotels.this,"nationality");
                String gust = SharedPreferencesManger.LoadStringData(FindHotels.this,"guestMode");
 
-                if (gust==null){
+                if (gust!=null){
 
                     nationality = "EG";
                 }

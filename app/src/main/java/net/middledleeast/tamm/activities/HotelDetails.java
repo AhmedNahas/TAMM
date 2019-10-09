@@ -102,7 +102,6 @@ public class HotelDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotel_details);
-        getWindow().setBackgroundDrawable(null);
         ViewPager viewPager = findViewById(R.id.hotel_image_detail);
         sliderDotspanel = findViewById(R.id.SliderDots);
         ButterKnife.bind(this);

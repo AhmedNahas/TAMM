@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -55,6 +54,7 @@ Button btn_confirm;
     private String refno;
     private String paymentid;
     private String trackid;
+    private RequestQueue requestQueue;
 
 
     @Override
@@ -270,7 +270,7 @@ Button btn_confirm;
 
             }
         });
-        RequestQueue requestQueue= Volley.newRequestQueue(KnetPaymentDelails.this);
+        requestQueue= Volley.newRequestQueue(KnetPaymentDelails.this);
         requestQueue.add(stringRequest);
     }
     public void senddataknettoemail(){
@@ -315,7 +315,7 @@ Button btn_confirm;
                 return parameters;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
 
 
