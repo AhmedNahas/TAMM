@@ -139,8 +139,6 @@ public class ProceedBeyBeyOriginal extends Fragment {
         View view = inflater.inflate(R.layout.fragment_proceed_bey_bey_original, container, false);
         password = "App02072019";
 
-
-
         SharedPreferencesManger.remove(getContext(), "to");
         SharedPreferencesManger.remove(getContext(), "from");
 
@@ -202,7 +200,6 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
         if (!isNetworkConnected(getActivity())) {
 
-
             new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE)
                     .setTitleText("Please Check Your Internet first ")
                     .setConfirmText("Ok")
@@ -214,8 +211,6 @@ public class ProceedBeyBeyOriginal extends Fragment {
                         }
                     })
                     .show();
-
-
         }
 
         one_way.setOnTouchListener(new View.OnTouchListener() {

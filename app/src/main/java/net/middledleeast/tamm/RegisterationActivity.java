@@ -535,12 +535,7 @@ public class RegisterationActivity extends Fragment {
                     parameters.put("birthdate"," " + day+ " - " + month+ " - " + year + " ");
                     parameters.put("subscriptiondate", bookedOn);
                     parameters.put("nationality", idCountry);
-
-
-
-
-
-
+//
 
                     //  parameters.put("tokenid",tokenId );
 

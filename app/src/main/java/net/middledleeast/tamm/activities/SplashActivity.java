@@ -1,15 +1,24 @@
 package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
@@ -19,11 +28,16 @@ public class SplashActivity extends AppCompatActivity {
     private ImageView imageView;
     private AnimatedCircleLoadingView animatedCircleLoadingView;
     private String mUsrename;
+    int count = 0;
+    int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        imageView = findViewById(R.id.img_splash_logo);
+
 
 
 
@@ -31,11 +45,10 @@ public class SplashActivity extends AppCompatActivity {
 
 
 //        String mUsrename =    SharedPreferencesManger.LoadStringData(this, "user_name" );
-        mUsrename =    SharedPreferencesManger.LoadStringData(this, "userNameFromSignIn" );
+        mUsrename = SharedPreferencesManger.LoadStringData(this, "userNameFromSignIn");
 
 
-
-        if (mUsrename!=null&&mUsrename.length()>3){
+        if (mUsrename != null && mUsrename.length() > 3) {
             animatedCircleLoadingView = (AnimatedCircleLoadingView) findViewById(R.id.circle_loading_view);
             startLoading();
             startPercentMockThread();
@@ -53,10 +66,10 @@ public class SplashActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    startActivity(new Intent(SplashActivity.this,RenewAccount.class));
+                    startActivity(new Intent(SplashActivity.this, RenewAccount.class));
                 }
             }, 5000);
-        }else {
+        } else {
             animatedCircleLoadingView = (AnimatedCircleLoadingView) findViewById(R.id.circle_loading_view);
             startLoading();
             startPercentMockThread();
@@ -65,9 +78,6 @@ public class SplashActivity extends AppCompatActivity {
 
             Animation animation = AnimationUtils.loadAnimation(this, R.anim.logo_splash_anim);
             imageView.setAnimation(animation);
-
-
-
 
 
             Handler handler = new Handler();
@@ -83,21 +93,7 @@ public class SplashActivity extends AppCompatActivity {
         }
 
 
-
-
-
-
-
-
-
-
-
-
     }
-
-
-
-
 
 
     private void startLoading() {
@@ -139,30 +135,6 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

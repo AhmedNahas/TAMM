@@ -44,7 +44,7 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/_170sdp"
             android:layout_height="@dimen/_120sdp"
             android:src="@drawable/plans_image" />
 
