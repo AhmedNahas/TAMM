@@ -12,6 +12,7 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 
 import net.apptamm.tamm.R;
+import net.apptamm.tamm.helper.SharedPreferencesManger;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,6 +49,10 @@ public class LanguangeFragment extends Fragment {
                 }else if (event.getAction() == MotionEvent.ACTION_UP){
                     btnEnglish.setBackground(getActivity().getDrawable(R.drawable.border));
                 }
+
+
+                SharedPreferencesManger.SaveData(getActivity(),"language","en");
+
                 return false;
             }
         });
@@ -57,9 +62,16 @@ public class LanguangeFragment extends Fragment {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN){
                     btnEnglish.setBackgroundColor(Color.parseColor("#BE973B"));
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.welcome_container, new TammFamilyFragment())
+                            .addToBackStack( "LanguangeFragment" ) .commit();
                 }else if (event.getAction() == MotionEvent.ACTION_UP){
                     btnEnglish.setBackground(getActivity().getDrawable(R.drawable.border));
                 }
+
+
+                SharedPreferencesManger.SaveData(getActivity(),"language","ar");
+
                 return false;
             }
         });

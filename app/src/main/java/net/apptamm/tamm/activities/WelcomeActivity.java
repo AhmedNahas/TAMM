@@ -37,8 +37,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
 
 
-
-
         toolbar = findViewById(R.id.welcome_toolbar);
         setSupportActionBar(toolbar);
         getSupportFragmentManager().beginTransaction().replace(R.id.welcome_container, new TammFamilyFragment())

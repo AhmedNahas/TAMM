@@ -2,6 +2,7 @@ package net.apptamm.tamm.fragments;
 
 
 import android.annotation.SuppressLint;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,13 +24,14 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import net.apptamm.tamm.R;
+import net.apptamm.tamm.helper.SharedPreferencesManger;
 import net.apptamm.tamm.model.AllLinks.LinksUrl;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Locale;
+import static net.apptamm.tamm.activities.SettingActivity.setAppLocale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +61,26 @@ public class TammFamilyFragment extends Fragment {
         textfamily=view.findViewById(R.id.family_message);
         toolbar = view.findViewById(R.id.welcome_toolbar);
         imageView = view.findViewById(R.id.back_pressed);
+
+
+
+        String language = SharedPreferencesManger.LoadStringData(getContext(), "language");
+        Resources resources = getResources();
+
+        if (language!=null){
+
+            setAppLocale(language ,resources);
+
+
+            if (language.equals("en")){
+
+                gettextfamily();
+            }else if (language.equals("ar")){
+
+                gettextfamilyArabic();
+            }
+
+        }
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,12 +127,9 @@ public class TammFamilyFragment extends Fragment {
             }
         });
 
-        if (Locale.getDefault().getLanguage().contentEquals("en")){
-            gettextfamily();
 
-        }else {
-gettextfamilyArabic();
-        }
+
+
 
 
         return view;
