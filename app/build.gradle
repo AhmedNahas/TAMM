@@ -9,7 +9,7 @@ android {
 
     compileSdkVersion 28
     defaultConfig {
-        applicationId "net.middledleeast.tamm"
+        applicationId "net.apptamm.tamm"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -62,9 +62,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.google.firebase:firebase-auth:18.0.0'
-    implementation 'com.google.firebase:firebase-database:18.0.0'
-    implementation 'com.google.firebase:firebase-core:17.0.0'
+
     implementation 'com.dyhdyh.support:glide:1.0.0'
     implementation 'com.github.jlmd:AnimatedCircleLoadingView:1.1.5@aar'
     implementation 'com.android.volley:volley:1.1.1'
@@ -136,4 +134,3 @@ dependencies {
 }
 
 
-apply plugin: 'com.google.gms.google-services'
