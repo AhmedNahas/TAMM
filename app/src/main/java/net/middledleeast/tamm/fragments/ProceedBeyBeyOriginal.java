@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.DatePicker;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,11 +65,10 @@ import static net.middledleeast.tamm.helper.helperMethod.isNetworkConnected;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProceedBeyBeyOriginal extends Fragment {
+public class ProceedBeyBeyOriginal extends Fragment  {
     private CheckedTextView passenger, jet, one_way, return_passe, multi_cities;
     private CheckedTextView royalClass, firstClass, businessClass, economyClass;
-    private TextView fromTextView, toTextView, departure, returnFrom;
-    private RecyclerView fromToRecycler;
+    private TextView fromTextView, toTextView, departure, returnFrom , from_country , to_country;
     private Button proccedBtn;
     private Spinner passengerAdult, passengerChild, passengerInfant;
     public static final String BASE_URL = "https://xmloutapi.tboair.com/api/v1/";
@@ -87,28 +87,9 @@ public class ProceedBeyBeyOriginal extends Fragment {
     ProgressBar progressFlight;
     View line3;
     long flightCabinClass = 1;
-    private String departureTimeConfirmed;
 
-    ArrayList<String> ListnameLine = new ArrayList<>();
-    ArrayList<String> ListairportCode_Origin = new ArrayList<>();
-
-    ArrayList<String> ListairportCode_Distnation = new ArrayList<>();
 
     ArrayList<SearchFlightsResponse.Result> ListResult = new ArrayList<>();
-
-
-    ArrayList<String> Listduration = new ArrayList<>();
-    ArrayList<String> ListArriveTime = new ArrayList<>();
-    ArrayList<String> ListdeparuerTime = new ArrayList<>();
-    ArrayList<String> countryNameDestinationList = new ArrayList<>();
-    ArrayList<String> countryNameOriginList = new ArrayList<>();
-    ArrayList<String> listIncludedBaggage = new ArrayList<>();
-    ArrayList<String> listCabinBaggage = new ArrayList<>();
-    ArrayList<Double> listTotalFare = new ArrayList<>();
-    ArrayList<String> listTypeFare = new ArrayList<>();
-    ArrayList<String> ListflightNumber = new ArrayList<>();
-    ArrayList<String> ListMealType = new ArrayList<>();
-    ArrayList<Long> ListnoOfSeatAvailable = new ArrayList<>();
 
 
 
@@ -119,6 +100,9 @@ public class ProceedBeyBeyOriginal extends Fragment {
     private int sizeSegments;
     private String daDepartureTimeyR;
 
+    RelativeLayout relative_from_to   , parent_relative;
+    private int id = 0;
+    private String from , to;
 
     public ProceedBeyBeyOriginal() {
         // Required empty public constructor
@@ -133,6 +117,11 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_proceed_bey_bey_original, container, false);
         password = "App02072019";
+        relative_from_to = view.findViewById(R.id.relative_from_to);
+        from_country = view.findViewById(R.id.from_country);
+        to_country = view.findViewById(R.id.to_country);
+        parent_relative = view.findViewById(R.id.parent_relative);
+
 
         SharedPreferencesManger.remove(getContext(), "to");
         SharedPreferencesManger.remove(getContext(), "from");
@@ -142,9 +131,9 @@ public class ProceedBeyBeyOriginal extends Fragment {
         firstClass = view.findViewById(R.id.first_class);
         businessClass = view.findViewById(R.id.business_class);
         economyClass = view.findViewById(R.id.economy_class);
-        fromTextView = view.findViewById(R.id.country_from_textview);
-        toTextView = view.findViewById(R.id.country_to_textview);
-        country_selected_from_spinner = view.findViewById(R.id.country_selected_from_spinner);
+        fromTextView = view.findViewById(R.id.from_multi_1);
+        toTextView = view.findViewById(R.id.to_multi_1);
+        country_selected_from_spinner = view.findViewById(R.id.from_country_multi_1);
         return_date = view.findViewById(R.id.return_date);
 
         line3 = view.findViewById(R.id.line3_);
@@ -155,7 +144,7 @@ public class ProceedBeyBeyOriginal extends Fragment {
         passengerAdult = view.findViewById(R.id.adult_spinner);
         passengerChild = view.findViewById(R.id.child_spinner);
         passengerInfant = view.findViewById(R.id.infant_spinner);
-        to_country_name = view.findViewById(R.id.to_country_name);
+        to_country_name = view.findViewById(R.id.to_country_multi_1);
 
         passenger = view.findViewById(R.id.passen_air);
         jet = view.findViewById(R.id.private_jet);
@@ -181,6 +170,27 @@ public class ProceedBeyBeyOriginal extends Fragment {
             returnFrom.setVisibility(View.VISIBLE);
             line3.setVisibility(View.VISIBLE);
             icon2.setVisibility(View.VISIBLE);
+
+
+        }
+
+        try {
+             id = getArguments().getInt("multi");
+
+            if (id==1){
+
+                from_country.setVisibility(View.INVISIBLE);
+                to_country.setVisibility(View.INVISIBLE);
+                relative_from_to.setVisibility(View.GONE);
+
+                return_passe.setTextColor(0xFFBE973B);
+                one_way.setTextColor(0xFFBE973B);
+                multi_cities.setTextColor(0xFFFFFFFF);
+                parent_relative.setVisibility(View.GONE);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
 
         }
 
@@ -216,17 +226,47 @@ public class ProceedBeyBeyOriginal extends Fragment {
                     return_passe.setTextColor(0xFFBE973B);
                     multi_cities.setTextColor(0xFFBE973B);
                     JourneyType = 1;
-
                     returnFrom.setVisibility(View.GONE);
                     return_date.setVisibility(View.GONE);
                     line3.setVisibility(View.GONE);
                     icon2.setVisibility(View.GONE);
-
+                    from_country.setVisibility(View.VISIBLE);
+                    to_country.setVisibility(View.VISIBLE);
+                    relative_from_to.setVisibility(View.VISIBLE);
                 }
                 return false;
             }
         });
 
+//        multi_cities.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+//
+//
+//                    from_country.setVisibility(View.INVISIBLE);
+//                    to_country.setVisibility(View.INVISIBLE);
+//                    relative_from_to.setVisibility(View.GONE);
+//
+//                    return_passe.setTextColor(0xFFBE973B);
+//                    one_way.setTextColor(0xFFBE973B);
+//                    multi_cities.setTextColor(0xFFFFFFFF);
+//
+//                    JourneyType = 1;
+//                    returnFrom.setVisibility(View.VISIBLE);
+//                    return_date.setVisibility(View.VISIBLE);
+//                    line3.setVisibility(View.VISIBLE);
+//                    icon2.setVisibility(View.VISIBLE);
+//
+//                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.flights_container, new MultiCitiesFlights())
+//                            .addToBackStack("ProceedBeyBeyOriginal").commit();
+//
+//
+//                }
+//                return false;
+//
+//            }
+//        });
 
         return_passe.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -240,6 +280,9 @@ public class ProceedBeyBeyOriginal extends Fragment {
                     return_date.setVisibility(View.VISIBLE);
                     line3.setVisibility(View.VISIBLE);
                     icon2.setVisibility(View.VISIBLE);
+                    from_country.setVisibility(View.VISIBLE);
+                    to_country.setVisibility(View.VISIBLE);
+                    relative_from_to.setVisibility(View.VISIBLE);
 
                 }
                 return false;
@@ -644,10 +687,10 @@ public class ProceedBeyBeyOriginal extends Fragment {
 
                 //2
                 // searchFlights[0].setEndUserBrowserAgent("Mozilla/5.0(Windows NT 6.1)");
-                String to = toTextView.getText().toString();
+                 to = toTextView.getText().toString();
 
 
-                String from = fromTextView.getText().toString();
+                 from = fromTextView.getText().toString();
                 //3 test
                 searchFlights[0].setPointOfSale(to);
 
@@ -680,6 +723,8 @@ public class ProceedBeyBeyOriginal extends Fragment {
                 //11.2
                 segment.setOrigin(from);
 
+
+                //just 4 return trip
                 segment2.setDestination(from);
                 segment2.setOrigin(to);
                 // List<String> airlines = new ArrayList<>();

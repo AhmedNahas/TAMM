@@ -129,7 +129,7 @@
         android:layout_below="@+id/from_country">
 
         <TextView
-            android:id="@+id/country_from_textview"
+            android:id="@+id/from_multi_1"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5sdp"
@@ -145,7 +145,7 @@
             android:layout_height="1dp"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_30sdp"
-            android:layout_toEndOf="@+id/country_from_textview"
+            android:layout_toEndOf="@+id/from_multi_1"
             android:background="@color/white" />
 
         <View
@@ -164,7 +164,7 @@
             android:background="@color/white" />
 
         <TextView
-            android:id="@+id/country_to_textview"
+            android:id="@+id/to_multi_1"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5sdp"
@@ -176,10 +176,10 @@
             android:textSize="@dimen/_30ssp" />
 
         <TextView
-            android:id="@+id/country_selected_from_spinner"
+            android:id="@+id/from_country_multi_1"
             android:layout_width="@dimen/_80sdp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/country_from_textview"
+            android:layout_below="@+id/from_multi_1"
             android:layout_marginStart="@dimen/_25sdp"
             android:text="BEIRUT"
             android:gravity="center"
@@ -187,12 +187,12 @@
             android:textSize="@dimen/_10ssp" />
 
         <TextView
-            android:id="@+id/to_country_name"
+            android:id="@+id/to_country_multi_1"
             android:layout_width="@dimen/_80sdp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/country_from_textview"
+            android:layout_below="@+id/from_multi_1"
             android:layout_marginStart="@dimen/_100sdp"
-            android:layout_toEndOf="@+id/country_selected_from_spinner"
+            android:layout_toEndOf="@+id/from_country_multi_1"
             android:text="DUBAI"
             android:gravity="center"
             android:textColor="@color/white"
@@ -201,6 +201,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+
         android:id="@+id/parent_relative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
