@@ -44,8 +44,8 @@ public class ReturnWayFlights extends Fragment {
         firstClass = view.findViewById(R.id.first_class);
         businessClass = view.findViewById(R.id.business_class);
         economyClass = view.findViewById(R.id.economy_class);
-        fromTextView = view.findViewById(R.id.country_from_textview);
-        toTextView = view.findViewById(R.id.country_to_textview);
+        fromTextView = view.findViewById(R.id.from_multi_1);
+        toTextView = view.findViewById(R.id.to_multi_1);
         proccedBtn = view.findViewById(R.id.procced_btn);
         departure = view.findViewById(R.id.departure_spinner);
         returnFrom = view.findViewById(R.id.return_spinner);

@@ -12,9 +12,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.middledleeast.tamm.R;
+import net.middledleeast.tamm.fragments.MultiCitiesFlights;
 import net.middledleeast.tamm.fragments.ProceedBeyBeyOriginal;
 import net.middledleeast.tamm.model.modelflightSearsh;
 
@@ -72,18 +74,38 @@ public class AdapterAirportCuntry extends RecyclerView.Adapter<AdapterAirportCun
             @Override
             public void onClick(View view) {
 
-                ProceedBeyBeyOriginal fragment = new ProceedBeyBeyOriginal();
-                Bundle bundle = new Bundle();
-                bundle.putString("name_country", country);
-                bundle.putString("city_code", cityCode);
-                bundle.putInt("id", id);
 
-                fragment.setArguments(bundle);
+if (id==1||id==2){
 
-                ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.flights_container, fragment)
-                        .commit();
+    ProceedBeyBeyOriginal fragment = new ProceedBeyBeyOriginal();
+    Bundle bundle = new Bundle();
+    bundle.putString("name_country", country);
+    bundle.putString("city_code", cityCode);
+    bundle.putInt("id", id);
 
+    fragment.setArguments(bundle);
+
+    ((FragmentActivity) context).getSupportFragmentManager().beginTransaction()
+            .replace(R.id.flights_container, fragment)
+            .commit();
+
+
+}else if (id==3||id==4){
+
+    MultiCitiesFlights fragment = new MultiCitiesFlights();
+    Bundle bundle = new Bundle();
+    bundle.putString("name_country_multi", country);
+    bundle.putString("city_code_multi", cityCode);
+    bundle.putInt("id", id);
+
+    fragment.setArguments(bundle);
+
+    FragmentTransaction fragmentTransaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
+    fragmentTransaction.replace(R.id.flights_container, fragment)
+            .commit();
+
+
+}
             }
         });
     }
