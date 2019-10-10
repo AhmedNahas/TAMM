@@ -42,6 +42,7 @@ public class LinksUrl {
     public static String URL_BEST_HOTEL = "http://egyptgoogle.com/backend/besthotels/besthotels.php";
 
     public static final String URL_TAMM_FAMILY ="http://egyptgoogle.com/backend/terms/tammfamily.php" ;
+    public static final String URL_TAMM_FAMILY_ARABIC ="http://egyptgoogle.com/backend/terms/termsarabic.php" ;
 
     public static final String URL_USER_APP ="http://egyptgoogle.com/freeusers/listusers.php" ;
 

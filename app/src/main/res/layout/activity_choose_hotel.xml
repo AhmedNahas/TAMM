@@ -30,7 +30,7 @@
                 android:id="@+id/back_pressed_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BACK"
+                android:text="@string/back"
                 android:textColor="@color/white"
                 android:layout_marginStart="@dimen/_25sdp"/>
 
@@ -87,7 +87,7 @@
         android:background="@color/black"
         android:layout_margin="@dimen/_8sdp"
         android:layout_below="@+id/rating_bar"
-        android:hint="Write Hotel Name"
+        android:hint="@string/write_hotel_name"
         android:padding="@dimen/_4sdp"
         android:textColorHint="@color/white"
         android:textStyle="italic"
@@ -175,7 +175,7 @@
         android:id="@+id/tv_tab_me_choose_hotels"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tap me if you need MY ASSISTANCE "
+        android:text="@string/tap_me_if_you_need_my_assistance"
         android:textColor="#fff"
         android:gravity="center"
         android:layout_marginBottom="@dimen/_5sdp"

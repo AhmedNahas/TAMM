@@ -42,7 +42,8 @@
     android:layout_marginStart="@dimen/_17sdp"
     >
     <ImageView
-        android:layout_width="wrap_content"
+        android:id="@+id/image_contact"
+        android:layout_width="@dimen/_150sdp"
         android:layout_height="@dimen/_120sdp"
         android:src="@drawable/contact_us_human"
 
@@ -52,25 +53,26 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PLEASE TAKE A MINUTE TO"
+        android:text="@string/please_take_a_minute_to"
         android:textColor="@color/white"
         android:textSize="@dimen/_15ssp"
         android:fontFamily="sans-serif-light"
         android:layout_marginTop="@dimen/_50sdp"
         android:layout_marginStart="@dimen/_5sdp"
         android:id="@+id/tv_please_take"
-
+android:layout_toEndOf="@+id/image_contact"
 
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CONTACT US"
+        android:text="@string/contact_us"
         android:textColor="@color/app_color"
         android:textSize="@dimen/_15ssp"
         android:fontFamily="sans-serif-light"
         android:layout_below="@+id/tv_please_take"
         android:layout_marginStart="@dimen/_5sdp"
+        android:layout_toEndOf="@+id/image_contact"
         />
 
 
@@ -91,7 +93,7 @@
             android:id="@+id/et_subject"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="SUBJECT"
+            android:hint="@string/subject"
             android:textColor="@color/white"
             android:textColorHint="@color/app_color5"
             android:fontFamily="sans-serif-light"
@@ -115,7 +117,7 @@
             android:id="@+id/message_contact"
             android:padding="@dimen/_10sdp"
             android:gravity="top"
-            android:hint="Message"
+            android:hint="@string/message"
             android:textColorHint="@color/app_color5"
             android:textColor="@color/white"
             android:layout_width="@dimen/_270sdp"
@@ -134,7 +136,7 @@
         android:id="@+id/tv_if"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="If you have more detailed feedback to share,drop on email to "
+        android:text="@string/if_you_have_more_detailed_feedback_to_share_drop_on_email_to"
         android:layout_below="@+id/relative_subject"
         android:textColor="@color/app_color"
         android:layout_marginStart="@dimen/_22sdp"
@@ -163,7 +165,7 @@
         android:id="@+id/btn_send_contact"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_25sdp"
-        android:text="SEND"
+        android:text="@string/send_email"
         android:layout_below="@+id/tv_info"
         android:layout_centerInParent="true"
         android:background="@drawable/border"

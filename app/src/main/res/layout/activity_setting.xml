@@ -55,7 +55,8 @@
         >
 
         <ImageView
-            android:layout_width="@dimen/_300sdp"
+            android:id="@+id/pic_setting"
+            android:layout_width="@dimen/_150sdp"
             android:layout_height="@dimen/_150sdp"
             android:src="@drawable/authintication_image"
 
@@ -64,6 +65,7 @@
             />
 
         <TextView
+            android:layout_toEndOf="@+id/pic_setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/settings"
@@ -248,7 +250,7 @@
             android:layout_width="@dimen/_220sdp"
             android:layout_height="@dimen/_30sdp"
             android:fontFamily="sans-serif-light"
-            android:hint="Old Password"
+            android:hint="@string/old_password"
             android:textColorHint="@color/white"
             android:layout_marginTop="@dimen/_10sdp"
             android:textSize="@dimen/_15sdp"
@@ -262,7 +264,7 @@
             android:layout_width="@dimen/_220sdp"
             android:layout_height="@dimen/_30sdp"
             android:fontFamily="sans-serif-light"
-            android:hint="New Password"
+            android:hint="@string/new_password"
             android:textColorHint="@color/white"
             android:layout_marginTop="@dimen/_10sdp"
             android:textSize="@dimen/_15sdp"
@@ -277,7 +279,7 @@
             android:layout_width="@dimen/_220sdp"
             android:layout_height="@dimen/_30sdp"
             android:fontFamily="sans-serif-light"
-            android:text="Re-type Password"
+            android:text="@string/re_type_password"
             android:textColor="@color/white"
             android:layout_marginTop="@dimen/_10sdp"
             android:textSize="@dimen/_15sdp"
@@ -293,7 +295,7 @@
     <Button
         android:layout_width="@dimen/_150sdp"
         android:layout_height="wrap_content"
-        android:hint="CONFIRM"
+        android:hint="@string/confirm"
         android:textColorHint="@color/white"
         android:background="@drawable/border"
         android:layout_centerInParent="true"

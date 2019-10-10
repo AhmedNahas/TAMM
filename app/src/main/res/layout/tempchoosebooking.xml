@@ -69,7 +69,8 @@
         android:id="@+id/relative_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_word">
+        android:layout_below="@+id/tv_word"
+        android:layout_margin="@dimen/_15sdp">
 
 
             <TextView
@@ -127,7 +128,8 @@
         android:id="@+id/relative_three"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relative_two">
+        android:layout_below="@+id/relative_two"
+        android:layout_margin="@dimen/_15sdp">
 
 
 

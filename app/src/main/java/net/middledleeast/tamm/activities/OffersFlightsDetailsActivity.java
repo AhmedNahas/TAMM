@@ -76,12 +76,12 @@ public class OffersFlightsDetailsActivity extends AppCompatActivity {
     Button btnMapOffer;
     @BindView(R.id.relative_map_next_offer)
     RelativeLayout relativeMapNextOffer;
-    @BindView(R.id.assistant_label_voice_details_offer)
-    TextView assistantLabelVoiceDetailsOffer;
-    @BindView(R.id.assistant_label_call_details_offer)
-    TextView assistantLabelCallDetailsOffer;
-    @BindView(R.id.assistant_label_message_details_offer)
-    TextView assistantLabelMessageDetailsOffer;
+//    @BindView(R.id.assistant_label_voice_details_offer)
+//    TextView assistantLabelVoiceDetailsOffer;
+//    @BindView(R.id.assistant_label_call_details_offer)
+//    TextView assistantLabelCallDetailsOffer;
+//    @BindView(R.id.assistant_label_message_details_offer)
+//    TextView assistantLabelMessageDetailsOffer;
     @BindView(R.id.relative_img_offer_details_tamm_offer)
     RelativeLayout relativeImgOfferDetailsTammOffer;
     @BindView(R.id.tv_tab_me_details_offer)
@@ -216,9 +216,10 @@ try {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_map_offer:
+SharedPreferencesManger.SaveData(OffersFlightsDetailsActivity.this,"mId",7);
+SharedPreferencesManger.SaveData(OffersFlightsDetailsActivity.this,"priceflight",price);
 
-// TODO: 8/31/2019 intent to paymentActivity //// Nahas
-
+startActivity(new Intent(OffersFlightsDetailsActivity.this,PaymentActivity.class));
                 if (guestMode != null) {
 
 

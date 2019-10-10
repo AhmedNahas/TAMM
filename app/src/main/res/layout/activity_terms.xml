@@ -49,7 +49,7 @@
             android:drawablePadding="@dimen/_4sdp"
             android:fontFamily="sans-serif-light"
             android:gravity="center"
-            android:text="TERMS AND CONDITIONS"
+            android:text="@string/terms_and_conditions"
             android:textColor="@color/app_color"
             android:textSize="@dimen/_15ssp" />
 

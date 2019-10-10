@@ -54,7 +54,7 @@
 
     <Button
         android:id="@+id/room_booking_btn"
-        android:text="Book"
+        android:text="@string/book_room"
         android:layout_marginStart="12dp"
         android:textColor="@color/black"
         android:layout_marginTop="8dp"

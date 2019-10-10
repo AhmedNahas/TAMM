@@ -153,7 +153,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Tap me if you need MY ASSISTANCE "
+        android:text="@string/tap_me_if_you_need_my_assistance"
         android:textColor="#fff"
         android:layout_below="@+id/relative_img_renew_flight_tamm"/>
 

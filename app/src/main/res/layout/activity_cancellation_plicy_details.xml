@@ -18,7 +18,7 @@
         android:id="@+id/cancellation_fees"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="dsjkfgdewsjh :"
+        android:text="@string/not_available"
         android:layout_below="@+id/tv_9"
         android:layout_marginTop="@dimen/_5sdp"
         android:textColor="@color/app_color" />

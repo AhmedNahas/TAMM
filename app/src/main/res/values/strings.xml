@@ -100,7 +100,7 @@
     <string name="view_results">VIEW RESULTS</string>
     <string name="change_search">CHANGE SEARCH</string>
     <string name="checkout">CHECKOUT</string>
-    <string name="guest_s_information">Guest (s) information</string>
+    <string name="guest_s_information">Guest information</string>
     <string name="adult">Adult</string>
     <string name="request">Request :</string>
     <string name="write_your_room_specification">Write your room specification</string>
@@ -1447,6 +1447,29 @@
     <string name="contacts_us">Contacts us</string>
     <string name="log_out">Log out</string>
     <string name="tamm">TAMM</string>
+    <string name="renew_account">Renew Account</string>
+    <string name="free_account">FreeUser Account</string>
+    <string name="membership_user">MemberShip Account</string>
+    <string name="write_hotel_name">Write Hotel Name</string>
+    <string name="of_5_guest_rating">of 5 Guest Rating</string>
+    <string name="guest_names">Guest Names</string>
+    <string name="book_room">Book</string>
+    <string name="choose_the_agent_you_wish_to_contact">CHOOSE THE AGENT YOU WISH TO CONTACT :</string>
+    <string name="subject">SUBJECT</string>
+    <string name="message">Message</string>
+    <string name="please_take_a_minute_to">PLEASE TAKE A MINUTE TO</string>
+    <string name="contact_us">CONTACT US</string>
+    <string name="if_you_have_more_detailed_feedback_to_share_drop_on_email_to">If you have more detailed feedback to share,drop on email to</string>
+    <string name="send_mail">Send mail</string>
+    <string name="airport">airport</string>
+    <string name="takeoff_date">TAKEOFF DATE :</string>
+    <string name="landing_date">LANDING DATE :</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="re_type_password">Re-type Password</string>
+    <string name="cancellation_policy">Cancellation Policy</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit">Edit</string>
 
 
 </resources>

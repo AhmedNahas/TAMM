@@ -2,8 +2,12 @@ package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -14,9 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 
+import java.util.Locale;
+
 public class SettingActivity extends AppCompatActivity {
-//    private String mLanguageCodeArabic = "ar";
-//    private String mLanguageCodeEnglish = "en";
+    private String mLanguageCodeArabic = "ar";
+    private String mLanguageCodeEnglish = "en";
 
     private Button english,arabic,on,off;
     RelativeLayout toolbar_back1_setting , relative_notification_pass;
@@ -44,25 +50,26 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
-//        arabic.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                LocaleHelper.setLocale(SettingActivity.this, mLanguageCodeArabic);
-//                //It is required to recreate the activity to reflect the change in UI.
-//                recreate();
-//            }
-//        });
-//
-//
-//        english.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                LocaleHelper.setLocale(SettingActivity.this, mLanguageCodeEnglish);
-//
-//                //It is required to recreate the activity to reflect the change in UI.
-//                recreate();
-//            }
-//        });
+        arabic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Resources resources = getResources();
+                setAppLocale("ar" ,resources);
+                SharedPreferencesManger.SaveData(SettingActivity.this,"language","ar");
+                recreate();
+            }
+        });
+
+
+        english.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Resources resources = getResources();
+                setAppLocale("en" ,resources );
+                SharedPreferencesManger.SaveData(SettingActivity.this,"language","en");
+                recreate();
+            }
+        });
 
 
         if (guestMode != null) {
@@ -81,9 +88,9 @@ public class SettingActivity extends AppCompatActivity {
                     english.setBackground(getDrawable(R.color.app_color));
                     english.setTextColor(0xFF000000);
                     english.setTypeface(null, Typeface.BOLD_ITALIC);
-
                     arabic.setBackground(getDrawable(R.color.float_transparent));
                     arabic.setTextColor(0xFFBE973B);
+
 
                 }
 
@@ -187,7 +194,17 @@ public class SettingActivity extends AppCompatActivity {
 
 
 
+    public static void setAppLocale(String localeCode  ,  Resources resources ){
 
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        Configuration config = resources.getConfiguration();
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.JELLY_BEAN_MR1){
+            config.setLocale(new Locale(localeCode.toLowerCase()));
+        } else {
+            config.locale = new Locale(localeCode.toLowerCase());
+        }
+        resources.updateConfiguration(config, dm);
+    }
 
 
 

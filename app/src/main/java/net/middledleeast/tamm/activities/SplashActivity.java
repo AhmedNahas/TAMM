@@ -1,27 +1,21 @@
 package net.middledleeast.tamm.activities;
 
 import android.content.Intent;
-import android.os.Build;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import net.middledleeast.tamm.R;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
+
+import static net.middledleeast.tamm.activities.SettingActivity.setAppLocale;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -34,11 +28,21 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        String language = SharedPreferencesManger.LoadStringData(SplashActivity.this, "language");
+         Resources resources = getResources();
+
+         if (language!=null){
+
+             setAppLocale(language ,resources);
+
+         }
+
+
+
         setContentView(R.layout.activity_splash);
 
         imageView = findViewById(R.id.img_splash_logo);
-
-
 
 
 //        SharedPreferencesManger.clean(this);

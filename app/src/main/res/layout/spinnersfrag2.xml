@@ -27,7 +27,7 @@
             android:layout_marginStart="0dp"
             android:backgroundTint="@color/app_color"
             android:gravity="center_horizontal"
-            android:text="Room "
+            android:text="@string/room"
             android:textColor="@color/app_color" />
 
         <View

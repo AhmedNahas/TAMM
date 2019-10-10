@@ -29,6 +29,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Locale;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -103,7 +105,13 @@ public class TammFamilyFragment extends Fragment {
             }
         });
 
-        gettextfamily();
+        if (Locale.getDefault().getLanguage().contentEquals("en")){
+            gettextfamily();
+
+        }else {
+gettextfamilyArabic();
+        }
+
 
         return view;
     }
@@ -129,6 +137,36 @@ public class TammFamilyFragment extends Fragment {
 //                        Toast.makeText(getContext(), ""+array.length(), Toast.LENGTH_SHORT).show();
 
                     }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+    }
+    private void gettextfamilyArabic() {
+
+        StringRequest stringRequest=new StringRequest(Request.Method.GET, LinksUrl.URL_TAMM_FAMILY_ARABIC, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray jsonarray = new JSONArray(response);
+                    JSONObject jsonObject = jsonarray.getJSONObject(0);
+                    String msgbody = jsonObject.getString("Msgbody");
+
+
+                    textfamily.setText(msgbody);
+
+//                        Toast.makeText(getContext(), ""+array.length(), Toast.LENGTH_SHORT).show();
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

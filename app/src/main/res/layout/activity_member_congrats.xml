@@ -48,7 +48,7 @@
             android:id="@+id/tv_community"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tamm_community"
+            android:text="@string/tamm"
             android:textColor="@color/app_color"
             android:textSize="20dp"
             android:textStyle="bold"

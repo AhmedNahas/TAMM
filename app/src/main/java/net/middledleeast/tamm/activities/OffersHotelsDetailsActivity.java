@@ -59,12 +59,12 @@ public class OffersHotelsDetailsActivity extends AppCompatActivity {
 //    Button btnNextOffer;
     @BindView(R.id.relative_map_next_offer)
     RelativeLayout relativeMapNextOffer;
-    @BindView(R.id.assistant_label_voice_details_offer)
-    TextView assistantLabelVoiceDetailsOffer;
-    @BindView(R.id.assistant_label_call_details_offer)
-    TextView assistantLabelCallDetailsOffer;
-    @BindView(R.id.assistant_label_message_details_offer)
-    TextView assistantLabelMessageDetailsOffer;
+//    @BindView(R.id.assistant_label_voice_details_offer)
+//    TextView assistantLabelVoiceDetailsOffer;
+//    @BindView(R.id.assistant_label_call_details_offer)
+//    TextView assistantLabelCallDetailsOffer;
+//    @BindView(R.id.assistant_label_message_details_offer)
+//    TextView assistantLabelMessageDetailsOffer;
     @BindView(R.id.relative_img_offer_details_tamm_offer)
     RelativeLayout relativeImgOfferDetailsTammOffer;
     @BindView(R.id.tv_tab_me_details_offer)
@@ -92,14 +92,14 @@ public class OffersHotelsDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_offers_details);
         ButterKnife.bind(this);
 
-        iv_booked_offer_hotel = findViewById(R.id.iv_booked_offer_hotel);
-        iv_booked_offer_hotel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(OffersHotelsDetailsActivity.this, MyBookActivity.class);
-                startActivity(intent);
-            }
-        });
+//        iv_booked_offer_hotel = findViewById(R.id.iv_booked_offer_hotel);
+//        iv_booked_offer_hotel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(OffersHotelsDetailsActivity.this, MyBookActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         guestMode = SharedPreferencesManger.LoadStringData(OffersHotelsDetailsActivity.this, "guestMode");
 
         final String country_ = SharedPreferencesManger.LoadStringData(OffersHotelsDetailsActivity.this, "country_");
@@ -187,7 +187,10 @@ public class OffersHotelsDetailsActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_map_offer:
 
-// TODO: 8/31/2019 intent to paymentActivity //// Nahas
+                SharedPreferencesManger.SaveData(OffersHotelsDetailsActivity.this,"mId",6);
+                SharedPreferencesManger.SaveData(OffersHotelsDetailsActivity.this,"pricepffers",price);
+
+                startActivity(new Intent(OffersHotelsDetailsActivity.this,PaymentActivity.class));
                 if (guestMode != null) {
 
 

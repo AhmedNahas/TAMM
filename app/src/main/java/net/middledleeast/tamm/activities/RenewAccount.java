@@ -298,15 +298,16 @@ public class  RenewAccount extends AppCompatActivity
 
                 user_name_profile.setVisibility(View.VISIBLE);
                 textView_account.setVisibility(View.VISIBLE);
+                btn_renew_account.setVisibility(View.INVISIBLE);
                 user_name_profile.setText(user);
                 user_name_profile.setText(userNameFromSignIn);
-                textView_account.setText("FreeUser Account");
+                textView_account.setText(getString(R.string.free_account));
             }else if (accountPlan == 0) {
                 user_name_profile.setVisibility(View.VISIBLE);
                 relative_expire.setVisibility(View.VISIBLE);
                 textView_account.setVisibility(View.VISIBLE);
 
-                textView_account.setText("MemberShip Account");
+                textView_account.setText(getString(R.string.membership_user));
 
                 user_name_profile.setText(user);
                 user_name_profile.setText(userNameFromSignIn);

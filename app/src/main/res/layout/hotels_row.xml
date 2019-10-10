@@ -91,7 +91,7 @@
                     android:layout_height="20dp"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
-                    android:text="of 5  Guest Rating"
+                    android:text="@string/of_5_guest_rating"
                     android:textColor="#FFFFFF" />
 
                 <TextView

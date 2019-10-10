@@ -74,7 +74,7 @@
         android:id="@+id/tv_agent_assist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CHOOSE THE AGENT YOU WISH TO CONTACT :"
+        android:text="@string/choose_the_agent_you_wish_to_contact"
         android:layout_below="@+id/line1_assistant"
         android:textSize="@dimen/_12sdp"
         android:textColor="@color/white"

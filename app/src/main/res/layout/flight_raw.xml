@@ -123,7 +123,7 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:background="@drawable/shape"
                 android:gravity="center"
-                android:text="BEST FLIGHTS"
+                android:text="@string/best_flight_deals"
                 android:textColor="@color/black"
                 android:textStyle="bold"
 

@@ -48,7 +48,7 @@
             android:layout_height="@dimen/_30sdp"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_marginLeft="100dp"
+            android:layout_marginStart="100dp"
             android:background="@drawable/logo" />
 
         <ImageView
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_gravity="center"
-            android:layout_marginLeft="100dp"
+            android:layout_marginStart="100dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/ic_button" />
@@ -78,8 +78,8 @@
         android:id="@+id/tv_favorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FAVORITE"
-        android:drawableLeft="@drawable/ic_nav_favorites"
+        android:text="@string/favorites"
+        android:drawableStart="@drawable/ic_nav_favorites"
         android:textColor="@color/white"
         android:fontFamily="sans-serif-light"
         android:layout_below="@+id/line1_favorite"
@@ -102,9 +102,9 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_37sdp"
             android:background="@drawable/shapecontact"
-            android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
+            android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
             android:layout_marginStart="@dimen/_5sdp"
-            android:hint="Country"
+            android:hint="@string/country"
             android:paddingStart="@dimen/_5sdp"
             android:textColorHint="@color/white"
             android:textColor="@color/white"/>
@@ -114,10 +114,10 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_37sdp"
             android:background="@drawable/shapecontact"
-            android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
-            android:layout_toRightOf="@+id/act_country_favorite"
+            android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
+            android:layout_toEndOf="@+id/act_country_favorite"
             android:layout_marginStart="@dimen/_5sdp"
-            android:hint="City"
+            android:hint="@string/city"
             android:paddingStart="@dimen/_5sdp"
             android:textColorHint="@color/white"
             android:textColor="@color/white"/>
@@ -127,7 +127,7 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:background="@drawable/shapecontact"
-            android:layout_toRightOf="@+id/act_city_favorite"
+            android:layout_toEndOf="@+id/act_city_favorite"
             android:layout_marginStart="@dimen/_5sdp"
 
             />

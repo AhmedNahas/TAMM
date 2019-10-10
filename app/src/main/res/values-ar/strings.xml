@@ -7,31 +7,42 @@
     <string name="english">انجليزي</string>
     <string name="arabic">عربي</string>
     <string name="continue_">متابعة</string>
+    <string name="choose_the_agent_you_wish_to_contact">اختر العميل الذي تود الإتصال به</string>
 
     <string name="personal_assistant_app"> تطبيق المساعدة الشخصية الخاص بك</string>
-    <string name="tamm_assistant_service">خدمات مساعدة TAMM للزائرين (مساعدك الشخصي)</string>
+    <string name="tamm_assistant_service">خدمات مساعدة تــم للزائرين مساعدك الشخصي</string>
     <string name="family_message">شركة Tamm هي شركة كويتية للخدمات تتواصل مع عملائها في جميع أنحاء العالم ، وهي الشركة التي تأسست منذ عام 2017 والتي تمكن العملاء من حبسهم بتجربة خاصة من خلال تطبيقنا ومركز الاتصال والموقع الإلكتروني وقنوات التواصل الاجتماعي. كانت الشركة رائدة في مفهوم المساعدة الشخصية التي يتطلبها نمط الحياة الحالي والمستقبلي للأفراد أو الشركات أو الجهات الحكومية بطريقة فاخرة. توفر الشركة لأعضائها جميع الخدمات المتميزة التي يقدمها المساعد الشخصي. يتكون التطبيق من تطبيق هاتفي متطور يتضمن الخدمات التالية (قطاع السياحة والطيران - قطاع التوصيل وتأجير السيارات - خدمات تقديم الطعام ، حجوزات السينما ، التسوق الإلكتروني ، جميع خدمات الكونسيرج الأخرى ، تقديم الخدمات لذوي الاحتياجات الخاصة ، من أجل للحصول على الخدمات التي يحتاجون إليها في أي وقت ، في أي مكان على مدار 24 ساعة في اليوم ، 7 أيام في الأسبوع. أولويتنا هي عملائنا ونحن نبذل قصارى جهدنا للحصول على رضاهم من خلال أكثر من 100 موظف متدرب جيدًا يعملون في نوبات 7/24 لبيع تجربة رائعة مليئة بالسعادة والذكريات الجميلة.سعي فريقنا المتخصص في السعي للحصول على أفضل الأسعار والخدمات والراحة والرضا لعملائنا في جميع أنحاء العالم والتركيز على الوجهات ذات الطلب المرتفع ويحرصون دائمًا على خدمة عملائنا مع المحترفين خدمة وأعلى جودة للبقاء تستحق الثقة ، ونحن نتطلع إلى أن نكون واحدة من عائلة (تام).
 </string>
 
     <string name="authintication_text">أولاً ، يجب أن نبدأ بعملية التسجيل ، أو يمكنك تسجيل الدخول إذا كنت عضوًا بالفعل.</string>
-
+    <string name="if_you_have_more_detailed_feedback_to_share_drop_on_email_to">إذا كان لديك اي إستفسارات أخري , أرسل لنا علي عنوان بريد</string>
+    <string name="old_password">كلمة الدخول القديمة</string>
+    <string name="new_password">كلمة الدخول الجديدة</string>
+    <string name="re_type_password">إعادة إدخال  الجديدة</string>
+    <string name="cancellation_policy">سياسة الإلغاء</string>
     <string name="sign_in">تسجيل الدخول</string>
     <string name="register">انشاء حساب جديد</string>
     <string name="sign_in_as_a_guest">تسجيل الدخول كضيف</string>
-
+    <string name="send_mail">إرسال إيميل</string>
+    <string name="airport">مطار</string>
+    <string name="takeoff_date">موعد الإقلاع : </string>
+    <string name="landing_date">موعد الهبوط : </string>
     <string name="username">اسم المستخدم</string>
     <string name="password">كلمة الدخول</string>
     <string name="enter">دخول</string>
     <string name="sorgot_password">هل نسيت كلمة المرور؟</string>
-
-
+    <string name="cancel">إلغاء</string>
+    <string name="edit">تعديل</string>
+    <string name="room">غرفة</string>
     <string name="forgot_pass">هل نسيت كلمة المرور؟</string>
     <string name="password_will_be_send">الباسورد سوف يرسل الي ايميلك الالكتروني</string>
     <string name="send_email">ارسال</string>
     <string name="success_send_email">تم إرسال كلمة المرور إلى عنوان بريدك الإلكتروني</string>
     <string name="proceed">تقدم</string>
-
-
+    <string name="subject">عنوان الرسالة</string>
+    <string name="message">نص الرسالة</string>
+    <string name="please_take_a_minute_to">من فضلك خذ دقيقة للــ</string>
+    <string name="contact_us">الإتصال بنا</string>
     <string name="plans_text">دعنا نختار الخطة المناسبة لك الآن!</string>
     <string name="plans_long_text">يمكنك معرفة المزيد عن الخطط من خلال النقر عليها</string>
     <string name="plan_details_text_free">يمكنك تجربة أفضل العروض وأفضل الأسعار مع الخدمات الممتازة</string>
@@ -82,12 +93,13 @@
     <string name="find_hotels">ابحث عن الفنادق</string>
     <string name="view_results">عرض النتائج</string>
     <string name="change_search">تغيير البحث</string>
+    <string name="book_room">حجز</string>
 
 
     <string name="checkout">حجز</string>
 
 
-    <string name="guest_s_information">ضيف(ق)المعلومات</string>
+    <string name="guest_s_information">أسماء النزلاء</string>
     <string name="adult">الافراد</string>
     <string name="request">الطلب :</string>
     <string name="write_your_room_specification">اكتب مواصفات غرفتك</string>
@@ -115,7 +127,7 @@
 
     <string name="usd">دولار أمريكي</string>
     <string name="euro">يورو</string>
-    <string name="eg_pound">كنيه مصري</string>
+    <string name="eg_pound">جنيه مصري</string>
     <string name="kd" >دينار كويتي</string>
     <string name="choose_no_of_rooms">أختر عدد الغرف</string>
     <string name="room_1">غرفة 1</string>
@@ -149,6 +161,14 @@
     <string name="flight_amp_private_jets"><![CDATA[الطيران & رحلات خاصة]]></string>
     <string name="best_flight_deals">افضل عروض الطيران</string>
     <string name="tamm">تـــم</string>
+    <string name="renew_account">تجديد الحساب</string>
+    <string name="free_account">حساب مجاني</string>
+    <string name="membership_user">حساب مدفوع</string>
+    <string name="write_hotel_name">بحث بإسم الفندق</string>
+    <string name="of_5_guest_rating">من تقييم النزلاء</string>
+    <string name="basic_amenities">المميزات الأساسية</string>
+    <string name="not_available">غير متاح</string>
+    <string name="guest_names">أسماء النزلاء</string>
 
     <string name="offers">العروض</string>
     <string name="favorites">المفضلة</string>

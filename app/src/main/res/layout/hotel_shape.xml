@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/shape"
                     android:layout_centerVertical="true"
-                    android:text="HOTELS"
+                    android:text="@string/hotels"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_toEndOf="@+id/tv_country_hotel"

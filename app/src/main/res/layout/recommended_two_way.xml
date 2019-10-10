@@ -37,7 +37,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@+id/toolbar_back1"
-                android:text="BACK"
+                android:text="@string/back"
                 android:textColor="#ffff"
                 android:textSize="12sp" />
 
@@ -777,7 +777,7 @@
         android:layout_below="@+id/relative_country3"
         android:layout_centerInParent="true"
         android:background="@drawable/shape"
-        android:text="PROCEED"
+        android:text="@string/proceed"
 
         />
 
@@ -789,6 +789,15 @@
         android:src="@drawable/man1"
 
         />
+    <TextView
+        android:id="@+id/tv_tab_me_renew_hotels"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:text="@string/tap_me_if_you_need_my_assistance"
+
+        android:textColor="#fff" />
 
 
 </RelativeLayout>

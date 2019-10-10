@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/img_hotel"
         android:layout_centerInParent="true"
-        android:text="@string/app_name"
+        android:text="@string/tamm"
         android:textColor="#fff"
         android:textSize="30dp"
 
@@ -238,7 +238,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/_5sdp"
         android:gravity="center"
-        android:text="Tap me if you need MY ASSISTANCE "
+        android:text="@string/tap_me_if_you_need_my_assistance"
         android:textColor="#fff" />
 
 

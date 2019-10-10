@@ -27,7 +27,7 @@
                 android:id="@+id/back_pressed_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BACK"
+                android:text="@string/back"
                 android:textColor="@color/white"
                 android:layout_marginStart="@dimen/_25sdp"/>
 
@@ -115,7 +115,7 @@
                     <TextView
                         android:textColor="@color/white"
                         android:gravity="center"
-                        android:text="Guest Names"
+                        android:text="@string/guest_names"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -1407,7 +1407,7 @@
         android:id="@+id/tv_tab_me_confirm_hotels"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tap me if you need MY ASSISTANCE "
+        android:text="@string/tap_me_if_you_need_my_assistance"
         android:textColor="#fff"
         android:gravity="center"
         android:layout_below="@+id/relative_img_confirm_hotel_tamm"

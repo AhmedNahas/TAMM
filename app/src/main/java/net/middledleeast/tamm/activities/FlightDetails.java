@@ -3,10 +3,8 @@ package net.middledleeast.tamm.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,17 +20,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import net.middledleeast.tamm.R;
-import net.middledleeast.tamm.SignInFragment;
 import net.middledleeast.tamm.helper.SharedPreferencesManger;
 import net.middledleeast.tamm.model.AllLinks.LinksUrl;
 import net.middledleeast.tamm.model.Room.AppDatabase;
 import net.middledleeast.tamm.model.Room.RoomCartModel;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -60,6 +55,8 @@ public class FlightDetails extends AppCompatActivity  {
 
     @BindView(R.id.back_to_hotel)
     Button backToHotel;
+    @BindView(R.id.back_flight)
+    Button back_flight;
 
     @BindView(R.id.get_code)
     Button getCode;
@@ -111,7 +108,7 @@ public class FlightDetails extends AppCompatActivity  {
     }
 
 
-    @OnClick({R.id.iv_booked_flight_details, R.id.get_code, R.id.back_to_hotel})
+    @OnClick({R.id.iv_booked_flight_details, R.id.get_code, R.id.back_to_hotel,R.id.back_flight})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_booked_flight_details:
@@ -130,6 +127,10 @@ public class FlightDetails extends AppCompatActivity  {
             case R.id.back_to_hotel:
 
                 startActivity(new Intent(FlightDetails.this, FindHotels .class));
+
+                break;
+            case R.id.back_flight:
+                startActivity(new Intent(FlightDetails.this,RenewAccount.class));
 
                 break;
         }
