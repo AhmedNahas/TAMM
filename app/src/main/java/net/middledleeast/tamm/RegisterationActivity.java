@@ -271,26 +271,23 @@ public class RegisterationActivity extends Fragment {
 
                 // TODO: 9/1/2019  remove it when amir do it
                 if (isEmpty(etUserName)) {
-                    etUserName.setError("user name is required!");
-
-
-
+                    etUserName.setError("user name is required !");
 
 
                 } else if (isEmpty(etEmail)) {
-                    etEmail.setError("Email is required!");
+                    etEmail.setError("Email is required !");
 
 
                 } else if (isEmpty(etFirstName)) {
-                    etFirstName.setError("First Name is required!");
+                    etFirstName.setError("First Name is required !");
 
 
                 } else if (isEmpty(etLastName)) {
-                    etLastName.setError("Last Name is required!");
+                    etLastName.setError("Last Name is required !");
 
 
                 } else if (isEmpty(etPassword)) {
-                    etPassword.setError("Password is required!");
+                    etPassword.setError("Password is required !");
 
 
                 } else if (etPassword.getText().toString().length() < 8) {
@@ -299,20 +296,20 @@ public class RegisterationActivity extends Fragment {
 
                 } else if (isEmpty(city)) {
 
-                    city.setError("city is required!");
-                } else if (isEmpty(country)) {
+                    city.setError("city is required !");
+                } else if (isEmpty(country) || !list_country.contains(country.getText().toString())) {
 
-                    country.setError("country is required!");
+                    country.setError("Country name is either missing or wrong!");
                 } else if (isEmpty(ocupation)) {
 
-                    ocupation.setError("occupation is required!");
+                    ocupation.setError("occupation is required !");
 
 
                 } else if (isEmpty(etPhone)) {
-                    etPhone.setError("Phone is required!");
+                    etPhone.setError("Phone is required !");
 
                 } else if (isEmpty(etDate)) {
-                    etDate.setError("Date is required!");
+                    etDate.setError("Date is required !");
                 } else if (!agree.isChecked()) {
 
                     Toast.makeText(context, "please agree the terms and conditions", Toast.LENGTH_SHORT).show();
@@ -341,18 +338,21 @@ public class RegisterationActivity extends Fragment {
 
                         Intent intent = new Intent(getContext(), PaymentActivity.class);
 
-                        intent.putExtra("first_name", firstName);
-                        intent.putExtra("last_name", lastName);
-                        intent.putExtra("day",day);
-                        intent.putExtra("month",month);
-                        intent.putExtra("year",year);
-                        intent.putExtra("country",country.getText().toString());
-                        intent.putExtra("city",city.getText().toString());
-                        intent.putExtra("mail",etEmail.getText().toString());
-                        intent.putExtra("phone",etPhone.getText().toString());
-                        intent.putExtra("ocupation",ocupation.getText().toString());
-                        intent.putExtra("username",etUserName.getText().toString());
-                        intent.putExtra("pass",etPassword.getText().toString());
+
+                        intent.putExtra("username", userName);
+                        intent.putExtra("firstname",firstName );
+                        intent.putExtra("lastname", lastName);
+                        intent.putExtra("country", counTry);
+                        intent.putExtra("city", cityUser);
+                        intent.putExtra("phone",phoneM);
+                        intent.putExtra("isfree",String.valueOf(isfree));
+                        intent.putExtra("occupation",occup);
+                        intent.putExtra("email", email);
+                        intent.putExtra("password", password);
+                        intent.putExtra("birthdate"," " + day+ " - " + month+ " - " + year + " ");
+                        intent.putExtra("subscriptiondate", bookedOn);
+                        intent.putExtra("nationality", idCountry);
+
                         SharedPreferencesManger.SaveData(getContext(),"mId",1);
 
 

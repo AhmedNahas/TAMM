@@ -121,7 +121,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.HotelDetails"
-            android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ChooseHotelActivity"

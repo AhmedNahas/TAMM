@@ -352,7 +352,7 @@
     <string name="usd">USD</string>
     <string name="euro">EURO</string>
     <string name="eg_pound">EG POUND</string>
-    <string name="kd" translatable="false">KD</string>
+    <string name="kd" >KD</string>
 
     <string name="A0B">Blue Air Transport Aerian</string>
     <string name="A0D">Darwin Airline</string>
@@ -1440,6 +1440,14 @@
     <string name="besthotel">Best Hotels</string>
     <string name="bestdeals">Best Deals</string>
     <string name="commplet">Next</string>
+    <string name="offers">Offers</string>
+    <string name="favorites">Favorites</string>
+    <string name="conversation">Conversation</string>
+    <string name="setting">Setting</string>
+    <string name="about_us">About us</string>
+    <string name="contacts_us">Contacts us</string>
+    <string name="log_out">Log out</string>
+    <string name="tamm">TAMM</string>
 
 
 </resources>

@@ -2,6 +2,7 @@ package net.middledleeast.tamm.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -57,6 +58,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -103,7 +105,7 @@ public class PaymentActivity extends AppCompatActivity {
     String first_name1 , last_name1 ,birthdate , country ,city,email,phone,ocupation,username ,pass ;
 
 //    private String register_url_member = "http://egyptgoogle.com/paymentusers/insertstudents.php";
-    private String day , month , year ;
+    private String day ;
     private int RIGISTRATHION = 1;
     private int BOOKING_ROOM = 2 ;
     private int FLIGHT =3;
@@ -123,6 +125,8 @@ public class PaymentActivity extends AppCompatActivity {
 
     RelativeLayout relative_radio_btn;
     private String uid;
+    private String nationality;
+    private String subscriptiondate;
 
 
     @SuppressLint("SetTextI18n")
@@ -172,14 +176,6 @@ public class PaymentActivity extends AppCompatActivity {
         });
 
 
-
-
-
-
-
-
-
-
         List<String> listTypeMony = new ArrayList<>();
 
 
@@ -198,6 +194,11 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
+                Locale locale = new Locale("EN");
+                Locale.setDefault(locale);
+                Configuration config = new Configuration();
+                config.locale = locale;
+                getApplicationContext().getResources().updateConfiguration(config, null);
 
                 DecimalFormat df = new DecimalFormat("#,###.##");
 
@@ -380,20 +381,20 @@ public class PaymentActivity extends AppCompatActivity {
             tvLastName.setText(last_name);
             tvFirstName.setText(first_name);
 
-            first_name1 = intent.getStringExtra("first_name");
-            last_name1 = intent.getStringExtra("last_name");
-            day = intent.getStringExtra("day");
-            month = intent.getStringExtra("month");
-            year = intent.getStringExtra("year");
+            first_name1 = intent.getStringExtra("firstname");
+            last_name1 = intent.getStringExtra("lastname");
+            day = intent.getStringExtra("birthdate");
             country = intent.getStringExtra("country");
             city = intent.getStringExtra("city");
-            email = intent.getStringExtra("mail");
+            email = intent.getStringExtra("email");
             phone = intent.getStringExtra("phone");
-            ocupation = intent.getStringExtra("ocupation");
+            ocupation = intent.getStringExtra("occupation");
             username = intent.getStringExtra("username");
-            pass = intent.getStringExtra("pass");
-
-
+            pass = intent.getStringExtra("password");
+            nationality = intent.getStringExtra("nationality");
+            isfree = intent.getIntExtra("isfree",0);
+            subscriptiondate = intent.getStringExtra("subscriptiondate");
+            nationality = intent.getStringExtra("nationality");
 
 
         }else if (mId==FLIGHT){
@@ -587,15 +588,22 @@ public class PaymentActivity extends AppCompatActivity {
         @Override
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
+            showProgressingView();
+            Intent intent = new Intent(PaymentActivity.this, KnetPaymentDelails.class);
 
             if (url.contains("CAPTURED")) {
-                showProgressingView();
-                Intent intent=new Intent(PaymentActivity.this, KnetPaymentDelails.class);
                 startActivity(intent);
                 hideProgressingView();
                 webviewKnet.destroy();
-                finish();
 
+                finish();
+                if (mId == 1) {
+                    startActivity(intent);
+                    hideProgressingView();
+                    webviewKnet.destroy();
+
+                    finish();
+                }
 
 //                if (mId==1){
 //                    startActivity(new Intent(PaymentActivity.this, MemberCongratsActivity.class));
@@ -610,11 +618,10 @@ public class PaymentActivity extends AppCompatActivity {
 //                }
 
             }
-//            else{
-//
-////                Toast.makeText(PaymentActivity.this, "Failed Unknown Error() 2145012114(Json)  ", Toast.LENGTH_SHORT).show();
-//
-//            }
+            else{
+
+hideProgressingView();
+            }
 
 
 
@@ -731,7 +738,6 @@ public class PaymentActivity extends AppCompatActivity {
 
                     webviewKnet.setWebViewClient(new MyWebViewClient());
 
-                    sendDataToServer();
 
 
 //                    startActivity(new Intent(PaymentActivity.this,KnetActivity.class));
@@ -832,7 +838,7 @@ public class PaymentActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> parameters = new HashMap<String, String>();
                 parameters.put("roomprice",roomPrice_);
-                parameters.put("token",uid);
+                parameters.put("token","1343243036468");
 
 
                 return parameters;
@@ -919,16 +925,7 @@ public class PaymentActivity extends AppCompatActivity {
                         ocupation = user.getString("occupation");
                         email = user.getString("email");
 
-
-                        // Inserting row in users table
-//                        db.addUser(name, email, uid, created_at);
-
-//                        Intent intent =new Intent(PaymentActivity.this,MemberCongratsActivity.class);
                         SharedPreferencesManger.remove(PaymentActivity.this,"gustMode");
-
-//                        startActivity(intent);
-                        // Launch login activity
-
 
                     } else {
 
@@ -975,16 +972,9 @@ public class PaymentActivity extends AppCompatActivity {
                 parameters.put("occupation",ocupation);
                 parameters.put("email", email);
                 parameters.put("password", pass);
-                parameters.put("birthdate"," " + day+ " - " + month+ " - " + year + " ");
-
-                parameters.put("subscriptiondate", bookedOn);
-
-
-
-
-
-                //  parameters.put("tokenid",tokenId );
-
+                parameters.put("birthdate", day);
+                parameters.put("subscriptiondate", subscriptiondate);
+                parameters.put("nationality", nationality);
 
                 return parameters;
             }

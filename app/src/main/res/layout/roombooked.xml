@@ -89,10 +89,9 @@
     <ImageView
 
         android:id="@+id/iv_mantxt"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/_150sdp"
         android:layout_height="@dimen/_130sdp"
         android:layout_below="@+id/relative_right_success"
-        android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/_15sdp"
         android:src="@drawable/manok"
 
